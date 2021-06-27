@@ -1,0 +1,7 @@
+  @font-face {
+    font-family: "DINPro-Medium";
+    src: url("/fonts/DINPro-Medium.ttf");
+    font-style: medium;
+    font-weight: 500;
+    font-display: swap;
+  }
