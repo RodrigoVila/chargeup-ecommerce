@@ -29,9 +29,12 @@ async function dbConnect() {
       useCreateIndex: true,
     };
 
-    cached.promise = mongoose.connect(MONGO_URI, opts).then((mongoose) => {
-      return mongoose;
-    });
+    cached.promise = mongoose
+      .connect(MONGO_URI, opts)
+      .then((mongoose) => {
+        return mongoose;
+      })
+      .catch((e) => console.error("DB Connect Error", e));
   }
   cached.conn = await cached.promise;
   return cached.conn;

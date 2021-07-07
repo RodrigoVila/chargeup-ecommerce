@@ -1,6 +1,7 @@
 import Image from "next/image";
 
 import Cart from "@molecules/Cart";
+import RegisterLoginButton from "@molecules/RegisterLoginButton";
 import Navbar from "@molecules/Navbar";
 
 const TopBar = () => {
@@ -13,7 +14,10 @@ const TopBar = () => {
         height={100}
       />
       <Navbar />
-      <Cart />
+      <div className="flex">
+        <RegisterLoginButton />
+        <Cart />
+      </div>
     </div>
   );
 };

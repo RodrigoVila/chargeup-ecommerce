@@ -4,6 +4,9 @@ import Welcome from "@molecules/Welcome";
 import SearchBar from "@molecules/SearchBar";
 import Categories from "@molecules/Categories";
 import ProductList from "@organisms/ProductList";
+import About from "@molecules/About";
+import SocialMedia from "@molecules/SocialMedia";
+import Footer from "@molecules/Footer";
 
 const full = "w-full h-screen";
 
@@ -29,6 +32,9 @@ export default function Home() {
             <ProductList />
           </div>
         </div>
+        <About />
+        <SocialMedia />
+        <Footer />
       </>
     </>
   );

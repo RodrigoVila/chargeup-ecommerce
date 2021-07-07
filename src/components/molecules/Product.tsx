@@ -11,20 +11,9 @@ interface Props {
   description: string;
   price: any;
   imgUri: string;
-  isPreview?: boolean;
-  canEdit?: boolean;
-  editProduct?: (product: any) => void;
 }
 
-const Product = ({
-  title,
-  description,
-  price,
-  imgUri,
-  isPreview = false,
-  canEdit = false,
-  editProduct,
-}: Props) => {
+const Product = ({ title, description, price, imgUri }: Props) => {
   const [count, setCount] = useState(0);
 
   const { cart } = useCart();
@@ -66,24 +55,13 @@ const Product = ({
       </div>
 
       <div className="flex items-center justify-between m-2 ">
-        <Counter
-          count={count}
-          subtractOne={subtractOne}
-          addOne={addOne}
-          isPreview={isPreview}
-        />
+        <Counter count={count} subtractOne={subtractOne} addOne={addOne} />
         <div className="flex-col text-center">
           {count > 0 ? <div>Total</div> : null}
           {count > 0 ? total.toFixed(2) : null}
         </div>
       </div>
-      {isPreview ? (
-        <Button title="Agregar al carro" color="gray" onClick={() => {}} />
-      ) : canEdit ? (
-        <Button title="Editar" color="yellow" onClick={editProduct} />
-      ) : (
-        <Button title="Agregar al carro" color="green" onClick={addToCart} />
-      )}
+      <Button title="Agregar al carro" color="green" onClick={addToCart} />
     </div>
   );
 };

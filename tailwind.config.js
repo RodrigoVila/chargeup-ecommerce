@@ -9,12 +9,20 @@ module.exports = {
         main: "url('/main.png')",
         brownies: "url('/brownies.jpg')",
       }),
-    },
-    colors: {
-      ...colors,
-      primary: {
-        dark: "#6122da",
-        light: "#632dbf",
+      height: (theme) => ({
+        "screen/2": "50vh",
+        "screen/3": "calc(100vh / 3)",
+        "screen/4": "calc(100vh / 4)",
+        "screen/5": "calc(100vh / 5)",
+      }),
+      width: (theme) => ({
+        "adminWidth": "calc(100vw -8rem)",
+      }),
+      colors: {
+        primary: {
+          dark: "#6122da",
+          light: "#632dbf",
+        },
       },
     },
   },
