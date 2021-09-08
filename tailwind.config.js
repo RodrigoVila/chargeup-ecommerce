@@ -8,6 +8,7 @@ module.exports = {
       backgroundImage: (theme) => ({
         main: "url('/main.png')",
         brownies: "url('/brownies.jpg')",
+        glutenfree: "url('/glutenfree.png')",
       }),
       height: (theme) => ({
         "screen/2": "50vh",
@@ -16,13 +17,16 @@ module.exports = {
         "screen/5": "calc(100vh / 5)",
       }),
       width: (theme) => ({
-        "adminWidth": "calc(100vw -8rem)",
+        adminWidth: "calc(100vw -8rem)",
       }),
       colors: {
-        primary: {
-          dark: "#6122da",
-          light: "#632dbf",
-        },
+        primaryPurple: "#6122da",
+        secondaryPurple: "#632dbf",
+        tranlucentWhite: "rgba(255,255,255,0.8)",
+        tranlucentBlack: "rgba(0,0,0,0.5)",
+      },
+      inset: {
+        outofScreen: "-700px",
       },
     },
   },

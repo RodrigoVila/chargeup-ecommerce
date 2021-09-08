@@ -1,5 +1,5 @@
 import { useState, useContext } from "react";
-import { useCart } from "@context";
+import { useCart } from "@context/cart/cart-context";
 
 import Image from "next/image";
 import Button from "@atoms/Button";
@@ -16,7 +16,7 @@ interface Props {
 const Product = ({ title, description, price, imgUri }: Props) => {
   const [count, setCount] = useState(0);
 
-  const { cart } = useCart();
+  // const { cart } = useCart();
 
   const addOne = () => setCount((prevCount) => prevCount + 1);
 

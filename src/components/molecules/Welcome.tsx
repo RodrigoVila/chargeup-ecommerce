@@ -9,8 +9,8 @@ const Welcome = () => {
         width={100}
         height={100}
       /> */}
-      <div className="flex-col ml-5">
-        <div className="text-6xl font-semibold tracking-wide text-center text-white">
+      <div className="flex-col ">
+        <div className="text-5xl font-semibold tracking-wide text-center text-white drop-shadow-md">
           CHARGE UP BARCELONA
         </div>
         <div className="text-3xl text-center text-white">

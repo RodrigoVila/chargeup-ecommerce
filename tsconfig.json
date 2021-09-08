@@ -19,7 +19,7 @@
       "@molecules/*": ["./components/molecules/*"],
       "@organisms/*": ["./components/organisms/*"],
       "@constants/*": ["./constants/*"],
-      "@context": ["./context/index.tsx"],
+      "@context/*": ["./context/*"],
       "@models/*": ["./models/*"],
       "@services": ["./services/index.tsx"],
       "@utils/*": ["./utils/*"],
