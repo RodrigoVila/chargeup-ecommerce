@@ -7,10 +7,10 @@ const SearchBar = () => {
       <span className="relative w-full">
         <input
           type="search"
-          placeholder="Search"
+          placeholder="Search for a product..."
           value={value}
           onChange={(e) => setValue(e.target.value)}
-          className="w-full px-2 py-3 pl-10 leading-normal text-white transition bg-gray-900 border border-transparent rounded appearance-none focus:outline-none focus:border-gray-400"
+          className="w-full px-2 py-3 pl-4 leading-normal text-white transition border border-transparent rounded appearance-none focus:outline-none focus:border-gray-400"
         />
         {/* <div className="absolute search-icon top-4 left-3.5">
           <svg

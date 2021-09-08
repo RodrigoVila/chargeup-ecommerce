@@ -1,11 +1,12 @@
 const Counter = ({ count, subtractOne, addOne }) => {
+  const operClass = "mx-1 text-2xl leading-none cursor-pointer";
   return (
-    <div className="flex items-center justify-center px-2 py-1 mb-2 border border-gray-300 rounded-sm">
-      <div className="text-lg cursor-pointer" onClick={subtractOne}>
+    <div className="flex items-center px-2 py-2 border border-white rounded-md">
+      <div className={`${operClass}`} onClick={subtractOne}>
         -
       </div>
-      <div className="mx-2">{count}</div>
-      <div className="text-lg text-black cursor-pointer" onClick={addOne}>
+      <div className="mx-2 text-xl leading-none ">{count}</div>
+      <div className={`${operClass}`} onClick={addOne}>
         +
       </div>
     </div>

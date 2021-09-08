@@ -16,17 +16,15 @@ import DrawerMenu from "../src/components/molecules/DrawerMenu";
 import Drawer from "@molecules/Drawer";
 // import CartProvider from '@context/cart'
 
-const full = "w-full h-screen";
-
 export default function Home() {
-  const [isMenuOpen, setMenuOpen] = useState(false);
+  const [isDrawerMenuOpen, setDrawerMenuOpen] = useState(false);
 
-  const openDrawerMenu = () => setMenuOpen(true);
-  const closeDrawerMenu = () => setMenuOpen(false);
+  const openMenu = () => setDrawerMenuOpen(true);
+  const closeMenu = () => setDrawerMenuOpen(false);
 
   useEffect(() => {
-    console.log("!!!!", isMenuOpen);
-  }, [isMenuOpen]);
+    console.log("!!!!", isDrawerMenuOpen);
+  }, [isDrawerMenuOpen]);
 
   return (
     <>
@@ -39,18 +37,16 @@ export default function Home() {
         />
       </Head>
       <>
-        {/* <DrawerMenu isOpen={isMenuOpen} close={closeDrawerMenu} /> */}
-        <Drawer isOpen={isMenuOpen} close={closeDrawerMenu} />
-        <div
-          className={`${full} bg-center bg-no-repeat bg-glutenfree bg-cover`}
-        >
+        {/* <DrawerMenu isOpen={isDrawerMenuOpen} close={closeMenu} /> */}
+        <Drawer isOpen={isDrawerMenuOpen} close={closeMenu} />
+        <div className="w-full h-screen bg-center bg-no-repeat bg-cover bg-glutenfree">
           <div className="flex items-center w-full ">
             <div className="z-20 flex justify-between w-full">
-              <button
-                className="self-start m-2"
-                onClick={openDrawerMenu}
-              >
-                <HiMenu color={isMenuOpen ? "black" : "white"} size={35} />
+              <button className="self-start m-2" onClick={openMenu}>
+                <HiMenu
+                  color={isDrawerMenuOpen ? "black" : "white"}
+                  size={35}
+                />
               </button>
               <>
                 <Image
@@ -68,9 +64,9 @@ export default function Home() {
           </div>
           <Welcome />
         </div>
-        <div className={`${full}`}>
+        <div className="pt-2 bg-yellow-200">
           <SearchBar />
-          <div className="flex w-full">
+          <div className="flex w-ful">
             <ProductList />
           </div>
         </div>
