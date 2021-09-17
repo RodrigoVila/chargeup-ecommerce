@@ -1,5 +1,5 @@
 import React from "react";
-import { FiShoppingCart } from "react-icons/fi";
+import { HiMenu } from "react-icons/hi";
 
 interface Props {
   open: () => void;
@@ -9,7 +9,7 @@ interface Props {
 const CartButton = ({ open, size }: Props) => {
   return (
     <div className="z-40 m-2 md:m-4" onClick={open}>
-      <FiShoppingCart color="white" size={size} />
+      <HiMenu color="white" size={size} />
     </div>
   );
 };

@@ -2,10 +2,7 @@ import Image from "next/image";
 
 const RoundImage = ({ imgUri }: any) => {
   return (
-    <div
-      className={`w-full rounded-full h-screen/2 overflow-hidden relative`}
-    >
-      <div className="relative z-40 w-full bg-contain bg-whiteRing h-screen/2"></div>
+    <div className="relative mx-auto mb-6 -mt-32 overflow-hidden bg-contain border-2 rounded-full w-60 h-60">
       <Image
         className=""
         objectFit="cover"

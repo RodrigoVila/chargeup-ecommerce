@@ -20,6 +20,7 @@
       "@organisms/*": ["./components/organisms/*"],
       "@constants/*": ["./constants/*"],
       "@context/*": ["./context/*"],
+      "@hooks/*": ["./hooks/*"],
       "@models/*": ["./models/*"],
       "@services": ["./services/index.tsx"],
       "@utils/*": ["./utils/*"],

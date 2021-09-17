@@ -41,12 +41,9 @@ const Product = ({
   const total = count * price;
 
   return (
-    <div className="relative w-full m-2 ">
-      <div className="relative max-w-xs px-2 h-screen/4">
-        <RoundImage imgUri={imgUri} />
-      </div>
-      <div className="bg-black h-screen/4" />
+    <div className="relative w-full mx-2 mt-32 mb-4">
       <div className="p-4 text-sm text-white bg-black">
+        <RoundImage imgUri={imgUri} />
         <div className="mb-4 text-base font-semibold">
           {title.toUpperCase()}
         </div>
@@ -69,7 +66,11 @@ const Product = ({
 
         <div className="flex items-center justify-center">
           <Counter count={count} subtractOne={subtractOne} addOne={addOne} />
-          <Button title="Agregar al carro" color="secondaryPurple" onClick={addToCart} />
+          <Button
+            title="Agregar al carro"
+            color="secondaryPurple"
+            onClick={addToCart}
+          />
         </div>
       </div>
     </div>

@@ -15,7 +15,7 @@ const CartMenu = ({ isOpen, close }: Props) => {
     >
       <div className="flex flex-col items-center justify-center h-full">
         <div
-          className="absolute top-0 right-0 z-20 m-2 bg-blue-600"
+          className="absolute top-0 right-0 z-20 m-2"
           onClick={close}
         >
           <RiCloseFill color="black" size={45} />
