@@ -10,21 +10,21 @@ import ProductList from "@organisms/ProductList";
 import About from "@molecules/About";
 import SocialMedia from "@molecules/SocialMedia";
 import Footer from "@molecules/Footer";
-import { FiShoppingCart } from "react-icons/fi";
 import { HiMenu } from "react-icons/hi";
 import DrawerMenu from "../src/components/molecules/DrawerMenu";
+import CartMenu from "../src/components/molecules/CartMenu";
+import CartButton from "../src/components/molecules/CartButton";
 import Drawer from "@molecules/Drawer";
 // import CartProvider from '@context/cart'
 
 export default function Home() {
   const [isDrawerMenuOpen, setDrawerMenuOpen] = useState(false);
+  const [isCartMenuOpen, setCartMenuOpen] = useState(false);
 
-  const openMenu = () => setDrawerMenuOpen(true);
-  const closeMenu = () => setDrawerMenuOpen(false);
-
-  useEffect(() => {
-    console.log("!!!!", isDrawerMenuOpen);
-  }, [isDrawerMenuOpen]);
+  const openDrawerMenu = () => setDrawerMenuOpen(true);
+  const closeDrawerMenu = () => setDrawerMenuOpen(false);
+  const openCartMenu = () => setCartMenuOpen(true);
+  const closeCartMenu = () => setCartMenuOpen(false);
 
   return (
     <>
@@ -37,12 +37,15 @@ export default function Home() {
         />
       </Head>
       <>
-        {/* <DrawerMenu isOpen={isDrawerMenuOpen} close={closeMenu} /> */}
-        <Drawer isOpen={isDrawerMenuOpen} close={closeMenu} />
-        <div className="w-full h-screen bg-center bg-no-repeat bg-cover bg-glutenfree">
+        {/* TODO: This one is exactly the same as Drawer component, but animated. Works good on mobile but others mediaqueries animations may look weird. */}
+        {/* <DrawerMenu isOpen={isDrawerMenuOpen} close={closeDrawerMenu} /> */}
+
+        <Drawer isOpen={isDrawerMenuOpen} close={closeDrawerMenu} />
+        <CartMenu isOpen={isCartMenuOpen} close={closeCartMenu} />
+        <div className="w-full h-screen bg-center bg-no-repeat bg-cover bg-glutenFree">
           <div className="flex items-center w-full ">
             <div className="z-20 flex justify-between w-full">
-              <button className="self-start m-2" onClick={openMenu}>
+              <button className="self-start m-2" onClick={openDrawerMenu}>
                 <HiMenu
                   color={isDrawerMenuOpen ? "black" : "white"}
                   size={35}
@@ -56,17 +59,15 @@ export default function Home() {
                   height={100}
                 />
               </>
-              <div className="mt-2 mr-4" onClick={() => console.log("asd")}>
-                <FiShoppingCart color="white" size={35} />
-              </div>
+              <CartButton open={openCartMenu} />
             </div>
             {/* <TopBar /> */}
           </div>
           <Welcome />
         </div>
-        <div className="pt-2 bg-yellow-200">
+        <div className="pt-2 bg-purpleTexture">
           <SearchBar />
-          <div className="flex w-ful">
+          <div className="flex w-full ">
             <ProductList />
           </div>
         </div>

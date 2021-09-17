@@ -12,7 +12,7 @@ const DrawerMenu = ({ isOpen, close }: Props) => {
     <Menu isOpen={isOpen}>
       <div className="w-screen h-screen m-0 bg-white">
         <div className="flex flex-col items-center justify-center h-full bg-red-200">
-          <div className="absolute top-0 left-0 z-20 m-2 bg-red-600" onClick={close}>
+          <div className="absolute top-0 left-0 z-10 m-2 bg-red-600" onClick={close}>
             <RiCloseFill color="black" size={45} />
           </div>
           <a id="home" className="menu-item" href="/">

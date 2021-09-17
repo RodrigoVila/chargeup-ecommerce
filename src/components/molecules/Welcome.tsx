@@ -2,22 +2,19 @@ import Image from "next/image";
 
 const Welcome = () => {
   return (
-    <div className="absolute top-0 flex items-center justify-center w-full h-full">
-      {/* <Image
-        src="/rayoblancovillero.png"
-        alt="Picture of the author"
-        width={100}
-        height={100}
-      /> */}
-      <div className="flex-col ">
-        <div className="text-5xl font-semibold tracking-wide text-center text-white drop-shadow-md">
-          CHARGE UP BARCELONA
-        </div>
-        <div className="text-3xl text-center text-white">
-          Lorem ipsum dolor sit amet consectetur.
+    <>
+      <div className="absolute inset-0 z-10 bg-tranlucentBlack" />
+      <div className="flex w-full h-full ">
+        <div className="z-20 flex-col mt-12">
+          <div className="mb-8 text-5xl font-semibold tracking-wide text-center text-white ">
+            TASTE THE LOVE AND FEEL RECHARGED
+          </div>
+          <div className="px-2 text-xl font-semibold text-center text-white ">
+            OUR MISSION IS TO MAKE HAPPY THOSE WHO CANNOT EAT SUGAR
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

@@ -6,12 +6,11 @@ interface Props {
 }
 
 const Drawer = ({ isOpen, close }: Props) => {
-  console.log("isopen", isOpen);
   return (
     <div
-      className={`z-30 ${
-        isOpen ? "left-0" : "left-outofScreen"
-      } absolute top-0  flex flex-col items-center h-screen w-screen bg-red-300 justify-center`}
+      className={`${
+        !isOpen && "hidden"
+      } z-30 left-0 absolute top-0  flex flex-col items-center h-screen w-screen bg-red-300 justify-center`}
     >
       <button onClick={close} className="absolute top-0 left-0 m-2 ">
         <RiCloseFill color="black" size={40} />

@@ -21,31 +21,31 @@ const productMockup = [
     imgUri: "brownies.jpg",
   },
   {
-    title: "Empanada de Dulce de Leche",
+    title: "Brownie de avocado y fresa",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur, placeat itaque laborum iste ipsa totam voluptatum autem ipsam quas eos!",
+      "Mousse de avocado con harina de coco y huevos chia, se utiliza cacao 80%.",
     nutritionalInfo: "102 Cal 11gr C 3gr P 7gr F",
     suitableForInfo: ["Vegano", "Keto", "Gluten Free"],
-    price: 9.5,
-    imgUri: "",
+    price: 3,
+    imgUri: "brownies.jpg",
   },
   {
-    title: "Empanada de Dulce de Leche",
+    title: "Brownie de avocado y fresa",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur, placeat itaque laborum iste ipsa totam voluptatum autem ipsam quas eos!",
+      "Mousse de avocado con harina de coco y huevos chia, se utiliza cacao 80%.",
     nutritionalInfo: "102 Cal 11gr C 3gr P 7gr F",
     suitableForInfo: ["Vegano", "Keto", "Gluten Free"],
-    price: 9.5,
-    imgUri: "",
+    price: 3,
+    imgUri: "brownies.jpg",
   },
   {
-    title: "Empanada de Dulce de Leche",
+    title: "Brownie de avocado y fresa",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur, placeat itaque laborum iste ipsa totam voluptatum autem ipsam quas eos!",
+      "Mousse de avocado con harina de coco y huevos chia, se utiliza cacao 80%.",
     nutritionalInfo: "102 Cal 11gr C 3gr P 7gr F",
     suitableForInfo: ["Vegano", "Keto", "Gluten Free"],
-    price: 9.5,
-    imgUri: "",
+    price: 3,
+    imgUri: "brownies.jpg",
   },
 ];
 
@@ -68,7 +68,7 @@ const ProductList: FC = () => {
   // }, []);
 
   return (
-    <div className="flex flex-wrap justify-center w-full">
+    <div className="flex flex-wrap justify-center w-full max-w-xs mx-auto">
       {isLoading
         ? "Loading ..."
         : productMockup?.map((p, index) => (

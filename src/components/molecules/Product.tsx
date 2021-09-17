@@ -42,7 +42,7 @@ const Product = ({
 
   return (
     <div className="relative w-full m-2 ">
-      <div className="relative px-2 h-screen/4">
+      <div className="relative max-w-xs px-2 h-screen/4">
         <RoundImage imgUri={imgUri} />
       </div>
       <div className="bg-black h-screen/4" />
@@ -69,7 +69,7 @@ const Product = ({
 
         <div className="flex items-center justify-center">
           <Counter count={count} subtractOne={subtractOne} addOne={addOne} />
-          <Button title="Agregar al carro" color="green" onClick={addToCart} />
+          <Button title="Agregar al carro" color="secondaryPurple" onClick={addToCart} />
         </div>
       </div>
     </div>
