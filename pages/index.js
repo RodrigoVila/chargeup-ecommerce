@@ -6,8 +6,8 @@ import Welcome from "@molecules/Welcome";
 import SearchBar from "@molecules/SearchBar";
 import Categories from "@molecules/Categories";
 import ProductList from "@organisms/ProductList";
+import Delivery from "@molecules/Delivery";
 import About from "@molecules/About";
-import SocialMedia from "@molecules/SocialMedia";
 import Footer from "@molecules/Footer";
 
 // import CartProvider from '@context/cart'
@@ -34,12 +34,12 @@ export default function Home() {
         </div>
         <div className="pt-4 bg-purpleTexture">
           <SearchBar />
-          <div className="flex w-full ">
+          <div className="flex flex-wrap w-full ">
             <ProductList />
           </div>
         </div>
         <About />
-        <SocialMedia />
+        <Delivery />
         <Footer />
       </>
     </>

@@ -42,17 +42,17 @@ const Product = ({
 
   return (
     <div className="relative w-full mx-2 mt-32 mb-4">
-      <div className="p-4 text-sm text-white bg-black">
+      <div className="p-4 text-white bg-black">
         <RoundImage imgUri={imgUri} />
-        <div className="mb-4 text-base font-semibold">
+        <div className="mb-4 text-base font-semibold md:text-xl">
           {title.toUpperCase()}
         </div>
-        <div className="text-sm">{description}</div>
-        <div className="flex flex-col my-4">
+        <div className="text-sm md:text-lg">{description}</div>
+        <div className="flex flex-col my-4 text-sm md:text-base">
           <div>Info nutricional:</div>
-          <div className="text-sm ">{nutritionalInfo}</div>
+          <div className="text-sm md:text-lg ">{nutritionalInfo}</div>
         </div>
-        <div className="text-sm font-semibold">
+        <div className="text-sm font-semibold md:text-base">
           {suitableForInfo.map((info, index) => (
             <>
               {index !== 0 && " | "}
@@ -61,7 +61,7 @@ const Product = ({
           ))}
         </div>
         <div className="flex justify-end">
-          <div className="my-2 text-2xl font-semibold">{`€${price}`}</div>
+          <div className="my-2 text-2xl font-semibold md:text-4xl">{`€${price}`}</div>
         </div>
 
         <div className="flex items-center justify-center">

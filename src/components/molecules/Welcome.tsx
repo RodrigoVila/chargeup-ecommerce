@@ -1,18 +1,18 @@
+import BlackOverlay from "@atoms/BlackOverlay";
+
 const Welcome = () => {
   return (
-    <>
-      <div className="absolute inset-0 z-10 bg-tranlucentBlack" />
-      <div className="flex w-full h-full md:absolute md:top-0 md:items-center ">
-        <div className="z-20 flex-col mt-6">
-          <div className="mb-8 text-5xl font-semibold tracking-wide text-center text-white md:px-4 md:text-6xl ">
-            TASTE THE LOVE AND FEEL RECHARGED
-          </div>
-          <div className="px-2 text-xl font-semibold text-center text-white md:text-3xl ">
-            OUR MISSION IS TO MAKE HAPPY THOSE WHO CANNOT EAT SUGAR
-          </div>
+    <div className="absolute top-0 flex items-center w-full h-full ">
+      <BlackOverlay />
+      <div className="z-20 flex-col w-full mt-6">
+        <div className="mb-8 text-5xl font-semibold tracking-wide text-center text-white md:px-4 md:text-6xl ">
+          TASTE THE LOVE AND FEEL RECHARGED
+        </div>
+        <div className="px-2 text-xl font-semibold text-center text-white md:text-3xl ">
+          OUR MISSION IS TO MAKE HAPPY THOSE WHO CANNOT EAT SUGAR
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

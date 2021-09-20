@@ -1,5 +1,17 @@
-const About = () => {
-  return <div className="flex items-center justify-center w-full h-screen text-4xl bg-blue-300">About Us</div>;
+import BlackOverlay from "@atoms/BlackOverlay";
+
+const AboutSection = () => {
+  return (
+    <div className="relative flex flex-col justify-center w-full h-screen m-auto bg-fixed bg-center bg-no-repeat bg-cover bg-driedfruits ">
+      <BlackOverlay />
+      <div className="z-20 w-full pt-6 text-5xl text-center text-white filter drop-shadow-sm ">
+        Utilizamos
+      </div>
+      <div className="z-20 w-full text-5xl leading-none text-center text-white">
+        los <span className="z-20 text-6xl">mejores</span> productos.
+      </div>
+    </div>
+  );
 };
 
-export default About;
+export default AboutSection;

@@ -11,6 +11,8 @@ module.exports = {
         glutenFree: "url('/glutenfree.png')",
         purpleTexture: "url('/fondovioleta.svg')",
         whiteRing: "url('/whiteRing.png')",
+        proteinBalls: "url('/bolitas.jpg')",
+        driedfruits: "url('/driedfruits.jpg')",
       }),
       height: (theme) => ({
         "screen/2": "50vh",
