@@ -9,10 +9,16 @@ import ProductList from "@organisms/ProductList";
 import Delivery from "@molecules/Delivery";
 import About from "@molecules/About";
 import Footer from "@molecules/Footer";
+import useWindowsDimensions from "@hooks/useWindowsDimensions.tsx";
+import { useEffect } from "react";
 
 // import CartProvider from '@context/cart'
 
 export default function Home() {
+  const width = useWindowsDimensions();
+  useEffect(() => {
+    console.log(`!!Width: ${width}`);
+  }, [width]);
   return (
     <>
       <Head>
@@ -25,10 +31,8 @@ export default function Home() {
       </Head>
       <>
         <div className="w-full h-screen bg-center bg-no-repeat bg-cover bg-glutenFree">
-          <div className="flex items-center w-full ">
-            <MobileTopBar />
-
-            {/* <TopBar /> */}
+          <div className="flex items-center w-full">
+            {width > 1023 ? <TopBar /> : <MobileTopBar />}
           </div>
           <Welcome />
         </div>

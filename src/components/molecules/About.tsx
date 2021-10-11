@@ -1,9 +1,9 @@
-import BlackOverlay from "@atoms/BlackOverlay";
+import BackgroundOverlay from "@atoms/BackgroundOverlay";
 
 const AboutSection = () => {
   return (
     <div className="relative flex flex-col justify-center w-full h-screen m-auto bg-fixed bg-center bg-no-repeat bg-cover bg-driedfruits ">
-      <BlackOverlay />
+      <BackgroundOverlay color="Black" />
       <div className="z-20 w-full pt-6 text-5xl text-center text-white filter drop-shadow-sm ">
         Utilizamos
       </div>

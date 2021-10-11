@@ -1,5 +1,4 @@
 import { useState } from "react";
-import Image from "next/image";
 
 import CartButton from "@molecules/CartButton";
 import BurgerButton from "@molecules/BurgerButton";
@@ -7,11 +6,12 @@ import DrawerMenu from "@molecules/DrawerMenu";
 import CartMenu from "@molecules/CartMenu";
 import Drawer from "@molecules/Drawer";
 import useWindowDimensions from "@hooks/useWindowsDimensions";
+import Logo from "@atoms/Logo";
 
 const MobileTopBar = () => {
   const [isDrawerMenuOpen, setDrawerMenuOpen] = useState(false);
   const [isCartMenuOpen, setCartMenuOpen] = useState(false);
-  const { height, width } = useWindowDimensions();
+  const width = useWindowDimensions();
 
   const openDrawerMenu = () => setDrawerMenuOpen(true);
   const closeDrawerMenu = () => setDrawerMenuOpen(false);
@@ -30,12 +30,7 @@ const MobileTopBar = () => {
 
       <div className="z-20 flex justify-between w-full">
         <BurgerButton open={openDrawerMenu} size={iconSize} />
-        <Image
-          src="/logoblur.png"
-          alt="Picture of the author"
-          width={logoSize}
-          height={logoSize}
-        />
+        <Logo size={logoSize} />
         <CartButton open={openCartMenu} size={iconSize} />
       </div>
     </>

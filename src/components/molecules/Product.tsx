@@ -6,17 +6,17 @@ import Button from "@atoms/Button";
 import Counter from "@atoms/Counter";
 import RoundImage from "@atoms/RoundImage";
 
-interface Props {
+type Props = {
   key?: number;
   title: string;
   description: string;
-  nutritionalInfo: string;
+  nutritionalInfo: INutritionalInfo;
   suitableForInfo: string[];
-  price: any;
+  price: number;
   imgUri: string;
-}
+};
 
-const Product = ({
+const Article = ({
   title,
   description,
   nutritionalInfo,
@@ -41,8 +41,8 @@ const Product = ({
   const total = count * price;
 
   return (
-    <div className="relative w-full mx-2 mt-32 mb-4">
-      <div className="p-4 text-white bg-black">
+    <div className="relative w-full max-w-xs mx-2 mt-32 mb-4 lg:max-w-360 lg:mx-8">
+      <div className="p-8 text-white bg-black rounded-xl">
         <RoundImage imgUri={imgUri} />
         <div className="mb-4 text-base font-semibold md:text-xl">
           {title.toUpperCase()}
@@ -68,7 +68,7 @@ const Product = ({
           <Counter count={count} subtractOne={subtractOne} addOne={addOne} />
           <Button
             title="Agregar al carro"
-            color="secondaryPurple"
+            color="purple2"
             onClick={addToCart}
           />
         </div>
@@ -77,4 +77,4 @@ const Product = ({
   );
 };
 
-export default Product;
+export default Article;

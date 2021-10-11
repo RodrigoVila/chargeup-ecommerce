@@ -1,18 +1,35 @@
 import { useState, useEffect } from "react";
-import Product from "./Product";
+import { v4 as uuidv4 } from "uuid";
 import Button from "@atoms/Button";
 import { addProductToDB } from "@services";
+import Product from "./Product";
 
 const className = "w-full h-10 pl-2 my-2";
 
 const AddOrEditProduct = ({ editing }) => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [price, setPrice] = useState("");
+  const [price, setPrice] = useState(0);
+  const [suitableForInfo, setSuitableForInfo] = useState([]);
+  const [nutritionalInfo, setNutritionalInfo] = useState({
+    carbs: 0,
+    protein: 0,
+    fat: 0,
+    calories: 0,
+  });
+
   const [imgUri, setImgUri] = useState("");
 
   const addProduct = () => {
-    addProductToDB(title, description, price, imgUri);
+    addProductToDB({
+      id: uuidv4(),
+      title,
+      description,
+      price,
+      imgUri,
+      suitableForInfo,
+      nutritionalInfo,
+    });
   };
   const editProduct = (product: any) => {};
 

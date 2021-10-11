@@ -5,8 +5,8 @@ const Cart = () => {
   // const { cart } = useCart();
 
   return (
-    <div className="flex items-center text-2xl text-white">
-      <FiShoppingCart className="w-12 text-3xl text-white" />
+    <div className="z-20 flex items-center text-2xl text-purple3">
+      <FiShoppingCart className="w-12 text-3xl text-purple3" />
       {/* <div>{cart?.length}</div> */}
       <div>0</div>
     </div>

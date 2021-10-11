@@ -22,8 +22,9 @@
       "@context/*": ["./context/*"],
       "@hooks/*": ["./hooks/*"],
       "@models/*": ["./models/*"],
+      "@redux/*": ["./redux/*"],
       "@services": ["./services/index.tsx"],
-      "@utils/*": ["./utils/*"],
+      "@utils/*": ["./utils/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

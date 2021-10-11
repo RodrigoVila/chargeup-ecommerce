@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import BlackOverlay from "@atoms/BlackOverlay";
+import BackgroundOverlay from "@atoms/BackgroundOverlay";
 
 const DeliverySection = () => {
   const [offsetY, setOffsetY] = useState(0);
@@ -14,11 +14,11 @@ const DeliverySection = () => {
   return (
     <div
       style={{ transform: `translateY${offsetY * 0.5}px` }}
-      className="relative flex items-center justify-center w-full h-screen pb-40 m-auto bg-center bg-no-repeat bg-cover bg-proteinBalls "
+      className="relative flex items-center justify-center w-full h-screen m-auto bg-center bg-no-repeat bg-cover bg-wooden "
     >
-      <BlackOverlay />
+      <BackgroundOverlay color="Black" />
       <div className="z-20 text-5xl text-center text-white">
-        Entregas en TODO Catalunya.
+        Lorem ipsum dolor sit amet.
       </div>
     </div>
   );

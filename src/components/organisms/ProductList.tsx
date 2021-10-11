@@ -68,7 +68,7 @@ const ProductList: FC = () => {
   // }, []);
 
   return (
-    <div className="flex flex-wrap justify-center w-full max-w-xs mx-auto md:max-w-sm">
+    <div className="flex flex-wrap justify-center w-full mx-auto ">
       {isLoading
         ? "Loading ..."
         : productMockup?.map((p, index) => (

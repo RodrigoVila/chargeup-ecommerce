@@ -1,15 +1,14 @@
 import axios from "axios";
 
-export const addProductToDB = (
-  title: string,
-  description: string,
-  price: string,
-  imgUri: string
-): void => {
-  axios.post("/api/products", {
-    title,
-    description,
-    price,
-    imgUri,
-  });
+export const addProductToDB = (article: IArticle): void => {
+  axios.post("/api/product", article);
+};
+
+export const removeProductFromDB = (articleId: number): void => {
+  const config = {
+    data: {
+      id: articleId,
+    },
+  };
+  axios.delete("/api/product", config);
 };

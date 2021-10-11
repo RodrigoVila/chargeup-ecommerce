@@ -11,10 +11,9 @@ const Footer = () => {
         <FiFacebook className="mx-2" color="white" size={ICON_SIZE} />
         <AiOutlineYoutube color="white" size={ICON_SIZE} />
       </div>
-      <div className="text-sm text-gray-300">
+      <div className="pb-8 text-sm text-gray-300 md:text-lg">
         Privacy policy | Terms & Conditions | Feedback
       </div>
-      <div className="pt-4 pb-2 text-xs text-gray-400 ">Designed by RV</div>
     </div>
   );
 };

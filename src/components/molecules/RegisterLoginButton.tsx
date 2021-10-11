@@ -1,7 +1,12 @@
 import React from "react";
+import { AiOutlineUser } from "react-icons/ai";
 
 const RegisterLoginButton = () => {
-  return <div className="px-4 py-1 mr-2 text-xl text-white border-2 border-white rounded-l hover:bg-blue-600">Login/Register</div>;
+  return (
+    <div className="z-20 flex items-center mx-2">
+      <AiOutlineUser className="w-12 text-3xl text-purple3" />
+    </div>
+  );
 };
 
 export default RegisterLoginButton;
