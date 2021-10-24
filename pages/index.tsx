@@ -1,4 +1,5 @@
 import Head from "next/head";
+import { Toaster } from "react-hot-toast";
 
 import TopBar from "@organisms/TopBar";
 import MobileTopBar from "@organisms/MobileTopBar";
@@ -48,11 +49,15 @@ export default function Home() {
         <div className="w-full h-screen bg-center bg-no-repeat bg-cover bg-glutenFree">
           <div className="flex items-center w-full">
             <Drawer isOpen={isDrawerMenuOpen} toggleDrawer={toggleDrawer} />
-            <CartMenu isOpen={isCartMenuOpen} toggleCart={toggleCart} />
+            <CartMenu isOpen={isCartMenuOpen} toggleCart={toggleCart} items={cart} />
             {width > 1023 ? (
               <TopBar items={cart.length} toggleCart={toggleCart} />
             ) : (
-              <MobileTopBar items={cart.length} toggleDrawer={toggleDrawer} toggleCart={toggleCart} />
+              <MobileTopBar
+                items={cart.length}
+                toggleDrawer={toggleDrawer}
+                toggleCart={toggleCart}
+              />
             )}
           </div>
           <Welcome />
@@ -66,6 +71,20 @@ export default function Home() {
         <About />
         <Delivery />
         <Footer />
+        
+        {/* Toast Notifications */}
+        {/* <ToastContainer
+          position="top-center"
+          autoClose={2000}
+          hideProgressBar={false}
+          newestOnTop={true}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        /> */}
+        <Toaster />
       </>
     </>
   );

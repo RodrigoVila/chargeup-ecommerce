@@ -2,7 +2,7 @@ import { useState } from "react";
 import { BsFillPlusCircleFill } from "react-icons/bs";
 import AdminTopBar from "@organisms/AdminTopBar";
 import AdminSidebar from "@molecules/AdminSidebar";
-import AddOrEditProduct from "@molecules/AddOrEditProduct";
+import AddOrEditProduct from "@molecules/AddOrEditProduct-posiblydelete-";
 import AdminMetrics from "@atoms/AdminMetrics";
 import AdminCustomers from "@molecules/AdminCustomers";
 import AdminProductList from "@organisms/AdminProductList";

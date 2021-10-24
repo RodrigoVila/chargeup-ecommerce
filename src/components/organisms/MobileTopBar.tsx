@@ -27,6 +27,7 @@ const MobileTopBar = ({ items, toggleCart,toggleDrawer }: Props) => {
         <CartButton
           size={iconSize}
           color={"white"}
+          badgesColor={"danger"}
           cartCount={items}
           toggleCart={toggleCart}
         />

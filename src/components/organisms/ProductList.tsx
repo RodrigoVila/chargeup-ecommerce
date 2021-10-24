@@ -1,7 +1,7 @@
 import { FC, useState, useEffect } from "react";
 import axios from "axios";
 
-import Product from "@molecules/Product";
+import Product from "@molecules/VerticalProduct";
 import { shallowEqual, useSelector } from "react-redux";
 
 const ProductList: FC = () => {

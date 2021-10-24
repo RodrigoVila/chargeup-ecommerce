@@ -6,8 +6,13 @@ import Button from "@atoms/Button";
 import Counter from "@atoms/Counter";
 import RoundImage from "@atoms/RoundImage";
 import { addToCart } from "@redux/cart/actions";
+import {
+  displayErrorMessage,
+  displaySuccessMessage,
+  displayInfoMessage,
+} from "@redux/toast notifications/actions";
 
-const Product = ({
+const VerticalProduct = ({
   id,
   title,
   description,
@@ -27,6 +32,10 @@ const Product = ({
   };
 
   const addItemToCart = () => {
+    if (count === 0) {
+      dispatch(displayInfoMessage("Amount to add has to be more than 0."));
+      return;
+    }
     const item: ArticleType = {
       id,
       title,
@@ -35,10 +44,10 @@ const Product = ({
       suitableForInfo,
       price,
       imgUri,
-      quantity: count
+      quantity: count,
     };
-    
     dispatch(addToCart(item));
+    dispatch(displaySuccessMessage("Item added to cart!"));
   };
 
   return (
@@ -67,15 +76,11 @@ const Product = ({
 
         <div className="flex items-center justify-center">
           <Counter count={count} subtractOne={subtractOne} addOne={addOne} />
-          <Button
-            title="Agregar al carro"
-            color="purple2"
-            onClick={addItemToCart}
-          />
+          <Button title="Agregar" color="purple2" onClick={addItemToCart} />
         </div>
       </div>
     </div>
   );
 };
 
-export default Product;
+export default VerticalProduct;

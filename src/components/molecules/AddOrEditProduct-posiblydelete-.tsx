@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Button from "@atoms/Button";
 import { addProductToDB } from "@services";
-import Product from "./Product";
+import Product from "./VerticalProduct";
 
 const className = "w-full h-10 pl-2 my-2";
 
@@ -21,6 +21,7 @@ const AddOrEditProduct = ({ editing }) => {
 
   const addProduct = () => {
     addProductToDB({
+      id,
       title,
       description,
       price,
