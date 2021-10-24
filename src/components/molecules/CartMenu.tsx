@@ -3,10 +3,10 @@ import { RiCloseFill } from "react-icons/ri";
 
 interface Props {
   isOpen: boolean;
-  close: () => void;
+  toggleCart: () => void;
 }
 
-const CartMenu = ({ isOpen, close }: Props) => {
+const CartMenu = ({ isOpen, toggleCart }: Props) => {
   return (
     <div
       className={`${
@@ -14,7 +14,7 @@ const CartMenu = ({ isOpen, close }: Props) => {
       } z-30 left-0 absolute top-0  flex flex-col items-center h-screen w-screen bg-blue-300 justify-center`}
     >
       <div className="flex flex-col items-center justify-center h-full">
-        <div className="absolute top-0 right-0 z-20 m-2" onClick={close}>
+        <div className="absolute top-0 right-0 z-20 m-2" onClick={toggleCart}>
           <RiCloseFill color="black" size={45} />
         </div>
         <a id="about" className="menu-item" href="/about">

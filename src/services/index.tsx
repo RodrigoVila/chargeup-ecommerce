@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const addProductToDB = (article: IArticle): void => {
+export const addProductToDB = (article: ArticleType): void => {
   axios.post("/api/product", article);
 };
 

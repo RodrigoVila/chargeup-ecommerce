@@ -2,16 +2,16 @@ import React from "react";
 import { HiMenu } from "react-icons/hi";
 
 interface Props {
-  open: () => void;
   size: number;
+  toggleDrawer: () => void;
 }
 
-const CartButton = ({ open, size }: Props) => {
+const BurgerButton = ({ toggleDrawer, size }: Props) => {
   return (
-    <div className="z-40 m-2 md:m-4" onClick={open}>
+    <div className="z-40 m-2 md:m-4" onClick={toggleDrawer}>
       <HiMenu color="white" size={size} />
     </div>
   );
 };
 
-export default CartButton;
+export default BurgerButton;

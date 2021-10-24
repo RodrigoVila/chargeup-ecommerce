@@ -1,11 +1,9 @@
 import { createStore, applyMiddleware, Store } from "redux";
 import thunk from "redux-thunk";
 
-import reducer from "@redux/reducers";
+import reducer from "./reducers";
 
-// ...
-
-const store: Store<ArticleState, ArticleAction> & {
+const store: Store<any> & {
   dispatch: DispatchType;
 } = createStore(reducer, applyMiddleware(thunk));
 

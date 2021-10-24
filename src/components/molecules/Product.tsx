@@ -1,32 +1,23 @@
-import { useState, useContext } from "react";
-import { useCart } from "@context/cart/cart-context";
+import { useState, useCallback } from "react";
+import { useDispatch } from "react-redux";
+import { Dispatch } from "redux";
 
-import Image from "next/image";
 import Button from "@atoms/Button";
 import Counter from "@atoms/Counter";
 import RoundImage from "@atoms/RoundImage";
+import { addToCart } from "@redux/cart/actions";
 
-type Props = {
-  key?: number;
-  title: string;
-  description: string;
-  nutritionalInfo: INutritionalInfo;
-  suitableForInfo: string[];
-  price: number;
-  imgUri: string;
-};
-
-const Article = ({
+const Product = ({
+  id,
   title,
   description,
   nutritionalInfo,
   suitableForInfo,
   price,
   imgUri,
-}: Props) => {
+}: ArticleType) => {
   const [count, setCount] = useState(0);
-
-  // const { cart } = useCart();
+  const dispatch: Dispatch<any> = useDispatch();
 
   const addOne = () => setCount((prevCount) => prevCount + 1);
 
@@ -35,10 +26,20 @@ const Article = ({
     setCount((prevCount) => prevCount - 1);
   };
 
-  const addToCart = () => {
-    localStorage.setItem("cartItems", JSON.stringify([...cart]));
+  const addItemToCart = () => {
+    const item: ArticleType = {
+      id,
+      title,
+      description,
+      nutritionalInfo,
+      suitableForInfo,
+      price,
+      imgUri,
+      quantity: count
+    };
+    
+    dispatch(addToCart(item));
   };
-  const total = count * price;
 
   return (
     <div className="relative w-full max-w-xs mx-2 mt-32 mb-4 lg:max-w-360 lg:mx-8">
@@ -50,7 +51,7 @@ const Article = ({
         <div className="text-sm md:text-lg">{description}</div>
         <div className="flex flex-col my-4 text-sm md:text-base">
           <div>Info nutricional:</div>
-          <div className="text-sm md:text-lg ">{nutritionalInfo}</div>
+          <div className="text-sm md:text-lg ">{`Cal: ${nutritionalInfo.calories} | Car: ${nutritionalInfo.carbs} | Fat: ${nutritionalInfo.fat} | Prot: ${nutritionalInfo.protein}`}</div>
         </div>
         <div className="text-sm font-semibold md:text-base">
           {suitableForInfo.map((info, index) => (
@@ -69,7 +70,7 @@ const Article = ({
           <Button
             title="Agregar al carro"
             color="purple2"
-            onClick={addToCart}
+            onClick={addItemToCart}
           />
         </div>
       </div>
@@ -77,4 +78,4 @@ const Article = ({
   );
 };
 
-export default Article;
+export default Product;

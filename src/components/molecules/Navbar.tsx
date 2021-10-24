@@ -2,7 +2,7 @@ import NavItem from "@atoms/NavItem";
 
 const Navbar = () => {
   return (
-    <div className="z-20 flex flex-row items-center justify-center">
+    <div className="z-20 flex flex-row items-center justify-center pl-2 text-center">
       <NavItem title="CAKES" goTo={() => {}} />
       <NavItem title="SNACKS" goTo={() => {}} />
       <NavItem title="COMO COMPRAR" goTo={() => {}} />

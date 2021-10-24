@@ -2,17 +2,17 @@ import { RiCloseFill } from "react-icons/ri";
 
 interface Props {
   isOpen: boolean;
-  close: () => void;
+  toggleDrawer: () => void;
 }
 
-const Drawer = ({ isOpen, close }: Props) => {
+const Drawer = ({ isOpen, toggleDrawer }: Props) => {
   return (
     <div
       className={`${
         !isOpen && "hidden"
       } z-30 left-0 absolute top-0  flex flex-col items-center h-screen w-screen bg-red-300 justify-center`}
     >
-      <button onClick={close} className="absolute top-0 left-0 m-2 ">
+      <button onClick={toggleDrawer} className="absolute top-0 left-0 m-2 ">
         <RiCloseFill color="black" size={40} />
       </button>
       <a

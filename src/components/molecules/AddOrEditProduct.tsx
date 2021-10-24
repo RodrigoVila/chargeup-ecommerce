@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { v4 as uuidv4 } from "uuid";
 import Button from "@atoms/Button";
 import { addProductToDB } from "@services";
 import Product from "./Product";
@@ -22,7 +21,6 @@ const AddOrEditProduct = ({ editing }) => {
 
   const addProduct = () => {
     addProductToDB({
-      id: uuidv4(),
       title,
       description,
       price,

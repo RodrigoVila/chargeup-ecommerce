@@ -2,14 +2,21 @@ import React from "react";
 import { FiShoppingCart } from "react-icons/fi";
 
 interface Props {
-  open: () => void;
   size: number;
+  color: string;
+  cartCount: number;
+  toggleCart: () => void;
 }
 
-const CartButton = ({ open, size }: Props) => {
+const CartButton = ({ size, color, cartCount, toggleCart }: Props) => {
   return (
-    <div className="z-40 m-2 md:m-4" onClick={open}>
-      <FiShoppingCart color="white" size={size} />
+    <div className="relative z-40 m-2 mr-4 md:m-4" onClick={toggleCart}>
+      <FiShoppingCart color={color} size={size} />
+      {cartCount !== 0 && (
+        <div className="absolute px-1 text-sm font-bold text-white rounded-full bg-purple3 -right-2 -top-1">
+          {cartCount}
+        </div>
+      )}
     </div>
   );
 };
