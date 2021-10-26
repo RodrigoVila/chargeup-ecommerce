@@ -33,7 +33,7 @@ const VerticalProduct = ({
 
   const addItemToCart = () => {
     if (count === 0) {
-      dispatch(displayInfoMessage("Amount to add has to be more than 0."));
+      dispatch(displayInfoMessage("Cantidad tiene que ser mayor a 0"));
       return;
     }
     const item: ArticleType = {
@@ -47,13 +47,13 @@ const VerticalProduct = ({
       quantity: count,
     };
     dispatch(addToCart(item));
-    dispatch(displaySuccessMessage("Item added to cart!"));
+    dispatch(displaySuccessMessage("Producto agregado!"));
   };
 
   return (
-    <div className="relative w-full max-w-xs mx-2 mt-32 mb-4 lg:max-w-360 lg:mx-8">
-      <div className="p-8 text-white bg-black rounded-xl">
-        <RoundImage imgUri={imgUri} />
+    <div className="relative w-full max-w-xs mx-2 mt-32 mb-4 text-white bg-black lg:max-w-360 lg:mx-8 rounded-xl">
+      <div className="px-8 pt-8 pb-4 ">
+        <RoundImage isVertical imgUri={imgUri} />
         <div className="mb-4 text-base font-semibold md:text-xl">
           {title.toUpperCase()}
         </div>
@@ -73,11 +73,10 @@ const VerticalProduct = ({
         <div className="flex justify-end">
           <div className="my-2 text-2xl font-semibold md:text-4xl">{`€${price}`}</div>
         </div>
-
-        <div className="flex items-center justify-center">
-          <Counter count={count} subtractOne={subtractOne} addOne={addOne} />
-          <Button title="Agregar" color="purple2" onClick={addItemToCart} />
-        </div>
+      </div>
+      <div className="flex items-center justify-center mx-4 mb-4">
+        <Counter count={count} subtractOne={subtractOne} addOne={addOne} />
+        <Button title="Agregar" color="purple2" onClick={addItemToCart} />
       </div>
     </div>
   );

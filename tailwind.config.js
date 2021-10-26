@@ -24,6 +24,8 @@ module.exports = {
         info: "#33b5e5",
         tranlucentWhite: "rgba(255,255,255,0.5)",
         tranlucentBlack: "rgba(0,0,0,0.5)",
+        tranlucentWhite2: "rgba(255,255,255,0.8)",
+        tranlucentBlack2: "rgba(0,0,0,0.8)",
       },
       height: (theme) => ({
         "screen/2": "50vh",
@@ -40,7 +42,20 @@ module.exports = {
         180: "180px",
         140: "140px",
       },
+      maxHeight: {
+        62: "15.5rem",
+        360: "360px",
+        250: "250px",
+        180: "180px",
+        140: "140px",
+      },
       minWidth: {
+        360: "360px",
+        250: "250px",
+        180: "180px",
+        140: "140px",
+      },
+      minHeight: {
         360: "360px",
         250: "250px",
         180: "180px",

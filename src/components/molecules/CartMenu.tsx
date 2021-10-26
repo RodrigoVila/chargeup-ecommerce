@@ -13,7 +13,7 @@ const CartMenu = ({ isOpen, items, toggleCart }: Props) => {
     <div
       className={`${
         !isOpen && "hidden"
-      } z-30 left-0 absolute h-scren top-0 flex items-center justify-center w-full m-auto bg-center bg-no-repeat bg-cover bg-wooden overflow-y-auto`}
+      } z-30 left-0 absolute h-screen top-0 flex items-center justify-center w-full pt-16 bg-center bg-no-repeat bg-cover bg-wooden overflow-y-auto`}
     >
       <div className="flex flex-col items-center w-full h-full">
         <div className="absolute top-0 right-0 z-20 m-2" onClick={toggleCart}>

@@ -1,9 +1,12 @@
 import { useState } from "react";
+import { Dispatch } from "redux";
+import { useDispatch } from "react-redux";
 
 import CartButton from "@molecules/CartButton";
 import BurgerButton from "@molecules/BurgerButton";
-import useWindowDimensions from "@hooks/useWindowsDimensions";
 import Logo from "@atoms/Logo";
+import useWindowDimensions from "@hooks/useWindowsDimensions";
+import { displayInfoMessage } from "@redux/toast notifications/actions";
 
 type Props = {
   items: number;
@@ -11,11 +14,18 @@ type Props = {
   toggleDrawer: () => void;
 };
 
-const MobileTopBar = ({ items, toggleCart,toggleDrawer }: Props) => {
+const MobileTopBar = ({ items, toggleCart, toggleDrawer }: Props) => {
   const width = useWindowDimensions();
+  const dispatch: Dispatch<any> = useDispatch();
 
   const iconSize = width >= 768 ? 150 : 32;
   const logoSize = width >= 768 ? 150 : 100;
+
+  const showCartContentOrInfoToast = () => {
+    return items !== 0
+      ? toggleCart()
+      : dispatch(displayInfoMessage("Cart is empty"));
+  };
   return (
     <>
       {/* TODO: This one is exactly the same as Drawer component, but animated. Works good on mobile but others mediaqueries animations may look weird. */}
@@ -29,7 +39,7 @@ const MobileTopBar = ({ items, toggleCart,toggleDrawer }: Props) => {
           color={"white"}
           badgesColor={"danger"}
           cartCount={items}
-          toggleCart={toggleCart}
+          toggleCart={showCartContentOrInfoToast}
         />
       </div>
     </>
