@@ -24,7 +24,7 @@ const cartReducer = (
         suitableForInfo: action.article.suitableForInfo,
         price: action.article.price,
         imgUri: action.article.imgUri,
-        quantity: action.article.quantity
+        quantity: action.article.quantity,
       };
       return {
         ...state,
@@ -32,8 +32,8 @@ const cartReducer = (
       };
     case REMOVE_FROM_CART:
       const updatedItems: ArticleType[] = state.cart.filter(
-        (item:ArticleType) => item.id !== action.article.id
-      )
+        (item: any) => item.id !== action.article
+      );
       return {
         ...state,
         cart: updatedItems,

@@ -11,7 +11,6 @@ let productSchema = new mongoose.Schema(
     },
     price: {
       type: String,
-      required: true,
     },
     imgUri: {
       type: String,

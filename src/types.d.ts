@@ -46,11 +46,27 @@ type ToastActionType = {
   message: string;
 };
 
+//Order
+type OrderItemType = {
+  id: number;
+  title: string;
+  price: number;
+  quantity: number;
+};
+
+type OrderStateType = {
+  orders: OrderItemType[];
+};
+
+type OrderActionType = {
+  type: string;
+  order: Orderype;
+};
+
 type StateType = {
   state: {
-    articles: ArticleType[];
+    orders: OrderItemType[];
     cart: ArticleType[];
-    message?: "";
   };
 };
 
