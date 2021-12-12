@@ -44,6 +44,7 @@ export default function Home() {
           as="font"
           crossOrigin=""
         />
+        <script src="https://cdn.tailwindcss.com"></script>
       </Head>
       <>
         <Toaster />

@@ -1,7 +1,7 @@
 import React from "react";
 import MetricCard from "./MetricCard";
 
-const AdminMetrics = () => {
+const AdminAnalytics = () => {
   return (
     <div className="flex flex-wrap">
       <MetricCard title="Total Products" metric="12" cardColor="purple" />
@@ -15,4 +15,4 @@ const AdminMetrics = () => {
   );
 };
 
-export default AdminMetrics;
+export default AdminAnalytics;

@@ -33,7 +33,7 @@ const AdminTopBar = () => {
           Charge up
         </div>
 
-        <div className="flex justify-center flex-1 px-2 text-white md:w-1/3 md:justify-start">
+        <div className="justify-center flex-1 hidden px-2 text-white md:w-1/3 md:justify-start md:flex">
           <span className="relative w-full">
             <input
               type="search"

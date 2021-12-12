@@ -1,20 +1,19 @@
 const colors = require("tailwindcss/colors");
 
 module.exports = {
-  purge: [],
-  darkMode: false, // or 'media' or 'class'
+  content: ["./public/**/*.html", "./src/**/*.{js,jsx,ts,tsx,vue}"],
   theme: {
     extend: {
-      backgroundImage: (theme) => ({
+      backgroundImage: {
         main: "url('/main.png')",
         brownies: "url('/brownies.jpg')",
-        glutenFree: "url('/glutenfree.png')",
-        purpleTexture: "url('/fondovioleta.svg')",
+        glutenFree: "url('/glutenFree.png')",
+        purpleTexture: "url('/purpleTexture.svg')",
         whiteRing: "url('/whiteRing.png')",
         proteinBalls: "url('/bolitas.jpg')",
         driedfruits: "url('/driedfruits.jpg')",
-        wooden: "url('/fondomadera.png')",
-      }),
+        wooden: "url('/wooden.png')",
+      },
       colors: {
         purple1: "#6122da",
         purple2: "#632dbf",
@@ -27,12 +26,12 @@ module.exports = {
         tranlucentWhite2: "rgba(255,255,255,0.8)",
         tranlucentBlack2: "rgba(0,0,0,0.8)",
       },
-      height: (theme) => ({
+      height: {
         "screen/2": "50vh",
         "screen/3": "calc(100vh / 3)",
         "screen/4": "calc(100vh / 4)",
         "screen/5": "calc(100vh / 5)",
-      }),
+      },
       inset: {
         outofScreen: "-700px",
       },
@@ -64,14 +63,11 @@ module.exports = {
       screens: {
         lg: "935px",
       },
-      width: (theme) => ({
+      width: {
         adminWidth: "calc(100vw -8rem)",
         250: "250px",
-      }),
+      },
     },
-  },
-  variants: {
-    extend: {},
   },
   plugins: [],
 };

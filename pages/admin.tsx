@@ -2,7 +2,7 @@ import { useState } from "react";
 import { BsFillPlusCircleFill } from "react-icons/bs";
 import AdminTopBar from "@organisms/AdminTopBar";
 import AdminSidebar from "@molecules/AdminSidebar";
-import AdminMetrics from "@atoms/AdminMetrics";
+import AdminAnalytics from "@atoms/AdminAnalytics";
 import AdminCustomers from "@molecules/AdminCustomers";
 import AdminProductList from "@organisms/AdminProductList";
 import AdminTransactions from "@molecules/AdminTransactions";
@@ -13,7 +13,7 @@ const AdminPage = () => {
 
   const renderComponent = (selectedComponent: any) => {
     const Components = {
-      Analytics: <AdminMetrics />,
+      Analytics: <AdminAnalytics />,
       Customers: <AdminCustomers />,
       Products: <AdminProductList />,
       Transactions: <AdminTransactions />,
@@ -25,7 +25,7 @@ const AdminPage = () => {
   return (
     <body className="mt-12 font-sans leading-normal tracking-normal bg-gray-800">
       <AdminTopBar />
-      <div className="flex flex-col md:flex-row">
+      <div className="flex">
         <AdminSidebar setSelected={setSelected} />
         <div className="flex-1 pb-24 mt-12 bg-gray-100 main-content md:mt-2 md:pb-5">
           <div className="pt-3 bg-gray-800">
