@@ -7,7 +7,7 @@ const orderReducer = (
 ): OrderStateType => {
   switch (action.type) {
     case ADD_ARTICLE:
-      const newOrder: OrderItemType = {
+      const newOrder: OrderItemType[] = {
         id: action.order.id,
         title: action.order.title,
         price: action.order.price,
