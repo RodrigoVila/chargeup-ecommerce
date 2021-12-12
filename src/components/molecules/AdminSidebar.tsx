@@ -1,4 +1,3 @@
-import { MouseEvent } from "react";
 import NavItem from "@atoms/NavItem";
 import { FaUsers, FaPagelines } from "react-icons/fa";
 import { RiLogoutCircleLine } from "react-icons/ri";

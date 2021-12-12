@@ -11,7 +11,7 @@ import Delivery from "@molecules/Delivery";
 import About from "@molecules/About";
 import { useEffect, useState } from "react";
 import { shallowEqual, useSelector } from "react-redux";
-import useWindowsDimensions from "@hooks/useWindowsDimensions.tsx";
+import useWindowsDimensions from "@hooks/useWindowsDimensions";
 import Footer from "@molecules/Footer";
 import Drawer from "@molecules/Drawer";
 import CartMenu from "@molecules/CartMenu";
@@ -26,12 +26,12 @@ export default function Home() {
   const width = useWindowsDimensions();
 
   const articles: ArticleType[] = useSelector(
-    (state: StateType[]) => state.articles.items,
+    (state: any) => state.articles.items,
     shallowEqual
   );
 
   const cart: ArticleType[] = useSelector(
-    (state: StateType[]) => state.cart.cart,
+    (state: any) => state.cart.cart,
     shallowEqual
   );
 

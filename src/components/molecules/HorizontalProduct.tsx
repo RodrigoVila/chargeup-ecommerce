@@ -9,7 +9,7 @@ import {
   displaySuccessMessage,
   displayInfoMessage,
 } from "@redux/toast notifications/actions";
-import useWindowsDimensions from "@hooks/useWindowsDimensions.tsx";
+import useWindowsDimensions from "@hooks/useWindowsDimensions";
 import ProductCountAndPrices from "./ProductCountAndPrices";
 import RoundImage from "@atoms/RoundImage";
 import BackgroundOverlay from "@atoms/BackgroundOverlay";
