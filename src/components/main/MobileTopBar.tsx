@@ -2,9 +2,9 @@ import { useState } from "react";
 import { Dispatch } from "redux";
 import { useDispatch } from "react-redux";
 
-import CartButton from "@molecules/CartButton";
-import BurgerButton from "@molecules/BurgerButton";
-import Logo from "@atoms/Logo";
+import CartButton from "@main/CartButton";
+import BurgerButton from "@main/BurgerButton";
+import Logo from "@main/Logo";
 import useWindowDimensions from "@hooks/useWindowsDimensions";
 import { displayInfoMessage } from "@redux/toast notifications/actions";
 

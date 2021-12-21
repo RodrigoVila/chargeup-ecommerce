@@ -1,20 +1,20 @@
 import Head from "next/head";
 import { Toaster } from "react-hot-toast";
 
-import TopBar from "@organisms/TopBar";
-import MobileTopBar from "@organisms/MobileTopBar";
-import Welcome from "@molecules/Welcome";
-import SearchBar from "@molecules/SearchBar";
-import Categories from "@molecules/Categories";
-import ProductList from "@organisms/ProductList";
-import Delivery from "@molecules/Delivery";
-import About from "@molecules/About";
+import TopBar from "@main/TopBar";
+import MobileTopBar from "components/main/MobileTopBar";
+import Welcome from "@main/Welcome";
+import SearchBar from "@main/SearchBar";
+import Categories from "@main/Categories";
+import ProductList from "@main/ProductList";
+import Delivery from "@main/Delivery";
+import About from "components/main/About";
 import { useEffect, useState } from "react";
 import { shallowEqual, useSelector } from "react-redux";
 import useWindowsDimensions from "@hooks/useWindowsDimensions";
-import Footer from "@molecules/Footer";
-import Drawer from "@molecules/Drawer";
-import CartMenu from "@molecules/CartMenu";
+import Footer from "@main/Footer";
+import Drawer from "@main/Drawer";
+import CartMenu from "@main/CartMenu";
 
 // import CartProvider from '@context/cart'
 
@@ -57,7 +57,7 @@ export default function Home() {
         ) : (
           <>
             <div
-              className={`w-full h-screen bg-center bg-no-repeat bg-cover bg-glutenFree`}
+              className={`w-full h-screen bg-center bg-no-repeat bg-cover bg-[url('/glutenFree.png')]`}
             >
               <div className="flex items-center w-full">
                 <Drawer isOpen={isDrawerMenuOpen} toggleDrawer={toggleDrawer} />
@@ -73,7 +73,7 @@ export default function Home() {
               </div>
               <Welcome />
             </div>
-            <div className="pt-4 bg-purpleTexture">
+            <div className="pt-4 bg-[url('/purpleTexture.svg')]">
               <SearchBar />
               <div className="flex flex-wrap w-full ">
                 <ProductList />

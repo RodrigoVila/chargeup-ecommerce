@@ -1,13 +1,9 @@
 import React, {useState} from 'react'
 
-/* JP ADDS - import -*/
-import { Fragment } from 'react'
-import { Disclosure, Menu, Transition } from '@headlessui/react'
-import { BellIcon, MenuIcon, XIcon } from '@heroicons/react/outline'
-import AdminTabDetails from '@organisms/AdminTabDetails'
-import AdminUserNav from '@atoms/AdminUserNav'
-import AdminOrderDetails from '@molecules/AdminOrderDetails'
-import AdminOrderList from '@molecules/AdminOrderList'
+import AdminTabDetails from '@admin/AdminTabDetails'
+import AdminUserNav from '@admin/AdminUserNav'
+import AdminOrderDetails from '@admin/AdminOrderDetails'
+import AdminOrderList from '@admin/AdminOrderList'
 
 function DisplayLoader() {
 

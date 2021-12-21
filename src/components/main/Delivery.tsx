@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import BackgroundOverlay from "@atoms/BackgroundOverlay";
+import BackgroundOverlay from "components/main/BackgroundOverlay";
 
 const DeliverySection = () => {
   const [offsetY, setOffsetY] = useState(0);

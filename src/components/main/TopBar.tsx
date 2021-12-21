@@ -1,9 +1,9 @@
 import { useState } from "react";
-import CartButton from "@molecules/CartButton";
-import RegisterLoginButton from "@molecules/RegisterLoginButton";
-import NavItems from "@molecules/NavItems";
-import Logo from "@atoms/Logo";
-import BackgroundOverlay from "@atoms/BackgroundOverlay";
+import CartButton from "@main/CartButton";
+import RegisterLoginButton from "@main/RegisterLoginButton";
+import NavItems from "@main/NavItems";
+import Logo from "@main/Logo";
+import BackgroundOverlay from "components/main/BackgroundOverlay";
 import useWindowDimensions from "@hooks/useWindowsDimensions";
 
 type Props = {

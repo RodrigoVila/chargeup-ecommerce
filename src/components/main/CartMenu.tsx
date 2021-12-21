@@ -1,4 +1,4 @@
-import CartFooter from "@atoms/CartFooter";
+import CartFooter from "@main/CartFooter";
 import React from "react";
 import { RiCloseFill } from "react-icons/ri";
 import HorizontalProduct from "./HorizontalProduct";

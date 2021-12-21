@@ -15,9 +15,8 @@
     "jsx": "preserve",
     "baseUrl": "./src",
     "paths": {
-      "@atoms/*": ["./components/atoms/*"],
-      "@molecules/*": ["./components/molecules/*"],
-      "@organisms/*": ["./components/organisms/*"],
+      "@main/*": ["./components/main/*"],
+      "@admin/*": ["./components/admin/*"],
       "@constants/*": ["./constants/*"],
       "@context/*": ["./context/*"],
       "@hooks/*": ["./hooks/*"],

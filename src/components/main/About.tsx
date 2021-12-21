@@ -1,4 +1,4 @@
-import BackgroundOverlay from "@atoms/BackgroundOverlay";
+import BackgroundOverlay from "components/main/BackgroundOverlay";
 
 const AboutSection = () => {
   return (

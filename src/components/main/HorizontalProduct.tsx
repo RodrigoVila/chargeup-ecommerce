@@ -11,9 +11,9 @@ import {
 } from "@redux/toast notifications/actions";
 import useWindowsDimensions from "@hooks/useWindowsDimensions";
 import ProductCountAndPrices from "./ProductCountAndPrices";
-import RoundImage from "@atoms/RoundImage";
-import BackgroundOverlay from "@atoms/BackgroundOverlay";
-import Counter from "@atoms/Counter";
+import RoundImage from "@main/RoundImage";
+import BackgroundOverlay from "components/main/BackgroundOverlay";
+import Counter from "@main/Counter";
 import { RiCloseFill } from "react-icons/ri";
 import { GiCancel } from "react-icons/gi";
 import { RiDeleteBin2Line } from "react-icons/ri";
