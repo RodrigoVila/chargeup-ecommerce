@@ -1,0 +1,24 @@
+export const ADD_ARTICLE = "ADD_ARTICLE";
+export const DELETE_ARTICLE = "DELETE_ARTICLE";
+export const UPDATE_ARTICLE = "UPDATE_ARTICLE";
+
+export const REGISTER_SUCCESS = "REGISTER_SUCCESS";
+export const REGISTER_FAIL = "REGISTER_FAIL";
+export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
+export const LOGIN_FAIL = "LOGIN_FAIL";
+export const LOGOUT = "LOGOUT";
+
+export const LOAD_CART = "LOAD_CART";
+export const ADD_TO_CART = "ADD_TO_CART";
+export const REMOVE_FROM_CART = "REMOVE_FROM_CART";
+export const UPDATE_CART = "UPDATE_CART";
+export const CHANGE_PRODUCT_QUANTITY = "CHANGE_PRODUCT_QUANTITY";
+
+export const SUCCESS_MESSAGE = "SUCCESS_MESSAGE";
+export const ERROR_MESSAGE = "ERROR_MESSAGE";
+export const INFO_MESSAGE = "INFO_MESSAGE";
+export const SET_MESSAGE = "SET_MESSAGE";
+export const CLEAR_MESSAGE = "CLEAR_MESSAGE";
+
+
+

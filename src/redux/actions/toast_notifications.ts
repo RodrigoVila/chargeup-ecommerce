@@ -2,7 +2,7 @@ import {
   SUCCESS_MESSAGE,
   ERROR_MESSAGE,
   INFO_MESSAGE,
-} from "./actionTypes";
+} from "./types";
 
 export const displaySuccessMessage = (message: string) => ({
   type:SUCCESS_MESSAGE,

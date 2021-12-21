@@ -3,12 +3,12 @@ import Image from "next/image";
 import { useDispatch } from "react-redux";
 import { Dispatch } from "redux";
 
-import { addToCart, removeFromCart } from "@redux/cart/actions";
+import { addToCart, removeFromCart } from "@redux/actions/cart";
 import {
   displayErrorMessage,
   displaySuccessMessage,
   displayInfoMessage,
-} from "@redux/toast notifications/actions";
+} from "@redux/actions/toast_notifications";
 import useWindowsDimensions from "@hooks/useWindowsDimensions";
 import ProductCountAndPrices from "./ProductCountAndPrices";
 import RoundImage from "@main/RoundImage";

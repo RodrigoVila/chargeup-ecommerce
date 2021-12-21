@@ -1,9 +1,18 @@
 const colors = require("tailwindcss/colors");
+const defaultTheme = require("tailwindcss/defaultTheme");
 
 module.exports = {
-  content: ["./public/**/*.html", "./src/**/*.{js,jsx,ts,tsx,vue}"],
+  content: [
+    "./pages/**/*.{js,ts,jsx,tsx}",
+    "./components/**/*.{js,ts,jsx,tsx}",
+  ],
   theme: {
     extend: {
+      gradientColorStops: (theme) => ({
+        primary: "#FF8C00",
+        secondary: "#FFA500",
+        danger: "#FFD700",
+      }),
       backgroundImage: {
         main: "url('/main.png')",
         brownies: "url('/brownies.jpg')",
@@ -13,7 +22,6 @@ module.exports = {
         wooden: "url('/wooden.png')",
       },
       colors: {
-
         success: "#00C851",
         danger: "#ff4444",
         info: "#33b5e5",
@@ -21,6 +29,9 @@ module.exports = {
         tranlucentBlack: "rgba(0,0,0,0.5)",
         tranlucentWhite2: "rgba(255,255,255,0.8)",
         tranlucentBlack2: "rgba(0,0,0,0.8)",
+      },
+      fontFamily: {
+        sans: ["Inter var", ...defaultTheme.fontFamily.sans],
       },
       height: {
         "screen/2": "50vh",

@@ -1,4 +1,4 @@
-import { LOAD_CART, ADD_TO_CART, REMOVE_FROM_CART } from "./actionTypes";
+import { LOAD_CART, ADD_TO_CART, REMOVE_FROM_CART } from "../actions/types";
 
 const initialState: CartStateType = {
   cart: [],

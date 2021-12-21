@@ -1,6 +1,6 @@
 // import { toast } from "react-toastify";
 import toast, { Toaster } from "react-hot-toast";
-import { ERROR_MESSAGE, SUCCESS_MESSAGE, INFO_MESSAGE } from "./actionTypes";
+import { ERROR_MESSAGE, SUCCESS_MESSAGE, INFO_MESSAGE } from "../actions/types";
 import { AiOutlineCheckCircle } from "react-icons/ai";
 import { BsExclamationOctagon } from "react-icons/bs";
 import { MdCancel } from "react-icons/md";

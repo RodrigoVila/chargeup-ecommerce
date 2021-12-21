@@ -5,12 +5,12 @@ import { Dispatch } from "redux";
 import Button from "@main/Button";
 import Counter from "@main/Counter";
 import RoundImage from "@main/RoundImage";
-import { addToCart } from "@redux/cart/actions";
+import { addToCart } from "@redux/actions/cart";
 import {
   displayErrorMessage,
   displaySuccessMessage,
   displayInfoMessage,
-} from "@redux/toast notifications/actions";
+} from "@redux/actions/toast_notifications";
 
 const VerticalProduct = ({
   id,

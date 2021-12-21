@@ -6,7 +6,7 @@ import CartButton from "@main/CartButton";
 import BurgerButton from "@main/BurgerButton";
 import Logo from "@main/Logo";
 import useWindowDimensions from "@hooks/useWindowsDimensions";
-import { displayInfoMessage } from "@redux/toast notifications/actions";
+import { displayInfoMessage } from "@redux/actions/toast_notifications";
 
 type Props = {
   items: number;
@@ -18,8 +18,8 @@ const MobileTopBar = ({ items, toggleCart, toggleDrawer }: Props) => {
   const width = useWindowDimensions();
   const dispatch: Dispatch<any> = useDispatch();
 
-  const iconSize = width >= 768 ? 150 : 32;
-  const logoSize = width >= 768 ? 150 : 100;
+  const iconSize = width >= 1024 ? 140 : 40;
+  const logoSize = width >= 1024 ? 250 : 125;
 
   const showCartContentOrInfoToast = () => {
     return items !== 0
@@ -31,7 +31,7 @@ const MobileTopBar = ({ items, toggleCart, toggleDrawer }: Props) => {
       {/* TODO: This one is exactly the same as Drawer component, but animated. Works good on mobile but others mediaqueries animations may look weird. */}
       {/* <DrawerMenu isOpen={isDrawerMenuOpen} close={closeDrawerMenu} /> */}
 
-      <div className="z-20 flex justify-between w-full">
+      <div className="z-20 flex justify-between w-full xl:hidden">
         <BurgerButton toggleDrawer={toggleDrawer} size={iconSize} />
         <Logo size={logoSize} />
         <CartButton
