@@ -61,7 +61,13 @@ module.exports = {
         140: "140px",
       },
       screens: {
+        xxs: "380px",
+        xs: "512px",
+        sm: "640px",
+        md: "768px",
         lg: "935px",
+        xl: "1280px",
+        "2xl": "1536px"
       },
       width: {
         adminWidth: "calc(100vw -8rem)",
