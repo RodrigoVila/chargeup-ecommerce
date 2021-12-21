@@ -1,4 +1,4 @@
-import NavItem from "@atoms/NavItem";
+import NavItem from "@main/NavItem";
 import { FaUsers, FaPagelines } from "react-icons/fa";
 import { RiLogoutCircleLine } from "react-icons/ri";
 import { IoMdAnalytics } from "react-icons/io";

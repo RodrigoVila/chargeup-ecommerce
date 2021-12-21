@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { BsFillPlusCircleFill } from "react-icons/bs";
-import AdminTopBar from "@organisms/AdminTopBar";
-import AdminSidebar from "@molecules/AdminSidebar";
-import AdminAnalytics from "@atoms/AdminAnalytics";
-import AdminCustomers from "@molecules/AdminCustomers";
-import AdminProductList from "@organisms/AdminProductList";
-import AdminTransactions from "@molecules/AdminTransactions";
+import AdminTopBar from "@admin/AdminTopBar";
+import AdminSidebar from "@admin/AdminSidebar";
+import AdminAnalytics from "@admin/AdminAnalytics";
+import AdminCustomers from "@admin/AdminCustomers";
+import AdminProductList from "@admin/AdminProductList";
+import AdminTransactions from "@admin/AdminTransactions";
 
 const AdminPage = () => {
   const [selected, setSelected] = useState(null);

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-import AdminProduct from "@molecules/AdminProduct";
+import AdminProduct from "@admin/AdminProduct";
 
 interface IProduct {
   title: string;

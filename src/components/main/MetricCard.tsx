@@ -7,7 +7,6 @@ interface Props {
 }
 
 const MetricCard = ({ title, metric, cardColor }: Props) => {
-  console.log("!!!!!HOLAAA", cardColor);
   return (
     <div className="w-full p-6 md:w-1/2 xl:w-1/3">
       <div

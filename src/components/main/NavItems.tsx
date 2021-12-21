@@ -1,4 +1,4 @@
-import NavItem from "@atoms/NavItem";
+import NavItem from "@main/NavItem";
 
 const NavItems = () => {
   return (

@@ -7,17 +7,13 @@ module.exports = {
       backgroundImage: {
         main: "url('/main.png')",
         brownies: "url('/brownies.jpg')",
-        glutenFree: "url('/glutenFree.png')",
-        purpleTexture: "url('/purpleTexture.svg')",
         whiteRing: "url('/whiteRing.png')",
         proteinBalls: "url('/bolitas.jpg')",
         driedfruits: "url('/driedfruits.jpg')",
         wooden: "url('/wooden.png')",
       },
       colors: {
-        purple1: "#6122da",
-        purple2: "#632dbf",
-        purple3: "#494295",
+
         success: "#00C851",
         danger: "#ff4444",
         info: "#33b5e5",

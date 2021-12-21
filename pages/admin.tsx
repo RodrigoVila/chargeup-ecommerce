@@ -4,12 +4,12 @@ import React, {useState} from 'react'
 import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { BellIcon, MenuIcon, XIcon } from '@heroicons/react/outline'
-import AdminTabDetails from '@organisms/AdminTabDetails'
-import AdminUserNav from '@atoms/AdminUserNav'
-import AdminOrderDetails from '@molecules/AdminOrderDetails'
-import AdminOrderList from '@molecules/AdminOrderList'
-import AdminProductsListJP from '@organisms/AdminProductsListJP'
-import AdminStatsJP from '@molecules/AdminStatsJP'
+import AdminProductsListJP from '@admin/AdminProductsListJP'
+import AdminStatsJP from '@admin/AdminStatsJP'
+import AdminTabDetails from '@admin/AdminTabDetails'
+import AdminUserNav from '@admin/AdminUserNav'
+import AdminOrderDetails from '@admin/AdminOrderDetails'
+import AdminOrderList from '@admin/AdminOrderList'
 
 
 function AdminDisplayLoader() {

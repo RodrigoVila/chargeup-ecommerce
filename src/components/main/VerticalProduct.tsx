@@ -1,10 +1,10 @@
-import { useState, useCallback } from "react";
+import React, { useState, useCallback } from "react";
 import { useDispatch } from "react-redux";
 import { Dispatch } from "redux";
 
-import Button from "@atoms/Button";
-import Counter from "@atoms/Counter";
-import RoundImage from "@atoms/RoundImage";
+import Button from "@main/Button";
+import Counter from "@main/Counter";
+import RoundImage from "@main/RoundImage";
 import { addToCart } from "@redux/cart/actions";
 import {
   displayErrorMessage,
@@ -62,12 +62,12 @@ const VerticalProduct = ({
           <div>Info nutricional:</div>
           <div className="text-sm md:text-lg ">{`Cal: ${nutritionalInfo.calories} | Car: ${nutritionalInfo.carbs} | Fat: ${nutritionalInfo.fat} | Prot: ${nutritionalInfo.protein}`}</div>
         </div>
-        <div className="text-sm font-semibold md:text-base">
+        <div className="flex text-sm font-semibold md:text-base">
           {suitableForInfo.map((info, index) => (
-            <>
+            <React.Fragment key={index}>
               {index !== 0 && " | "}
               {info}
-            </>
+            </React.Fragment>
           ))}
         </div>
         <div className="flex justify-end">
@@ -76,7 +76,7 @@ const VerticalProduct = ({
       </div>
       <div className="flex items-center justify-center mx-4 mb-4">
         <Counter count={count} subtractOne={subtractOne} addOne={addOne} />
-        <Button title="Agregar" color="purple2" onClick={addItemToCart} />
+        <Button title="Agregar" color="purple-700" onClick={addItemToCart} />
       </div>
     </div>
   );

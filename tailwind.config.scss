@@ -1,7 +1,7 @@
-@import 'tailwindscss/src/helper';
+@import "tailwindscss/src/helper";
 
-$prefix: '';
-$separator: '_';
+$prefix: "";
+$separator: "_";
 
 $theme-colors: (
   transparent: transparent,
@@ -105,6 +105,9 @@ $theme-colors: (
     700: #6b46c1,
     800: #553c9a,
     900: #44337a,
+    1: #6122da,
+    2: #632dbf,
+    3: #494295,
   ),
   pink: (
     100: #fff5f7,
@@ -149,9 +152,35 @@ $theme-spacing: (
 );
 
 $theme-font-family: (
-  sans: (-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"),
-  serif: (Georgia, Cambria, "Times New Roman", Times, serif),
-  mono: (Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace),
+  sans: (
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    "Helvetica Neue",
+    Arial,
+    "Noto Sans",
+    sans-serif,
+    "Apple Color Emoji",
+    "Segoe UI Emoji",
+    "Segoe UI Symbol",
+    "Noto Color Emoji",
+  ),
+  serif: (
+    Georgia,
+    Cambria,
+    "Times New Roman",
+    Times,
+    serif,
+  ),
+  mono: (
+    Menlo,
+    Monaco,
+    Consolas,
+    "Liberation Mono",
+    "Courier New",
+    monospace,
+  ),
 );
 
 $theme-font-size: (
@@ -248,7 +277,12 @@ $theme-cursor: (
 );
 
 $theme-width: map-merge(
-  map-merge($theme-spacing, (auto: auto)),
+  map-merge(
+    $theme-spacing,
+    (
+      auto: auto,
+    )
+  ),
   (
     1_2: 50%,
     1_3: 33.33333%,
@@ -278,15 +312,20 @@ $theme-width: map-merge(
     11_12: 91.66667%,
     full: 100%,
     screen: 100vw,
-  ),
+  )
 );
 
 $theme-height: map-merge(
-   map-merge($theme-spacing, (auto: auto)),
-   (
-     full: 100%,
-     screen: 100vh,
-   ),
+  map-merge(
+    $theme-spacing,
+    (
+      auto: auto,
+    )
+  ),
+  (
+    full: 100%,
+    screen: 100vh,
+  )
 );
 
 $theme-min-width: (
@@ -322,8 +361,13 @@ $theme-max-height: (
 $theme-padding: $theme-spacing;
 
 $theme-margin: map-merge(
-  map-merge($theme-spacing, (auto: auto)),
-  negative-map($theme-spacing),
+  map-merge(
+    $theme-spacing,
+    (
+      auto: auto,
+    )
+  ),
+  negative-map($theme-spacing)
 );
 
 $theme-object-position: (
@@ -339,14 +383,15 @@ $theme-object-position: (
 );
 
 $theme-box-shadow: (
-  default: '0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)',
-  md: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
-  lg: '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
-  xl: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
-  '2xl': '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
-  inner: 'inset 0 2px 4px 0 rgba(0, 0, 0, 0.06)',
-  outline: '0 0 0 3px rgba(66, 153, 225, 0.5)',
-  none: 'none',
+  default: "0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)",
+  md: "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)",
+  lg: "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
+  xl:
+    "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
+  "2xl": "0 25px 50px -12px rgba(0, 0, 0, 0.25)",
+  inner: "inset 0 2px 4px 0 rgba(0, 0, 0, 0.06)",
+  outline: "0 0 0 3px rgba(66, 153, 225, 0.5)",
+  none: "none",
 );
 
 $theme-z-index: (
