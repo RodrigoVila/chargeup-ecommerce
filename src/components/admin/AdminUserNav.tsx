@@ -1,16 +1,16 @@
 import React from 'react'
-import { Fragment } from 'react'
+import { Fragment, useState } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { BellIcon, MenuIcon, XIcon } from '@heroicons/react/outline'
-import { useState } from "react"
 import { GiConsoleController } from 'react-icons/gi'
+import NavItems from '@main/NavItems'
 
 const navigation = [
     { name: 'Dashboard', href: '#', current: true },
     { name: 'Ordenes', href: '#', current: false },
     { name: 'Clientes', href: '#', current: false },
+    { name: 'Productos', href: '#', current: false },
     { name: 'Estadisticas', href: '#', current: false },
-   /* { name: 'Sellers', href: '#', current: false },*/
   ]
 
 function classNames(...classes) {
@@ -18,6 +18,11 @@ function classNames(...classes) {
 }
 
 function AdminUserNav (props) {
+    const activepage = props.activep
+    const isactive = ''
+  //  if (activepage === activ)
+   // { navigation.map((item) => (  if (activepage === item.name) isactive = true )) }
+
 return (
     <Disclosure as="nav" className="bg-violet-900">
     {({ open }) => (
@@ -35,34 +40,38 @@ return (
                 )}
               </Disclosure.Button>
             </div>
-            <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
-             {/* <div className="flex-shrink-0 flex items-center">
+            <div className="flex-1 flex items-center justify-center">
+              <div className="flex-shrink-0 flex items-center">
                 <img
-                  className="block lg:hidden h-1 w-auto"
-                  src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg"
-                  alt="Workflow"
+                  className="block lg:hidden h-16 w-auto"
+                  src="./chargeup_logo_wg.svg"
+                  alt="ChargeUP BCN"
                 />
                 <img
-                  className="hidden lg:block h-3 w-auto"
-                  src="https://tailwindui.com/img/logos/workflow-logo-indigo-500-mark-white-text.svg"
-                  alt="Workflow"
+                  className="hidden lg:block h-14 w-auto"
+                  src="./chargeup_logo_wg.svg"
+                  alt="ChargeUP BCN"
                 />
               </div>
-                */}
+                
               <div className="hidden sm:block sm:ml-6">
                 <div className="flex space-x-4">
-                  {navigation.map((item) => (
+                  {navigation.map((item) => ( 
+                      
                     <button
                       key={item.name}
                       name= {item.name}
-                      onClick={() => props.setPage(item.name)}
+                      onClick={() => props.setPage(item.name) }
+                      // onClick={() => props.setMkactive(true) }
+                      
+
                       className={classNames(
-                        item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                        isactive ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
                         'px-3 py-2 rounded-md text-sm font-medium'
                       )}
-                      aria-current={item.current ? 'page' : undefined}
+                      aria-current={isactive ? 'page' : undefined}
                     >
-                        {item.current}
+                       { /* activepage es igual a iten.name / falta hacer el IF para que quede marcada (cambiar el background) EJ: Clientes*/}
                       {item.name}
                     </button>
                   ))}
