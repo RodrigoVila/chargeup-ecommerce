@@ -1,10 +1,9 @@
 import React from 'react'
-import { Fragment } from 'react'
+import { Fragment, useState } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { BellIcon, MenuIcon, XIcon } from '@heroicons/react/outline'
-import { useState } from "react"
 import { GiConsoleController } from 'react-icons/gi'
-import NavItems from '@molecules/NavItems'
+import NavItems from '@main/NavItems'
 
 const navigation = [
     { name: 'Dashboard', href: '#', current: true },
@@ -44,13 +43,13 @@ return (
             <div className="flex-1 flex items-center justify-center">
               <div className="flex-shrink-0 flex items-center">
                 <img
-                  className="block lg:hidden h-8 w-auto"
-                  src="./logoblur.png"
+                  className="block lg:hidden h-16 w-auto"
+                  src="./chargeup_logo_wg.svg"
                   alt="ChargeUP BCN"
                 />
                 <img
-                  className="hidden lg:block h-9 w-auto"
-                  src="./logoblur.png"
+                  className="hidden lg:block h-14 w-auto"
+                  src="./chargeup_logo_wg.svg"
                   alt="ChargeUP BCN"
                 />
               </div>

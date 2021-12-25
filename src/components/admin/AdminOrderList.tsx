@@ -2,8 +2,6 @@ import React from 'react'
 import { useState } from 'react'
 import AdminOrderDetails from '@admin/AdminOrderDetails'
 
-
-
 const people = [
     {
       name: 'Jane Cooper',
@@ -12,7 +10,7 @@ const people = [
       comments: 'Deliver on 12/12 Joan Miro 10, St Boi, Barcelona.',
       email: 'jane@example.com',
       image:
-        'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60',
+        'https://www.svgrepo.com/show/157823/user.svg',
     },
     {
         name: 'Jorge Formento',
@@ -21,7 +19,7 @@ const people = [
         comments: 'Deliver on 12/12 Joan Miro 10, St Boi, Barcelona.',
         email: 'janr@example.com',
         image:
-          'https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60',
+          'https://www.svgrepo.com/show/157823/user.svg',
       },  {
         name: 'Connor Mc Gregor',
         orderdetail1: 'Order #00576 (10/12/2021)',
@@ -29,7 +27,7 @@ const people = [
         comments: 'Deliver on 12/12 Joan Miro 10, St Boi, Barcelona.',
         email: 'jaooper@example.com',
         image:
-          'https://images.unsplash.com/photo-1520813792240-56fc4a3765a7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60',
+          'https://www.svgrepo.com/show/157823/user.svg',
       },  {
         name: 'Jerry Spring',
         orderdetail1: 'Order #00577 (10/12/2021)',
@@ -37,7 +35,7 @@ const people = [
         comments: 'Deliver on 12/12 Joan Miro 10, St Boi, Barcelona.',
         email: 'jar@example.com',
         image:
-          'https://images.unsplash.com/photo-1498551172505-8ee7ad69f235?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60',
+          'https://www.svgrepo.com/show/157823/user.svg',
       },  {
         name: 'Laura Hills',
         orderdetail1: 'Order #00578 (10/12/2021)',
@@ -45,7 +43,7 @@ const people = [
         comments: 'Deliver on 12/12 Joan Miro 10, St Boi, Barcelona.',
         email: 'janer@example.com',
         image:
-          'https://images.unsplash.com/photo-1532417344469-368f9ae6d187?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60',
+          'https://www.svgrepo.com/show/157823/user.svg',
       },  ]
 
 
