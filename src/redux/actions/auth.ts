@@ -1,3 +1,5 @@
+import { Dispatch } from "redux";
+import { register, login, logout } from "@services";
 import {
   REGISTER_SUCCESS,
   REGISTER_FAIL,
@@ -7,11 +9,9 @@ import {
   SET_MESSAGE,
 } from "./types";
 
-import AuthService from "@services/auth";
-
-export const register =
-  (username: string, email: string, password: string) => (dispatch) => {
-    return AuthService.register(username, email, password).then(
+export const userRegister =
+  (name: string, email: string, password: string) => (dispatch) => {
+    return register(name, email, password).then(
       (response) => {
         dispatch({
           type: REGISTER_SUCCESS,
@@ -46,40 +46,41 @@ export const register =
     );
   };
 
-export const login = (username: string, password: string) => (dispatch) => {
-  return AuthService.login(username, password).then(
-    (data) => {
-      dispatch({
-        type: LOGIN_SUCCESS,
-        payload: { user: data },
-      });
+export const userLogin =
+  (username: string, password: string) => (dispatch: Dispatch) => {
+    return login(username, password).then(
+      (data) => {
+        dispatch({
+          type: LOGIN_SUCCESS,
+          payload: { user: data },
+        });
 
-      return Promise.resolve();
-    },
-    (error) => {
-      const message =
-        (error.response &&
-          error.response.data &&
-          error.response.data.message) ||
-        error.message ||
-        error.toString();
+        return Promise.resolve();
+      },
+      (error) => {
+        const message =
+          (error.response &&
+            error.response.data &&
+            error.response.data.message) ||
+          error.message ||
+          error.toString();
 
-      dispatch({
-        type: LOGIN_FAIL,
-      });
+        dispatch({
+          type: LOGIN_FAIL,
+        });
 
-      dispatch({
-        type: SET_MESSAGE,
-        payload: message,
-      });
+        dispatch({
+          type: SET_MESSAGE,
+          payload: message,
+        });
 
-      return Promise.reject();
-    }
-  );
-};
+        return Promise.reject();
+      }
+    );
+  };
 
-export const logout = () => (dispatch) => {
-  AuthService.logout();
+export const userLogout = () => (dispatch) => {
+  logout();
 
   dispatch({
     type: LOGOUT,
