@@ -79,7 +79,7 @@ const Login = () => {
 
   return (
     <div className="flex flex-col items-center justify-center w-screen h-screen bg-gradient-to-br from-purple-500 to-fuchsia-700">
-      <div className="w-full max-w-xs">
+      <div className="w-full max-w-xs p-4 border-2 border-white rounded-md">
         {isRegister ? (
           <RegisterScreen
             email={credentials.email}

@@ -6,8 +6,8 @@ const LoginScreen = ({
   goToRegisterScreen,
 }) => {
   return (
-    <form className="px-8 pt-6 pb-2 bg-white rounded shadow-md">
-      <div className="mb-4">
+    <form className="px-8 pt-6 pb-2 text-white rounded shadow-md">
+      <div className="my-4">
         <label
           className="block mb-2 text-sm font-bold text-gray-700"
           htmlFor="Email"
@@ -43,14 +43,14 @@ const LoginScreen = ({
       </div>
       <div className="flex flex-col w-full">
         <button
-          className="w-full px-4 py-2 font-bold text-white bg-purple-600 rounded hover:bg-purple-500 focus:outline-none focus:shadow-outline"
+          className="w-full px-4 py-2 font-bold bg-purple-600 rounded hover:bg-purple-500 focus:outline-none focus:shadow-outline"
           type="button"
           onClick={handleLogin}
         >
           Sign In
         </button>
         <p
-          className="flex items-center justify-center text-sm font-bold text-center text-blue-500 hover:text-blue-800"
+          className="flex items-center justify-center text-sm font-bold text-center text-blue-500 cursor-pointer hover:text-blue-800"
           onClick={goToRegisterScreen}
         >
           Register new account.

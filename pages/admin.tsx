@@ -13,11 +13,11 @@ import AdminDashboard from '@admin/AdminDashboard'
 import AdminCustomers from '@admin/AdminCustomers'
 
 const AdminDisplayLoader = () => {
-
   const [ activePage, setActivePage ] = useState(''); 
+
   return (   
   <div>
-    <AdminUserNav setActivePage={setActivePage} activePage={activePage} />
+    <AdminUserNav activePage={activePage} setActivePage={setActivePage} />
     {activePage === '' && <AdminDashboard />}
     {activePage === "Dashboard" && <AdminDashboard />}
     {activePage === "Ordenes" && <AdminOrderList />}
