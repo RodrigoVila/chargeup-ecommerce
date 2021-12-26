@@ -1,11 +1,11 @@
 import React from 'react'
 import { useState } from 'react'
 
-function AdminStatsJP() {
+function AdminStats() {
     return (
     <div className='mt-5 mb-5 max-w-xl mx-auto px-2 sm:px-6 lg:px-8'> 
           <div className="items-left">
-              <h1 className='uppercase tracking-wide font-bold text-violet-900 xxs:text-center xs:text-left md:text-left lg:text-left mx-1 my-2'>Estadisticas de los últimos 30 dias</h1>
+              <h1 className='uppercase tracking-wide font-bold text-violet-900 text-center mx-1 my-2'>Estadisticas de los últimos 30 dias</h1>
             <div className="items-center h-full w-full ">
                 <div className='h-full align-middle rounded-lg bg-white min-w-max min-h-max mb-1 sm:colummns-1 sm:my-2 md:columns-3'>
 
@@ -29,4 +29,4 @@ function AdminStatsJP() {
     </div>
     )
 }
-export default AdminStatsJP;
+export default AdminStats;

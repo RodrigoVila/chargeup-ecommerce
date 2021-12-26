@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { GiConsoleController } from 'react-icons/gi';
-import AdminProductJP from './AdminProductJP';
-
+import AdminProductDetails from './AdminProductDetails';
+import AdminProductSearch from './AdminProductSearch';
 
 const product_data = [
     {
@@ -25,13 +25,14 @@ const product_data = [
     return classes.filter(Boolean).join(' ')
   }
 
-function AdminProductsListJP() {
+function AdminProducts() {
   const [loaded, loadDetails] = useState(false);
 
         return (
-
       <div className="flex flex-col">
-        <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8 bg-zinc-600">
+                  <AdminProductSearch />
+
+        <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
           <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
             <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg bg-zinc-300">
               <table className="min-w-full divide-y divide-gray-200">
@@ -93,7 +94,6 @@ function AdminProductsListJP() {
                       <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                         
                         <button onClick={() => loadDetails(true) }  type="button" className="bg-zinc-800 rounded-full text-zinc-300 shadow-xl shadow-zinc-400/50 py-2 px-3 m-1 text-xs"> 
-
                           Modificar </button>
                        </td>
                     </tr>
@@ -103,12 +103,12 @@ function AdminProductsListJP() {
             </div>
           </div>
         </div>
-        {  loaded && <AdminProductJP  current_product={current_product} /> } 
+        {  loaded && <AdminProductDetails  current_product={current_product} /> } 
       </div>
     )
   }
   
     
-    export default  AdminProductsListJP;
+    export default  AdminProducts;
 
 

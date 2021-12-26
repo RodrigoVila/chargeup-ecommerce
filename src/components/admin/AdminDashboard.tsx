@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import AdminClientInvite from './AdminClientInvite'
-import AdminStatsJP from './AdminStatsJP'
+import AdminStats from './AdminStats'
 
 export default function AdminDashboard() {
     return (
@@ -17,12 +17,11 @@ export default function AdminDashboard() {
                 Bienvenido a tu Dashboard de ChargeUP E-commerce. Debajo encontraras algunos de los elementos destacados, y puedes acceder en detalle a todas las opciones del menu principal en la parte superior.
               </p>
               </div>
-             
             </div>
             <AdminClientInvite />
             
           </main>
-          <div className='mx-0 align-left object-left ml-0'><AdminStatsJP /></div> 
+          <div className='mx-0 align-left object-left ml-0'><AdminStats /></div> 
           
 
         </div>
