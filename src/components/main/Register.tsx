@@ -24,6 +24,20 @@ const RegisterScreen = ({
       <div className="mb-4">
         <label
           className="block mb-2 text-sm font-bold text-gray-700"
+          htmlFor="Name"
+        >
+          Last Name
+        </label>
+        <input
+          className="w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+          id="lastName"
+          type="text"
+          onChange={(e) => onInputChange("lastName", e)}
+        />
+      </div>
+      <div className="mb-4">
+        <label
+          className="block mb-2 text-sm font-bold text-gray-700"
           htmlFor="Email"
         >
           Email

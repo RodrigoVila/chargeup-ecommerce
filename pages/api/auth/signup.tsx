@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import Order from "@models/order";
+import User from "@models/user";
 import dbConnect from "@utils/dbConnect";
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
@@ -9,8 +9,10 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
   const register = async () => {
     try {
-      const order = await Order.create(body);
-      return res.status(201).json(order);
+      console.log("!body", body)
+      const user = await User.create(body);
+      console.log("!user", user)
+      return res.status(201).json(user);
     } catch (e) {
       return res.status(400).json({
         success: false,

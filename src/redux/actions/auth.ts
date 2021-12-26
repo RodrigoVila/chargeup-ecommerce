@@ -10,9 +10,10 @@ import {
 } from "./types";
 
 export const userRegister =
-  (name: string, email: string, password: string) => (dispatch) => {
-    return register(name, email, password).then(
-      (response) => {
+  (name: string, lastName: string, email: string, password: string) =>
+  (dispatch: Dispatch) => {
+    return register(name,lastName, email, password).then(
+      (response: any) => {
         dispatch({
           type: REGISTER_SUCCESS,
         });
@@ -79,7 +80,7 @@ export const userLogin =
     );
   };
 
-export const userLogout = () => (dispatch) => {
+export const userLogout = () => (dispatch: Dispatch) => {
   logout();
 
   dispatch({

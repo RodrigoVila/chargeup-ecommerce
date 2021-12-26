@@ -12,6 +12,7 @@ const Login = () => {
   const [isRegister, setRegister] = useState(false);
   const [credentials, setCredentials] = useState({
     name: "",
+    lastName: "",
     email: "",
     password: "",
     repeatedPassword: "",
@@ -36,11 +37,11 @@ const Login = () => {
   const handleRegister = (e) => {
     e.preventDefault();
 
-    const { name, email, password, repeatedPassword } = credentials;
+    const { name, lastName, email, password, repeatedPassword } = credentials;
 
     setSuccessful(false);
     password === repeatedPassword
-      ? dispatch(userRegister(name, email, password))
+      ? dispatch(userRegister(name,lastName, email, password))
           .then(() => {
             setSuccessful(true);
           })

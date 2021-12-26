@@ -1,22 +1,25 @@
 import axios from "axios";
-import { useRouter } from 'next/router'
+import { useRouter } from "next/router";
 
 const API_URL = "/api/auth/";
 
 export const register = async (
-  username: string,
+  name: string,
+  lastName: string,
   email: string,
   password: string
 ) => {
-  await axios.post(API_URL + "signup", {
-    username,
-    email,
-    password,
-  });
+  await axios
+    .post(API_URL + "signup", {
+      name,
+      lastName,
+      email,
+      password,
+    })
 };
 
 export const login = async (username: string, password: string) => {
-  const router = useRouter()
+  const router = useRouter();
 
   await axios
     .post(API_URL + "signin", {
