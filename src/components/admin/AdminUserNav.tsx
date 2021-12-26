@@ -1,6 +1,5 @@
 import React, {useEffect} from 'react'
 import { Fragment, useState } from 'react'
-import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { BellIcon, MenuIcon, XIcon } from '@heroicons/react/outline'
 import { GiConsoleController } from 'react-icons/gi'
 import NavItems from '@main/NavItems'
@@ -22,21 +21,20 @@ const AdminUserNav = ({setActivePage, activePage}) => {
   }
 
 return (
-    <Disclosure as="nav" className="bg-violet-900">
-    {({ open }) => (
+    <div  className="bg-violet-900">
       <>
         <div className="max-w-xl mx-auto px-2 sm:px-6 lg:px-8">
           <div className="relative flex items-center justify-between h-16">
             <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
               {/* Mobile menu button*/}
-              <Disclosure.Button className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+              <div className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
                 <span className="sr-only">Open main menu</span>
                 {open ? (
-                  <XIcon className="block h-3 w-3" aria-hidden="true" />
+                  <div className="block h-3 w-3" aria-hidden="true" />
                 ) : (
-                  <MenuIcon className="block h-3 w-3" aria-hidden="true" />
+                  <div className="block h-3 w-3" aria-hidden="true" />
                 )}
-              </Disclosure.Button>
+              </div>
             </div>
             <div className="flex-1 flex items-center justify-center">
               <div className="flex-shrink-0 flex items-center">
@@ -70,7 +68,6 @@ return (
                       )}
                       aria-current={activePage ? 'page' : undefined}
                     >
-                       { /* activepage es igual a iten.name / falta hacer el IF para que quede marcada (cambiar el background) EJ: Clientes*/}
                       {item.name}
                     </button>
                   ))}
@@ -83,12 +80,11 @@ return (
           </div>
         </div>
 
-        <Disclosure.Panel className="sm:hidden">
+        <div className="sm:hidden">
           <div className="px-2 pt-2 pb-3 space-y-1">
             {navigation.map((item) => (
-              <Disclosure.Button
+              <div
                 key={item.name}
-                as="a"
                 href={item.href}
                 className={classNames(
                   item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
@@ -97,14 +93,13 @@ return (
                 aria-current={item.current ? 'page' : undefined}
               >
                 {item.name}
-              </Disclosure.Button>
+              </div>
             ))}
           </div>
-        </Disclosure.Panel>
+        </div>
       </>
       
-    )}
-  </Disclosure>
+  </div>
 )
 
 }
