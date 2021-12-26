@@ -1,7 +1,7 @@
-import { ADD_ARTICLE, DELETE_ARTICLE } from "./actionTypes";
+import { ADD_ARTICLE, DELETE_ARTICLE } from "../actions/types";
 
 const initialState: ArticleStateType = {
-  items: [
+  articles: [
     {
       id: 1,
       title: "Brownie de avocado y fresa",

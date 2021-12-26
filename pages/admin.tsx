@@ -1,4 +1,4 @@
-import React, {useState, Fragment} from 'react'
+import React, { useState, Fragment } from "react";
 
 /* JP ADDS - import -*/
 import { Disclosure, Menu, Transition } from '@headlessui/react'
@@ -26,8 +26,6 @@ const AdminDisplayLoader = () => {
     {activePage === "Productos" && <AdminProducts />}
   </div>
   );
-      
-  
-};
+}
 
 export default AdminDisplayLoader;

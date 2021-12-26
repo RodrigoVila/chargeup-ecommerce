@@ -1,4 +1,4 @@
-import { ADD_ARTICLE, DELETE_ARTICLE, UPDATE_ARTICLE } from "./actionTypes";
+import { ADD_ARTICLE, DELETE_ARTICLE, UPDATE_ARTICLE } from "./types";
 
 export const addArticle = (article: ArticleType) => ({
   type: ADD_ARTICLE,

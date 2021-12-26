@@ -13,3 +13,8 @@
   .has-tooltip:hover .tooltip {
     @apply z-50 visible;
   }
+
+  @layer utilities {
+    .content-auto {
+      content-visibility: auto;
+    }
