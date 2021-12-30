@@ -1,7 +1,4 @@
-import { useState, useCallback, useMemo } from "react";
-import Image from "next/image";
-import { useDispatch } from "react-redux";
-import { Dispatch } from "redux";
+import { useState } from "react";
 
 import { addToCart, removeFromCart } from "@redux/actions/cart";
 import {
@@ -9,7 +6,7 @@ import {
   displaySuccessMessage,
   displayInfoMessage,
 } from "@redux/actions/toast_notifications";
-import useWindowsDimensions from "@hooks/useWindowsDimensions";
+import useWindowsDimensions from "@hooks";
 import ProductCountAndPrices from "./ProductCountAndPrices";
 import RoundImage from "@main/RoundImage";
 import BackgroundOverlay from "components/main/BackgroundOverlay";
@@ -17,6 +14,7 @@ import Counter from "@main/Counter";
 import { RiCloseFill } from "react-icons/ri";
 import { GiCancel } from "react-icons/gi";
 import { RiDeleteBin2Line } from "react-icons/ri";
+import { useAppDispatch } from "@hooks";
 
 const HorizontalProduct = ({
   id,
@@ -27,7 +25,7 @@ const HorizontalProduct = ({
   price,
   imgUri,
 }: ArticleType) => {
-  const dispatch: Dispatch<any> = useDispatch();
+  const dispatch = useAppDispatch();
   const [count, setCount] = useState(0);
 
   const addOne = () => setCount((prevCount) => prevCount + 1);

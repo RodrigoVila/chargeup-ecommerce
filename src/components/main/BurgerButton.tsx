@@ -1,15 +1,23 @@
 import React from "react";
 import { HiMenu } from "react-icons/hi";
+import { IoMdClose } from "react-icons/io";
 
 interface Props {
-  size: number;
+  isDrawerMenuOpen: boolean;
   toggleDrawer: () => void;
 }
 
-const BurgerButton = ({ toggleDrawer, size }: Props) => {
+const BurgerButton = ({ isDrawerMenuOpen, toggleDrawer }: Props) => {
   return (
-    <div className="z-40 m-2 md:m-4" onClick={toggleDrawer}>
-      <HiMenu color="white" size={size} />
+    <div
+      className="relative z-40 w-10 h-10 m-2 mr-4 md:m-4"
+      onClick={toggleDrawer}
+    >
+      {isDrawerMenuOpen ? (
+        <IoMdClose color="white" size="fill" />
+      ) : (
+        <HiMenu color="white" size="fill" />
+      )}
     </div>
   );
 };

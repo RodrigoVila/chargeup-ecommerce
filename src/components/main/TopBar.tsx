@@ -4,7 +4,6 @@ import RegisterLoginButton from "@main/RegisterLoginButton";
 import NavItems from "@main/NavItems";
 import Logo from "@main/Logo";
 import BackgroundOverlay from "components/main/BackgroundOverlay";
-import useWindowDimensions from "@hooks/useWindowsDimensions";
 
 type Props = {
   items: number;
@@ -12,13 +11,10 @@ type Props = {
 };
 
 const TopBar = ({ items, toggleCart }: Props) => {
-  const width = useWindowDimensions();
-  const logoSize = width >= 1024 ? 300 : 190;
-
   return (
     <div className="z-20 flex-col hidden w-full xl:flex">
       <div className="mx-auto">
-        <Logo size={logoSize} />
+        <Logo />
       </div>
       <div className="relative flex flex-row items-center justify-between pt-2 pr-4">
         <BackgroundOverlay color="White" />
@@ -32,7 +28,6 @@ const TopBar = ({ items, toggleCart }: Props) => {
           <RegisterLoginButton />
           <CartButton
             toggleCart={toggleCart}
-            size={40}
             color={"#fff"}
             badgesColor={"danger"}
             cartCount={items}

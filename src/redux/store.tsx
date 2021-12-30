@@ -7,10 +7,13 @@ import { rootReducer } from "./reducers";
 const middleware = [thunk];
 
 const store: Store<any> & {
-  dispatch: DispatchType;
+  dispatch;
 } = createStore(
   rootReducer,
   composeWithDevTools(applyMiddleware(...middleware))
 );
 
 export default store;
+
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;

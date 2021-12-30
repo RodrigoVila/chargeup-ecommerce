@@ -1,7 +1,4 @@
-import React, { useState, useCallback } from "react";
-import { useDispatch } from "react-redux";
-import { Dispatch } from "redux";
-
+import { useState } from "react";
 import Button from "@main/Button";
 import Counter from "@main/Counter";
 import RoundImage from "@main/RoundImage";
@@ -11,6 +8,8 @@ import {
   displaySuccessMessage,
   displayInfoMessage,
 } from "@redux/actions/toast_notifications";
+import { colors } from "@utils/constants";
+import { useAppDispatch } from "@hooks";
 
 const VerticalProduct = ({
   id,
@@ -22,7 +21,7 @@ const VerticalProduct = ({
   imgUri,
 }: ArticleType) => {
   const [count, setCount] = useState(0);
-  const dispatch: Dispatch<any> = useDispatch();
+  const dispatch = useAppDispatch();
 
   const addOne = () => setCount((prevCount) => prevCount + 1);
 
@@ -76,7 +75,7 @@ const VerticalProduct = ({
       </div>
       <div className="flex items-center justify-center mx-4 mb-4">
         <Counter count={count} subtractOne={subtractOne} addOne={addOne} />
-        <Button title="Agregar" color="purple-700" onClick={addItemToCart} />
+        <Button title="Agregar" color={colors.purple} onClick={addItemToCart} />
       </div>
     </div>
   );

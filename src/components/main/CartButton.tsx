@@ -2,7 +2,6 @@ import React from "react";
 import { FiShoppingCart } from "react-icons/fi";
 
 interface Props {
-  size: number;
   color: string;
   badgesColor: string;
   cartCount: number;
@@ -10,7 +9,6 @@ interface Props {
 }
 
 const CartButton = ({
-  size,
   color,
   badgesColor,
   cartCount,
@@ -18,10 +16,10 @@ const CartButton = ({
 }: Props) => {
   return (
     <div
-      className="relative z-40 m-2 mr-4 md:m-4"
+      className="relative z-20 w-8 h-8 m-2 mr-4 md:m-4"
       onClick={toggleCart}
     >
-      <FiShoppingCart color={color} size={size} />
+      <FiShoppingCart color={color} size="fill" />
       {cartCount !== 0 && (
         <div
           className={`absolute px-1 text-sm font-bold text-white rounded-full bg-${badgesColor} -right-2 -top-1`}

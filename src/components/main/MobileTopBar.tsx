@@ -1,25 +1,21 @@
 import { useState } from "react";
-import { Dispatch } from "redux";
-import { useDispatch } from "react-redux";
-
 import CartButton from "@main/CartButton";
 import BurgerButton from "@main/BurgerButton";
 import Logo from "@main/Logo";
-import useWindowDimensions from "@hooks/useWindowsDimensions";
+import Drawer from "@main/Drawer";
 import { displayInfoMessage } from "@redux/actions/toast_notifications";
+import { useAppDispatch } from "@hooks";
 
 type Props = {
   items: number;
   toggleCart: () => void;
-  toggleDrawer: () => void;
 };
 
-const MobileTopBar = ({ items, toggleCart, toggleDrawer }: Props) => {
-  const width = useWindowDimensions();
-  const dispatch: Dispatch<any> = useDispatch();
+const MobileTopBar = ({ items, toggleCart }: Props) => {
+  const [isDrawerMenuOpen, setDrawerMenuOpen] = useState(false);
+  const toggleDrawer = () => setDrawerMenuOpen(!isDrawerMenuOpen);
 
-  const iconSize = width >= 1024 ? 140 : 40;
-  const logoSize = width >= 1024 ? 250 : 125;
+  const dispatch = useAppDispatch();
 
   const showCartContentOrInfoToast = () => {
     return items !== 0
@@ -28,14 +24,17 @@ const MobileTopBar = ({ items, toggleCart, toggleDrawer }: Props) => {
   };
   return (
     <>
-      {/* TODO: This one is exactly the same as Drawer component, but animated. Works good on mobile but others mediaqueries animations may look weird. */}
-      {/* <DrawerMenu isOpen={isDrawerMenuOpen} close={closeDrawerMenu} /> */}
+      <Drawer isOpen={isDrawerMenuOpen} toggleDrawer={toggleDrawer} />
 
       <div className="z-20 flex justify-between w-full xl:hidden">
-        <BurgerButton toggleDrawer={toggleDrawer} size={iconSize} />
-        <Logo size={logoSize} />
+        <BurgerButton
+          isDrawerMenuOpen={isDrawerMenuOpen}
+          toggleDrawer={toggleDrawer}
+        />
+
+        <Logo />
+
         <CartButton
-          size={iconSize}
           color={"white"}
           badgesColor={"danger"}
           cartCount={items}

@@ -19,7 +19,7 @@
       "@admin/*": ["./components/admin/*"],
       "@constants/*": ["./constants/*"],
       "@context/*": ["./context/*"],
-      "@hooks/*": ["./hooks/*"],
+      "@hooks": ["./hooks/index.tsx"],
       "@models/*": ["./models/*"],
       "@redux/*": ["./redux/*"],
       "@services": ["./services/index.tsx"],

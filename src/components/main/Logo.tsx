@@ -1,18 +1,16 @@
-import React from "react";
 import Image from "next/image";
 
-interface Props {
-  size: number;
-}
-
-const Logo = ({ size }: Props) => {
+const Logo = () => {
   return (
-    <Image
-      src="/logoblur.png"
-      alt="Picture of the author"
-      width={size}
-      height={size}
-    />
+    <div className="relative w-32 h-32">
+      <Image
+        src="/logoblur.png"
+        alt="Picture of the author"
+        layout="fill"
+        objectFit="cover"
+        className=""
+      />
+    </div>
   );
 };
 

@@ -9,21 +9,14 @@ import Categories from "@main/Categories";
 import ProductList from "@main/ProductList";
 import Delivery from "@main/Delivery";
 import About from "components/main/About";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { shallowEqual, useSelector } from "react-redux";
-import useWindowsDimensions from "@hooks/useWindowsDimensions";
 import Footer from "@main/Footer";
-import Drawer from "@main/Drawer";
 import CartMenu from "@main/CartMenu";
 
-// import CartProvider from '@context/cart'
-
-export default function Home() {
-  const [isDrawerMenuOpen, setDrawerMenuOpen] = useState(false);
+const MainScreen = () => {
   const [isCartMenuOpen, setCartMenuOpen] = useState(false);
   const toggleCart = () => setCartMenuOpen(!isCartMenuOpen);
-  const toggleDrawer = () => setDrawerMenuOpen(!isDrawerMenuOpen);
-  const width = useWindowsDimensions();
 
   const articles: ArticleType[] = useSelector(
     (state: any) => state.articles.items,
@@ -47,45 +40,41 @@ export default function Home() {
         <link rel="stylesheet" href="https://rsms.me/inter/inter.css"></link>
         <script src="https://cdn.tailwindcss.com"></script>
       </Head>
-      <>
-        <Toaster />
-        {isCartMenuOpen ? (
+
+      <div
+        className={`w-full h-screen bg-center bg-no-repeat bg-cover bg-[url('/glutenFree.png')]`}
+      >
+        <>
+          <Toaster />
+
           <CartMenu
             isOpen={isCartMenuOpen}
             toggleCart={toggleCart}
             items={cart}
           />
-        ) : (
-          <>
-            <div
-              className={`w-full h-screen bg-center bg-no-repeat bg-cover bg-[url('/glutenFree.png')]`}
-            >
-              <div className="flex items-center w-full">
-                <Drawer isOpen={isDrawerMenuOpen} toggleDrawer={toggleDrawer} />
-                {width > 1023 ? (
-                  <TopBar items={cart.length} toggleCart={toggleCart} />
-                ) : (
-                  <MobileTopBar
-                    items={cart.length}
-                    toggleDrawer={toggleDrawer}
-                    toggleCart={toggleCart}
-                  />
-                )}
-              </div>
-              <Welcome />
-            </div>
-            <div className="pt-4 bg-[url('/purpleTexture.svg')]">
-              <SearchBar />
-              <div className="flex flex-wrap w-full ">
-                <ProductList />
-              </div>
-            </div>
-            <About />
-            <Delivery />
-            <Footer />
-          </>
-        )}
-      </>
+
+          <TopBar items={cart.length} toggleCart={toggleCart} />
+
+          <MobileTopBar items={cart.length} toggleCart={toggleCart} />
+        </>
+        <Welcome />
+      </div>
+
+      <div className="pt-4 w-full h-full bg-center bg-no-repeat bg-cover bg-[url('/purpleTexture.svg')]">
+        <SearchBar />
+
+        <div className="flex flex-wrap w-full ">
+          <ProductList />
+        </div>
+      </div>
+
+      <About />
+
+      <Delivery />
+
+      <Footer />
     </>
   );
-}
+};
+
+export default MainScreen;

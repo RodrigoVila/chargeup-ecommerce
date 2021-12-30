@@ -8,22 +8,20 @@ import {
   LOGOUT,
   SET_MESSAGE,
 } from "./types";
+import { displaySuccessMessage, displayErrorMessage } from "./";
 
 export const userRegister =
   (name: string, lastName: string, email: string, password: string) =>
   (dispatch: Dispatch) => {
-    return register(name,lastName, email, password).then(
-      (response: any) => {
+    return register(name, lastName, email, password).then(
+      (data: any) => {
         dispatch({
           type: REGISTER_SUCCESS,
         });
 
-        dispatch({
-          type: SET_MESSAGE,
-          payload: response.data.message,
-        });
+        dispatch(displaySuccessMessage("Register OK"));
 
-        return Promise.resolve();
+        return Promise.resolve(data);
       },
       (error) => {
         const message =
@@ -32,25 +30,29 @@ export const userRegister =
             error.response.data.message) ||
           error.message ||
           error.toString();
-
         dispatch({
           type: REGISTER_FAIL,
         });
 
-        dispatch({
-          type: SET_MESSAGE,
-          payload: message,
-        });
+        dispatch(displayErrorMessage("Register Error"));
 
         return Promise.reject();
       }
     );
   };
 
+// .then((response) => {
+//   if (response.data.accessToken) {
+//     localStorage.setItem("cub_user", JSON.stringify(response.data));
+//   }
+//   router.push("/");
+//   return response.data;
+// })
+// .catch((error) => console.error("Login error", error));
 export const userLogin =
   (username: string, password: string) => (dispatch: Dispatch) => {
     return login(username, password).then(
-      (data) => {
+      (data: any) => {
         dispatch({
           type: LOGIN_SUCCESS,
           payload: { user: data },

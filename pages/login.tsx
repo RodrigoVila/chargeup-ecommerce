@@ -1,14 +1,21 @@
 import React, { useState, useRef, useEffect, FormEvent } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
 
-import RegisterScreen from "@main/Register";
-import LoginScreen from "@main/Login";
-import { userLogin, userRegister } from "@redux/actions";
+import RegisterForm from "@main/Register";
+import LoginForm from "@main/LoginForm";
+import {
+  displayErrorMessage,
+  displaySuccessMessage,
+  userLogin,
+  userRegister,
+} from "@redux/actions";
 import { RootState } from "@redux/reducers";
+import Button from "@main/Button";
+import Link from "@main/Link";
+import { colors } from "@utils/constants";
+import { useAppDispatch, useAppSelector } from "@hooks";
 
-const Login = () => {
-  const [errorMessage, setErrorMessage] = useState("");
+const LoginScreen = () => {
   const [isRegister, setRegister] = useState(false);
   const [credentials, setCredentials] = useState({
     name: "",
@@ -18,59 +25,40 @@ const Login = () => {
     repeatedPassword: "",
   });
   const [loading, setLoading] = useState(false);
-  const [successful, setSuccessful] = useState(false);
 
-  const { isLoggedIn } = useSelector((state: RootState) => state.auth);
-  // const { message } = useSelector((state) => state.message);
+  const { isLoggedIn } = useAppSelector((state: RootState) => state.auth);
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const router = useRouter();
 
   const onInputChange = (type: string, e: FormEvent<HTMLInputElement>) => {
     setCredentials({ ...credentials, [type]: e.currentTarget.value });
   };
 
-  const goToRegisterScreen = () => setRegister(true);
-
-  const goToLoginScreen = () => setRegister(false);
+  const toggleRegister = () => setRegister(!isRegister);
 
   const handleRegister = (e) => {
     e.preventDefault();
 
     const { name, lastName, email, password, repeatedPassword } = credentials;
 
-    setSuccessful(false);
+    setLoading(true);
     password === repeatedPassword
-      ? dispatch(userRegister(name,lastName, email, password))
-          .then(() => {
-            setSuccessful(true);
-          })
-          .catch(() => {
-            setSuccessful(false);
-          })
-      : setErrorMessage("password has to be equal");
+      ? dispatch(userRegister(name, lastName, email, password)).then((data) =>
+          console.log("data", data)
+        )
+      : dispatch(displayErrorMessage("Passwords need to be equal"));
   };
 
-  const handleLogin = async (e) => {
+  const handleLogin = (e) => {
     e.preventDefault();
 
     const { email, password } = credentials;
 
     setLoading(true);
-    const { data } = await dispatch(userLogin(email, password));
-    data && console.log("!!!!data", data);
-
-    // .then((data) => {
-    //   //Go to profile
-    //   // window.location.reload();
-    //   console.log("!data", data);
-    // })
-    // .catch((e) => {
-    //   console.error("!error login", e);
-    //   setLoading(false);
-    // });
-
-    setLoading(false);
+    dispatch(userLogin(email, password))
+      .then((data) => console.log("!!!!data", data))
+      .catch((e) => console.error("error1234", e));
   };
 
   useEffect(() => {
@@ -79,27 +67,39 @@ const Login = () => {
 
   return (
     <div className="flex flex-col items-center justify-center w-screen h-screen bg-gradient-to-br from-purple-500 to-fuchsia-700">
-      <div className="w-full max-w-xs p-4 border-2 border-white rounded-md">
-        {isRegister ? (
-          <RegisterScreen
-            email={credentials.email}
-            errorMessage={errorMessage}
-            onInputChange={onInputChange}
-            handleRegister={handleRegister}
-            goToLoginScreen={goToLoginScreen}
-          />
-        ) : (
-          <LoginScreen
-            email={credentials.email}
-            errorMessage={errorMessage}
-            onInputChange={onInputChange}
-            handleLogin={handleLogin}
-            goToRegisterScreen={goToRegisterScreen}
-          />
-        )}
+      <div className="w-full max-w-md font-semibold text-black bg-white rounded-md">
+        <div className="px-6 py-4">
+          {isRegister ? (
+            <>
+              <RegisterForm
+                email={credentials.email}
+                onInputChange={onInputChange}
+              />
+              <Button
+                title="Register new account"
+                color={colors.fuchsia}
+                onClick={handleRegister}
+              />
+              <Link text="Go to Login" onClick={toggleRegister} />
+            </>
+          ) : (
+            <>
+              <LoginForm
+                email={credentials.email}
+                onInputChange={onInputChange}
+              />
+              <Button
+                title="Login"
+                color={colors.purple}
+                onClick={handleLogin}
+              />
+              <Link text="Register new account" onClick={toggleRegister} />
+            </>
+          )}
+        </div>
       </div>
     </div>
   );
 };
 
-export default Login;
+export default LoginScreen;

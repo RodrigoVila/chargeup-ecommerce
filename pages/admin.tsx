@@ -12,7 +12,7 @@ import AdminOrderList from '@admin/AdminOrderList'
 import AdminDashboard from '@admin/AdminDashboard'
 import AdminCustomers from '@admin/AdminCustomers'
 
-const AdminDisplayLoader = () => {
+const AdminScreen = () => {
   const [ activePage, setActivePage ] = useState(''); 
 
   return (   
@@ -28,4 +28,4 @@ const AdminDisplayLoader = () => {
   );
 }
 
-export default AdminDisplayLoader;
+export default AdminScreen;

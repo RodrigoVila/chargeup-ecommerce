@@ -1,6 +1,5 @@
 import { addArticle, removeArticle } from "./article";
 import { userRegister, userLogin, userLogout } from "./auth";
-import { setMessage, clearMessage } from "./message";
 import {
   loadCart,
   addToCart,
@@ -19,8 +18,6 @@ export {
   userRegister,
   userLogin,
   userLogout,
-  setMessage,
-  clearMessage,
   loadCart,
   addToCart,
   removeFromCart,
