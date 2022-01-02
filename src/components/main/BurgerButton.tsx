@@ -14,9 +14,9 @@ const BurgerButton = ({ isDrawerMenuOpen, toggleDrawer }: Props) => {
       onClick={toggleDrawer}
     >
       {isDrawerMenuOpen ? (
-        <IoMdClose color="white" size="fill" />
+        <IoMdClose color="white" />
       ) : (
-        <HiMenu color="white" size="fill" />
+        <HiMenu color="white" />
       )}
     </div>
   );

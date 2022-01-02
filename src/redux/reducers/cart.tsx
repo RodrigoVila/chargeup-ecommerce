@@ -8,7 +8,7 @@ const cartReducer = (
   //Tipo OK, necesitamos el state del cart
   state: CartStateType = initialState,
   //Action OK. action.article.algo
-  action: ArticleActionType
+  action: ProductActionType
 ): CartStateType => {
   switch (action.type) {
     case LOAD_CART:
@@ -31,7 +31,7 @@ const cartReducer = (
         cart: [...state.cart, newItem],
       };
     case REMOVE_FROM_CART:
-      const updatedItems: ArticleType[] = state.cart.filter(
+      const updatedItems: ProductType[] = state.cart.filter(
         (item: any) => item.id !== action.article
       );
       return {

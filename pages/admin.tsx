@@ -1,8 +1,6 @@
 import React, { useState, Fragment } from "react";
 
 /* JP ADDS - import -*/
-import { Disclosure, Menu, Transition } from '@headlessui/react'
-import { BellIcon, MenuIcon, XIcon } from '@heroicons/react/outline'
 import AdminProducts from '@admin/AdminProducts'
 import AdminStats from '@admin/AdminStats'
 import AdminTabDetails from '@admin/AdminTabDetails'

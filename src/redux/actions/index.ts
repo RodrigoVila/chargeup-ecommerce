@@ -1,4 +1,4 @@
-import { addArticle, removeArticle } from "./article";
+import { addProduct, removeProduct, getProduct, getProducts } from "./products";
 import { userRegister, userLogin, userLogout } from "./auth";
 import {
   loadCart,
@@ -13,8 +13,10 @@ import {
 } from "./toast_notifications";
 
 export {
-  addArticle,
-  removeArticle,
+  addProduct,
+  removeProduct,
+  getProduct,
+  getProducts,
   userRegister,
   userLogin,
   userLogout,

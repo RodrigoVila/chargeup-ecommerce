@@ -18,12 +18,7 @@ const MainScreen = () => {
   const [isCartMenuOpen, setCartMenuOpen] = useState(false);
   const toggleCart = () => setCartMenuOpen(!isCartMenuOpen);
 
-  const articles: ArticleType[] = useSelector(
-    (state: any) => state.articles.items,
-    shallowEqual
-  );
-
-  const cart: ArticleType[] = useSelector(
+  const cart: ProductType[] = useSelector(
     (state: any) => state.cart.cart,
     shallowEqual
   );

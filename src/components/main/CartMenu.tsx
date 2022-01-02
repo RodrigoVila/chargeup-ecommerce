@@ -5,7 +5,7 @@ import HorizontalProduct from "./HorizontalProduct";
 
 interface Props {
   isOpen: boolean;
-  items: ArticleType[];
+  items: ProductType[];
   toggleCart: () => void;
 }
 

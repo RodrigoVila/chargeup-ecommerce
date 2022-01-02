@@ -19,7 +19,7 @@ const VerticalProduct = ({
   suitableForInfo,
   price,
   imgUri,
-}: ArticleType) => {
+}: ProductType) => {
   const [count, setCount] = useState(0);
   const dispatch = useAppDispatch();
 
@@ -35,7 +35,7 @@ const VerticalProduct = ({
       dispatch(displayInfoMessage("Cantidad tiene que ser mayor a 0"));
       return;
     }
-    const item: ArticleType = {
+    const item: ProductType = {
       id,
       title,
       description,

@@ -5,8 +5,8 @@ interface INutritionalInfo {
   fat: number;
 }
 
-//Article
-type ArticleType = {
+//Products
+type ProductType = {
   id: number;
   title: string;
   description: string;
@@ -17,23 +17,21 @@ type ArticleType = {
   quantity?: number;
 };
 
-type ArticleStateType = {
-  articles: ArticleType[];
-};
+type ProductStateType = ProductType[];
 
-type ArticleActionType = {
+type ProductActionType = {
   type: string;
-  article: ArticleType;
+  product: ProductType;
 };
 
 //Cart
 type CartStateType = {
-  cart: ArticleType[];
+  cart: ProductType[];
 };
 
 type CartActionType = {
   type: string;
-  cart: ArticleType[];
+  cart: ProductType[];
 };
 
 //Toast
@@ -64,11 +62,10 @@ type OrderActionType = {
 };
 
 type StateType = {
-  state: {
-    orders: OrderItemType[];
-    cart: ArticleType[];
-  };
+  cart: ProductType[];
+  orders: OrderItemType[];
+  products: ProductType[];
 };
 
-type DispatchType = (args: ArticleActionType) => ArticleActionType;
+type DispatchType = (args: ProductActionType) => ProductActionType;
 type DispatchType = (args: CartAction) => CartAction;

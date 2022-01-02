@@ -1,6 +1,13 @@
 import axios from "axios";
+import jwt from "jsonwebtoken";
+
+import { apiHandler } from "@utils/api/api-handler";
 
 const API_URL = "/api/auth/";
+
+const token = "";
+
+const config = { headers: { Authorization: `Bearer ${token}` } };
 
 export const register = async (
   name: string,
@@ -23,7 +30,7 @@ export const login = async (username: string, password: string) => {
     username,
     password,
   });
-  
+
   return data;
 };
 

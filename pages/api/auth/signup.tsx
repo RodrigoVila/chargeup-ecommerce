@@ -1,18 +1,25 @@
 import { NextApiRequest, NextApiResponse } from "next";
+import jwt from "jsonwebtoken";
+
 import User from "@models/user";
 import dbConnect from "@utils/dbConnect";
+import { jwtMiddleware } from "@utils/api/jwt-middleware";
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   const { method, body } = req;
-
+  const { email, password } = body;
+  
   await dbConnect();
 
   const register = async () => {
+    const token = jwt.sign({ email, password }, process.env.API_KEY, {
+      expiresIn: process.env.TOKEN_EXPIRES_IN,
+    });
     try {
-      console.log("!body", body)
-      const user = await User.create(body);
-      console.log("!user", user)
-      return res.status(201).json(user);
+      const user = await User.create({ ...body, token });
+      return res
+        .status(201)
+        .json({ user: user.email, name: user.name, token: user.token });
     } catch (e) {
       return res.status(400).json({
         success: false,

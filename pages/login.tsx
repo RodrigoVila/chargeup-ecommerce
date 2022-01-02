@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect, FormEvent } from "react";
 import { useRouter } from "next/router";
+import Bcrypt from "bcryptjs";
 
 import RegisterForm from "@main/Register";
 import LoginForm from "@main/LoginForm";
@@ -26,10 +27,12 @@ const LoginScreen = () => {
   });
   const [loading, setLoading] = useState(false);
 
-  const { isLoggedIn } = useAppSelector((state: RootState) => state.auth);
+  const { isLoggedIn, user } = useAppSelector((state: RootState) => state.auth);
 
   const dispatch = useAppDispatch();
   const router = useRouter();
+
+  const encryptPassword = (password: string) => Bcrypt.hashSync(password, 10);
 
   const onInputChange = (type: string, e: FormEvent<HTMLInputElement>) => {
     setCredentials({ ...credentials, [type]: e.currentTarget.value });
@@ -44,29 +47,28 @@ const LoginScreen = () => {
 
     setLoading(true);
     password === repeatedPassword
-      ? dispatch(userRegister(name, lastName, email, password)).then((data) =>
-          console.log("data", data)
-        )
+      ? dispatch(
+          userRegister(name, lastName, email, encryptPassword(password))
+        ).then((data) => console.log("data", data))
       : dispatch(displayErrorMessage("Passwords need to be equal"));
   };
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
 
     const { email, password } = credentials;
-
     setLoading(true);
-    dispatch(userLogin(email, password))
-      .then((data) => console.log("!!!!data", data))
-      .catch((e) => console.error("error1234", e));
+    await dispatch(userLogin(email, encryptPassword(password)));
+    setLoading(false);
   };
 
   useEffect(() => {
-    isLoggedIn && router.push("/");
+    // isLoggedIn && router.push("/");
+    console.info("isLoggedIn: ", isLoggedIn, ". User: ", user);
   }, [isLoggedIn]);
 
   return (
-    <div className="flex flex-col items-center justify-center w-screen h-screen bg-gradient-to-br from-purple-500 to-fuchsia-700">
+    <div className="flex flex-col items-center justify-center w-screen h-screen px-4 bg-gradient-to-br from-purple-500 to-fuchsia-700">
       <div className="w-full max-w-md font-semibold text-black bg-white rounded-md">
         <div className="px-6 py-4">
           {isRegister ? (

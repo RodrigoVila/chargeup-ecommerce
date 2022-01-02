@@ -9,6 +9,7 @@ import {
   SET_MESSAGE,
 } from "./types";
 import { displaySuccessMessage, displayErrorMessage } from "./";
+import { displayInfoMessage } from "./toast_notifications";
 
 export const userRegister =
   (name: string, lastName: string, email: string, password: string) =>
@@ -58,6 +59,8 @@ export const userLogin =
           payload: { user: data },
         });
 
+        dispatch(displaySuccessMessage("Success!"));
+
         return Promise.resolve();
       },
       (error) => {
@@ -72,10 +75,7 @@ export const userLogin =
           type: LOGIN_FAIL,
         });
 
-        dispatch({
-          type: SET_MESSAGE,
-          payload: message,
-        });
+        dispatch(displayErrorMessage("Wrong credentials. Try again."));
 
         return Promise.reject();
       }

@@ -5,22 +5,22 @@ import {
   CHANGE_PRODUCT_QUANTITY,
 } from "./types";
 
-export const loadCart = (articles: ArticleType[]) => ({
+export const loadCart = (articles: ProductType[]) => ({
   type: LOAD_CART,
   articles,
 });
 
-export const addToCart = (article: ArticleType) => ({
+export const addToCart = (article: ProductType) => ({
   type: ADD_TO_CART,
   article,
 });
 
-export const removeFromCart = (article: ArticleType) => ({
+export const removeFromCart = (article: ProductType) => ({
   type: REMOVE_FROM_CART,
   article,
 });
 
-export const changeCartProductQuantity = (article: ArticleType) => ({
+export const changeCartProductQuantity = (article: ProductType) => ({
   type: CHANGE_PRODUCT_QUANTITY,
   article,
 });

@@ -24,7 +24,7 @@ const HorizontalProduct = ({
   suitableForInfo,
   price,
   imgUri,
-}: ArticleType) => {
+}: ProductType) => {
   const dispatch = useAppDispatch();
   const [count, setCount] = useState(0);
 
