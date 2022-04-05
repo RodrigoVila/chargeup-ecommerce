@@ -1,20 +1,21 @@
-import { FC, useState, useEffect } from "react";
-import axios from "axios";
+import { FC, useState, useEffect } from 'react'
+import axios from 'axios'
+import { shallowEqual, useSelector } from 'react-redux'
 
-import Product from "@main/VerticalProduct";
-import { shallowEqual, useSelector } from "react-redux";
+import VerticalProduct from '@main/VerticalProduct'
+import SearchBar from '@main/SearchBar'
 
 const ProductList: FC = () => {
-  const [isLoading, setLoading] = useState(false);
+  const [isLoading, setLoading] = useState(false)
 
   const products: ProductType[] = useSelector(
-    (state: StateType) => state.products,
+    (state: StateType) => state.products.products,
     shallowEqual
-  );
+  )
 
   useEffect(() => {
-    console.info("products", products);
-  }, [products]);
+    console.log('!products', products)
+  }, [products])
 
   // useEffect(() => {
   //   axios
@@ -24,25 +25,26 @@ const ProductList: FC = () => {
   // }, []);
 
   return (
-    <div className="flex flex-wrap justify-center w-full mx-auto ">
-      {isLoading
-        ? "Loading ..."
-        : "a"
-        // : products?.map((p, index) => (
-        //     <Product
-        //       key={index}
-        //       id={p.id}
-        //       title={p.title}
-        //       description={p.description}
-        //       nutritionalInfo={p.nutritionalInfo}
-        //       suitableForInfo={p.suitableForInfo}
-        //       price={p.price}
-        //       imgUri={p.imgUri}
-        //     />
-        //   ))
-          }
-    </div>
-  );
-};
+    <div className="w-full h-full pt-4 bg-center bg-no-repeat bg-cover bg-[url('/purpleTexture.svg')]">
+      <SearchBar />
 
-export default ProductList;
+      <div className="relative flex flex-wrap justify-center w-full mx-auto ">
+        {products?.map((p, index) => (
+          <VerticalProduct
+            key={index}
+            _id={p._id}
+            title={p.title}
+            description={p.description}
+            price={p.price}
+            quantity={p.quantity}
+            imgUri={p.imgUri}
+            nutritionalInfo={p.nutritionalInfo}
+            suitableForInfo={p.suitableForInfo}
+          />
+        ))}
+      </div>
+    </div>
+  )
+}
+
+export default ProductList

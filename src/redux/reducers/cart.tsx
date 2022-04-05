@@ -5,9 +5,7 @@ const initialState: CartStateType = {
 };
 
 const cartReducer = (
-  //Tipo OK, necesitamos el state del cart
-  state: CartStateType = initialState,
-  //Action OK. action.article.algo
+  state = initialState,
   action: ProductActionType
 ): CartStateType => {
   switch (action.type) {
@@ -17,14 +15,14 @@ const cartReducer = (
       };
     case ADD_TO_CART:
       const newItem = {
-        title: action.article.title,
-        id: action.article.id,
-        description: action.article.description,
-        nutritionalInfo: action.article.nutritionalInfo,
-        suitableForInfo: action.article.suitableForInfo,
-        price: action.article.price,
-        imgUri: action.article.imgUri,
-        quantity: action.article.quantity,
+        id: action.product.id,
+        title: action.product.title,
+        description: action.product.description,
+        quantity: action.product.quantity,
+        price: action.product.price,
+        imgUri: action.product.imgUri,
+        nutritionalInfo: action.product.nutritionalInfo,
+        suitableForInfo: action.product.suitableForInfo,
       };
       return {
         ...state,
@@ -32,7 +30,7 @@ const cartReducer = (
       };
     case REMOVE_FROM_CART:
       const updatedItems: ProductType[] = state.cart.filter(
-        (item: any) => item.id !== action.article
+        (item: any) => item.id !== action.product
       );
       return {
         ...state,

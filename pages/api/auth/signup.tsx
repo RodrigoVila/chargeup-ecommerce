@@ -3,12 +3,11 @@ import jwt from "jsonwebtoken";
 
 import User from "@models/user";
 import dbConnect from "@utils/dbConnect";
-import { jwtMiddleware } from "@utils/api/jwt-middleware";
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   const { method, body } = req;
   const { email, password } = body;
-  
+
   await dbConnect();
 
   const register = async () => {

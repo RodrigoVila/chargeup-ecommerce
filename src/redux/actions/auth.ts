@@ -19,6 +19,7 @@ export const userRegister =
         dispatch({
           type: REGISTER_SUCCESS,
         });
+        console.log("hola", data);
 
         dispatch(displaySuccessMessage("Register OK"));
 

@@ -19,7 +19,7 @@ const CartButton = ({
       className="relative z-20 w-8 h-8 m-2 mr-4 md:m-4"
       onClick={toggleCart}
     >
-      <FiShoppingCart color={color} />
+      <FiShoppingCart color={color} size={30}/>
       {cartCount !== 0 && (
         <div
           className={`absolute px-1 text-sm font-bold text-white rounded-full bg-${badgesColor} -right-2 -top-1`}

@@ -27,8 +27,8 @@ module.exports = {
         info: "#33b5e5",
         tranlucentWhite: "rgba(255,255,255,0.5)",
         tranlucentBlack: "rgba(0,0,0,0.5)",
-        tranlucentWhite2: "rgba(255,255,255,0.8)",
         tranlucentBlack2: "rgba(0,0,0,0.8)",
+        tranlucentWhite2: "rgba(255,255,255,0.8)",
       },
       fontFamily: {
         sans: ["Inter var", ...defaultTheme.fontFamily.sans],

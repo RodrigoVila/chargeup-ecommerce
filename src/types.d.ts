@@ -1,71 +1,101 @@
 interface INutritionalInfo {
-  calories: number;
-  protein: number;
-  carbs: number;
-  fat: number;
+  weight: number
+  calories: number
+  protein: number
+  carbs: number
+  fat: number
+}
+
+interface ISuitableForInfo {
+  protein: boolean
+  vegan: boolean
+  glutenFree: boolean
+  diabetic: boolean
+  keto: boolean
 }
 
 //Products
 type ProductType = {
-  id: number;
-  title: string;
-  description: string;
-  nutritionalInfo: INutritionalInfo;
-  suitableForInfo: string[];
-  price: number;
-  imgUri: string;
-  quantity?: number;
-};
+  _id: string
+  title: string
+  description: string
+  price: number
+  quantity: number
+  imgUri: string
+  nutritionalInfo: INutritionalInfo
+  suitableForInfo: ISuitableForInfo
+}
 
-type ProductStateType = ProductType[];
+type ProductStateType = {
+  products: ProductType[]
+}
 
 type ProductActionType = {
-  type: string;
-  product: ProductType;
-};
+  type: string
+  product: ProductType
+}
 
 //Cart
 type CartStateType = {
-  cart: ProductType[];
-};
+  cart: ProductType[]
+}
 
 type CartActionType = {
-  type: string;
-  cart: ProductType[];
-};
+  type: string
+  cart: ProductType[]
+}
 
 //Toast
 type ToastStateType = {
-  message: string;
-};
+  message: string
+}
 
 type ToastActionType = {
-  type: string;
-  message: string;
-};
+  type: string
+  message: string
+}
 
 //Order
 type OrderItemType = {
-  id: number;
-  title: string;
-  price: number;
-  quantity: number;
-};
+  id: number
+  title: string
+  price: number
+  quantity: number
+}
 
 type OrderStateType = {
-  orders: OrderItemType[];
-};
+  orders: OrderItemType[]
+}
 
 type OrderActionType = {
-  type: string;
-  order: Orderype;
-};
+  type: string
+  order: Orderype
+}
 
 type StateType = {
-  cart: ProductType[];
-  orders: OrderItemType[];
-  products: ProductType[];
-};
+  cart: ProductType[]
+  orders: OrderItemType[]
+  products: ProductType[]
+}
 
-type DispatchType = (args: ProductActionType) => ProductActionType;
-type DispatchType = (args: CartAction) => CartAction;
+//User
+type UserType = {
+  id: number
+  title: string
+  description: string
+  nutritionalInfo: INutritionalInfo
+  suitableForInfo: string[]
+  price: number
+  imgUri: string
+  quantity?: number
+}
+
+type ProductStateType = ProductType[]
+
+type ProductActionType = {
+  type: string
+  product: ProductType
+}
+
+type DispatchType = (args: ProductActionType) => ProductActionType
+type DispatchType = (args: CartAction) => CartAction
