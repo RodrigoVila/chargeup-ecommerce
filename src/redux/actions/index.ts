@@ -1,22 +1,27 @@
-import { addProduct, removeProduct, getProduct, getProducts } from "./products";
-import { userRegister, userLogin, userLogout } from "./auth";
+import {
+  addProduct,
+  removeProduct,
+  fetchProducts,
+  fetchProductsSuccess,
+} from './products'
+import { userRegister, userLogin, userLogout } from './auth'
 import {
   loadCart,
   addToCart,
   removeFromCart,
   changeCartProductQuantity,
-} from "./cart";
+} from './cart'
 import {
   displaySuccessMessage,
   displayErrorMessage,
   displayInfoMessage,
-} from "./toast_notifications";
+} from './toast_notifications'
 
 export {
   addProduct,
   removeProduct,
-  getProduct,
-  getProducts,
+  fetchProducts,
+  fetchProductsSuccess,
   userRegister,
   userLogin,
   userLogout,
@@ -27,4 +32,4 @@ export {
   displaySuccessMessage,
   displayErrorMessage,
   displayInfoMessage,
-};
+}

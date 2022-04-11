@@ -1,8 +1,8 @@
-import { LOAD_CART, ADD_TO_CART, REMOVE_FROM_CART } from "../actions/types";
+import { LOAD_CART, ADD_TO_CART, REMOVE_FROM_CART } from '../actions/types'
 
 const initialState: CartStateType = {
   cart: [],
-};
+}
 
 const cartReducer = (
   state = initialState,
@@ -12,7 +12,7 @@ const cartReducer = (
     case LOAD_CART:
       return {
         ...state,
-      };
+      }
     case ADD_TO_CART:
       const newItem = {
         id: action.product.id,
@@ -23,21 +23,21 @@ const cartReducer = (
         imgUri: action.product.imgUri,
         nutritionalInfo: action.product.nutritionalInfo,
         suitableForInfo: action.product.suitableForInfo,
-      };
+      }
       return {
         ...state,
         cart: [...state.cart, newItem],
-      };
+      }
     case REMOVE_FROM_CART:
       const updatedItems: ProductType[] = state.cart.filter(
         (item: any) => item.id !== action.product
-      );
+      )
       return {
         ...state,
         cart: updatedItems,
-      };
+      }
   }
-  return state;
-};
+  return state
+}
 
-export default cartReducer;
+export default cartReducer

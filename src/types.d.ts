@@ -16,7 +16,7 @@ interface ISuitableForInfo {
 
 //Products
 type ProductType = {
-  _id: string
+  id: string
   title: string
   description: string
   price: number
@@ -30,9 +30,9 @@ type ProductStateType = {
   products: ProductType[]
 }
 
-type ProductActionType = {
+type ProductsActionType = {
   type: string
-  product: ProductType
+  products: ProductType[]
 }
 
 //Cart
