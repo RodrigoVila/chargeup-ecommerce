@@ -3,7 +3,7 @@ import {
   ADD_PRODUCT,
   DELETE_PRODUCT,
   FETCH_PRODUCTS_SUCCESS,
-} from '../actions/types'
+} from '../actionTypes'
 
 const initialState: ProductStateType = { products: [] }
 

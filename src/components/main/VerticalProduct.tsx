@@ -1,11 +1,11 @@
 import { useState } from 'react'
 import Image from 'next/image'
 
-import { addToCart } from '@redux/actions/cart'
+import { addToCart } from '@redux/actionCreators/cart'
 import {
   displaySuccessMessage,
   displayInfoMessage,
-} from '@redux/actions/toast_notifications'
+} from '@redux/actionCreators/toastNotifications'
 
 import Button from '@main/Button'
 import Counter from '@main/Counter'

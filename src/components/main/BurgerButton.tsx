@@ -1,21 +1,21 @@
-import React from "react";
-import { HiMenu } from "react-icons/hi";
-import { IoMdClose } from "react-icons/io";
+import React from 'react'
+import { HiMenu } from 'react-icons/hi'
 
-interface Props {
-  isDrawerMenuOpen: boolean;
-  toggleDrawer: () => void;
-}
+import { useAppDispatch } from '@hooks'
+import { openDrawerModal } from '@redux/actionCreators'
 
-const BurgerButton = ({ isDrawerMenuOpen, toggleDrawer }: Props) => {
+const BurgerButton = () => {
+  const dispatch = useAppDispatch()
+  const openDrawer = () => dispatch(openDrawerModal())
+
   return (
     <div
-      className="relative z-40 w-10 h-10 m-2 mr-4 md:m-4"
-      onClick={toggleDrawer}
+      className="relative z-40 m-2 mr-4 h-10 w-10 md:m-4"
+      onClick={openDrawer}
     >
-      {!isDrawerMenuOpen && <HiMenu color="white" size={30} />}
+      <HiMenu color="white" size={30} />
     </div>
-  );
-};
+  )
+}
 
-export default BurgerButton;
+export default BurgerButton

@@ -1,14 +1,18 @@
 import { combineReducers } from 'redux'
 
-import productsReducer from './products'
 import authReducer from './auth'
 import cartReducer from './cart'
-import toastReducer from './toast_notifications'
+import checkoutReducer from './checkout'
+import modalReducer from './modal'
+import productsReducer from './products'
+import toastReducer from './toastNotifications'
 
 const rootReducer = combineReducers({
-  products: productsReducer,
   auth: authReducer,
   cart: cartReducer,
+  checkoutSession: checkoutReducer,
+  modal: modalReducer,
+  products: productsReducer,
   toastMessage: toastReducer,
 })
 

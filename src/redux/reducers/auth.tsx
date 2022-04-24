@@ -4,7 +4,7 @@ import {
   LOGIN_SUCCESS,
   LOGIN_FAIL,
   LOGOUT,
-} from "../actions/types";
+} from "../actionTypes";
 
 const user =
   typeof window !== "undefined" && JSON.parse(localStorage.getItem("cub_user"));

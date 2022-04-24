@@ -1,3 +1,5 @@
+//Products
+
 interface INutritionalInfo {
   weight: number
   calories: number
@@ -10,11 +12,9 @@ interface ISuitableForInfo {
   protein: boolean
   vegan: boolean
   glutenFree: boolean
-  diabetic: boolean
   keto: boolean
 }
 
-//Products
 type ProductType = {
   id: string
   title: string
@@ -30,9 +30,8 @@ type ProductStateType = {
   products: ProductType[]
 }
 
-type ProductsActionType = {
+interface ProductsActionType extends ProductStateType {
   type: string
-  products: ProductType[]
 }
 
 //Cart
@@ -40,9 +39,8 @@ type CartStateType = {
   cart: ProductType[]
 }
 
-type CartActionType = {
+interface CartActionType extends CartStateType {
   type: string
-  cart: ProductType[]
 }
 
 //Toast
@@ -50,9 +48,8 @@ type ToastStateType = {
   message: string
 }
 
-type ToastActionType = {
+interface ToastActionType extends ToastStateType {
   type: string
-  message: string
 }
 
 //Order
@@ -76,6 +73,7 @@ type StateType = {
   cart: ProductType[]
   orders: OrderItemType[]
   products: ProductType[]
+  modal: ModalStateType
 }
 
 //User
@@ -97,5 +95,28 @@ type ProductActionType = {
   product: ProductType
 }
 
+//Checkout Session
+type CheckoutStateType = {
+  checkoutSession: any
+}
+
+interface CheckoutActionType extends CheckoutStateType {
+  type: string
+}
+
+// Modals
+type ModalStateType = {
+  drawer: boolean
+  cart: boolean
+  checkout: boolean
+  checkout_success: boolean
+  checkout_error: boolean
+}
+
+interface ModalActionType extends ModalStateType {
+  type: string
+}
+
+//Dispatch
 type DispatchType = (args: ProductActionType) => ProductActionType
 type DispatchType = (args: CartAction) => CartAction

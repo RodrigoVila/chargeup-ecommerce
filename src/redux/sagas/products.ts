@@ -1,6 +1,6 @@
 import { call, put, takeEvery } from 'redux-saga/effects'
-import { fetchProductsSuccess } from '@redux/actions'
-import { FETCH_PRODUCTS } from '@redux/actions/types'
+import { fetchProductsSuccess } from '@redux/actionCreators'
+import { FETCH_PRODUCTS } from '@redux/actionTypes'
 
 const API_URL = '/api/products/'
 

@@ -1,20 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from 'react'
+import Image from 'next/image'
 
-import { addToCart, removeFromCart } from "@redux/actions/cart";
-import {
-  displayErrorMessage,
-  displaySuccessMessage,
-  displayInfoMessage,
-} from "@redux/actions/toast_notifications";
-import useWindowsDimensions from "@hooks";
-import ProductCountAndPrices from "./ProductCountAndPrices";
-import RoundImage from "@main/RoundImage";
-import BackgroundOverlay from "components/main/BackgroundOverlay";
-import Counter from "@main/Counter";
-import { RiCloseFill } from "react-icons/ri";
-import { GiCancel } from "react-icons/gi";
-import { RiDeleteBin2Line } from "react-icons/ri";
-import { useAppDispatch } from "@hooks";
+import { removeFromCart } from '@redux/actionCreators/cart'
+import RoundImage from '@main/RoundImage'
+import Counter from '@main/Counter'
+import { GiCancel } from 'react-icons/gi'
+import { useAppDispatch } from '@hooks'
 
 const HorizontalProduct = ({
   id,
@@ -23,29 +14,44 @@ const HorizontalProduct = ({
   nutritionalInfo,
   suitableForInfo,
   price,
+  quantity,
   imgUri,
 }: ProductType) => {
-  const dispatch = useAppDispatch();
-  const [count, setCount] = useState(0);
+  const dispatch = useAppDispatch()
+  const [count, setCount] = useState(0)
 
-  const addOne = () => setCount((prevCount) => prevCount + 1);
+  const addOne = () => setCount((prevCount) => prevCount + 1)
 
   const subtractOne = () => {
-    if (count < 1) return 0;
-    setCount((prevCount) => prevCount - 1);
-  };
+    if (count < 1) return 0
+    setCount((prevCount) => prevCount - 1)
+  }
 
   const removeItem = () => {
     //TODO: FIX Type
-    dispatch(removeFromCart(id));
-  };
+    dispatch(removeFromCart(id))
+  }
+
+  useEffect(() => {
+    console.log('!!', suitableForInfo)
+  }, [suitableForInfo])
 
   return (
-    <div className="flex w-full max-w-6xl pr-2 my-8 text-white bg-tranlucentBlack2 lg:max-w-3xl rounded-xl max-h-64">
-      <RoundImage imgUri={imgUri} />
-      <div className="relative flex-col pr-8 -ml-10">
+    <div className="my-8 mx-6 flex max-h-64 w-full bg-tranlucentBlack2 pr-2 text-white">
+      <div
+        className={'relative mx-auto overflow-hidden rounded-full  bg-contain'}
+      >
+        <Image
+          className=""
+          objectFit="cover"
+          layout="fill"
+          src="/brownies.jpg"
+          alt=""
+        />
+      </div>
+      <div className="relative flex-col">
         <div
-          className="absolute right-0 z-20 flex flex-row m-1 cursor-pointer top-1"
+          className="absolute right-0 top-1 z-20 m-1 flex cursor-pointer flex-row"
           onClick={removeItem}
         >
           <GiCancel color="red" size={22} />
@@ -53,28 +59,26 @@ const HorizontalProduct = ({
         <div className="my-4 text-base font-semibold md:text-xl">
           {title.toUpperCase()}
         </div>
-        <div className="text-sm md:text-lg">{description}</div>
-        <div className="flex w-full my-4 text-sm md:text-base">
-          <div className="flex-col w-1/2">
+        <div className="text-sm md:text-lg">{description.slice(0, 50)}</div>
+        <div className="my-4 flex w-full text-sm md:text-base">
+          <div className="flex-col">
             <div>Info nutricional:</div>
             <div className="text-sm md:text-base ">{`Cal: ${nutritionalInfo.calories} | Car: ${nutritionalInfo.carbs} | Fat: ${nutritionalInfo.fat} | Prot: ${nutritionalInfo.protein}`}</div>
           </div>
         </div>
         <div className="flex items-center justify-between text-sm font-semibold md:text-base">
-          {suitableForInfo.map((info, index) => (
-            <>
-              {index !== 0 && " | "}
-              {info}
-            </>
-          ))}
-          <div className="relative flex -mr-4">
+          <div className="flex-col">
+            <div>Info nutricional:</div>
+            <div className="text-sm md:text-base ">{`GF: ${suitableForInfo.glutenFree} | Keto: ${suitableForInfo.keto} | Prot: ${suitableForInfo.protein} | Prot: ${suitableForInfo.vegan}`}</div>
+          </div>
+          <div className="relative -mr-4 flex">
             <Counter count={count} subtractOne={subtractOne} addOne={addOne} />
-            <div className="h-full ml-4 md:text-3xl">{`€${count * price}`}</div>
+            <div className="ml-4 h-full md:text-3xl">{`€${count * price}`}</div>
           </div>
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default HorizontalProduct;
+export default HorizontalProduct

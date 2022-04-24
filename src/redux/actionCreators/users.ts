@@ -1,6 +1,6 @@
 import { Dispatch } from "redux";
 import { register, login, logout, fetchUserList } from "@services";
-import { SET_CUSTOMER_LIST, SET_MESSAGE } from "./types";
+import { SET_CUSTOMER_LIST, SET_MESSAGE } from "../actionTypes";
 
 export const getUserList = () => (dispatch: Dispatch) => {
   return fetchUserList().then(

@@ -1,16 +1,16 @@
-import { RiCloseFill } from "react-icons/ri";
+import { RiCloseFill } from 'react-icons/ri'
 
 interface Props {
-  isOpen: boolean;
-  toggleDrawer: () => void;
+  isOpen: boolean
+  toggleDrawer: () => void
 }
 
 const Drawer = ({ isOpen, toggleDrawer }: Props) => {
   return (
     <div
       className={`${
-        !isOpen && "hidden"
-      } z-30 left-0 absolute top-0  flex flex-col items-center h-screen w-screen bg-red-300 justify-center`}
+        !isOpen && 'hidden'
+      } absolute left-0 top-0 z-30  flex h-screen w-screen flex-col items-center justify-center bg-purple-300`}
     >
       <button onClick={toggleDrawer} className="absolute top-0 left-0 m-2 ">
         <RiCloseFill color="black" size={40} />
@@ -44,7 +44,7 @@ const Drawer = ({ isOpen, toggleDrawer }: Props) => {
         Social
       </a>
     </div>
-  );
-};
+  )
+}
 
-export default Drawer;
+export default Drawer

@@ -1,34 +1,34 @@
-import React from "react";
-import { FiShoppingCart } from "react-icons/fi";
+import React from 'react'
+import { shallowEqual } from 'react-redux'
+import { FiShoppingCart } from 'react-icons/fi'
 
-interface Props {
-  color: string;
-  badgesColor: string;
-  cartCount: number;
-  toggleCart: () => void;
-}
+import { openCartModal } from '@redux/actionCreators'
+import { useAppDispatch, useAppSelector } from '@hooks'
 
-const CartButton = ({
-  color,
-  badgesColor,
-  cartCount,
-  toggleCart,
-}: Props) => {
+const CartButton = () => {
+  const dispatch = useAppDispatch()
+  const openCart = () => dispatch(openCartModal())
+
+  const cartLength: CartStateType = useAppSelector(
+    (state: any) => state.cart.cart.length,
+    shallowEqual
+  )
+
   return (
     <div
-      className="relative z-20 w-8 h-8 m-2 mr-4 md:m-4"
-      onClick={toggleCart}
+      className="relative z-20 m-2 mr-4 h-8 w-8 md:m-4"
+      onClick={openCart}
     >
-      <FiShoppingCart color={color} size={30}/>
-      {cartCount !== 0 && (
+      <FiShoppingCart color={'white'} size={30} />
+      {cartLength !== 0 && (
         <div
-          className={`absolute px-1 text-sm font-bold text-white rounded-full bg-${badgesColor} -right-2 -top-1`}
+          className={`absolute -right-2 -top-1 rounded-full bg-danger px-1 text-sm font-bold text-white`}
         >
-          {cartCount}
+          {cartLength}
         </div>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default CartButton;
+export default CartButton
