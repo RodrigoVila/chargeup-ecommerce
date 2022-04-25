@@ -1,13 +1,16 @@
 import { call, put, takeEvery } from 'redux-saga/effects'
-import { createCheckoutSession } from '@redux/actionCreators'
+import { createCheckoutSessionSuccess } from '@redux/actionCreators'
 import { CREATE_CHECKOUT_SESSION } from '@redux/actionTypes'
 
-const API_URL = '/api/checkout_session/'
+const API_URL = '/api/checkout_session'
 
 function* checkoutSession() {
-  const response = yield call(fetch, API_URL)
-  const session = yield response.json()
-  yield put(createCheckoutSession(session))
+  const response = yield call(fetch, API_URL, {
+    method: 'POST',
+    redirect: 'follow',
+  })
+
+  yield put(createCheckoutSessionSuccess(response.url))
 }
 
 function* checkoutSaga() {

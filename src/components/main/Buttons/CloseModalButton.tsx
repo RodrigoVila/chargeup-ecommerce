@@ -8,7 +8,7 @@ interface Props {
 
 const CloseModalButton = ({ color, position, onClose }: Props) => {
   return (
-    <button onClick={onClose} className={`absolute top-0 ${position}-0 m-2 `}>
+    <button onClick={onClose} className={`absolute top-0 ${position}-0`}>
       <RiCloseFill color={color} size={40} />
     </button>
   )

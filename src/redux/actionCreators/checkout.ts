@@ -9,7 +9,7 @@ export const createCheckoutSession = () => ({
   type: CREATE_CHECKOUT_SESSION,
 })
 
-export const createCheckoutSessionSuccess = (session: any) => ({
+export const createCheckoutSessionSuccess = (sessionURL: string) => ({
   type: CREATE_CHECKOUT_SESSION_SUCCESS,
-  payload: session,
+  session: sessionURL,
 })

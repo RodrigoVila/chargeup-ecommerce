@@ -12,7 +12,6 @@ const TopBar = () => {
         <Logo />
       </div>
       <div className="relative flex flex-row items-center justify-between pt-2 pr-4">
-        <BackgroundOverlay color="White" />
         <>
           <div className="h-2 w-2" />
         </>

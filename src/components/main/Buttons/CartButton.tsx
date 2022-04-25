@@ -1,22 +1,25 @@
-import React from 'react'
+import { useEffect } from 'react'
 import { shallowEqual } from 'react-redux'
 import { FiShoppingCart } from 'react-icons/fi'
 
-import { openCartModal } from '@redux/actionCreators'
+import { openCartModal, displayInfoMessage } from '@redux/actionCreators'
 import { useAppDispatch, useAppSelector } from '@hooks'
 
 const CartButton = () => {
   const dispatch = useAppDispatch()
-  const openCart = () => dispatch(openCartModal())
 
-  const cartLength: CartStateType = useAppSelector(
-    (state: any) => state.cart.cart.length,
+  const cartLength: number = useAppSelector(
+    (state: StateType) => state.cart.items.length,
     shallowEqual
   )
+  const openCart = () =>
+    cartLength > 0
+      ? dispatch(openCartModal())
+      : dispatch(displayInfoMessage('No hay productos en el carrito'))
 
   return (
     <button
-      className="z-10 relative m-2 mr-4 h-8 w-8 md:m-4 cursor-pointer"
+      className="relative z-10 m-2 mr-4 h-8 w-8 cursor-pointer md:m-4"
       onClick={openCart}
     >
       <FiShoppingCart color={'white'} size={30} />

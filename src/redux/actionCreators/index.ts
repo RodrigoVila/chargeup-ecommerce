@@ -11,7 +11,7 @@ import {
   removeFromCart,
   changeCartProductQuantity,
 } from './cart'
-import { createCheckoutSession } from './checkout'
+import { createCheckoutSession, createCheckoutSessionSuccess } from './checkout'
 import {
   displaySuccessMessage,
   displayErrorMessage,
@@ -47,6 +47,7 @@ export {
   displayErrorMessage,
   displayInfoMessage,
   createCheckoutSession,
+  createCheckoutSessionSuccess,
   openCartModal,
   closeCartModal,
   openDrawerModal,

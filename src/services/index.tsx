@@ -1,7 +1,6 @@
-import { register, login, logout } from "./auth";
-import { postNewOrder } from "./orders";
-import { addProductToDB, removeProductFromDB } from "./products";
-import { fetchUserList } from "./users";
+import { register, login, logout } from './auth'
+import { postNewOrder } from './orders'
+import { addProductToDB, removeProductFromDB } from './products'
 
 export {
   register,
@@ -10,5 +9,4 @@ export {
   postNewOrder,
   addProductToDB,
   removeProductFromDB,
-  fetchUserList,
-};
+}

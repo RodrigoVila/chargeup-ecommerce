@@ -25,13 +25,11 @@ const modalReducer = (
 ): ModalStateType => {
   switch (action.type) {
     case OPEN_CART:
-      console.log('!state', state)
       return {
         ...state,
         cart: true,
       }
-      case CLOSE_CART:
-      console.log('!state', state)
+    case CLOSE_CART:
       return {
         ...state,
         cart: false,

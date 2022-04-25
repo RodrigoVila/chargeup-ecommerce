@@ -1,6 +1,6 @@
 import { FC, useState, useEffect } from 'react'
 
-import VerticalProduct from '@main/VerticalProduct'
+import Product from '@main/Product'
 import SearchBar from '@main/SearchBar'
 import { useAppDispatch, useAppSelector } from '@hooks'
 import { fetchProducts } from '@redux/actionCreators'
@@ -25,10 +25,6 @@ const ProductList: FC = () => {
       : setFilteredProducts([])
   }, [searchValue])
 
-  useEffect(() => {
-    console.log('!filteredProducts', filteredProducts)
-  }, [filteredProducts])
-
   return (
     products.length > 0 && (
       <div className="w-full h-full pt-4 bg-center bg-no-repeat bg-cover bg-[url('/purpleTexture.svg')]">
@@ -36,9 +32,9 @@ const ProductList: FC = () => {
 
         <div className="relative flex flex-wrap justify-center w-full mx-auto ">
           {filteredProducts.length > 0
-            ? filteredProducts?.map((p, index) => (
-                <VerticalProduct
-                  key={index}
+            ? filteredProducts?.map((p) => (
+                <Product
+                  key={p.id}
                   id={p.id}
                   title={p.title}
                   description={p.description}
@@ -49,9 +45,9 @@ const ProductList: FC = () => {
                   suitableForInfo={p.suitableForInfo}
                 />
               ))
-            : products?.map((p, index) => (
-                <VerticalProduct
-                  key={index}
+            : products?.map((p) => (
+                <Product
+                  key={p.id}
                   id={p.id}
                   title={p.title}
                   description={p.description}

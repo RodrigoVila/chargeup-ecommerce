@@ -1,5 +1,67 @@
-//Products
+//Auth
+type UserType = {
+  id: number
+  name: string
+  email: string
+}
+type AuthStateType = {
+  user: UserType
+}
 
+interface AuthActionType extends AuthStateType {
+  type: string
+}
+
+//Cart
+type CartStateType = {
+  items: ProductType[]
+}
+
+interface CartActionType {
+  type: string
+  product: ProductType
+}
+
+//Checkout Session
+type CheckoutStateType = {
+  session: string
+}
+
+interface CheckoutActionType extends CheckoutStateType {
+  type: string
+}
+
+// Modals
+type ModalStateType = {
+  drawer: boolean
+  cart: boolean
+  checkout: boolean
+  checkout_success: boolean
+  checkout_error: boolean
+}
+
+interface ModalActionType extends ModalStateType {
+  type: string
+}
+
+//Order
+type OrderItemType = {
+  id: number
+  title: string
+  price: number
+  quantity: number
+}
+
+type OrderStateType = {
+  orders: OrderItemType[]
+}
+
+type OrderActionType = {
+  type: string
+  order: Orderype
+}
+
+//Products
 interface INutritionalInfo {
   weight: number
   calories: number
@@ -26,20 +88,11 @@ type ProductType = {
   suitableForInfo: ISuitableForInfo
 }
 
-type ProductStateType = {
+type ProductsStateType = {
   products: ProductType[]
 }
 
-interface ProductsActionType extends ProductStateType {
-  type: string
-}
-
-//Cart
-type CartStateType = {
-  cart: ProductType[]
-}
-
-interface CartActionType extends CartStateType {
+interface ProductsActionType extends ProductsStateType {
   type: string
 }
 
@@ -52,69 +105,15 @@ interface ToastActionType extends ToastStateType {
   type: string
 }
 
-//Order
-type OrderItemType = {
-  id: number
-  title: string
-  price: number
-  quantity: number
-}
-
-type OrderStateType = {
-  orders: OrderItemType[]
-}
-
-type OrderActionType = {
-  type: string
-  order: Orderype
-}
-
+//Global State
 type StateType = {
-  cart: ProductType[]
-  orders: OrderItemType[]
-  products: ProductType[]
+  auth: AuthActionType
+  cart: CartStateType
+  checkout: CheckoutStateType
   modal: ModalStateType
-}
-
-//User
-type UserType = {
-  id: number
-  title: string
-  description: string
-  nutritionalInfo: INutritionalInfo
-  suitableForInfo: string[]
-  price: number
-  imgUri: string
-  quantity?: number
-}
-
-type ProductStateType = ProductType[]
-
-type ProductActionType = {
-  type: string
-  product: ProductType
-}
-
-//Checkout Session
-type CheckoutStateType = {
-  checkoutSession: any
-}
-
-interface CheckoutActionType extends CheckoutStateType {
-  type: string
-}
-
-// Modals
-type ModalStateType = {
-  drawer: boolean
-  cart: boolean
-  checkout: boolean
-  checkout_success: boolean
-  checkout_error: boolean
-}
-
-interface ModalActionType extends ModalStateType {
-  type: string
+  orders: OrderStateType
+  products: ProductStateType
+  toastMessages: ToastStateType
 }
 
 //Dispatch

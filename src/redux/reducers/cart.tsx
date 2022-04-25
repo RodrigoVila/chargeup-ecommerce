@@ -1,12 +1,12 @@
 import { LOAD_CART, ADD_TO_CART, REMOVE_FROM_CART } from '../actionTypes'
 
 const initialState: CartStateType = {
-  cart: [],
+  items: [],
 }
 
 const cartReducer = (
   state = initialState,
-  action: ProductActionType
+  action: CartActionType
 ): CartStateType => {
   switch (action.type) {
     case LOAD_CART:
@@ -24,17 +24,31 @@ const cartReducer = (
         nutritionalInfo: action.product.nutritionalInfo,
         suitableForInfo: action.product.suitableForInfo,
       }
-      return {
-        ...state,
-        cart: [...state.cart, newItem],
+      // TODO: Can this be improved?
+      // Creates a copy of item found in Array (In case of duplicates)
+      let item = state.items.find((item) => item.id === newItem.id)
+      if (item) {
+        // Then we update the quantity
+        item.quantity += newItem.quantity
+        // Then we delete old item
+        const newArr = state.items.filter((item) => item.id !== newItem.id)
+        // Then update the array
+        return {
+          items: [...newArr, item],
+        }
+      } else {
+        return {
+          ...state,
+          items: [...state.items, newItem],
+        }
       }
     case REMOVE_FROM_CART:
-      const updatedItems: ProductType[] = state.cart.filter(
+      const updatedItems: ProductType[] = state.items.filter(
         (item: any) => item.id !== action.product
       )
       return {
         ...state,
-        cart: updatedItems,
+        items: updatedItems,
       }
   }
   return state

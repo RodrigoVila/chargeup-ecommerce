@@ -10,7 +10,7 @@ import toastReducer from './toastNotifications'
 const rootReducer = combineReducers({
   auth: authReducer,
   cart: cartReducer,
-  checkoutSession: checkoutReducer,
+  checkout: checkoutReducer,
   modal: modalReducer,
   products: productsReducer,
   toastMessage: toastReducer,
