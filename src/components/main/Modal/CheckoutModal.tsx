@@ -1,22 +1,20 @@
 import { useEffect } from 'react'
 import { shallowEqual } from 'react-redux'
-import { RiCloseFill } from 'react-icons/ri'
 
 import { useAppDispatch, useAppSelector } from '@hooks'
-import { createCheckoutSession, closeCheckoutModal } from '@redux/actionCreators'
+import {
+  createCheckoutSession,
+  closeCheckoutModal,
+} from '@redux/actionCreators'
+import CloseModalButton from '@main/Buttons/CloseModalButton'
 
-interface Props {
-  items: ProductType[]
-}
-const CheckoutModal = ({ items }: Props) => {
+const CheckoutModal = () => {
   const isOpen = useAppSelector(
     (state: StateType) => state.modal.checkout,
     shallowEqual
   )
   const dispatch = useAppDispatch()
-
   const onCheckout = () => dispatch(createCheckoutSession())
-
   const onClose = () => dispatch(closeCheckoutModal())
 
   useEffect(() => {
@@ -38,12 +36,7 @@ const CheckoutModal = ({ items }: Props) => {
         !isOpen && 'hidden'
       } absolute inset-0 z-40  flex h-screen w-screen flex-col items-center justify-center bg-orange-300`}
     >
-      <button onClick={onClose} className="absolute top-0 left-0 m-2 ">
-        <RiCloseFill color="black" size={40} />
-      </button>
-      <button onClick={onCheckout} className="absolute top-0 left-0 m-2 ">
-        Chcekout
-      </button>
+      <CloseModalButton color="white" position="right" onClose={onClose} />
     </div>
   )
 }

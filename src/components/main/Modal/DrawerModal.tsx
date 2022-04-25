@@ -1,20 +1,25 @@
-import { RiCloseFill } from 'react-icons/ri'
+import { shallowEqual } from 'react-redux'
 
-interface Props {
-  isOpen: boolean
-  toggleDrawer: () => void
-}
+import { useAppSelector, useAppDispatch } from '@hooks'
+import { closeDrawerRModal } from '@redux/actionCreators'
+import CloseModalButton from '@main/Buttons/CloseModalButton'
 
-const Drawer = ({ isOpen, toggleDrawer }: Props) => {
+const DrawerModal = () => {
+  const isOpen: boolean = useAppSelector(
+    (state: StateType) => state.modal.drawer,
+    shallowEqual
+  )
+  const dispatch = useAppDispatch()
+  const onClose = () => dispatch(closeDrawerRModal())
+
   return (
     <div
       className={`${
         !isOpen && 'hidden'
       } absolute left-0 top-0 z-30  flex h-screen w-screen flex-col items-center justify-center bg-purple-300`}
     >
-      <button onClick={toggleDrawer} className="absolute top-0 left-0 m-2 ">
-        <RiCloseFill color="black" size={40} />
-      </button>
+      <CloseModalButton color="white" position="left" onClose={onClose} />
+
       <a
         className="my-1 text-xl font-semibold"
         onClick={(e) => e.stopPropagation()}
@@ -47,4 +52,4 @@ const Drawer = ({ isOpen, toggleDrawer }: Props) => {
   )
 }
 
-export default Drawer
+export default DrawerModal

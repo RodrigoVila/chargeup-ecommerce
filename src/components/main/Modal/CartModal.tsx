@@ -1,22 +1,29 @@
-import { useEffect, useState } from 'react'
 import { RiCloseFill } from 'react-icons/ri'
 import { shallowEqual } from 'react-redux'
 
+import { useAppDispatch, useAppSelector } from '@hooks'
+import { closeCartModal } from '@redux/actionCreators'
 import CartFooter from '@main/CartFooter'
-import HorizontalProduct from './HorizontalProduct'
-import { useAppSelector } from '@hooks'
+import HorizontalProduct from '@main/HorizontalProduct'
+import CloseModalButton from '@main/Buttons/CloseModalButton'
 
-interface Props {
-  items: ProductType[]
-}
-
-const CartModal = ({ items }: Props) => {
-  const isOpen: ModalStateType = useAppSelector(
-    (state: any) => state.modal.cart,
+const CartModal = () => {
+  const isOpen: boolean = useAppSelector(
+    (state: StateType) => state.modal.cart,
     shallowEqual
   )
+
+  const items: ProductType[] = useAppSelector(
+    (state: StateType) => state.cart.cart,
+    shallowEqual
+  )
+
+  const dispatch = useAppDispatch()
+  const onClose = () => dispatch(closeCartModal())
+
   const onSubmit = () => {
     console.log('!isOpen', isOpen)
+    console.log('!items', items)
   }
 
   return (
@@ -24,14 +31,9 @@ const CartModal = ({ items }: Props) => {
       <div
         className={`${
           !isOpen && 'hidden'
-        } absolute left-0 top-0 z-10 flex h-screen w-full flex-col items-center justify-center overflow-y-auto bg-wooden bg-cover bg-center bg-no-repeat pt-16`}
+        } absolute left-0 top-0 z-30  flex h-screen w-screen flex-col items-center justify-center bg-orange-300`}
       >
-        <div
-          className="absolute top-0 right-0 z-20 m-2 cursor-pointer"
-          onClick={() => {}}
-        >
-          <RiCloseFill color="white" size={45} />
-        </div>
+        <CloseModalButton color="white" position="right" onClose={onClose} />
 
         <div className="flex w-full flex-1 flex-col items-center">
           {items.map((item) => (

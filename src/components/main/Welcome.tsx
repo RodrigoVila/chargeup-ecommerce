@@ -1,27 +1,18 @@
 import { useState } from 'react'
 import { Toaster } from 'react-hot-toast'
-import { shallowEqual } from 'react-redux'
 
 import TopBar from '@main/TopBar'
-import MobileTopBar from '@main/MobileTopBar'
-import CartModal from '@main/CartModal'
-import CheckoutModal from '@main/CheckoutModal'
-import { useAppSelector } from '@hooks'
+import MobileTopBar from '@main/TopBar/MobileTopBar'
+import CartModal from '@main/Modal/CartModal'
+import CheckoutModal from '@main/Modal/CheckoutModal'
 
 const Welcome = () => {
-  const [isCartMenuOpen, setCartMenuOpen] = useState(false)
-  const toggleCart = () => setCartMenuOpen(!isCartMenuOpen)
-
-  const cart: ProductType[] = useAppSelector(
-    (state: any) => state.cart.cart,
-    shallowEqual
-  )
   return (
     <div className="relative h-screen w-full bg-[url('/glutenFree.png')] bg-cover bg-center bg-no-repeat ">
       <Toaster />
 
-      <CartModal items={cart} />
-      <CheckoutModal items={cart} />
+      <CartModal />
+      <CheckoutModal />
 
       <TopBar />
       <MobileTopBar />
