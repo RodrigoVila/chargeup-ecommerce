@@ -3,7 +3,7 @@ import MobileTopBar from '@main/TopBar/MobileTopBar'
 
 const Welcome = () => {
   return (
-    <div className="relative h-screen w-full bg-[url('/glutenFree.png')] bg-cover bg-center bg-no-repeat ">
+    <div className="relative h-screen w-full bg-[url('/welcome.png')] bg-cover bg-center bg-no-repeat ">
       <TopBar />
       <MobileTopBar />
 

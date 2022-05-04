@@ -17,20 +17,24 @@ const ProductList: FC = () => {
   }, [])
 
   useEffect(() => {
-    const filter = products.filter((product) =>
-      product.title.toLowerCase().includes(searchValue)
-    )
-    searchValue.length > 1
-      ? setFilteredProducts(filter)
-      : setFilteredProducts([])
+    const filterByProductName = () => {
+      const filter = products.filter((product) =>
+        product.title.toLowerCase().includes(searchValue.toLowerCase())
+      )
+      searchValue.length > 1
+        ? setFilteredProducts(filter)
+        : setFilteredProducts([])
+    }
+
+    filterByProductName()
   }, [searchValue])
 
   return (
     products.length > 0 && (
-      <div className="w-full h-full pt-4 bg-center bg-no-repeat bg-cover bg-[url('/purpleTexture.svg')]">
+      <div className="h-full w-full bg-[url('/purpleTexture.svg')] bg-cover bg-center bg-no-repeat pt-4">
         <SearchBar setSearchValue={setSearchValue} />
 
-        <div className="relative flex flex-wrap justify-center w-full mx-auto ">
+        <div className="relative mx-auto flex w-full flex-wrap justify-center ">
           {filteredProducts.length > 0
             ? filteredProducts?.map((p) => (
                 <Product
@@ -40,7 +44,7 @@ const ProductList: FC = () => {
                   description={p.description}
                   price={p.price}
                   quantity={p.quantity}
-                  imgUri={p.imgUri}
+                  imgName={p.imgUri}
                   nutritionalInfo={p.nutritionalInfo}
                   suitableForInfo={p.suitableForInfo}
                 />
@@ -53,7 +57,7 @@ const ProductList: FC = () => {
                   description={p.description}
                   price={p.price}
                   quantity={p.quantity}
-                  imgUri={p.imgUri}
+                  imgName={p.imgUri}
                   nutritionalInfo={p.nutritionalInfo}
                   suitableForInfo={p.suitableForInfo}
                 />

@@ -83,7 +83,7 @@ type ProductType = {
   description: string
   price: number
   quantity: number
-  imgUri: string
+  imgName: string
   nutritionalInfo: INutritionalInfo
   suitableForInfo: ISuitableForInfo
 }

@@ -1,25 +1,15 @@
 import Image from 'next/image'
 
 interface Props {
-  imgUri: string
-  isVertical?: boolean
+  imgName: string
 }
 
-const RoundImage = ({ imgUri, isVertical = false }: Props) => {
-  const styles = isVertical
-    ? '-mt-32 mb-6 border-2 w-60 h-60'
-    : 'absolute -top-4 -left-20 border-8 w-96 h-72'
+const RoundImage = ({ imgName }: Props) => {
   return (
     <div
-      className={`${styles} relative mx-auto overflow-hidden bg-contain  rounded-full `}
+      className="relative mx-auto -mt-32 mb-6 h-60 w-60 overflow-hidden rounded-full border-2 bg-contain"
     >
-      <Image
-        className=""
-        objectFit="cover"
-        layout="fill"
-        src="/brownies.jpg"
-        alt=""
-      />
+      <Image className="" objectFit="cover" layout="fill" src={`/${imgName}.jpg`} alt="" />
     </div>
   )
 }
