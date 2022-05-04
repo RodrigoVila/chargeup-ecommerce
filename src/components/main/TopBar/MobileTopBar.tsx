@@ -1,4 +1,4 @@
-import DrawerModal from '@main/Modal/DrawerModal'
+import DrawerModal from '@main/Cart/DrawerModal'
 import BurgerButton from '@main/Buttons/BurgerButton'
 import Logo from '@main/Logo'
 import CartButton from '@main/Buttons/CartButton'

@@ -1,19 +1,19 @@
 interface Props {
-  title: string;
-  icon: any;
-  borderColor: string;
-  onClick: () => void;
+  label: string
+  icon?: any
+  borderColor?: string
+  onClick: () => void
 }
 
-const NavItem = ({ title, icon, borderColor, onClick }: Props) => {
+const NavItem = ({ label, icon, borderColor = 'transparent', onClick }: Props) => {
   return (
-    <li className="mr-16 list-none cursor-pointer " onClick={onClick}>
+    <li className="mr-16 cursor-pointer list-none " onClick={onClick}>
       <a
-        className={`block py-1 pl-0 text-white no-underline align-middle md:py-3 md:pl-1 hover:text-white hover:border-${borderColor}-500 transition duration-300 ease-in-out`}
+        className={`block py-1 pl-0 align-middle text-white no-underline hover:text-white md:py-3 md:pl-1 hover:border-${borderColor}-500 transition duration-300 ease-in-out`}
       >
-        {icon}
-        <span className="block pb-1 text-xs font-semibold text-purple3 md:pb-0 md:text-base lg:text-3xl md:inline-block">
-          {title}
+        {icon && icon}
+        <span className="text-purple3 block pb-1 text-xs font-semibold md:inline-block md:pb-0 md:text-base lg:text-3xl">
+          {label}
         </span>
       </a>
     </li>
@@ -22,9 +22,9 @@ const NavItem = ({ title, icon, borderColor, onClick }: Props) => {
     //   onClick={goTo}
     // >
     //   {icon}
-    //   {title}
+    //   {label}
     // </div>
-  );
-};
+  )
+}
 
-export default NavItem;
+export default NavItem

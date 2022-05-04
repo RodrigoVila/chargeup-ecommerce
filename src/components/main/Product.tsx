@@ -12,6 +12,7 @@ import Counter from '@main/Counter'
 import RoundImage from '@main/RoundImage'
 import { colors } from '@utils/constants'
 import ProductModal from './ProductModal'
+import { openProductDetailModal } from '@redux/actionCreators'
 
 const Product = ({
   id,
@@ -20,14 +21,13 @@ const Product = ({
   nutritionalInfo,
   suitableForInfo,
   price,
-  imgName,
+  imgUri,
 }: ProductType) => {
   const [count, setCount] = useState(0)
   const [isModalOpen, setModalOpen] = useState(false)
   const dispatch = useAppDispatch()
 
-  const openModal = () => setModalOpen(true)
-  const closeModal = () => setModalOpen(false)
+  const openModal = () => dispatch(openProductDetailModal())
 
   const addOne = () => setCount((prevCount) => prevCount + 1)
 
@@ -48,31 +48,20 @@ const Product = ({
       nutritionalInfo,
       suitableForInfo,
       price,
-      imgName,
+      imgUri,
       quantity: count,
     }
     dispatch(addToCart(item))
     dispatch(displaySuccessMessage('Producto agregado!'))
   }
-  useEffect(() => {
-    console.log('imgname', imgName)
-  }, [imgName])
 
   return (
     <>
-      {isModalOpen && (
-        <ProductModal
-          title={title}
-          description={description}
-          imgName={imgName}
-          isOpen={isModalOpen}
-          closeModal={closeModal}
-        />
-      )}
+      <ProductModal title={title} description={description} imgUri={imgUri} />
 
       <div className="relative mx-2 mt-32 mb-4 w-full max-w-sm rounded-xl bg-black text-white lg:mx-8 lg:max-w-360">
         <div className="px-8 pt-8 pb-4 ">
-          {imgName && <RoundImage imgName={imgName} />}
+          {imgUri && <RoundImage imgUri={imgUri} />}
           <div className="mb-4 text-base font-semibold md:text-xl">{title.toUpperCase()}</div>
           <div className="cursor-pointer text-sm line-clamp-4 md:text-lg" onClick={openModal}>
             {description}

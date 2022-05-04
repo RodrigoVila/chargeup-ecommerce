@@ -1,15 +1,15 @@
 import Image from 'next/image'
 
 interface Props {
-  imgName: string
+  imgUri: string
 }
 
-const RoundImage = ({ imgName }: Props) => {
+const RoundImage = ({ imgUri }: Props) => {
   return (
     <div
       className="relative mx-auto -mt-32 mb-6 h-60 w-60 overflow-hidden rounded-full border-2 bg-contain"
     >
-      <Image className="" objectFit="cover" layout="fill" src={`/${imgName}.jpg`} alt="" />
+      <Image objectFit="cover" layout="fill" src={`/${imgUri}.jpg`} alt="" />
     </div>
   )
 }

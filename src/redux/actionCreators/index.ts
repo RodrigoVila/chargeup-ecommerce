@@ -1,16 +1,6 @@
-import {
-  addProduct,
-  removeProduct,
-  fetchProducts,
-  fetchProductsSuccess,
-} from './products'
+import { addProduct, removeProduct, fetchProducts, fetchProductsSuccess } from './products'
 import { userRegister, userLogin, userLogout } from './auth'
-import {
-  loadCart,
-  addToCart,
-  removeFromCart,
-  changeCartProductQuantity,
-} from './cart'
+import { loadCart, addToCart, removeFromCart, changeCartProductQuantity } from './cart'
 import { createCheckoutSession, createCheckoutSessionSuccess } from './checkout'
 import {
   displaySuccessMessage,
@@ -25,6 +15,8 @@ import {
   closeDrawerRModal,
   openCheckoutModal,
   closeCheckoutModal,
+  openProductDetailModal,
+  closeProductDetailModal,
   openCheckoutSuccessModal,
   closeCheckoutSuccessModal,
   openCheckoutErrorModal,
@@ -52,6 +44,8 @@ export {
   closeCartModal,
   openDrawerModal,
   closeDrawerRModal,
+  openProductDetailModal,
+  closeProductDetailModal,
   openCheckoutModal,
   closeCheckoutModal,
   openCheckoutSuccessModal,

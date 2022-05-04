@@ -5,6 +5,8 @@ import {
   CLOSE_DRAWER,
   OPEN_CHECKOUT,
   CLOSE_CHECKOUT,
+  OPEN_PRODUCT_DETAILS,
+  CLOSE_PRODUCT_DETAILS,
   OPEN_CHECKOUT_SUCCESS,
   CLOSE_CHECKOUT_SUCCESS,
   OPEN_CHECKOUT_ERROR,
@@ -17,9 +19,9 @@ export const openDrawerModal = () => ({ type: OPEN_DRAWER })
 export const closeDrawerRModal = () => ({ type: CLOSE_DRAWER })
 export const openCheckoutModal = () => ({ type: OPEN_CHECKOUT })
 export const closeCheckoutModal = () => ({ type: CLOSE_CHECKOUT })
+export const openProductDetailModal = () => ({ type: OPEN_PRODUCT_DETAILS })
+export const closeProductDetailModal = () => ({ type: CLOSE_PRODUCT_DETAILS })
 export const openCheckoutSuccessModal = () => ({ type: OPEN_CHECKOUT_SUCCESS })
 export const closeCheckoutSuccessModal = () => ({ type: CLOSE_CHECKOUT_SUCCESS })
 export const openCheckoutErrorModal = () => ({ type: OPEN_CHECKOUT_ERROR })
 export const closeCheckoutErrorModal = () => ({ type: CLOSE_CHECKOUT_ERROR })
-
-
