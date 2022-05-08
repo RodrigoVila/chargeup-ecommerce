@@ -8,6 +8,7 @@ import Contact from '@main/sections/Contact'
 import About from '@main/sections/About'
 import Keto from '@main/sections/Keto'
 import Cakes from '@main/sections/Cakes'
+import WhyUs from '@main/sections/WhyUs'
 import Footer from '@main/Footer'
 import CartModal from '@main/Cart/CartModal'
 import CheckoutModal from '@main/Cart/CheckoutModal'
@@ -46,6 +47,7 @@ const MainScreen = () => {
       <ProductList />
       <Cakes />
       <Keto />
+      <WhyUs />
       <Contact />
 
       {/* Footer */}

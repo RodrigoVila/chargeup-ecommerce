@@ -1,26 +1,34 @@
 import { useEffect, useState, ChangeEvent } from 'react'
-import BackgroundOverlay from 'components/main/BackgroundOverlay'
-import Button from '../Button'
+import sgMail from '@sendgrid/mail'
+
+import BackgroundOverlay from '@main/BackgroundOverlay'
+import Button from '@main/Button'
 import { colors } from '@utils/constants'
 
 interface ContactForm {
-  name: string
-  email: string
-  message: string
+  to: string
+  from: string
+  subject: string
+  text: string
+  html?: string
 }
 
 const ContactSection = () => {
   const [offsetY, setOffsetY] = useState(0)
   const [data, setData] = useState<ContactForm>({
-    name: '',
-    email: '',
-    message: '',
+    to: 'style.alhwin@gmail.com', // Change to your recipient
+    from: 'style.alhwin@gmail.com', // Change to your verified sender
+    subject: '',
+    text: '',
   })
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) =>
     setData({ ...data, [e.target.name]: e.target.value })
 
-  const handleSubmit = () => {}
+  const handleSubmit = () => {
+    sgMail.setApiKey(process.env.SENDGRID_API_KEY)
+    sgMail.send(data)
+  }
 
   const handleScroll = () => setOffsetY(window.scrollY)
 
@@ -43,7 +51,7 @@ const ContactSection = () => {
     >
       <BackgroundOverlay color="Black" />
       <p className="z-10 mb-6 text-5xl font-semibold text-white">Contactanos</p>
-      <div className="z-10 flex w-full max-w-xl px-4 flex-col items-center justify-center overflow-hidden text-white font-">
+      <div className="font- z-10 flex w-full max-w-xl flex-col items-center justify-center overflow-hidden px-4 text-white">
         <input
           name="name"
           placeholder="Nombre"
