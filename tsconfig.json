@@ -1,7 +1,11 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": false,
@@ -15,18 +19,42 @@
     "jsx": "preserve",
     "baseUrl": "./src",
     "paths": {
-      "@atoms/*": ["./components/atoms/*"],
-      "@molecules/*": ["./components/molecules/*"],
-      "@organisms/*": ["./components/organisms/*"],
-      "@constants/*": ["./constants/*"],
-      "@context/*": ["./context/*"],
-      "@hooks/*": ["./hooks/*"],
-      "@models/*": ["./models/*"],
-      "@redux/*": ["./redux/*"],
-      "@services": ["./services/index.tsx"],
-      "@utils/*": ["./utils/*"]
-    }
+      "@main/*": [
+        "./components/main/*"
+      ],
+      "@admin/*": [
+        "./components/admin/*"
+      ],
+      "@constants/*": [
+        "./constants/*"
+      ],
+      "@context/*": [
+        "./context/*"
+      ],
+      "@hooks": [
+        "./hooks/index.tsx"
+      ],
+      "@models/*": [
+        "./models/*"
+      ],
+      "@redux/*": [
+        "./redux/*"
+      ],
+      "@services": [
+        "./services/index.tsx"
+      ],
+      "@utils/*": [
+        "./utils/*"
+      ]
+    },
+    "incremental": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
-  "exclude": ["node_modules"]
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

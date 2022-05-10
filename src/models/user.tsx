@@ -5,11 +5,11 @@ let userSchema = new Schema(
   {
     name: {
       type: String,
-      required: true,
+      required: false,
     },
     lastName: {
       type: String,
-      required: true,
+      required: false,
     },
     email: {
       type: String,
@@ -18,6 +18,10 @@ let userSchema = new Schema(
     password: {
       type: String,
       required: true,
+    },
+    token: {
+      type: String,
+      required: false,
     },
     since: {
       type: Date,

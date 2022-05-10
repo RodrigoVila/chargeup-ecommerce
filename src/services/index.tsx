@@ -1,18 +1,12 @@
-import axios from "axios";
+import { register, login, logout } from './auth'
+import { postNewOrder } from './orders'
+import { addProductToDB, removeProductFromDB } from './products'
 
-export const addProductToDB = (article: ArticleType): void => {
-  axios.post("/api/product", article);
-};
-
-export const removeProductFromDB = (articleId: number): void => {
-  const config = {
-    data: {
-      id: articleId,
-    },
-  };
-  axios.delete("/api/product", config);
-};
-
-export const postNewOrder = async (order: OrderItemType[]): Promise<void> => {
-  await axios.post("/api/order", order);
-};
+export {
+  register,
+  login,
+  logout,
+  postNewOrder,
+  addProductToDB,
+  removeProductFromDB,
+}

@@ -1,74 +1,122 @@
-interface INutritionalInfo {
-  calories: number;
-  protein: number;
-  carbs: number;
-  fat: number;
+//Auth
+type UserType = {
+  id: number
+  name: string
+  email: string
+}
+type AuthStateType = {
+  user: UserType
 }
 
-//Article
-type ArticleType = {
-  id: number;
-  title: string;
-  description: string;
-  nutritionalInfo: INutritionalInfo;
-  suitableForInfo: string[];
-  price: number;
-  imgUri: string;
-  quantity?: number;
-};
-
-type ArticleStateType = {
-  articles: ArticleType[];
-};
-
-type ArticleActionType = {
-  type: string;
-  article: ArticleType;
-};
+interface AuthActionType extends AuthStateType {
+  type: string
+}
 
 //Cart
 type CartStateType = {
-  cart: ArticleType[];
-};
+  items: ProductType[]
+}
 
-type CartActionType = {
-  type: string;
-  cart: ArticleType[];
-};
+interface CartActionType {
+  type: string
+  product: ProductType
+}
 
-//Toast
-type ToastStateType = {
-  message: string;
-};
+//Checkout Session
+type CheckoutStateType = {
+  session: string
+}
 
-type ToastActionType = {
-  type: string;
-  message: string;
-};
+interface CheckoutActionType extends CheckoutStateType {
+  type: string
+}
+
+// Modals
+type ModalStateType = {
+  drawer: boolean
+  cart: boolean
+  checkout: boolean
+  checkout_success: boolean
+  checkout_error: boolean
+  product: boolean
+}
+
+interface ModalActionType extends ModalStateType {
+  type: string
+}
 
 //Order
 type OrderItemType = {
-  id: number;
-  title: string;
-  price: number;
-  quantity: number;
-};
+  id: number
+  title: string
+  price: number
+  quantity: number
+}
 
 type OrderStateType = {
-  orders: OrderItemType[];
-};
+  orders: OrderItemType[]
+}
 
 type OrderActionType = {
-  type: string;
-  order: Orderype;
-};
+  type: string
+  order: Orderype
+}
 
+//Products
+interface INutritionalInfo {
+  weight: number
+  calories: number
+  protein: number
+  carbs: number
+  fat: number
+}
+
+interface ISuitableForInfo {
+  protein: boolean
+  vegan: boolean
+  glutenFree: boolean
+  keto: boolean
+}
+
+type ProductType = {
+  id: string
+  title: string
+  description: string
+  price: number
+  quantity: number
+  imgUri: string
+  nutritionalInfo: INutritionalInfo
+  suitableForInfo: ISuitableForInfo
+}
+
+type ProductsStateType = {
+  products: ProductType[]
+}
+
+interface ProductsActionType extends ProductsStateType {
+  type: string
+}
+
+//Toast
+type ToastStateType = {
+  message: string
+}
+
+interface ToastActionType extends ToastStateType {
+  type: string
+}
+
+//Global State
 type StateType = {
-  state: {
-    orders: OrderItemType[];
-    cart: ArticleType[];
-  };
-};
+  auth: AuthActionType
+  cart: CartStateType
+  checkout: CheckoutStateType
+  modal: ModalStateType
+  orders: OrderStateType
+  products: ProductStateType
+  toastMessages: ToastStateType
+}
 
-type DispatchType = (args: ArticleActionType) => ArticleActionType;
-type DispatchType = (args: CartAction) => CartAction;
+//Dispatch
+type DispatchType = (args: ProductActionType) => ProductActionType
+type DispatchType = (args: CartAction) => CartAction
