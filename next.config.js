@@ -4,5 +4,8 @@ module.exports = (phase, { defaultConfig }) => {
     images: {
       domains: ['i.imgur.com'],
     },
+    typescript: {
+      ignoreBuildErrors: true,
+    },
   }
 }

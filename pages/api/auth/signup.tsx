@@ -18,7 +18,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       const user = await User.create({ ...body, token });
       return res
         .status(201)
-        .json({ user: user.email, name: user.name, token: user.token });
+        // .json({ user: user.email, name: user.name, token: user.token });
     } catch (e) {
       return res.status(400).json({
         success: false,
