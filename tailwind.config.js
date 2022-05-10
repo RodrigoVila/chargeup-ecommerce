@@ -4,11 +4,9 @@ module.exports = {
   content: ['./pages/**/*.{js,ts,jsx,tsx}', './src/components/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
-      gradientColorStops: (theme) => ({
-        primary: '#FF8C00',
-        secondary: '#FFA500',
-        danger: '#FFD700',
-      }),
+      animation: {
+        'ping-slow': 'ping 3s infinite ease-in-out',
+      },
       colors: {
         success: '#00C851',
         danger: '#ff4444',
@@ -20,9 +18,16 @@ module.exports = {
         tranlucentWhite2: 'rgba(255,255,255,0.8)',
       },
       fontFamily: {
-        dinpro: ['DINPro-Medium'],
         sans: ['Inter var', ...defaultTheme.fontFamily.sans],
+        dinMedium: ['DINPro-Medium'],
+        dinBold: ['DINPro-Bold'],
+        dinRegular: ['DINPro-Regular'],
       },
+      gradientColorStops: (theme) => ({
+        primary: '#FF8C00',
+        secondary: '#FFA500',
+        danger: '#FFD700',
+      }),
       height: {
         'screen/2': '50vh',
         'screen/3': 'calc(100vh / 3)',

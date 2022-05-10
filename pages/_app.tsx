@@ -1,4 +1,5 @@
 import 'tailwindcss/tailwind.css'
+import '../global.css'
 import { Provider } from 'react-redux'
 import { Elements } from '@stripe/react-stripe-js'
 import { loadStripe } from '@stripe/stripe-js'

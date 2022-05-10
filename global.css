@@ -1,20 +1,31 @@
-  @font-face {
-    font-family: "DINPro-Medium";
-    src: local(''), url('/fonts/DINPro-Medium.ttf') format('ttf');
-    font-style: medium;
-    font-weight: 500;
-    font-display: swap;
-  }
+@font-face {
+  font-family: 'DINPro-Medium';
+  src: url('./public/fonts/DINPro-Medium.ttf');
+  font-style: medium;
+  font-weight: 400;
+  font-display: swap;
+}
 
-  .tooltip {
-    @apply absolute invisible;
-  }
-  
-  .has-tooltip:hover .tooltip {
-    @apply z-50 visible;
-  }
+@font-face {
+  font-family: 'DINPro-Bold';
+  src: url('./public/fonts/DINPro-Bold.OTF');
+  font-style: medium;
+  font-weight: 700;
+  font-display: swap;
+}
 
-  @layer utilities {
-    .content-auto {
-      content-visibility: auto;
-    }
+@font-face {
+  font-family: 'DINPro-Regular';
+  src: url('./public/fonts/DINPro-Regular.OTF');
+  font-style: medium;
+  font-weight: 400;
+  font-display: swap;
+}
+
+.tooltip {
+  @apply invisible absolute;
+}
+
+.has-tooltip:hover .tooltip {
+  @apply visible z-50;
+}
