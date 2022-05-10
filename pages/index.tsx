@@ -43,6 +43,7 @@ const MainScreen = () => {
 
       {/* Sections */}
       <div className="font-dinRegular">
+
         <Welcome />
         <About />
         <ProductList />
