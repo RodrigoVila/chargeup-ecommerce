@@ -1,3 +1,5 @@
+import { FC } from 'react'
+
 interface Props {
   label: string
   icon?: any
@@ -5,7 +7,7 @@ interface Props {
   onClick: () => void
 }
 
-const NavItem = ({ label, icon, borderColor = 'transparent', onClick }: Props) => {
+const NavItem: FC<Props> = ({ label, icon, borderColor = 'transparent', onClick }) => {
   return (
     <li className="mr-16 cursor-pointer list-none " onClick={onClick}>
       <a

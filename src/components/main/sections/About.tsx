@@ -2,11 +2,11 @@ import BackgroundOverlay from 'components/main/BackgroundOverlay'
 
 const AboutSection = () => {
   return (
-    <div className="relative m-auto flex h-full w-full flex-col justify-center bg-wooden bg-cover bg-fixed bg-center bg-no-repeat">
+    <div className="relative m-auto flex h-full w-full flex-col justify-center  bg-[url('/wooden.jpg')] bg-cover bg-fixed bg-center bg-no-repeat">
       <BackgroundOverlay color="Black" />
       <div className="z-20 mx-auto w-full pt-6 text-center text-3xl text-white drop-shadow-sm filter">
         <div className="w-full py-8 text-center text-6xl px-2 text-white">
-          Que es Charge UP?
+          QUE ES CHARGE UP ?
         </div>
         <div className="max-w-4xl mx-auto leading-snug pb-20">
           <p className="py-2">

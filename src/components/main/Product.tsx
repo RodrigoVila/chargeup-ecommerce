@@ -1,20 +1,18 @@
-import { useEffect, useState } from 'react'
+import { useState, FC } from 'react'
 import Image from 'next/image'
-import { AiOutlineThunderbolt, AiFillFire } from 'react-icons/ai'
-import { GiBread, GiAvocado } from 'react-icons/gi'
+import ReactTooltip from 'react-tooltip'
 
-import { addToCart } from '@redux/actionCreators/cart'
-import { displaySuccessMessage, displayInfoMessage } from '@redux/actionCreators/toastNotifications'
 import { useAppDispatch } from '@hooks'
+import { addToCart, displayInfoMessage, displaySuccessMessage } from '@redux/actionCreators'
 
 import Button from '@main/Button'
 import Counter from '@main/Counter'
 import RoundImage from '@main/RoundImage'
 import { colors } from '@utils/constants'
-import ProductModal from './ProductModal'
-import { openProductDetailModal } from '@redux/actionCreators'
 
-const Product = ({
+type Props = ProductType & { onClick: (product: ProductType) => void }
+
+const Product: FC<Props> = ({
   id,
   title,
   description,
@@ -22,12 +20,10 @@ const Product = ({
   suitableForInfo,
   price,
   imgUri,
-}: ProductType) => {
+  onClick,
+}) => {
   const [count, setCount] = useState(0)
-  const [isModalOpen, setModalOpen] = useState(false)
   const dispatch = useAppDispatch()
-
-  const openModal = () => dispatch(openProductDetailModal())
 
   const addOne = () => setCount((prevCount) => prevCount + 1)
 
@@ -55,63 +51,74 @@ const Product = ({
     dispatch(displaySuccessMessage('Producto agregado!'))
   }
 
+  const iconStyle = 'relative h-11 w-11'
+
   return (
     <>
-      <ProductModal title={title} description={description} imgUri={imgUri} />
+      <ReactTooltip />
 
       <div className="relative mx-2 mt-32 mb-4 w-full max-w-sm rounded-xl bg-black text-white lg:mx-8 lg:max-w-360">
         <div className="px-8 pt-8 pb-4 ">
           {imgUri && <RoundImage imgUri={imgUri} />}
-          <div className="mb-4 text-base font-semibold md:text-xl">{title.toUpperCase()}</div>
-          <div className="cursor-pointer text-sm line-clamp-4 md:text-lg" onClick={openModal}>
+          <div className="text-base font-semibold md:text-xl">{title.toUpperCase()}</div>
+          <div className="my-3 flex text-sm font-semibold md:text-base">
+            {suitableForInfo.vegan && (
+              <div className={`${iconStyle} mr-1`} data-tip="Vegano">
+                <Image src="/icons/vegan-white.png" layout="fill" />
+              </div>
+            )}
+            {suitableForInfo.protein && (
+              <div className={`${iconStyle} mx-1`} data-tip="Alto en proteina">
+                <Image src="/icons/high-protein-white.svg" layout="fill" />
+              </div>
+            )}
+            {suitableForInfo.glutenFree && (
+              <div className={`${iconStyle} mx-1`} data-tip="Gluten Free">
+                <Image src="/icons/gluten-free-white.png" layout="fill" />
+              </div>
+            )}
+            {suitableForInfo.keto && (
+              <div className={`${iconStyle} mx-1`} data-tip="Keto">
+                <Image src="/icons/keto-white.svg" layout="fill" />
+              </div>
+            )}
+          </div>
+          <div className="cursor-pointer text-sm line-clamp-4 md:text-lg" onClick={onClick}>
             {description}
           </div>
-          <div className="cursor-pointer font-semibold text-purple-700" onClick={openModal}>
+          <div className="cursor-pointer font-semibold text-[#a855f7]" onClick={onClick}>
             ver mas.
           </div>
           <div className="my-4 flex flex-col text-sm md:text-base">
             <div className="mb-4">Info Nutricional:</div>
             <div className="flex items-center justify-around text-lg">
-              <div className="mr-4 flex items-center justify-center ">
-                <AiFillFire size={35} />
+              <div className="flex flex-col items-center justify-center">
+                <div className="relative h-12 w-12" data-tip="Calorias">
+                  <Image src="/icons/kcal-white.svg" layout="fill" />
+                </div>
                 <div className="ml-1 text-center">{nutritionalInfo.calories}</div>
               </div>
-              <div className="mr-4 flex items-center justify-center">
-                <GiBread size={35} />
+              <div className="flex flex-col items-center justify-center">
+                <div className={iconStyle} data-tip="Carbohidratos">
+                  <Image src="/icons/carbs-white.png" layout="fill" />
+                </div>
                 <div className="ml-1 text-center">{nutritionalInfo.carbs}</div>
               </div>
-              <div className="mr-4 flex items-center justify-center">
-                <AiOutlineThunderbolt size={35} />
+              <div className="flex flex-col items-center justify-center">
+                <div className={iconStyle} data-tip="Proteina">
+                  <Image src="/icons/protein-white.svg" layout="fill" />
+                </div>
                 <div className="ml-1 text-center">{nutritionalInfo.protein}</div>
               </div>
-              <div className="mr-4 flex items-center justify-center">
-                <GiAvocado size={35} />
+              <div className="flex flex-col items-center justify-center">
+                <div className={iconStyle} data-tip="Grasas saludables">
+                  <Image src="/icons/fat-white.png" layout="fill" />
+                </div>
                 <div className="ml-1 text-center">{nutritionalInfo.fat}</div>
               </div>
             </div>
           </div>
-          <div className="mt-8 flex text-sm font-semibold md:text-base">
-            {suitableForInfo.vegan && (
-              <div className="relative h-10 w-10">
-                <Image src="/icons/vegan.svg" layout="fill" />
-              </div>
-            )}
-            {suitableForInfo.protein && (
-              <div className="relative h-10 w-10">
-                <Image src="/icons/high-protein.svg" layout="fill" />
-              </div>
-            )}
-            {suitableForInfo.glutenFree && (
-              <div className="relative h-10 w-10">
-                <Image src="/icons/gluten-free.svg" layout="fill" />
-              </div>
-            )}
-            {suitableForInfo.keto && (
-              <div className="relative h-10 w-10">
-                <Image src="/icons/keto.svg" layout="fill" />
-              </div>
-            )}
-          </div>
+
           <div className="flex justify-end">
             <div className="my-2 text-2xl font-semibold md:text-4xl">{`€${price}`}</div>
           </div>

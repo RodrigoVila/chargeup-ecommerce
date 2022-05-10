@@ -42,16 +42,17 @@ const MainScreen = () => {
       <CheckoutModal />
 
       {/* Sections */}
-      <Welcome />
-      <About />
-      <ProductList />
-      <Cakes />
-      <Keto />
-      <WhyUs />
-      <Contact />
-
-      {/* Footer */}
-      <Footer />
+      <div className="font-dinpro">
+        <Welcome />
+        <About />
+        <ProductList />
+        <Cakes />
+        <Keto />
+        <WhyUs />
+        <Contact />
+        {/* Footer */}
+        <Footer />
+      </div>
     </>
   )
 }

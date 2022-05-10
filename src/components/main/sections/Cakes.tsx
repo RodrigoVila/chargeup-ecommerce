@@ -1,11 +1,9 @@
-import BackgroundOverlay from '@main/BackgroundOverlay'
-
 const CakesSection = () => {
   return (
-    <div className="relative mx-auto w-full bg-purple-800 py-6 text-center text-3xl text-white">
+    <div className="relative z-20 mx-auto w-full py-6 text-center">
       <div className="w-30">
-        <div className="w-full py-10 text-center text-8xl ">Cakes</div>
-        <div className="mx-auto max-w-4xl pb-20 leading-snug">
+        <div className="w-full py-10 text-6xl">CAKES</div>
+        <div className="mx-auto max-w-4xl pb-20 text-center text-2xl">
           <p className="py-2">
             Sabemos que muchos de ustedes quieren festejar de manera saludable, es por ello que
             decidimos adaptar nuestras recetas en formato pasteles con decoración.

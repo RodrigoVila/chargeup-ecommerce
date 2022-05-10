@@ -1,10 +1,7 @@
 const defaultTheme = require('tailwindcss/defaultTheme')
 
 module.exports = {
-  content: [
-    './pages/**/*.{js,ts,jsx,tsx}',
-    './src/components/**/*.{js,ts,jsx,tsx}',
-  ],
+  content: ['./pages/**/*.{js,ts,jsx,tsx}', './src/components/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
       gradientColorStops: (theme) => ({
@@ -12,24 +9,18 @@ module.exports = {
         secondary: '#FFA500',
         danger: '#FFD700',
       }),
-      backgroundImage: {
-        main: "url('/main.png')",
-        brownies: "url('/brownies.jpg')",
-        whiteRing: "url('/whiteRing.png')",
-        proteinBalls: "url('/bolitas.jpg')",
-        driedfruits: "url('/driedfruits.jpg')",
-        wooden: "url('/wooden.png')",
-      },
       colors: {
         success: '#00C851',
         danger: '#ff4444',
         info: '#33b5e5',
         tranlucentWhite: 'rgba(255,255,255,0.5)',
         tranlucentBlack: 'rgba(0,0,0,0.5)',
-        tranlucentBlack2: 'rgba(0,0,0,0.8)',
+        tranlucentBlack1: 'rgba(0,0,0,0.3)',
+        tranlucentBlack2: 'rgba(0,0,0,0.75)',
         tranlucentWhite2: 'rgba(255,255,255,0.8)',
       },
       fontFamily: {
+        dinpro: ['DINPro-Medium'],
         sans: ['Inter var', ...defaultTheme.fontFamily.sans],
       },
       height: {
@@ -81,7 +72,5 @@ module.exports = {
       },
     },
   },
-  plugins: [
-    require('@tailwindcss/line-clamp')
-  ],
+  plugins: [require('@tailwindcss/line-clamp')],
 }

@@ -1,12 +1,12 @@
-import React from "react";
-import { AiOutlineUser } from "react-icons/ai";
+import { FC } from 'react'
+import { AiOutlineUser } from 'react-icons/ai'
 
-const RegisterLoginButton = () => {
+const RegisterLoginButton: FC = () => {
   return (
-    <div className="z-20 flex items-center mx-2">
+    <div className="mx-2 flex items-center">
       <AiOutlineUser className="w-12 text-4xl text-white" />
     </div>
-  );
-};
+  )
+}
 
-export default RegisterLoginButton;
+export default RegisterLoginButton

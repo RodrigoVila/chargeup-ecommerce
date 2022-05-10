@@ -5,9 +5,9 @@ const NavItems = () => {
     <div className="z-20 flex flex-row items-center justify-center pl-2 text-center">
       <NavItem label="ABOUT US" onClick={() => {}} />
       <NavItem label="PRODUCTOS" onClick={() => {}} />
-      <NavItem label="QUE ES KETO?" onClick={() => {}} />
-      <NavItem label="COMO COMPRAR" onClick={() => {}} />
-      <NavItem label="BLOG" onClick={() => {}} />
+      <NavItem label="CAKES" onClick={() => {}} />
+      <NavItem label="KETO" onClick={() => {}} />
+      <NavItem label="POR QUE ELEGIRNOS" onClick={() => {}} />
       <NavItem label="CONTACTO" onClick={() => {}} />
     </div>
   );

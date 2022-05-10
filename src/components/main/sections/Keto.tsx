@@ -3,8 +3,8 @@ import Image from 'next/image'
 const KetoSection = () => {
   return (
     <div className="relative mx-auto flex w-full flex-col items-center justify-center py-6 px-2 text-center ">
-      <div className="w-30">
-        <div className="w-full py-10 text-center text-8xl ">Que es Keto?</div>
+      <div className="mt-8">
+        <div className="w-full py-10 text-center text-6xl ">QUE ES KETO ?</div>
         <div className="relative my-8 h-screen/2 w-full bg-contain">
           <Image src="/keto-graphic.png" objectFit="contain" layout="fill" />
         </div>

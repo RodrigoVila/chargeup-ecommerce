@@ -1,13 +1,15 @@
+import BackgroundOverlay from '@main/BackgroundOverlay'
 import TopBar from '@main/TopBar'
 import MobileTopBar from '@main/TopBar/MobileTopBar'
 
 const Welcome = () => {
   return (
-    <div className="relative h-screen w-full bg-[url('/welcome.png')] bg-cover bg-center bg-no-repeat ">
+    <div className="relative h-screen w-full bg-[url('/welcome.jpg')] bg-cover bg-center bg-no-repeat ">
       <TopBar />
       <MobileTopBar />
 
-      <div className="absolute top-0 flex h-full w-full flex-col items-center justify-center">
+      <BackgroundOverlay color="Black" />
+      <div className="relative z-10 flex h-1/2 w-full flex-col items-center justify-center">
         <div className="leading-0 mt-2 pb-4 text-center text-5xl font-semibold tracking-wide text-white md:px-4 md:text-6xl">
           TASTE THE LOVE AND FEEL RECHARGED
         </div>
