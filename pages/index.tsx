@@ -42,7 +42,7 @@ const MainScreen = () => {
       <CheckoutModal />
 
       {/* Sections */}
-      <div className="font-dinpro">
+      <div className="font-dinRegular">
         <Welcome />
         <About />
         <ProductList />
