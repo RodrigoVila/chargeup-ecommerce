@@ -14,16 +14,10 @@ module.exports = {
               'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version',
           },
         ],
+        typescript: {
+          ignoreBuildErrors: true,
+        },
       },
     ]
   },
-  // return {
-  //   ...defaultConfig,
-  //   images: {
-  //     domains: ['i.imgur.com'],
-  //   },
-  //   typescript: {
-  //     ignoreBuildErrors: true,
-  //   },
-  // }
 }
