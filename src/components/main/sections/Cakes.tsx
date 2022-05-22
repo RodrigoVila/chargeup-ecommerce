@@ -1,10 +1,11 @@
 import BackgroundOverlay from '@main/BackgroundOverlay'
+import { colors } from '@utils/constants'
 import { FC } from 'react'
 
 const CakesSection: FC = () => {
   return (
     <div className="relative m-auto flex h-full w-full flex-col items-center justify-center bg-[url('/cake.webp')] bg-cover bg-center bg-no-repeat text-white">
-      <BackgroundOverlay color="Black" />
+      <BackgroundOverlay color={colors.overlay} />
       <div className="w-full py-8 px-2 text-center font-dinBold text-6xl z-20">CAKES</div>
       <div className="mx-auto max-w-4xl pb-20 text-center text-2xl z-20">
         <p className="py-2">

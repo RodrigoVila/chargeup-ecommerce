@@ -1,5 +1,5 @@
 const BackgroundOverlay = ({ color }) => {
-  return <div className={`absolute inset-0 z-10 bg-tranlucent${color}`} />;
-};
+  return <div className={`absolute inset-0 z-10 bg-[${color}]`} />
+}
 
-export default BackgroundOverlay;
+export default BackgroundOverlay

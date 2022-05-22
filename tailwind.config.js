@@ -7,16 +7,6 @@ module.exports = {
       animation: {
         'ping-slow': 'ping 3s infinite ease-in-out',
       },
-      colors: {
-        success: '#00C851',
-        danger: '#ff4444',
-        info: '#33b5e5',
-        tranlucentWhite: 'rgba(255,255,255,0.5)',
-        tranlucentBlack: 'rgba(0,0,0,0.5)',
-        tranlucentBlack1: 'rgba(0,0,0,0.3)',
-        tranlucentBlack2: 'rgba(0,0,0,0.75)',
-        tranlucentWhite2: 'rgba(255,255,255,0.8)',
-      },
       fontFamily: {
         sans: ['Inter var', ...defaultTheme.fontFamily.sans],
         dinMedium: ['DINPro-Medium'],

@@ -7,6 +7,7 @@ import CloseModalButton from '@main/Buttons/CloseModalButton'
 import Button from '@main/Button'
 import { colors } from '@utils/constants'
 import { useEffect, useMemo } from 'react'
+import ReactTooltip from 'react-tooltip'
 
 const CartModal = () => {
   const isOpen: boolean = useAppSelector((state: StateType) => state.modal.cart, shallowEqual)
@@ -21,10 +22,6 @@ const CartModal = () => {
     dispatch(openCheckoutModal())
   }
 
-  const getTotalSum = () => {
-    return
-  }
-
   const totalSum = useMemo(
     () => items.reduce((acc, item) => acc + item.price * item.quantity, 0),
     [items]
@@ -34,21 +31,24 @@ const CartModal = () => {
     items.length === 0 && onClose()
   }, [items])
 
-  useEffect(() => {
-    isOpen ? (document.body.style.overflow = 'hidden') : (document.body.style.overflow = 'auto')
-  }, [isOpen])
+  // useEffect(() => {
+  //   isOpen ? (document.body.style.overflow = 'hidden') : (document.body.style.overflow = 'auto')
+  // }, [isOpen])
 
   return (
     <div
       className={`${
         !isOpen && 'hidden'
-      } absolute inset-0 z-30 flex h-screen w-screen flex-col items-center justify-center bg-tranlucentBlack`}
+      } absolute top-0 right-0 z-30 flex flex-col items-center justify-center`}
     >
-      <div className="relative flex w-full flex-col  items-center bg-tranlucentBlack2 md:w-2/3">
+      <ReactTooltip />
+      <div className="2 relative m-2 flex min-w-[500px] flex-col items-center rounded-lg bg-white md:w-2/3">
         <div className="absolute right-2 top-2">
-          <CloseModalButton color="white" position="right" onClose={onClose} />
+          <CloseModalButton color="black" position="right" onClose={onClose} />
         </div>
-        <div className="my-6 px-2 text-center text-4xl text-white">2 items in cart</div>
+        <div className="my-6 px-2 text-center text-4xl text-black">{`${items.length} ${
+          items.length > 1 ? 'articulos' : 'articulo'
+        } en la cesta`}</div>
         {items.map((item) => (
           <CartProduct
             key={item.id}
@@ -62,13 +62,25 @@ const CartModal = () => {
             imgUri={item.imgUri}
           />
         ))}
-        <div className="flex w-full items-center justify-between p-4 pb-0 text-3xl text-white">
-          <div>Total Price</div>
+
+        <div className="flex w-full items-center justify-between p-4 pb-0 text-3xl text-black">
+          <div>Total</div>
           <div>{`€${totalSum}`}</div>
         </div>
+        <div className="flex w-full items-center justify-between px-4 pt-2">
+          <div className="h-full text-xl text-gray-700">Envio</div>
+          <div className="h-full text-xl text-gray-700">€0</div>
+        </div>
+        <div className="flex w-full items-center justify-between px-4 pt-2">
+          <div className="h-full text-xl text-gray-700">Entrega</div>
+          <div className="h-full text-xl text-gray-700">48hs</div>
+        </div>
         <div className="flex w-full flex-col items-center justify-between p-4 text-xl text-white md:text-3xl">
-          <Button title="Checkout" color={colors.purple} onClick={onSubmit} />
-          <div className="my-2 cursor-pointer p-2 text-xl  text-white" onClick={onClose}>
+          <Button title="Ir a pagar" color={colors.purple} onClick={onSubmit} />
+          <div
+            className="my-2 w-full cursor-pointer rounded-md  border-2 p-2 text-center text-xl text-black shadow-sm"
+            onClick={onClose}
+          >
             Cerrar
           </div>
         </div>

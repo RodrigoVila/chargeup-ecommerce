@@ -87,7 +87,7 @@ const Product: FC<Props> = ({
             {description}
           </div>
           {/* text-[#a855f7] */}
-          <div className="cursor-pointer font-semibold text-orange-500" onClick={onClick}>
+          <div className="cursor-pointer font-semibold text-orange-400" onClick={onClick}>
             ver +
           </div>
           <div className="my-4 flex flex-col text-sm md:text-base">
