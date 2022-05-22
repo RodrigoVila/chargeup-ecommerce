@@ -1,5 +1,6 @@
 import 'tailwindcss/tailwind.css'
 import '../global.css'
+import Head from 'next/head'
 import { Provider } from 'react-redux'
 import { Elements } from '@stripe/react-stripe-js'
 import { loadStripe } from '@stripe/stripe-js'
@@ -17,11 +18,19 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
     clientSecret: process.env.STRIPE_SECRET_KEY,
   }
   return (
-    <Provider store={store}>
-      <Elements stripe={stripePromise} options={options}>
-        <Component {...pageProps} />
-      </Elements>
-    </Provider>
+    <>
+      <Head>
+        <link rel="preload" href="/fonts/DINPro-Medium.ttf" as="font" crossOrigin="" />
+        <link rel="stylesheet" href="https://rsms.me/inter/inter.css"></link>
+        <title>Charge UP Barcelona</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+      </Head>
+      <Provider store={store}>
+        <Elements stripe={stripePromise} options={options}>
+          <Component {...pageProps} />
+        </Elements>
+      </Provider>
+    </>
   )
 }
 

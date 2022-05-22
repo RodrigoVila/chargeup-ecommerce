@@ -27,13 +27,7 @@ const MainScreen = () => {
   }, [])
 
   return (
-    <>
-      <Head>
-        <link rel="preload" href="/fonts/DINPro-Medium.ttf" as="font" crossOrigin="" />
-        <link rel="stylesheet" href="https://rsms.me/inter/inter.css"></link>
-        <script src="https://cdn.tailwindcss.com"></script>
-      </Head>
-
+    <div className="font-dinRegular">
       {/* Toast messages component */}
       <Toaster />
 
@@ -42,19 +36,16 @@ const MainScreen = () => {
       <CheckoutModal />
 
       {/* Sections */}
-      <div className="font-dinRegular">
-
-        <Welcome />
-        <About />
-        <ProductList />
-        <Cakes />
-        <Keto />
-        <WhyUs />
-        <Contact />
-        {/* Footer */}
-        <Footer />
-      </div>
-    </>
+      <Welcome />
+      <About />
+      <ProductList />
+      <Cakes />
+      <Keto />
+      <WhyUs />
+      <Contact />
+      {/* Footer */}
+      <Footer />
+    </div>
   )
 }
 
