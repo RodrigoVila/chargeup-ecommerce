@@ -3,8 +3,9 @@ import BackgroundOverlay from 'components/main/BackgroundOverlay'
 import { colors } from '@utils/constants'
 
 const AboutSection: FC = () => {
+  // bg-fixed bg-center bg-no-repeat  bg-[url('/wooden.jpg')] bg-cover
   return (
-    <div className="relative m-auto flex h-full w-full flex-col justify-center bg-[url('/wooden.jpg')] bg-cover bg-fixed bg-center bg-no-repeat">
+    <div className="relative m-auto flex h-full w-full flex-col justify-center bg-[url('/wooden.jpg')] bg-cover">
       <BackgroundOverlay color={colors.overlay} />
       <div className="z-20 mx-auto w-full pt-6 text-center text-3xl text-white">
         <div className="w-full py-8 px-2 text-center font-dinBold text-6xl text-white">

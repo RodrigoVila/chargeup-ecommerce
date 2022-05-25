@@ -17,11 +17,6 @@ const CartModal = () => {
   const dispatch = useAppDispatch()
   const onClose = () => dispatch(closeCartModal())
 
-  const onSubmit = () => {
-    onClose()
-    dispatch(openCheckoutModal())
-  }
-
   const totalSum = useMemo(
     () => items.reduce((acc, item) => acc + item.price * item.quantity, 0),
     [items]
@@ -76,13 +71,10 @@ const CartModal = () => {
           <div className="h-full text-xl text-gray-700">48hs</div>
         </div>
         <div className="flex w-full flex-col items-center justify-between p-4 text-xl text-white md:text-3xl">
-          <Button title="Ir a pagar" color={colors.purple} onClick={onSubmit} />
-          <div
-            className="my-2 w-full cursor-pointer rounded-md  border-2 p-2 text-center text-xl text-black shadow-sm"
-            onClick={onClose}
-          >
-            Cerrar
-          </div>
+          <form action="/api/checkout_session" method="POST" className="flex w-full">
+            <Button title="Ir a pagar" color={colors.purple} onClick={onClose} isSubmit />
+          </form>
+          <Button title="Cerrar" onClick={onClose} type="outlined" />
         </div>
       </div>
     </div>

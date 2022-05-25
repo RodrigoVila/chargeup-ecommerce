@@ -31,7 +31,7 @@ const Welcome: FC = () => {
         </div>
         <div className="leading-0 px-2 text-center text-xl font-semibold text-white md:text-3xl">
           OUR MISSION IS TO MAKE HAPPY THOSE WHO CANNOT EAT
-          <span className="animate-ping-slow text-center font-bold"> {word}</span>
+          <span className="text-center font-bold"> {word}</span>
         </div>
       </div>
     </div>

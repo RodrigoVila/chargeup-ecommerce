@@ -10,7 +10,7 @@ const BurgerButton = () => {
 
   return (
     <div
-      className="z-10 relative m-2 mr-4 h-10 w-10 md:m-4 cursor-pointer"
+      className="z-20 relative m-2 mr-4 h-10 w-10 md:m-4 cursor-pointer"
       onClick={openDrawer}
     >
       <HiMenu color="white" size={30} />

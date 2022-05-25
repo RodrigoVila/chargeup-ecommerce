@@ -19,7 +19,7 @@ const CartButton = () => {
 
   return (
     <button
-      className="relative z-10 m-2 mr-4 h-8 w-8 cursor-pointer md:m-4"
+      className="relative m-2 mr-4 h-8 w-8 cursor-pointer md:m-4 z-20"
       onClick={openCart}
     >
       <FiShoppingCart color={'white'} size={30} />

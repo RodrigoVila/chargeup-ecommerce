@@ -28,7 +28,7 @@ const ContactSection: FC = () => {
   const inputStyle =
     'mb-2 w-full rounded-md border-2 border-transparent bg-[rgba(255,255,255,0.2)] py-2 pl-2 placeholder:text-slate-300 placeholder:tracking-wider focus:border-white focus:outline-none'
   return (
-    <div className="relative m-auto flex h-screen w-full flex-col items-center justify-center bg-[url('/contact.jpg')] bg-cover bg-center bg-no-repeat">
+    <div className="relative m-auto flex h-screen w-full flex-col items-center justify-center bg-[url('/contact.jpg')] bg-fixed bg-cover bg-center bg-no-repeat">
       <BackgroundOverlay color={colors.overlay} />
       <p className="w-full pb-12 px-2 text-center font-dinBold text-6xl text-white z-10">CONTACTANOS</p>
       <div className="font- z-10 flex w-full max-w-xl flex-col items-center justify-center overflow-hidden px-4 text-white">
