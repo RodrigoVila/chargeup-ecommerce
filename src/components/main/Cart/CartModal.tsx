@@ -1,7 +1,7 @@
 import { shallowEqual } from 'react-redux'
 
 import { useAppDispatch, useAppSelector } from '@hooks'
-import { closeCartModal, openCheckoutModal } from '@redux/actionCreators'
+import { closeCartModal } from '@redux/actionCreators'
 import CartProduct from '@main/Cart/CartProduct'
 import CloseModalButton from '@main/Buttons/CloseModalButton'
 import Button from '@main/Button'

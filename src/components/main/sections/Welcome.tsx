@@ -25,7 +25,7 @@ const Welcome: FC = () => {
       <TopBar />
       <MobileTopBar />
       <BackgroundOverlay color={colors.overlay} />
-      <div className="relative z-10 flex h-1/2 w-full flex-col items-center justify-center font-dinBold">
+      <div className="relative z-10 flex h-3/4 w-full flex-col items-center justify-center font-dinBold">
         <div className="leading-0 mt-2 pb-4 text-center text-5xl font-semibold tracking-wide text-white md:px-4 md:text-6xl">
           TASTE THE LOVE AND FEEL RECHARGED
         </div>
