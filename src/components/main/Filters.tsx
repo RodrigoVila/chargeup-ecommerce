@@ -8,8 +8,8 @@ interface Props {
   isVisible: boolean
 }
 
-const FilterModal = ({ isVisible = false }: Props) => {
-  const [selected, setSelected] = useState('')
+const Filters = ({ isVisible = false }: Props) => {
+  const [selected, setSelected] = useState([])
 
   useEffect(() => {
     console.log('!hola', selected)
@@ -28,4 +28,4 @@ const FilterModal = ({ isVisible = false }: Props) => {
   )
 }
 
-export default FilterModal
+export default Filters

@@ -1,7 +1,7 @@
 import { useState, useEffect, FC } from 'react'
 
 import BackgroundOverlay from '@main/BackgroundOverlay'
-import TopBar from '@main/TopBar'
+import TopBar from '@main/TopBar/TopBar'
 import MobileTopBar from '@main/TopBar/MobileTopBar'
 import { colors } from '@utils/constants'
 

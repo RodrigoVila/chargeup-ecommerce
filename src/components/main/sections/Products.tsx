@@ -7,7 +7,7 @@ import { useAppDispatch, useAppSelector } from '@hooks'
 import Product from '@main/Product'
 import ProductSearchBar from '@main/ProductSearchBar'
 import ProductModal from '@main/ProductModal'
-import FilterModal from '@main/FilterModal'
+import Filters from '@main/Filters'
 
 const Products: FC = () => {
   const [searchValue, setSearchValue] = useState('')
@@ -66,7 +66,7 @@ const Products: FC = () => {
 
           <ProductSearchBar setSearchValue={setSearchValue} />
         </div>
-        <FilterModal isVisible={areFiltersVisible} />
+        <Filters isVisible={areFiltersVisible} />
         {products.length > 0 && (
           <div className="relative mx-auto flex w-full flex-wrap justify-center ">
             {filteredProducts.length > 0
@@ -84,7 +84,7 @@ const Products: FC = () => {
                     onClick={() => onClick(p)}
                   />
                 ))
-              : products?.map((p) => (
+              : products.length > 0 ? products?.map((p) => (
                   <Product
                     key={p.id}
                     id={p.id}
@@ -97,7 +97,7 @@ const Products: FC = () => {
                     suitableForInfo={p.suitableForInfo}
                     onClick={() => onClick(p)}
                   />
-                ))}
+                ) ): ""}
           </div>
         )}
       </div>

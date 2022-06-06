@@ -2,13 +2,13 @@ import { useEffect } from 'react'
 import { Toaster } from 'react-hot-toast'
 
 import Welcome from '@main/sections/Welcome'
-import ProductList from '@main/sections/Products'
+import Products from '@main/sections/Products'
 import Contact from '@main/sections/Contact'
 import About from '@main/sections/About'
 import Keto from '@main/sections/Keto'
 import Cakes from '@main/sections/Cakes'
 import WhyUs from '@main/sections/WhyUs'
-import Footer from '@main/Footer'
+import Footer from '@main/sections/Footer'
 import CartModal from '@main/Cart/CartModal'
 import CheckoutModal from '@main/Cart/CheckoutModal'
 
@@ -37,12 +37,11 @@ const MainScreen = () => {
       {/* Sections */}
       <Welcome />
       <About />
-      <ProductList />
+      <Products />
       <Cakes />
       <Keto />
       <WhyUs />
       <Contact />
-      {/* Footer */}
       <Footer />
     </div>
   )
