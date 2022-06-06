@@ -1,9 +1,8 @@
 import { useEffect } from 'react'
-import Head from 'next/head'
 import { Toaster } from 'react-hot-toast'
 
 import Welcome from '@main/sections/Welcome'
-import ProductList from '@main/sections/ProductList'
+import ProductList from '@main/sections/Products'
 import Contact from '@main/sections/Contact'
 import About from '@main/sections/About'
 import Keto from '@main/sections/Keto'

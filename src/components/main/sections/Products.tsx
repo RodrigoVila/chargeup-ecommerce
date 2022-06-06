@@ -1,15 +1,19 @@
 import { FC, useState, useEffect } from 'react'
+import { BsFilterCircle, BsFilterCircleFill } from 'react-icons/bs'
+
+import { fetchProducts, openProductDetailModal } from '@redux/actionCreators'
+import { useAppDispatch, useAppSelector } from '@hooks'
 
 import Product from '@main/Product'
-import SearchBar from '@main/SearchBar'
-import { useAppDispatch, useAppSelector } from '@hooks'
-import { fetchProducts, openProductDetailModal } from '@redux/actionCreators'
+import ProductSearchBar from '@main/ProductSearchBar'
 import ProductModal from '@main/ProductModal'
+import FilterModal from '@main/FilterModal'
 
-const ProductList: FC = () => {
+const Products: FC = () => {
   const [searchValue, setSearchValue] = useState('')
   const [selected, setSelected] = useState<ProductType | null>(null)
   const [filteredProducts, setFilteredProducts] = useState([])
+  const [areFiltersVisible, setFiltersVisible] = useState(false)
 
   const dispatch = useAppDispatch()
   const products = useAppSelector((state) => state.products.products)
@@ -18,6 +22,8 @@ const ProductList: FC = () => {
     setSelected(product)
     dispatch(openProductDetailModal())
   }
+
+  const toggleFilters = () => setFiltersVisible(!areFiltersVisible)
 
   useEffect(() => {
     dispatch(fetchProducts())
@@ -37,10 +43,31 @@ const ProductList: FC = () => {
   return (
     <>
       {selected && <ProductModal product={selected} />}
-      {products.length > 0 && (
-        <div className="h-full min-h-screen w-full bg-[url('/purpleTexture.svg')] bg-cover bg-center bg-no-repeat pt-4">
-          <SearchBar setSearchValue={setSearchValue} />
+      <div
+        id="products"
+        className="h-full min-h-screen w-full bg-[url('/purpleTexture.svg')] bg-cover bg-center bg-repeat pt-4"
+      >
+        <div className="mx-auto flex max-w-4xl items-center justify-center">
+          {areFiltersVisible ? (
+            <BsFilterCircleFill
+              size={33}
+              color="white"
+              className="cursor-pointer"
+              onClick={toggleFilters}
+            />
+          ) : (
+            <BsFilterCircle
+              size={33}
+              color="white"
+              className="cursor-pointer"
+              onClick={toggleFilters}
+            />
+          )}
 
+          <ProductSearchBar setSearchValue={setSearchValue} />
+        </div>
+        <FilterModal isVisible={areFiltersVisible} />
+        {products.length > 0 && (
           <div className="relative mx-auto flex w-full flex-wrap justify-center ">
             {filteredProducts.length > 0
               ? filteredProducts?.map((p) => (
@@ -72,10 +99,10 @@ const ProductList: FC = () => {
                   />
                 ))}
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </>
   )
 }
 
-export default ProductList
+export default Products

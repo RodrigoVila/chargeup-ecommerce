@@ -21,7 +21,7 @@ const Welcome: FC = () => {
   // }, [])
 
  return (
-    <div className="relative h-screen w-full bg-[url('/welcome.jpg')] bg-cover bg-center bg-no-repeat ">
+    <div id="welcome" className="relative h-screen w-full bg-[url('/welcome.jpg')] bg-cover bg-center bg-no-repeat ">
       <TopBar />
       <MobileTopBar />
       <BackgroundOverlay color={colors.overlay} />

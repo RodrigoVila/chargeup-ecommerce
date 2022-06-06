@@ -6,6 +6,8 @@ export const colors = {
   overlayDark: 'rgba(0,0,0,0.8)',
   overlayLight: 'rgba(0,0,0,0.2)',
   purple: '#a855f7',
+  overlayPurple: 'rgba(168, 85, 247, 0.4)',
+  overlayPurple2: 'rgba(168, 85, 247, 0.7)',
   success: '#00C851',
   white: '#fff',
 }

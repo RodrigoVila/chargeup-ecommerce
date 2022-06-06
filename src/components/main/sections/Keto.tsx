@@ -3,7 +3,7 @@ import Image from 'next/image'
 
 const KetoSection: FC = () => {
   return (
-    <div className="relative mx-auto flex w-full flex-col items-center justify-center py-6 px-2 text-center ">
+    <div id="keto" className="relative mx-auto flex w-full flex-col items-center justify-center py-6 px-2 text-center ">
       <div className="mt-8">
         <h1 className="w-full py-8 px-2 text-center font-dinBold text-6xl">QUE ES KETO ?</h1>
         <div className="mx-auto max-w-4xl pb-4 text-xl leading-snug">

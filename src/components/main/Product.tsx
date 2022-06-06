@@ -44,8 +44,8 @@ const Product: FC<Props> = ({
       nutritionalInfo,
       suitableForInfo,
       price,
-      imgUri,
       quantity: count,
+      imgUri,
     }
     dispatch(addToCart(item))
     dispatch(displaySuccessMessage('Producto agregado!'))
