@@ -16,7 +16,7 @@ const FilterPill = ({ label, setSelected }: Props) => {
   return (
     <div
       style={{ background: isActive ? colors.overlayPurple2 : colors.overlayPurple }}
-      className="mx-2 flex cursor-pointer items-center justify-center rounded-3xl pl-2 pr-4"
+      className="m-2 flex cursor-pointer items-center justify-center rounded-3xl pl-2 pr-4"
       onClick={handleClick}
     >
       <div className="relative mr-1 h-12 w-12 ">

@@ -40,7 +40,7 @@ const Products: FC = () => {
       id="products"
       className="h-full min-h-screen w-full bg-[url('/purpleTexture.svg')] bg-cover bg-center bg-repeat pt-4"
     >
-      <div className="mx-auto flex max-w-4xl items-center justify-center">
+      <div className="ml-2 flex flex-wrap items-center justify-center">
         {areFiltersVisible ? (
           <BsFilterCircleFill
             size={33}
@@ -61,7 +61,7 @@ const Products: FC = () => {
       </div>
       <Filters isVisible={areFiltersVisible} />
       {products.length > 0 && (
-        <div className="relative mx-auto flex w-full flex-wrap justify-center ">
+        <div className="relative mx-auto flex w-full flex-wrap justify-center">
           {filteredProducts.length > 0
             ? filteredProducts?.map((p) => (
                 <Product

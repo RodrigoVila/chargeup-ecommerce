@@ -30,10 +30,10 @@ const ContactSection: FC = () => {
   return (
     <div id="contact" className="relative m-auto flex h-screen w-full flex-col items-center justify-center bg-[url('/contact.jpg')] bg-cover bg-fixed bg-center bg-no-repeat">
       <BackgroundOverlay color={colors.overlay} />
-      <p className="z-10 w-full px-2 pb-12 text-center font-dinBold text-6xl text-white">
+      <p className="z-10 w-full pb-12 text-center font-dinBold text-5xl text-white">
         CONTACTANOS
       </p>
-      <div className="font- z-10 flex w-full max-w-xl flex-col items-center justify-center overflow-hidden px-4 text-white">
+      <div className="z-10 flex w-full max-w-xl flex-col items-center justify-center overflow-hidden px-4 text-white">
         <input
           name="name"
           placeholder="Nombre"

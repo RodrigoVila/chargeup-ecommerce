@@ -19,7 +19,7 @@ const Filters = ({ isVisible = false }: Props) => {
     <div
       className={`${
         isVisible ? 'opacity-100' : 'opacity-0'
-      } my-8 flex items-center justify-center transition-opacity`}
+      } my-8 flex flex-wrap items-center justify-center transition-opacity`}
     >
       {labels.map((label, index) => (
         <FilterPill key={index} label={label} setSelected={setSelected} />
