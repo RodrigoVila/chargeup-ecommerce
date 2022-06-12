@@ -4,7 +4,6 @@ import { shallowEqual } from 'react-redux'
 
 import { closeProductModal } from '@redux/actions'
 import { useAppDispatch, useAppSelector } from '@hooks'
-import CloseModalButton from '@main/Buttons/CloseModalButton'
 import { colors } from '@utils/constants'
 import Button from './Button'
 
@@ -27,13 +26,9 @@ const ProductModal: FC = () => {
     isOpen ? (document.body.style.overflow = 'hidden') : (document.body.style.overflow = 'auto')
   }, [isOpen])
 
-  useEffect(() => {
-    console.log('selectedProduct', selectedProduct)
-  }, [selectedProduct])
-
   return isOpen ? (
     <div className="relative">
-      <div className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto overflow-x-hidden outline-none focus:outline-none">
+      <div className="fixed inset-0 z-50 mx-2 flex items-center justify-center overflow-y-auto overflow-x-hidden outline-none focus:outline-none">
         <div className="relative my-6 mx-auto w-auto max-w-3xl">
           {/*content*/}
           <div className="flex w-full flex-col border-0 bg-white ">
@@ -46,7 +41,7 @@ const ProductModal: FC = () => {
             </div>
             {/*body*/}
             <div className="relative flex-auto px-2 text-center">
-              <p className="my-4 px-8 text-lg leading-relaxed text-slate-500">
+              <p className="my-4 px-8 text-xl leading-relaxed text-slate-500">
                 {selectedProduct?.description}
               </p>
             </div>

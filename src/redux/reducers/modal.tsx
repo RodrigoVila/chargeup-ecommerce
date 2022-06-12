@@ -46,7 +46,6 @@ const modalReducer = (state = initialState, action: ModalActionType): ModalState
         drawer: false,
       }
     case OPEN_PRODUCT_DETAILS:
-      console.log("!1", action)
       return {
         ...state,
         selectedProduct: action.selectedProduct,

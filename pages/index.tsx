@@ -9,6 +9,7 @@ import Keto from '@main/sections/Keto'
 import Cakes from '@main/sections/Cakes'
 import WhyUs from '@main/sections/WhyUs'
 import Footer from '@main/sections/Footer'
+import DrawerModal from '@main/Cart/DrawerModal'
 import CartModal from '@main/Cart/CartModal'
 import CheckoutModal from '@main/Cart/CheckoutModal'
 import ProductModal from '@main/ProductModal'
@@ -32,6 +33,7 @@ const MainScreen = () => {
       <Toaster />
 
       {/* Modals */}
+      <DrawerModal />
       <CartModal />
       <CheckoutModal />
       <ProductModal />
