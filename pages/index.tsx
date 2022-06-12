@@ -11,6 +11,7 @@ import WhyUs from '@main/sections/WhyUs'
 import Footer from '@main/sections/Footer'
 import CartModal from '@main/Cart/CartModal'
 import CheckoutModal from '@main/Cart/CheckoutModal'
+import ProductModal from '@main/ProductModal'
 
 const MainScreen = () => {
   useEffect(() => {
@@ -33,6 +34,7 @@ const MainScreen = () => {
       {/* Modals */}
       <CartModal />
       <CheckoutModal />
+      <ProductModal />
 
       {/* Sections */}
       <Welcome />

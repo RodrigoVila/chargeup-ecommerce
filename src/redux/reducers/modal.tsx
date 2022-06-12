@@ -11,7 +11,7 @@ import {
   CLOSE_CHECKOUT_SUCCESS,
   OPEN_CHECKOUT_ERROR,
   CLOSE_CHECKOUT_ERROR,
-} from '../actionTypes'
+} from '../actions/types'
 
 const initialState: ModalStateType = {
   cart: false,
@@ -19,6 +19,8 @@ const initialState: ModalStateType = {
   checkout: false,
   checkout_success: false,
   checkout_error: false,
+  selectedProduct: null,
+  productModalOpen: false,
 }
 
 const modalReducer = (state = initialState, action: ModalActionType): ModalStateType => {
@@ -44,14 +46,16 @@ const modalReducer = (state = initialState, action: ModalActionType): ModalState
         drawer: false,
       }
     case OPEN_PRODUCT_DETAILS:
+      console.log("!1", action)
       return {
         ...state,
-        product: true,
+        selectedProduct: action.selectedProduct,
+        productModalOpen: true,
       }
     case CLOSE_PRODUCT_DETAILS:
       return {
         ...state,
-        product: false,
+        productModalOpen: false,
       }
 
     case OPEN_CHECKOUT:

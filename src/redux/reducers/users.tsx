@@ -1,4 +1,4 @@
-import { SET_CUSTOMER_LIST } from "../actionTypes";
+import { SET_CUSTOMER_LIST } from "../actions/types";
 
 const initialState = [];
 

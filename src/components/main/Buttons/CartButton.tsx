@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import { shallowEqual } from 'react-redux'
 import { FiShoppingCart } from 'react-icons/fi'
 
-import { openCartModal, displayInfoMessage } from '@redux/actionCreators'
+import { openCartModal, displayInfoMessage } from '@redux/actions'
 import { useAppDispatch, useAppSelector } from '@hooks'
 
 const CartButton = () => {

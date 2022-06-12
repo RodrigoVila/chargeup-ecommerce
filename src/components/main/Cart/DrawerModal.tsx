@@ -1,7 +1,7 @@
 import { shallowEqual } from 'react-redux'
 
 import { useAppSelector, useAppDispatch } from '@hooks'
-import { closeDrawerRModal } from '@redux/actionCreators'
+import { closeDrawerRModal } from '@redux/actions'
 import CloseModalButton from '@main/Buttons/CloseModalButton'
 
 const DrawerModal = () => {

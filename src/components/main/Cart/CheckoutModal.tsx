@@ -6,7 +6,7 @@ import { useAppDispatch, useAppSelector } from '@hooks'
 import {
   createCheckoutSession,
   closeCheckoutModal,
-} from '@redux/actionCreators'
+} from '@redux/actions'
 import CloseModalButton from '@main/Buttons/CloseModalButton'
 
 const CheckoutModal = () => {

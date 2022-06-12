@@ -38,11 +38,13 @@ type ModalStateType = {
   checkout: boolean
   checkout_success: boolean
   checkout_error: boolean
-  product: boolean
+  selectedProduct: ProductType
+  productModalOpen: boolean
 }
 
 interface ModalActionType extends ModalStateType {
   type: string
+  selectedProduct: ProductType
 }
 
 //Order

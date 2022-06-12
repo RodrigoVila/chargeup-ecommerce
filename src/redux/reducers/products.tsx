@@ -3,14 +3,14 @@ import {
   ADD_PRODUCT,
   DELETE_PRODUCT,
   FETCH_PRODUCTS_SUCCESS,
-} from '../actionTypes'
+} from '../actions/types'
 
-const initialState: ProductStateType = { products: [] }
+const initialState: ProductsStateType = { products: [] }
 
 const productsReducer = (
   state = initialState,
   action: ProductsActionType
-): ProductStateType => {
+): ProductsStateType => {
   switch (action.type) {
     // case ADD_PRODUCT:
     //   const newProduct: ProductType = {

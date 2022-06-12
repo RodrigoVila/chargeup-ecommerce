@@ -1,4 +1,4 @@
-import { CREATE_CHECKOUT_SESSION_SUCCESS } from '../actionTypes'
+import { CREATE_CHECKOUT_SESSION_SUCCESS } from '../actions/types'
 
 //TODO: Type this when know session return type
 const initialState: string = ''

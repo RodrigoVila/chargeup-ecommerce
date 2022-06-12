@@ -1,6 +1,6 @@
 import { call, put, takeEvery } from 'redux-saga/effects'
-import { createCheckoutSessionSuccess } from '@redux/actionCreators'
-import { CREATE_CHECKOUT_SESSION } from '@redux/actionTypes'
+import { createCheckoutSessionSuccess } from '@redux/actions'
+import { CREATE_CHECKOUT_SESSION } from '@redux/actions/types'
 
 const API_URL = '/api/checkout_session'
 

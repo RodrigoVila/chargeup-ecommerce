@@ -3,7 +3,7 @@ import Image from 'next/image'
 import ReactTooltip from 'react-tooltip'
 
 import { useAppDispatch } from '@hooks'
-import { addToCart, displayInfoMessage, displaySuccessMessage } from '@redux/actionCreators'
+import { addToCart, displayInfoMessage, displaySuccessMessage } from '@redux/actions'
 
 import Button from '@main/Button'
 import Counter from '@main/Counter'

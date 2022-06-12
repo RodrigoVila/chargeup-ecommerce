@@ -2,7 +2,7 @@ import React from 'react'
 import { HiMenu } from 'react-icons/hi'
 
 import { useAppDispatch } from '@hooks'
-import { openDrawerModal } from '@redux/actionCreators'
+import { openDrawerModal } from '@redux/actions'
 
 const BurgerButton = () => {
   const dispatch = useAppDispatch()

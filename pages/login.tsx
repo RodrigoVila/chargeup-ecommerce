@@ -9,7 +9,7 @@ import {
   displaySuccessMessage,
   userLogin,
   userRegister,
-} from '@redux/actionCreators'
+} from '@redux/actions'
 import { RootState } from '@redux/store'
 import Button from '@main/Button'
 import Link from '@main/Link'

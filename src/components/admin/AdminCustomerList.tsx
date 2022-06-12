@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 
-import { getUserList } from "@redux/actionCreators/users";
+import { getUserList } from "@redux/actions/users";
 import { useAppDispatch } from "@hooks";
 
 const AdminCustomerList = () => {

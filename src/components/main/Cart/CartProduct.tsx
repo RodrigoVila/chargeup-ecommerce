@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
 
-import { removeFromCart } from '@redux/actionCreators/cart'
+import { removeFromCart } from '@redux/actions/cart'
 import RoundImage from '@main/RoundImage'
 import Counter from '@main/Counter'
 import { FaRegTrashAlt } from 'react-icons/fa'
