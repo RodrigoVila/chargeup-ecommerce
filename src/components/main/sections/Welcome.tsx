@@ -3,7 +3,7 @@ import { useState, useEffect, FC } from 'react'
 import BackgroundOverlay from '@main/BackgroundOverlay'
 import TopBar from '@main/TopBar/TopBar'
 import MobileTopBar from '@main/TopBar/MobileTopBar'
-import { colors } from '@utils/constants'
+import { colors } from '@constants/'
 
 
 const Welcome: FC = () => {
@@ -26,7 +26,7 @@ const Welcome: FC = () => {
       <MobileTopBar />
       <BackgroundOverlay color={colors.overlay} />
       <div className="relative z-10 flex h-3/4 w-full flex-col items-center justify-center font-dinBold">
-        <div className="leading-0 mt-2 pb-4 text-center text-5xl font-semibold tracking-wide text-white md:px-4 md:text-6xl">
+        <div className="leading-0 pb-4 text-center text-5xl font-semibold tracking-wide text-white md:px-4 md:text-6xl">
           TASTE THE LOVE AND FEEL RECHARGED
         </div>
         <div className="leading-0 px-2 text-center text-xl font-semibold text-white md:text-3xl">

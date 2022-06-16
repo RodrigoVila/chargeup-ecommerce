@@ -65,6 +65,9 @@ module.exports = {
         adminWidth: 'calc(100vw -8rem)',
         250: '250px',
       },
+      zIndex: {
+        full: '9999px',
+      },
     },
   },
   plugins: [require('@tailwindcss/line-clamp')],

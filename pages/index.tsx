@@ -9,9 +9,10 @@ import Keto from '@main/sections/Keto'
 import Cakes from '@main/sections/Cakes'
 import WhyUs from '@main/sections/WhyUs'
 import Footer from '@main/sections/Footer'
-import DrawerModal from '@main/Cart/DrawerModal'
-import CartModal from '@main/Cart/CartModal'
-import CheckoutModal from '@main/Cart/CheckoutModal'
+import CartModal from '@main/CartModal'
+import CheckoutModal from '@main/CheckoutModal'
+import DrawerModal from '@main/DrawerModal'
+import FiltersModal from '@main/FiltersModal'
 import ProductModal from '@main/ProductModal'
 
 const MainScreen = () => {
@@ -28,20 +29,21 @@ const MainScreen = () => {
   }, [])
 
   return (
-    <div className="font-dinRegular">
+    <div className="relative font-dinRegular">
       {/* Toast messages component */}
       <Toaster />
 
       {/* Modals */}
-      <DrawerModal />
       <CartModal />
       <CheckoutModal />
+      <DrawerModal />
+      <FiltersModal />
       <ProductModal />
 
       {/* Sections */}
       <Welcome />
       <About />
-      <Products />
+      {/* <Products /> */}
       <Cakes />
       <Keto />
       <WhyUs />

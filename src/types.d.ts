@@ -38,6 +38,7 @@ type ModalStateType = {
   checkout: boolean
   checkout_success: boolean
   checkout_error: boolean
+  filters: boolean
   selectedProduct: ProductType
   productModalOpen: boolean
 }

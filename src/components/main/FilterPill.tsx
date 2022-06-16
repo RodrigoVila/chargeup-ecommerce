@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import Image from 'next/image'
 
-import { colors } from '../../utils/constants'
+import { colors } from '../../constants'
 
 interface Props {
   label: string

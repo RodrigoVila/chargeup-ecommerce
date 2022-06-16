@@ -5,6 +5,8 @@ import {
   CLOSE_DRAWER,
   OPEN_CHECKOUT,
   CLOSE_CHECKOUT,
+  OPEN_FILTERS,
+  CLOSE_FILTERS,
   OPEN_PRODUCT_DETAILS,
   CLOSE_PRODUCT_DETAILS,
   OPEN_CHECKOUT_SUCCESS,
@@ -19,6 +21,7 @@ const initialState: ModalStateType = {
   checkout: false,
   checkout_success: false,
   checkout_error: false,
+  filters: false,
   selectedProduct: null,
   productModalOpen: false,
 }
@@ -44,6 +47,16 @@ const modalReducer = (state = initialState, action: ModalActionType): ModalState
       return {
         ...state,
         drawer: false,
+      }
+    case OPEN_FILTERS:
+      return {
+        ...state,
+        filters: true,
+      }
+    case CLOSE_FILTERS:
+      return {
+        ...state,
+        filters: false,
       }
     case OPEN_PRODUCT_DETAILS:
       return {

@@ -2,7 +2,7 @@ import { useState, ChangeEvent, FC } from 'react'
 
 import BackgroundOverlay from '@main/BackgroundOverlay'
 import Button from '@main/Button'
-import { colors } from '@utils/constants'
+import { colors } from '@constants/'
 
 interface ContactForm {
   name: string

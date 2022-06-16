@@ -1,13 +1,9 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import Image from 'next/image'
-
-import { removeFromCart } from '@redux/actions/cart'
-import RoundImage from '@main/RoundImage'
-import Counter from '@main/Counter'
 import { FaRegTrashAlt } from 'react-icons/fa'
+
 import { useAppDispatch } from '@hooks'
-import BackgroundOverlay from '@main/BackgroundOverlay'
-import { colors } from '@utils/constants'
+import { removeFromCart } from '@redux/actions/cart'
 
 const CartProduct = ({
   id,
@@ -27,7 +23,6 @@ const CartProduct = ({
     dispatch(removeFromCart(id))
   }
 
-  console.log('!hola', imgUri)
   return (
     <div className="flex w-full">
       <div className="relative h-28 w-1/3 border-b-2 border-white">

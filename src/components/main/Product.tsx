@@ -8,7 +8,7 @@ import { addToCart, displayInfoMessage, displaySuccessMessage } from '@redux/act
 import Button from '@main/Button'
 import Counter from '@main/Counter'
 import RoundImage from '@main/RoundImage'
-import { colors } from '@utils/constants'
+import { colors } from '@constants/'
 
 type Props = ProductType & { onClick: (product: ProductType) => void }
 

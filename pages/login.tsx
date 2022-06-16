@@ -4,16 +4,11 @@ import Bcrypt from 'bcryptjs'
 
 import RegisterForm from '@main/Register'
 import LoginForm from '@main/LoginForm'
-import {
-  displayErrorMessage,
-  displaySuccessMessage,
-  userLogin,
-  userRegister,
-} from '@redux/actions'
+import { displayErrorMessage, displaySuccessMessage, userLogin, userRegister } from '@redux/actions'
 import { RootState } from '@redux/store'
 import Button from '@main/Button'
 import Link from '@main/Link'
-import { colors } from '@utils/constants'
+import { colors } from '@constants'
 import { useAppDispatch, useAppSelector } from '@hooks'
 
 const LoginScreen = () => {

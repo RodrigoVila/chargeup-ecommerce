@@ -6,7 +6,6 @@ import { useAppDispatch, useAppSelector } from '@hooks'
 
 import Product from '@main/Product'
 import ProductSearchBar from '@main/ProductSearchBar'
-import Filters from '@main/Filters'
 
 const Products: FC = () => {
   const [searchValue, setSearchValue] = useState('')
@@ -59,7 +58,6 @@ const Products: FC = () => {
 
         <ProductSearchBar setSearchValue={setSearchValue} />
       </div>
-      <Filters isVisible={areFiltersVisible} />
       {products.length > 0 && (
         <div className="relative mx-auto flex w-full flex-wrap justify-center">
           {filteredProducts.length > 0

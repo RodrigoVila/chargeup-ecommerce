@@ -1,11 +1,7 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": false,
@@ -19,42 +15,18 @@
     "jsx": "preserve",
     "baseUrl": "./src",
     "paths": {
-      "@main/*": [
-        "./components/main/*"
-      ],
-      "@admin/*": [
-        "./components/admin/*"
-      ],
-      "@constants/*": [
-        "./constants/*"
-      ],
-      "@context/*": [
-        "./context/*"
-      ],
-      "@hooks": [
-        "./hooks/index.tsx"
-      ],
-      "@models/*": [
-        "./models/*"
-      ],
-      "@redux/*": [
-        "./redux/*"
-      ],
-      "@services": [
-        "./services/index.tsx"
-      ],
-      "@utils/*": [
-        "./utils/*"
-      ]
+      "@main/*": ["./components/main/*"],
+      "@admin/*": ["./components/admin/*"],
+      "@constants": ["./constants/index.ts"],
+      "@context/*": ["./context/*"],
+      "@hooks": ["./hooks/index.tsx"],
+      "@models/*": ["./models/*"],
+      "@redux/*": ["./redux/*"],
+      "@services": ["./services/index.tsx"],
+      "@utils/*": ["./utils/*"]
     },
     "incremental": true
   },
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx"
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "exclude": ["node_modules"]
 }
