@@ -3,8 +3,7 @@ import { useState, useEffect, FC } from 'react'
 import BackgroundOverlay from '@main/BackgroundOverlay'
 import TopBar from '@main/TopBar/TopBar'
 import MobileTopBar from '@main/TopBar/MobileTopBar'
-import { colors } from '@constants/'
-
+import { colors } from '@constants'
 
 const Welcome: FC = () => {
   const [word, setWord] = useState('SUGAR')
@@ -20,8 +19,11 @@ const Welcome: FC = () => {
   //   return () => clearTimeout(timer)
   // }, [])
 
- return (
-    <div id="welcome" className="relative h-screen w-full bg-[url('/welcome.jpg')] bg-cover bg-center bg-no-repeat ">
+  return (
+    <div
+      id="welcome"
+      className="relative h-screen w-full bg-[url('/welcome.jpg')] bg-cover bg-center bg-no-repeat "
+    >
       <TopBar />
       <MobileTopBar />
       <BackgroundOverlay color={colors.overlay} />

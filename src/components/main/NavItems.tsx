@@ -1,16 +1,38 @@
-import NavItem from "@main/NavItem";
+import NavItem from '@main/NavItem'
 
-const NavItems = () => {
+interface Props {
+  direction?: 'row' | 'column'
+  onClose: () => void
+}
+
+const links = [
+  { label: 'QUIENES SOMOS', href: 'about' },
+  { label: 'PRODUCTOS', href: 'products' },
+  { label: 'CAKES', href: 'cakes' },
+  { label: 'KETO', href: 'keto' },
+  { label: 'POR QUE ELEGIRNOS', href: 'whyus' },
+  { label: 'CONTACTO', href: 'contact' },
+]
+
+const NavItems = ({ direction, onClose }: Props) => {
   return (
-    <div className="z-20 flex flex-row items-center justify-center pl-2 text-center">
-      <NavItem label="QUIENES SOMOS" href="about" />
-      <NavItem label="PRODUCTOS" href="products" />
-      <NavItem label="CAKES" href="cakes" />
-      <NavItem label="KETO" href="keto" />
-      <NavItem label="POR QUE ELEGIRNOS" href="whyus" />
-      <NavItem label="CONTACTO" href="contact" />
-    </div>
-  );
-};
+    <div
+      className={`${
+        direction === 'row' ? 'flex-row pl-2 text-white' : 'flex-col pb-2'
+      } flex w-full items-center justify-center`}
+    >
+      {links.map((link, index) => (
+        <NavItem
+          key={index}
+          label={link.label}
+          href={link.href}
+          direction={direction}
+          isLast={index === links.length - 1}
+          onClick={direction === 'column' ? onClose : null}
+        />
+      ))}
+    </div> 
+  )
+}
 
-export default NavItems;
+export default NavItems

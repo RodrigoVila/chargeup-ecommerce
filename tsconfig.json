@@ -15,8 +15,9 @@
     "jsx": "preserve",
     "baseUrl": "./src",
     "paths": {
-      "@main/*": ["./components/main/*"],
       "@admin/*": ["./components/admin/*"],
+      "@main/*": ["./components/main/*"],
+      "@shared/*": ["./components/shared/*"],
       "@constants": ["./constants/index.ts"],
       "@context/*": ["./context/*"],
       "@hooks": ["./hooks/index.tsx"],

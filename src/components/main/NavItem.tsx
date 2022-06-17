@@ -2,17 +2,24 @@ import { FC } from 'react'
 
 interface Props {
   label: string
-  icon?: any
   href: string
-  borderColor?: string
+  direction: 'row' | 'column'
+  isLast: boolean
+  icon?: any
+  onClick: () => void
 }
 
-const NavItem: FC<Props> = ({ label, icon, href, borderColor = 'transparent' }) => {
+const NavItem: FC<Props> = ({ label, href, direction, isLast, icon, onClick }) => {
   return (
-    <li className="mr-16 cursor-pointer list-none ">
+    <li
+      className={`${direction === 'row' ? ' mr-16' : 'mb-16'} ${
+        isLast && 'mb-0 mr-0'
+      } cursor-pointer list-none `}
+    >
       <a
         href={`#${href}`}
-        className={`block py-1 pl-0 align-middle text-white no-underline hover:text-white md:py-3 md:pl-1 hover:border-${borderColor}-500 transition duration-300 ease-in-out`}
+        onClick={onClick}
+        className={`block py-1 pl-0 align-middle no-underline transition duration-300  ease-in-out md:py-3 md:pl-1`}
       >
         {icon && icon}
         <span className="text-purple3 block pb-1 text-xs font-semibold md:inline-block md:pb-0 md:text-base lg:text-2xl">

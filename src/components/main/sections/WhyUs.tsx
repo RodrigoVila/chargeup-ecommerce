@@ -6,15 +6,15 @@ const WhyUsSection: FC = () => {
   return (
     <div
       id="whyus"
-      className="relative flex h-screen w-full flex-col justify-center bg-blue-600 bg-cover bg-no-repeat text-center"
+      className="relative mx-auto flex w-full flex-col items-center justify-center bg-orange-400 py-6 px-2 text-center"
     >
-      <BackgroundOverlay color={colors.overlay} />
-      <div className="w-30 z-20 text-white">
-        <div className="w-full py-8 px-2 text-center font-dinBold text-6xl text-white">
+      {/* <BackgroundOverlay color={colors.overlay} /> */}
+      <div className="z-20 text-white">
+        <div className="w-full py-12 px-2 text-center font-dinBold text-5xl">
           POR QUE ELEGIRNOS?
         </div>
-        <div className="mx-auto max-w-4xl text-xl md:text-4xl">
-          <p className="p-2">
+        <div className="px-4 max-w-4xl pb-4 text-xl leading-snug">
+          <p className="py-2">
             Trabajamos con los mejores productos y te garantizamos que todo lo que compres será de
             la mejor calidad cada ingrediente que colocamos está pensado estratégicamente para tu
             salud y bienestar. Ya sea porque eres una persona saludable, porque necesitas mantenerte

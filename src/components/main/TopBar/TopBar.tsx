@@ -5,10 +5,10 @@ import Logo from '@main/Logo'
 
 const TopBar = () => {
   return (
-    <div className="hidden w-full xl:flex justify-between items-center">
+    <div className="hidden w-full items-center justify-between xl:flex">
       <Logo />
-      <NavItems />
-      <div className="z-20 flex justify-center items-center">
+      <NavItems direction="row" />
+      <div className="z-20 flex items-center justify-center">
         <RegisterLoginButton />
         <CartButton />
       </div>

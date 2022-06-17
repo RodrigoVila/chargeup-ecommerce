@@ -2,6 +2,7 @@ import { useAppDispatch, useAppSelector } from '@hooks'
 import { closeFiltersModal } from '@redux/actions'
 import Modal from 'components/shared/Modal'
 import { shallowEqual } from 'react-redux'
+import CloseModalButton from './Buttons/CloseModalButton'
 import FilterPill from './FilterPill'
 
 const labels = ['Keto', 'Vegano', 'Alto en proteina', 'Gluten Free', 'Sin Azucar']
@@ -13,7 +14,7 @@ const FiltersModal = () => {
   const closeModal = () => dispatch(closeFiltersModal())
 
   return (
-    <Modal isOpen={isOpen}>
+    <Modal isOpen={isOpen} transparent closeOnOverlayClick>
       {labels.map((label, index) => (
         <FilterPill key={index} label={label} setSelected={() => {}} />
       ))}

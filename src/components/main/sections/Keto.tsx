@@ -5,7 +5,7 @@ const KetoSection: FC = () => {
   return (
     <div
       id="keto"
-      className="relative mx-auto flex w-full flex-col items-center justify-center py-6 px-2 text-center"
+      className="relative mx-auto flex w-full flex-col items-center justify-center py-6 px-2"
     >
       <h1 className="w-full py-12 px-2 text-center font-dinBold text-5xl">QUE ES KETO ?</h1>
       <div className="max-w-4xl px-4 pb-4 text-xl leading-snug">
@@ -39,10 +39,10 @@ const KetoSection: FC = () => {
         <div className="relative my-8 h-screen/2 w-full bg-contain">
           <Image src="/keto-graphic2.png" objectFit="contain" layout="fill" />
         </div>
-        <h4 className="w-full px-2 pb-4 pt-8 text-center font-dinBold text-3xl">
+        <h4 className="w-full pb-4 pt-8 font-dinBold text-3xl">
           Alimentos típicos que se consumen en la dieta cetogénica
         </h4>
-        <ul className="flex list-disc flex-col items-center justify-center text-center">
+        <ul className="flex list-disc flex-col px-4 pt-2">
           <li>Pescados y mariscos.</li>
           <li>Queso.</li>
           <li>
@@ -52,10 +52,10 @@ const KetoSection: FC = () => {
           <li>Huevos.</li>
           <li>Verduras que crecen sobre el suelo.</li>
         </ul>
-        <h4 className="w-full px-2 pb-4 pt-8 text-center font-dinBold text-3xl">
+        <h4 className="w-full pb-4 pt-8 font-dinBold text-3xl">
           Alimentos que NO se deben consumir en una dieta keto
         </h4>
-        <ul className="flex list-disc flex-col items-center justify-center text-center">
+        <ul className="flex list-disc flex-col px-4 pt-2 pb-10">
           <li>Alimentos azucarados.</li>
           <li>Alimentos ultraprocesados.</li>
           <li>Cereales</li>

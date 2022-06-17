@@ -1,23 +1,33 @@
 import { FC, useState, useEffect } from 'react'
 import { BsFilterCircle, BsFilterCircleFill } from 'react-icons/bs'
 
-import { fetchProducts, openProductModal } from '@redux/actions'
+import {
+  closeFiltersModal,
+  closeProductModal,
+  fetchProducts,
+  openFiltersModal,
+  openProductModal,
+} from '@redux/actions'
 import { useAppDispatch, useAppSelector } from '@hooks'
 
 import Product from '@main/Product'
 import ProductSearchBar from '@main/ProductSearchBar'
+import { shallowEqual } from 'react-redux'
+import FiltersModal from '@main/FiltersModal'
 
 const Products: FC = () => {
   const [searchValue, setSearchValue] = useState('')
   const [filteredProducts, setFilteredProducts] = useState([])
-  const [areFiltersVisible, setFiltersVisible] = useState(false)
 
   const dispatch = useAppDispatch()
   const products = useAppSelector((state) => state.products.products)
 
+  const isOpen: boolean = useAppSelector((state: StateType) => state.modal.filters, shallowEqual)
+
   const onClick = (product: ProductType) => dispatch(openProductModal(product))
 
-  const toggleFilters = () => setFiltersVisible(!areFiltersVisible)
+  const openModal = () => dispatch(openFiltersModal())
+  const closeModal = () => dispatch(closeFiltersModal())
 
   useEffect(() => {
     dispatch(fetchProducts())
@@ -39,25 +49,28 @@ const Products: FC = () => {
       id="products"
       className="h-full min-h-screen w-full bg-[url('/purpleTexture.svg')] bg-cover bg-center bg-repeat pt-4"
     >
-      <div className="ml-2 flex flex-wrap items-center justify-center">
-        {areFiltersVisible ? (
+      <div className="z-50 ml-2 flex flex-wrap items-center justify-center">
+        {isOpen ? (
           <BsFilterCircleFill
             size={33}
             color="white"
             className="cursor-pointer"
-            onClick={toggleFilters}
+            onClick={closeModal}
           />
         ) : (
-          <BsFilterCircle
-            size={33}
-            color="white"
-            className="cursor-pointer"
-            onClick={toggleFilters}
-          />
+          <a href="#products">
+            <BsFilterCircle
+              size={33}
+              color="white"
+              className="cursor-pointer"
+              onClick={openModal}
+            />
+          </a>
         )}
 
         <ProductSearchBar setSearchValue={setSearchValue} />
       </div>
+
       {products.length > 0 && (
         <div className="relative mx-auto flex w-full flex-wrap justify-center">
           {filteredProducts.length > 0

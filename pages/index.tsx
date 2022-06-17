@@ -43,7 +43,7 @@ const MainScreen = () => {
       {/* Sections */}
       <Welcome />
       <About />
-      {/* <Products /> */}
+      <Products />
       <Cakes />
       <Keto />
       <WhyUs />

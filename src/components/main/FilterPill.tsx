@@ -11,11 +11,14 @@ interface Props {
 const FilterPill = ({ label, setSelected }: Props) => {
   const [isActive, setActive] = useState(false)
 
-  const handleClick = () => setActive(!isActive)
+  const handleClick = (e) => {
+    e.stopPropagation()
+    setActive(!isActive)
+  }
 
   return (
     <div
-      style={{ background: isActive ? colors.overlayPurple2 : colors.overlayPurple }}
+      style={{ background: isActive ? colors.purple : colors.overlayPurple2 }}
       className="m-2 flex cursor-pointer items-center justify-center rounded-3xl pl-2 pr-4"
       onClick={handleClick}
     >
@@ -28,9 +31,7 @@ const FilterPill = ({ label, setSelected }: Props) => {
         {label === 'Gluten Free' && <Image src="/icons/gluten-free-white.png" layout="fill" />}
         {label === 'Sin Azucar' && <Image src="/icons/sugar-free-white.png" layout="fill" />}
       </div>
-      <p className={`${isActive ? 'font-extrabold' : 'font-thin'} select-none text-white`}>
-        {label}
-      </p>
+      <p className={`${isActive ? 'font-extrabold' : ''} select-none text-white`}>{label}</p>
     </div>
   )
 }

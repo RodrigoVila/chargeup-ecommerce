@@ -30,7 +30,7 @@ const AboutSection: FC = () => {
             por todo el valor agregado que tienen, por todo el detrás de cada ingrediente y
             pensamiento que se ponen en ellos.
           </p>
-          <p className="py-2">
+          <p className="pt-2 pb-10">
             Los productos que se colocan son ecológicos, orgánicos y muchos de ellos hechos por mi
             misma. Adquiridos en comercios locales de Cataluña o startups en crecimiento al igual
             que nosotros.
