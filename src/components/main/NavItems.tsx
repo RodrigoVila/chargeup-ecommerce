@@ -2,7 +2,7 @@ import NavItem from '@main/NavItem'
 
 interface Props {
   direction?: 'row' | 'column'
-  onClose: () => void
+  onClose?: () => void
 }
 
 const links = [
@@ -19,7 +19,7 @@ const NavItems = ({ direction, onClose }: Props) => {
     <div
       className={`${
         direction === 'row' ? 'flex-row pl-2 text-white' : 'flex-col pb-2'
-      } flex w-full items-center justify-center`}
+      } flex w-full items-center justify-center z-20`}
     >
       {links.map((link, index) => (
         <NavItem

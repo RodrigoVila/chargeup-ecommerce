@@ -47,7 +47,7 @@ const MainScreen = () => {
       <Cakes />
       <Keto />
       <WhyUs />
-      <Contact />
+      {/* <Contact /> */}
       <Footer />
     </div>
   )
