@@ -12,7 +12,7 @@ const Footer = () => {
         id="contact"
         className="flex w-full flex-col items-center justify-center bg-gray-800 pt-3 text-white"
       >
-        <div className="mb-2 text-2xl">Contactanos!</div>
+        <div className="mb-2 text-2xl">Contactanos</div>
         <div className="flex flex-row pb-4">
           <ActiveLink href="https://www.instagram.com/chargeupbcn/" data-tip="Alto en proteina">
             <FiInstagram color="white" className="cursor-pointer" size={ICON_SIZE} />

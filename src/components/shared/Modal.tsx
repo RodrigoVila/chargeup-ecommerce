@@ -32,13 +32,13 @@ const Modal = ({
     <Portal wrapperId="react-portal-modal-container">
       <div
         onClick={closeOnOverlayClick ? closeModal : undefined}
-        className={`fixed inset-0 bg-[${
-          fullScreen ? colors.white : colors.overlay
-        }] z-40 flex flex-col items-center justify-center overflow-scroll px-5 transition-all`}
+        className={`${
+          fullScreen
+            ? 'inset-0 items-center justify-center'
+            : 'top-20 items-start justify-start'
+        } fixed z-40 flex flex-col bg-white`}
       >
-        <div className={`${transparent ? 'bg-transparent' : 'bg-white'} max-w-4xl rounded-lg`}>
-          {children}
-        </div>
+        <div className={`mx-2 max-w-4xl bg-white`}>{children}</div>
       </div>
     </Portal>
   ) : null
