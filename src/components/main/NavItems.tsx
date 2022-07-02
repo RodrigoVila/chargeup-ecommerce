@@ -18,8 +18,8 @@ const NavItems = ({ direction, onClose }: Props) => {
   return (
     <div
       className={`${
-        direction === 'row' ? 'flex-row pl-2 text-white' : 'flex-col pb-2'
-      } flex w-full items-center justify-center z-20`}
+        direction === 'row' ? 'flex-row pl-2 text-white' : 'flex-col'
+      } flex w-full items-center justify-center z-20 `}
     >
       {links.map((link, index) => (
         <NavItem
@@ -27,8 +27,7 @@ const NavItems = ({ direction, onClose }: Props) => {
           label={link.label}
           href={link.href}
           direction={direction}
-          isLast={index === links.length - 1}
-          onClick={direction === 'column' ? onClose : null}
+          onClick={onClose}
         />
       ))}
     </div> 

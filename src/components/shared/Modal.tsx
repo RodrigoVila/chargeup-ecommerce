@@ -34,7 +34,7 @@ const Modal = ({
         onClick={closeOnOverlayClick ? closeModal : undefined}
         className={`fixed inset-0 bg-[${
           fullScreen ? colors.white : colors.overlay
-        }] z-40 flex flex-col items-center justify-center overflow-scroll px-5 pb-5 transition-all`}
+        }] z-40 flex flex-col items-center justify-center overflow-scroll px-5 transition-all`}
       >
         <div className={`${transparent ? 'bg-transparent' : 'bg-white'} max-w-4xl rounded-lg`}>
           {children}
