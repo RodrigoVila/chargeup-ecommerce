@@ -1,13 +1,14 @@
 // import { toast } from "react-toastify";
-import toast, { Toaster } from "react-hot-toast";
-import { ERROR_MESSAGE, SUCCESS_MESSAGE, INFO_MESSAGE } from "../actions/types";
-import { AiOutlineCheckCircle } from "react-icons/ai";
-import { BsExclamationOctagon } from "react-icons/bs";
-import { MdCancel } from "react-icons/md";
+import toast, { Toaster } from 'react-hot-toast'
+import { ERROR_MESSAGE, SUCCESS_MESSAGE, INFO_MESSAGE } from '../actions/types'
+import { AiOutlineCheckCircle } from 'react-icons/ai'
+import { BsExclamationOctagon } from 'react-icons/bs'
+import { MdCancel } from 'react-icons/md'
+import { colors } from '@constants'
 
 const initialState: ToastStateType = {
-  message: "",
-};
+  message: '',
+}
 
 const toastReducer = (
   //Tipo OK, necesitamos el state del cart
@@ -19,77 +20,80 @@ const toastReducer = (
     case SUCCESS_MESSAGE:
       toast(action.message, {
         duration: 3000,
-        position: "top-center",
+        position: 'top-center',
         // Styling
         style: {
-          backgroundColor: "#21dbaa",
-          color: "#fff",
+          padding: '20px 10px',
+          borderRadius: 0,
+          boxShadow: '0 3px 10px rgb(0 0 0 / 0.2)',
         },
-        className: "",
+        className: '',
         // Custom Icon
-        icon: <AiOutlineCheckCircle size={26} />,
+        icon: <AiOutlineCheckCircle size={35} color={colors.success} />,
         // Change colors of success/error/loading icon
         iconTheme: {
-          primary: "#000",
-          secondary: "#fff",
+          primary: '#000',
+          secondary: '#fff',
         },
         // Aria
         ariaProps: {
-          role: "status",
-          "aria-live": "polite",
+          role: 'status',
+          'aria-live': 'polite',
         },
-      });
-      break;
+      })
+      break
     case ERROR_MESSAGE:
       toast(action.message, {
         duration: 3000,
-        position: "top-center",
+        position: 'top-center',
         // Styling
         style: {
-          backgroundColor: "#ff4444",
-          color: "#fcfcfc",
+          padding: '20px 10px',
+          borderRadius: 0,
+          boxShadow: '0 3px 10px rgb(0 0 0 / 0.2)',
         },
-        className: "",
+        className: '',
         // Custom Icon
-        icon: <MdCancel size={26} />,
+        icon: <MdCancel size={35} color={colors.danger} />,
         // Change colors of success/error/loading icon
         iconTheme: {
-          primary: "#000",
-          secondary: "#fff",
+          primary: '#000',
+          secondary: '#fff',
         },
         // Aria
         ariaProps: {
-          role: "status",
-          "aria-live": "polite",
+          role: 'status',
+          'aria-live': 'polite',
         },
-      });
-      break;
+      })
+      break
     case INFO_MESSAGE:
       toast(action.message, {
         duration: 3000,
-        position: "top-center",
+        position: 'top-center',
         // Styling
         style: {
-          backgroundColor: "#33b5e5",
-          color: "#fcfcfc",
+          padding: '20px 10px',
+          borderRadius: 0,
+          boxShadow: '0 3px 10px rgb(0 0 0 / 0.2)',
         },
-        className: "",
+        className: '',
         // Custom Icon
-        icon: <BsExclamationOctagon size={26} />,
+        icon: <BsExclamationOctagon size={30} color={colors.info} />,
         // Change colors of success/error/loading icon
         iconTheme: {
-          primary: "#000",
-          secondary: "#fff",
+          primary: '#000',
+          secondary: '#fff',
         },
         // Aria
         ariaProps: {
-          role: "status",
-          "aria-live": "polite",
+          role: 'status',
+          'aria-live': 'polite',
         },
-      });
-      break;
+      })
+      break
   }
-  return state;
-};
+  return state
+}
 
-export default toastReducer;
+export default toastReducer

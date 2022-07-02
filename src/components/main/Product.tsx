@@ -8,7 +8,7 @@ import { addToCart, displayInfoMessage, displaySuccessMessage } from '@redux/act
 import Button from '@main/Button'
 import Counter from '@main/Counter'
 import RoundImage from '@main/RoundImage'
-import { colors } from '@constants/'
+import { colors } from '@constants'
 
 type Props = ProductType & { onClick: (product: ProductType) => void }
 
@@ -34,7 +34,7 @@ const Product: FC<Props> = ({
 
   const addItemToCart = () => {
     if (count === 0) {
-      dispatch(displayInfoMessage('Cantidad tiene que ser mayor a 0'))
+      dispatch(displayInfoMessage('La cantidad tiene que ser mayor a 0'))
       return
     }
     const item: ProductType = {
