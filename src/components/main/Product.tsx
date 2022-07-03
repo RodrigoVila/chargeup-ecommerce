@@ -57,9 +57,11 @@ const Product: FC<Props> = ({
     <>
       <ReactTooltip />
 
-      <div className="relative mx-2 mt-32 mb-4 w-full max-w-sm rounded-xl bg-black text-white lg:mx-8 lg:max-w-360">
-        <div className="px-8 pt-8 pb-4 ">
-          {imgUri && <RoundImage imgUri={imgUri} />}
+      <div className="mx-2 mt-32 mb-4 flex w-full max-w-sm flex-col items-center justify-end rounded-xl bg-black text-white lg:mx-8 lg:max-w-360">
+        <div className="relative flex flex-col justify-end px-8 pb-4 h-full">
+          <div className="mb-8 flex h-32 w-full items-center justify-center">
+            {imgUri && <RoundImage imgUri={imgUri} />}
+          </div>
           <div className="text-base font-semibold md:text-xl">{title.toUpperCase()}</div>
           <div className="my-3 flex text-sm font-semibold md:text-base">
             {suitableForInfo.vegan && (
@@ -83,8 +85,8 @@ const Product: FC<Props> = ({
               </div>
             )}
           </div>
-          <div className="cursor-pointer text-sm line-clamp-4 md:text-lg" onClick={onClick}>
-            {description}
+          <div className="cursor-pointer text-sm md:text-lg" onClick={onClick}>
+            {description?.short}
           </div>
           {/* text-[#a855f7] */}
           <div className="cursor-pointer font-semibold text-orange-400" onClick={onClick}>
@@ -124,7 +126,7 @@ const Product: FC<Props> = ({
             <div className="my-2 text-2xl font-semibold md:text-4xl">{`€${price}`}</div>
           </div>
         </div>
-        <div className="mx-4 mb-4 flex items-center justify-center">
+        <div className="mb-4 flex w-full items-center justify-center px-4">
           <Counter count={count} subtractOne={subtractOne} addOne={addOne} />
           <Button title="Agregar" color={colors.purple} onClick={addItemToCart} />
         </div>

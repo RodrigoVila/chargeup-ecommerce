@@ -1,27 +1,38 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose'
 
-let productSchema = new mongoose.Schema(
+const descriptionSchema = new mongoose.Schema({
+  short: String,
+  long: [String],
+})
+const nutritionalInfoSchema = new mongoose.Schema({
+  calories: Number,
+  carbs: Number,
+  fat: Number,
+  protein: Number
+})
+
+const suitableForInfoSchema = new mongoose.Schema({
+  glutenFree: Boolean,
+  keto: Boolean,
+  protein: Boolean,
+  vegan: Boolean
+})
+
+const productSchema = new mongoose.Schema(
   {
-    title: {
-      type: String,
-      required: true,
-    },
-    description: {
-      type: String,
-    },
-    price: {
-      type: String,
-    },
-    imgUri: {
-      type: String,
-    },
+    id: String,
+    title: String,
+    description: descriptionSchema,
+    nutritionalInfo: nutritionalInfoSchema,
+    suitableForInfo: suitableForInfoSchema,
+    price: String,
+    imgUri: String,
   },
   {
     collection: process.env.MONGO_PRODUCTS_COLLECTION,
   }
-);
+)
 
-let Product =
-  mongoose.models.Product || mongoose.model("Product", productSchema);
+const Product = mongoose.models.Product || mongoose.model('Product', productSchema)
 
-export default Product;
+export default Product

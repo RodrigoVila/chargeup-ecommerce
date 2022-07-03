@@ -84,7 +84,10 @@ interface ISuitableForInfo {
 type ProductType = {
   id: string
   title: string
-  description: string
+  description: {
+    short: string
+    long: string[]
+  }
   price: number
   quantity: number
   imgUri: string
