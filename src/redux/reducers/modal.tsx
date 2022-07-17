@@ -23,7 +23,7 @@ const initialState: ModalStateType = {
   checkout_error: false,
   filters: false,
   selectedProduct: null,
-  productModalOpen: false,
+  productModal: false,
 }
 
 const modalReducer = (state = initialState, action: ModalActionType): ModalStateType => {
@@ -61,13 +61,13 @@ const modalReducer = (state = initialState, action: ModalActionType): ModalState
     case OPEN_PRODUCT_DETAILS:
       return {
         ...state,
+        productModal: true,
         selectedProduct: action.selectedProduct,
-        productModalOpen: true,
       }
     case CLOSE_PRODUCT_DETAILS:
       return {
         ...state,
-        productModalOpen: false,
+        productModal: false,
       }
 
     case OPEN_CHECKOUT:

@@ -9,7 +9,7 @@ import { colors } from '@constants'
 
 const ProductModal: FC = () => {
   const isOpen: boolean = useAppSelector(
-    (state: StateType) => state.modal.productModalOpen,
+    (state: StateType) => state.modal.productModal,
     shallowEqual
   )
 
@@ -23,7 +23,7 @@ const ProductModal: FC = () => {
   const closeModal = () => dispatch(closeProductModal())
 
   return (
-    <Modal isOpen={isOpen} closeOnOverlayClick transparent>
+    <Modal isOpen={isOpen} fullScreen>
       <div className="flex w-full flex-col">
         {/*header*/}
         <h3 className="my-2 text-center text-2xl font-semibold">{selectedProduct?.title}</h3>

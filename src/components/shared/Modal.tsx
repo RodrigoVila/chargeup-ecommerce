@@ -33,10 +33,8 @@ const Modal = ({
       <div
         onClick={closeOnOverlayClick ? closeModal : undefined}
         className={`${
-          fullScreen
-            ? 'inset-0 items-center justify-center'
-            : 'top-20 items-start justify-start'
-        } fixed z-40 flex flex-col bg-white`}
+          fullScreen ? 'inset-0 items-center justify-center' : 'top-20 items-start justify-start'
+        } fixed z-40 flex flex-col`}
       >
         <div className={`mx-2 max-w-4xl bg-white`}>{children}</div>
       </div>

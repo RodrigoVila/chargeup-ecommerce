@@ -1,20 +1,26 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Image from 'next/image'
 
 import { colors } from '../../constants'
 
 interface Props {
   label: string
-  setSelected: (value: string) => void
+  selected: boolean
+  onClick: (value: string) => void
 }
 
-const FilterPill = ({ label, setSelected }: Props) => {
+const FilterPill = ({ label, selected, onClick }: Props) => {
   const [isActive, setActive] = useState(false)
 
   const handleClick = (e) => {
     e.stopPropagation()
     setActive(!isActive)
+    onClick(label)
   }
+
+  useEffect(() => {
+    selected && setActive(true)
+  }, [selected])
 
   return (
     <div
@@ -25,9 +31,7 @@ const FilterPill = ({ label, setSelected }: Props) => {
       <div className="relative mr-1 h-12 w-12">
         {label === 'Keto' && <Image src="/icons/keto-white.svg" layout="fill" />}
         {label === 'Vegano' && <Image src="/icons/vegan-white.png" layout="fill" />}
-        {label === 'Proteico' && (
-          <Image src="/icons/high-protein-white.svg" layout="fill" />
-        )}
+        {label === 'Proteico' && <Image src="/icons/high-protein-white.svg" layout="fill" />}
         {label === 'Gluten Free' && <Image src="/icons/gluten-free-white.png" layout="fill" />}
         {label === 'Sin Azucar' && <Image src="/icons/sugar-free-white.png" layout="fill" />}
       </div>

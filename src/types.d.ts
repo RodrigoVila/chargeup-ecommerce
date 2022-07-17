@@ -31,6 +31,16 @@ interface CheckoutActionType extends CheckoutStateType {
   type: string
 }
 
+// Filters
+type FiltersStateType = {
+  filters: string[]
+}
+
+interface FiltersActionType {
+  type: string
+  filter: string
+}
+
 // Modals
 type ModalStateType = {
   drawer: boolean
@@ -40,7 +50,7 @@ type ModalStateType = {
   checkout_error: boolean
   filters: boolean
   selectedProduct: ProductType
-  productModalOpen: boolean
+  productModal: boolean
 }
 
 interface ModalActionType extends ModalStateType {
