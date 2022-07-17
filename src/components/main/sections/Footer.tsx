@@ -10,7 +10,7 @@ const Footer = () => {
     <>
       <div
         id="contact"
-        className="flex w-full flex-col items-center justify-center bg-gray-800 pt-3 text-white"
+        className="flex w-full flex-col items-center justify-center bg-black pt-3 text-white"
       >
         <div className="mb-2 text-2xl">Contactanos</div>
         <div className="flex flex-row pb-4">
@@ -25,10 +25,26 @@ const Footer = () => {
           </ActiveLink>
         </div>
         <div className="text-sm text-gray-300 md:text-lg">
-          Privacy policy | Terms & Conditions | Feedback
+          <a href="/terms">Terms & Conditions</a> | <a href="/cookies">Cookies policy</a> |{' '}
+          <a href="mailto:chargeupbcn@gmail.com">Feedback</a>
         </div>
         <div className="flex items-center justify-center pb-2 text-center text-xs text-gray-300 md:text-lg">
-          Made with <AiFillHeart className="mx-1" color="red" size={18} /> by Veke (Design) & Rodri
+          Made with <AiFillHeart className="mx-1" color="red" size={18} /> by{' '}
+          <a
+            target="_blank"
+            className="mx-1 text-orange-400"
+            href="https://www.linkedin.com/in/victoriacabello/"
+          >
+            Veke
+          </a>
+          (Design) &
+          <a
+            target="_blank"
+            className="mx-1 text-orange-400"
+            href="https://www.linkedin.com/in/rsvila/"
+          >
+            Rodri
+          </a>
           (Development).
         </div>
       </div>

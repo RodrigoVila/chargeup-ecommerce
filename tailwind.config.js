@@ -23,6 +23,9 @@ module.exports = {
         'screen/3': 'calc(100vh / 3)',
         'screen/4': 'calc(100vh / 4)',
         'screen/5': 'calc(100vh / 5)',
+        'screen*2': '200vh',
+        'screen*1.5': '150vh',
+        'screen*3': '300vh',
       },
       inset: {
         outofScreen: '-700px',

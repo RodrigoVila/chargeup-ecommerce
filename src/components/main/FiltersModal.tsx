@@ -16,13 +16,14 @@ const FiltersModal = () => {
 
   return (
     <Modal isOpen={isOpen} closeOnOverlayClick>
-      <div className="items-left relative flex flex-wrap justify-start">
-        <div className="absolute -top-3 left-1">
+      <div className="items-left relative ml-3 flex flex-wrap justify-start">
+        <div className="absolute -top-3 -left-2">
           <BsFillTriangleFill color="white" size={20} />
         </div>
         {labels.map((label, index) => (
           <FilterPill key={index} label={label} setSelected={() => {}} />
         ))}
+        <CloseModalButton color="black" isAbsolute={false} onClose={closeModal} />
       </div>
     </Modal>
   )

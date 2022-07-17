@@ -1,3 +1,4 @@
+import { colors } from '@constants'
 import NavItem from '@main/NavItem'
 
 interface Props {
@@ -18,8 +19,8 @@ const NavItems = ({ direction, onClose }: Props) => {
   return (
     <div
       className={`${
-        direction === 'row' ? 'flex-row pl-2 text-white' : 'flex-col'
-      } flex w-full items-center justify-center z-20 `}
+        direction === 'row' ? 'flex-row pl-2 text-white' : 'flex-col text-purple-600'
+      } z-20 flex w-full items-center justify-center `}
     >
       {links.map((link, index) => (
         <NavItem
@@ -30,7 +31,7 @@ const NavItems = ({ direction, onClose }: Props) => {
           onClick={onClose}
         />
       ))}
-    </div> 
+    </div>
   )
 }
 

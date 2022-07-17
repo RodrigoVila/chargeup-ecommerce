@@ -5,7 +5,7 @@ const KetoSection: FC = () => {
   return (
     <div
       id="keto"
-      className="relative mx-auto flex w-full flex-col items-center text-center justify-center py-6 px-2"
+      className="relative mx-auto flex w-full flex-col items-center justify-center py-6 px-2 text-center"
     >
       <h1 className="w-full py-12 px-2 text-center font-dinBold text-5xl">QUE ES KETO ?</h1>
       <div className="max-w-4xl px-4 pb-4 text-xl leading-snug">
@@ -39,36 +39,37 @@ const KetoSection: FC = () => {
         <div className="relative my-8 h-screen/2 w-full bg-contain">
           <Image src="/keto-graphic2.png" objectFit="contain" layout="fill" />
         </div>
-        <h4 className="w-full lg:text-left pb-4 pt-8 font-dinBold text-3xl">
+        <h4 className="w-full pb-4 pt-8 font-dinBold text-3xl lg:text-left">
           Alimentos típicos que se consumen en la dieta cetogénica
         </h4>
-        <ul className="flex text-left flex-col px-4">
-          <li>Pescados y mariscos.</li>
-          <li>Queso.</li>
+        <ul className="flex flex-col px-4 text-left">
+          <li>- Pescados y mariscos.</li>
+          <li>- Queso.</li>
           <li>
-            Grasas naturales como aguacate, mantequilla de pasto, aceite de coco y aceite de oliva.
+            - Grasas naturales como aguacate, mantequilla de pasto, aceite de coco y aceite de
+            oliva.
           </li>
-          <li>Carnes.</li>
-          <li>Huevos.</li>
-          <li>Verduras que crecen sobre el suelo.</li>
+          <li>- Carnes.</li>
+          <li>- Huevos.</li>
+          <li>- Verduras que crecen sobre el suelo.</li>
         </ul>
-        <h4 className="w-full lg:text-left pb-4 pt-8 font-dinBold text-3xl">
+        <h4 className="w-full pb-4 pt-8 font-dinBold text-3xl lg:text-left">
           Alimentos que NO se deben consumir en una dieta keto
         </h4>
-        <ul className="flex text-left flex-col px-4 pb-10">
-          <li>Alimentos azucarados.</li>
-          <li>Alimentos ultraprocesados.</li>
-          <li>Cereales</li>
-          <li>Arroz.</li>
-          <li>Pastas.</li>
-          <li>Legumbres.</li>
-          <li>Tuberculos.</li>
-          <li>Alcohol.</li>
-          <li>Bebidas deportivas.</li>
-          <li>Yogures endulzados.</li>
-          <li>Helados.</li>
+        <ul className="flex flex-col px-4 pb-10 text-left">
+          <li>- Alimentos azucarados.</li>
+          <li>- Alimentos ultraprocesados.</li>
+          <li>- Cereales</li>
+          <li>- Arroz.</li>
+          <li>- Pastas.</li>
+          <li>- Legumbres.</li>
+          <li>- Tuberculos.</li>
+          <li>- Alcohol.</li>
+          <li>- Bebidas deportivas.</li>
+          <li>- Yogures endulzados.</li>
+          <li>- Helados.</li>
           <li>
-            Frutas: hay muy pocas que se pueden consumir, como por ejemplo frutos rojos ya que
+            - Frutas: hay muy pocas que se pueden consumir, como por ejemplo frutos rojos ya que
             mayoría de la fruta tiene demasiado azúcar para la dieta keto.
           </li>
         </ul>
