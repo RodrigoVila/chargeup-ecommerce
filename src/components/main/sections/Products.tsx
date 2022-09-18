@@ -34,12 +34,14 @@ const Products: FC = () => {
   useEffect(() => {
     dispatch(fetchProducts())
   }, [])
+
   // TODO: Los filtros se seleccionan en el modal OK y guardan su state en Redux. Falta que impacten en este componente
   useEffect(() => {
     const filterByProductName = () => {
       const filter = products.filter((product) =>
-        product.suitableForInfo.includes(searchValue.toLowerCase())
+        product.title.toLowerCase().includes(searchValue.toLowerCase())
       )
+      console.log(filter)
       searchValue.length > 1 ? setFilteredProducts(filter) : clearFilters()
     }
 
@@ -69,7 +71,8 @@ const Products: FC = () => {
       className="h-full min-h-screen w-full bg-[url('/purpleTexture.svg')] bg-cover bg-center bg-repeat pt-4"
     >
       <div className="z-50 ml-2 flex flex-wrap items-center justify-center">
-        {isOpen ? (
+        {/* Filtros por tipo */}
+        {/* {isOpen ? (
           <BsFilterCircleFill
             size={33}
             color="white"
@@ -85,7 +88,7 @@ const Products: FC = () => {
               onClick={openModal}
             />
           </a>
-        )}
+        )} */}
 
         <ProductSearchBar setSearchValue={setSearchValue} />
       </div>

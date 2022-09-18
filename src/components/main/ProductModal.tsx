@@ -23,7 +23,7 @@ const ProductModal: FC = () => {
   const closeModal = () => dispatch(closeProductModal())
 
   return (
-    <Modal isOpen={isOpen} fullScreen>
+    <Modal isOpen={isOpen} fullScreen transparent>
       <div className="flex w-full flex-col">
         {/*header*/}
         <h3 className="my-2 text-center text-2xl font-semibold">{selectedProduct?.title}</h3>

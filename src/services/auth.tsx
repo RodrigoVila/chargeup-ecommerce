@@ -9,7 +9,7 @@ const token = "";
 
 const config = { headers: { Authorization: `Bearer ${token}` } };
 
-export const register = async (
+export const  register = async (
   name: string,
   lastName: string,
   email: string,

@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect, FormEvent } from 'react'
 import { useRouter } from 'next/router'
 import Bcrypt from 'bcryptjs'
 
-import RegisterForm from '@main/Register'
+import RegisterForm from '@main/RegisterForm'
 import LoginForm from '@main/LoginForm'
 import { displayErrorMessage, displaySuccessMessage, userLogin, userRegister } from '@redux/actions'
 import { RootState } from '@redux/store'
@@ -42,9 +42,7 @@ const LoginScreen = () => {
 
     setLoading(true)
     password === repeatedPassword
-      ? dispatch(userRegister(name, lastName, email, encryptPassword(password))).then((data) =>
-          console.log('data', data)
-        )
+      ? dispatch(userRegister(name, lastName, email, encryptPassword(password)))
       : dispatch(displayErrorMessage('Passwords need to be equal'))
   }
 
@@ -63,8 +61,8 @@ const LoginScreen = () => {
   }, [isLoggedIn])
 
   return (
-    <div className="flex h-screen w-screen flex-col items-center justify-center bg-gradient-to-br from-purple-500 to-fuchsia-700 px-4">
-      <div className="w-full max-w-md rounded-md bg-white font-semibold text-black">
+    <div className="flex h-full min-h-screen w-screen flex-col items-center justify-center bg-gradient-to-br from-purple-500 to-fuchsia-700 px-4">
+      <div className="my-4 w-full max-w-md rounded-md bg-white font-semibold text-black">
         <div className="px-6 py-4">
           {isRegister ? (
             <>

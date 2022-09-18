@@ -59,7 +59,9 @@ const CartProduct = ({
         </div>
 
         <div className="relative mx-2 flex justify-between">
-          <div className="h-full text-xl text-gray-700">{`€${price} - ${quantity} unidades.`}</div>
+          <div className="h-full text-xl text-gray-700">{`€${price} - ${quantity} ${
+            quantity === 1 ? 'unidad' : 'unidades'
+          }.`}</div>
           <div className="h-full text-xl text-gray-700">{`€${price * quantity}`}</div>
         </div>
       </div>

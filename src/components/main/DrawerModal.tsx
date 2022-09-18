@@ -1,7 +1,7 @@
 import { shallowEqual } from 'react-redux'
 
 import { useAppSelector, useAppDispatch } from '@hooks'
-import { closeDrawerRModal } from '@redux/actions'
+import { closeDrawerModal } from '@redux/actions'
 import CloseModalButton from '@main/Buttons/CloseModalButton'
 import Modal from '@shared/Modal'
 import NavItems from './NavItems'
@@ -9,7 +9,7 @@ import NavItems from './NavItems'
 const DrawerModal = () => {
   const isOpen: boolean = useAppSelector((state: StateType) => state.modal.drawer, shallowEqual)
   const dispatch = useAppDispatch()
-  const onClose = () => dispatch(closeDrawerRModal())
+  const onClose = () => dispatch(closeDrawerModal())
 
   return (
     <Modal isOpen={isOpen} fullScreen>

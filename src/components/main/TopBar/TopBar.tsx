@@ -9,7 +9,7 @@ const TopBar = () => {
       <Logo />
       <NavItems direction="row" />
       <div className="z-20 flex items-center justify-center">
-        <RegisterLoginButton />
+        {/* <RegisterLoginButton /> */}
         <CartButton />
       </div>
     </div>

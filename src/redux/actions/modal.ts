@@ -24,7 +24,7 @@ export const closeCheckoutSuccessModal = () => ({ type: CLOSE_CHECKOUT_SUCCESS }
 export const openCheckoutErrorModal = () => ({ type: OPEN_CHECKOUT_ERROR })
 export const closeCheckoutErrorModal = () => ({ type: CLOSE_CHECKOUT_ERROR })
 export const openDrawerModal = () => ({ type: OPEN_DRAWER })
-export const closeDrawerRModal = () => ({ type: CLOSE_DRAWER })
+export const closeDrawerModal = () => ({ type: CLOSE_DRAWER })
 export const openFiltersModal = () => ({ type: OPEN_FILTERS })
 export const closeFiltersModal = () => ({ type: CLOSE_FILTERS })
 export const openProductModal = (selectedProduct: ProductType) => ({

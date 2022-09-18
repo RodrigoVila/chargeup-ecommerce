@@ -7,7 +7,7 @@ const CakesSection: FC = () => {
     // bg-fixed bg-center bg-no-repeat  bg-[url('/wooden.jpg')] bg-cover
     <div
       id="cakes"
-      className="relative mx-auto flex w-full min-h-screen h-screen*1.5 flex-col items-center justify-center bg-[url('/cake.jpg')] bg-cover bg-center py-6 px-2 text-center"
+      className="relative mx-auto flex w-full min-h-screen h-screen*1.5 flex-col items-center justify-center bg-[url('/cake.jpg')] bg-cover bg-no-repeat bg-center py-6 px-2 text-center"
     >
       {/* <BackgroundOverlay color={colors.overlay} /> */}
       <div className="z-20 text-white">

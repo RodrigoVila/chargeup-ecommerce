@@ -1,13 +1,15 @@
 import { FC } from 'react'
+
+import BackgroundOverlay from '@main/BackgroundOverlay'
 import { colors } from '@constants'
 
 const WhyUsSection: FC = () => {
   return (
     <div
       id="whyus"
-      className={`bg-[${colors.purple}] relative mx-auto flex min-h-screen w-full flex-col items-center justify-center py-6 px-2 text-center`}
+      className={`bg-[${colors.purple}] relative mx-auto flex min-h-screen w-full flex-col items-center justify-center bg-[url('/peanut-butter.jpg')] bg-cover bg-center bg-no-repeat py-6 px-2 text-center`}
     >
-      {/* <BackgroundOverlay color={colors.overlay} /> */}
+      <BackgroundOverlay color={colors.overlay} />
       <div className="z-20 text-white">
         <div className="w-full py-12 px-2 text-center font-dinBold text-5xl">
           POR QUE ELEGIRNOS?

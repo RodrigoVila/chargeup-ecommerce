@@ -20,7 +20,7 @@ const NavItems = ({ direction, onClose }: Props) => {
     <div
       className={`${
         direction === 'row' ? 'flex-row pl-2 text-white' : 'flex-col text-purple-600'
-      } z-20 flex w-full items-center justify-center `}
+      } z-20 flex w-full items-center justify-center text-center `}
     >
       {links.map((link, index) => (
         <NavItem
