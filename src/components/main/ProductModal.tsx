@@ -1,35 +1,25 @@
-import { FC, useEffect } from 'react'
-import { shallowEqual } from 'react-redux'
+import { FC } from 'react';
+import useActions from '@hooks/useActions';
+import useSelector from '@hooks/useSelector';
 
-import { useAppSelector } from '@hooks/index'
-import useReduxActions from '@hooks/useReduxActions'
-
-import Button from './Button'
-import { colors } from '@constants'
-import Modal from '@shared/Modal'
+import Modal from '@shared/Modal';
+import { colors } from '@constants';
+import Button from './Button';
 
 const ProductModal: FC = () => {
-  const isOpen: boolean = useAppSelector(
-    (state: StateType) => state.modal.productModal,
-    shallowEqual
-  )
+  const { isProductModalOpen, modalProduct } = useSelector();
 
-  const selectedProduct: ProductType = useAppSelector(
-    (state: StateType) => state.modal.selectedProduct,
-    shallowEqual
-  )
-
-  const { closeProductModal } = useReduxActions()
+  const { closeProductModal } = useActions();
 
   return (
-    <Modal isOpen={isOpen} fullScreen transparent>
+    <Modal isOpen={isProductModalOpen} fullScreen transparent>
       <div className="flex w-full flex-col">
         {/*header*/}
-        <h3 className="my-2 text-center text-2xl font-semibold">{selectedProduct?.title}</h3>
+        <h3 className="my-2 text-center text-2xl font-semibold">{modalProduct?.title}</h3>
         {/*body*/}
         <div className="px-2 text-center">
           <p className="px-1 text-sm leading-relaxed text-slate-500">
-            {selectedProduct?.description.long?.map((p) => (
+            {modalProduct?.description.long?.map((p) => (
               <p>{p}</p>
             ))}
           </p>
@@ -39,7 +29,7 @@ const ProductModal: FC = () => {
         </div>
       </div>
     </Modal>
-  )
-}
+  );
+};
 
-export default ProductModal
+export default ProductModal;

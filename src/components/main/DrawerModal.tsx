@@ -1,22 +1,21 @@
-import { shallowEqual } from 'react-redux'
+import useActions from '@hooks/useActions';
+import useSelector from '@hooks/useSelector';
 
-import { useAppSelector } from '@hooks/index'
-import useReduxActions from '@hooks/useReduxActions'
-import CloseModalButton from '@main/Buttons/CloseModalButton'
-import Modal from '@shared/Modal'
-import NavItems from './NavItems'
+import Modal from '@shared/Modal';
+import CloseModalButton from '@main/Buttons/CloseModalButton';
+import NavItems from './NavItems';
 
 const DrawerModal = () => {
-  const isOpen: boolean = useAppSelector((state: StateType) => state.modal.drawer, shallowEqual)
+  const { isDrawerModalOpen } = useSelector();
 
-  const { closeDrawerModal } = useReduxActions()
+  const { closeDrawerModal } = useActions();
 
   return (
-    <Modal isOpen={isOpen} fullScreen>
+    <Modal isOpen={isDrawerModalOpen} fullScreen>
       <CloseModalButton color="black" position="left" onClose={() => closeDrawerModal()} />
       <NavItems direction="column" onClose={() => closeDrawerModal()} />
     </Modal>
-  )
-}
+  );
+};
 
-export default DrawerModal
+export default DrawerModal;

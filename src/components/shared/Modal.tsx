@@ -3,7 +3,7 @@ import { useEffect } from 'react'
 import { colors } from '@constants'
 import Portal from '@utils/Portal'
 import BackgroundOverlay from '@main/BackgroundOverlay'
-import useReduxActions from '@hooks/useReduxActions'
+import useActions from '@hooks/useActions'
 
 interface Props {
   children: React.ReactNode
@@ -20,7 +20,7 @@ const Modal = ({
   fullScreen = false,
   closeOnOverlayClick = false,
 }: Props) => {
-  const { closeDrawerModal } = useReduxActions()
+  const { closeDrawerModal } = useActions()
 
   useEffect(() => {
     isOpen ? (document.body.style.overflow = 'hidden') : (document.body.style.overflow = 'auto')
@@ -29,7 +29,7 @@ const Modal = ({
   return isOpen ? (
     <Portal wrapperId="react-portal-modal-container">
       <div
-        onClick={closeOnOverlayClick ? closeModal : undefined}
+        onClick={closeOnOverlayClick ? closeDrawerModal : undefined}
         className={`${
           fullScreen
             ? 'inset-0 items-center justify-center bg-white'

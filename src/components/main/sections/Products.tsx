@@ -1,42 +1,38 @@
-import { FC, useState, useEffect } from 'react'
-import { BsFilterCircle, BsFilterCircleFill } from 'react-icons/bs'
+import { FC, useState, useEffect } from 'react';
+import { BsFilterCircle, BsFilterCircleFill } from 'react-icons/bs';
 
-import { useAppSelector } from '@hooks/index'
-import useReduxActions from '@hooks/useReduxActions'
+import useActions from '@hooks/useActions';
+import useSelector from '@hooks/useSelector';
 
-import Product from '@main/Product'
-import ProductSearchBar from '@main/ProductSearchBar'
-import { shallowEqual } from 'react-redux'
-import FiltersModal from '@main/FiltersModal'
+import Product from '@main/Product';
+import ProductSearchBar from '@main/ProductSearchBar';
 
 const Products: FC = () => {
-  const [searchValue, setSearchValue] = useState('')
-  const [filteredProducts, setFilteredProducts] = useState([])
+  const [searchValue, setSearchValue] = useState('');
+  const [filteredProducts, setFilteredProducts] = useState([]);
 
-  const products = useAppSelector((state) => state.products.products)
-  const isOpen: boolean = useAppSelector((state) => state.modal.filters, shallowEqual)
-  const filters: string[] = useAppSelector((state) => state.filters.filters, shallowEqual)
+  const { products, isFilterModalOpen, filters } = useSelector();
 
-  const { fetchProducts, openProductModal } = useReduxActions()
+  const { fetchProducts, openProductModal } = useActions();
 
-  const clearFilters = () => setFilteredProducts([])
+  const clearFilters = () => setFilteredProducts([]);
 
   useEffect(() => {
-    fetchProducts()
-  }, [])
+    fetchProducts();
+  }, []);
 
   // TODO: Los filtros se seleccionan en el modal OK y guardan su state en Redux. Falta que impacten en este componente
   useEffect(() => {
     const filterByProductName = () => {
       const filter = products.filter((product) =>
         product.title.toLowerCase().includes(searchValue.toLowerCase())
-      )
-      console.log(filter)
-      searchValue.length > 1 ? setFilteredProducts(filter) : clearFilters()
-    }
+      );
+      console.log(filter);
+      searchValue.length > 1 ? setFilteredProducts(filter) : clearFilters();
+    };
 
-    filterByProductName()
-  }, [searchValue])
+    filterByProductName();
+  }, [searchValue]);
 
   useEffect(() => {
     const filterByType = () => {
@@ -44,16 +40,16 @@ const Products: FC = () => {
         filters.map((f) => {
           const filter = products.filter((product) =>
             product.title.toLowerCase().includes(f.toLowerCase())
-          )
-          setFilteredProducts(filter)
-        })
+          );
+          setFilteredProducts(filter);
+        });
       } else {
-        clearFilters()
+        clearFilters();
       }
-    }
+    };
 
-    filterByType()
-  }, [filters])
+    filterByType();
+  }, [filters]);
 
   return (
     <div
@@ -62,7 +58,7 @@ const Products: FC = () => {
     >
       <div className="z-50 ml-2 flex flex-wrap items-center justify-center">
         {/* Filtros por tipo */}
-        {/* {isOpen ? (
+        {/* {isFilterModalOpen ? (
           <BsFilterCircleFill
             size={33}
             color="white"
@@ -119,7 +115,7 @@ const Products: FC = () => {
         </div>
       )}
     </div>
-  )
-}
+  );
+};
 
-export default Products
+export default Products;

@@ -6,7 +6,7 @@ import Button from '@main/Button'
 import Counter from '@main/Counter'
 import RoundImage from '@main/RoundImage'
 import { colors } from '@constants'
-import useReduxActions from '@hooks/useReduxActions'
+import useActions from '@hooks/useActions'
 
 type Props = ProductType & { onClick: (product: ProductType) => void }
 
@@ -22,7 +22,7 @@ const Product: FC<Props> = ({
 }) => {
   const [count, setCount] = useState(0)
 
-  const { addToCart, displayInfoMessage, displaySuccessMessage } = useReduxActions()
+  const { addToCart, displayInfoMessage, displaySuccessMessage } = useActions()
 
   const addOne = () => setCount((prevCount) => prevCount + 1)
 

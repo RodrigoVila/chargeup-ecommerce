@@ -1,18 +1,18 @@
-import React, { useEffect } from 'react'
+import React, { useEffect } from 'react';
 
-import useReduxActions from '@hooks/useReduxActions'
+import useActions from '@hooks/useActions';
 
 const AdminCustomerList = () => {
-  const { getUserList } = useReduxActions()
+  const { getUserList } = useActions();
 
   const fetch = async () => {
-    const { data } = await getUserList()
-    console.log('!!!!!data', data)
-  }
+    const { data } = await getUserList();
+    console.log('!!!!!data', data);
+  };
   useEffect(() => {
-    fetch()
-  }, [])
-  return <div></div>
-}
+    fetch();
+  }, []);
+  return <div></div>;
+};
 
-export default AdminCustomerList
+export default AdminCustomerList;

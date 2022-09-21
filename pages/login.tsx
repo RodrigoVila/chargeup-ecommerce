@@ -1,10 +1,10 @@
-import React, { useState, useRef, useEffect, FormEvent } from 'react'
+import React, { useState, useEffect, FormEvent } from 'react'
 import { useRouter } from 'next/router'
 import { Toaster } from 'react-hot-toast'
 import Bcrypt from 'bcryptjs'
 
-import { useAppSelector } from '@hooks/index'
-import useReduxActions from '@hooks/useReduxActions'
+import useSelector from '@hooks/useSelector'
+import useActions from '@hooks/useActions'
 
 import RegisterForm from '@main/RegisterForm'
 import LoginForm from '@main/LoginForm'
@@ -13,20 +13,20 @@ import Button from '@main/Button'
 import Link from '@main/Link'
 import { colors } from '@constants'
 
+const initialState = {
+  name: '',
+  lastName: '',
+  email: '',
+  password: '',
+  repeatedPassword: '',
+}
+
 const LoginScreen = () => {
   const [isRegister, setRegister] = useState(false)
   const [loading, setLoading] = useState(false)
-  const [credentials, setCredentials] = useState({
-    name: '',
-    lastName: '',
-    email: '',
-    password: '',
-    repeatedPassword: '',
-  })
-  const { displayErrorMessage, displaySuccessMessage, userLogin, registerUser } = useReduxActions()
-
-  const { isLoggedIn, user } = useAppSelector((state: RootState) => state.auth)
-
+  const [credentials, setCredentials] = useState(initialState)
+  const { displayErrorMessage, displaySuccessMessage, userLogin, registerUser } = useActions()
+  const { isLoggedIn, user } = useSelector()
   const router = useRouter()
 
   const encryptPassword = (password: string) => Bcrypt.hashSync(password, 10)
@@ -41,6 +41,12 @@ const LoginScreen = () => {
     e.preventDefault()
 
     const { name, lastName, email, password, repeatedPassword } = credentials
+    const user = {
+      name,
+      lastName,
+      email,
+      encryptPassword(password),
+    }
     console.log(credentials)
     setLoading(true)
     if (!name || !lastName || !email || !password || !repeatedPassword) {

@@ -1,19 +1,16 @@
-import { useEffect } from 'react'
-import { shallowEqual } from 'react-redux'
-import { FiShoppingCart } from 'react-icons/fi'
+import { FC } from 'react';
+import { FiShoppingCart } from 'react-icons/fi';
 
-import useReduxActions from '@hooks/useReduxActions'
-import { useAppSelector } from '@hooks/index'
+import useActions from '@hooks/useActions';
+import useSelector from '@hooks/useSelector';
 
-const CartButton = () => {
-  const cartLength: number = useAppSelector(
-    (state: StateType) => state.cart.items.length,
-    shallowEqual
-  )
-  const { openCartModal, displayInfoMessage } = useReduxActions()
+const CartButton: FC = () => {
+  const { cartLength } = useSelector();
+  
+  const { openCartModal, displayInfoMessage } = useActions();
 
   const openCart = () =>
-    cartLength > 0 ? openCartModal() : displayInfoMessage('No hay productos en el carrito')
+    cartLength > 0 ? openCartModal() : displayInfoMessage('No hay productos en el carrito');
 
   return (
     <button className="relative z-20 m-2 mr-4 h-8 w-8 cursor-pointer md:m-4" onClick={openCart}>
@@ -26,7 +23,7 @@ const CartButton = () => {
         </div>
       )}
     </button>
-  )
-}
+  );
+};
 
-export default CartButton
+export default CartButton;

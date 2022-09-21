@@ -1,20 +1,17 @@
-import { useEffect } from 'react'
-import { shallowEqual } from 'react-redux'
-import { useRouter } from 'next/router'
+import useActions from '@hooks/useActions';
+import useSelector from '@hooks/useSelector';
 
-import { useAppSelector } from '@hooks/index'
-import useReduxActions from '@hooks/useReduxActions'
-import CloseModalButton from '@main/Buttons/CloseModalButton'
+import CloseModalButton from '@main/Buttons/CloseModalButton';
 
 const CheckoutModal = () => {
-  const isOpen = useAppSelector((state: StateType) => state.modal.checkout, shallowEqual)
+  const { isCheckoutModalOpen } = useSelector();
 
-  const { closeCheckoutModal } = useReduxActions()
+  const { closeCheckoutModal } = useActions();
 
   return (
     <div
       className={`${
-        !isOpen && 'hidden'
+        !isCheckoutModalOpen && 'hidden'
       } absolute inset-0 z-40  flex h-screen w-screen flex-col items-center justify-center bg-violet-500 text-xl text-white`}
     >
       <CloseModalButton color="white" position="right" onClose={() => closeCheckoutModal()} />
@@ -25,7 +22,7 @@ const CheckoutModal = () => {
         </button>
       </form>
     </div>
-  )
-}
+  );
+};
 
-export default CheckoutModal
+export default CheckoutModal;

@@ -1,10 +1,10 @@
-import { useState } from 'react'
-import Image from 'next/image'
-import { FaRegTrashAlt } from 'react-icons/fa'
+import { FC } from 'react';
+import Image from 'next/image';
+import { FaRegTrashAlt } from 'react-icons/fa';
 
-import useReduxActions from '@hooks/useReduxActions'
+import useActions from '@hooks/useActions';
 
-const CartProduct = ({
+const CartProduct: FC<ProductType> = ({
   id,
   title,
   description,
@@ -13,10 +13,8 @@ const CartProduct = ({
   price,
   quantity,
   imgUri,
-}: ProductType) => {
-  const [count, setCount] = useState(0)
-
-  const { removeFromCart } = useReduxActions()
+}) => {
+  const { removeFromCart } = useActions();
 
   return (
     <div className="flex w-full">
@@ -61,7 +59,7 @@ const CartProduct = ({
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default CartProduct
+export default CartProduct;

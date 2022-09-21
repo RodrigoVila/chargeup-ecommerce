@@ -1,22 +1,20 @@
-import { BsFillTriangleFill } from 'react-icons/bs'
+import { BsFillTriangleFill } from 'react-icons/bs';
 
-import { useAppSelector } from '@hooks/index'
-import useReduxActions from '@hooks/useReduxActions'
+import useActions from '@hooks/useActions';
+import useSelector from '@hooks/useSelector';
 
-import Modal from '@shared/Modal'
-import FilterPill from './FilterPill'
-import Button from './Button'
+import Modal from '@shared/Modal';
+import FilterPill from './FilterPill';
+import Button from './Button';
 
-const labels = ['Keto', 'Vegano', 'Proteico', 'Gluten Free', 'Sin Azucar']
+const labels = ['Keto', 'Vegano', 'Proteico', 'Gluten Free', 'Sin Azucar'];
 
 const FiltersModal = () => {
-  const isOpen: boolean = useAppSelector((state) => state.modal.filters)
-  const filters = useAppSelector((state) => state.filters.filters)
-
-  const { closeFiltersModal, setProductFilters } = useReduxActions()
+  const { isFilterModalOpen, filters } = useSelector();
+  const { closeFiltersModal, setProductFilters } = useActions();
 
   return (
-    <Modal isOpen={isOpen} closeOnOverlayClick>
+    <Modal isOpen={isFilterModalOpen} closeOnOverlayClick>
       <div className="items-left relative flex flex-col flex-wrap justify-start px-2">
         <div className="absolute -top-4 left-1">
           <BsFillTriangleFill color="white" size={20} />
@@ -36,13 +34,13 @@ const FiltersModal = () => {
             title="Cerrar"
             type="outlined"
             onClick={() => {
-              closeFiltersModal()
+              closeFiltersModal();
             }}
           />
         </div>
       </div>
     </Modal>
-  )
-}
+  );
+};
 
-export default FiltersModal
+export default FiltersModal;
