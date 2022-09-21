@@ -1,13 +1,15 @@
+import { FormEvent } from 'react';
+
 interface Props {
-  title: string
-  color?: string
-  type?: 'filled' | 'outlined'
-  onClick: () => void
-  isSubmit?: boolean
-  disabled?: boolean
+  title: string;
+  color?: string;
+  type?: 'filled' | 'outlined';
+  isSubmit?: boolean;
+  disabled?: boolean;
+  onClick: (e: FormEvent<HTMLButtonElement>) => void;
 }
 
-const Button = ({ title, color, type, onClick, isSubmit, disabled = false }: Props) => {
+const Button = ({ title, color, type, isSubmit, disabled = false, onClick }: Props) => {
   return type === 'outlined' ? (
     <button
       className="my-2 w-full cursor-pointer rounded-md  border-2 p-2 text-center text-xl text-black shadow-sm"
@@ -31,7 +33,7 @@ const Button = ({ title, color, type, onClick, isSubmit, disabled = false }: Pro
     >
       {title}
     </button>
-  )
-}
+  );
+};
 
-export default Button
+export default Button;

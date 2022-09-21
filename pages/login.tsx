@@ -1,17 +1,16 @@
-import React, { useState, useEffect, FormEvent } from 'react'
-import { useRouter } from 'next/router'
-import { Toaster } from 'react-hot-toast'
-import Bcrypt from 'bcryptjs'
+import React, { useState, useEffect, useMemo, FormEvent } from 'react';
+import { useRouter } from 'next/router';
+import { Toaster } from 'react-hot-toast';
+import Bcrypt from 'bcryptjs';
 
-import useSelector from '@hooks/useSelector'
-import useActions from '@hooks/useActions'
+import useSelector from '@hooks/useSelector';
+import useActions from '@hooks/useActions';
 
-import RegisterForm from '@main/RegisterForm'
-import LoginForm from '@main/LoginForm'
-import { RootState } from '@redux/store'
-import Button from '@main/Button'
-import Link from '@main/Link'
-import { colors } from '@constants'
+import { colors } from '@constants';
+import RegisterForm from '@main/RegisterForm';
+import LoginForm from '@main/LoginForm';
+import Button from '@main/Button';
+import Link from '@main/Link';
 
 const initialState = {
   name: '',
@@ -19,59 +18,62 @@ const initialState = {
   email: '',
   password: '',
   repeatedPassword: '',
-}
+};
 
 const LoginScreen = () => {
-  const [isRegister, setRegister] = useState(false)
-  const [loading, setLoading] = useState(false)
-  const [credentials, setCredentials] = useState(initialState)
-  const { displayErrorMessage, displaySuccessMessage, userLogin, registerUser } = useActions()
-  const { isLoggedIn, user } = useSelector()
-  const router = useRouter()
+  const [isRegister, setRegister] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [credentials, setCredentials] = useState(initialState);
 
-  const encryptPassword = (password: string) => Bcrypt.hashSync(password, 10)
+  const { name, lastName, email, password, repeatedPassword } = credentials;
+
+  const router = useRouter();
+
+  const { isLoggedIn, user } = useSelector();
+
+  const { displayErrorMessage, displaySuccessMessage, userLogin, registerUser } = useActions();
+
+  const securedPassword = useMemo(() => Bcrypt.hashSync(password, 10), [password]);
 
   const onInputChange = (type: string, e: FormEvent<HTMLInputElement>) => {
-    setCredentials({ ...credentials, [type]: e.currentTarget.value })
-  }
+    setCredentials({ ...credentials, [type]: e.currentTarget.value });
+  };
 
-  const toggleRegister = () => setRegister(!isRegister)
+  const toggleRegister = () => setRegister(!isRegister);
 
-  const handleRegister = (e) => {
-    e.preventDefault()
+  const handleRegister = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setLoading(true);
 
-    const { name, lastName, email, password, repeatedPassword } = credentials
     const user = {
       name,
       lastName,
       email,
-      encryptPassword(password),
-    }
-    console.log(credentials)
-    setLoading(true)
+      password: securedPassword,
+    };
+
     if (!name || !lastName || !email || !password || !repeatedPassword) {
-      displayErrorMessage('Todos los campos son obligatorios.')
-      return
+      displayErrorMessage('Todos los campos son obligatorios.');
+      return;
     }
 
     password === repeatedPassword
-      ? registerUser(name, lastName, email, encryptPassword(password))
-      : displayErrorMessage('Las contraseñas deben ser iguales.')
-  }
+      ? registerUser(user)
+      : displayErrorMessage('Las contraseñas deben ser iguales.');
+  };
 
-  const handleLogin = async (e) => {
-    e.preventDefault()
+  const handleLogin = async (e: FormEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    setLoading(true);
 
-    const { email, password } = credentials
-    setLoading(true)
-    await userLogin(email, encryptPassword(password))
-    setLoading(false)
-  }
+    await userLogin(email, securedPassword);
+    setLoading(false);
+  };
 
   useEffect(() => {
     // isLoggedIn && router.push("/");
-    console.info('isLoggedIn: ', isLoggedIn, '. User: ', user)
-  }, [isLoggedIn])
+    console.info('isLoggedIn: ', isLoggedIn, '. User: ', user);
+  }, [isLoggedIn]);
 
   return (
     <>
@@ -85,7 +87,7 @@ const LoginScreen = () => {
                 <Button
                   title="Register new account"
                   color={colors.fuchsia}
-                  onClick={handleRegister}
+                  onClick={(e: FormEvent<HTMLButtonElement>) => handleRegister(e)}
                 />
                 <Link text="Go to Login" onClick={toggleRegister} />
               </>
@@ -100,7 +102,7 @@ const LoginScreen = () => {
         </div>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default LoginScreen
+export default LoginScreen;
