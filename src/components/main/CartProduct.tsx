@@ -2,8 +2,7 @@ import { useState } from 'react'
 import Image from 'next/image'
 import { FaRegTrashAlt } from 'react-icons/fa'
 
-import { useAppDispatch } from '@hooks'
-import { removeFromCart } from '@redux/actions/cart'
+import useReduxActions from '@hooks/useReduxActions'
 
 const CartProduct = ({
   id,
@@ -15,13 +14,9 @@ const CartProduct = ({
   quantity,
   imgUri,
 }: ProductType) => {
-  const dispatch = useAppDispatch()
   const [count, setCount] = useState(0)
 
-  const removeItem = () => {
-    //TODO: FIX Type
-    dispatch(removeFromCart(id))
-  }
+  const { removeFromCart } = useReduxActions()
 
   return (
     <div className="flex w-full">
@@ -31,7 +26,7 @@ const CartProduct = ({
       <div className={`relative flex w-full flex-col justify-between border-b-2 border-gray-300`}>
         <div className="mx-2 flex items-center justify-between">
           <div className="text-lg font-semibold">{title.toUpperCase()}</div>
-          <div className="cursor-pointer" onClick={removeItem}>
+          <div className="cursor-pointer" onClick={() => removeFromCart(id)}>
             <FaRegTrashAlt color="red" size={22} />
           </div>
         </div>

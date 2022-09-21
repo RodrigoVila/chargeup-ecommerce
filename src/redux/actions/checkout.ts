@@ -5,11 +5,11 @@ import {
 
 //TODO: type
 
-export const createCheckoutSession = () => ({
+export const createNewCheckoutSession = () => ({
   type: CREATE_CHECKOUT_SESSION,
 })
 
-export const createCheckoutSessionSuccess = (sessionURL: string) => ({
+export const createNewCheckoutSessionSuccess = (sessionURL: string) => ({
   type: CREATE_CHECKOUT_SESSION_SUCCESS,
   session: sessionURL,
 })

@@ -1,8 +1,7 @@
 import { BsFillTriangleFill } from 'react-icons/bs'
 
-import { useAppDispatch, useAppSelector } from '@hooks'
-import { closeFiltersModal } from '@redux/actions'
-import { setFilters } from '@redux/actions/filters'
+import { useAppSelector } from '@hooks/index'
+import useReduxActions from '@hooks/useReduxActions'
 
 import Modal from '@shared/Modal'
 import FilterPill from './FilterPill'
@@ -12,14 +11,9 @@ const labels = ['Keto', 'Vegano', 'Proteico', 'Gluten Free', 'Sin Azucar']
 
 const FiltersModal = () => {
   const isOpen: boolean = useAppSelector((state) => state.modal.filters)
-  
   const filters = useAppSelector((state) => state.filters.filters)
 
-  const dispatch = useAppDispatch()
-
-  const closeModal = () => dispatch(closeFiltersModal())
-
-  const handleSelection = (selectedFilter: string) => dispatch(setFilters(selectedFilter))
+  const { closeFiltersModal, setProductFilters } = useReduxActions()
 
   return (
     <Modal isOpen={isOpen} closeOnOverlayClick>
@@ -33,12 +27,18 @@ const FiltersModal = () => {
               key={index}
               label={label}
               selected={filters.includes(label)}
-              onClick={handleSelection}
+              onClick={() => setProductFilters(label)}
             />
           ))}
         </div>
         <div className="my-1">
-          <Button title="Cerrar" type="outlined" onClick={closeModal} />
+          <Button
+            title="Cerrar"
+            type="outlined"
+            onClick={() => {
+              closeFiltersModal()
+            }}
+          />
         </div>
       </div>
     </Modal>

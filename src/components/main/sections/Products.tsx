@@ -1,14 +1,8 @@
 import { FC, useState, useEffect } from 'react'
 import { BsFilterCircle, BsFilterCircleFill } from 'react-icons/bs'
 
-import {
-  closeFiltersModal,
-  closeProductModal,
-  fetchProducts,
-  openFiltersModal,
-  openProductModal,
-} from '@redux/actions'
-import { useAppDispatch, useAppSelector } from '@hooks'
+import { useAppSelector } from '@hooks/index'
+import useReduxActions from '@hooks/useReduxActions'
 
 import Product from '@main/Product'
 import ProductSearchBar from '@main/ProductSearchBar'
@@ -19,20 +13,16 @@ const Products: FC = () => {
   const [searchValue, setSearchValue] = useState('')
   const [filteredProducts, setFilteredProducts] = useState([])
 
-  const dispatch = useAppDispatch()
   const products = useAppSelector((state) => state.products.products)
-
   const isOpen: boolean = useAppSelector((state) => state.modal.filters, shallowEqual)
   const filters: string[] = useAppSelector((state) => state.filters.filters, shallowEqual)
 
-  const onClick = (product: ProductType) => dispatch(openProductModal(product))
+  const { fetchProducts, openProductModal } = useReduxActions()
 
-  const openModal = () => dispatch(openFiltersModal())
-  const closeModal = () => dispatch(closeFiltersModal())
   const clearFilters = () => setFilteredProducts([])
 
   useEffect(() => {
-    dispatch(fetchProducts())
+    fetchProducts()
   }, [])
 
   // TODO: Los filtros se seleccionan en el modal OK y guardan su state en Redux. Falta que impacten en este componente
@@ -107,7 +97,7 @@ const Products: FC = () => {
                   imgUri={p.imgUri}
                   nutritionalInfo={p.nutritionalInfo}
                   suitableForInfo={p.suitableForInfo}
-                  onClick={(p) => onClick(p)}
+                  onClick={(p) => openProductModal(p)}
                 />
               ))
             : products.length > 0
@@ -122,7 +112,7 @@ const Products: FC = () => {
                   imgUri={p.imgUri}
                   nutritionalInfo={p.nutritionalInfo}
                   suitableForInfo={p.suitableForInfo}
-                  onClick={() => onClick(p)}
+                  onClick={(p) => openProductModal(p)}
                 />
               ))
             : ''}

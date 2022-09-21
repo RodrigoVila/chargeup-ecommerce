@@ -1,92 +1,42 @@
-import { Dispatch } from "redux";
-import { register, login, logout } from "@services";
+import { Dispatch } from 'redux'
+import { register, login, logout } from '@services'
 import {
-  REGISTER_SUCCESS,
-  REGISTER_FAIL,
+  REGISTER_USER,
+  REGISTER_USER_SUCCESS,
+  REGISTER_USER_FAIL,
   LOGIN_SUCCESS,
   LOGIN_FAIL,
   LOGOUT,
-  SET_MESSAGE,
-} from "./types";
-import { displaySuccessMessage, displayErrorMessage } from ".";
-import { displayInfoMessage } from "./toastNotifications";
+  LOGIN_USER,
+} from './types'
 
-export const userRegister =
-  (name: string, lastName: string, email: string, password: string) =>
-  (dispatch: Dispatch) => {
-    return register(name, lastName, email, password).then(
-      (data: any) => {
-        dispatch({
-          type: REGISTER_SUCCESS,
-        });
-        console.log("hola", data);
+export const registerNewUser = (userInputs: UserType) => ({
+  type: REGISTER_USER,
+  userInputs,
+})
 
-        dispatch(displaySuccessMessage("Register OK"));
+export const successRegisterUser = (user: UserType) => ({
+  type: REGISTER_USER_SUCCESS,
+  user,
+})
 
-        return Promise.resolve(data);
-      },
-      (error) => {
-        const message =
-          (error.response &&
-            error.response.data &&
-            error.response.data.message) ||
-          error.message ||
-          error.toString();
-        dispatch({
-          type: REGISTER_FAIL,
-        });
+export const errorRegisterUser = (error: any) => ({
+  type: REGISTER_USER_FAIL,
+  error,
+})
 
-        dispatch(displayErrorMessage("Register Error"));
+export const loginUser = (username: string, password: string) => ({
+  type: LOGIN_USER,
+  username,
+  password,
+})
 
-        return Promise.reject();
-      }
-    );
-  };
+export const successLoginUser = (username: string, password: string) => ({
+  type: LOGIN_SUCCESS,
+  username,
+  password,
+})
 
-// .then((response) => {
-//   if (response.data.accessToken) {
-//     localStorage.setItem("cub_user", JSON.stringify(response.data));
-//   }
-//   router.push("/");
-//   return response.data;
-// })
-// .catch((error) => console.error("Login error", error));
-export const userLogin =
-  (username: string, password: string) => (dispatch: Dispatch) => {
-    return login(username, password).then(
-      (data: any) => {
-        dispatch({
-          type: LOGIN_SUCCESS,
-          payload: { user: data },
-        });
+export const errorLoginUser = () => ({ type: LOGIN_FAIL })
 
-        dispatch(displaySuccessMessage("Success!"));
-
-        return Promise.resolve();
-      },
-      (error) => {
-        const message =
-          (error.response &&
-            error.response.data &&
-            error.response.data.message) ||
-          error.message ||
-          error.toString();
-
-        dispatch({
-          type: LOGIN_FAIL,
-        });
-
-        dispatch(displayErrorMessage("Wrong credentials. Try again."));
-
-        return Promise.reject();
-      }
-    );
-  };
-
-export const userLogout = () => (dispatch: Dispatch) => {
-  logout();
-
-  dispatch({
-    type: LOGOUT,
-  });
-};
+export const logoutUser = () => ({ type: LOGOUT })

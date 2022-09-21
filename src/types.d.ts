@@ -1,8 +1,10 @@
 //Auth
 type UserType = {
-  id: number
+  id?: number
   name: string
   email: string
+  name?: string
+  lastname?: string
 }
 type AuthStateType = {
   user: UserType

@@ -20,7 +20,7 @@
       "@shared/*": ["./components/shared/*"],
       "@constants": ["./constants/index.ts"],
       "@context/*": ["./context/*"],
-      "@hooks": ["./hooks/index.tsx"],
+      "@hooks/*": ["./hooks/*"],
       "@models/*": ["./models/*"],
       "@redux/*": ["./redux/*"],
       "@services": ["./services/index.tsx"],

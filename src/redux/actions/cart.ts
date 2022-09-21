@@ -1,26 +1,22 @@
-import {
-  LOAD_CART,
-  ADD_TO_CART,
-  REMOVE_FROM_CART,
-  CHANGE_PRODUCT_QUANTITY,
-} from './types'
+import { LOAD_CART, ADD_TO_CART, REMOVE_FROM_CART, CHANGE_PRODUCT_QUANTITY } from './types'
 
-export const loadCart = (products: ProductType[]) => ({
+export const loadCartState = (products: ProductType[]) => ({
   type: LOAD_CART,
   products,
 })
 
-export const addToCart = (product: ProductType) => ({
+export const addToCartState = (product: ProductType) => ({
   type: ADD_TO_CART,
   product,
 })
 
-export const removeFromCart = (product: ProductType) => ({
+export const removeFromCartState = (id: string) => ({
   type: REMOVE_FROM_CART,
-  product,
+  id,
 })
 
-export const changeCartProductQuantity = (product: ProductType) => ({
+export const changeProductQuantityState = (id:string, newAmount:number) => ({
   type: CHANGE_PRODUCT_QUANTITY,
-  product,
+  id,
+  newAmount,
 })

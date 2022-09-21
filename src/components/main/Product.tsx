@@ -2,13 +2,11 @@ import { useState, FC } from 'react'
 import Image from 'next/image'
 import ReactTooltip from 'react-tooltip'
 
-import { useAppDispatch } from '@hooks'
-import { addToCart, displayInfoMessage, displaySuccessMessage } from '@redux/actions'
-
 import Button from '@main/Button'
 import Counter from '@main/Counter'
 import RoundImage from '@main/RoundImage'
 import { colors } from '@constants'
+import useReduxActions from '@hooks/useReduxActions'
 
 type Props = ProductType & { onClick: (product: ProductType) => void }
 
@@ -23,7 +21,8 @@ const Product: FC<Props> = ({
   onClick,
 }) => {
   const [count, setCount] = useState(0)
-  const dispatch = useAppDispatch()
+
+  const { addToCart, displayInfoMessage, displaySuccessMessage } = useReduxActions()
 
   const addOne = () => setCount((prevCount) => prevCount + 1)
 
@@ -34,7 +33,7 @@ const Product: FC<Props> = ({
 
   const addItemToCart = () => {
     if (count === 0) {
-      dispatch(displayInfoMessage('La cantidad tiene que ser mayor a 0'))
+      displayInfoMessage('La cantidad tiene que ser mayor a 0')
       return
     }
     const item: ProductType = {
@@ -47,8 +46,8 @@ const Product: FC<Props> = ({
       quantity: count,
       imgUri,
     }
-    dispatch(addToCart(item))
-    dispatch(displaySuccessMessage('Producto agregado!'))
+    addToCart(item)
+    displaySuccessMessage('Producto agregado!')
   }
 
   const iconStyle = 'relative h-11 w-11'
@@ -58,7 +57,7 @@ const Product: FC<Props> = ({
       <ReactTooltip />
 
       <div className="mx-2 mt-32 mb-4 flex w-full max-w-sm flex-col items-center justify-end rounded-xl bg-black text-white lg:mx-8 lg:max-w-360">
-        <div className="relative flex flex-col justify-end px-8 pb-4 h-full">
+        <div className="relative flex h-full flex-col justify-end px-8 pb-4">
           <div className="mb-8 flex h-32 w-full items-center justify-center">
             {imgUri && <RoundImage imgUri={imgUri} />}
           </div>

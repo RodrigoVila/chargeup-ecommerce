@@ -1,18 +1,21 @@
 import React, { useState, useRef, useEffect, FormEvent } from 'react'
 import { useRouter } from 'next/router'
+import { Toaster } from 'react-hot-toast'
 import Bcrypt from 'bcryptjs'
+
+import { useAppSelector } from '@hooks/index'
+import useReduxActions from '@hooks/useReduxActions'
 
 import RegisterForm from '@main/RegisterForm'
 import LoginForm from '@main/LoginForm'
-import { displayErrorMessage, displaySuccessMessage, userLogin, userRegister } from '@redux/actions'
 import { RootState } from '@redux/store'
 import Button from '@main/Button'
 import Link from '@main/Link'
 import { colors } from '@constants'
-import { useAppDispatch, useAppSelector } from '@hooks'
 
 const LoginScreen = () => {
   const [isRegister, setRegister] = useState(false)
+  const [loading, setLoading] = useState(false)
   const [credentials, setCredentials] = useState({
     name: '',
     lastName: '',
@@ -20,11 +23,10 @@ const LoginScreen = () => {
     password: '',
     repeatedPassword: '',
   })
-  const [loading, setLoading] = useState(false)
+  const { displayErrorMessage, displaySuccessMessage, userLogin, registerUser } = useReduxActions()
 
   const { isLoggedIn, user } = useAppSelector((state: RootState) => state.auth)
 
-  const dispatch = useAppDispatch()
   const router = useRouter()
 
   const encryptPassword = (password: string) => Bcrypt.hashSync(password, 10)
@@ -39,11 +41,16 @@ const LoginScreen = () => {
     e.preventDefault()
 
     const { name, lastName, email, password, repeatedPassword } = credentials
-
+    console.log(credentials)
     setLoading(true)
+    if (!name || !lastName || !email || !password || !repeatedPassword) {
+      displayErrorMessage('Todos los campos son obligatorios.')
+      return
+    }
+
     password === repeatedPassword
-      ? dispatch(userRegister(name, lastName, email, encryptPassword(password)))
-      : dispatch(displayErrorMessage('Passwords need to be equal'))
+      ? registerUser(name, lastName, email, encryptPassword(password))
+      : displayErrorMessage('Las contraseñas deben ser iguales.')
   }
 
   const handleLogin = async (e) => {
@@ -51,7 +58,7 @@ const LoginScreen = () => {
 
     const { email, password } = credentials
     setLoading(true)
-    await dispatch(userLogin(email, encryptPassword(password)))
+    await userLogin(email, encryptPassword(password))
     setLoading(false)
   }
 
@@ -61,29 +68,32 @@ const LoginScreen = () => {
   }, [isLoggedIn])
 
   return (
-    <div className="flex h-full min-h-screen w-screen flex-col items-center justify-center bg-gradient-to-br from-purple-500 to-fuchsia-700 px-4">
-      <div className="my-4 w-full max-w-md rounded-md bg-white font-semibold text-black">
-        <div className="px-6 py-4">
-          {isRegister ? (
-            <>
-              <RegisterForm email={credentials.email} onInputChange={onInputChange} />
-              <Button
-                title="Register new account"
-                color={colors.fuchsia}
-                onClick={handleRegister}
-              />
-              <Link text="Go to Login" onClick={toggleRegister} />
-            </>
-          ) : (
-            <>
-              <LoginForm email={credentials.email} onInputChange={onInputChange} />
-              <Button title="Login" color={colors.purple} onClick={handleLogin} />
-              <Link text="Register new account" onClick={toggleRegister} />
-            </>
-          )}
+    <>
+      <Toaster />
+      <div className="flex h-full min-h-screen w-screen flex-col items-center justify-center bg-gradient-to-br from-purple-500 to-fuchsia-700 px-4">
+        <div className="my-4 w-full max-w-md rounded-md bg-white font-semibold text-black">
+          <div className="px-6 py-4">
+            {isRegister ? (
+              <>
+                <RegisterForm email={credentials.email} onInputChange={onInputChange} />
+                <Button
+                  title="Register new account"
+                  color={colors.fuchsia}
+                  onClick={handleRegister}
+                />
+                <Link text="Go to Login" onClick={toggleRegister} />
+              </>
+            ) : (
+              <>
+                <LoginForm email={credentials.email} onInputChange={onInputChange} />
+                <Button title="Login" color={colors.purple} onClick={handleLogin} />
+                <Link text="Register new account" onClick={toggleRegister} />
+              </>
+            )}
+          </div>
         </div>
       </div>
-    </div>
+    </>
   )
 }
 

@@ -1,22 +1,22 @@
+import { useEffect, useMemo } from 'react'
 import { shallowEqual } from 'react-redux'
+import ReactTooltip from 'react-tooltip'
 
-import { useAppDispatch, useAppSelector } from '@hooks'
-import { closeCartModal } from '@redux/actions'
+import { useAppSelector } from '@hooks/index'
+import useReduxActions from '@hooks/useReduxActions'
+
 import CartProduct from '@main/CartProduct'
 import CloseModalButton from '@main/Buttons/CloseModalButton'
 import Button from '@main/Button'
 import { colors } from '@constants'
-import { useEffect, useMemo } from 'react'
-import ReactTooltip from 'react-tooltip'
 import Modal from 'components/shared/Modal'
 
 const CartModal = () => {
-  const isOpen: boolean = useAppSelector((state: StateType) => state.modal.cart, shallowEqual)
+  const isOpen: boolean = useAppSelector((state: any) => state.modal.cart, shallowEqual)
 
-  const items: ProductType[] = useAppSelector((state: StateType) => state.cart.items, shallowEqual)
+  const items: ProductType[] = useAppSelector((state: any) => state.cart.items, shallowEqual)
 
-  const dispatch = useAppDispatch()
-  const closeModal = () => dispatch(closeCartModal())
+  const { closeCartModal } = useReduxActions()
 
   const totalSum = useMemo(
     () => items.reduce((acc, item) => acc + item.price * item.quantity, 0),
@@ -24,14 +24,14 @@ const CartModal = () => {
   )
 
   useEffect(() => {
-    items.length === 0 && closeModal()
+    items.length === 0 && closeCartModal()
   }, [items])
 
   return (
     <Modal isOpen={isOpen} fullScreen transparent>
       <ReactTooltip />
       <div className="relative flex w-full flex-col items-center bg-white px-2 pt-4">
-        <CloseModalButton color="black" position="right" onClose={closeModal} />
+        <CloseModalButton color="black" position="right" onClose={() => closeCartModal()} />
         <div className="px-2 pb-6 pt-8 text-center text-3xl text-black">{`${items.length} ${
           items.length > 1 ? 'articulos' : 'articulo'
         } en la cesta`}</div>
@@ -65,7 +65,7 @@ const CartModal = () => {
           <form action="/api/checkout_session" method="POST" className="flex w-full">
             <Button title="Ir a pagar" color={colors.purple} onClick={() => {}} isSubmit />
           </form>
-          <Button title="Cerrar" onClick={closeModal} type="outlined" />
+          <Button title="Cerrar" onClick={() => closeCartModal()} type="outlined" />
         </div>
       </div>
     </Modal>

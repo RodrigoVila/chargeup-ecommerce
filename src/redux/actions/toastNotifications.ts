@@ -4,17 +4,17 @@ import {
   INFO_MESSAGE,
 } from "./types";
 
-export const displaySuccessMessage = (message: string) => ({
+export const displayMessageSuccess = (message: string) => ({
   type:SUCCESS_MESSAGE,
   message,
 });
 
-export const displayErrorMessage = (message: string) => ({
+export const displayMessageError = (message: string) => ({
   type: ERROR_MESSAGE,
   message,
 });
 
-export const displayInfoMessage = (message: string) => ({
+export const displayMessageInfo = (message: string) => ({
   type: INFO_MESSAGE,
   message,
 });

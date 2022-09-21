@@ -2,9 +2,8 @@ import { useEffect } from 'react'
 
 import { colors } from '@constants'
 import Portal from '@utils/Portal'
-import { useAppDispatch } from '@hooks'
-import { closeDrawerModal } from '@redux/actions'
 import BackgroundOverlay from '@main/BackgroundOverlay'
+import useReduxActions from '@hooks/useReduxActions'
 
 interface Props {
   children: React.ReactNode
@@ -21,10 +20,8 @@ const Modal = ({
   fullScreen = false,
   closeOnOverlayClick = false,
 }: Props) => {
-  const dispatch = useAppDispatch()
-  const closeModal = () => {
-    dispatch(closeDrawerModal())
-  }
+  const { closeDrawerModal } = useReduxActions()
+
   useEffect(() => {
     isOpen ? (document.body.style.overflow = 'hidden') : (document.body.style.overflow = 'auto')
   }, [isOpen])
@@ -40,7 +37,7 @@ const Modal = ({
         } fixed z-40 flex flex-col ${transparent ? 'bg-transparent' : 'bg-white'}`}
       >
         {transparent && <BackgroundOverlay color={colors.overlay} />}
-        <div className={`mx-2 max-w-4xl bg-white z-10`}>{children}</div>
+        <div className={`z-10 mx-2 max-w-4xl bg-white`}>{children}</div>
       </div>
     </Portal>
   ) : null

@@ -15,20 +15,20 @@ import {
   CLOSE_PRODUCT_DETAILS,
 } from './types'
 
-export const openCartModal = () => ({ type: OPEN_CART })
-export const closeCartModal = () => ({ type: CLOSE_CART })
-export const openCheckoutModal = () => ({ type: OPEN_CHECKOUT })
-export const closeCheckoutModal = () => ({ type: CLOSE_CHECKOUT })
-export const openCheckoutSuccessModal = () => ({ type: OPEN_CHECKOUT_SUCCESS })
-export const closeCheckoutSuccessModal = () => ({ type: CLOSE_CHECKOUT_SUCCESS })
-export const openCheckoutErrorModal = () => ({ type: OPEN_CHECKOUT_ERROR })
-export const closeCheckoutErrorModal = () => ({ type: CLOSE_CHECKOUT_ERROR })
-export const openDrawerModal = () => ({ type: OPEN_DRAWER })
-export const closeDrawerModal = () => ({ type: CLOSE_DRAWER })
-export const openFiltersModal = () => ({ type: OPEN_FILTERS })
-export const closeFiltersModal = () => ({ type: CLOSE_FILTERS })
-export const openProductModal = (selectedProduct: ProductType) => ({
+export const cartModalOpen = () => ({ type: OPEN_CART })
+export const cartModalClose = () => ({ type: CLOSE_CART })
+export const checkoutModalOpen = () => ({ type: OPEN_CHECKOUT })
+export const checkoutModalClose = () => ({ type: CLOSE_CHECKOUT })
+export const checkoutSuccessModalOpen = () => ({ type: OPEN_CHECKOUT_SUCCESS })
+export const checkoutSuccessModalClose = () => ({ type: CLOSE_CHECKOUT_SUCCESS })
+export const checkoutErrorModalOpen = () => ({ type: OPEN_CHECKOUT_ERROR })
+export const checkoutErrorModalClose = () => ({ type: CLOSE_CHECKOUT_ERROR })
+export const drawerModalOpen = () => ({ type: OPEN_DRAWER })
+export const drawerModalClose = () => ({ type: CLOSE_DRAWER })
+export const filtersModalOpen = () => ({ type: OPEN_FILTERS })
+export const filtersModalClose = () => ({ type: CLOSE_FILTERS })
+export const productModalOpen = (selectedProduct: ProductType) => ({
   type: OPEN_PRODUCT_DETAILS,
   selectedProduct,
 })
-export const closeProductModal = () => ({ type: CLOSE_PRODUCT_DETAILS })
+export const productModalClose = () => ({ type: CLOSE_PRODUCT_DETAILS })
