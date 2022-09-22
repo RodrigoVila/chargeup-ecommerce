@@ -2,7 +2,7 @@
   "env": {
     "browser": true,
     "es2021": true,
-    "jest": true
+    "jest": true,
   },
   "extends": [
     "eslint:recommended",
@@ -28,5 +28,6 @@
       "endOfLine": "auto"
     }
   ],
-  "space-in-brackets": ["error", "always"]
+  "space-in-brackets": ["error", "always"],
+  "root": true
 }
