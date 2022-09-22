@@ -2,7 +2,7 @@ import { FC } from 'react';
 import Image from 'next/image';
 import { FaRegTrashAlt } from 'react-icons/fa';
 
-import useActions from '@hooks/useActions';
+import useAppActions from '@hooks/useAppActions';
 
 const CartProduct: FC<ProductType> = ({
   id,
@@ -14,7 +14,7 @@ const CartProduct: FC<ProductType> = ({
   quantity,
   imgUri,
 }) => {
-  const { removeFromCart } = useActions();
+  const { removeFromCart } = useAppActions();
 
   return (
     <div className="flex w-full">

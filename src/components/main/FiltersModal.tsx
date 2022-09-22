@@ -1,7 +1,7 @@
 import { BsFillTriangleFill } from 'react-icons/bs';
 
-import useActions from '@hooks/useActions';
-import useSelector from '@hooks/useSelector';
+import useAppActions from '@hooks/useAppActions';
+import useAppSelector from '@hooks/useAppSelector';
 
 import Modal from '@shared/Modal';
 import FilterPill from './FilterPill';
@@ -10,8 +10,8 @@ import Button from './Button';
 const labels = ['Keto', 'Vegano', 'Proteico', 'Gluten Free', 'Sin Azucar'];
 
 const FiltersModal = () => {
-  const { isFilterModalOpen, filters } = useSelector();
-  const { closeFiltersModal, setProductFilters } = useActions();
+  const { isFilterModalOpen, filters } = useAppSelector();
+  const { closeFiltersModal, setProductFilters } = useAppActions();
 
   return (
     <Modal isOpen={isFilterModalOpen} closeOnOverlayClick>

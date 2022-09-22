@@ -1,8 +1,8 @@
 import { useEffect, useMemo } from 'react';
 import ReactTooltip from 'react-tooltip';
 
-import useActions from '@hooks/useActions';
-import useSelector from '@hooks/useSelector';
+import useAppActions from '@hooks/useAppActions';
+import useAppSelector from '@hooks/useAppSelector';
 
 import Button from '@main/Button';
 import { colors } from '@constants';
@@ -11,9 +11,9 @@ import CloseModalButton from '@main/Buttons/CloseModalButton';
 import Modal from '@shared/Modal';
 
 const CartModal = () => {
-  const { isCartModalOpen, cartItems } = useSelector();
+  const { isCartModalOpen, cartItems } = useAppSelector();
   
-  const { closeCartModal } = useActions();
+  const { closeCartModal } = useAppActions();
 
   const totalSum = useMemo(
     () => cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0),

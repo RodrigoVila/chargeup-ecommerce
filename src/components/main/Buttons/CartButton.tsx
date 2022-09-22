@@ -1,13 +1,13 @@
 import { FC } from 'react';
 import { FiShoppingCart } from 'react-icons/fi';
 
-import useActions from '@hooks/useActions';
-import useSelector from '@hooks/useSelector';
+import useAppActions from '@hooks/useAppActions';
+import useAppSelector from '@hooks/useAppSelector';
 
 const CartButton: FC = () => {
-  const { cartLength } = useSelector();
+  const { cartLength } = useAppSelector();
   
-  const { openCartModal, displayInfoMessage } = useActions();
+  const { openCartModal, displayInfoMessage } = useAppActions();
 
   const openCart = () =>
     cartLength > 0 ? openCartModal() : displayInfoMessage('No hay productos en el carrito');

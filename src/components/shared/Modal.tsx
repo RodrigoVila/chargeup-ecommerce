@@ -3,7 +3,7 @@ import { useEffect } from 'react'
 import { colors } from '@constants'
 import Portal from '@utils/Portal'
 import BackgroundOverlay from '@main/BackgroundOverlay'
-import useActions from '@hooks/useActions'
+import useAppActions from '@hooks/useAppActions'
 
 interface Props {
   children: React.ReactNode
@@ -20,7 +20,7 @@ const Modal = ({
   fullScreen = false,
   closeOnOverlayClick = false,
 }: Props) => {
-  const { closeDrawerModal } = useActions()
+  const { closeDrawerModal } = useAppActions()
 
   useEffect(() => {
     isOpen ? (document.body.style.overflow = 'hidden') : (document.body.style.overflow = 'auto')

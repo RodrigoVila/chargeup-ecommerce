@@ -1,8 +1,8 @@
 import { FC, useState, useEffect } from 'react';
 import { BsFilterCircle, BsFilterCircleFill } from 'react-icons/bs';
 
-import useActions from '@hooks/useActions';
-import useSelector from '@hooks/useSelector';
+import useAppActions from '@hooks/useAppActions';
+import useAppSelector from '@hooks/useAppSelector';
 
 import Product from '@main/Product';
 import ProductSearchBar from '@main/ProductSearchBar';
@@ -11,9 +11,9 @@ const Products: FC = () => {
   const [searchValue, setSearchValue] = useState('');
   const [filteredProducts, setFilteredProducts] = useState([]);
 
-  const { products, isFilterModalOpen, filters } = useSelector();
+  const { products, isFilterModalOpen, filters } = useAppSelector();
 
-  const { fetchProducts, openProductModal } = useActions();
+  const { fetchProducts, openProductModal } = useAppActions();
 
   const clearFilters = () => setFilteredProducts([]);
 

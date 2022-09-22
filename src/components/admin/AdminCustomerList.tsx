@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 
-import useActions from '@hooks/useActions';
+import useAppActions from '@hooks/useAppActions';
 
 const AdminCustomerList = () => {
-  const { getUserList } = useActions();
+  const { getUserList } = useAppActions();
 
   const fetch = async () => {
     const { data } = await getUserList();

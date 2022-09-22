@@ -1,5 +1,5 @@
 import { call, put, takeEvery } from 'redux-saga/effects'
-import { fetchProductsSuccess } from '@redux/actions'
+import { fetchProductsFromStoreSuccess } from '@redux/actions'
 import { FETCH_PRODUCTS } from '@redux/actions/types'
 
 const API_URL = '/api/products'
@@ -7,7 +7,7 @@ const API_URL = '/api/products'
 function* fetchProducts() {
   const response = yield call(fetch, API_URL)
   const products = yield response.json()
-  yield put(fetchProductsSuccess(products))
+  yield put(fetchProductsFromStoreSuccess(products))
 }
 
 function* productsSaga() {

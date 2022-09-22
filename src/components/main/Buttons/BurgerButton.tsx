@@ -1,10 +1,10 @@
 import React from 'react';
 import { HiMenu } from 'react-icons/hi';
 
-import useActions from '@hooks/useActions';
+import useAppActions from '@hooks/useAppActions';
 
 const BurgerButton = () => {
-  const { openDrawerModal } = useActions();
+  const { openDrawerModal } = useAppActions();
 
   return (
     <div

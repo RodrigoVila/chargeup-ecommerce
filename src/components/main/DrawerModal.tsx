@@ -1,14 +1,14 @@
-import useActions from '@hooks/useActions';
-import useSelector from '@hooks/useSelector';
+import useAppActions from '@hooks/useAppActions';
+import useAppSelector from '@hooks/useAppSelector';
 
 import Modal from '@shared/Modal';
 import CloseModalButton from '@main/Buttons/CloseModalButton';
 import NavItems from './NavItems';
 
 const DrawerModal = () => {
-  const { isDrawerModalOpen } = useSelector();
+  const { isDrawerModalOpen } = useAppSelector();
 
-  const { closeDrawerModal } = useActions();
+  const { closeDrawerModal } = useAppActions();
 
   return (
     <Modal isOpen={isDrawerModalOpen} fullScreen>

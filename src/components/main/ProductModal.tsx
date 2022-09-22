@@ -1,15 +1,15 @@
 import { FC } from 'react';
-import useActions from '@hooks/useActions';
-import useSelector from '@hooks/useSelector';
+import useAppActions from '@hooks/useAppActions';
+import useAppSelector from '@hooks/useAppSelector';
 
 import Modal from '@shared/Modal';
 import { colors } from '@constants';
 import Button from './Button';
 
 const ProductModal: FC = () => {
-  const { isProductModalOpen, modalProduct } = useSelector();
+  const { isProductModalOpen, modalProduct } = useAppSelector();
 
-  const { closeProductModal } = useActions();
+  const { closeProductModal } = useAppActions();
 
   return (
     <Modal isOpen={isProductModalOpen} fullScreen transparent>

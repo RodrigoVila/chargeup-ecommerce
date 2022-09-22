@@ -1,12 +1,12 @@
-import useActions from '@hooks/useActions';
-import useSelector from '@hooks/useSelector';
+import useAppActions from '@hooks/useAppActions';
+import useAppSelector from '@hooks/useAppSelector';
 
 import CloseModalButton from '@main/Buttons/CloseModalButton';
 
 const CheckoutModal = () => {
-  const { isCheckoutModalOpen } = useSelector();
+  const { isCheckoutModalOpen } = useAppSelector();
 
-  const { closeCheckoutModal } = useActions();
+  const { closeCheckoutModal } = useAppActions();
 
   return (
     <div

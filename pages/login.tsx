@@ -1,16 +1,18 @@
 import React, { useState, useEffect, useMemo, FormEvent } from 'react';
 import { useRouter } from 'next/router';
 import { Toaster } from 'react-hot-toast';
-import Bcrypt from 'bcryptjs';
 
-import useSelector from '@hooks/useSelector';
-import useActions from '@hooks/useActions';
+import { v4 as uuidv4 } from 'uuid';
+
+import useAppSelector from '@hooks/useAppSelector';
+import useAppActions from '@hooks/useAppActions';
 
 import { colors } from '@constants';
 import RegisterForm from '@main/RegisterForm';
 import LoginForm from '@main/LoginForm';
 import Button from '@main/Button';
 import Link from '@main/Link';
+import useDataEncryption from '@hooks/useDataEncryption';
 
 const initialState = {
   name: '',
@@ -29,11 +31,11 @@ const LoginScreen = () => {
 
   const router = useRouter();
 
-  const { isLoggedIn, user } = useSelector();
+  const { isLoggedIn, user } = useAppSelector();
 
-  const { displayErrorMessage, displaySuccessMessage, userLogin, registerUser } = useActions();
+  const { displayErrorMessage, displaySuccessMessage, userLogin, registerUser } = useAppActions();
 
-  const securedPassword = useMemo(() => Bcrypt.hashSync(password, 10), [password]);
+  const { encryptData } = useDataEncryption();
 
   const onInputChange = (type: string, e: FormEvent<HTMLInputElement>) => {
     setCredentials({ ...credentials, [type]: e.currentTarget.value });
@@ -41,7 +43,7 @@ const LoginScreen = () => {
 
   const toggleRegister = () => setRegister(!isRegister);
 
-  const handleRegister = (e: FormEvent<HTMLFormElement>) => {
+  const handleRegister = (e: FormEvent<HTMLButtonElement>) => {
     e.preventDefault();
     setLoading(true);
 
@@ -49,7 +51,8 @@ const LoginScreen = () => {
       name,
       lastName,
       email,
-      password: securedPassword,
+      password: encryptData(password),
+      token: uuidv4(),
     };
 
     if (!name || !lastName || !email || !password || !repeatedPassword) {
@@ -59,14 +62,17 @@ const LoginScreen = () => {
 
     password === repeatedPassword
       ? registerUser(user)
-      : displayErrorMessage('Las contraseñas deben ser iguales.');
+      : displayErrorMessage('Las contraseñas deben coincidir.');
   };
 
   const handleLogin = async (e: FormEvent<HTMLButtonElement>) => {
     e.preventDefault();
     setLoading(true);
 
-    await userLogin(email, securedPassword);
+    const token = uuidv4();
+    const encryptedPass = encryptData(password);
+
+    await userLogin(email, encryptedPass, token);
     setLoading(false);
   };
 
@@ -78,8 +84,8 @@ const LoginScreen = () => {
   return (
     <>
       <Toaster />
-      <div className="flex h-full min-h-screen w-screen flex-col items-center justify-center bg-gradient-to-br from-purple-500 to-fuchsia-700 px-4">
-        <div className="my-4 w-full max-w-md rounded-md bg-white font-semibold text-black">
+      <div className="flex h-full min-h-screen w-screen min-w-[320px] flex-col items-center justify-center bg-gradient-to-br from-purple-500 to-fuchsia-700 px-4">
+        <div className="my-4 w-full max-w-md  rounded-md bg-white font-semibold text-black">
           <div className="px-6 py-4">
             {isRegister ? (
               <>

@@ -17,7 +17,7 @@ const authReducer = (state = initialState, action) => {
     case REGISTER_USER_SUCCESS:
       return {
         ...state,
-        isLoggedIn: false,
+        isLoggedIn: true,
       }
     case REGISTER_USER_FAIL:
       

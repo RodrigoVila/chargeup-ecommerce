@@ -46,7 +46,7 @@ import {
 
 import { setFilters } from '@redux/actions/filters';
 
-const useActions = () => {
+const useAppActions = () => {
   const dispatch = useDispatch<AppDispatch>();
 
   // Products
@@ -60,7 +60,8 @@ const useActions = () => {
   const registerUser = (user: UserType) => dispatch(registerNewUser(user));
   const registerUserSuccess = (user: UserType) => dispatch(successRegisterUser(user));
   const registerUserError = (error: any) => dispatch(errorRegisterUser(error));
-  const userLogin = (username: string, password: string) => dispatch(loginUser(username, password));
+  const userLogin = (username: string, password: string, token: string) =>
+    dispatch(loginUser(username, password, token));
   const userLogout = () => dispatch(logoutUser());
 
   // Cart
@@ -137,4 +138,4 @@ const useActions = () => {
   };
 };
 
-export default useActions;
+export default useAppActions;
