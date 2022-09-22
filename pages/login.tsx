@@ -12,7 +12,7 @@ import RegisterForm from '@main/RegisterForm';
 import LoginForm from '@main/LoginForm';
 import Button from '@main/Button';
 import Link from '@main/Link';
-import useDataEncryption from '@hooks/useDataEncryption';
+import useEncryption from '@hooks/useEncryption';
 
 const initialState = {
   name: '',
@@ -35,7 +35,7 @@ const LoginScreen = () => {
 
   const { displayErrorMessage, displaySuccessMessage, userLogin, registerUser } = useAppActions();
 
-  const { encryptData } = useDataEncryption();
+  const { encryptData, compareHashedPassword } = useEncryption();
 
   const onInputChange = (type: string, e: FormEvent<HTMLInputElement>) => {
     setCredentials({ ...credentials, [type]: e.currentTarget.value });
@@ -47,7 +47,7 @@ const LoginScreen = () => {
     e.preventDefault();
     setLoading(true);
 
-    const user = {
+    const newUser = {
       name,
       lastName,
       email,
@@ -61,18 +61,21 @@ const LoginScreen = () => {
     }
 
     password === repeatedPassword
-      ? registerUser(user)
+      ? registerUser(newUser)
       : displayErrorMessage('Las contraseñas deben coincidir.');
   };
 
-  const handleLogin = async (e: FormEvent<HTMLButtonElement>) => {
+  const handleLogin = (e: FormEvent<HTMLButtonElement>) => {
     e.preventDefault();
     setLoading(true);
 
     const token = uuidv4();
-    const encryptedPass = encryptData(password);
-
-    await userLogin(email, encryptedPass, token);
+    const newUser = {
+      email,
+      password,
+      token,
+    };
+    userLogin(newUser);
     setLoading(false);
   };
 

@@ -11,10 +11,11 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
   const register = async () => {
     try {
-      const user = await User.create({ email, password, name, lastName, token });
+      const user = await User.create({ name, lastName, email, password, token });
       const userResponse = {
-        name: user.name,
-        lastName: user.lastName,
+        name,
+        lastName,
+        email,
         since: user.since,
         token: user.token,
       };

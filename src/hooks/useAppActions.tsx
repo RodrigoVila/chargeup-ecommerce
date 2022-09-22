@@ -60,8 +60,7 @@ const useAppActions = () => {
   const registerUser = (user: UserType) => dispatch(registerNewUser(user));
   const registerUserSuccess = (user: UserType) => dispatch(successRegisterUser(user));
   const registerUserError = (error: any) => dispatch(errorRegisterUser(error));
-  const userLogin = (username: string, password: string, token: string) =>
-    dispatch(loginUser(username, password, token));
+  const userLogin = (user: UserType) => dispatch(loginUser(user));
   const userLogout = () => dispatch(logoutUser());
 
   // Cart

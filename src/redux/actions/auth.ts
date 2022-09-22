@@ -8,9 +8,9 @@ import {
   LOGIN_USER,
 } from './types';
 
-export const registerNewUser = (userInputs: UserType) => ({
+export const registerNewUser = (user: UserType) => ({
   type: REGISTER_USER,
-  userInputs,
+  user,
 });
 
 export const successRegisterUser = (user: UserType) => ({
@@ -23,19 +23,20 @@ export const errorRegisterUser = (error: any) => ({
   error,
 });
 
-export const loginUser = (username: string, password: string, token: string) => ({
+export const loginUser = (user: UserType) => ({
   type: LOGIN_USER,
-  username,
-  password,
-  token,
+  user,
 });
 
-export const successLoginUser = (username: string, password: string) => ({
+export const successLoginUser = (email: string, password: string) => ({
   type: LOGIN_SUCCESS,
-  username,
+  email,
   password,
 });
 
-export const errorLoginUser = () => ({ type: LOGIN_FAIL });
+export const errorLoginUser = (error: any) => ({
+  type: LOGIN_FAIL,
+  error,
+});
 
 export const logoutUser = () => ({ type: LOGOUT });

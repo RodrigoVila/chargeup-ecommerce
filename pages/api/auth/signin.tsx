@@ -1,34 +1,35 @@
-import { NextApiRequest, NextApiResponse } from "next";
-import User from "@models/user";
-import dbConnect from "@utils/dbConnect";
-import jwt from "jsonwebtoken";
-import Bcrypt from "bcryptjs";
+import { NextApiRequest, NextApiResponse } from 'next';
+import jwt from 'jsonwebtoken';
+
+import useEncryption from '@hooks/useEncryption';
+import User from '@models/user';
+import dbConnect from '@utils/dbConnect';
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   const { method, body } = req;
-  const { email, password } = body;
+  const { email, password, token } = body;
 
+
+  //Aca deberia llegar el password sin proteger. No deberiamos enviarlo asi a la API
+  const { compareHashedPassword } = useEncryption();
   await dbConnect();
 
   const signIn = async () => {
     try {
       const userRecord = await User.findOne({ email });
       if (userRecord) {
-        if (Bcrypt.compareSync(password, userRecord.password)) {
-          const token = jwt.sign(
-            {
-              id: userRecord.id,
-              email: userRecord.email,
-            },
-            process.env.API_KEY,
-            { expiresIn: process.env.TOKEN_EXPIRES_IN }
-          );
-          return res.end(201).json({ token });
-        }
+        const isPasswordOK = compareHashedPassword(password, userRecord.password);
+
+        const userResponse = {
+          email,
+          token: token,
+        };
+
+        isPasswordOK
+          ? res.status(201).json({ success: true, message: 'Login exitoso', user: userResponse })
+          : res.status(401).json({ success: false, message: 'Credenciales invalidas' });
       } else {
-        return res
-          .status(401)
-          .json({ status: 401, message: "Invalid credentials" });
+        return res.status(401).json({ success: false, message: 'Credenciales invalidas' });
       }
     } catch (e) {
       return res.status(400).json({
@@ -38,7 +39,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   };
 
   switch (method) {
-    case "POST":
+    case 'POST':
       return signIn();
     default:
       return res.status(405).end(`Method ${method} Not Allowed`);
