@@ -25,11 +25,3 @@ html {
   font-weight: 400;
   font-display: swap;
 }
-
-.tooltip {
-  @apply invisible absolute;
-}
-
-.has-tooltip:hover .tooltip {
-  @apply visible z-50;
-}

@@ -13,6 +13,9 @@ import {
   errorRegisterUser,
   loginUser,
   logoutUser,
+  successLoginUser,
+  errorLoginUser,
+  setAuthLoading,
 } from '@redux/actions/auth';
 import {
   loadCartState,
@@ -45,6 +48,7 @@ import {
 } from '@redux/actions/modal';
 
 import { setFilters } from '@redux/actions/filters';
+import { lang } from '@constants';
 
 const useAppActions = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -57,11 +61,32 @@ const useAppActions = () => {
     dispatch(fetchProductsFromStoreSuccess(products));
 
   // Auth
-  const registerUser = (user: UserType) => dispatch(registerNewUser(user));
-  const registerUserSuccess = (user: UserType) => dispatch(successRegisterUser(user));
-  const registerUserError = (error: any) => dispatch(errorRegisterUser(error));
-  const userLogin = (user: UserType) => dispatch(loginUser(user));
+  const setLoadingAuth = (isAuthLoading: boolean) => dispatch(setAuthLoading(isAuthLoading));
+  const userLogin = (user: UserType) => {
+    setLoadingAuth(true);
+    dispatch(loginUser(user));
+  };
+  const userLoginSuccess = (user: UserType) => {
+    dispatch(successLoginUser(user));
+    displaySuccessMessage(lang.es.USER_LOGIN_SUCCESS);
+  };
+  const userLoginError = () => {
+    dispatch(errorLoginUser());
+    displayErrorMessage(lang.es.USER_LOGIN_ERROR);
+  };
   const userLogout = () => dispatch(logoutUser());
+  const registerUser = (user: UserType) => {
+    setLoadingAuth(true);
+    dispatch(registerNewUser(user));
+  };
+  const registerUserSuccess = (user: UserType) => {
+    dispatch(successRegisterUser(user));
+    displaySuccessMessage(lang.es.USER_REGISTER_SUCCESS);
+  };
+  const registerUserError = () => {
+    dispatch(errorRegisterUser());
+    displayErrorMessage(lang.es.USER_REGISTER_ERROR);
+  };
 
   // Cart
   const loadCart = (products: ProductType[]) => dispatch(loadCartState(products));
@@ -105,11 +130,14 @@ const useAppActions = () => {
     removeProduct,
     fetchProducts,
     fetchProductsSuccess,
+    setLoadingAuth,
+    userLogin,
+    userLoginSuccess,
+    userLoginError,
+    userLogout,
     registerUser,
     registerUserSuccess,
     registerUserError,
-    userLogin,
-    userLogout,
     loadCart,
     addToCart,
     removeFromCart,

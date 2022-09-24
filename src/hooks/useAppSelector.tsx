@@ -7,7 +7,7 @@ export const useSelector = createSelectorHook<RootState>();
 
 const useAppSelector = () => {
   //Auth
-  const { isLoggedIn, user } = useSelector((state) => state.auth, shallowEqual);
+  const { isLoggedIn, isAuthLoading, user } = useSelector((state) => state.auth, shallowEqual);
 
   //Cart
   const cartItems: ProductType[] = useSelector((state) => state.cart.items, shallowEqual);
@@ -34,6 +34,7 @@ const useAppSelector = () => {
 
   return {
     isLoggedIn,
+    isAuthLoading,
     user,
     cartItems,
     cartLength,

@@ -7,9 +7,10 @@ const RegisterForm = ({ email, onInputChange }) => {
         </label>
         <input
           className="w-full px-3 py-2 leading-tight border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-          id="Name"
+          id="name"
+          name="name"
           type="text"
-          onChange={(e) => onInputChange("name", e)}
+          onChange={onInputChange}
         />
       </div>
       <div className="mb-4">
@@ -19,8 +20,9 @@ const RegisterForm = ({ email, onInputChange }) => {
         <input
           className="w-full px-3 py-2 leading-tight border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
           id="lastName"
+          name="lastName"
           type="text"
-          onChange={(e) => onInputChange("lastName", e)}
+          onChange={onInputChange}
         />
       </div>
       <div className="mb-4">
@@ -29,10 +31,11 @@ const RegisterForm = ({ email, onInputChange }) => {
         </label>
         <input
           className="w-full px-3 py-2 leading-tight border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-          id="Email"
+          id="email"
+          name="email"
           type="text"
           value={email}
-          onChange={(e) => onInputChange("email", e)}
+          onChange={onInputChange}
         />
       </div>
       <div className="mb-6">
@@ -42,9 +45,10 @@ const RegisterForm = ({ email, onInputChange }) => {
         <input
           className="w-full px-3 py-2 mb-3 leading-tight border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
           id="password"
+          name="password"
           type="password"
           placeholder=""
-          onChange={(e) => onInputChange("password", e)}
+          onChange={onInputChange}
         />
       </div>
       <div className="mb-6">
@@ -54,8 +58,9 @@ const RegisterForm = ({ email, onInputChange }) => {
         <input
           className="w-full px-3 py-2 mb-3 leading-tight border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
           id="repeatedPassword"
-          type="repeatedPassword"
-          onChange={(e) => onInputChange("repeatedPassword", e)}
+          name="repeatedPassword"
+          type="password"
+          onChange={onInputChange}
         />
       </div>
     </form>

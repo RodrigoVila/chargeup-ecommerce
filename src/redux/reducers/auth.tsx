@@ -1,51 +1,64 @@
 import {
-  REGISTER_USER_SUCCESS,
-  REGISTER_USER_FAIL,
+  AUTH_LOADING,
   LOGIN_SUCCESS,
   LOGIN_FAIL,
   LOGOUT,
-} from '../actions/types'
+  REGISTER_USER_SUCCESS,
+  REGISTER_USER_FAIL,
+} from '../actions/types';
 
-const user = typeof window !== 'undefined' && JSON.parse(localStorage.getItem('cub_user'))
+const user = typeof window !== 'undefined' && JSON.parse(localStorage.getItem('cub_user'));
 
-const initialState = user ? { isLoggedIn: true, user } : { isLoggedIn: false, user: null }
+const initialState = user
+  ? { isLoggedIn: true, isAuthLoading: false, user }
+  : { isLoggedIn: false, isAuthLoading: false, user: null };
 
 const authReducer = (state = initialState, action) => {
-  const { type, payload } = action
+  const { type, payload } = action;
 
+  // REGISTER_USER & LOGIN_USER reducers only handles loading state. Api calls are handled with Sagas.
   switch (type) {
-    case REGISTER_USER_SUCCESS:
+    case AUTH_LOADING:
       return {
         ...state,
-        isLoggedIn: true,
-      }
-    case REGISTER_USER_FAIL:
-      
-      return {
-        ...state,
-        isLoggedIn: false,
-      }
+        isAuthLoading: action.isAuthLoading,
+      };
     case LOGIN_SUCCESS:
       return {
         ...state,
         isLoggedIn: true,
         user: payload.user,
-      }
+        isAuthLoading: false,
+      };
     case LOGIN_FAIL:
       return {
         ...state,
         isLoggedIn: false,
         user: null,
-      }
+        isAuthLoading: false,
+      };
     case LOGOUT:
       return {
         ...state,
         isLoggedIn: false,
         user: null,
-      }
+      };
+    case REGISTER_USER_SUCCESS:
+      return {
+        ...state,
+        isLoggedIn: true,
+        user: payload.user,
+        isAuthLoading: false,
+      };
+    case REGISTER_USER_FAIL:
+      return {
+        ...state,
+        isLoggedIn: false,
+        isAuthLoading: false,
+      };
     default:
-      return state
+      return state;
   }
-}
+};
 
-export default authReducer
+export default authReducer;

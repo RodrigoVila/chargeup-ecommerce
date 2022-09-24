@@ -1,18 +1,23 @@
 import { FormEvent } from 'react';
+import { colors } from '@constants';
+import Spinner from '@shared/Spinner';
 
 interface Props {
   title: string;
   color?: string;
+  hoverColor?: string;
   type?: 'filled' | 'outlined';
   isSubmit?: boolean;
   disabled?: boolean;
   onClick: (e: FormEvent<HTMLButtonElement>) => void;
 }
 
-const Button = ({ title, color, type, isSubmit, disabled = false, onClick }: Props) => {
+const Button = ({ title, color, hoverColor, type, isSubmit, disabled = false, onClick }: Props) => {
   return type === 'outlined' ? (
     <button
-      className="my-2 w-full cursor-pointer rounded-md  border-2 p-2 text-center text-xl text-black shadow-sm"
+      className={` ${hoverColor && `hover:bg-[${hoverColor}]`} ${
+        disabled && 'cursor-none bg-gray-300 hover:bg-none'
+      } my-2 w-full cursor-pointer rounded-md  border-2 p-2 text-center text-xl text-black shadow-sm`}
       onClick={onClick}
       type={isSubmit ? 'submit' : 'button'}
       role={isSubmit ? 'link' : 'button'}
@@ -23,15 +28,20 @@ const Button = ({ title, color, type, isSubmit, disabled = false, onClick }: Pro
     </button>
   ) : (
     <button
-      className={`${
-        disabled ? 'bg-gray-300' : 'bg-purple-500'
+      className={`${disabled && 'hover:bg-none'} ${
+        hoverColor && !disabled && `hover:bg-[${hoverColor}]`
       } flex w-full cursor-pointer items-center justify-center rounded-md p-1 py-2 text-white md:text-xl`}
       onClick={onClick}
       type={isSubmit ? 'submit' : 'button'}
       role={isSubmit ? 'link' : 'button'}
-      // style={{ backgroundColor: color, color: '#fff' }}
+      disabled={disabled}
+      style={{
+        backgroundColor: disabled ? colors.disabled : color,
+        color: '#fff',
+        cursor: disabled ? 'default' : 'pointer',
+      }}
     >
-      {title}
+      {disabled ? <Spinner color={colors.disabled} backgroundColor={colors.purple} /> : title}
     </button>
   );
 };

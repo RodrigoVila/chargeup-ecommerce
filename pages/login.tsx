@@ -2,8 +2,6 @@ import React, { useState, useEffect, useMemo, FormEvent } from 'react';
 import { useRouter } from 'next/router';
 import { Toaster } from 'react-hot-toast';
 
-import { v4 as uuidv4 } from 'uuid';
-
 import useAppSelector from '@hooks/useAppSelector';
 import useAppActions from '@hooks/useAppActions';
 
@@ -31,14 +29,14 @@ const LoginScreen = () => {
 
   const router = useRouter();
 
-  const { isLoggedIn, user } = useAppSelector();
+  const { isLoggedIn, user, isAuthLoading } = useAppSelector();
 
   const { displayErrorMessage, displaySuccessMessage, userLogin, registerUser } = useAppActions();
 
   const { encryptData, compareHashedPassword } = useEncryption();
 
-  const onInputChange = (type: string, e: FormEvent<HTMLInputElement>) => {
-    setCredentials({ ...credentials, [type]: e.currentTarget.value });
+  const onInputChange = (e: FormEvent<HTMLInputElement>) => {
+    setCredentials({ ...credentials, [e.currentTarget.name]: e.currentTarget.value });
   };
 
   const toggleRegister = () => setRegister(!isRegister);
@@ -52,7 +50,6 @@ const LoginScreen = () => {
       lastName,
       email,
       password: encryptData(password),
-      token: uuidv4(),
     };
 
     if (!name || !lastName || !email || !password || !repeatedPassword) {
@@ -67,17 +64,15 @@ const LoginScreen = () => {
 
   const handleLogin = (e: FormEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    setLoading(true);
 
-    const token = uuidv4();
     const newUser = {
       email,
       password,
-      token,
     };
     userLogin(newUser);
-    setLoading(false);
   };
+
+  const cleanCredentials = () => setCredentials(initialState);
 
   useEffect(() => {
     // isLoggedIn && router.push("/");
@@ -91,22 +86,26 @@ const LoginScreen = () => {
         <div className="my-4 w-full max-w-md  rounded-md bg-white font-semibold text-black">
           <div className="px-6 py-4">
             {isRegister ? (
-              <>
-                <RegisterForm email={credentials.email} onInputChange={onInputChange} />
-                <Button
-                  title="Register new account"
-                  color={colors.fuchsia}
-                  onClick={(e: FormEvent<HTMLButtonElement>) => handleRegister(e)}
-                />
-                <Link text="Go to Login" onClick={toggleRegister} />
-              </>
+              <RegisterForm email={credentials.email} onInputChange={onInputChange} />
             ) : (
-              <>
-                <LoginForm email={credentials.email} onInputChange={onInputChange} />
-                <Button title="Login" color={colors.purple} onClick={handleLogin} />
-                <Link text="Register new account" onClick={toggleRegister} />
-              </>
+              <LoginForm
+                email={credentials.email}
+                onInputChange={onInputChange}
+                cleanCredentials={cleanCredentials}
+              />
             )}
+
+            <Button
+              title={isRegister ? 'Register new account' : 'Login'}
+              color={colors.purple}
+              hoverColor={colors.fuchsia}
+              onClick={isRegister ? handleRegister : handleLogin}
+              disabled={isAuthLoading}
+            />
+            <Link
+              text={isRegister ? 'Go to Login' : 'Register new account'}
+              onClick={toggleRegister}
+            />
           </div>
         </div>
       </div>

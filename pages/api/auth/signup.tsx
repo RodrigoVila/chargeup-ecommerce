@@ -1,29 +1,26 @@
 import { NextApiRequest, NextApiResponse } from 'next';
+import { v4 as uuidv4 } from 'uuid';
 
 import User from '@models/user';
 import dbConnect from '@utils/dbConnect';
+import { lang } from '@constants';
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   const { method, body } = req;
-  const { name, lastName, email, password, token } = body;
+  const { name, lastName, email, password } = body;
 
   await dbConnect();
 
   const register = async () => {
     try {
-      const user = await User.create({ name, lastName, email, password, token });
-      const userResponse = {
-        name,
-        lastName,
-        email,
-        since: user.since,
-        token: user.token,
-      };
-      return res.status(201).json({ success: true, message: 'User created', user: userResponse });
+      const token = uuidv4();
+      await User.create({ name, lastName, email, password, token });
+
+      return res.status(201).json({ success: true, message: lang.en.USER_REGISTER_SUCCESS, token });
     } catch (e) {
-      return res.status(400).json({
+      return res.status(409).json({
         success: false,
-        message: `This email already exists in our database.`,
+        message: lang.en.USER_EXIST,
       });
     }
   };

@@ -1,12 +1,14 @@
+declare module 'flowbite/plugin';
+
 //Auth TODO: Divide type in login/register (w pass and extra data) user and logged in (email,token)
 type UserType = {
   id?: number;
   email: string;
-  password?: string;
+  password: string;
   name?: string;
   name?: string;
   lastname?: string;
-  token: string;
+  token?: string;
 };
 type AuthStateType = {
   user: UserType;

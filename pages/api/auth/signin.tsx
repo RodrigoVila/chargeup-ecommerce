@@ -1,35 +1,34 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import jwt from 'jsonwebtoken';
+import { v4 as uuidv4 } from 'uuid';
 
 import useEncryption from '@hooks/useEncryption';
+
 import User from '@models/user';
 import dbConnect from '@utils/dbConnect';
+import { lang } from '@constants';
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   const { method, body } = req;
-  const { email, password, token } = body;
+  const { email, password } = body;
 
-
-  //Aca deberia llegar el password sin proteger. No deberiamos enviarlo asi a la API
   const { compareHashedPassword } = useEncryption();
+
   await dbConnect();
 
-  const signIn = async () => {
+  const login = async () => {
     try {
       const userRecord = await User.findOne({ email });
       if (userRecord) {
+        const token = uuidv4();
         const isPasswordOK = compareHashedPassword(password, userRecord.password);
 
-        const userResponse = {
-          email,
-          token: token,
-        };
-
-        isPasswordOK
-          ? res.status(201).json({ success: true, message: 'Login exitoso', user: userResponse })
-          : res.status(401).json({ success: false, message: 'Credenciales invalidas' });
+        return isPasswordOK
+          ? res
+              .status(201)
+              .json({ success: true, message: lang.en.USER_LOGIN_SUCCESS, email, token })
+          : res.status(401).json({ success: false, message: lang.en.INVALID_CREDENTIALS });
       } else {
-        return res.status(401).json({ success: false, message: 'Credenciales invalidas' });
+        return res.status(401).json({ success: false, message: lang.en.INVALID_CREDENTIALS });
       }
     } catch (e) {
       return res.status(400).json({
@@ -40,7 +39,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
   switch (method) {
     case 'POST':
-      return signIn();
+      return login();
     default:
       return res.status(405).end(`Method ${method} Not Allowed`);
   }

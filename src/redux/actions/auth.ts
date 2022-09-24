@@ -1,12 +1,18 @@
 import {
-  REGISTER_USER,
-  REGISTER_USER_SUCCESS,
-  REGISTER_USER_FAIL,
+  AUTH_LOADING,
   LOGIN_SUCCESS,
   LOGIN_FAIL,
   LOGOUT,
   LOGIN_USER,
+  REGISTER_USER,
+  REGISTER_USER_SUCCESS,
+  REGISTER_USER_FAIL,
 } from './types';
+
+export const setAuthLoading = (isAuthLoading: boolean) => ({
+  type: AUTH_LOADING,
+  isAuthLoading,
+});
 
 export const registerNewUser = (user: UserType) => ({
   type: REGISTER_USER,
@@ -18,9 +24,8 @@ export const successRegisterUser = (user: UserType) => ({
   user,
 });
 
-export const errorRegisterUser = (error: any) => ({
+export const errorRegisterUser = () => ({
   type: REGISTER_USER_FAIL,
-  error,
 });
 
 export const loginUser = (user: UserType) => ({
@@ -28,15 +33,13 @@ export const loginUser = (user: UserType) => ({
   user,
 });
 
-export const successLoginUser = (email: string, password: string) => ({
+export const successLoginUser = (user: UserType) => ({
   type: LOGIN_SUCCESS,
-  email,
-  password,
+  user,
 });
 
-export const errorLoginUser = (error: any) => ({
+export const errorLoginUser = () => ({
   type: LOGIN_FAIL,
-  error,
 });
 
 export const logoutUser = () => ({ type: LOGOUT });

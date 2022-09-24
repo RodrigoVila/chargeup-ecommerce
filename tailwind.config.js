@@ -1,7 +1,12 @@
-const defaultTheme = require('tailwindcss/defaultTheme')
+const defaultTheme = require('tailwindcss/defaultTheme');
 
 module.exports = {
-  content: ['./pages/**/*.{js,ts,jsx,tsx}', './src/components/**/*.{js,ts,jsx,tsx}'],
+  content: [
+    './pages/**/*.{js,ts,jsx,tsx}',
+    './src/**/*.{js,ts,jsx,tsx}',
+    './public/**/*.html',
+    './node_modules/flowbite-react/**/*.js',
+  ],
   theme: {
     extend: {
       animation: {
@@ -73,5 +78,5 @@ module.exports = {
       },
     },
   },
-  plugins: [require('@tailwindcss/line-clamp')],
-}
+  plugins: [require('@tailwindcss/line-clamp'), require('flowbite/plugin')],
+};
