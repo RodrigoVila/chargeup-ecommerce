@@ -1,20 +1,13 @@
-import Cryptr from 'cryptr';
+import bcrypt from 'bcryptjs';
 
 const useEncryption = () => {
-  const cryptr = new Cryptr("YJ8ivJzav5pIIYiNXkeNZG9s3iXa7fz+5dukPDhfF");
+  const saltRounds = 10;
+  const encryptPassword = async (password: string) => await bcrypt.hash(password, saltRounds);
 
-  const encryptData = (data: string | object) => {
-    return typeof data === 'string' ? cryptr.encrypt(data) : cryptr.encrypt(JSON.stringify(data));
+  const compareHashedPassword = async (password: string, hashedPasswordStoredInDB: string) => {
+    return await bcrypt.compare(password, hashedPasswordStoredInDB);
   };
 
-  const decryptData = (data: string | object) => {
-    return typeof data === 'string' ? cryptr.decrypt(data) : cryptr.decrypt(JSON.stringify(data));
-  };
-
-  const compareHashedPassword = (password: string, hashedPasswordStoredInDB: string) => {
-    return decryptData(password) === hashedPasswordStoredInDB;
-  };
-
-  return { encryptData, decryptData, compareHashedPassword };
+  return { encryptPassword, compareHashedPassword };
 };
 export default useEncryption;

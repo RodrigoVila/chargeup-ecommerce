@@ -33,7 +33,7 @@ const LoginScreen = () => {
 
   const { displayErrorMessage, displaySuccessMessage, userLogin, registerUser } = useAppActions();
 
-  const { encryptData, compareHashedPassword } = useEncryption();
+  const { encryptPassword } = useEncryption();
 
   const onInputChange = (e: FormEvent<HTMLInputElement>) => {
     setCredentials({ ...credentials, [e.currentTarget.name]: e.currentTarget.value });
@@ -41,21 +41,23 @@ const LoginScreen = () => {
 
   const toggleRegister = () => setRegister(!isRegister);
 
-  const handleRegister = (e: FormEvent<HTMLButtonElement>) => {
+  const handleRegister = async (e: FormEvent<HTMLButtonElement>) => {
     e.preventDefault();
     setLoading(true);
-
-    const newUser = {
-      name,
-      lastName,
-      email,
-      password: encryptData(password),
-    };
 
     if (!name || !lastName || !email || !password || !repeatedPassword) {
       displayErrorMessage('Todos los campos son obligatorios.');
       return;
     }
+
+    const encryptedPassword = await encryptPassword(password);
+
+    const newUser = {
+      name,
+      lastName,
+      email,
+      password: encryptedPassword,
+    };
 
     password === repeatedPassword
       ? registerUser(newUser)
@@ -83,7 +85,7 @@ const LoginScreen = () => {
     <>
       <Toaster />
       <div className="flex h-full min-h-screen w-screen min-w-[320px] flex-col items-center justify-center bg-gradient-to-br from-purple-500 to-fuchsia-700 px-4">
-        <div className="my-4 w-full max-w-md  rounded-md bg-white font-semibold text-black">
+        <div className="my-4 w-full max-w-sm  rounded-md bg-white font-semibold text-black">
           <div className="px-6 py-4">
             {isRegister ? (
               <RegisterForm email={credentials.email} onInputChange={onInputChange} />
@@ -103,7 +105,7 @@ const LoginScreen = () => {
               disabled={isAuthLoading}
             />
             <Link
-              text={isRegister ? 'Go to Login' : 'Register new account'}
+              text={isRegister ? 'Go back to Login' : 'Register new account'}
               onClick={toggleRegister}
             />
           </div>

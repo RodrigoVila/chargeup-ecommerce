@@ -1,5 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { v4 as uuidv4 } from 'uuid';
+import bcrypt from 'bcryptjs';
 
 import useEncryption from '@hooks/useEncryption';
 
@@ -20,8 +21,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       const userRecord = await User.findOne({ email });
       if (userRecord) {
         const token = uuidv4();
-        const isPasswordOK = compareHashedPassword(password, userRecord.password);
-
+        const isPasswordOK = await compareHashedPassword(password, userRecord.password);
         return isPasswordOK
           ? res
               .status(201)
