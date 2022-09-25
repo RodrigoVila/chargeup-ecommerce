@@ -34,6 +34,7 @@ function* userLogin(payload: any) {
     });
 
     const user = yield response.json();
+
     user.success ? yield put(successLoginUser(user)) : yield put(errorLoginUser());
   } catch (e) {
     yield put(errorLoginUser());

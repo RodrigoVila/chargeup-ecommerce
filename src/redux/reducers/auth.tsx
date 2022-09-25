@@ -14,9 +14,8 @@ const initialState = user
   : { isLoggedIn: false, isAuthLoading: false, user: null };
 
 const authReducer = (state = initialState, action) => {
-  const { type, payload } = action;
+  const { type, user } = action;
 
-  // REGISTER_USER & LOGIN_USER reducers only handles loading state. Api calls are handled with Sagas.
   switch (type) {
     case AUTH_LOADING:
       return {
@@ -27,15 +26,15 @@ const authReducer = (state = initialState, action) => {
       return {
         ...state,
         isLoggedIn: true,
-        user: payload.user,
         isAuthLoading: false,
+        user,
       };
     case LOGIN_FAIL:
       return {
         ...state,
         isLoggedIn: false,
-        user: null,
         isAuthLoading: false,
+        user: null,
       };
     case LOGOUT:
       return {
@@ -47,8 +46,8 @@ const authReducer = (state = initialState, action) => {
       return {
         ...state,
         isLoggedIn: true,
-        user: payload.user,
         isAuthLoading: false,
+        user,
       };
     case REGISTER_USER_FAIL:
       return {
