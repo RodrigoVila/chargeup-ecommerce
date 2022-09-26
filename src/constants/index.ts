@@ -13,17 +13,15 @@ export const colors = {
   white: '#fff',
 };
 
-export const errors = {
-  USER_EXIST: 'Email ya se encuentra registrado en nuestra base de datos.',
-};
-
+export const LOCAL_STORAGE_KEY = '@CUB';
 export const lang = {
   es: {
     INVALID_CREDENTIALS: 'Credenciales invalidas.',
     USER_EXIST: 'Email ya se encuentra registrado en nuestra base de datos.',
     USER_LOGIN_ERROR: 'Error en login. Por favor intente mas tarde o avise al administrador.',
     USER_LOGIN_SUCCESS: 'Login exitoso',
-    USER_REGISTER_ERROR: 'Error al registrar. Por favor intente mas tarde o avise al administrador.',
+    USER_REGISTER_ERROR:
+      'Error al registrar. Por favor intente mas tarde o avise al administrador.',
     USER_REGISTER_SUCCESS: 'Usuario creado con éxito.',
   },
   en: {

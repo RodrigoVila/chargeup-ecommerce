@@ -16,7 +16,9 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       const token = uuidv4();
       await User.create({ name, lastName, email, password, token });
 
-      return res.status(201).json({ success: true, message: lang.en.USER_REGISTER_SUCCESS, token });
+      return res
+        .status(201)
+        .json({ success: true, message: lang.en.USER_REGISTER_SUCCESS, email, token });
     } catch (e) {
       return res.status(409).json({
         success: false,
