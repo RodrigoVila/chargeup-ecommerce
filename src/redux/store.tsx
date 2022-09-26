@@ -8,15 +8,18 @@ import rootSaga from './sagas';
 import { LOCAL_STORAGE_KEY } from '@constants';
 import { getValueFromLocalStorage } from '@utils/localStorage';
 
-const INITIAL_STATE = {
+const sagaMiddleware = createSagaMiddleware();
+
+const storedUser = getValueFromLocalStorage(LOCAL_STORAGE_KEY);
+
+const AUTH_INITIAL_STATE = {
   isLoggedIn: false,
+  isAuthLoading: false,
   user: null,
 };
 
-const sagaMiddleware = createSagaMiddleware();
-
 const preloadState = {
-  auth: getValueFromLocalStorage(LOCAL_STORAGE_KEY, INITIAL_STATE),
+  auth: storedUser ? storedUser : AUTH_INITIAL_STATE,
 };
 
 const store = createStore(

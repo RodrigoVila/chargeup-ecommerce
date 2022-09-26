@@ -1,32 +1,51 @@
-import { useEffect } from 'react'
-import { Toaster } from 'react-hot-toast'
+import { useEffect } from 'react';
+import { Toaster } from 'react-hot-toast';
 
-import Welcome from '@main/sections/Welcome'
-import Products from '@main/sections/Products'
-import Contact from '@main/sections/Contact'
-import About from '@main/sections/About'
-import Keto from '@main/sections/Keto'
-import Cakes from '@main/sections/Cakes'
-import WhyUs from '@main/sections/WhyUs'
-import Footer from '@main/sections/Footer'
-import CartModal from '@main/CartModal'
-import CheckoutModal from '@main/CheckoutModal'
-import DrawerModal from '@main/DrawerModal'
-import FiltersModal from '@main/FiltersModal'
-import ProductModal from '@main/ProductModal'
+import useAppActions from '@hooks/useAppActions';
+
+import { LOCAL_STORAGE_KEY } from '@constants';
+import Welcome from '@main/sections/Welcome';
+import Products from '@main/sections/Products';
+import Contact from '@main/sections/Contact';
+import About from '@main/sections/About';
+import Keto from '@main/sections/Keto';
+import Cakes from '@main/sections/Cakes';
+import WhyUs from '@main/sections/WhyUs';
+import Footer from '@main/sections/Footer';
+import CartModal from '@main/CartModal';
+import CheckoutModal from '@main/CheckoutModal';
+import DrawerModal from '@main/DrawerModal';
+import FiltersModal from '@main/FiltersModal';
+import ProductModal from '@main/ProductModal';
+import { getValueFromLocalStorage } from '@utils/localStorage';
 
 const MainScreen = () => {
+  const { checkUserToken } = useAppActions();
+
+  useEffect(() => {
+    const validateStoredAuthData = () => {
+      const val = getValueFromLocalStorage(LOCAL_STORAGE_KEY);
+      if (!val) return;
+
+      const { email, token } = val.user;
+
+      checkUserToken(email, token);
+    };
+
+    validateStoredAuthData();
+  }, []);
+
   useEffect(() => {
     // Check to see if this is a redirect back from Checkout
-    const query = new URLSearchParams(window.location.search)
+    const query = new URLSearchParams(window.location.search);
     if (query.get('success')) {
-      console.log('Order placed! You will receive an email confirmation.')
+      console.log('Order placed! You will receive an email confirmation.');
     }
 
     if (query.get('canceled')) {
-      console.log('Order canceled -- continue to shop around and checkout when you’re ready.')
+      console.log('Order canceled -- continue to shop around and checkout when you’re ready.');
     }
-  }, [])
+  }, []);
 
   return (
     <div className="relative font-dinRegular">
@@ -49,7 +68,7 @@ const MainScreen = () => {
       <WhyUs />
       <Footer />
     </div>
-  )
-}
+  );
+};
 
-export default MainScreen
+export default MainScreen;

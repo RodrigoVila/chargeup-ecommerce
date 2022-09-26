@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from "react";
+import React, { useState } from "react";
 
 /* JP ADDS - import -*/
 import AdminProducts from '@admin/AdminProducts'
@@ -14,7 +14,7 @@ const AdminScreen = () => {
   const [ activePage, setActivePage ] = useState(''); 
 
   return (   
-  <div>
+  <>
     <AdminUserNav activePage={activePage} setActivePage={setActivePage} />
     {activePage === '' && <AdminDashboard />}
     {activePage === "Dashboard" && <AdminDashboard />}
@@ -22,7 +22,7 @@ const AdminScreen = () => {
     {activePage === "Clientes" && <AdminCustomers />}
     {activePage === "Estadisticas" && <AdminStats />}
     {activePage === "Productos" && <AdminProducts />}
-  </div>
+  </>
   );
 }
 

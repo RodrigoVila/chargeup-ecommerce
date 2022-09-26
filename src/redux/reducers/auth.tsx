@@ -16,7 +16,8 @@ const INITIAL_STATE = {
 };
 
 const authReducer = (state = INITIAL_STATE, action) => {
-  const { type, user } = action;
+  const { type, email, token } = action;
+  type === 'LOGIN_SUCCESS' && console.log(action, 'ACTION');
 
   switch (type) {
     case AUTH_LOADING:
@@ -24,55 +25,29 @@ const authReducer = (state = INITIAL_STATE, action) => {
         ...state,
         isAuthLoading: action.isAuthLoading,
       };
+
     case LOGIN_SUCCESS:
-      const loginStorageData = {
+    case REGISTER_USER_SUCCESS:
+      const data = {
         isLoggedIn: true,
-        user: {
-          email: user.email,
-          token: user.token,
-        },
+        user: { email, token },
       };
-      user.token && setValueToLocalStorage(LOCAL_STORAGE_KEY, loginStorageData);
+      token && setValueToLocalStorage(LOCAL_STORAGE_KEY, data);
       return {
         ...state,
         isLoggedIn: true,
         isAuthLoading: false,
-        user,
-      };
-    case LOGIN_FAIL:
-      return {
-        ...state,
-        isLoggedIn: false,
-        isAuthLoading: false,
-        user: null,
+        user: { email, token },
       };
     case LOGOUT:
       clearLocalStorage();
-      return {
-        ...state,
-        isLoggedIn: false,
-        user: null,
-      };
-    case REGISTER_USER_SUCCESS:
-      const registerStorageData = {
-        isLoggedIn: true,
-        user: {
-          email: user.email,
-          token: user.token,
-        },
-      };
-      user.token && setValueToLocalStorage(LOCAL_STORAGE_KEY, registerStorageData);
-      return {
-        ...state,
-        isLoggedIn: true,
-        isAuthLoading: false,
-        user,
-      };
+    case LOGIN_FAIL:
     case REGISTER_USER_FAIL:
       return {
         ...state,
         isLoggedIn: false,
         isAuthLoading: false,
+        user: null,
       };
     default:
       return state;

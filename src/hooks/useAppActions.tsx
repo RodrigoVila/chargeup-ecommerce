@@ -9,13 +9,10 @@ import {
 } from '@redux/actions/products';
 import {
   registerNewUser,
-  successRegisterUser,
-  errorRegisterUser,
   loginUser,
   logoutUser,
-  successLoginUser,
-  errorLoginUser,
   setAuthLoading,
+  userTokenCheck,
 } from '@redux/actions/auth';
 import {
   loadCartState,
@@ -62,30 +59,15 @@ const useAppActions = () => {
 
   // Auth
   const setLoadingAuth = (isAuthLoading: boolean) => dispatch(setAuthLoading(isAuthLoading));
+  const checkUserToken = (email: string, token: string) => dispatch(userTokenCheck(email, token));
   const userLogin = (user: UserType) => {
     setLoadingAuth(true);
     dispatch(loginUser(user));
-  };
-  const userLoginSuccess = (user: UserType) => {
-    dispatch(successLoginUser(user));
-    displaySuccessMessage(lang.es.USER_LOGIN_SUCCESS);
-  };
-  const userLoginError = () => {
-    dispatch(errorLoginUser());
-    displayErrorMessage(lang.es.USER_LOGIN_ERROR);
   };
   const userLogout = () => dispatch(logoutUser());
   const registerUser = (user: UserType) => {
     setLoadingAuth(true);
     dispatch(registerNewUser(user));
-  };
-  const registerUserSuccess = (user: UserType) => {
-    dispatch(successRegisterUser(user));
-    displaySuccessMessage(lang.es.USER_REGISTER_SUCCESS);
-  };
-  const registerUserError = () => {
-    dispatch(errorRegisterUser());
-    displayErrorMessage(lang.es.USER_REGISTER_ERROR);
   };
 
   // Cart
@@ -131,13 +113,10 @@ const useAppActions = () => {
     fetchProducts,
     fetchProductsSuccess,
     setLoadingAuth,
+    checkUserToken,
     userLogin,
-    userLoginSuccess,
-    userLoginError,
     userLogout,
     registerUser,
-    registerUserSuccess,
-    registerUserError,
     loadCart,
     addToCart,
     removeFromCart,

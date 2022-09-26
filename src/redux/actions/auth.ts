@@ -1,5 +1,6 @@
 import {
   AUTH_LOADING,
+  CHECK_USER_TOKEN,
   LOGIN_SUCCESS,
   LOGIN_FAIL,
   LOGOUT,
@@ -14,18 +15,10 @@ export const setAuthLoading = (isAuthLoading: boolean) => ({
   isAuthLoading,
 });
 
-export const registerNewUser = (user: UserType) => ({
-  type: REGISTER_USER,
-  user,
-});
-
-export const successRegisterUser = (user: UserType) => ({
-  type: REGISTER_USER_SUCCESS,
-  user,
-});
-
-export const errorRegisterUser = () => ({
-  type: REGISTER_USER_FAIL,
+export const userTokenCheck = (email: string, token: string) => ({
+  type: CHECK_USER_TOKEN,
+  email,
+  token,
 });
 
 export const loginUser = (user: UserType) => ({
@@ -33,9 +26,10 @@ export const loginUser = (user: UserType) => ({
   user,
 });
 
-export const successLoginUser = (user: UserType) => ({
+export const successLoginUser = (email: string, token: string) => ({
   type: LOGIN_SUCCESS,
-  user,
+  email,
+  token,
 });
 
 export const errorLoginUser = () => ({
@@ -43,3 +37,18 @@ export const errorLoginUser = () => ({
 });
 
 export const logoutUser = () => ({ type: LOGOUT });
+
+export const registerNewUser = (user: UserType) => ({
+  type: REGISTER_USER,
+  user,
+});
+
+export const successRegisterUser = (email: string, token: string) => ({
+  type: REGISTER_USER_SUCCESS,
+  email,
+  token,
+});
+
+export const errorRegisterUser = () => ({
+  type: REGISTER_USER_FAIL,
+});
