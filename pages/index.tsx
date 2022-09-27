@@ -3,7 +3,7 @@ import { Toaster } from 'react-hot-toast';
 
 import useAppActions from '@hooks/useAppActions';
 
-import { LOCAL_STORAGE_KEY } from '@constants';
+import { LOCAL_STORAGE_DATA_KEY } from '@constants';
 import Welcome from '@main/sections/Welcome';
 import Products from '@main/sections/Products';
 import Contact from '@main/sections/Contact';
@@ -12,11 +12,12 @@ import Keto from '@main/sections/Keto';
 import Cakes from '@main/sections/Cakes';
 import WhyUs from '@main/sections/WhyUs';
 import Footer from '@main/sections/Footer';
-import CartModal from '@main/CartModal';
-import CheckoutModal from '@main/CheckoutModal';
-import DrawerModal from '@main/DrawerModal';
-import FiltersModal from '@main/FiltersModal';
-import ProductModal from '@main/ProductModal';
+import CartModal from '@main/Modal/CartModal';
+import CheckoutModal from '@main/Modal/CheckoutModal';
+import DrawerModal from '@main/Modal/DrawerModal';
+import FiltersModal from '@main/Modal/FiltersModal';
+import LoginModal from '@main/Modal/LoginModal';
+import ProductModal from '@main/Modal/ProductModal';
 import { getValueFromLocalStorage } from '@utils/localStorage';
 
 const MainScreen = () => {
@@ -24,12 +25,11 @@ const MainScreen = () => {
 
   useEffect(() => {
     const validateStoredAuthData = () => {
-      const val = getValueFromLocalStorage(LOCAL_STORAGE_KEY);
-      if (!val) return;
+      const user = getValueFromLocalStorage(LOCAL_STORAGE_DATA_KEY);
 
-      const { email, token } = val.user;
+      if (!user) return;
 
-      checkUserToken(email, token);
+      checkUserToken(user);
     };
 
     validateStoredAuthData();
@@ -57,6 +57,7 @@ const MainScreen = () => {
       <CheckoutModal />
       <DrawerModal />
       <FiltersModal />
+      <LoginModal />
       <ProductModal />
 
       {/* Sections */}

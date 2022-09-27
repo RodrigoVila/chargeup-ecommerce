@@ -40,12 +40,13 @@ import {
   drawerModalClose,
   filtersModalOpen,
   filtersModalClose,
+  loginModalOpen,
+  loginModalClose,
   productModalOpen,
   productModalClose,
 } from '@redux/actions/modal';
 
 import { setFilters } from '@redux/actions/filters';
-import { lang } from '@constants';
 
 const useAppActions = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -59,7 +60,7 @@ const useAppActions = () => {
 
   // Auth
   const setLoadingAuth = (isAuthLoading: boolean) => dispatch(setAuthLoading(isAuthLoading));
-  const checkUserToken = (email: string, token: string) => dispatch(userTokenCheck(email, token));
+  const checkUserToken = (user: UserLoginType) => dispatch(userTokenCheck(user));
   const userLogin = (user: UserType) => {
     setLoadingAuth(true);
     dispatch(loginUser(user));
@@ -100,6 +101,8 @@ const useAppActions = () => {
   const closeDrawerModal = () => dispatch(drawerModalClose());
   const openFiltersModal = () => dispatch(filtersModalOpen());
   const closeFiltersModal = () => dispatch(filtersModalClose());
+  const openLoginModal = () => dispatch(loginModalOpen());
+  const closeLoginModal = () => dispatch(loginModalClose());
   const openProductModal = (selectedProduct: ProductType) =>
     dispatch(productModalOpen(selectedProduct));
   const closeProductModal = () => dispatch(productModalClose());
@@ -138,6 +141,8 @@ const useAppActions = () => {
     closeDrawerModal,
     openFiltersModal,
     closeFiltersModal,
+    openLoginModal,
+    closeLoginModal,
     openProductModal,
     closeProductModal,
     setProductFilters,

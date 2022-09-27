@@ -1,16 +1,16 @@
-import { useEffect } from 'react'
+import { useEffect } from 'react';
 
-import { colors } from '@constants'
-import Portal from '@utils/Portal'
-import BackgroundOverlay from '@main/BackgroundOverlay'
-import useAppActions from '@hooks/useAppActions'
+import { colors } from '@constants';
+import Portal from '@utils/Portal';
+import BackgroundOverlay from '@main/BackgroundOverlay';
+import useAppActions from '@hooks/useAppActions';
 
 interface Props {
-  children: React.ReactNode
-  isOpen: boolean
-  transparent?: boolean
-  fullScreen?: boolean
-  closeOnOverlayClick?: boolean
+  children: React.ReactNode;
+  isOpen: boolean;
+  transparent?: boolean;
+  fullScreen?: boolean;
+  closeOnOverlayClick?: boolean;
 }
 
 const Modal = ({
@@ -20,11 +20,11 @@ const Modal = ({
   fullScreen = false,
   closeOnOverlayClick = false,
 }: Props) => {
-  const { closeDrawerModal } = useAppActions()
+  const { closeDrawerModal } = useAppActions();
 
   useEffect(() => {
-    isOpen ? (document.body.style.overflow = 'hidden') : (document.body.style.overflow = 'auto')
-  }, [isOpen])
+    isOpen ? (document.body.style.overflow = 'hidden') : (document.body.style.overflow = 'auto');
+  }, [isOpen]);
 
   return isOpen ? (
     <Portal wrapperId="react-portal-modal-container">
@@ -37,9 +37,9 @@ const Modal = ({
         } fixed z-40 flex flex-col ${transparent ? 'bg-transparent' : 'bg-white'}`}
       >
         {transparent && <BackgroundOverlay color={colors.overlay} />}
-        <div className={`z-10 mx-2 max-w-4xl bg-white`}>{children}</div>
+        <div className={`w-full`}>{children}</div>
       </div>
     </Portal>
-  ) : null
-}
-export default Modal
+  ) : null;
+};
+export default Modal;

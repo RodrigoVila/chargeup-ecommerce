@@ -23,11 +23,21 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
         const isPasswordOK = await compareHashedPassword(password, userRecord.password);
 
-        return isPasswordOK
-          ? res
-              .status(201)
-              .json({ success: true, message: lang.en.USER_LOGIN_SUCCESS, email, token })
-          : res.status(401).json({ success: false, message: lang.en.INVALID_CREDENTIALS });
+        if (isPasswordOK) {
+          await User.findOneAndUpdate({ email }, { token });
+
+          return res.status(201).json({
+            success: true,
+            message: lang.en.USER_LOGIN_SUCCESS,
+            user: {
+              email,
+              token,
+              name: userRecord.name,
+            },
+          });
+        } else {
+          return res.status(401).json({ success: false, message: lang.en.INVALID_CREDENTIALS });
+        }
       } else {
         return res.status(401).json({ success: false, message: lang.en.INVALID_CREDENTIALS });
       }

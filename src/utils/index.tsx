@@ -6,10 +6,7 @@ export const isEmailValid = (email: string) => {
     );
 };
 
-('^(?=.*[a-z])(?=.*[A-Z])(?=.*d)[a-zA-Zd]{8,}$');
-
 export const isPasswordValid = (password: string) => {
-  return String(password)
-    .toLowerCase()
-    .match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*d)[a-zA-Zd]{8,}$/);
+  const reg = new RegExp('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$', 'g');
+  return reg.test(password);
 };

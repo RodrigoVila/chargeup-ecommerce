@@ -4,6 +4,7 @@ import {
   errorRegisterUser,
   errorLoginUser,
   successLoginUser,
+  loginModalClose,
   logoutUser,
   displayMessageSuccess,
   displayMessageError,
@@ -21,9 +22,15 @@ function* userRegister(payload: any) {
       body: JSON.stringify(payload.user),
     });
 
-    const { email, token, success } = yield response.json();
+    const { success } = yield response.json();
 
-    success ? yield put(successRegisterUser(email, token)) : yield put(errorRegisterUser());
+    if (success) {
+      yield put(successRegisterUser());
+      yield put(displayMessageSuccess(lang.es.USER_REGISTER_SUCCESS));
+      yield put(loginModalClose());
+    } else {
+      yield put(errorRegisterUser());
+    }
   } catch (e) {
     yield put(errorRegisterUser());
   }
@@ -37,11 +44,12 @@ function* userLogin(payload: any) {
       body: JSON.stringify(payload.user),
     });
 
-    const { email, token, success } = yield response.json();
+    const { success, user } = yield response.json();
 
     if (success) {
+      yield put(successLoginUser(user));
       yield put(displayMessageSuccess(lang.es.USER_LOGIN_SUCCESS));
-      yield put(successLoginUser(email, token));
+      yield put(loginModalClose());
     } else {
       yield put(displayMessageError(lang.es.INVALID_CREDENTIALS));
       yield put(errorLoginUser());
@@ -54,7 +62,9 @@ function* userLogin(payload: any) {
 }
 
 function* checkToken(payload: any) {
-  const { email, token } = payload;
+  const { user } = payload;
+  const { email, token } = user;
+
   try {
     const response = yield call(fetch, API_URL + '/tokenvalidation', {
       method: 'POST',
@@ -63,9 +73,11 @@ function* checkToken(payload: any) {
     });
 
     const { success } = yield response.json();
-    console.log('success', success);
-
-    if (!success) yield put(logoutUser());
+    if (success) {
+      yield put(successLoginUser(user));
+    } else {
+      yield put(logoutUser());
+    }
   } catch (e) {
     yield put(logoutUser());
   }

@@ -27,7 +27,6 @@ const Products: FC = () => {
       const filter = products.filter((product) =>
         product.title.toLowerCase().includes(searchValue.toLowerCase())
       );
-      console.log(filter);
       searchValue.length > 1 ? setFilteredProducts(filter) : clearFilters();
     };
 
@@ -54,7 +53,7 @@ const Products: FC = () => {
   return (
     <div
       id="products"
-      className="h-full min-h-screen w-full bg-[url('/purpleTexture.svg')] bg-cover bg-center bg-repeat pt-4"
+      className="h-full min-h-screen w-full bg-[url('/purpleTexture.jpg')] bg-cover bg-center bg-repeat pt-4"
     >
       <div className="z-50 ml-2 flex flex-wrap items-center justify-center">
         {/* Filtros por tipo */}

@@ -1,5 +1,4 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { v4 as uuidv4 } from 'uuid';
 
 import User from '@models/user';
 import dbConnect from '@utils/dbConnect';
@@ -13,12 +12,8 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
   const register = async () => {
     try {
-      const token = uuidv4();
-      await User.create({ name, lastName, email, password, token });
-
-      return res
-        .status(201)
-        .json({ success: true, message: lang.en.USER_REGISTER_SUCCESS, email, token });
+      await User.create({ name, lastName, email, password });
+      return res.status(201).json({ success: true, message: lang.en.USER_REGISTER_SUCCESS });
     } catch (e) {
       return res.status(409).json({
         success: false,

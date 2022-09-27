@@ -7,7 +7,7 @@ import {
   REGISTER_USER_FAIL,
 } from '../actions/types';
 import { clearLocalStorage, setValueToLocalStorage } from '@utils/localStorage';
-import { LOCAL_STORAGE_KEY } from '@constants';
+import { LOCAL_STORAGE_DATA_KEY } from '@constants';
 
 const INITIAL_STATE = {
   isLoggedIn: false,
@@ -16,7 +16,7 @@ const INITIAL_STATE = {
 };
 
 const authReducer = (state = INITIAL_STATE, action) => {
-  const { type, email, token } = action;
+  const { type, user } = action;
   type === 'LOGIN_SUCCESS' && console.log(action, 'ACTION');
 
   switch (type) {
@@ -26,18 +26,18 @@ const authReducer = (state = INITIAL_STATE, action) => {
         isAuthLoading: action.isAuthLoading,
       };
 
-    case LOGIN_SUCCESS:
     case REGISTER_USER_SUCCESS:
-      const data = {
-        isLoggedIn: true,
-        user: { email, token },
+      return {
+        ...state,
+        isAuthLoading: false,
       };
-      token && setValueToLocalStorage(LOCAL_STORAGE_KEY, data);
+    case LOGIN_SUCCESS:
+      user && setValueToLocalStorage(LOCAL_STORAGE_DATA_KEY, user);
       return {
         ...state,
         isLoggedIn: true,
         isAuthLoading: false,
-        user: { email, token },
+        user,
       };
     case LOGOUT:
       clearLocalStorage();

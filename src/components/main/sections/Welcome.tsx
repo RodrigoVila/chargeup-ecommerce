@@ -1,23 +1,20 @@
-import { useState, useEffect, FC } from 'react'
+import { useState, useEffect, FC } from 'react';
+import Typed from 'react-typed';
 
-import BackgroundOverlay from '@main/BackgroundOverlay'
-import TopBar from '@main/TopBar/TopBar'
-import MobileTopBar from '@main/TopBar/MobileTopBar'
-import { colors } from '@constants'
+import BackgroundOverlay from '@main/BackgroundOverlay';
+import TopBar from '@main/TopBar/TopBar';
+import MobileTopBar from '@main/TopBar/MobileTopBar';
+import { colors } from '@constants';
+
+const TEXTS = ['SUGAR', 'GLUTEN', 'LACTOSE'];
 
 const Welcome: FC = () => {
-  const [word, setWord] = useState('SUGAR')
+  const [index, setIndex] = useState(0);
 
-  // useEffect(() => {
-  //   let timer
-  //   const words = ['SUGAR', 'GLUTEN', 'GAROMPA']
-  //   let index = 0
-
-  //   timer = setInterval(function () {
-  //     setWord(words[index++ % words.length])
-  //   }, 3000)
-  //   return () => clearTimeout(timer)
-  // }, [])
+  useEffect(() => {
+    const intervalId = setInterval(() => setIndex((index) => index + 1), 3000);
+    return () => clearTimeout(intervalId);
+  }, []);
 
   return (
     <div
@@ -33,11 +30,11 @@ const Welcome: FC = () => {
         </div>
         <div className="leading-0 px-2 text-center text-xl font-semibold text-white md:text-3xl">
           OUR MISSION IS TO MAKE HAPPY THOSE WHO CANNOT EAT
-          <span className="text-center font-bold"> {word}</span>
+
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Welcome
+export default Welcome;

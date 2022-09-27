@@ -1,11 +1,26 @@
-import Image from "next/image";
+import { FC } from 'react';
+import Image from 'next/image';
 
-const Logo = () => {
+type Props = {
+  color: 'white' | 'black' | 'blur' | 'purple' | 'multi';
+  size?: 'sm' | 'md' | 'lg' | 'xl';
+};
+type Size = { color: 'white' | 'black' | 'blur' | 'purple' | 'multi' };
+
+const Logo: FC<Props> = ({ color, size = 'md' }) => {
+  const sizeStyle =
+    size === 'sm'
+      ? 'h-24 w-28'
+      : size === 'md'
+      ? ' h-28 w-32'
+      : size === 'lg'
+      ? 'h-32 w-36'
+      : 'h-36 w-40';
   return (
-    <div className="relative w-32 h-28 z-20 ml-4">
+    <div className={`${sizeStyle} relative z-20 ml-4`}>
       <Image
-        src="/logoblur.png"
-        alt="Picture of the author"
+        src={`/logo-${color}.png`}
+        alt="Charge UP Barcelona Logo"
         layout="fill"
         objectFit="fill"
         className=""

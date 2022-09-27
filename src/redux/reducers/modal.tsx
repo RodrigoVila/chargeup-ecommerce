@@ -13,6 +13,8 @@ import {
   CLOSE_CHECKOUT_SUCCESS,
   OPEN_CHECKOUT_ERROR,
   CLOSE_CHECKOUT_ERROR,
+  OPEN_LOGIN,
+  CLOSE_LOGIN,
 } from '../actions/types'
 
 const initialState: ModalStateType = {
@@ -22,6 +24,7 @@ const initialState: ModalStateType = {
   checkout_success: false,
   checkout_error: false,
   filters: false,
+  login: false,
   selectedProduct: null,
   productModal: false,
 }
@@ -58,6 +61,16 @@ const modalReducer = (state = initialState, action: ModalActionType): ModalState
         ...state,
         filters: false,
       }
+      case OPEN_LOGIN:
+        return {
+          ...state,
+          login: true,
+        }
+      case CLOSE_LOGIN:
+        return {
+          ...state,
+          login: false,
+        }
     case OPEN_PRODUCT_DETAILS:
       return {
         ...state,

@@ -13,7 +13,8 @@ export const colors = {
   white: '#fff',
 };
 
-export const LOCAL_STORAGE_KEY = '@CUB';
+export const LOCAL_STORAGE_DATA_KEY = '@cub_data';
+export const LOCAL_STORAGE_CART_KEY = '@cub_cart';
 export const lang = {
   es: {
     ALL_INPUTS_REQUIRED: 'Todos los campos son obligatorios.',
@@ -27,7 +28,8 @@ export const lang = {
     USER_LOGIN_SUCCESS: 'Login exitoso',
     USER_REGISTER_ERROR:
       'Error al registrar. Por favor intente mas tarde o informe al administrador.',
-    USER_REGISTER_SUCCESS: 'Usuario creado con éxito.',
+    USER_REGISTER_SUCCESS:
+      'Usuario creado con éxito. Inicie sesion utilizando las nuevas credenciales.',
   },
   en: {
     ALL_INPUTS_REQUIRED: 'All inputs required',
@@ -40,7 +42,7 @@ export const lang = {
     USER_LOGIN_ERROR: 'Login Error. Please try again later or contact website admin.',
     USER_LOGIN_SUCCESS: 'Login successful',
     USER_REGISTER_ERROR: 'Register Error. Please try again later or contact website admin.',
-    USER_REGISTER_SUCCESS: 'User created successfuly.',
+    USER_REGISTER_SUCCESS: 'User created successfuly. Please login using your new credentials.',
   },
   ca: {
     ALL_INPUTS_REQUIRED: '',

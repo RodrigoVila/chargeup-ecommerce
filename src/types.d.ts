@@ -10,6 +10,12 @@ type UserType = {
   lastname?: string;
   token?: string;
 };
+
+type UserLoginType = {
+  email: string;
+  name: string;
+  token: string;
+};
 type AuthStateType = {
   user: UserType;
 };
@@ -55,6 +61,7 @@ type ModalStateType = {
   checkout_success: boolean;
   checkout_error: boolean;
   filters: boolean;
+  login: boolean;
   selectedProduct: ProductType;
   productModal: boolean;
 };

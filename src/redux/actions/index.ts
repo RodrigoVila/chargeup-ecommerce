@@ -3,7 +3,7 @@ import {
   removeProductFromStore,
   fetchProductsFromStore,
   fetchProductsFromStoreSuccess,
-} from './products'
+} from './products';
 import {
   setAuthLoading,
   loginUser,
@@ -13,19 +13,19 @@ import {
   registerNewUser,
   successRegisterUser,
   errorRegisterUser,
-} from './auth'
+} from './auth';
 import {
   loadCartState,
   addToCartState,
   removeFromCartState,
   changeProductQuantityState,
-} from './cart'
-import { createNewCheckoutSession, createNewCheckoutSessionSuccess } from './checkout'
+} from './cart';
+import { createNewCheckoutSession, createNewCheckoutSessionSuccess } from './checkout';
 import {
   displayMessageSuccess,
   displayMessageError,
   displayMessageInfo,
-} from './toastNotifications'
+} from './toastNotifications';
 
 import {
   cartModalOpen,
@@ -40,11 +40,13 @@ import {
   drawerModalClose,
   filtersModalOpen,
   filtersModalClose,
+  loginModalOpen,
+  loginModalClose,
   productModalOpen,
   productModalClose,
-} from './modal'
+} from './modal';
 
-import { setFilters } from './filters'
+import { setFilters } from './filters';
 
 export {
   addProductToStore,
@@ -80,7 +82,9 @@ export {
   drawerModalClose,
   filtersModalOpen,
   filtersModalClose,
+  loginModalOpen,
+  loginModalClose,
   productModalOpen,
   productModalClose,
   setFilters,
-}
+};

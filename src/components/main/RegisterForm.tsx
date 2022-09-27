@@ -1,12 +1,16 @@
 const RegisterForm = ({ email, onInputChange }) => {
+  const labelStyle = 'block mb-1 text-lg';
+  const inputStyle =
+    'focus:shadow-outline w-full appearance-none rounded border px-3 py-2 leading-tight shadow focus:outline-none';
+
   return (
-    <form className="p-0 rounded">
-      <div className="p-0">
-        <label className="block mb-2 text-lg " htmlFor="Name">
+    <form className="rounded">
+      <div className="mb-4">
+        <label className={labelStyle} htmlFor="Name">
           Name
         </label>
         <input
-          className="w-full px-3 py-2 leading-tight border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+          className={inputStyle}
           id="name"
           name="name"
           type="text"
@@ -14,11 +18,11 @@ const RegisterForm = ({ email, onInputChange }) => {
         />
       </div>
       <div className="mb-4">
-        <label className="block mb-2 text-lg" htmlFor="Name">
+        <label className={labelStyle} htmlFor="Name">
           Last Name
         </label>
         <input
-          className="w-full px-3 py-2 leading-tight border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+          className={inputStyle}
           id="lastName"
           name="lastName"
           type="text"
@@ -26,11 +30,11 @@ const RegisterForm = ({ email, onInputChange }) => {
         />
       </div>
       <div className="mb-4">
-        <label className="block mb-2 text-lg" htmlFor="Email">
+        <label className={labelStyle} htmlFor="Email">
           Email
         </label>
         <input
-          className="w-full px-3 py-2 leading-tight border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+          className={inputStyle}
           id="email"
           name="email"
           type="text"
@@ -38,12 +42,12 @@ const RegisterForm = ({ email, onInputChange }) => {
           onChange={onInputChange}
         />
       </div>
-      <div className="mb-6">
-        <label className="block mb-2 text-lg" htmlFor="password">
+      <div className="mb-4">
+        <label className={labelStyle} htmlFor="password">
           Password
         </label>
         <input
-          className="w-full px-3 py-2 mb-3 leading-tight border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+          className={inputStyle}
           id="password"
           name="password"
           type="password"
@@ -51,12 +55,12 @@ const RegisterForm = ({ email, onInputChange }) => {
           onChange={onInputChange}
         />
       </div>
-      <div className="mb-6">
-        <label className="block mb-2 text-lg" htmlFor="repeatedPassword">
+      <div className="mb-4">
+        <label className={labelStyle} htmlFor="repeatedPassword">
           Repeat password
         </label>
         <input
-          className="w-full px-3 py-2 mb-3 leading-tight border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+          className={inputStyle}
           id="repeatedPassword"
           name="repeatedPassword"
           type="password"

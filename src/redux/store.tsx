@@ -5,12 +5,12 @@ import createSagaMiddleware from '@redux-saga/core';
 import rootReducer from './reducers';
 import rootSaga from './sagas';
 
-import { LOCAL_STORAGE_KEY } from '@constants';
+import { LOCAL_STORAGE_DATA_KEY } from '@constants';
 import { getValueFromLocalStorage } from '@utils/localStorage';
 
 const sagaMiddleware = createSagaMiddleware();
 
-const storedUser = getValueFromLocalStorage(LOCAL_STORAGE_KEY);
+const storedUser = getValueFromLocalStorage(LOCAL_STORAGE_DATA_KEY);
 
 const AUTH_INITIAL_STATE = {
   isLoggedIn: false,

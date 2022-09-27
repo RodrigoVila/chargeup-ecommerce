@@ -1,7 +1,4 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { v4 as uuidv4 } from 'uuid';
-
-import useEncryption from '@hooks/useEncryption';
 
 import User from '@models/user';
 import dbConnect from '@utils/dbConnect';

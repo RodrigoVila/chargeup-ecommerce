@@ -35,6 +35,12 @@ module.exports = {
       inset: {
         outofScreen: '-700px',
       },
+      keyframes: {
+        wiggle: {
+          '0%, 100%': { transform: 'rotate(-3deg)' },
+          '50%': { transform: 'rotate(3deg)' },
+        },
+      },
       maxWidth: {
         360: '360px',
         250: '250px',

@@ -30,7 +30,7 @@ const Button = ({ title, color, hoverColor, type, isSubmit, disabled = false, on
     <button
       className={`${disabled && 'hover:bg-none'} ${
         hoverColor && !disabled && `hover:bg-[${hoverColor}]`
-      } flex w-full cursor-pointer items-center justify-center rounded-md p-1 py-2 text-white md:text-xl`}
+      } flex w-full cursor-pointer items-center justify-center rounded-md p-1 py-2 text-white`}
       onClick={onClick}
       type={isSubmit ? 'submit' : 'button'}
       role={isSubmit ? 'link' : 'button'}

@@ -15,10 +15,9 @@ export const setAuthLoading = (isAuthLoading: boolean) => ({
   isAuthLoading,
 });
 
-export const userTokenCheck = (email: string, token: string) => ({
+export const userTokenCheck = (user: UserLoginType) => ({
   type: CHECK_USER_TOKEN,
-  email,
-  token,
+  user,
 });
 
 export const loginUser = (user: UserType) => ({
@@ -26,10 +25,9 @@ export const loginUser = (user: UserType) => ({
   user,
 });
 
-export const successLoginUser = (email: string, token: string) => ({
+export const successLoginUser = (user: UserLoginType) => ({
   type: LOGIN_SUCCESS,
-  email,
-  token,
+  user,
 });
 
 export const errorLoginUser = () => ({
@@ -43,10 +41,8 @@ export const registerNewUser = (user: UserType) => ({
   user,
 });
 
-export const successRegisterUser = (email: string, token: string) => ({
+export const successRegisterUser = () => ({
   type: REGISTER_USER_SUCCESS,
-  email,
-  token,
 });
 
 export const errorRegisterUser = () => ({
