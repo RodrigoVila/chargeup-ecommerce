@@ -1,14 +1,39 @@
-import { SET_CUSTOMER_LIST } from "../actions/types";
+import { SET_CUSTOMER_LIST } from '../actions/types';
 
-const initialState = [];
+const APP_USER_INITIAL_STATE: UserDetailsType = {
+  name: '',
+  lastName: '',
+  email: '',
+  password: '',
+  repeatPassword: '',
+  mobileNo: '',
+  prefixNo: '',
+  prefContact: [],
+  location: {
+    street: '',
+    streetNumber: '',
+    postCode: '',
+    city: '',
+    province: '',
+    country: '',
+    extras: '',
+  },
+};
 
-const usersReducer = (state = initialState, action) => {
-  const { type, payload } = action;
+const initialState: UsersStateType = {
+  user: APP_USER_INITIAL_STATE,
+  users: [],
+};
+
+const usersReducer = (state = initialState, action: UsersActionType) => {
+  const { type, user } = action;
+
+  console.log('USERS REDUCER: USER!!: ', user);
 
   switch (type) {
     case SET_CUSTOMER_LIST:
       return {
-        state: payload,
+        state: null,
       };
     default:
       return state;

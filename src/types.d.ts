@@ -1,23 +1,46 @@
 declare module 'flowbite/plugin';
 
 //Auth TODO: Divide type in login/register (w pass and extra data) user and logged in (email,token)
-type UserType = {
-  id?: number;
+type UserRegisterType = {
   email: string;
   password: string;
-  name?: string;
-  name?: string;
-  lastname?: string;
-  token?: string;
+  name: string;
+  lastName: string;
 };
 
 type UserLoginType = {
   email: string;
+  password: string;
+};
+
+type UserLoginReturnType = {
+  email: string;
   name: string;
   token: string;
 };
+
+type UserDetailsType = {
+  name: string;
+  lastName: string;
+  email: string;
+  password?: string;
+  repeatPassword?: string;
+  mobileNo: string;
+  prefixNo: string;
+  prefContact: string[];
+  location: {
+    street: string;
+    streetNumber: string;
+    postCode: string;
+    city: string;
+    province: string;
+    country: string;
+    extras: string;
+  };
+};
+
 type AuthStateType = {
-  user: UserType;
+  user: UserRegisterType;
 };
 
 interface AuthActionType extends AuthStateType {
@@ -64,6 +87,7 @@ type ModalStateType = {
   login: boolean;
   selectedProduct: ProductType;
   productModal: boolean;
+  userModal: boolean;
 };
 
 interface ModalActionType extends ModalStateType {
@@ -132,6 +156,15 @@ type ToastStateType = {
 };
 
 interface ToastActionType extends ToastStateType {
+  type: string;
+}
+
+//Users
+type UsersStateType = {
+  user: UserDetailsType;
+  users: UserDetailsType[];
+};
+interface UsersActionType extends UsersStateType {
   type: string;
 }
 

@@ -2,7 +2,7 @@ import { useState, FC } from 'react'
 import Image from 'next/image'
 import ReactTooltip from 'react-tooltip'
 
-import Button from '@main/Button'
+import Button from '@main/Buttons/Button'
 import Counter from '@main/Counter'
 import RoundImage from '@main/RoundImage'
 import { colors } from '@constants'

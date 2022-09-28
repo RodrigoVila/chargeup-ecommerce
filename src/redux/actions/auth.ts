@@ -1,18 +1,31 @@
 import {
   AUTH_LOADING,
   CHECK_USER_TOKEN,
+  FETCH_USER_DETAILS,
+  FETCH_USER_DETAILS_SUCCESS,
+  FETCH_USER_DETAILS_ERROR,
   LOGIN_SUCCESS,
-  LOGIN_FAIL,
+  USER_LOGIN_ERROR,
   LOGOUT,
   LOGIN_USER,
   REGISTER_USER,
   REGISTER_USER_SUCCESS,
-  REGISTER_USER_FAIL,
+  REGISTER_USER_ERROR,
 } from './types';
 
 export const setAuthLoading = (isAuthLoading: boolean) => ({
   type: AUTH_LOADING,
   isAuthLoading,
+});
+export const fetchUserDetails = () => ({
+  type: FETCH_USER_DETAILS,
+});
+export const fetchUserDetailsSuccess = (user: UserDetailsType) => ({
+  type: FETCH_USER_DETAILS_SUCCESS,
+  user,
+});
+export const fetchUserDetailsError = () => ({
+  type: FETCH_USER_DETAILS_ERROR,
 });
 
 export const userTokenCheck = (user: UserLoginType) => ({
@@ -20,7 +33,7 @@ export const userTokenCheck = (user: UserLoginType) => ({
   user,
 });
 
-export const loginUser = (user: UserType) => ({
+export const loginUser = (user: UserLoginType) => ({
   type: LOGIN_USER,
   user,
 });
@@ -31,12 +44,12 @@ export const successLoginUser = (user: UserLoginType) => ({
 });
 
 export const errorLoginUser = () => ({
-  type: LOGIN_FAIL,
+  type: USER_LOGIN_ERROR,
 });
 
 export const logoutUser = () => ({ type: LOGOUT });
 
-export const registerNewUser = (user: UserType) => ({
+export const registerNewUser = (user: UserRegisterType) => ({
   type: REGISTER_USER,
   user,
 });
@@ -46,5 +59,5 @@ export const successRegisterUser = () => ({
 });
 
 export const errorRegisterUser = () => ({
-  type: REGISTER_USER_FAIL,
+  type: REGISTER_USER_ERROR,
 });

@@ -18,6 +18,10 @@ module.exports = {
         dinBold: ['DINPro-Bold'],
         dinRegular: ['DINPro-Regular'],
       },
+      fontSize: {
+        s: "0.60rem",
+        xs: "0.35rem"
+      },
       gradientColorStops: (theme) => ({
         primary: '#FF8C00',
         secondary: '#FFA500',

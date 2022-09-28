@@ -17,7 +17,7 @@ const Button = ({ title, color, hoverColor, type, isSubmit, disabled = false, on
     <button
       className={` ${hoverColor && `hover:bg-[${hoverColor}]`} ${
         disabled && 'cursor-none bg-gray-300 hover:bg-none'
-      } my-2 w-full cursor-pointer rounded-md  border-2 p-2 text-center text-xl text-black shadow-sm`}
+      } my-2 my-2 w-full cursor-pointer  rounded-md border-2 py-2 px-4 text-center text-xl text-black shadow-sm`}
       onClick={onClick}
       type={isSubmit ? 'submit' : 'button'}
       role={isSubmit ? 'link' : 'button'}
@@ -30,7 +30,7 @@ const Button = ({ title, color, hoverColor, type, isSubmit, disabled = false, on
     <button
       className={`${disabled && 'hover:bg-none'} ${
         hoverColor && !disabled && `hover:bg-[${hoverColor}]`
-      } flex w-full cursor-pointer items-center justify-center rounded-md p-1 py-2 text-white`}
+      } my-2 flex w-full cursor-pointer items-center justify-center rounded-md py-2 px-4 text-white`}
       onClick={onClick}
       type={isSubmit ? 'submit' : 'button'}
       role={isSubmit ? 'link' : 'button'}

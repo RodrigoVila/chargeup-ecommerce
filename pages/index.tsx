@@ -18,6 +18,7 @@ import DrawerModal from '@main/Modal/DrawerModal';
 import FiltersModal from '@main/Modal/FiltersModal';
 import LoginModal from '@main/Modal/LoginModal';
 import ProductModal from '@main/Modal/ProductModal';
+import UserModal from '@main/Modal/UserModal';
 import { getValueFromLocalStorage } from '@utils/localStorage';
 
 const MainScreen = () => {
@@ -59,6 +60,7 @@ const MainScreen = () => {
       <FiltersModal />
       <LoginModal />
       <ProductModal />
+      <UserModal />
 
       {/* Sections */}
       <Welcome />

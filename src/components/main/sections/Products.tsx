@@ -11,7 +11,7 @@ const Products: FC = () => {
   const [searchValue, setSearchValue] = useState('');
   const [filteredProducts, setFilteredProducts] = useState([]);
 
-  const { products, isFilterModalOpen, filters } = useAppSelector();
+  const { products, filters } = useAppSelector();
 
   const { fetchProducts, openProductModal } = useAppActions();
 

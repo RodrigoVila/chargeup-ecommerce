@@ -1,4 +1,4 @@
-import React, { useState, FormEvent } from 'react';
+import React, { useState, useEffect, FormEvent } from 'react';
 import { Toaster } from 'react-hot-toast';
 
 import useAppSelector from '@hooks/useAppSelector';
@@ -6,26 +6,26 @@ import useAppActions from '@hooks/useAppActions';
 import useEncryption from '@hooks/useEncryption';
 
 import { colors, lang } from '@constants';
-import { isEmailValid, isPasswordValid } from '@utils/index';
-import RegisterForm from '@main/RegisterForm';
-import LoginForm from '@main/LoginForm';
-import Button from '@main/Button';
+import RegisterForm from '@shared/Forms/RegisterForm';
+import LoginForm from '@shared/Forms/LoginForm';
+import Button from '@main/Buttons/Button';
 import Link from '@main/Link';
 import Logo from '@main/Logo';
+import { isEmailValid, isPasswordValid } from '@utils/index';
 
 const initialState = {
   name: '',
   lastName: '',
   email: '',
   password: '',
-  repeatedPassword: '',
+  repeatPassword: '',
 };
 
 const Login = () => {
   const [isRegisterForm, setRegisterForm] = useState(false);
   const [credentials, setCredentials] = useState(initialState);
 
-  const { name, lastName, email, password, repeatedPassword } = credentials;
+  const { name, lastName, email, password, repeatPassword } = credentials;
 
   const { isAuthLoading } = useAppSelector();
 
@@ -34,7 +34,8 @@ const Login = () => {
   const { encryptPassword } = useEncryption();
 
   const onInputChange = (e: FormEvent<HTMLInputElement>) => {
-    setCredentials({ ...credentials, [e.currentTarget.name]: e.currentTarget.value });
+    const { name, value } = e.currentTarget;
+    setCredentials({ ...credentials, [name]: value });
   };
 
   const toggleRegister = () => setRegisterForm(!isRegisterForm);
@@ -42,7 +43,7 @@ const Login = () => {
   const handleRegister = async (e: FormEvent<HTMLButtonElement>) => {
     e.preventDefault();
 
-    if (!name || !lastName || !email || !password || !repeatedPassword) {
+    if (!name || !lastName || !email || !password || !repeatPassword) {
       displayErrorMessage(lang.es.ALL_INPUTS_REQUIRED);
       return;
     }
@@ -57,7 +58,7 @@ const Login = () => {
       return;
     }
 
-    if (password !== repeatedPassword) {
+    if (password !== repeatPassword) {
       displayErrorMessage(lang.es.PASSWORDS_DONT_MATCH);
       return;
     }
@@ -96,6 +97,10 @@ const Login = () => {
 
   const cleanCredentials = () => setCredentials(initialState);
 
+  useEffect(() => {
+    cleanCredentials();
+  }, [isRegisterForm]);
+
   return (
     <>
       <Toaster />
@@ -104,13 +109,9 @@ const Login = () => {
         <div className="my-4 w-full max-w-sm  rounded-md bg-white font-semibold text-black">
           <div className="px-6 py-4">
             {isRegisterForm ? (
-              <RegisterForm email={credentials.email} onInputChange={onInputChange} />
+              <RegisterForm onInputChange={onInputChange} />
             ) : (
-              <LoginForm
-                email={credentials.email}
-                onInputChange={onInputChange}
-                cleanCredentials={cleanCredentials}
-              />
+              <LoginForm onInputChange={onInputChange} />
             )}
 
             <Button

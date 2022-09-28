@@ -4,7 +4,7 @@ import ReactTooltip from 'react-tooltip';
 import useAppActions from '@hooks/useAppActions';
 import useAppSelector from '@hooks/useAppSelector';
 
-import Button from '@main/Button';
+import Button from '@main/Buttons/Button';
 import { colors } from '@constants';
 import CartProduct from '@main/CartProduct';
 import CloseModalButton from '@main/Buttons/CloseModalButton';

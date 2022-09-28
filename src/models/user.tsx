@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 const { Schema } = mongoose;
 
 let userSchema = new Schema(
@@ -11,13 +11,55 @@ let userSchema = new Schema(
       type: String,
       required: false,
     },
+    password: {
+      type: String,
+      required: true,
+    },
     email: {
       type: String,
       required: true,
     },
-    password: {
+    prefixNo: {
       type: String,
-      required: true,
+      required: false,
+    },
+    mobileNo: {
+      type: String,
+      required: false,
+    },
+    prefContact: {
+      type: [String],
+      required: false,
+    },
+    location: {
+      street: {
+        type: String,
+        required: false,
+      },
+      streetNumber: {
+        type: String,
+        required: false,
+      },
+      postCode: {
+        type: String,
+        required: false,
+      },
+      city: {
+        type: String,
+        required: false,
+      },
+      province: {
+        type: String,
+        required: false,
+      },
+      country: {
+        type: String,
+        required: false,
+      },
+      extras: {
+        type: String,
+        required: false,
+      },
     },
     token: {
       type: String,
@@ -33,6 +75,6 @@ let userSchema = new Schema(
   }
 );
 
-let User = mongoose.models.User || mongoose.model("User", userSchema);
+let User = mongoose.models.User || mongoose.model('User', userSchema);
 
 export default User;

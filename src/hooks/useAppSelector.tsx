@@ -21,6 +21,7 @@ const useAppSelector = () => {
   const isDrawerModalOpen: boolean = useSelector((state) => state.modal.drawer, shallowEqual);
   const isFilterModalOpen: boolean = useSelector((state) => state.modal.filters, shallowEqual);
   const isLoginModalOpen: boolean = useSelector((state) => state.modal.login, shallowEqual);
+  const isUserModalOpen: boolean = useSelector((state) => state.modal.userModal, shallowEqual);
   const isProductModalOpen: boolean = useSelector(
     (state) => state.modal.productModal,
     shallowEqual
@@ -45,6 +46,7 @@ const useAppSelector = () => {
     isDrawerModalOpen,
     isFilterModalOpen,
     isLoginModalOpen,
+    isUserModalOpen,
     isProductModalOpen,
     modalProduct,
     products,

@@ -9,16 +9,21 @@ type Props = {
 };
 
 const UserButton: FC<Props> = ({ color = 'white' }) => {
-  const { isLoginModalOpen, user } = useAppSelector();
+  const { user } = useAppSelector();
 
-  const { closeLoginModal, openLoginModal } = useAppActions();
+  const { openUserModal, openLoginModal } = useAppActions();
 
-  const onClick = () => (isLoginModalOpen ? closeLoginModal() : openLoginModal());
+  const onClick = () => (user ? openUserModal() : openLoginModal());
 
   return (
-    <div className="mx-2 flex flex-col justify-center items-center" onClick={onClick}>
-      <BiUser className={`w-12 text-4xl text-${color}`} />
-      {user?.name && <p className={`text-${color} text-center text-sm`}>{`${user.name}`}</p>}
+    <div className="cursor-pointer" onClick={onClick}>
+      <BiUser
+        style={{ margin: 0, padding: 0 }}
+        className={`w-12 ${user ? 'text-xl' : 'text-4xl'} text-${color} leading-0`}
+      />
+      {user?.name && (
+        <p className={`text-${color} m'-0 p-0 text-center text-sm`}>{`${user.name}`}</p>
+      )}
     </div>
   );
 };
