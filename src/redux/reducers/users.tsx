@@ -28,8 +28,6 @@ const initialState: UsersStateType = {
 const usersReducer = (state = initialState, action: UsersActionType) => {
   const { type, user } = action;
 
-  console.log('USERS REDUCER: USER!!: ', user);
-
   switch (type) {
     case SET_CUSTOMER_LIST:
       return {

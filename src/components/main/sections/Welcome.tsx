@@ -1,20 +1,30 @@
 import { useState, useEffect, FC } from 'react';
-import Typed from 'react-typed';
 
+import useTypewriterEffect, { getTypewriter, useCursor } from '@hooks/useTypewriterEffect';
+
+import { colors } from '@constants';
 import BackgroundOverlay from '@main/BackgroundOverlay';
 import TopBar from '@main/TopBar/TopBar';
 import MobileTopBar from '@main/TopBar/MobileTopBar';
-import { colors } from '@constants';
-
-const TEXTS = ['SUGAR', 'GLUTEN', 'LACTOSE'];
 
 const Welcome: FC = () => {
-  const [index, setIndex] = useState(0);
+  const [state, dispatch, isTyping] = useTypewriterEffect();
+  const cursor = useCursor(isTyping);
 
   useEffect(() => {
-    const intervalId = setInterval(() => setIndex((index) => index + 1), 3000);
-    return () => clearTimeout(intervalId);
-  }, []);
+    getTypewriter(dispatch)
+      .type('GLUTEN')
+      .pauseFor(5000)
+      .deleteAll()
+      .type('SUGAR')
+      .pauseFor(5000)
+      .deleteAll()
+      .type('LACTOSE')
+      .pauseFor(5000)
+      .deleteAll()
+      .setLoop(true)
+      .trigger();
+  }, [dispatch]);
 
   return (
     <div
@@ -28,9 +38,12 @@ const Welcome: FC = () => {
         <div className="leading-0 pb-4 text-center text-5xl font-semibold tracking-wide text-white md:px-4 md:text-6xl">
           TASTE THE LOVE AND FEEL RECHARGED
         </div>
-        <div className="leading-0 px-2 text-center text-xl font-semibold text-white md:text-3xl">
-          OUR MISSION IS TO MAKE HAPPY THOSE WHO CANNOT EAT
-
+        <div className="leading-0 flex items-center justify-center px-2 text-center text-xl font-semibold text-white md:text-3xl">
+          <div className='mr-2'>OUR MISSION IS TO MAKE HAPPY THOSE WHO CANNOT EAT</div>
+          <div>
+            {state}
+            <span style={{ visibility: cursor ? 'visible' : 'hidden' }}>|</span>
+          </div>
         </div>
       </div>
     </div>

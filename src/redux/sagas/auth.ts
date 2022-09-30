@@ -62,7 +62,6 @@ function* userLogin(payload: any) {
       yield put(errorLoginUser());
     }
   } catch (e) {
-    console.log('HOLA', e);
     yield put(displayMessageError(lang.es.USER_LOGIN_ERROR));
     yield put(errorLoginUser());
   }

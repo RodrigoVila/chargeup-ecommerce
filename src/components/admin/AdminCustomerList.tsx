@@ -7,7 +7,6 @@ const AdminCustomerList = () => {
 
   const fetch = async () => {
     const { data } = await getUserList();
-    console.log('!!!!!data', data);
   };
   useEffect(() => {
     fetch();
