@@ -9,20 +9,17 @@ type Props = {
 };
 
 const UserButton: FC<Props> = ({ color = 'white' }) => {
-  const { user } = useAppSelector();
-
-  const { openUserModal, openLoginModal } = useAppActions();
-
-  const onClick = () => (user ? openUserModal() : openLoginModal());
+  const { userLogin } = useAppSelector();
+  const { openUserModal } = useAppActions();
 
   return (
-    <div className="cursor-pointer" onClick={onClick}>
+    <div className="cursor-pointer" onClick={openUserModal}>
       <BiUser
         style={{ margin: 0, padding: 0 }}
-        className={`w-12 ${user ? 'text-xl' : 'text-4xl'} text-${color} leading-0`}
+        className={`w-12 text-2xl text-${color} leading-0 m-0 p-0`}
       />
-      {user?.name && (
-        <p className={`text-${color} m'-0 p-0 text-center text-sm`}>{`${user.name}`}</p>
+      {userLogin && (
+        <p className={`text-${color} m-0 p-0 text-center text-sm`}>{`${userLogin.name}`}</p>
       )}
     </div>
   );

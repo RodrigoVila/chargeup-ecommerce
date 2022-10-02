@@ -13,7 +13,7 @@ type UserLoginType = {
   password: string;
 };
 
-type UserLoginReturnType = {
+type StorageUserType = {
   email: string;
   name: string;
   token: string;
@@ -40,7 +40,9 @@ type UserDetailsType = {
 };
 
 type AuthStateType = {
-  user: UserRegisterType;
+  isLoggedIn: boolean;
+  isAuthLoading: boolean;
+  userLogin: StorageUserType | null;
 };
 
 interface AuthActionType extends AuthStateType {
@@ -161,6 +163,7 @@ interface ToastActionType extends ToastStateType {
 
 //Users
 type UsersStateType = {
+  isUserDataLoading: boolean;
   user: UserDetailsType;
   users: UserDetailsType[];
 };

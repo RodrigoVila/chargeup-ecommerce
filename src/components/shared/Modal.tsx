@@ -34,7 +34,7 @@ const Modal = ({
           fullScreen
             ? 'inset-0 items-center justify-center bg-white'
             : 'top-20 items-start justify-start'
-        } fixed z-40 flex flex-col min-h-screen`}
+        } fixed z-40 flex flex-col min-h-screen h-full`}
       >
         {transparent && <BackgroundOverlay color={colors.overlay} />}
         <div className={`z-50 w-full overflow-scroll`}>{children}</div>

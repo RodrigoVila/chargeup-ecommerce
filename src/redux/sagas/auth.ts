@@ -13,11 +13,8 @@ import {
   REGISTER_USER,
   LOGIN_USER,
   CHECK_USER_TOKEN,
-  FETCH_USER_DETAILS,
 } from '@redux/actions/types';
-import { lang, LOCAL_STORAGE_DATA_KEY } from '@constants';
-import { fetchUserDetailsError, fetchUserDetailsSuccess } from '@redux/actions/auth';
-import { getValueFromLocalStorage } from '@utils/localStorage';
+import { lang } from '@constants';
 
 const API_URL = '/api/auth';
 
@@ -89,32 +86,10 @@ function* checkToken(payload: any) {
   }
 }
 
-function* fetchUserDetails() {
-  const { email, token } = getValueFromLocalStorage(LOCAL_STORAGE_DATA_KEY);
-
-  try {
-    const response = yield call(fetch, API_URL + '/getuser', {
-      method: 'POST',
-      headers: { Authorization: 'Token tokenid', 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, token }),
-    });
-
-    const { success, user: userResponse } = yield response.json();
-    if (success) {
-      yield put(fetchUserDetailsSuccess(userResponse));
-    } else {
-      yield put(fetchUserDetailsError());
-    }
-  } catch (e) {
-    yield put(fetchUserDetailsError());
-  }
-}
-
 function* authSaga() {
   yield takeEvery(REGISTER_USER, userRegister);
   yield takeEvery(LOGIN_USER, userLogin);
   yield takeEvery(CHECK_USER_TOKEN, checkToken);
-  yield takeEvery(FETCH_USER_DETAILS, fetchUserDetails);
 }
 
 export default authSaga;

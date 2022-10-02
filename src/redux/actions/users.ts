@@ -1,31 +1,17 @@
-import { Dispatch } from "redux";
-import { register, login, logout, fetchUserList } from "@services";
-import { SET_CUSTOMER_LIST, SET_MESSAGE } from "./types";
+import { FETCH_USER_DETAILS, FETCH_USER_DETAILS_ERROR, FETCH_USER_DETAILS_SUCCESS, USER_DETAILS_LOADING } from './types';
 
-export const getUserList = () => (dispatch: Dispatch) => {
-  return fetchUserList().then(
-    (response: any) => {
-      dispatch({
-        type: SET_CUSTOMER_LIST,
-        payload: response.data,
-      });
+export const fetchUserDetails = () => ({
+  type: FETCH_USER_DETAILS,
+});
+export const fetchUserDetailsSuccess = (user: UserDetailsType) => ({
+  type: FETCH_USER_DETAILS_SUCCESS,
+  user,
+});
+export const fetchUserDetailsError = () => ({
+  type: FETCH_USER_DETAILS_ERROR,
+});
 
-      return Promise.resolve();
-    },
-    (error) => {
-      const message =
-        (error.response &&
-          error.response.data &&
-          error.response.data.message) ||
-        error.message ||
-        error.toString();
-
-      dispatch({
-        type: SET_MESSAGE,
-        payload: message,
-      });
-
-      return Promise.reject();
-    }
-  );
-};
+export const setUserDataLoading = (isUserDataLoading: boolean) => ({
+  type: USER_DETAILS_LOADING,
+  isUserDataLoading,
+});

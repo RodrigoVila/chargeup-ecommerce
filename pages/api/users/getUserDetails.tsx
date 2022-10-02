@@ -20,6 +20,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         mobileNo: userRecord.mobileNo,
         prefixNo: userRecord.prefixNo,
         prefContact: userRecord.prefContact,
+        token,
       };
       userRecord && userRecord.token === token
         ? res.status(200).json({ success: true, user })

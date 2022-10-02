@@ -12,7 +12,6 @@ import {
   loginUser,
   logoutUser,
   setAuthLoading,
-  fetchUserDetails,
   userTokenCheck,
 } from '@redux/actions/auth';
 import {
@@ -51,6 +50,8 @@ import {
 
 import { setFilters } from '@redux/actions/filters';
 
+import { setUserDataLoading, fetchUserDetails } from '@redux/actions/users';
+
 const useAppActions = () => {
   const dispatch = useDispatch<AppDispatch>();
 
@@ -60,9 +61,8 @@ const useAppActions = () => {
   const fetchProducts = () => dispatch(fetchProductsFromStore());
   const fetchProductsSuccess = (products: ProductType[]) =>
     dispatch(fetchProductsFromStoreSuccess(products));
-
+  setUserDataLoading;
   // Auth
-  const getUserDetails = () => dispatch(fetchUserDetails());
   const setLoadingAuth = (isAuthLoading: boolean) => dispatch(setAuthLoading(isAuthLoading));
   const checkUserToken = (user: UserLoginType) => dispatch(userTokenCheck(user));
   const userLogin = (user: UserLoginType) => {
@@ -116,12 +116,20 @@ const useAppActions = () => {
   // filters
   const setProductFilters = (filter: string) => dispatch(setFilters(filter));
 
+  //Users
+  const setUserLoading = (isUserDataLoading: boolean) =>
+    dispatch(setUserDataLoading(isUserDataLoading));
+
+  const getUserDetails = () => {
+    setUserLoading(true);
+    dispatch(fetchUserDetails());
+  };
+
   return {
     addProduct,
     removeProduct,
     fetchProducts,
     fetchProductsSuccess,
-    getUserDetails,
     setLoadingAuth,
     checkUserToken,
     userLogin,
@@ -155,6 +163,8 @@ const useAppActions = () => {
     openUserModal,
     closeUserModal,
     setProductFilters,
+    setUserLoading,
+    getUserDetails,
   };
 };
 

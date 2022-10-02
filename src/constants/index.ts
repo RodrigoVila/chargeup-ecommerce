@@ -1,3 +1,4 @@
+//Colors
 export const colors = {
   danger: '#ff4444',
   disabled: '#b2b2b2',
@@ -13,15 +14,56 @@ export const colors = {
   white: '#fff',
 };
 
+// Initial state
+export const AUTH_INITIAL_STATE = {
+  isLoggedIn: false,
+  isAuthLoading: false,
+  userLogin: {
+    email: '',
+    name: '',
+    token: '',
+  },
+};
+
+export const APP_USER_INITIAL_STATE: UserDetailsType = {
+  name: '',
+  lastName: '',
+  email: '',
+  password: '',
+  repeatPassword: '',
+  mobileNo: '',
+  prefixNo: '',
+  prefContact: [],
+  location: {
+    street: '',
+    streetNumber: '',
+    postCode: '',
+    city: '',
+    province: '',
+    country: '',
+    extras: '',
+  },
+};
+
+export const USERS_INITIAL_STATE: UsersStateType = {
+  isUserDataLoading: false,
+  user: APP_USER_INITIAL_STATE,
+  users: [],
+};
+
+// Local storage keys
 export const LOCAL_STORAGE_DATA_KEY = '@cub_data';
 export const LOCAL_STORAGE_CART_KEY = '@cub_cart';
+
+// Lang
 export const lang = {
   es: {
     ALL_INPUTS_REQUIRED: 'Todos los campos son obligatorios.',
     CHANGE_PASSWORD: 'Modificar contraseña',
-    CHANGE_USER_DATA: 'Modificar datos',
+    CHANGE_USER_DATA: 'Modificar datos de usuario',
     EMAIL: 'Email',
     GO_BACK: 'Volver atras',
+    GO_TO_LOGIN: 'Volver al login',
     INVALID_CREDENTIALS: 'Credenciales invalidas.',
     INVALID_EMAIL: 'Email invalido.',
     NAME: 'Nombre',
@@ -33,6 +75,8 @@ export const lang = {
     LOCATION_PROVINCE: 'Provincia',
     LOCATION_COUNTRY: 'Pais',
     LOCATION_EXTRAS: 'Informacion extra',
+    LOGIN: 'Iniciar sesión',
+    LOGOUT: 'Cerrar sesión',
     MOBILE_NUMBER: 'Numero de movil',
     NEW_PASSWORD: 'Nueva contraseña',
     OLD_PASSWORD: 'Contraseña antigua',
@@ -47,6 +91,7 @@ export const lang = {
     USER_EXIST: 'Email ya se encuentra registrado en nuestra base de datos.',
     USER_LOGIN_ERROR: 'Error en login. Por favor intente mas tarde o informe al administrador.',
     USER_LOGIN_SUCCESS: 'Login exitoso',
+    USER_REGISTER: 'Crear nueva cuenta',
     USER_REGISTER_ERROR:
       'Error al registrar. Por favor intente mas tarde o informe al administrador.',
     USER_REGISTER_SUCCESS:
@@ -58,6 +103,7 @@ export const lang = {
     CHANGE_USER_DATA: 'Change user data',
     EMAIL: 'Email',
     GO_BACK: 'Back',
+    GO_TO_LOGIN: 'Go back to login',
     INVALID_CREDENTIALS: 'Invalid credentials.',
     INVALID_EMAIL: 'Invalid email.',
     NAME: 'Name',
@@ -69,6 +115,8 @@ export const lang = {
     LOCATION_PROVINCE: 'Province',
     LOCATION_COUNTRY: 'Country',
     LOCATION_EXTRAS: 'Extra info',
+    LOGIN: 'Login',
+    LOGOUT: 'Logout',
     MOBILE_NUMBER: 'Mobile number',
     NEW_PASSWORD: 'New password',
     OLD_PASSWORD: 'Old password',
@@ -83,6 +131,7 @@ export const lang = {
     USER_EXIST: 'Email already exist in our database.',
     USER_LOGIN_ERROR: 'Login Error. Please try again later or contact website admin.',
     USER_LOGIN_SUCCESS: 'Login successful',
+    USER_REGISTER: 'Create new account',
     USER_REGISTER_ERROR: 'Register Error. Please try again later or contact website admin.',
     USER_REGISTER_SUCCESS: 'User created successfuly. Please login using your new credentials.',
   },
@@ -92,6 +141,7 @@ export const lang = {
     CHANGE_USER_DATA: '',
     EMAIL: '',
     GO_BACK: '',
+    GO_TO_LOGIN: '',
     INVALID_CREDENTIALS: '',
     INVALID_EMAIL: '',
     NAME: '',
@@ -103,6 +153,8 @@ export const lang = {
     LOCATION_PROVINCE: '',
     LOCATION_COUNTRY: '',
     LOCATION_EXTRAS: '',
+    LOGIN: '',
+    LOGOUT: '',
     MOBILE_NUMBER: '',
     NEW_PASSWORD: '',
     OLD_PASSWORD: '',
@@ -116,6 +168,7 @@ export const lang = {
     USER_EXIST: '',
     USER_LOGIN_ERROR: '',
     USER_LOGIN_SUCCESS: '',
+    USER_REGISTER: '',
     USER_REGISTER_ERROR: '',
     USER_REGISTER_SUCCESS: '',
   },

@@ -115,14 +115,14 @@ const Login = () => {
             )}
 
             <Button
-              title={isRegisterForm ? 'Register new account' : 'Login'}
+              title={isRegisterForm ? lang.es.USER_REGISTER : lang.es.LOGIN}
               color={colors.purple}
               hoverColor={colors.fuchsia}
               onClick={isRegisterForm ? handleRegister : handleLogin}
               disabled={isAuthLoading}
             />
             <Link
-              text={isRegisterForm ? 'Go back to Login' : 'Register new account'}
+              text={isRegisterForm ? lang.es.GO_TO_LOGIN : lang.es.USER_REGISTER}
               onClick={toggleRegister}
             />
           </div>

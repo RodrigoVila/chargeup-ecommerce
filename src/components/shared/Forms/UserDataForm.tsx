@@ -1,16 +1,23 @@
-import { useState, ChangeEvent, FC } from 'react';
+import { useState, useEffect, ChangeEvent, FC } from 'react';
 
-import { colors, lang } from '@constants';
+import { APP_USER_INITIAL_STATE, colors, lang } from '@constants';
 import Input from '@shared/Input';
 import Button from '@main/Buttons/Button';
+import useAppSelector from '@hooks/useAppSelector';
+import Link from '@main/Link';
+import useAppActions from '@hooks/useAppActions';
 
-type Props = {
-  userDetails: UserDetailsType;
-  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
-  closeEdit: () => void;
-};
+const UserDataForm: FC = () => {
+  const { user } = useAppSelector();
+  const [userDetails, setUserDetails] = useState(user);
 
-const UserDataForm: FC<Props> = ({ userDetails, onChange, closeEdit }) => {
+  const { closeUserModal } = useAppActions();
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setUserDetails((currDetails) => ({ ...currDetails, [name]: value }));
+  };
+
   const {
     name,
     lastName,
@@ -21,22 +28,26 @@ const UserDataForm: FC<Props> = ({ userDetails, onChange, closeEdit }) => {
     location,
   } = userDetails;
 
+  useEffect(() => {
+    console.log('userDetails', userDetails);
+  }, [userDetails]);
+
   return (
-    <div className="my-6 rounded-xl border-2 border-black p-6">
-      <Input label={lang.es.NAME} type="text" name="name" value={name} onChange={onChange} />
+    <div className="rounded-xl border-2 border-black p-6">
+      <Input label={lang.es.NAME} type="text" name="name" value={name} onChange={handleChange} />
       <Input
         label={lang.es.LASTNAME}
         type="text"
         name="lastName"
         value={lastName}
-        onChange={onChange}
+        onChange={handleChange}
       />
       <Input
         label={lang.es.EMAIL}
         type="text"
         name="email"
         value={email}
-        onChange={() => {}}
+        onChange={handleChange}
         disabled={true}
       />
       <Input
@@ -44,66 +55,66 @@ const UserDataForm: FC<Props> = ({ userDetails, onChange, closeEdit }) => {
         type="text"
         name="prefixNo"
         value={prefixNo}
-        onChange={onChange}
+        onChange={handleChange}
       />
       <Input
         label={lang.es.MOBILE_NUMBER}
         type="text"
         name="mobileNo"
         value={mobileNo}
-        onChange={onChange}
+        onChange={handleChange}
       />
       <Input
         label={lang.es.LOCATION_STREET}
         type="text"
         name="street"
         value={location.street}
-        onChange={onChange}
+        onChange={handleChange}
       />
       <Input
         label={lang.es.LOCATION_STREET_NUMBER}
         type="text"
         name="streetNumber"
         value={location.streetNumber}
-        onChange={onChange}
+        onChange={handleChange}
       />
       <Input
         label={lang.es.LOCATION_POSTCODE}
         type="text"
         name="postCode"
         value={location.postCode}
-        onChange={onChange}
+        onChange={handleChange}
       />
       <Input
         label={lang.es.LOCATION_CITY}
         type="text"
         name="city"
         value={location.city}
-        onChange={onChange}
+        onChange={handleChange}
       />
       <Input
         label={lang.es.LOCATION_PROVINCE}
         type="text"
         name="province"
         value={location.province}
-        onChange={onChange}
+        onChange={handleChange}
       />
       <Input
         label={lang.es.LOCATION_COUNTRY}
         type="text"
         name="country"
         value={location.country}
-        onChange={onChange}
+        onChange={handleChange}
       />
       <Input
         label={lang.es.LOCATION_EXTRAS}
         type="text"
         name="extras"
         value={location.extras}
-        onChange={onChange}
+        onChange={handleChange}
       />
       <Button title={lang.es.CHANGE_USER_DATA} color={colors.purple} onClick={() => {}} />
-      <Button title={lang.es.GO_BACK} color={colors.purple} onClick={closeEdit} />
+      <Link text={lang.es.GO_BACK} onClick={closeUserModal} />
     </div>
   );
 };

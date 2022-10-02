@@ -1,37 +1,21 @@
-import { SET_CUSTOMER_LIST } from '../actions/types';
+import { APP_USER_INITIAL_STATE, USERS_INITIAL_STATE } from '@constants';
+import { FETCH_USER_DETAILS_ERROR, FETCH_USER_DETAILS_SUCCESS } from '../actions/types';
 
-const APP_USER_INITIAL_STATE: UserDetailsType = {
-  name: '',
-  lastName: '',
-  email: '',
-  password: '',
-  repeatPassword: '',
-  mobileNo: '',
-  prefixNo: '',
-  prefContact: [],
-  location: {
-    street: '',
-    streetNumber: '',
-    postCode: '',
-    city: '',
-    province: '',
-    country: '',
-    extras: '',
-  },
-};
-
-const initialState: UsersStateType = {
-  user: APP_USER_INITIAL_STATE,
-  users: [],
-};
-
-const usersReducer = (state = initialState, action: UsersActionType) => {
+const usersReducer = (state = USERS_INITIAL_STATE, action: UsersActionType) => {
   const { type, user } = action;
 
   switch (type) {
-    case SET_CUSTOMER_LIST:
+    case FETCH_USER_DETAILS_SUCCESS:
       return {
-        state: null,
+        ...state,
+        isUserDataLoading: false,
+        user,
+      };
+    case FETCH_USER_DETAILS_ERROR:
+      return {
+        ...state,
+        isUserDataLoading: false,
+        user: APP_USER_INITIAL_STATE,
       };
     default:
       return state;

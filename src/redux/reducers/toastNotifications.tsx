@@ -1,14 +1,14 @@
 // import { toast } from "react-toastify";
-import toast, { Toaster } from 'react-hot-toast'
-import { ERROR_MESSAGE, SUCCESS_MESSAGE, INFO_MESSAGE } from '../actions/types'
-import { AiOutlineCheckCircle } from 'react-icons/ai'
-import { BsExclamationOctagon } from 'react-icons/bs'
-import { MdCancel } from 'react-icons/md'
-import { colors } from '@constants'
+import toast, { Toaster } from 'react-hot-toast';
+import { ERROR_MESSAGE, SUCCESS_MESSAGE, INFO_MESSAGE } from '../actions/types';
+import { AiOutlineCheckCircle } from 'react-icons/ai';
+import { BsExclamationOctagon } from 'react-icons/bs';
+import { MdCancel } from 'react-icons/md';
+import { colors } from '@constants';
 
 const initialState: ToastStateType = {
   message: '',
-}
+};
 
 const toastReducer = (
   //Tipo OK, necesitamos el state del cart
@@ -24,7 +24,7 @@ const toastReducer = (
         // Styling
         style: {
           padding: '20px 10px',
-          borderRadius: 0,
+          borderRadius: '8px',
           boxShadow: '0 3px 10px rgb(0 0 0 / 0.2)',
         },
         className: '',
@@ -40,8 +40,8 @@ const toastReducer = (
           role: 'status',
           'aria-live': 'polite',
         },
-      })
-      break
+      });
+      break;
     case ERROR_MESSAGE:
       toast(action.message, {
         duration: 3000,
@@ -49,7 +49,7 @@ const toastReducer = (
         // Styling
         style: {
           padding: '20px 10px',
-          borderRadius: 0,
+          borderRadius: '8px',
           boxShadow: '0 3px 10px rgb(0 0 0 / 0.2)',
         },
         className: '',
@@ -65,8 +65,8 @@ const toastReducer = (
           role: 'status',
           'aria-live': 'polite',
         },
-      })
-      break
+      });
+      break;
     case INFO_MESSAGE:
       toast(action.message, {
         duration: 3000,
@@ -74,7 +74,7 @@ const toastReducer = (
         // Styling
         style: {
           padding: '20px 10px',
-          borderRadius: 0,
+          borderRadius: '8px',
           boxShadow: '0 3px 10px rgb(0 0 0 / 0.2)',
         },
         className: '',
@@ -90,10 +90,10 @@ const toastReducer = (
           role: 'status',
           'aria-live': 'polite',
         },
-      })
-      break
+      });
+      break;
   }
-  return state
-}
+  return state;
+};
 
-export default toastReducer
+export default toastReducer;

@@ -6,6 +6,7 @@ import {
 } from './products';
 import {
   setAuthLoading,
+  userTokenCheck,
   loginUser,
   successLoginUser,
   errorLoginUser,
@@ -48,12 +49,20 @@ import {
 
 import { setFilters } from './filters';
 
+import {
+  fetchUserDetails,
+  fetchUserDetailsError,
+  fetchUserDetailsSuccess,
+  setUserDataLoading,
+} from './users';
+
 export {
   addProductToStore,
   removeProductFromStore,
   fetchProductsFromStore,
   fetchProductsFromStoreSuccess,
   setAuthLoading,
+  userTokenCheck,
   loginUser,
   successLoginUser,
   errorLoginUser,
@@ -87,4 +96,8 @@ export {
   productModalOpen,
   productModalClose,
   setFilters,
+  fetchUserDetails,
+  fetchUserDetailsError,
+  fetchUserDetailsSuccess,
+  setUserDataLoading,
 };
