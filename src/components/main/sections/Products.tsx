@@ -31,6 +31,7 @@ const Products: FC = () => {
     };
 
     filterByProductName();
+  
   }, [searchValue]);
 
   useEffect(() => {
@@ -92,7 +93,7 @@ const Products: FC = () => {
                   imgUri={p.imgUri}
                   nutritionalInfo={p.nutritionalInfo}
                   suitableForInfo={p.suitableForInfo}
-                  onClick={(p) => openProductModal(p)}
+                  onClick={() => openProductModal(p)}
                 />
               ))
             : products.length > 0
@@ -107,7 +108,7 @@ const Products: FC = () => {
                   imgUri={p.imgUri}
                   nutritionalInfo={p.nutritionalInfo}
                   suitableForInfo={p.suitableForInfo}
-                  onClick={(p) => openProductModal(p)}
+                  onClick={() => openProductModal(p)}
                 />
               ))
             : ''}

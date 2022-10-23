@@ -6,7 +6,7 @@ interface Props {
 
 const ProductSearchBar: FC<Props> = ({ setSearchValue }) => {
   return (
-    <div className="flex w-full flex-1 px-2 ml-2 text-black">
+    <div className="flex w-full max-w-2xl flex-1 px-2 ml-2 text-black">
       <input
         type="search"
         placeholder="Buscar producto"

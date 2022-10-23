@@ -21,11 +21,11 @@ const CartModal = () => {
   );
 
   return (
-    <Modal isOpen={isCartModalOpen} fullScreen transparent>
+    <Modal isOpen={isCartModalOpen} transparent fullScreen border>
       <ReactTooltip />
-      <div className="relative flex w-full flex-col items-center bg-white px-2 pt-4">
+      <div className="relative flex flex-col items-center w-full h-full max-w-xl p-2 my-2 bg-white ">
         <CloseModalButton color="black" position="right" onClose={() => closeCartModal()} />
-        <div className="px-2 pb-6 pt-8 text-center text-3xl text-black">{`${cartItems.length} ${
+        <div className="px-2 pt-8 pb-6 text-3xl text-center text-black">{`${cartItems.length} ${
           cartItems.length > 1 ? 'articulos' : 'articulo'
         } en la cesta`}</div>
         {cartItems.map((item) => (
@@ -42,23 +42,15 @@ const CartModal = () => {
           />
         ))}
 
-        <div className="flex w-full items-center justify-between py-2 pb-0 text-3xl text-black">
+        <div className="flex items-center justify-between w-full py-2 pb-0 text-3xl text-black">
           <div>Total</div>
           <div>{`€${totalSum}`}</div>
         </div>
-        {/* <div className="flex w-full items-center justify-between py-2">
-          <div className="h-full text-xl text-gray-700">Envio</div>
-          <div className="h-full text-xl text-gray-700">€0</div>
-        </div>
-        <div className="flex w-full items-center justify-between py-2">
-          <div className="h-full text-xl text-gray-700">Entrega</div>
-          <div className="h-full text-xl text-gray-700">48hs</div>
-        </div> */}
-        <div className="flex w-full flex-col items-center justify-between py-4 text-xl text-white md:text-3xl">
+        <div className="flex flex-col items-center justify-between w-full py-4 text-xl text-white md:text-3xl">
           <form action="/api/checkout_session" method="POST" className="flex w-full">
-            <Button title="Ir a pagar" color={colors.purple} onClick={() => {}} isSubmit />
+            <Button title="Ir a pagar" color={colors.purple} size="2xl" onClick={() => {}} isSubmit />
           </form>
-          <Button title="Cerrar" onClick={() => closeCartModal()} type="outlined" />
+          <Button title="Cerrar" size="lg" onClick={() => closeCartModal()} type="outlined" />
         </div>
       </div>
     </Modal>

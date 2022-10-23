@@ -10,12 +10,12 @@ type Size = { color: 'white' | 'black' | 'blur' | 'purple' | 'multi' };
 const Logo: FC<Props> = ({ color, size = 'md' }) => {
   const sizeStyle =
     size === 'sm'
-      ? 'h-24 w-28'
+      ? 'h-22 w-28'
       : size === 'md'
-      ? ' h-28 w-32'
+      ? ' h-24 w-32'
       : size === 'lg'
-      ? 'h-32 w-36'
-      : 'h-36 w-40';
+      ? 'h-26 w-36'
+      : 'h-30 w-40';
   return (
     <div className={`${sizeStyle} relative z-20 ml-4`}>
       <Image

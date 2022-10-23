@@ -10,6 +10,7 @@ interface Props {
   isOpen: boolean;
   transparent?: boolean;
   fullScreen?: boolean;
+  border?: boolean;
   closeOnOverlayClick?: boolean;
 }
 
@@ -18,6 +19,7 @@ const Modal = ({
   isOpen,
   transparent,
   fullScreen = false,
+  border=false,
   closeOnOverlayClick = false,
 }: Props) => {
   const { closeDrawerModal } = useAppActions();
@@ -30,14 +32,14 @@ const Modal = ({
     <Portal wrapperId="react-portal-modal-container">
       <div
         onClick={closeOnOverlayClick ? closeDrawerModal : undefined}
-        className={` ${transparent ? 'bg-transparent' : 'bg-white'} ${
+        className={`${transparent ? 'bg-transparent' : 'bg-white'} ${
           fullScreen
-            ? 'inset-0 items-center justify-center bg-white'
-            : 'top-20 items-start justify-start'
-        } fixed z-40 flex flex-col min-h-screen h-full`}
+            ? 'inset-0 items-center justify-center'
+            : 'top-20 items-center justify-center'
+        } fixed z-40 flex flex-col min-h-screen h-full w-full`}
       >
         {transparent && <BackgroundOverlay color={colors.overlay} />}
-        <div className={`z-50 w-full overflow-scroll`}>{children}</div>
+        <div className={`${border && "border-black md:py-2 md:px-4 md:border-2"} z-50 w-full overflow-scroll items-center justify-center flex flex-col bg-white`}>{children}</div>
       </div>
     </Portal>
   ) : null;

@@ -13,6 +13,7 @@ const Welcome: FC = () => {
 
   useEffect(() => {
     getTypewriter(dispatch)
+    .pauseFor(1000)
       .type('GLUTEN')
       .pauseFor(2000)
       .deleteAll()
@@ -34,11 +35,11 @@ const Welcome: FC = () => {
       <TopBar />
       <MobileTopBar />
       <BackgroundOverlay color={colors.overlay} />
-      <div className="relative z-10 flex h-3/4 w-full  flex-col items-center justify-center font-dinBold">
-        <div className="leading-0 pb-4 text-center text-5xl font-semibold tracking-wide text-white md:px-4 md:text-6xl">
+      <div className="relative z-10 flex flex-col items-center justify-center w-full h-3/4 font-dinBold">
+        <div className="pb-4 text-5xl font-semibold tracking-wide text-center text-white leading-0 md:px-4 md:text-6xl">
           TASTE THE LOVE AND FEEL RECHARGED
         </div>
-        <div className="leading-0 flex flex-col xl:flex-row xl:px-0 items-center justify-center px-8 md:px-20 lg:px-56 text-center text-xl font-semibold text-white md:text-3xl">
+        <div className="flex flex-col items-center justify-center px-8 text-xl font-semibold text-center text-white leading-0 xl:flex-row xl:px-0 md:px-20 lg:px-56 md:text-3xl">
           <div className="mr-2">OUR MISSION IS TO MAKE HAPPY THOSE WHO CANNOT EAT</div>
           <div>
             {state}

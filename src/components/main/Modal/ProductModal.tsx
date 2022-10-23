@@ -19,8 +19,8 @@ const ProductModal: FC = () => {
         {/*body*/}
         <div className="px-2 text-center">
           <p className="px-1 text-sm leading-relaxed text-slate-500">
-            {modalProduct?.description.long?.map((p) => (
-              <p>{p}</p>
+            {modalProduct?.description.long?.map((p,i) => (
+              <p key={i}>{p}</p>
             ))}
           </p>
         </div>
