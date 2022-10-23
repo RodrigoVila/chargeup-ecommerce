@@ -13,7 +13,7 @@ const CartButton: FC = () => {
     cartLength > 0 ? openCartModal() : displayInfoMessage('No hay productos en el carrito');
 
   return (
-    <button className="relative z-20 w-8 h-8 px-4 m-2 cursor-pointe md:m-4" onClick={openCart}>
+    <button className="relative z-20 w-8 h-8 px-4 mr-4 md:w-10 md:h-10 lg:w-8 lg:h-8 cursor-pointe md:mr-8" onClick={openCart}>
       <Image className="" objectFit="cover" layout="fill" src="/cart_white.png" alt="" />
       {cartLength !== 0 && (
         <div

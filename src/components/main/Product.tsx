@@ -56,13 +56,13 @@ const Product: FC<Props> = ({
     <>
       <ReactTooltip />
 
-      <div className="mx-2 mt-32 mb-4 flex w-full max-w-sm flex-col items-center justify-end rounded-xl bg-black text-white lg:mx-8 lg:max-w-360">
-        <div className="relative flex h-full flex-col justify-end px-8 pb-4">
-          <div className="mb-8 flex h-32 w-full items-center justify-center">
+      <div className="flex flex-col items-center justify-end w-full max-w-sm mx-2 mt-32 mb-4 text-white bg-black rounded-xl lg:mx-8 lg:max-w-360">
+        <div className="relative flex flex-col justify-end h-full px-8 pb-4">
+          <div className="flex items-center justify-center w-full h-32 mb-8 bg-black">
             {imgUri && <RoundImage imgUri={imgUri} />}
           </div>
           <div className="text-base font-semibold md:text-xl">{title.toUpperCase()}</div>
-          <div className="my-3 flex text-sm font-semibold md:text-base">
+          <div className="flex my-3 text-sm font-semibold md:text-base">
             {suitableForInfo.vegan && (
               <div className={`${iconStyle} mr-1`} data-tip="Vegano">
                 <Image src="/icons/vegan-white.png" layout="fill" />
@@ -84,18 +84,18 @@ const Product: FC<Props> = ({
               </div>
             )}
           </div>
-          <div className="cursor-pointer text-sm md:text-lg" onClick={onClick}>
+          <div className="text-sm cursor-pointer md:text-lg" onClick={onClick}>
             {description?.short}
           </div>
           {/* text-[#a855f7] */}
-          <div className="cursor-pointer font-semibold text-orange-400" onClick={onClick}>
+          <div className="font-semibold text-orange-400 cursor-pointer" onClick={onClick}>
             ver +
           </div>
-          <div className="my-4 flex flex-col text-sm md:text-base">
+          <div className="flex flex-col my-4 text-sm md:text-base">
             <div className="mb-4">Info Nutricional:</div>
             <div className="flex items-center justify-around text-lg">
               <div className="flex flex-col items-center justify-center">
-                <div className="relative h-12 w-12" data-tip="Calorias">
+                <div className="relative w-12 h-12" data-tip="Calorias">
                   <Image src="/icons/kcal-white.svg" layout="fill" />
                 </div>
                 <div className="ml-1 text-center">{nutritionalInfo.calories}</div>
@@ -125,7 +125,7 @@ const Product: FC<Props> = ({
             <div className="my-2 text-2xl font-semibold md:text-4xl">{`€${price}`}</div>
           </div>
         </div>
-        <div className="mb-4 flex w-full items-center justify-center px-4">
+        <div className="flex items-center justify-center w-full px-4 mb-4">
           <Counter count={count} subtractOne={subtractOne} addOne={addOne} />
           <Button title="Agregar" color={colors.purple} onClick={addItemToCart} />
         </div>

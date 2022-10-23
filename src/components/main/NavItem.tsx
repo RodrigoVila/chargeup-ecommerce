@@ -17,7 +17,7 @@ const NavItem: FC<Props> = ({ label, href, direction, icon, onClick }) => {
         className={`block py-1 pl-0 align-middle no-underline transition duration-300  ease-in-out md:py-3 md:pl-1`}
       >
         {icon && icon}
-        <span className="text-purple3 block pb-1 text-sm font-semibold md:inline-block md:pb-0 md:text-base lg:text-2xl">
+        <span className="block pb-1 text-sm font-semibold text-purple3 md:inline-block md:pb-0 md:text-xl lg:text-2xl">
           {label}
         </span>
       </a>

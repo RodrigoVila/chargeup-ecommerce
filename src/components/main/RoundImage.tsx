@@ -7,7 +7,7 @@ interface Props {
 
 const RoundImage: FC<Props> = ({ imgUri }) => {
   return (
-    <div className="absolute mx-auto -top-28 mb-6 h-60 w-60 overflow-hidden rounded-full border-2 bg-contain">
+    <div className="absolute mx-auto mb-6 overflow-hidden bg-black bg-contain border-2 rounded-full -top-28 h-60 w-60">
       <Image objectFit="cover" layout="fill" src={`/${imgUri}.jpg`} alt="" />
     </div>
   )

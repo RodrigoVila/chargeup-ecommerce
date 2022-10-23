@@ -23,17 +23,6 @@ const DrawerModal = () => {
     <Modal isOpen={isDrawerModalOpen} fullScreen>
       <CloseModalButton color="black" position="left" onClose={() => closeDrawerModal()} />
       <NavItems direction="column" onClose={() => closeDrawerModal()} />
-      <div className="absolute z-50 flex flex-col items-center justify-center w-full px-4 bottom-4">
-        {!userLogin?.email ?
-          <Button
-            title={`${lang.es.LOGIN}`}
-            onClick={openLoginModal}
-            color={colors.purple}
-            hoverColor={colors.fuchsia}
-          />
-          : <UserButton color="black" />
-        }
-      </div>
     </Modal>
   );
 };

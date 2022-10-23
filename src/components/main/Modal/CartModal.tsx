@@ -48,9 +48,9 @@ const CartModal = () => {
         </div>
         <div className="flex flex-col items-center justify-between w-full py-4 text-xl text-white md:text-3xl">
           <form action="/api/checkout_session" method="POST" className="flex w-full">
-            <Button title="Ir a pagar" color={colors.purple} size="2xl" onClick={() => {}} isSubmit />
+            <Button title="Ir a pagar" color={colors.purple} onClick={() => {}} isSubmit />
           </form>
-          <Button title="Cerrar" size="lg" onClick={() => closeCartModal()} type="outlined" />
+          <Button title="Cerrar" onClick={() => closeCartModal()} type="outlined" />
         </div>
       </div>
     </Modal>

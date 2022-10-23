@@ -1,5 +1,5 @@
 import React from 'react';
-import { HiMenu } from 'react-icons/hi';
+import { Bars3Icon } from '@heroicons/react/24/outline'
 
 import useAppActions from '@hooks/useAppActions';
 
@@ -8,10 +8,10 @@ const BurgerButton = () => {
 
   return (
     <div
-      className="relative z-20 m-2 mr-4 h-10 w-10 cursor-pointer md:m-4"
+      className="relative z-20 flex items-center justify-center m-3 cursor-pointer"
       onClick={() => openDrawerModal()}
     >
-      <HiMenu color="white" size={30} />
+      <Bars3Icon className="w-8 h-8 text-white lg:w-14 lg:h-14 md:h-10 md:w-10" />
     </div>
   );
 };

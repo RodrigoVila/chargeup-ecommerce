@@ -17,7 +17,7 @@ const Logo: FC<Props> = ({ color, size = 'md' }) => {
       ? 'h-26 w-36'
       : 'h-30 w-40';
   return (
-    <div className={`${sizeStyle} relative z-20 ml-4`}>
+    <div className={`${sizeStyle} relative z-20`}>
       <Image
         src={`/logo-${color}.png`}
         alt="Charge UP Barcelona Logo"

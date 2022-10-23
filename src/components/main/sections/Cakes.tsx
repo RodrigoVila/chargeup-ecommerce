@@ -4,15 +4,14 @@ import { FC } from 'react'
 
 const CakesSection: FC = () => {
   return (
-    // bg-fixed bg-center bg-no-repeat  bg-[url('/wooden.jpg')] bg-cover
     <div
       id="cakes"
-      className="relative mx-auto flex w-full min-h-screen h-screen*1.5 flex-col items-center justify-center bg-[url('/cake.jpg')] bg-cover bg-no-repeat bg-center py-6 px-2 text-center"
+      className="relative mx-auto flex w-full min-h-screen h-full flex-col items-center justify-center bg-[url('/cake.jpg')] bg-cover bg-no-repeat bg-center py-6 px-2 text-center"
     >
-      {/* <BackgroundOverlay color={colors.overlay} /> */}
+      <BackgroundOverlay color={colors.overlay} />
       <div className="z-20 text-white">
-        <h1 className="w-full py-12 px-2 text-center font-dinBold text-5xl">CAKES</h1>
-        <div className="px-4 max-w-4xl pb-4 text-xl leading-snug">
+        <h1 className="w-full px-2 py-12 text-5xl text-center font-dinBold">CAKES</h1>
+        <div className="max-w-4xl px-4 pb-4 text-xl leading-loose md:text-2xl md:leading-10">
           <p className="py-2">
             Sabemos que muchos de ustedes quieren festejar de manera saludable, es por ello que
             decidimos adaptar nuestras recetas en formato pasteles con decoración.

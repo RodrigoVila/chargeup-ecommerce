@@ -37,7 +37,7 @@ const UserDetails = () => {
       {!editing && (
         <>
           <CloseModalButton color="black" position="left" onClose={closeUserModal} />
-          <div className="mx-auto flex w-full flex-col items-center justify-center md:w-1/2 lg:w-1/4">
+          <div className="flex flex-col items-center justify-center w-full mx-auto lg:w-1/2 xl:w-full">
             <Button
               title={lang.es.CHANGE_USER_DATA}
               color={colors.purple}

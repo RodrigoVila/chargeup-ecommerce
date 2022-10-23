@@ -1,5 +1,6 @@
 import { FC } from 'react';
-import { BiUser } from 'react-icons/bi';
+import ReactTooltip from 'react-tooltip';
+import { UserIcon } from '@heroicons/react/24/outline'
 
 import useAppActions from '@hooks/useAppActions';
 import useAppSelector from '@hooks/useAppSelector';
@@ -10,17 +11,11 @@ type Props = {
 
 const UserButton: FC<Props> = ({ color = 'white' }) => {
   const { userLogin } = useAppSelector();
-  const { openUserModal } = useAppActions();
+  const { openUserModal,openLoginModal } = useAppActions();
 
   return (
-    <div className="cursor-pointer" onClick={openUserModal}>
-      <BiUser
-        style={{ margin: 0, padding: 0 }}
-        className={`w-12 text-2xl text-${color} leading-0 m-0 p-0`}
-      />
-      {userLogin && (
-        <p className={`text-${color} m-0 p-0 text-center text-sm`}>{`${userLogin.name}`}</p>
-      )}
+    <div className="relative z-40 w-8 h-8 text-white cursor-pointer lg:w-12 lg:h-12 md:h-10 md:w-10 xl:w-8 xl:h-8 md:mx-2" onClick={userLogin?.email? openUserModal : openLoginModal} >
+      <UserIcon className="text-white lg:w-12 lg:h-12 md:h-10 md:w-10 xl:w-8 xl:h-8" />
     </div>
   );
 };
