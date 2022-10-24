@@ -12,19 +12,21 @@ const Logo: FC<Props> = ({ color, size = 'md' }) => {
     size === 'sm'
       ? 'h-22 w-28'
       : size === 'md'
-      ? ' h-24 w-32'
-      : size === 'lg'
-      ? 'h-26 w-36'
-      : 'h-30 w-40';
+        ? ' h-24 w-32'
+        : size === 'lg'
+          ? 'h-26 w-36'
+          : 'h-30 w-40';
   return (
-    <div className={`${sizeStyle} relative z-20`}>
-      <Image
-        src={`/logo-${color}.png`}
-        alt="Charge UP Barcelona Logo"
-        layout="fill"
-        objectFit="fill"
-        className=""
-      />
+    <div className={`${sizeStyle} relative z-20 cursor-pointer`}>
+      <a href="#welcome">
+        <Image
+          src={`/logo-${color}.png`}
+          alt="Charge UP Barcelona Logo"
+          layout="fill"
+          objectFit="fill"
+          className=""
+        />
+      </a>
     </div>
   );
 };

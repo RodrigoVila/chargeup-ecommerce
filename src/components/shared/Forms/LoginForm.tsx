@@ -9,7 +9,7 @@ type Props = {
 
 const LoginForm: FC<Props> = ({ onInputChange }) => {
   return (
-    <form className="rounded">
+    <form className="w-full rounded">
       <Input label={lang.es.EMAIL} name="email" type="text" onChange={onInputChange} />
       <Input label={lang.es.PASSWORD} name="password" type="password" onChange={onInputChange} />
     </form>

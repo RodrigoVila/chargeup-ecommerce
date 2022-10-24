@@ -22,7 +22,7 @@ const CartProduct: FC<ProductType> = ({
 
   return (
     <div className="flex w-full">
-      <div className="relative w-1/3 border-b-2 border-white h-28">
+      <div className="relative w-1/3 border-b-2 border-white h-28 3xs:hidden xs:flex">
         <Image className="" objectFit="cover" layout="fill" src={`/${imgUri}.jpg`} alt="" />
       </div>
       <div className={`relative flex w-full flex-col justify-between border-b-2 border-gray-300`}>

@@ -9,7 +9,7 @@ type Props = {
 
 const RegisterForm: FC<Props> = ({ onInputChange }) => {
   return (
-    <form className="rounded">
+    <form className="w-full rounded">
       <Input label={lang.es.NAME} name="name" type="text" onChange={onInputChange} />
       <Input label={lang.es.LASTNAME} name="lastName" type="text" onChange={onInputChange} />
       <Input label={lang.es.EMAIL} name="email" type="text" onChange={onInputChange} />

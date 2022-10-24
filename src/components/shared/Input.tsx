@@ -11,12 +11,12 @@ type Props = {
 
 const Input: FC<Props> = ({ label, name, type, value = null, disabled = false, onChange }) => {
   return (
-    <div className="mb-4">
-      <label className="mb-1 block text-lg" htmlFor={name}>
+    <div className="w-full mb-4">
+      <label className="block mb-1 text-lg" htmlFor={name}>
         {label}
       </label>
       <input
-        className="focus:shadow-outline w-full appearance-none rounded border px-3 py-2 leading-tight shadow focus:outline-none"
+        className={`${disabled && "bg-slate-200 text-slate-600"} focus:shadow-outline w-full appearance-none rounded border px-3 py-2 leading-tight shadow focus:outline-none`}
         id={name}
         name={name}
         type={type}

@@ -5,12 +5,12 @@ interface Props {
 
 const Link = ({ text, onClick }: Props) => {
   return (
-    <p
-      className="flex items-center justify-center py-2 font-bold text-center text-blue-500 cursor-pointer text-md md:text-xl hover:text-blue-700"
+    <a
+      className="flex items-center justify-center py-2 font-bold text-center text-blue-500 cursor-pointer text-md md:text-xl xl:text-base hover:text-blue-700"
       onClick={onClick}
     >
       {text}
-    </p>
+    </a>
   );
 };
 

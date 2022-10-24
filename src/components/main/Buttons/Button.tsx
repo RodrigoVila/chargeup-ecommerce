@@ -9,15 +9,15 @@ interface Props {
   type?: 'filled' | 'outlined';
   isSubmit?: boolean;
   disabled?: boolean;
+  withGradient?: boolean;
   onClick: (e: FormEvent<HTMLButtonElement>) => void;
 }
 
-const Button = ({ title, color, hoverColor, type, isSubmit, disabled = false, onClick }: Props) => {
+const Button = ({ title, color, hoverColor, type, isSubmit, disabled = false, withGradient, onClick }: Props) => {
   return type === 'outlined' ? (
     <button
-      className={` ${hoverColor && `hover:bg-[${hoverColor}]`} ${
-        disabled && 'cursor-none bg-gray-300 hover:bg-none'
-      } transit m-1 w-full z-20 cursor-pointer rounded-md border-2 py-1 px-4 text-center lg:text-xl text-black shadow-sm`}
+      className={` ${hoverColor && `hover:bg-[${hoverColor}]`} ${disabled && 'cursor-none bg-gray-300 hover:bg-none'
+        } transit m-1 w-full z-20 cursor-pointer rounded-md border-2 py-1 px-4 text-center lg:text-xl text-black shadow-sm`}
       onClick={onClick}
       type={isSubmit ? 'submit' : 'button'}
       role={isSubmit ? 'link' : 'button'}
@@ -28,15 +28,13 @@ const Button = ({ title, color, hoverColor, type, isSubmit, disabled = false, on
     </button>
   ) : (
     <button
-      className={`${disabled && 'hover:bg-none'} ${
-        hoverColor && !disabled && `hover:bg-[${hoverColor}]`
-      } m-1 flex w-full cursor-pointer items-center justify-center rounded-md py-2 px-4 text-white lg:text-2xl z-20`}
+      className={`${disabled && 'hover:bg-none'} ${hoverColor && !disabled && `hover:bg-[${hoverColor}]`
+        } ${withGradient && "bg-gradient-to-br"} bg-[${withGradient? "transparent" : color }] from-purple-600 via-[${color}] to-purple-700 m-1 flex w-full cursor-pointer items-center justify-center rounded-md py-2 px-4 text-white lg:text-lg z-20`}
       onClick={onClick}
       type={isSubmit ? 'submit' : 'button'}
       role={isSubmit ? 'link' : 'button'}
       disabled={disabled}
       style={{
-        backgroundColor: disabled ? colors.disabled : color,
         color: '#fff',
         cursor: disabled ? 'default' : 'pointer',
       }}

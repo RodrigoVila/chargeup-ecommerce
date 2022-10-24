@@ -12,6 +12,7 @@ module.exports = {
     extend: {
       animation: {
         'ping-slow': 'ping 3s infinite ease-in-out',
+        fadeIn: "fadeIn 2s ease-in forwards"
       },
       fontFamily: {
         sans: ['Inter var', ...defaultTheme.fontFamily.sans],
@@ -41,6 +42,10 @@ module.exports = {
         outofScreen: '-700px',
       },
       keyframes: {
+        fadeIn: {
+          "0%": { opacity: 0 },
+          "100%": { opacity: 1 }
+        },
         wiggle: {
           '0%, 100%': { transform: 'rotate(-3deg)' },
           '50%': { transform: 'rotate(3deg)' },
@@ -89,6 +94,9 @@ module.exports = {
         full: '9999px',
       },
     },
+  },
+  variants: {
+    animation: ["motion-safe"]
   },
   plugins: [require('flowbite/plugin')],
 };

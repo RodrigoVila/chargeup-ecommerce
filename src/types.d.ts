@@ -155,6 +155,7 @@ interface ProductsActionType extends ProductsStateType {
 //Toast
 type ToastStateType = {
   message: string;
+  icon?: null
 };
 
 interface ToastActionType extends ToastStateType {

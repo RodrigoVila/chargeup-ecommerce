@@ -12,6 +12,7 @@ import Button from '@main/Buttons/Button';
 import Link from '@main/Link';
 import Logo from '@main/Logo';
 import { isEmailValid, isPasswordValid } from '@utils/index';
+import CloseModalButton from '@main/Buttons/CloseModalButton';
 
 const initialState = {
   name: '',
@@ -29,7 +30,7 @@ const Login = () => {
 
   const { isAuthLoading } = useAppSelector();
 
-  const { displayErrorMessage, userLogin, registerUser } = useAppActions();
+  const { displayErrorMessage, userLogin, registerUser, closeLoginModal } = useAppActions();
 
   const { encryptPassword } = useEncryption();
 
@@ -104,29 +105,26 @@ const Login = () => {
   return (
     <>
       <Toaster />
-      <div className="min-w-screen flex h-full min-h-screen w-full flex-col items-center justify-center bg-gradient-to-br from-purple-500 to-fuchsia-700 px-4">
-        <Logo color="blur" size="xl" />
-        <div className="my-4 w-full max-w-sm  rounded-md bg-white font-semibold text-black">
-          <div className="px-6 py-4">
-            {isRegisterForm ? (
-              <RegisterForm onInputChange={onInputChange} />
-            ) : (
-              <LoginForm onInputChange={onInputChange} />
-            )}
+      <Logo color="blur" size="xl" />
+      <div className="relative flex flex-col items-center justify-center w-full p-6 font-semibold text-black bg-white rounded-md">
+        <CloseModalButton color="black" position="right" onClose={() => closeLoginModal()} />
+        {isRegisterForm ? (
+          <RegisterForm onInputChange={onInputChange} />
+        ) : (
+          <LoginForm onInputChange={onInputChange} />
+        )}
 
-            <Button
-              title={isRegisterForm ? lang.es.USER_REGISTER : lang.es.LOGIN}
-              color={colors.purple}
-              hoverColor={colors.fuchsia}
-              onClick={isRegisterForm ? handleRegister : handleLogin}
-              disabled={isAuthLoading}
-            />
-            <Link
-              text={isRegisterForm ? lang.es.GO_TO_LOGIN : lang.es.USER_REGISTER}
-              onClick={toggleRegister}
-            />
-          </div>
-        </div>
+        <Button
+          title={isRegisterForm ? lang.es.USER_REGISTER : lang.es.LOGIN}
+          color={colors.purple}
+          hoverColor={colors.fuchsia}
+          onClick={isRegisterForm ? handleRegister : handleLogin}
+          disabled={isAuthLoading}
+        />
+        <Link
+          text={isRegisterForm ? lang.es.GO_TO_LOGIN : lang.es.USER_REGISTER}
+          onClick={toggleRegister}
+        />
       </div>
     </>
   );

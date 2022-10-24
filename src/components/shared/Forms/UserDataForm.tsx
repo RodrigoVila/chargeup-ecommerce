@@ -6,6 +6,7 @@ import Button from '@main/Buttons/Button';
 import useAppSelector from '@hooks/useAppSelector';
 import Link from '@main/Link';
 import useAppActions from '@hooks/useAppActions';
+import CloseModalButton from '@main/Buttons/CloseModalButton';
 
 const UserDataForm: FC = () => {
   const { user } = useAppSelector();
@@ -33,7 +34,8 @@ const UserDataForm: FC = () => {
   }, [userDetails]);
 
   return (
-    <div className="rounded-xl border-2 border-black p-6">
+    <div className="relative w-full p-6 overflow-scroll bg-white rounded-md">
+      <CloseModalButton color="black" position="right" onClose={closeUserModal} />  
       <Input label={lang.es.NAME} type="text" name="name" value={name} onChange={handleChange} />
       <Input
         label={lang.es.LASTNAME}
@@ -114,7 +116,6 @@ const UserDataForm: FC = () => {
         onChange={handleChange}
       />
       <Button title={lang.es.CHANGE_USER_DATA} color={colors.purple} onClick={() => {}} />
-      <Link text={lang.es.GO_BACK} onClick={closeUserModal} />
     </div>
   );
 };

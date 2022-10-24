@@ -20,6 +20,8 @@ import LoginModal from '@main/Modal/LoginModal';
 import ProductModal from '@main/Modal/ProductModal';
 import UserModal from '@main/Modal/UserModal';
 import { getValueFromLocalStorage } from '@utils/localStorage';
+import TopBar from '@main/TopBar/TopBar';
+import MobileTopBar from '@main/TopBar/MobileTopBar';
 
 const MainScreen = () => {
   const { checkUserToken } = useAppActions();
@@ -62,6 +64,11 @@ const MainScreen = () => {
       <ProductModal />
       <UserModal />
 
+      {/* Navigation */}
+      <div className="fixed top-0 z-30">
+        <TopBar />
+        <MobileTopBar />
+      </div>
       {/* Sections */}
       <Welcome />
       <About />

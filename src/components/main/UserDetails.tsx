@@ -31,26 +31,28 @@ const UserDetails = () => {
   }, []);
 
   return (
-    <div className="p-4">
+    <div className={`${!editing && "bg-white rounded-md p-4 pt-12"} relative w-full h-full overflow-scroll my-4`}>
+
       {editing === 'userData' && <UserDataForm />}
       {editing === 'password' && <UpdatePasswordForm />}
+
       {!editing && (
-        <>
-          <CloseModalButton color="black" position="left" onClose={closeUserModal} />
-          <div className="flex flex-col items-center justify-center w-full mx-auto lg:w-1/2 xl:w-full">
-            <Button
-              title={lang.es.CHANGE_USER_DATA}
-              color={colors.purple}
-              onClick={() => setEdit('userData')}
+        <div className="flex flex-col items-center justify-center w-full mx-auto ">
+          <CloseModalButton color="black" position="right" onClose={closeUserModal} />
+          <Button
+            title={lang.es.CHANGE_USER_DATA}
+            color={colors.purple}
+            onClick={() => setEdit('userData')}
             />
-            <Button
-              title={lang.es.CHANGE_PASSWORD}
-              color={colors.purple}
-              onClick={() => setEdit('password')}
-            />
+          <Button
+            title={lang.es.CHANGE_PASSWORD}
+            color={colors.purple}
+            onClick={() => setEdit('password')}
+          />
+          <div className="mt-2">
             <Link text="Logout" onClick={onClickLogout} />
           </div>
-        </>
+        </div>
       )}
     </div>
   );

@@ -5,6 +5,7 @@ import Input from '@shared/Input';
 import Button from '@main/Buttons/Button';
 import Link from '@main/Link';
 import useAppActions from '@hooks/useAppActions';
+import CloseModalButton from '@main/Buttons/CloseModalButton';
 
 const UpdatePasswordForm: FC = () => {
   const [userDetails, setUserDetails] = useState({});
@@ -16,7 +17,8 @@ const UpdatePasswordForm: FC = () => {
     setUserDetails((currDetails) => ({ ...currDetails, [name]: value }));
   };
   return (
-    <div className="rounded-xl border-2 border-black p-6">
+    <div className="relative p-6 bg-white rounded-xl">
+      <CloseModalButton color="black" position="right" onClose={closeUserModal} />
       <Input
         label={lang.es.OLD_PASSWORD}
         type="password"
@@ -30,8 +32,7 @@ const UpdatePasswordForm: FC = () => {
         name="repeatPassword"
         onChange={handleChange}
       />
-      <Button title={lang.es.CHANGE_PASSWORD} color={colors.purple} onClick={() => {}} />
-      <Link text={lang.es.GO_BACK} onClick={closeUserModal} />
+      <Button title={lang.es.CHANGE_PASSWORD} color={colors.purple} onClick={() => { }} />
     </div>
   );
 };
