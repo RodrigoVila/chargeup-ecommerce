@@ -14,10 +14,10 @@ const NavItem: FC<Props> = ({ label, href, direction, icon, onClick }) => {
       <a
         href={`#${href}`}
         onClick={onClick}
-        className={`block py-1 pl-0 align-middle no-underline transition duration-300  ease-in-out md:py-3 md:pl-1`}
+        className={`block py-1 pl-0 align-middle no-underline transition duration-300 ease-in-out md:py-3 md:pl-1`}
       >
         {icon && icon}
-        <span className="block pb-1 text-sm font-semibold text-purple3 md:inline-block md:pb-0 md:text-xl lg:text-2xl">
+        <span className="block pb-1 text-sm text-purple3 md:inline-block md:pb-0 lg:text-base">
           {label}
         </span>
       </a>

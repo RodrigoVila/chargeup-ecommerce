@@ -12,7 +12,8 @@ module.exports = {
     extend: {
       animation: {
         'ping-slow': 'ping 3s infinite ease-in-out',
-        fadeIn: "fadeIn 2s ease-in forwards"
+        fadeIn: "fadeIn 2s ease-in forwards",
+        fadeOut: "fadeOut 2s ease-out forwards"
       },
       fontFamily: {
         sans: ['Inter var', ...defaultTheme.fontFamily.sans],
@@ -44,7 +45,29 @@ module.exports = {
       keyframes: {
         fadeIn: {
           "0%": { opacity: 0 },
+          "10%": { opacity: 0.1 },
+          "20%": { opacity: 0.2 },
+          "30%": { opacity: 0.3 },
+          "40%": { opacity: 0.4 },
+          "50%": { opacity: 0.5 },
+          "60%": { opacity: 0.6 },
+          "70%": { opacity: 0.7 },
+          "80%": { opacity: 0.8 },
+          "90%": { opacity: 0.9 },
           "100%": { opacity: 1 }
+        },
+        fadeOut: {
+          "0%": { opacity: 1 },
+          "10%": { opacity: 0.9 },
+          "20%": { opacity: 0.8 },
+          "30%": { opacity: 0.7 },
+          "40%": { opacity: 0.6 },
+          "50%": { opacity: 0.5 },
+          "60%": { opacity: 0.4 },
+          "70%": { opacity: 0.3 },
+          "80%": { opacity: 0.2 },
+          "90%": { opacity: 0.1 },
+          "100%": { opacity: 0 }
         },
         wiggle: {
           '0%, 100%': { transform: 'rotate(-3deg)' },
@@ -76,6 +99,19 @@ module.exports = {
         180: '180px',
         140: '140px',
       },
+      opacity: {
+        0: 0,
+        10: 0.1,
+        20: 0.2,
+        30: 0.3,
+        40: 0.4,
+        50: 0.5,
+        60: 0.6,
+        70: 0.7,
+        80: 0.8,
+        90: 0.9,
+        100: 1,
+      },
       screens: {
         "3xs": '280px',
         "2xs": '380px',
@@ -85,6 +121,11 @@ module.exports = {
         lg: '935px',
         xl: '1280px',
         '2xl': '1536px',
+      },
+      transitionDuration: {
+        "2000": "2000ms",
+        "3000": "3000ms",
+        "4000": "4000ms"
       },
       width: {
         adminWidth: 'calc(100vw -8rem)',

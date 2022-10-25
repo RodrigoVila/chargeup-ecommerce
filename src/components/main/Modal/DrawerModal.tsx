@@ -15,10 +15,6 @@ const DrawerModal = () => {
 
   const { closeDrawerModal, openLoginModal } = useAppActions();
 
-  useEffect(() => {
-    console.log("userLogin", userLogin)
-  }, [userLogin])
-
   return (
     <Modal isOpen={isDrawerModalOpen} fullScreen>
       <CloseModalButton color="black" position="left" onClose={() => closeDrawerModal()} />
