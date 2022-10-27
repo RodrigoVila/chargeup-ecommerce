@@ -16,9 +16,11 @@ const DrawerModal = () => {
   const { closeDrawerModal, openLoginModal } = useAppActions();
 
   return (
-    <Modal isOpen={isDrawerModalOpen} fullScreen>
-      <CloseModalButton color="black" position="left" onClose={() => closeDrawerModal()} />
-      <NavItems direction="column" onClose={() => closeDrawerModal()} />
+    <Modal isOpen={isDrawerModalOpen} transparent fullScreen>
+      <div className="relative p-4 px-16 pt-12 bg-white rounded-md">
+        <CloseModalButton color="black" position="right" onClose={() => closeDrawerModal()} />
+        <NavItems direction="column" onClose={() => closeDrawerModal()} />
+      </div>
     </Modal>
   );
 };

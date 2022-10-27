@@ -11,7 +11,7 @@ const Welcome: FC = () => {
 
   useEffect(() => {
     getTypewriter(dispatch)
-      .pauseFor(1000)
+      .pauseFor(3000)
       .type('GLUTEN')
       .pauseFor(2000)
       .deleteAll()
@@ -28,11 +28,11 @@ const Welcome: FC = () => {
   return (
     <div
       id="welcome"
-      className="relative h-screen w-full bg-[url('/welcome.jpg')] bg-cover bg-center bg-no-repeat "
+      className="absolute inset-0 bg-[url('/welcome.jpg')] z-0 bg-cover bg-center bg-no-repeat "
     >
       <BackgroundOverlay color={colors.overlay} />
-      <div className="relative z-10 flex flex-col items-center justify-center w-full h-3/4 font-dinBold">
-        <div className="pb-4 text-3xl font-semibold tracking-wide text-center text-white 2xs:text-4xl 2xl:px-2 leading-0 md:px-4 md:text-6xl">
+      <div className="relative z-10 flex flex-col items-center justify-center w-full h-full font-dinBold">
+        <div className="px-2 pb-4 text-3xl font-semibold tracking-wide text-center text-white 2xs:text-4xl leading-0 md:px-4 md:text-6xl">
           TASTE THE LOVE AND FEEL RECHARGED
         </div>
         <div className="flex flex-col items-center justify-center px-8 font-semibold text-center text-white text-md leading-0 xl:flex-row xl:px-0 md:px-20 lg:px-56 md:text-3xl">

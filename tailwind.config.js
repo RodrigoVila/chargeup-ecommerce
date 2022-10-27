@@ -12,8 +12,8 @@ module.exports = {
     extend: {
       animation: {
         'ping-slow': 'ping 3s infinite ease-in-out',
-        fadeIn: "fadeIn 2s ease-in forwards",
-        fadeOut: "fadeOut 2s ease-out forwards"
+        fadeIn: "fadeIn 2s ease-in-out forwards",
+        fadeOut: "fadeOut 2s ease-in-out forwards"
       },
       fontFamily: {
         sans: ['Inter var', ...defaultTheme.fontFamily.sans],

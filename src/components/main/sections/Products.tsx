@@ -54,9 +54,9 @@ const Products: FC = () => {
   return (
     <div
       id="products"
-      className="h-full min-h-screen w-full bg-[url('/purpleTexture.jpg')] bg-cover bg-center bg-repeat pt-4"
+      className="h-full min-h-screen w-full bg-[url('/purpleTexture.jpeg')] bg-fill bg-center bg-repeat"
     >
-      <div className="z-50 ml-2 flex flex-wrap items-center justify-center">
+      <div className="z-50 flex flex-wrap items-center justify-center h-full pt-8 pb-2">
         {/* Filtros por tipo */}
         {/* {isFilterModalOpen ? (
           <BsFilterCircleFill
@@ -80,7 +80,7 @@ const Products: FC = () => {
       </div>
 
       {products.length > 0 && (
-        <div className="relative mx-auto flex w-full flex-wrap justify-center">
+        <div className="relative flex flex-wrap justify-center w-full mx-auto">
           {filteredProducts.length > 0
             ? filteredProducts?.map((p) => (
                 <Product

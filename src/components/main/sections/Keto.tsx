@@ -5,9 +5,9 @@ const KetoSection: FC = () => {
   return (
     <div
       id="keto"
-      className="relative mx-auto flex w-full flex-col items-center justify-center py-6 px-2 text-center"
+      className="relative flex flex-col items-center justify-center w-full px-2 py-6 mx-auto text-center "
     >
-      <h1 className="w-full py-12 px-2 text-center font-dinBold text-5xl">QUE ES KETO ?</h1>
+      <h1 className="w-full px-2 py-12 text-5xl text-center xl:mt-10 font-dinBold">QUE ES KETO ?</h1>
       <div className="max-w-4xl px-4 pb-4 text-xl leading-snug">
         <p className="py-2">
           La dieta cetogénica (Keto) es un plan de alimentación bajo en carbohidratos y alto en
@@ -36,10 +36,10 @@ const KetoSection: FC = () => {
         <p className="">
           <b> Es importante señalar que no existe una dieta cetogénica “estándar”.</b>
         </p>
-        <div className="relative my-8 h-screen/2 w-full bg-contain">
+        <div className="relative w-full my-8 bg-contain h-screen/2">
           <Image src="/keto-graphic2.png" objectFit="contain" layout="fill" />
         </div>
-        <h4 className="w-full pb-4 pt-8 font-dinBold text-3xl lg:text-left">
+        <h4 className="w-full pt-8 pb-4 text-3xl font-dinBold lg:text-left">
           Alimentos típicos que se consumen en la dieta cetogénica
         </h4>
         <ul className="flex flex-col px-4 text-left">
@@ -53,7 +53,7 @@ const KetoSection: FC = () => {
           <li>- Huevos.</li>
           <li>- Verduras que crecen sobre el suelo.</li>
         </ul>
-        <h4 className="w-full pb-4 pt-8 font-dinBold text-3xl lg:text-left">
+        <h4 className="w-full pt-8 pb-4 text-3xl font-dinBold lg:text-left">
           Alimentos que NO se deben consumir en una dieta keto
         </h4>
         <ul className="flex flex-col px-4 pb-10 text-left">

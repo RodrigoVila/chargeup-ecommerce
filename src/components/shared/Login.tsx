@@ -9,10 +9,9 @@ import { colors, lang } from '@constants';
 import RegisterForm from '@shared/Forms/RegisterForm';
 import LoginForm from '@shared/Forms/LoginForm';
 import Button from '@main/Buttons/Button';
-import Link from '@main/Link';
-import Logo from '@main/Logo';
-import { isEmailValid, isPasswordValid } from '@utils/index';
 import CloseModalButton from '@main/Buttons/CloseModalButton';
+import Link from '@main/Link';
+import { isEmailValid, isPasswordValid } from '@utils/index';
 
 const initialState = {
   name: '',
@@ -105,7 +104,6 @@ const Login = () => {
   return (
     <>
       <Toaster />
-      <Logo color="blur" size="xl" />
       <div className="relative flex flex-col items-center justify-center w-full p-6 font-semibold text-black bg-white rounded-md">
         <CloseModalButton color="black" position="right" onClose={() => closeLoginModal()} />
         {isRegisterForm ? (

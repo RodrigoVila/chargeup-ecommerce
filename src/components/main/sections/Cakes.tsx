@@ -9,7 +9,7 @@ const CakesSection: FC = () => {
       className="relative mx-auto flex w-full min-h-screen h-full flex-col items-center justify-center bg-[url('/cake.jpg')] bg-cover bg-no-repeat bg-center py-6 px-2 text-center"
     >
       <BackgroundOverlay color={colors.overlay} />
-      <div className="z-20 text-white">
+      <div className="z-20 text-white xl:mt-16">
         <h1 className="w-full px-2 py-12 text-5xl text-center font-dinBold">CAKES</h1>
         <div className="max-w-4xl px-4 pb-4 text-xl leading-loose md:text-2xl md:leading-10">
           <p className="py-2">

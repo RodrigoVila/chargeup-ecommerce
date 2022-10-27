@@ -22,12 +22,12 @@ import UserModal from '@main/Modal/UserModal';
 import { getValueFromLocalStorage } from '@utils/localStorage';
 import TopBar from '@main/TopBar/TopBar';
 import MobileTopBar from '@main/TopBar/MobileTopBar';
-import useOpacityOnScroll from '@hooks/useOpacityOnScroll';
+import useScroll from '@hooks/useScroll';
 
 const MainScreen = () => {
   const { checkUserToken } = useAppActions();
 
-  const { opacity } = useOpacityOnScroll()
+  const { opacity } = useScroll()
 
   useEffect(() => {
     const validateStoredAuthData = () => {
@@ -66,14 +66,13 @@ const MainScreen = () => {
       <LoginModal />
       <ProductModal />
       <UserModal />
-
-      {/* Navigation */}
-      <div className={`bg-[rgba(0,0,0,${opacity})] transition-all duration-100 fixed top-0 left-0 right-0 z-30`}>
+      <div className='relative w-full h-screen'>
+        {/* Navigation */}
         <TopBar />
         <MobileTopBar />
+        {/* Sections */}
+        <Welcome />
       </div>
-      {/* Sections */}
-      <Welcome />
       <About />
       <Products />
       <Cakes />

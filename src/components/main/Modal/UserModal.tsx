@@ -8,7 +8,7 @@ const UserModal = () => {
   const { isUserModalOpen } = useAppSelector();
 
   return (
-    <Modal isOpen={isUserModalOpen}  transparent fullScreen>
+    <Modal isOpen={isUserModalOpen} transparent fullScreen>
       <UserDetails />
     </Modal>
   );

@@ -10,7 +10,7 @@ const AboutSection: FC = () => {
       className="relative mx-auto flex w-full min-h-screen flex-col items-center justify-center bg-[url('/wooden.jpg')] bg-cover py-6 px-2 text-center text-xl leading-loose md:text-2xl md:leading-10"
     >
       <BackgroundOverlay color={colors.overlayDark} />
-      <div className="z-20 max-w-4xl px-4 pb-4 text-xl text-white md:text-3xl">
+      <div className="z-20 max-w-4xl px-4 pb-4 text-xl text-white xl:mt-16 md:text-3xl">
         <h1 className="w-full px-2 py-6 text-5xl text-center font-dinBold">QUE ES CHARGE UP ?</h1>
         <p className="py-2">Hola soy Daniela Cabello, creadora de Charge Up Bcn.</p>
         <p className="py-2">

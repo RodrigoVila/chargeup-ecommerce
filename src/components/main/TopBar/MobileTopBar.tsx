@@ -3,33 +3,30 @@ import useAppSelector from '@hooks/useAppSelector';
 import Logo from '@main/Logo';
 import CartButton from '@main/Buttons/CartButton';
 import BurgerButton from '@main/Buttons/BurgerButton';
-import LoginButton from '@main/Buttons/LoginButton';
 import UserButton from '@main/Buttons/UserButton';
-import useOpacityOnScroll from '@hooks/useOpacityOnScroll';
+import useScroll from '@hooks/useScroll';
 
 const MobileTopBar = () => {
   const { isLoggedIn } = useAppSelector()
 
-  const { currentScrollPos, opacity, reverseOpacity } = useOpacityOnScroll()
+  const { currentScrollPos, opacity, windowHeight } = useScroll()
 
-  const hideOnScroll = opacity >= "0.5" ? "hidden" : "flex"
-  const showOnScroll = opacity >= "0.4" ? "flex" : "hidden"
+  const op = currentScrollPos > windowHeight ? "100" : opacity
 
   return (
-    <div className="z-30 flex justify-between w-full xl:hidden">
-      <div className="flex items-center justify-center mr-2">
-        <BurgerButton />
-      </div>
+    <div className="fixed top-0 left-0 right-0 z-30 flex justify-between w-full h-24 transition-all duration-100 xl:hidden">
+      <div className={`relative bg-black/${op} relative w-full flex justify-between py-1`}>
+        <div className="flex items-center justify-center mr-2">
+          <BurgerButton />
+        </div>
 
-      <div className={`opacity-[${reverseOpacity}] ${hideOnScroll} absolute top-0 items-center justify-center w-full mx-auto transition-all duration-4000`}>
-        <Logo color="blur" />
-      </div>
-      <div className={`opacity-[${opacity}] ${showOnScroll} items-center justify-center mx-auto transition-all duration-3000 h-12 w-12`}>
-        <Logo color="lightning" type='svg' />
-      </div>
-      <div className="flex items-center justify-center mr-2">
-        <CartButton />
-        <UserButton />
+        <div className="absolute top-0 flex items-center justify-center w-full">
+          <Logo color="blur" />
+        </div>
+        <div className="flex items-center justify-center mr-2">
+          <CartButton />
+          <UserButton />
+        </div>
       </div>
     </div>
   );

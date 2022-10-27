@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 type Props = {
   color: 'white' | 'black' | 'blur' | 'purple' | 'multi' | 'lightning';
-  size?: 'sm' | 'md' | 'lg' | 'xl';
+  size?: 'sm' | 'md' | 'lg' | 'xl' | "full"
   type?: "png" | "svg";
   scrollOnClick?: boolean
 };
@@ -11,15 +11,17 @@ type Props = {
 const Logo: FC<Props> = ({ color, size = 'md', type = "png", scrollOnClick = false }) => {
   const sizeStyle =
     size === 'sm'
-      ? 'h-22 w-28'
+      ? 'h-20 w-28'
       : size === 'md'
         ? ' h-24 w-32'
         : size === 'lg'
-          ? 'h-26 w-36'
-          : 'h-30 w-40';
+          ? 'h-28 w-36'
+          : size === "xl"
+            ? 'h-36 w-44'
+            : "w-full h-full"; // full size
   return (
-    <div className={`${sizeStyle} ${scrollOnClick ? "cursor-pointer" : "cursor-default"} relative z-20 my-2 animation-fadeOut`}>
-      <a href={`${scrollOnClick ? "#welcome" : ""}`}>
+    <div className={`${sizeStyle} ${scrollOnClick ? "cursor-pointer" : "cursor-default"} relative`}>
+      <a className="w-full h-full p-0 m-0" href={`${scrollOnClick ? "#welcome" : ""}`}>
         <Image
           src={`/logo-${color}.${type}`}
           alt="Charge UP Barcelona Logo"
