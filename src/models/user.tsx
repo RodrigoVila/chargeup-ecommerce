@@ -19,6 +19,11 @@ let userSchema = new Schema(
       type: String,
       required: true,
     },
+    confirmed: {
+      type: Boolean,
+      default: false,
+      required: false
+    },
     prefixNo: {
       type: String,
       required: false,

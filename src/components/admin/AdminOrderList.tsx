@@ -110,7 +110,7 @@ function AdminOrderList() {
                         <div className="text-sm text-gray-500">{person.orderdetail2}</div>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
-                        <span className="inline-flex px-2 text-xs font-semibold leading-5 text-green-800 bg-green-100 rounded-full">
+                        <span className="inline-flex px-2 text-xs font-semibold text-green-800 bg-green-100 rounded-full leading-5">
                           Enviado
                         </span>
                       </td>

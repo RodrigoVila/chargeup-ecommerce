@@ -39,11 +39,12 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
           return res.status(401).json({ success: false, message: lang.en.INVALID_CREDENTIALS });
         }
       } else {
-        return res.status(401).json({ success: false, message: lang.en.INVALID_CREDENTIALS });
+        return res.status(404).json({ success: false, message: lang.en.USER_NOT_FOUND });
       }
     } catch (e) {
       return res.status(400).json({
         success: false,
+        error: e.message
       });
     }
   };

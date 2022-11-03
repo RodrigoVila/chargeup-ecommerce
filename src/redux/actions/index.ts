@@ -14,6 +14,9 @@ import {
   registerNewUser,
   successRegisterUser,
   errorRegisterUser,
+  sendEmailValidationRequest,
+  sendEmailValidationRequestSuccess,
+  sendEmailValidationRequestError
 } from './auth';
 import {
   loadCartState,
@@ -70,6 +73,9 @@ export {
   registerNewUser,
   successRegisterUser,
   errorRegisterUser,
+  sendEmailValidationRequest,
+  sendEmailValidationRequestSuccess,
+  sendEmailValidationRequestError,
   loadCartState,
   addToCartState,
   removeFromCartState,

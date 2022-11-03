@@ -1,31 +1,32 @@
-import { useState, ChangeEvent, FC } from 'react';
+import { useRef, SyntheticEvent } from 'react';
+import emailjs from '@emailjs/browser'
+
+import useAppActions from '@hooks/useAppActions';
 
 import { colors, lang } from '@constants';
 import BackgroundOverlay from '@main/BackgroundOverlay';
 import Button from '@main/Buttons/Button';
+import { displayMessageError } from '@redux/actions';
 
-interface ContactForm {
-  name: string;
-  email: string;
-  subject: string;
-  message: string;
-  html?: string;
-}
+const ContactSection = () => {
+  const form = useRef()
 
-const ContactSection: FC = () => {
-  const [data, setData] = useState<ContactForm>({
-    name: '',
-    email: '',
-    subject: '',
-    message: '',
-  });
+  const { displaySuccessMessage } = useAppActions()
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setData((currData) => ({ ...currData, [name]: value }));
+  const handleSubmit = async (e: SyntheticEvent) => {
+    e.preventDefault()
+    const serviceID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID
+    const formID = process.env.NEXT_PUBLIC_EMAILJS_CONTACT_FORM_ID
+    const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
+    try {
+      const result = await emailjs.sendForm(serviceID, formID, form.current, publicKey)
+      const { status } = result
+      status === 200 ? displaySuccessMessage(lang.es.CONTACT_FORM_SUCCESS) : displayMessageError(lang.es.CONTACT_FORM_ERROR)
+    } catch (e) {
+      console.error(e)
+      displayMessageError(lang.es.CONTACT_FORM_ERROR)
+    }
   };
-
-  const handleSubmit = () => {};
 
   const inputStyle =
     'mb-2 w-full rounded-md border-2 border-transparent bg-[rgba(255,255,255,0.2)] py-2 pl-2 placeholder:text-slate-300 placeholder:tracking-wider focus:border-white focus:outline-none';
@@ -35,33 +36,33 @@ const ContactSection: FC = () => {
       className="relative m-auto flex h-screen w-full flex-col items-center justify-center bg-[url('/contact.jpg')] bg-cover bg-fixed bg-center bg-no-repeat"
     >
       <BackgroundOverlay color={colors.overlay} />
-      <p className="z-10 w-full pb-12 text-center font-dinBold text-5xl text-white">CONTACTANOS</p>
-      <div className="z-10 flex w-full max-w-xl flex-col items-center justify-center overflow-hidden px-4 text-white">
-        <input
-          name="name"
-          placeholder={lang.es.NAME}
-          className={inputStyle}
-          value={data.name}
-          onChange={handleChange}
-        />
-        <input
-          name="email"
-          placeholder={lang.es.EMAIL}
-          className={inputStyle}
-          value={data.email}
-          onChange={handleChange}
-        />
-        <textarea
-          name="message"
-          placeholder="Escribenos un mensaje!"
-          rows={5}
-          maxLength={250}
-          className={`${inputStyle} resize-none`}
-          value={data.message}
-          onChange={handleChange}
-          multiple={true}
-        />
-        <Button title="Enviar" color={colors.purple} onClick={handleSubmit} />
+      <p className="z-10 w-full pb-12 text-5xl text-center text-white font-dinBold">CONTACTANOS</p>
+      <div className="z-10 flex flex-col items-center justify-center w-full max-w-xl px-4 overflow-hidden text-white">
+        <form ref={form} onSubmit={handleSubmit}>
+          <input
+            name="name"
+            placeholder={lang.es.NAME}
+            className={inputStyle}
+          />
+          <input
+            name="email"
+            placeholder={lang.es.EMAIL}
+            className={inputStyle}
+          />
+          <input
+            name="subject"
+            placeholder={lang.es.SUBJECT}
+            className={inputStyle}
+          />
+          <textarea
+            name="message"
+            placeholder="Escribenos un mensaje!"
+            rows={5}
+            maxLength={250}
+            className={`${inputStyle} resize-none`}
+          />
+          <Button title="Enviar" color={colors.purple} onClick={handleSubmit} />
+        </form>
       </div>
     </div>
   );

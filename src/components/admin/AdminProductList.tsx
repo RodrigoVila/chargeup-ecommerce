@@ -30,7 +30,7 @@ const ProductList = () => {
 
   return (
     <div className="flex flex-col bg-pink-400">
-      <div className="grid grid-cols-6 gap-4 p-4 text-center text-white shadow text-l bg-gradient-to-r from-blue-900 to-gray-800">
+      <div className="p-4 text-center text-white shadow grid grid-cols-6 gap-4 text-l bg-gradient-to-r from-blue-900 to-gray-800">
         <div>Name</div>
         <div>Description</div>
         <div>Price</div>

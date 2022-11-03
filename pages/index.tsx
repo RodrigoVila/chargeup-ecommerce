@@ -6,7 +6,6 @@ import useAppActions from '@hooks/useAppActions';
 import { LOCAL_STORAGE_DATA_KEY } from '@constants';
 import Welcome from '@main/sections/Welcome';
 import Products from '@main/sections/Products';
-import Contact from '@main/sections/Contact';
 import About from '@main/sections/About';
 import Keto from '@main/sections/Keto';
 import Cakes from '@main/sections/Cakes';
@@ -22,12 +21,9 @@ import UserModal from '@main/Modal/UserModal';
 import { getValueFromLocalStorage } from '@utils/localStorage';
 import TopBar from '@main/TopBar/TopBar';
 import MobileTopBar from '@main/TopBar/MobileTopBar';
-import useScroll from '@hooks/useScroll';
 
 const MainScreen = () => {
   const { checkUserToken } = useAppActions();
-
-  const { opacity } = useScroll()
 
   useEffect(() => {
     const validateStoredAuthData = () => {
@@ -78,6 +74,8 @@ const MainScreen = () => {
       <Cakes />
       <Keto />
       <WhyUs />
+      {/* Not avaiable until test how confirmation emails are working after some time */}
+      {/* <Contact /> */}
       <Footer />
     </div>
   );

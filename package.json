@@ -8,6 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@emailjs/browser": "^3.7.0",
     "@heroicons/react": "^2.0.12",
     "axios": "^0.21.1",
     "bcryptjs": "^2.4.3",

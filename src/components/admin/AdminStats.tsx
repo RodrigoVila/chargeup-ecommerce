@@ -3,25 +3,25 @@ import { useState } from 'react'
 
 function AdminStats() {
     return (
-    <div className='mt-5 mb-5 max-w-xl mx-auto px-2 sm:px-6 lg:px-8'> 
+    <div className='max-w-xl px-2 mx-auto mt-5 mb-5 sm:px-6 lg:px-8'> 
           <div className="items-left">
-              <h1 className='uppercase tracking-wide font-bold text-violet-900 text-center mx-1 my-2'>Estadisticas de los últimos 30 dias</h1>
-            <div className="items-center h-full w-full ">
-                <div className='h-full align-middle rounded-lg bg-white min-w-max min-h-max mb-1 sm:colummns-1 sm:my-2 md:columns-3'>
+              <h1 className='mx-1 my-2 font-bold tracking-wide text-center uppercase text-violet-900'>Estadisticas de los últimos 30 dias</h1>
+            <div className="items-center w-full h-full ">
+                <div className='h-full mb-1 align-middle bg-white rounded-lg min-w-max min-h-max sm:colummns-1 sm:my-2 md:columns-3'>
 
-                    <div className='h-full w-full rounded-md bg-gray-50 align-middle text-center text-zinc-100 bt-1 border-gray-300 pb-4 shadow-lg shadow-violet-900/20' >
-                        <div className='w-full border-b-2 border-zinc-200 w-auto bg-zinc-100 text-xs  p-2 font-medium text-gray-700 uppercase tracking-wider'> Ventas del mes</div>
-                        <div className='min-h-fit text-gray-900 text-base font-bold lg:font-extrabold md:text-lg pt-2 md:text-base xxs:text-lg xs:text-base'>54</div>
+                    <div className='w-full h-full pb-4 text-center align-middle border-gray-300 shadow-lg rounded-md bg-gray-50 text-zinc-100 bt-1 shadow-violet-900/20' >
+                        <div className='w-auto w-full p-2 text-xs font-medium tracking-wider text-gray-700 uppercase border-b-2 border-zinc-200 bg-zinc-100 '> Ventas del mes</div>
+                        <div className='pt-2 text-base font-bold text-gray-900 min-h-fit lg:font-extrabold md:text-lg md:text-base xxs:text-lg xs:text-base'>54</div>
                      </div>
 
-                    <div className='mt-8 h-full w-full rounded-md bg-gray-50 align-middle text-center text-zinc-100 bt-1 border-gray-300 pb-4 shadow-lg shadow-violet-900/20' > 
-                        <div className='w-full border-b-2 border-zinc-200 w-auto bg-zinc-100 text-xs p-2 font-medium text-gray-700 uppercase tracking-wider'>Total mensual :</div>
-                        <div className='min-h-fit text-gray-900 text-base font-bold lg:font-extrabold md:text-lg pt-2 md:text-base xxs:text-lg xs:text-base'>€ 7.000</div>
+                    <div className='w-full h-full pb-4 mt-8 text-center align-middle border-gray-300 shadow-lg rounded-md bg-gray-50 text-zinc-100 bt-1 shadow-violet-900/20' > 
+                        <div className='w-auto w-full p-2 text-xs font-medium tracking-wider text-gray-700 uppercase border-b-2 border-zinc-200 bg-zinc-100'>Total mensual :</div>
+                        <div className='pt-2 text-base font-bold text-gray-900 min-h-fit lg:font-extrabold md:text-lg md:text-base xxs:text-lg xs:text-base'>€ 7.000</div>
                     </div>
 
-                    <div className='mt-8 h-full w-full rounded-md bg-gray-50 align-middle text-center text-zinc-100 bt-1 border-gray-300 pb-4 shadow-lg shadow-violet-900/20' > 
-                        <div className='w-full border-b-2 border-zinc-200 w-auto bg-zinc-100 text-xs p-2 font-medium text-gray-700 uppercase tracking-wider'> Nuevos clientes:</div>
-                        <div className='min-h-fit text-gray-900 text-base font-bold lg:font-extrabold md:text-lg pt-2 md:text-base xxs:text-lg xs:text-base'>14</div>
+                    <div className='w-full h-full pb-4 mt-8 text-center align-middle border-gray-300 shadow-lg rounded-md bg-gray-50 text-zinc-100 bt-1 shadow-violet-900/20' > 
+                        <div className='w-auto w-full p-2 text-xs font-medium tracking-wider text-gray-700 uppercase border-b-2 border-zinc-200 bg-zinc-100'> Nuevos clientes:</div>
+                        <div className='pt-2 text-base font-bold text-gray-900 min-h-fit lg:font-extrabold md:text-lg md:text-base xxs:text-lg xs:text-base'>14</div>
                     </div>
             </div>
         </div>

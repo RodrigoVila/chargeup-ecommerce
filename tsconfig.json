@@ -24,6 +24,7 @@
       "@models/*": ["./models/*"],
       "@redux/*": ["./redux/*"],
       "@services": ["./services/index.tsx"],
+      "@styles/*": ["./styles/*"],
       "@utils/*": ["./utils/*"]
     },
     "incremental": true

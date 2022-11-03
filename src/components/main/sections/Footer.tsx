@@ -10,7 +10,7 @@ const Footer = () => {
     <>
       <div
         id="contact"
-        className="flex w-full flex-col items-center justify-center bg-black pt-3 text-white"
+        className="flex flex-col items-center justify-center w-full pt-3 text-white bg-black"
       >
         <div className="mb-2 text-2xl">Contactanos</div>
         <div className="flex flex-row pb-4">
@@ -28,7 +28,7 @@ const Footer = () => {
           <a href="/terms">Terms & Conditions</a> | <a href="/cookies">Cookies policy</a> |{' '}
           <a href="mailto:chargeupbcn@gmail.com">Feedback</a>
         </div>
-        <div className="flex items-center justify-center pb-2 text-center text-xs text-gray-300 md:text-lg">
+        <div className="flex items-center justify-center pb-2 text-xs text-center text-gray-300 md:text-lg">
           Made with <AiFillHeart className="mx-1" color="red" size={18} /> by{' '}
           <a
             target="_blank"

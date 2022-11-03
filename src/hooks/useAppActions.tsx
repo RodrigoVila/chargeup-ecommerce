@@ -13,6 +13,7 @@ import {
   logoutUser,
   setAuthLoading,
   userTokenCheck,
+  sendEmailValidationRequest,
 } from '@redux/actions/auth';
 import {
   loadCartState,
@@ -74,6 +75,8 @@ const useAppActions = () => {
     setLoadingAuth(true);
     dispatch(registerNewUser(user));
   };
+  const sendEmailValidation = (email: string) => dispatch(sendEmailValidationRequest(email));
+
 
   // Cart
   const loadCart = (products: ProductType[]) => dispatch(loadCartState(products));
@@ -135,6 +138,7 @@ const useAppActions = () => {
     userLogin,
     userLogout,
     registerUser,
+    sendEmailValidation,
     loadCart,
     addToCart,
     removeFromCart,

@@ -23,23 +23,23 @@ const AdminUserNav = ({setActivePage, activePage}) => {
 return (
     <div  className="bg-violet-900">
       <>
-        <div className="max-w-xl mx-auto px-2 sm:px-6 lg:px-8">
+        <div className="max-w-xl px-2 mx-auto sm:px-6 lg:px-8">
           <div className="relative flex items-center justify-between h-16">
             <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
               {/* Mobile menu button*/}
-              <div className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+              <div className="inline-flex items-center justify-center p-2 text-gray-400 rounded-md hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
                 <span className="sr-only">Open main menu</span>
               </div>
             </div>
-            <div className="flex-1 flex items-center justify-center">
-              <div className="flex-shrink-0 flex items-center">
+            <div className="flex items-center justify-center flex-1">
+              <div className="flex items-center flex-shrink-0">
                 <img
-                  className="block lg:hidden h-16 w-auto"
+                  className="block w-auto h-16 lg:hidden"
                   src="./chargeup_logo_wg.svg"
                   alt="ChargeUP BCN"
                 />
                 <img
-                  className="hidden lg:block h-14 w-auto"
+                  className="hidden w-auto lg:block h-14"
                   src="./chargeup_logo_wg.svg"
                   alt="ChargeUP BCN"
                 />

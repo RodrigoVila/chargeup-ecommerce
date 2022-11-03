@@ -15,7 +15,7 @@ const FiltersModal = () => {
 
   return (
     <Modal isOpen={isFilterModalOpen} closeOnOverlayClick>
-      <div className="items-left relative flex flex-col flex-wrap justify-start px-2">
+      <div className="relative flex flex-col flex-wrap justify-start px-2 items-left">
         <div className="absolute -top-4 left-1">
           <BsFillTriangleFill color="white" size={20} />
         </div>

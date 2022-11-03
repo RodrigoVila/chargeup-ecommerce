@@ -8,11 +8,14 @@ import {
   logoutUser,
   displayMessageSuccess,
   displayMessageError,
+  sendEmailValidationRequestSuccess,
+  sendEmailValidationRequestError
 } from '@redux/actions';
 import {
   REGISTER_USER,
   LOGIN_USER,
   CHECK_USER_TOKEN,
+  REQUEST_EMAIL_VALIDATION
 } from '@redux/actions/types';
 import { lang } from '@constants';
 
@@ -86,10 +89,23 @@ function* checkToken(payload: any) {
   }
 }
 
+function* sendEmailValidation(payload: any) {
+  const { email } = payload
+  const API_KEY = process.env.ABSTRACT_API_KEY
+  const API_URL = `https://emailvalidation.abstractapi.com/v1/${API_KEY}&email=${email}`
+  try {
+    const { data } = yield call(fetch, API_URL);
+    yield put(sendEmailValidationRequestSuccess(data))
+  } catch (error) {
+    yield put(sendEmailValidationRequestError(error))
+  }
+}
+
 function* authSaga() {
   yield takeEvery(REGISTER_USER, userRegister);
   yield takeEvery(LOGIN_USER, userLogin);
   yield takeEvery(CHECK_USER_TOKEN, checkToken);
+  yield takeEvery(REQUEST_EMAIL_VALIDATION, sendEmailValidation);
 }
 
 export default authSaga;
