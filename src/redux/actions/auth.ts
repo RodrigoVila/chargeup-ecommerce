@@ -10,7 +10,10 @@ import {
   REGISTER_USER_ERROR,
   REQUEST_EMAIL_VALIDATION,
   REQUEST_EMAIL_VALIDATION_SUCCESS,
-  REQUEST_EMAIL_VALIDATION_ERROR
+  REQUEST_EMAIL_VALIDATION_ERROR,
+  VALIDATE_EMAIL_IN_DB,
+  VALIDATE_EMAIL_IN_DB_SUCCESS,
+  VALIDATE_EMAIL_IN_DB_ERROR
 } from './types';
 
 export const setAuthLoading = (isAuthLoading: boolean) => ({
@@ -52,17 +55,30 @@ export const errorRegisterUser = () => ({
   type: REGISTER_USER_ERROR,
 });
 
-export const sendEmailValidationRequest = (email: string) => ({
+export const sendEmailValidationRequest = (name: string, validationURL: string) => ({
   type: REQUEST_EMAIL_VALIDATION,
-  email
+  name,
+  validationURL,
 });
 
-export const sendEmailValidationRequestSuccess = (abstractAPIData: AbstractAPIResponse) => ({
+export const sendEmailValidationRequestSuccess = (validationEmailResponse: any) => ({
   type: REQUEST_EMAIL_VALIDATION_SUCCESS,
-  abstractAPIData
+  validationEmailResponse,
 });
 
-export const sendEmailValidationRequestError = (abstractAPIError: Error) => ({
+export const sendEmailValidationRequestError = (validationEmailError: Error) => ({
   type: REQUEST_EMAIL_VALIDATION_ERROR,
-  abstractAPIError
+  validationEmailError,
+});
+export const validateEmailInDB = (pid: string) => ({
+  type: VALIDATE_EMAIL_IN_DB,
+  pid,
+});
+
+export const validateEmailInDBSuccess = () => ({
+  type: VALIDATE_EMAIL_IN_DB_SUCCESS,
+});
+
+export const validateEmailInDBError = () => ({
+  type: VALIDATE_EMAIL_IN_DB_ERROR,
 });

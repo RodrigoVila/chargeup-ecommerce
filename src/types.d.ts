@@ -6,6 +6,7 @@ type UserRegisterType = {
   password: string;
   name: string;
   lastName: string;
+  pid:string
 };
 
 type UserLoginType = {
@@ -43,6 +44,9 @@ type AuthStateType = {
   isLoggedIn: boolean;
   isAuthLoading: boolean;
   userLogin: StorageUserType | null;
+  emailValidationError: Error | null;
+  validationEmailResponse: any;
+  isEmailValidated: boolean
 };
 
 interface AuthActionType extends AuthStateType {

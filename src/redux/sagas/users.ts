@@ -1,7 +1,7 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 
 import { FETCH_USER_DETAILS } from '@redux/actions/types';
-import { fetchUserDetailsError, fetchUserDetailsSuccess } from '@redux/actions';
+import { fetchUserDetailsError, fetchUserDetailsSuccess } from '@redux/actions/users';
 
 import { getValueFromLocalStorage } from '@utils/localStorage';
 import { LOCAL_STORAGE_DATA_KEY } from '@constants';

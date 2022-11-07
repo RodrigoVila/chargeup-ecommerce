@@ -15,7 +15,7 @@ const EmailValidationSuccess = () => {
     <div className="flex items-center justify-center w-full h-screen">
       <div className="flex flex-col items-center justify-center text-center">
         <div className="h-full max-h-[150px] w-full max-w-[150px] ">
-          <CheckCircleIcon color={colors.danger} />
+          <CheckCircleIcon color={colors.success} />
         </div>
         <h1 className="mx-2 mt-4 text-3xl font-bold md:text-4xl">{lang.es.EMAIL_CONFIRMED}</h1>
         <h4 className="mx-2 my-2 text-xl md:text-2xl md:my-4">{lang.es.EMAIL_CONFIRMED_SUB}</h4>

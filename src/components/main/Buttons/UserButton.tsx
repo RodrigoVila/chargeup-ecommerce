@@ -14,7 +14,7 @@ const UserButton: FC<Props> = ({ color = 'white' }) => {
   const { openUserModal,openLoginModal } = useAppActions();
 
   return (
-    <div className="relative w-8 h-8 text-white cursor-pointer lg:w-12 lg:h-12 md:h-10 md:w-10 xl:w-8 xl:h-8 md:mx-2" onClick={userLogin?.email? openUserModal : openLoginModal} >
+    <div className="relative w-8 h-8 text-white cursor-pointer lg:w-12 lg:h-12 md:h-10 md:w-10 xl:w-8 xl:h-8 md:mx-2 xl:mr-6" onClick={userLogin?.email? openUserModal : openLoginModal} >
       <UserIcon className="text-white lg:w-12 lg:h-12 md:h-10 md:w-10 xl:w-8 xl:h-8" />
     </div>
   );

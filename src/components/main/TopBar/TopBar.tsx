@@ -15,10 +15,9 @@ const TopBar = () => {
   const op = currentScrollPos > windowHeight ? "100" : opacity
 
   return (
-    <div className="flex-col hidden xl:flex">
-      <div className={`fixed top-0 bg-black/${op} flex justify-between w-full z-30 h-20`}>
+      <div className={`fixed top-0 bg-black/${op} hidden xl:flex  justify-between w-full z-30 h-20`}>
 
-        <div className={`flex motion-safe:animate-fadeIn z-10 transition-all duration-2000 ease-in-out`}>
+        <div className={`flex motion-safe:animate-fadeIn z-10 xl:ml-2 transition-all duration-2000 ease-in-out`}>
           <Logo color="blur" scrollOnClick size="sm" />
         </div>
         <NavItems direction="row" />
@@ -27,7 +26,6 @@ const TopBar = () => {
           <CartButton />
         </div>
       </div>
-    </div>
   );
 };
 

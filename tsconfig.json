@@ -23,6 +23,7 @@
       "@hooks/*": ["./hooks/*"],
       "@models/*": ["./models/*"],
       "@redux/*": ["./redux/*"],
+      "@sections/*": ["./sections/*"],
       "@services": ["./services/index.tsx"],
       "@styles/*": ["./styles/*"],
       "@utils/*": ["./utils/*"]

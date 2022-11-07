@@ -6,13 +6,13 @@ import { lang } from '@constants';
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   const { method, body } = req;
-  const { name, lastName, email, password } = body;
+  const { name, lastName, email, password, pid } = body;
 
   await dbConnect();
 
   const register = async () => {
     try {
-      await User.create({ name, lastName, email, password });
+      await User.create({ name, lastName, email, password, pid });
       return res.status(201).json({ success: true, message: lang.en.USER_REGISTER_SUCCESS });
     } catch (e) {
       return res.status(409).json({

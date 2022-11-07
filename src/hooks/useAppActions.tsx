@@ -14,6 +14,7 @@ import {
   setAuthLoading,
   userTokenCheck,
   sendEmailValidationRequest,
+  validateEmailInDB
 } from '@redux/actions/auth';
 import {
   loadCartState,
@@ -75,8 +76,8 @@ const useAppActions = () => {
     setLoadingAuth(true);
     dispatch(registerNewUser(user));
   };
-  const sendEmailValidation = (email: string) => dispatch(sendEmailValidationRequest(email));
-
+  const sendEmailValidation = (name: string, url:string) => dispatch(sendEmailValidationRequest(name,url));
+  const dBEmailValidation = (pid: string) => dispatch(validateEmailInDB(pid));
 
   // Cart
   const loadCart = (products: ProductType[]) => dispatch(loadCartState(products));
@@ -139,6 +140,7 @@ const useAppActions = () => {
     userLogout,
     registerUser,
     sendEmailValidation,
+    dBEmailValidation,
     loadCart,
     addToCart,
     removeFromCart,

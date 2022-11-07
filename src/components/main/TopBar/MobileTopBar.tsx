@@ -20,7 +20,7 @@ const MobileTopBar = () => {
           <BurgerButton />
         </div>
 
-        <div className="absolute top-0 flex items-center justify-center w-full">
+        <div className="absolute flex items-center justify-center w-full -top-1">
           <Logo color="blur" />
         </div>
         <div className="flex items-center justify-center mr-2">

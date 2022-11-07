@@ -22,7 +22,11 @@ let userSchema = new Schema(
     confirmed: {
       type: Boolean,
       default: false,
-      required: false
+      required: false,
+    },
+    pid: {
+      type: String,
+      required: false,
     },
     prefixNo: {
       type: String,

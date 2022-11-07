@@ -1,5 +1,6 @@
 import React, { useState, useEffect, FormEvent } from 'react';
 import { Toaster } from 'react-hot-toast';
+import { v4 as uuidv4 } from 'uuid';
 
 import useAppSelector from '@hooks/useAppSelector';
 import useAppActions from '@hooks/useAppActions';
@@ -43,6 +44,8 @@ const Login = () => {
   const handleRegister = async (e: FormEvent<HTMLButtonElement>) => {
     e.preventDefault();
 
+    const pid = uuidv4();
+
     if (!name || !lastName || !email || !password || !repeatPassword) {
       displayErrorMessage(lang.es.ALL_INPUTS_REQUIRED);
       return;
@@ -68,6 +71,7 @@ const Login = () => {
     const newUser = {
       name,
       lastName,
+      pid,
       email,
       password: encryptedPassword,
     };
@@ -88,11 +92,11 @@ const Login = () => {
       return;
     }
 
-    const newUser = {
+    const user = {
       email,
       password,
     };
-    userLogin(newUser);
+    userLogin(user);
   };
 
   const cleanCredentials = () => setCredentials(initialState);
