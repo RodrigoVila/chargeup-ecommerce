@@ -1,18 +1,29 @@
-import { RiCloseFill } from 'react-icons/ri'
+import { XMarkIcon} from '@heroicons/react/24/outline';
 
 interface Props {
-  color: string
-  position?: string
-  isAbsolute?: boolean
-  onClose: () => void
+  color: string;
+  position?: string;
+  isAbsolute?: boolean;
+  onClose: () => void;
 }
 
-const CloseModalButton = ({ color, position = 'right', isAbsolute = true, onClose }: Props) => {
+const CloseModalButton = ({
+  color: propColor,
+  position = 'right',
+  isAbsolute = false,
+  onClose,
+}: Props) => {
+  
+  const color =
+    propColor === 'white' || propColor === 'black' ? `text-${propColor}` : `text-${propColor}-500`;
+
   return (
-    <button onClick={onClose} className={`${isAbsolute && `${position}-0 absolute top-0 p-2`}`}>
-      <RiCloseFill color={color} size={40} />
-    </button>
-  )
-}
+    <div className={`${isAbsolute && `absolute ${position}-0`} top-0 w-9 h-9 mt-2 mr-2 text-white cursor-pointer`}>
+      <button onClick={onClose}>
+        <XMarkIcon className={`${color} h-full w-full`} />
+      </button>
+    </div>
+  );
+};
 
-export default CloseModalButton
+export default CloseModalButton;

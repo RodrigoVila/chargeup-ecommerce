@@ -25,7 +25,6 @@ const MobileTopBar = () => {
         </div>
         <div className="flex items-center justify-center mr-2">
           <CartButton />
-          <UserButton />
         </div>
       </div>
     </div>

@@ -37,8 +37,9 @@ const useAppSelector = () => {
   //Products
   const products = useSelector((state) => state.products.products, shallowEqual);
 
-  //Products
+  //Users
   const user = useSelector((state) => state.users.user, shallowEqual);
+  const isUserDataLoading = useSelector((state) => state.users.isUserDataLoading, shallowEqual);
 
   return {
     isLoggedIn,
@@ -58,6 +59,7 @@ const useAppSelector = () => {
     modalProduct,
     products,
     user,
+    isUserDataLoading,
   };
 };
 

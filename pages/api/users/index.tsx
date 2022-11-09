@@ -7,17 +7,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
   await dbConnect();
 
-  const createUser = async () => {
-    try {
-      const user = await User.create(body);
-      return res.status(201).json(user);
-    } catch (e) {
-      return res.status(400).json({
-        success: false,
-      });
-    }
-  };
-
   const getUsers = async () => {
     try {
       const userList = await User.find({});
@@ -30,8 +19,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   };
 
   switch (method) {
-    case "POST":
-      return createUser();
     case "GET":
       return getUsers();
     default:

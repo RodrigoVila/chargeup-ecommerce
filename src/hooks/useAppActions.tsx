@@ -14,7 +14,7 @@ import {
   setAuthLoading,
   userTokenCheck,
   sendEmailValidationRequest,
-  validateEmailInDB
+  validateEmailInDB,
 } from '@redux/actions/auth';
 import {
   loadCartState,
@@ -28,7 +28,6 @@ import {
   displayMessageError,
   displayMessageInfo,
 } from '@redux/actions/toastNotifications';
-
 import {
   cartModalOpen,
   cartModalClose,
@@ -52,7 +51,12 @@ import {
 
 import { setFilters } from '@redux/actions/filters';
 
-import { setUserDataLoading, fetchUserDetails } from '@redux/actions/users';
+import {
+  setUserDataLoading,
+  fetchUserDetails,
+  changeUserDetails,
+  changeUserPassword,
+} from '@redux/actions/users';
 
 const useAppActions = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -76,7 +80,8 @@ const useAppActions = () => {
     setLoadingAuth(true);
     dispatch(registerNewUser(user));
   };
-  const sendEmailValidation = (name: string, url:string) => dispatch(sendEmailValidationRequest(name,url));
+  const sendEmailValidation = (name: string, email: string, url: string) =>
+    dispatch(sendEmailValidationRequest(name, email, url));
   const dBEmailValidation = (pid: string) => dispatch(validateEmailInDB(pid));
 
   // Cart
@@ -129,6 +134,15 @@ const useAppActions = () => {
     dispatch(fetchUserDetails());
   };
 
+  const editUserDetails = (user: UserDetailsType) => {
+    setUserLoading(true);
+    dispatch(changeUserDetails(user));
+  };
+  const editUserPassword = (oldPassword: string, password: string) => {
+    setUserLoading(true);
+    dispatch(changeUserPassword(oldPassword, password));
+  };
+
   return {
     addProduct,
     removeProduct,
@@ -171,6 +185,8 @@ const useAppActions = () => {
     setProductFilters,
     setUserLoading,
     getUserDetails,
+    editUserDetails,
+    editUserPassword,
   };
 };
 

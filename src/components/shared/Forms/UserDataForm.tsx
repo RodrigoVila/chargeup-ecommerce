@@ -9,16 +9,8 @@ import useAppActions from '@hooks/useAppActions';
 import CloseModalButton from '@main/Buttons/CloseModalButton';
 
 const UserDataForm: FC = () => {
-  const { user } = useAppSelector();
+  const { isUserDataLoading, user } = useAppSelector();
   const [userDetails, setUserDetails] = useState(user);
-
-  const { closeUserModal } = useAppActions();
-
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setUserDetails((currDetails) => ({ ...currDetails, [name]: value }));
-  };
-
   const {
     name,
     lastName,
@@ -29,13 +21,31 @@ const UserDataForm: FC = () => {
     location,
   } = userDetails;
 
+  const { closeUserModal, editUserDetails } = useAppActions();
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setUserDetails((prevDetails) => ({ ...prevDetails, [name]: value }));
+  };
+
+  const handleLocationChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setUserDetails((prevDetails) => ({ ...prevDetails, location: { ...prevDetails.location, [name]: value } }));
+  };
+
+  const handleSubmit = () => editUserDetails(userDetails);
+
   useEffect(() => {
     console.log('userDetails', userDetails);
   }, [userDetails]);
 
+  useEffect(() => {
+    console.log('isUserDataLoading', isUserDataLoading);
+  }, [isUserDataLoading]);
+
   return (
     <div className="relative w-full p-6 overflow-scroll bg-white rounded-md">
-      <CloseModalButton color="black" position="right" onClose={closeUserModal} />  
+      <CloseModalButton color="black" isAbsolute position="right" onClose={closeUserModal} />
       <Input label={lang.es.NAME} type="text" name="name" value={name} onChange={handleChange} />
       <Input
         label={lang.es.LASTNAME}
@@ -71,51 +81,57 @@ const UserDataForm: FC = () => {
         type="text"
         name="street"
         value={location.street}
-        onChange={handleChange}
+        onChange={handleLocationChange}
       />
       <Input
         label={lang.es.LOCATION_STREET_NUMBER}
         type="text"
         name="streetNumber"
         value={location.streetNumber}
-        onChange={handleChange}
+        onChange={handleLocationChange}
       />
       <Input
         label={lang.es.LOCATION_POSTCODE}
         type="text"
         name="postCode"
         value={location.postCode}
-        onChange={handleChange}
+        onChange={handleLocationChange}
+      />
+      <Input
+        label={lang.es.LOCATION_EXTRAS}
+        type="text"
+        name="extras"
+        placeholder="Piso, puerta, etc"
+        value={location.extras}
+        onChange={handleLocationChange}
       />
       <Input
         label={lang.es.LOCATION_CITY}
         type="text"
         name="city"
         value={location.city}
-        onChange={handleChange}
+        onChange={handleLocationChange}
       />
       <Input
         label={lang.es.LOCATION_PROVINCE}
         type="text"
         name="province"
         value={location.province}
-        onChange={handleChange}
+        onChange={handleLocationChange}
       />
       <Input
         label={lang.es.LOCATION_COUNTRY}
         type="text"
         name="country"
         value={location.country}
-        onChange={handleChange}
+        onChange={handleLocationChange}
       />
-      <Input
-        label={lang.es.LOCATION_EXTRAS}
-        type="text"
-        name="extras"
-        value={location.extras}
-        onChange={handleChange}
+      <Button
+        title={lang.es.CHANGE_USER_DATA}
+        color={colors.purple}
+        onClick={handleSubmit}
+        disabled={isUserDataLoading}
       />
-      <Button title={lang.es.CHANGE_USER_DATA} color={colors.purple} onClick={() => {}} />
     </div>
   );
 };

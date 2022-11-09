@@ -55,10 +55,11 @@ export const errorRegisterUser = () => ({
   type: REGISTER_USER_ERROR,
 });
 
-export const sendEmailValidationRequest = (name: string, validationURL: string) => ({
+export const sendEmailValidationRequest = (name: string,email:string, link: string) => ({
   type: REQUEST_EMAIL_VALIDATION,
   name,
-  validationURL,
+  email,
+  link,
 });
 
 export const sendEmailValidationRequestSuccess = (validationEmailResponse: any) => ({

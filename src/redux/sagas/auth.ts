@@ -28,7 +28,7 @@ const API_URL = '/api/auth';
 
 function* userRegister(payload: any) {
   const { user } = payload;
-  const { pid, name } = user;
+  const { pid, name, email } = user;
   try {
     const response = yield call(fetch, API_URL + '/signup', {
       method: 'POST',
@@ -38,18 +38,18 @@ function* userRegister(payload: any) {
 
     const { success, message } = yield response.json();
     if (success) {
-      const VALIDATION_URL = `$http://localhost:3000/emailvalidation/${pid}`;
+      const link = `$http://localhost:3000/emailvalidation/${pid}`;
 
       yield put(successRegisterUser());
       yield put(displayMessageSuccess(lang.es.USER_REGISTER_SUCCESS));
-      yield put(sendEmailValidationRequest(name, VALIDATION_URL));
+      yield put(sendEmailValidationRequest(name, email, link));
       yield put(loginModalClose());
     } else {
       yield put(errorRegisterUser());
       yield put(displayMessageError(message));
     }
   } catch (e) {
-    yield put(displayMessageError(e.message));
+    yield put(displayMessageError(lang.es.USER_EXIST));
     yield put(errorRegisterUser());
   }
 }
@@ -101,19 +101,16 @@ function* checkToken(payload: any) {
 }
 
 function* sendEmailValidation(payload: any) {
-  const { name, validationURL } = payload;
+  const { name, email, link } = payload;
   const serviceID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
   const formID = process.env.NEXT_PUBLIC_EMAILJS_ACCOUNT_VERIFICATION_ID;
   const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
-  const validationParams = {
-    name,
-    message: validationURL,
-  };
+
   try {
     const result = yield emailjs.send(
       serviceID,
       formID,
-      validationParams, //Name and message(Link to veritication)
+      { name, email, link }, //Name and message(Link to veritication)
       publicKey
     );
     if (result.status === 200) {

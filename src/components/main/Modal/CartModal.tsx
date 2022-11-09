@@ -21,10 +21,10 @@ const CartModal = () => {
   );
 
   return (
-    <Modal isOpen={isCartModalOpen} transparent fullScreen border>
+    <Modal isOpen={isCartModalOpen} transparent fullScreen>
       <ReactTooltip />
       <div className="relative flex flex-col items-center w-full h-full max-w-xl p-2 my-2 bg-white ">
-        <CloseModalButton color="black" position="right" onClose={() => closeCartModal()} />
+        <CloseModalButton color="black" isAbsolute position="right" onClose={() => closeCartModal()} />
         <div className="px-2 pt-8 pb-6 text-3xl text-center text-black">{`${cartItems.length} ${
           cartItems.length > 1 ? 'articulos' : 'articulo'
         } en la cesta`}</div>

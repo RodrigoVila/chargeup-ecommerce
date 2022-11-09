@@ -6,7 +6,7 @@ type UserRegisterType = {
   password: string;
   name: string;
   lastName: string;
-  pid:string
+  pid: string;
 };
 
 type UserLoginType = {
@@ -21,11 +21,13 @@ type StorageUserType = {
 };
 
 type UserDetailsType = {
+  id: string;
   name: string;
   lastName: string;
   email: string;
   password?: string;
   repeatPassword?: string;
+  token?: string;
   mobileNo: string;
   prefixNo: string;
   prefContact: string[];
@@ -40,13 +42,18 @@ type UserDetailsType = {
   };
 };
 
+type PasswordType = {
+  oldPassword: string;
+  password: string;
+};
+
 type AuthStateType = {
   isLoggedIn: boolean;
   isAuthLoading: boolean;
   userLogin: StorageUserType | null;
   emailValidationError: Error | null;
   validationEmailResponse: any;
-  isEmailValidated: boolean
+  isEmailValidated: boolean;
 };
 
 interface AuthActionType extends AuthStateType {
@@ -159,7 +166,7 @@ interface ProductsActionType extends ProductsStateType {
 //Toast
 type ToastStateType = {
   message: string;
-  icon?: null
+  icon?: null;
 };
 
 interface ToastActionType extends ToastStateType {
@@ -179,39 +186,39 @@ interface UsersActionType extends UsersStateType {
 //Abstract API Response
 
 type AbstractAPIResponse = {
-  "email": String
-  "autocorrect": String
-  "deliverability": String
-  "quality_score": String
-  "is_valid_format": {
-    "value": Boolean,
-    "text": String
-  },
-  "is_free_email": {
-    "value": Boolean,
-    "text": String
-  },
-  "is_disposable_email": {
-    "value": Boolean,
-    "text": String
-  },
-  "is_role_email": {
-    "value": Boolean,
-    "text": String
-  },
-  "is_catchall_email": {
-    "value": Boolean,
-    "text": String
-  },
-  "is_mx_found": {
-    "value": Boolean,
-    "text": String
-  },
-  "is_smtp_valid": {
-    "value": Boolean,
-    "text": String
-  }
-}
+  email: String;
+  autocorrect: String;
+  deliverability: String;
+  quality_score: String;
+  is_valid_format: {
+    value: Boolean;
+    text: String;
+  };
+  is_free_email: {
+    value: Boolean;
+    text: String;
+  };
+  is_disposable_email: {
+    value: Boolean;
+    text: String;
+  };
+  is_role_email: {
+    value: Boolean;
+    text: String;
+  };
+  is_catchall_email: {
+    value: Boolean;
+    text: String;
+  };
+  is_mx_found: {
+    value: Boolean;
+    text: String;
+  };
+  is_smtp_valid: {
+    value: Boolean;
+    text: String;
+  };
+};
 
 //Global State
 type StateType = {

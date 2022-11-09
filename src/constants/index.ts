@@ -30,6 +30,7 @@ export const AUTH_INITIAL_STATE = {
 };
 
 export const APP_USER_INITIAL_STATE: UserDetailsType = {
+  id: '',
   name: '',
   lastName: '',
   email: '',
@@ -65,6 +66,8 @@ export const lang = {
     ALL_INPUTS_REQUIRED: 'Todos los campos son obligatorios.',
     CHANGE_PASSWORD: 'Modificar contraseña',
     CHANGE_USER_DATA: 'Modificar datos de usuario',
+    CHANGE_USER_DATA_SUCCESS: 'Datos modificados!',
+    CHANGE_USER_DATA_ERROR: 'Error al procesar sus datos. Por favor intente mas tarde.',
     CONTACT_FORM_SUCCESS: 'Formulario enviado con éxito. Le responderemos a la brevedad',
     CONTACT_FORM_ERROR: 'Error al enviar formulario. Por favor re intentar mas tarde',
     EMAIL: 'Email',
@@ -114,6 +117,8 @@ export const lang = {
     ALL_INPUTS_REQUIRED: 'All inputs required',
     CHANGE_PASSWORD: 'Change password',
     CHANGE_USER_DATA: 'Change user data',
+    CHANGE_USER_DATA_SUCCESS: 'User data modified!',
+    CHANGE_USER_DATA_ERROR: 'Error while trying to modify data.  Please try again later.',
     CONTACT_FORM_SUCCESS: 'Form sent succesfully. We will contact you soon',
     CONTACT_FORM_ERROR: 'Form error. Please try again later',
     EMAIL: 'Email',
@@ -161,6 +166,8 @@ export const lang = {
     ALL_INPUTS_REQUIRED: '',
     CHANGE_PASSWORD: '',
     CHANGE_USER_DATA: '',
+    CHANGE_USER_DATA_SUCCESS: '',
+    CHANGE_USER_DATA_ERROR: '',
     CONTACT_FORM_SUCCESS: '',
     CONTACT_FORM_ERROR: '',
     EMAIL: '',

@@ -109,7 +109,7 @@ const Login = () => {
     <>
       <Toaster />
       <div className="relative flex flex-col items-center justify-center w-full p-6 font-semibold text-black bg-white rounded-md">
-        <CloseModalButton color="black" position="right" onClose={() => closeLoginModal()} />
+        <CloseModalButton color="black" isAbsolute position="right" onClose={() => closeLoginModal()} />
         {isRegisterForm ? (
           <RegisterForm onInputChange={onInputChange} />
         ) : (

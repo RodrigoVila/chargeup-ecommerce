@@ -6,19 +6,35 @@ import Button from '@main/Buttons/Button';
 import Link from '@main/Link';
 import useAppActions from '@hooks/useAppActions';
 import CloseModalButton from '@main/Buttons/CloseModalButton';
+import useEncryption from '@hooks/useEncryption';
+
+const INITIAL_STATE = { oldPassword: '', password: '', repeatPassword: '' };
 
 const UpdatePasswordForm: FC = () => {
-  const [userDetails, setUserDetails] = useState({});
+  const [userDetails, setUserDetails] = useState(INITIAL_STATE);
 
-  const { closeUserModal } = useAppActions();
+  const { closeUserModal, displayErrorMessage, editUserPassword } = useAppActions();
+  const { encryptPassword } = useEncryption();
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setUserDetails((currDetails) => ({ ...currDetails, [name]: value }));
   };
+
+  const handleSubmit = async () => {
+    const { oldPassword, password, repeatPassword } = userDetails;
+    if (password !== repeatPassword) {
+      displayErrorMessage(lang.es.PASSWORDS_DONT_MATCH);
+      return;
+    }
+
+    const encryptedPassword = await encryptPassword(password);
+    
+    editUserPassword(oldPassword, encryptedPassword);
+  };
   return (
     <div className="relative p-6 bg-white rounded-xl">
-      <CloseModalButton color="black" position="right" onClose={closeUserModal} />
+      <CloseModalButton color="black" isAbsolute position="right" onClose={closeUserModal} />
       <Input
         label={lang.es.OLD_PASSWORD}
         type="password"
@@ -32,7 +48,7 @@ const UpdatePasswordForm: FC = () => {
         name="repeatPassword"
         onChange={handleChange}
       />
-      <Button title={lang.es.CHANGE_PASSWORD} color={colors.purple} onClick={() => { }} />
+      <Button title={lang.es.CHANGE_PASSWORD} color={colors.purple} onClick={handleSubmit} />
     </div>
   );
 };

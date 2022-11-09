@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect } from 'react';
 
 import useAppActions from '@hooks/useAppActions';
 import useAppSelector from '@hooks/useAppSelector';
@@ -17,9 +17,14 @@ const DrawerModal = () => {
 
   return (
     <Modal isOpen={isDrawerModalOpen} transparent fullScreen>
-      <div className="relative p-4 px-16 pt-12 bg-white rounded-md">
-        <CloseModalButton color="black" position="right" onClose={() => closeDrawerModal()} />
+      <div className="bg-white rounded-md ">
+        <div className="flex items-center justify-between w-full">
+          <UserButton color='black'/>
+          <CloseModalButton color="black" onClose={() => closeDrawerModal()} />
+        </div>
+        <div className="px-16 mb-6">
         <NavItems direction="column" onClose={() => closeDrawerModal()} />
+        </div>
       </div>
     </Modal>
   );
