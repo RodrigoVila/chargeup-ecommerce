@@ -18,8 +18,8 @@ const UserButton: FC<Props> = ({ color: propColor = 'white' }) => {
     propColor === 'white' || propColor === 'black' ? `text-${propColor}` : `text-${propColor}-500`;
 
   return (
-    <div className={`${color} w-6 h-6 mt-5 ml-4 cursor-pointer md:h-6 md:w-6 xl:h-8 xl:w-8 flex flex-col items-center justify-center`}>
-      <button onClick={userLogin?.name ? openUserModal : openLoginModal}>
+    <div className={`${color} cursor-pointer flex flex-col items-center justify-center mt-1`}>
+      <button onClick={userLogin?.name ? openUserModal : openLoginModal} className="w-6 h-6 md:h-6 md:w-6 xl:h-8 xl:w-8">
         <UserIcon className={`${color} h-full w-full`} />
       </button>
       <p className={`${color} text-xs`}>{userLogin?.name ? userLogin.name : lang.en.LOGIN}</p>

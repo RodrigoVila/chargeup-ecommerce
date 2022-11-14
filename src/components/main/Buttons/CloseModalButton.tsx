@@ -1,4 +1,4 @@
-import { XMarkIcon} from '@heroicons/react/24/outline';
+import { XMarkIcon } from '@heroicons/react/24/outline';
 
 interface Props {
   color: string;
@@ -13,12 +13,15 @@ const CloseModalButton = ({
   isAbsolute = false,
   onClose,
 }: Props) => {
-  
   const color =
     propColor === 'white' || propColor === 'black' ? `text-${propColor}` : `text-${propColor}-500`;
 
   return (
-    <div className={`${isAbsolute && `absolute ${position}-0`} top-0 w-9 h-9 mt-2 mr-2 text-white cursor-pointer`}>
+    <div
+      className={`${
+        isAbsolute && `absolute ${position}-0`
+      } top-0 h-9 w-9 cursor-pointer text-white`}
+    >
       <button onClick={onClose}>
         <XMarkIcon className={`${color} h-full w-full`} />
       </button>

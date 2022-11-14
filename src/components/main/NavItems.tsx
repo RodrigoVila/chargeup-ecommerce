@@ -12,7 +12,7 @@ const links = [
   { label: 'CAKES', href: 'cakes' },
   { label: 'KETO', href: 'keto' },
   { label: 'POR QUE ELEGIRNOS', href: 'whyus' },
-  // { label: 'CONTACTO', href: 'contact' },
+  { label: 'CONTACTO', href: 'contact' },
 ]
 
 const NavItems = ({ direction, onClose }: Props) => {

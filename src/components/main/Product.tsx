@@ -18,6 +18,7 @@ const Product: FC<Props> = ({
   suitableForInfo,
   price,
   imgUri,
+  strapiId,
   onClick,
 }) => {
   const [count, setCount] = useState(0)
@@ -45,6 +46,7 @@ const Product: FC<Props> = ({
       price,
       quantity: count,
       imgUri,
+      strapiId
     }
     addToCart(item)
     displaySuccessMessage('Producto agregado!')

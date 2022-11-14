@@ -67,12 +67,15 @@ type CartStateType = {
 
 interface CartActionType {
   type: string;
+  id?: string;
+  newAmount?: number;
   product: ProductType;
 }
 
 //Checkout Session
 type CheckoutStateType = {
-  session: string;
+  session: string | null;
+  sessionError: Error | null;
 };
 
 interface CheckoutActionType extends CheckoutStateType {
@@ -153,6 +156,7 @@ type ProductType = {
   imgUri: string;
   nutritionalInfo: INutritionalInfo;
   suitableForInfo: ISuitableForInfo;
+  strapiId?: string;
 };
 
 type ProductsStateType = {
@@ -183,41 +187,13 @@ interface UsersActionType extends UsersStateType {
   type: string;
 }
 
-//Abstract API Response
-
-type AbstractAPIResponse = {
-  email: String;
-  autocorrect: String;
-  deliverability: String;
-  quality_score: String;
-  is_valid_format: {
-    value: Boolean;
-    text: String;
-  };
-  is_free_email: {
-    value: Boolean;
-    text: String;
-  };
-  is_disposable_email: {
-    value: Boolean;
-    text: String;
-  };
-  is_role_email: {
-    value: Boolean;
-    text: String;
-  };
-  is_catchall_email: {
-    value: Boolean;
-    text: String;
-  };
-  is_mx_found: {
-    value: Boolean;
-    text: String;
-  };
-  is_smtp_valid: {
-    value: Boolean;
-    text: String;
-  };
+// Session
+type CheckoutItem = {
+  price: string;
+  quantity: number;
+};
+type CheckoutItems = {
+  items?: CheckoutItem[];
 };
 
 //Global State

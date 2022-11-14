@@ -97,7 +97,7 @@ const useAppActions = () => {
   const displayInfoMessage = (msg: string) => dispatch(displayMessageInfo(msg));
 
   // Checkout
-  const createCheckoutSession = () => dispatch(createNewCheckoutSession());
+  const createCheckoutSession = (items: CheckoutItem[]) => dispatch(createNewCheckoutSession(items));
   const createCheckoutSessionSuccess = (sessionURL: string) =>
     dispatch(createNewCheckoutSessionSuccess(sessionURL));
 

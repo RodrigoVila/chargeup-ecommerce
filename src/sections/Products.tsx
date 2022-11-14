@@ -93,6 +93,7 @@ const Products: FC = () => {
                   imgUri={p.imgUri}
                   nutritionalInfo={p.nutritionalInfo}
                   suitableForInfo={p.suitableForInfo}
+                  strapiId={p.strapiId}
                   onClick={() => openProductModal(p)}
                 />
               ))
@@ -108,6 +109,7 @@ const Products: FC = () => {
                   imgUri={p.imgUri}
                   nutritionalInfo={p.nutritionalInfo}
                   suitableForInfo={p.suitableForInfo}
+                  strapiId={p.strapiId}
                   onClick={() => openProductModal(p)}
                 />
               ))

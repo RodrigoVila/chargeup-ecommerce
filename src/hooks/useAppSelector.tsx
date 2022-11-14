@@ -13,6 +13,9 @@ const useAppSelector = () => {
   );
 
   //Cart
+  const checkoutSession = useSelector((state) => state.checkout.session, shallowEqual);
+
+  //Cart
   const cartItems: ProductType[] = useSelector((state) => state.cart.items, shallowEqual);
   const cartLength: number = useSelector((state) => state.cart.items.length, shallowEqual);
   //Filters TODO: Reduce one filter lvl
@@ -46,6 +49,7 @@ const useAppSelector = () => {
     isAuthLoading,
     userLogin,
     isEmailValidated,
+    checkoutSession,
     cartItems,
     cartLength,
     filters,

@@ -14,6 +14,7 @@ const CartProduct: FC<ProductType> = ({
   price,
   quantity,
   imgUri,
+  strapiId
 }) => {
   const { removeFromCart, changeCartProductQuantity } = useAppActions();
 
@@ -28,9 +29,9 @@ const CartProduct: FC<ProductType> = ({
       <div className={`relative flex w-full flex-col justify-between border-b-2 border-gray-300`}>
         <div className="flex items-center justify-between mx-2">
           <div className="text-lg font-semibold">{title.toUpperCase()}  <span className="text-2xl font-semibold">- €{price}</span></div>
-          <div className="cursor-pointer" onClick={() => removeFromCart(id)}>
+          <button className="cursor-pointer" onClick={() => removeFromCart(id)}>
             <FaRegTrashAlt color="red" size={22} />
-          </div>
+          </button>
         </div>
         <div className="flex my-1 ml-2">
           {suitableForInfo.vegan && (

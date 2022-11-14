@@ -116,7 +116,6 @@ function* sendEmailValidation(payload: any) {
     if (result.status === 200) {
       yield put(sendEmailValidationRequestSuccess(result));
     } else {
-      console.log('Validation result. Status !== 200: ', result);
       // yield put(displayMessageInfo('Posible error en validacion. Verificar consola.'));
     }
   } catch (error) {

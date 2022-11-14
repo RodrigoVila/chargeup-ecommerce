@@ -35,15 +35,7 @@ const UserDataForm: FC = () => {
 
   const handleSubmit = () => editUserDetails(userDetails);
 
-  useEffect(() => {
-    console.log('userDetails', userDetails);
-  }, [userDetails]);
-
-  useEffect(() => {
-    console.log('isUserDataLoading', isUserDataLoading);
-  }, [isUserDataLoading]);
-
-  return (
+   return (
     <div className="relative w-full p-6 overflow-scroll bg-white rounded-md">
       <CloseModalButton color="black" isAbsolute position="right" onClose={closeUserModal} />
       <Input label={lang.es.NAME} type="text" name="name" value={name} onChange={handleChange} />

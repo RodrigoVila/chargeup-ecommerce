@@ -1,19 +1,23 @@
-import { CREATE_CHECKOUT_SESSION_SUCCESS } from '../actions/types'
+import { CREATE_CHECKOUT_SESSION_SUCCESS, CREATE_CHECKOUT_SESSION_ERROR } from '../actions/types';
 
-//TODO: Type this when know session return type
-const initialState: string = ''
+const initialState: CheckoutStateType = { session: null, sessionError: null };
 
-const checkoutReducer = (
-  state = initialState,
-  action: CheckoutActionType
-): CheckoutStateType => {
+const checkoutReducer = (state = initialState, action: CheckoutActionType): CheckoutStateType => {
+  const { session, sessionError } = action;
   switch (action.type) {
     case CREATE_CHECKOUT_SESSION_SUCCESS:
       return {
-        session: action.session,
-      }
+        session,
+        sessionError: null,
+      };
+    case CREATE_CHECKOUT_SESSION_ERROR:
+      return {
+        session: null,
+        sessionError,
+      };
   }
-  return state
-}
 
-export default checkoutReducer
+  return state;
+};
+
+export default checkoutReducer;

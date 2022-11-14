@@ -9,13 +9,21 @@ import store from '@redux/store';
 
 // Make sure to call `loadStripe` outside of a component’s render to avoid
 // recreating the `Stripe` object on every render.
-
-const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY);
+const publicKey =
+  process.env.NODE_ENV === 'development'
+    ? process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_DEV_KEY
+    : process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY;
+    
+const stripePromise = loadStripe(publicKey);
 
 function MyApp({ Component, pageProps: { session, ...pageProps } }) {
   const options = {
     // passing the client secret obtained from the server
-    clientSecret: process.env.STRIPE_SECRET_KEY,
+    fonts: [
+      {
+        cssSrc: 'https://fonts.googleapis.com/css?family=Roboto',
+      },
+    ],
   };
   return (
     <>

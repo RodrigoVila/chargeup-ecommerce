@@ -23,6 +23,7 @@ const cartReducer = (
         imgUri: action.product.imgUri,
         nutritionalInfo: action.product.nutritionalInfo,
         suitableForInfo: action.product.suitableForInfo,
+        strapiId: action.product.strapiId,
       }
       // TODO: Can this be improved?
       // Creates a copy of item found in Array (In case of duplicates)
@@ -44,7 +45,7 @@ const cartReducer = (
       }
     case REMOVE_FROM_CART:
       const updatedItems: ProductType[] = state.items.filter(
-        (item: any) => item.id !== action.product
+        (item: any) => item.id !== action.id
       )
       return {
         ...state,
@@ -52,7 +53,7 @@ const cartReducer = (
       }
     case CHANGE_PRODUCT_QUANTITY:
       const newItems = state.items.map((item) => {
-        if (item.id === action.id) {
+        if (item.id === action.product.id) {
           return {
             ...item,
             quantity: action.newAmount

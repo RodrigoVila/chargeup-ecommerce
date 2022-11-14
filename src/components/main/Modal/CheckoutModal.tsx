@@ -2,26 +2,24 @@ import useAppActions from '@hooks/useAppActions';
 import useAppSelector from '@hooks/useAppSelector';
 
 import CloseModalButton from '@main/Buttons/CloseModalButton';
+import Modal from '@shared/Modal';
 
 const CheckoutModal = () => {
-  const { isCheckoutModalOpen } = useAppSelector();
+  const { isCheckoutModalOpen, checkoutSession } = useAppSelector();
 
   const { closeCheckoutModal } = useAppActions();
 
   return (
-    <div
-      className={`${
-        !isCheckoutModalOpen && 'hidden'
-      } absolute inset-0 z-40  flex h-screen w-screen flex-col items-center justify-center bg-violet-500 text-xl text-white`}
-    >
-      <CloseModalButton color="white" isAbsolute position="right" onClose={() => closeCheckoutModal()} />
-      {/* Stripe needs below form in order to redirect. Cant be made with JS */}
-      <form action="/api/checkout_session" method="POST">
-        <button type="submit" role="link">
-          Checkout
-        </button>
-      </form>
-    </div>
+    <Modal isOpen={isCheckoutModalOpen} transparent fullScreen>
+      <div className="bg-white rounded-md ">
+        <div className="flex items-center justify-between w-full px-4 pt-4 pb-0">
+          <CloseModalButton color="black" onClose={() => closeCheckoutModal()} />
+        </div>
+        <div className="px-16 mb-6">
+          {checkoutSession ? <iframe src={checkoutSession} title="description"></iframe> : null}
+        </div>
+      </div>
+    </Modal>
   );
 };
 
