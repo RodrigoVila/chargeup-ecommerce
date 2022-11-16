@@ -18,11 +18,11 @@ const ProductModal: FC = () => {
         <h3 className="my-2 text-2xl font-semibold text-center">{modalProduct?.title}</h3>
         {/*body*/}
         <div className="px-2 text-center">
-          <p className="px-1 text-sm leading-relaxed text-slate-500">
+          <div className="px-1 text-sm leading-relaxed text-slate-500">
             {modalProduct?.description.long?.map((p,i) => (
               <p key={i}>{p}</p>
             ))}
-          </p>
+          </div>
         </div>
         <div className="flex items-center px-4 pt-4 pb-4">
           <Button title="Cerrar" color={colors.purple} onClick={() => closeProductModal()} />

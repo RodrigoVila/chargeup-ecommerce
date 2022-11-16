@@ -1,4 +1,4 @@
-import { BsFillTriangleFill } from 'react-icons/bs';
+import { FunnelIcon } from '@heroicons/react/24/outline';
 
 import useAppActions from '@hooks/useAppActions';
 import useAppSelector from '@hooks/useAppSelector';
@@ -17,7 +17,7 @@ const FiltersModal = () => {
     <Modal isOpen={isFilterModalOpen} closeOnOverlayClick>
       <div className="relative flex flex-col flex-wrap justify-start px-2 items-left">
         <div className="absolute -top-4 left-1">
-          <BsFillTriangleFill color="white" size={20} />
+          <FunnelIcon color="white" />
         </div>
         <div className="px-2">
           {labels.map((label, index) => (

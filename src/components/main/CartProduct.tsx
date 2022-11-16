@@ -1,6 +1,6 @@
-import { FC, useState } from 'react';
+import { FC } from 'react';
 import Image from 'next/image';
-import { FaRegTrashAlt } from 'react-icons/fa';
+import { TrashIcon } from '@heroicons/react/24/outline';
 
 import useAppActions from '@hooks/useAppActions';
 import Counter from './Counter';
@@ -14,12 +14,12 @@ const CartProduct: FC<ProductType> = ({
   price,
   quantity,
   imgUri,
-  strapiId
+  strapiId,
 }) => {
   const { removeFromCart, changeCartProductQuantity } = useAppActions();
 
-  const addOne = () => changeCartProductQuantity(id, quantity + 1)
-  const subtractOne = () => quantity > 1 && changeCartProductQuantity(id, quantity - 1)
+  const addOne = () => changeCartProductQuantity(id, quantity + 1);
+  const subtractOne = () => quantity > 1 && changeCartProductQuantity(id, quantity - 1);
 
   return (
     <div className="flex w-full">
@@ -28,9 +28,11 @@ const CartProduct: FC<ProductType> = ({
       </div>
       <div className={`relative flex w-full flex-col justify-between border-b-2 border-gray-300`}>
         <div className="flex items-center justify-between mx-2">
-          <div className="text-lg font-semibold">{title.toUpperCase()}  <span className="text-2xl font-semibold">- €{price}</span></div>
+          <div className="text-lg font-semibold">
+            {title.toUpperCase()} <span className="text-2xl font-semibold">- €{price}</span>
+          </div>
           <button className="cursor-pointer" onClick={() => removeFromCart(id)}>
-            <FaRegTrashAlt color="red" size={22} />
+            <TrashIcon color="red" />
           </button>
         </div>
         <div className="flex my-1 ml-2">
@@ -57,8 +59,13 @@ const CartProduct: FC<ProductType> = ({
         </div>
 
         <div className="relative flex items-center justify-between mx-2 ">
-          <div className="flex items-center justify-center h-full mb-1 text-xl text-gray-700">Cantidad: <Counter count={quantity} addOne={addOne} subtractOne={subtractOne} color="black" /></div>
-          <div className="flex items-center justify-center h-full text-2xl text-gray-700">{`€${price * quantity}`}</div>
+          <div className="flex items-center justify-center h-full mb-1 text-xl text-gray-700">
+            Cantidad:{' '}
+            <Counter count={quantity} addOne={addOne} subtractOne={subtractOne} color="black" />
+          </div>
+          <div className="flex items-center justify-center h-full text-2xl text-gray-700">{`€${
+            price * quantity
+          }`}</div>
         </div>
       </div>
     </div>

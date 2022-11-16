@@ -50,6 +50,32 @@ export const APP_USER_INITIAL_STATE: UserDetailsType = {
   },
 };
 
+export const CART_INITIAL_STATE: ProductType = {
+  id: '',
+  title: '',
+  description: {
+    short: '',
+    long: [],
+  },
+  quantity: 0,
+  price: 0,
+  imgUri: '',
+  nutritionalInfo: {
+    weight: 0,
+    calories: 0,
+    protein: 0,
+    carbs: 0,
+    fat: 0,
+  },
+  suitableForInfo: {
+    protein: false,
+    vegan: false,
+    glutenFree: false,
+    keto: false,
+  },
+  strapiId: '',
+};
+
 export const USERS_INITIAL_STATE: UsersStateType = {
   isUserDataLoading: false,
   user: APP_USER_INITIAL_STATE,

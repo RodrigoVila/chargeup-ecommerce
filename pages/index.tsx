@@ -2,8 +2,8 @@ import { useEffect } from 'react';
 import { Toaster } from 'react-hot-toast';
 
 import useAppActions from '@hooks/useAppActions';
+import useAppSelector from '@hooks/useAppSelector';
 
-import { LOCAL_STORAGE_DATA_KEY } from '@constants';
 import Welcome from '@sections/Welcome';
 import Products from '@sections/Products';
 import About from '@sections/About';
@@ -18,23 +18,21 @@ import FiltersModal from '@main/Modal/FiltersModal';
 import LoginModal from '@main/Modal/LoginModal';
 import ProductModal from '@main/Modal/ProductModal';
 import UserModal from '@main/Modal/UserModal';
-import { getValueFromLocalStorage } from '@utils/localStorage';
 import TopBar from '@main/TopBar/TopBar';
 import MobileTopBar from '@main/TopBar/MobileTopBar';
+import { getValueFromLocalStorage } from '@utils/localStorage';
+import { LOCAL_STORAGE_CART_KEY, LOCAL_STORAGE_DATA_KEY } from '@constants';
 
 const MainScreen = () => {
   const { checkUserToken } = useAppActions();
 
   useEffect(() => {
-    const validateStoredAuthData = () => {
-      const user = getValueFromLocalStorage(LOCAL_STORAGE_DATA_KEY);
-
-      if (!user) return;
-
-      checkUserToken(user);
+    const getDataFromStorage = () => {
+      const storedUser = getValueFromLocalStorage(LOCAL_STORAGE_DATA_KEY);
+      //Validates stored and DB token
+      storedUser ? checkUserToken(storedUser) : null;
     };
-
-    validateStoredAuthData();
+    getDataFromStorage();
   }, []);
 
   return (
@@ -50,7 +48,7 @@ const MainScreen = () => {
       <LoginModal />
       <ProductModal />
       <UserModal />
-      <div className='relative w-full h-screen'>
+      <div className="relative w-full h-screen">
         {/* Navigation */}
         <TopBar />
         <MobileTopBar />

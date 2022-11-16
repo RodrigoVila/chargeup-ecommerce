@@ -1,24 +1,36 @@
-import { createStore, applyMiddleware } from 'redux';
-import { composeWithDevTools } from 'redux-devtools-extension';
+import { configureStore } from '@reduxjs/toolkit';
 
 import createSagaMiddleware from '@redux-saga/core';
 import rootReducer from './reducers';
 import rootSaga from './sagas';
 
-import { LOCAL_STORAGE_DATA_KEY, AUTH_INITIAL_STATE } from '@constants';
+import {
+  LOCAL_STORAGE_DATA_KEY,
+  AUTH_INITIAL_STATE,
+  LOCAL_STORAGE_CART_KEY,
+  CART_INITIAL_STATE,
+} from '@constants';
 import { getValueFromLocalStorage } from '@utils/localStorage';
 
 const sagaMiddleware = createSagaMiddleware();
 
 const storedUser = getValueFromLocalStorage(LOCAL_STORAGE_DATA_KEY);
+const storedCart = getValueFromLocalStorage(LOCAL_STORAGE_CART_KEY);
 
-const preloadState = { auth: storedUser ? storedUser : AUTH_INITIAL_STATE };
+const preloadState = {
+      auth: storedUser ? storedUser : AUTH_INITIAL_STATE,
+      cart: {
+        items: storedCart ? storedCart : []
+      }
+    }
 
-const store = createStore(
-  rootReducer,
-  preloadState,
-  composeWithDevTools(applyMiddleware(sagaMiddleware))
-);
+
+const store = configureStore({
+  devTools: true,
+  reducer: rootReducer,
+  preloadedState: preloadState,
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(sagaMiddleware),
+});
 
 sagaMiddleware.run(rootSaga);
 

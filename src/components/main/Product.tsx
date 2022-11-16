@@ -1,14 +1,15 @@
-import { useState, FC } from 'react'
-import Image from 'next/image'
-import ReactTooltip from 'react-tooltip'
+import { useState, FC } from 'react';
+import Image from 'next/image';
+import ReactTooltip from 'react-tooltip';
 
-import Button from '@main/Buttons/Button'
-import Counter from '@main/Counter'
-import RoundImage from '@main/RoundImage'
-import { colors } from '@constants'
-import useAppActions from '@hooks/useAppActions'
+import Button from '@main/Buttons/Button';
+import Counter from '@main/Counter';
+import RoundImage from '@main/RoundImage';
+import { colors } from '@constants';
+import useAppActions from '@hooks/useAppActions';
+import useMounted from '@hooks/useMounted';
 
-type Props = ProductType & { onClick: (product: ProductType) => void }
+type Props = ProductType & { onClick: () => void };
 
 const Product: FC<Props> = ({
   id,
@@ -21,21 +22,22 @@ const Product: FC<Props> = ({
   strapiId,
   onClick,
 }) => {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
 
-  const { addToCart, displayInfoMessage, displaySuccessMessage } = useAppActions()
+  const { addToCart, displayInfoMessage, displaySuccessMessage } = useAppActions();
+  const { isMounted } = useMounted();
 
-  const addOne = () => setCount((prevCount) => prevCount + 1)
+  const addOne = () => setCount((prevCount) => prevCount + 1);
 
   const subtractOne = () => {
-    if (count < 1) return 0
-    setCount((prevCount) => prevCount - 1)
-  }
+    if (count < 1) return 0;
+    setCount((prevCount) => prevCount - 1);
+  };
 
   const addItemToCart = () => {
     if (count === 0) {
-      displayInfoMessage('La cantidad tiene que ser mayor a 0')
-      return
+      displayInfoMessage('La cantidad tiene que ser mayor a 0');
+      return;
     }
     const item: ProductType = {
       id,
@@ -46,24 +48,24 @@ const Product: FC<Props> = ({
       price,
       quantity: count,
       imgUri,
-      strapiId
-    }
-    addToCart(item)
-    displaySuccessMessage('Producto agregado!')
-  }
+      strapiId,
+    };
+    addToCart(item);
+    displaySuccessMessage('Producto agregado!');
+  };
 
-  const iconStyle = 'relative h-11 w-11'
+  const iconStyle = 'relative h-11 w-11';
 
   return (
     <>
-      <ReactTooltip />
+      {isMounted ? <ReactTooltip /> : null}
 
-      <div className="flex flex-col items-center justify-end w-full max-w-sm mx-2 mt-32 mb-4 text-white bg-black rounded-xl lg:mx-8 lg:max-w-360">
+      <div className="flex flex-col items-center justify-end w-full max-w-sm mt-32 mb-4 text-white bg-black xs:mx-2 2xs:rounded-xl lg:mx-8 lg:max-w-360">
         <div className="relative flex flex-col justify-end h-full px-8 pb-4">
           <div className="flex items-center justify-center w-full h-32 mb-8 bg-black">
             {imgUri && <RoundImage imgUri={imgUri} />}
           </div>
-          <div className="text-base font-semibold md:text-xl">{title.toUpperCase()}</div>
+          <div className="text-lg font-semibold md:text-2xl font-dinMedium">{title.toUpperCase()}</div>
           <div className="flex my-3 text-sm font-semibold md:text-base">
             {suitableForInfo.vegan && (
               <div className={`${iconStyle} mr-1`} data-tip="Vegano">
@@ -86,16 +88,16 @@ const Product: FC<Props> = ({
               </div>
             )}
           </div>
-          <div className="text-sm cursor-pointer md:text-lg" onClick={onClick}>
+          <div className="cursor-pointer text-md md:text-xl" onClick={onClick}>
             {description?.short}
           </div>
           {/* text-[#a855f7] */}
-          <div className="font-semibold text-orange-400 cursor-pointer" onClick={onClick}>
+          <div className="font-semibold text-orange-400 cursor-pointer text-md md:text-xl" onClick={onClick}>
             ver +
           </div>
-          <div className="flex flex-col my-4 text-sm md:text-base">
+          <div className="flex flex-col my-4 text-md md:text-xl">
             <div className="mb-4">Info Nutricional:</div>
-            <div className="flex items-center justify-around text-lg">
+            <div className="flex items-center justify-between text-lg">
               <div className="flex flex-col items-center justify-center">
                 <div className="relative w-12 h-12" data-tip="Calorias">
                   <Image src="/icons/kcal-white.svg" layout="fill" />
@@ -133,7 +135,7 @@ const Product: FC<Props> = ({
         </div>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default Product
+export default Product;

@@ -21,7 +21,7 @@ const MobileTopBar = () => {
         </div>
 
         <div className="absolute flex items-center justify-center w-full -top-1">
-          <Logo color="blur" />
+          <Logo logo="blur.png" scrollOnClick />
         </div>
         <div className="flex items-center justify-center mr-2">
           <CartButton />

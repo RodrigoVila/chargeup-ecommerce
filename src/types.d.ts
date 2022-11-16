@@ -63,7 +63,7 @@ interface AuthActionType extends AuthStateType {
 //Cart
 type CartStateType = {
   items: ProductType[];
-};
+}
 
 interface CartActionType {
   type: string;
@@ -203,7 +203,7 @@ type StateType = {
   checkout: CheckoutStateType;
   modal: ModalStateType;
   orders: OrderStateType;
-  products: ProductStateType;
+  products: ProductType[];
   toastMessages: ToastStateType;
 };
 

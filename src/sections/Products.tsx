@@ -6,6 +6,7 @@ import useAppSelector from '@hooks/useAppSelector';
 
 import Product from '@main/Product';
 import ProductSearchBar from '@main/ProductSearchBar';
+import Section from '@main/Section';
 
 const Products: FC = () => {
   const [searchValue, setSearchValue] = useState('');
@@ -31,7 +32,6 @@ const Products: FC = () => {
     };
 
     filterByProductName();
-  
   }, [searchValue]);
 
   useEffect(() => {
@@ -52,11 +52,9 @@ const Products: FC = () => {
   }, [filters]);
 
   return (
-    <div
-      id="products"
-      className="h-full min-h-screen w-full bg-[url('/purpleTexture.jpeg')] bg-fill bg-center bg-repeat"
-    >
-      <div className="z-50 flex flex-wrap items-center justify-center h-full pt-8 pb-2">
+    <Section id="products" bgImage="purpleTexture.jpeg">
+      <div className="flex flex-wrap items-center justify-center h-full pb-2">
+        <ProductSearchBar setSearchValue={setSearchValue} />
         {/* Filtros por tipo */}
         {/* {isFilterModalOpen ? (
           <BsFilterCircleFill
@@ -75,12 +73,10 @@ const Products: FC = () => {
             />
           </a>
         )} */}
-
-        <ProductSearchBar setSearchValue={setSearchValue} />
       </div>
 
       {products.length > 0 && (
-        <div className="relative flex flex-wrap justify-center w-full mx-auto">
+        <div className="relative flex flex-wrap justify-center w-full mx-auto text-left">
           {filteredProducts.length > 0
             ? filteredProducts?.map((p) => (
                 <Product
@@ -116,7 +112,7 @@ const Products: FC = () => {
             : ''}
         </div>
       )}
-    </div>
+    </Section>
   );
 };
 
