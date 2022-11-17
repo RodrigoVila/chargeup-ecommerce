@@ -1,6 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-const isDevEnv = process.env.NODE_ENV === 'development';
-const secretKey = isDevEnv ? process.env.STRIPE_SECRET_DEV_KEY : process.env.STRIPE_SECRET_KEY;
+const secretKey = process.env.STRIPE_SECRET_KEY;
 const stripe = require('stripe')(secretKey);
 
 const calculateOrderAmount = (items: CheckoutItem[]) => {
@@ -34,7 +33,7 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
         line_items: lineItems,
         mode: 'payment',
         success_url: `${req.headers.origin}/?success=true`,
-        cancel_url: `${req.headers.origin}/?canceled=true`,
+        cancel_url: `${req.headers.origin}`,
       });
       return res.status(200).json({
         success: true,

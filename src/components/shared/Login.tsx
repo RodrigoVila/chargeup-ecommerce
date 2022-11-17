@@ -108,25 +108,27 @@ const Login = () => {
   return (
     <>
       <Toaster />
-      <div className="relative flex flex-col items-center justify-center w-full p-6 font-semibold text-black bg-white rounded-md">
-        <CloseModalButton color="black" isAbsolute position="right" onClose={() => closeLoginModal()} />
-        {isRegisterForm ? (
-          <RegisterForm onInputChange={onInputChange} />
-        ) : (
-          <LoginForm onInputChange={onInputChange} />
-        )}
+      <div className="relative flex flex-col items-center justify-center w-full p-6 pb-8 font-semibold text-black bg-white rounded-md">
+        <div className="relative flex items-center justify-end w-full">
+          <CloseModalButton color="black" onClose={() => closeLoginModal()} />
+        </div>
+          {isRegisterForm ? (
+            <RegisterForm onInputChange={onInputChange} />
+          ) : (
+            <LoginForm onInputChange={onInputChange} />
+          )}
 
-        <Button
-          title={isRegisterForm ? lang.es.USER_REGISTER : lang.es.LOGIN}
-          color={colors.purple}
-          hoverColor={colors.fuchsia}
-          onClick={isRegisterForm ? handleRegister : handleLogin}
-          disabled={isAuthLoading}
-        />
-        <Link
-          text={isRegisterForm ? lang.es.GO_TO_LOGIN : lang.es.USER_REGISTER}
-          onClick={toggleRegister}
-        />
+          <Button
+            title={isRegisterForm ? lang.es.USER_REGISTER : lang.es.LOGIN}
+            color={colors.purple}
+            hoverColor={colors.fuchsia}
+            onClick={isRegisterForm ? handleRegister : handleLogin}
+            disabled={isAuthLoading}
+          />
+          <Link
+            text={isRegisterForm ? lang.es.GO_TO_LOGIN : lang.es.USER_REGISTER}
+            onClick={toggleRegister}
+          />
       </div>
     </>
   );

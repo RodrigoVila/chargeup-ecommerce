@@ -13,10 +13,9 @@ const useAppSelector = () => {
   );
 
   //Cart
-  const checkoutSession = useSelector((state) => state.checkout.session, shallowEqual);
-
-  //Cart
   const cartItems: ProductType[] = useSelector((state) => state.cart.items, shallowEqual);
+  //Checkout
+  const checkoutSession = useSelector((state) => state.checkout.session, shallowEqual);
   //Filters TODO: Reduce one filter lvl
   const filters = useSelector((state) => state.filters.filters, shallowEqual);
 
