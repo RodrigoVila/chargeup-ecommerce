@@ -1,6 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-const secretKey = process.env.STRIPE_SECRET_KEY;
-const stripe = require('stripe')(secretKey);
+import { stripeSecretKey } from '@constants';
+
+const stripe = require('stripe')(stripeSecretKey);
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   const { method, body, headers } = req;
@@ -20,7 +21,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         console.log(`Unhandled event type ${type}`);
       }
     } catch (e) {
-        console.error("webhook error", e.message)
+      console.error('webhook error', e.message);
       return res.status(400).send({ message: `Webhook error: ${e.message}` });
     }
   };

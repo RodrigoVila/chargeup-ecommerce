@@ -6,12 +6,11 @@ import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 
 import store from '@redux/store';
+import { stripePublicKey } from '@constants';
 
 // Make sure to call `loadStripe` outside of a component’s render to avoid
 // recreating the `Stripe` object on every render.
-const publicKey = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY;
-
-const stripePromise = loadStripe(publicKey);
+const stripePromise = loadStripe(stripePublicKey);
 
 function MyApp({ Component, pageProps: { session, ...pageProps } }) {
   const options = {

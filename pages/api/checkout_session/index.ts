@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-const secretKey = process.env.STRIPE_SECRET_KEY;
-const stripe = require('stripe')(secretKey);
+import { stripeSecretKey } from '@constants';
+const stripe = require('stripe')(stripeSecretKey);
 
 const calculateOrderAmount = (items: CheckoutItem[]) => {
   // Replace this constant with a calculation of the order's amount
