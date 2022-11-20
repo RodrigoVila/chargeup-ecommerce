@@ -22,6 +22,7 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
       // Create Checkout Sessions from body params.
       const session = await stripe.checkout.sessions.create({
         line_items: JSON.parse(body),
+        // line_items: [{price: "price_1KsAUxBIc3UrM0KoIp5x43Qp", quantity: 2}],
         mode: 'payment',
         success_url: `${req.headers.origin}/?success=true`,
         cancel_url: `${req.headers.origin}/?success=false`,
