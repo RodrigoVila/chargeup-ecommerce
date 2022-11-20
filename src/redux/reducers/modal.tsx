@@ -33,7 +33,9 @@ const initialState: ModalStateType = {
 };
 
 const modalReducer = (state = initialState, action: ModalActionType): ModalStateType => {
-  switch (action.type) {
+  const { type, selectedProduct } = action;
+  
+  switch (type) {
     case OPEN_CART_MODAL:
       return {
         ...state,
@@ -108,7 +110,7 @@ const modalReducer = (state = initialState, action: ModalActionType): ModalState
       return {
         ...state,
         productModal: true,
-        selectedProduct: action.selectedProduct,
+        selectedProduct,
       };
     case CLOSE_PRODUCT_DETAILS_MODAL:
       return {

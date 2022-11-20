@@ -1,7 +1,8 @@
-import { colors } from '@constants';
-import Image from 'next/image';
 import { FC, ReactNode } from 'react';
+import Image from 'next/image';
+
 import BackgroundOverlay from './BackgroundOverlay';
+import { colors } from '@constants';
 
 interface Props {
   id: string;
@@ -10,6 +11,8 @@ interface Props {
   bgColor?: string;
   textColor?: string;
   overlay?: boolean;
+  disabled?: boolean;
+  noCenter?: boolean;
   children: ReactNode;
 }
 const Section: FC<Props> = ({
@@ -19,15 +22,18 @@ const Section: FC<Props> = ({
   bgColor,
   textColor,
   overlay,
+  disabled = false,
+  noCenter = false,
   children,
 }) => {
   const textStyle = textColor ? `text-[${textColor}]` : 'text-white';
   const bgColorStyle = bgColor ? `bg-[${bgColor}]` : 'bg-white';
+  const centerStyle = noCenter ? "" : 'justify-center';
 
-  return (
+  return disabled ? null : (
     <div
       id={id}
-      className={`${bgColorStyle} ${textStyle} relative mx-auto flex min-h-screen w-full flex-col items-center justify-center pb-16 pt-32 px-2 text-center`}
+      className={`${bgColorStyle} ${textStyle} ${centerStyle} relative mx-auto flex min-h-screen w-full flex-col items-center px-2 pb-16 pt-32 text-center`}
     >
       {bgImage && (
         <Image

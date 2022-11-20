@@ -29,7 +29,7 @@ const Footer = () => {
           <a href="/terms">Terms & Conditions</a> | <a href="/cookies">Cookies policy</a> |{' '}
           <a href="mailto:chargeupbcn@gmail.com">Feedback</a>
         </div>
-        <div className="flex flex-wrap items-center justify-center pb-4 text-sm text-center text-gray-300 xl:text-xl xs:text-md md:text-lg xs:text-center">
+        <div className="flex flex-wrap items-center justify-center pb-2 text-sm text-center text-gray-300 xl:text-xl xs:text-md md:text-lg xs:text-center">
           Made with <AiFillHeart className="mx-1" color="red" size={18} /> by{' '}
           <a
             target="_blank"

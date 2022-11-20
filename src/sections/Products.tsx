@@ -52,7 +52,7 @@ const Products: FC = () => {
   }, [filters]);
 
   return (
-    <Section id="products" bgImage="purpleTexture.jpeg">
+    <Section id="products" bgImage="purpleTexture.jpeg" disabled={!products} noCenter>
       <div className="flex flex-wrap items-center justify-center h-full pb-2">
         <ProductSearchBar setSearchValue={setSearchValue} />
         {/* Filtros por tipo */}

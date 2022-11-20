@@ -17,10 +17,11 @@ const CartModal = () => {
   const { isCartModalOpen, cartItems, checkoutSession } = useAppSelector();
 
   const { closeCartModal, createCheckoutSession } = useAppActions();
+
   const { isMounted } = useMounted();
 
   const router = useRouter();
-console.log("cartItemscartItems",cartItems)
+  
   const totalSum = useMemo(
     () => cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0),
     [cartItems]
@@ -46,6 +47,7 @@ console.log("cartItemscartItems",cartItems)
 
   return (
     <Modal isOpen={isCartModalOpen} transparent fullScreen>
+      {/* This avoid Hydration error so the Tooltip will be used only if the component is already mounted */}
       {isMounted ? <ReactTooltip /> : null}
       <div className="relative flex flex-col items-center w-full h-full max-w-xl p-2 my-2 bg-white ">
         <CloseModalButton color="black" isAbsolute position="right" onClose={closeCartModal} />

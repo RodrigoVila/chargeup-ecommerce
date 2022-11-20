@@ -10,7 +10,7 @@ type Props = {
 const Logo: FC<Props> = ({ logo, size = 'md', scrollOnClick = false }) => {
   const sizeStyle =
     size === 'sm'
-      ? 'h-20 w-24'
+      ? 'h-22 w-22'
       : size === 'md'
       ? ' h-24 w-32'
       : size === 'lg'

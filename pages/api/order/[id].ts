@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import Product from "@models/product";
+import Order from "@models/order";
 import dbConnect from "@utils/dbConnect";
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
@@ -11,11 +11,11 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
   await dbConnect();
 
-  const getProduct = async () => {
+  const getOrder = async () => {
     try {
-      const product = await Product.findById(id);
+      const order = await Order.findById(id);
 
-      return res.status(200).json(product);
+      return res.status(200).json(order);
     } catch (e) {
       return res.status(404).json({
         success: false,
@@ -23,25 +23,25 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     }
   };
 
-  const updateProduct = async () => {
+  const updateOrder = async () => {
     try {
-      const product = await Product.findByIdAndUpdate(id, body, {
+      const order = await Order.findByIdAndUpdate(id, body, {
         new: true,
         runValidators: true,
       });
 
-      return res.status(200).json(product);
+      return res.status(200).json(order);
     } catch (e) {
       return res.status(400).json({
         success: false,
       });
     }
   };
-  const deleteProduct = async () => {
+  const deleteOrder = async () => {
     try {
-      await Product.deleteOne({ _id: id });
+      await Order.deleteOne({ _id: id });
 
-      return res.status(200).json({message: `Product ${id} deleted successfully`});
+      return res.status(200).json({message: `Order ${id} deleted successfully`});
     } catch (e) {
       return res.status(400).json({
         success: false,
@@ -51,11 +51,11 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
   switch (method) {
     case "GET":
-      return getProduct();
+      return getOrder();
     case "PUT":
-      return updateProduct();
+      return updateOrder();
     case "DELETE":
-      return deleteProduct();
+      return deleteOrder();
     default:
       return res.status(405).end(`Method ${method} Not Allowed`);
   }

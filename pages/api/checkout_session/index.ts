@@ -16,24 +16,15 @@ const calculateOrderAmount = (items: CheckoutItem[]) => {
 
 export default async function (req: NextApiRequest, res: NextApiResponse) {
   const { method, body } = req;
-  const lineItems = JSON.parse(body).items;
-
-  // line_items: [
-  //   {
-  //     Provide the exact Price ID (for example, pr_1234) of the product you want to sell
-  //     price: 'price_1M33HOBIc3UrM0KomsKJXf9A',
-  //     quantity: 1,
-  //   },
-  // ],
 
   const checkoutSession = async () => {
     try {
       // Create Checkout Sessions from body params.
       const session = await stripe.checkout.sessions.create({
-        line_items: lineItems,
+        line_items: JSON.parse(body),
         mode: 'payment',
         success_url: `${req.headers.origin}/?success=true`,
-        cancel_url: `${req.headers.origin}`,
+        cancel_url: `${req.headers.origin}/?success=false`,
       });
       return res.status(200).json({
         success: true,

@@ -38,6 +38,8 @@ module.exports = {
         'screen*2': '200vh',
         'screen*1.5': '150vh',
         'screen*3': '300vh',
+        21: "5.25rem",
+        22: "5.5rem"
       },
       inset: {
         outofScreen: '-700px',
@@ -129,7 +131,8 @@ module.exports = {
       },
       width: {
         adminWidth: 'calc(100vw -8rem)',
-        250: '250px',
+        21: "5.25rem",
+        22: "5.5rem"
       },
       zIndex: {
         full: '9999px',

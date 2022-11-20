@@ -14,8 +14,7 @@ import { clearLocalStorage, setValueToLocalStorage } from '@utils/localStorage';
 import { LOCAL_STORAGE_DATA_KEY, AUTH_INITIAL_STATE } from '@constants';
 
 const authReducer = (state: AuthStateType = AUTH_INITIAL_STATE, action: AuthActionType) => {
-  const { type, userLogin, emailValidationError, validationEmailResponse, isEmailValidated } =
-    action;
+  const { type, userLogin, emailValidationError, validationEmailResponse } = action;
 
   switch (type) {
     case AUTH_LOADING:

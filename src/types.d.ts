@@ -63,7 +63,7 @@ interface AuthActionType extends AuthStateType {
 //Cart
 type CartStateType = {
   items: ProductType[];
-}
+};
 
 interface CartActionType {
   type: string;
@@ -112,21 +112,29 @@ interface ModalActionType extends ModalStateType {
 }
 
 //Order
-type OrderItemType = {
-  id: number;
-  title: string;
+
+interface IOrderItem {
+  id: string;
+  name: string;
   price: number;
   quantity: number;
+}
+type OrderItemType = {
+  id: string;
+  buyerId: string;
+  items: IOrderItem[];
+  totalAmount: number;
 };
 
 type OrderStateType = {
-  orders: OrderItemType[];
+  order: OrderItemType;
+  orderResponse: OrderItemType;
+  error: string | null
 };
 
-type OrderActionType = {
+interface OrderActionType extends OrderStateType {
   type: string;
-  order: Orderype;
-};
+}
 
 //Products
 interface INutritionalInfo {
@@ -161,6 +169,8 @@ type ProductType = {
 
 type ProductsStateType = {
   products: ProductType[];
+  areProductsLoading: boolean;
+  error:null
 };
 
 interface ProductsActionType extends ProductsStateType {

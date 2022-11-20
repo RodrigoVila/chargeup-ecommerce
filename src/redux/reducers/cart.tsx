@@ -13,64 +13,61 @@ const cartReducer = (
   state: CartStateType = initialState,
   action: CartActionType
 ): CartStateType => {
-  switch (action.type) {
+  const { id: actionId, type, product, id, newAmount } = action;
+  const { items } = state;
+
+  switch (type) {
     case LOAD_CART:
       return {
         ...state,
       };
     case ADD_TO_CART:
-      const newItem = {
-        id: action.product.id,
-        title: action.product.title,
-        description: action.product.description,
-        quantity: action.product.quantity,
-        price: action.product.price,
-        imgUri: action.product.imgUri,
-        nutritionalInfo: action.product.nutritionalInfo,
-        suitableForInfo: action.product.suitableForInfo,
-        strapiId: action.product.strapiId,
-      };
-
       // Creates a copy of item found in Array (In case of duplicates)
-      let item = state.items.find((item) => item.id === newItem.id);
+      let item = items.find((item) => item.id === product.id);
+      
       if (item) {
-        const updatedItems = state.items.map((item) => {
-          if (item.id === newItem.id) {
-            return { ...item, quantity: (item.quantity += newItem.quantity) };
+        const updatedItems = items.map((item) => {
+          if (item.id === product.id) {
+            return { ...item, quantity: (item.quantity += product.quantity) };
           } else {
-            return item
+            return item;
           }
         });
-        // setValueToLocalStorage(LOCAL_STORAGE_CART_KEY, updatedItems);
+        setValueToLocalStorage(LOCAL_STORAGE_CART_KEY, updatedItems);
+
         return {
           ...state,
           items: updatedItems,
         };
       } else {
-        const updatedItems = [...state.items, newItem];
-        // setValueToLocalStorage(LOCAL_STORAGE_CART_KEY, updatedItems);
+        const updatedItems = [...items, product];
+        setValueToLocalStorage(LOCAL_STORAGE_CART_KEY, updatedItems);
+
         return {
           ...state,
           items: updatedItems,
         };
       }
     case REMOVE_FROM_CART:
-      const updatedItems: ProductType[] = state.items.filter((item: any) => item.id !== action.id);
-      // setValueToLocalStorage(LOCAL_STORAGE_CART_KEY, updatedItems);
+      const updatedItems: ProductType[] = items.filter((item: any) => item.id !== actionId);
+      setValueToLocalStorage(LOCAL_STORAGE_CART_KEY, updatedItems);
+
       return {
         ...state,
         items: updatedItems,
       };
     case CHANGE_PRODUCT_QUANTITY:
-      const newItems = state.items.map((item) => {
-        if (item.id === action.product.id) {
+      const newItems = items.map((item) => {
+        if (item.id === id) {
           return {
             ...item,
-            quantity: action.newAmount,
+            quantity: newAmount,
           };
         }
         return item;
       });
+      setValueToLocalStorage(LOCAL_STORAGE_CART_KEY, newItems);
+
       return {
         ...state,
         items: newItems,

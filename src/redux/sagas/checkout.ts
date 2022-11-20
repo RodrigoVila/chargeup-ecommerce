@@ -12,7 +12,7 @@ function* checkoutSession(payload: any) {
   try {
     const response = yield call(fetch, API_URL, {
       method: 'POST',
-      body: JSON.stringify({items})
+      body: JSON.stringify(items)
     });
     const { url } = yield response.json();
     yield put(createNewCheckoutSessionSuccess(url));

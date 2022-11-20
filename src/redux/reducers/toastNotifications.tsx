@@ -11,9 +11,7 @@ const initialState: ToastStateType = {
 };
 
 const toastReducer = (
-  //Tipo OK, necesitamos el state del cart
   state: ToastStateType = initialState,
-  //Action OK. action.article.algo
   action: ToastActionType
 ): ToastStateType => {
   switch (action.type) {
@@ -28,7 +26,6 @@ const toastReducer = (
           boxShadow: '0 3px 10px rgb(0 0 0 / 0.2)',
         },
         className: '',
-        // Custom Icon
         icon: <AiOutlineCheckCircle size={35} color={colors.success} />,
         // Change colors of success/error/loading icon
         iconTheme: {

@@ -1,17 +1,12 @@
-import { getProductList } from 'services/products'
-import {
-  ADD_PRODUCT,
-  DELETE_PRODUCT,
-  FETCH_PRODUCTS_SUCCESS,
-} from '../actions/types'
+import { FETCH_PRODUCTS, FETCH_PRODUCTS_ERROR, FETCH_PRODUCTS_SUCCESS } from '../actions/types';
 
-const initialState: ProductsStateType = { products: [] }
+const initialState: ProductsStateType = { products: [], areProductsLoading: false, error: null };
 
-const productsReducer = (
-  state = initialState,
-  action: ProductsActionType
-): ProductsStateType => {
-  switch (action.type) {
+const productsReducer = (state = initialState, action: ProductsActionType): ProductsStateType => {
+  const { type, products, error } = action;
+
+  switch (type) {
+    // Future implementation
     // case ADD_PRODUCT:
     //   const newProduct: ProductType = {
     //     id: action.product.id,
@@ -36,13 +31,25 @@ const productsReducer = (
     //     products: updatedProducts,
     //   }
 
+    case FETCH_PRODUCTS:
+      return {
+        ...state,
+        areProductsLoading: true,
+      };
+
     case FETCH_PRODUCTS_SUCCESS:
       return {
         ...state,
-        products: action.products,
-      }
+        products,
+        areProductsLoading: false,
+      };
+    case FETCH_PRODUCTS_ERROR:
+      return {
+        ...state,
+        error,
+      };
   }
-  return state
-}
+  return state;
+};
 
-export default productsReducer
+export default productsReducer;
