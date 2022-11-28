@@ -19,8 +19,15 @@ import {
   CLOSE_USER_MODAL,
   OPEN_PRODUCT_EXTRAS_MODAL,
   CLOSE_PRODUCT_EXTRAS_MODAL,
+  OPEN_ADMIN_PRODUCT_MODAL,
+  CLOSE_ADMIN_PRODUCT_MODAL,
 } from './types';
 
+// ADMIN
+export const adminProductModalOpen = (selectedProduct:ProductType) => ({ type: OPEN_ADMIN_PRODUCT_MODAL, selectedProduct });
+export const adminProductModalClose = () => ({ type: CLOSE_ADMIN_PRODUCT_MODAL });
+
+// USER
 export const cartModalOpen = () => ({ type: OPEN_CART_MODAL });
 export const cartModalClose = () => ({ type: CLOSE_CART_MODAL });
 export const checkoutModalOpen = () => ({ type: OPEN_CHECKOUT_MODAL });

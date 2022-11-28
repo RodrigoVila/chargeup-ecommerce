@@ -1,5 +1,4 @@
 import {
-  AUTH_LOADING,
   CHECK_USER_TOKEN,
   LOGIN_SUCCESS,
   USER_LOGIN_ERROR,
@@ -15,11 +14,6 @@ import {
   VALIDATE_EMAIL_IN_DB_SUCCESS,
   VALIDATE_EMAIL_IN_DB_ERROR
 } from './types';
-
-export const setAuthLoading = (isAuthLoading: boolean) => ({
-  type: AUTH_LOADING,
-  isAuthLoading,
-});
 
 export const userTokenCheck = (user: UserLoginType) => ({
   type: CHECK_USER_TOKEN,

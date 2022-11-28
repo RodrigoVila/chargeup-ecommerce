@@ -8,7 +8,7 @@ import useAppActions from '@hooks/useAppActions';
 import CloseModalButton from '@main/Buttons/CloseModalButton';
 
 const UserDataForm: FC = () => {
-  const { isUserDataLoading, user } = useAppSelector();
+  const { isLoading, user } = useAppSelector();
   const [editingField, setEditingField] = useState('');
   const [userDetails, setUserDetails] = useState(user);
   const {
@@ -156,7 +156,7 @@ const UserDataForm: FC = () => {
         title={lang.es.CHANGE_USER_DATA}
         color={colors.purple}
         onClick={handleSubmit}
-        disabled={isUserDataLoading}
+        disabled={isLoading}
       />
     </div>
   );

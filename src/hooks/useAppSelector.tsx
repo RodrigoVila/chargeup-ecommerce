@@ -7,10 +7,12 @@ export const useSelector = createSelectorHook<RootState>();
 
 const useAppSelector = () => {
   //Auth
-  const { isLoggedIn, isAuthLoading, userLogin, isEmailValidated } = useSelector(
-    (state) => state.auth,
-    shallowEqual
-  );
+  const {
+    isLoggedIn,
+    isLoading: isAuthLoading,
+    userLogin,
+    isEmailValidated,
+  } = useSelector((state) => state.auth, shallowEqual);
 
   //Cart
   const cartItems: ProductType[] = useSelector((state) => state.cart.items, shallowEqual);
@@ -19,31 +21,34 @@ const useAppSelector = () => {
   //Filters TODO: Reduce one filter lvl
   const filters = useSelector((state) => state.filters.filters, shallowEqual);
 
-  //Modals
+  //Admin MOdals
+  const isAdminProductModalOpen: boolean = useSelector((state) => state.modal.adminProduct, shallowEqual);
+  //User Modals
   const isCartModalOpen: boolean = useSelector((state) => state.modal.cart, shallowEqual);
   const isCheckoutModalOpen = useSelector((state) => state.modal.checkout, shallowEqual);
   const isDrawerModalOpen: boolean = useSelector((state) => state.modal.drawer, shallowEqual);
   const isFilterModalOpen: boolean = useSelector((state) => state.modal.filters, shallowEqual);
-  const isLoginModalOpen: boolean = useSelector((state) => state.modal.login, shallowEqual
-  );
-  const isExtraModalOpen: boolean = useSelector((state) => state.modal.productExtras, shallowEqual
-  );
+  const isLoginModalOpen: boolean = useSelector((state) => state.modal.login, shallowEqual);
+  const isExtraModalOpen: boolean = useSelector((state) => state.modal.productExtras, shallowEqual);
   const isUserModalOpen: boolean = useSelector((state) => state.modal.user, shallowEqual);
-  const isProductModalOpen: boolean = useSelector(
-    (state) => state.modal.product,
-    shallowEqual
-  );
+  const isProductModalOpen: boolean = useSelector((state) => state.modal.product, shallowEqual);
   const modalProduct: ProductType = useSelector(
     (state) => state.modal.selectedProduct,
     shallowEqual
   );
 
   //Products
-  const products = useSelector((state) => state.products.products, shallowEqual);
+  const { products, isLoading: areProductsLoading } = useSelector(
+    (state) => state.products,
+    shallowEqual
+  );
 
   //Users
-  const user = useSelector((state) => state.users.user, shallowEqual);
-  const isUserDataLoading = useSelector((state) => state.users.isUserDataLoading, shallowEqual);
+  const {
+    user,
+    users,
+    isLoading: areUsersLoading,
+  } = useSelector((state) => state.users, shallowEqual);
 
   return {
     isLoggedIn,
@@ -53,6 +58,7 @@ const useAppSelector = () => {
     checkoutSession,
     cartItems,
     filters,
+    isAdminProductModalOpen,
     isCartModalOpen,
     isCheckoutModalOpen,
     isDrawerModalOpen,
@@ -63,8 +69,10 @@ const useAppSelector = () => {
     isProductModalOpen,
     modalProduct,
     products,
+    areProductsLoading,
     user,
-    isUserDataLoading,
+    users,
+    areUsersLoading,
   };
 };
 

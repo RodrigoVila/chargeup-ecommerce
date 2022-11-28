@@ -1,6 +1,6 @@
 import { FETCH_PRODUCTS, FETCH_PRODUCTS_ERROR, FETCH_PRODUCTS_SUCCESS } from '../actions/types';
 
-const initialState: ProductsStateType = { products: [], areProductsLoading: false, error: null };
+const initialState: ProductsStateType = { products: [], isLoading: false, error: null };
 
 const productsReducer = (state = initialState, action: ProductsActionType): ProductsStateType => {
   const { type, products, error } = action;
@@ -34,19 +34,20 @@ const productsReducer = (state = initialState, action: ProductsActionType): Prod
     case FETCH_PRODUCTS:
       return {
         ...state,
-        areProductsLoading: true,
+        isLoading: true,
       };
 
     case FETCH_PRODUCTS_SUCCESS:
       return {
         ...state,
         products,
-        areProductsLoading: false,
+        isLoading: false,
       };
     case FETCH_PRODUCTS_ERROR:
       return {
         ...state,
         error,
+        isLoading:false
       };
   }
   return state;

@@ -11,7 +11,6 @@ import {
   registerNewUser,
   loginUser,
   logoutUser,
-  setAuthLoading,
   userTokenCheck,
   sendEmailValidationRequest,
   validateEmailInDB,
@@ -49,36 +48,26 @@ import {
   productExtrasModalClose,
   userModalOpen,
   userModalClose,
+  adminProductModalOpen,
+  adminProductModalClose,
 } from '@redux/actions/modal';
 
 import { setFilters } from '@redux/actions/filters';
 
-import {
-  setUserDataLoading,
-  fetchUserDetails,
-  changeUserDetails,
-  changeUserPassword,
-} from '@redux/actions/users';
+import { fetchUserDetails, changeUserDetails, changeUserPassword } from '@redux/actions/users';
 import { addNewOrder } from '@redux/actions/order';
 
 const useAppActions = () => {
   const dispatch = useDispatch<AppDispatch>();
 
   // Auth
-  const setLoadingAuth = (isAuthLoading: boolean) => dispatch(setAuthLoading(isAuthLoading));
-
   const checkUserToken = (user: UserLoginType) => dispatch(userTokenCheck(user));
 
-  const userLogin = (user: UserLoginType) => {
-    setLoadingAuth(true);
-    dispatch(loginUser(user));
-  };
+  const userLogin = (user: UserLoginType) => dispatch(loginUser(user));
+
   const userLogout = () => dispatch(logoutUser());
 
-  const registerUser = (user: UserRegisterType) => {
-    setLoadingAuth(true);
-    dispatch(registerNewUser(user));
-  };
+  const registerUser = (user: UserRegisterType) => dispatch(registerNewUser(user));
 
   const sendEmailValidation = (name: string, email: string, url: string) =>
     dispatch(sendEmailValidationRequest(name, email, url));
@@ -112,7 +101,11 @@ const useAppActions = () => {
 
   const displayInfoMessage = (msg: string) => dispatch(displayMessageInfo(msg));
 
-  // Modals
+  // Modals: ADMIN
+  const openAdminProductModal = (selectedProduct: ProductType) => dispatch(adminProductModalOpen(selectedProduct));
+  const closeAdminProductModal = () => dispatch(adminProductModalClose());
+  
+  // Modals: USERS
   const openCartModal = () => dispatch(cartModalOpen());
 
   const closeCartModal = () => dispatch(cartModalClose());
@@ -146,10 +139,9 @@ const useAppActions = () => {
 
   const closeProductModal = () => dispatch(productModalClose());
 
-  const openProductExtrasModal = (extraItems: any) =>
-  dispatch(productExtrasModalOpen(extraItems));
+  const openProductExtrasModal = (extraItems: any) => dispatch(productExtrasModalOpen(extraItems));
 
-const closeProductExtrasModal = () => dispatch(productExtrasModalClose());
+  const closeProductExtrasModal = () => dispatch(productExtrasModalClose());
 
   const openUserModal = () => dispatch(userModalOpen());
 
@@ -160,6 +152,7 @@ const closeProductExtrasModal = () => dispatch(productExtrasModalClose());
   const addOrder = (order: OrderItemType) => dispatch(addNewOrder(order));
 
   // Products
+
   const addProduct = (product: ProductType) => dispatch(addProductToStore(product));
 
   const removeProduct = (id: string) => dispatch(removeProductFromStore(id));
@@ -170,21 +163,11 @@ const closeProductExtrasModal = () => dispatch(productExtrasModalClose());
     dispatch(fetchProductsFromStoreSuccess(products));
 
   //Users
-  const setUserLoading = (isUserDataLoading: boolean) =>
-    dispatch(setUserDataLoading(isUserDataLoading));
+  const getUserDetails = () => dispatch(fetchUserDetails());
 
-  const getUserDetails = () => {
-    setUserLoading(true);
-    dispatch(fetchUserDetails());
-  };
-
-  const editUserDetails = (user: UserDetailsType) => {
-    setUserLoading(true);
-    dispatch(changeUserDetails(user));
-  };
+  const editUserDetails = (user: UserDetailsType) => dispatch(changeUserDetails(user));
 
   const editUserPassword = (oldPassword: string, password: string) => {
-    setUserLoading(true);
     dispatch(changeUserPassword(oldPassword, password));
   };
 
@@ -193,7 +176,6 @@ const closeProductExtrasModal = () => dispatch(productExtrasModalClose());
     removeProduct,
     fetchProducts,
     fetchProductsSuccess,
-    setLoadingAuth,
     checkUserToken,
     userLogin,
     userLogout,
@@ -209,6 +191,8 @@ const closeProductExtrasModal = () => dispatch(productExtrasModalClose());
     displayInfoMessage,
     createCheckoutSession,
     createCheckoutSessionSuccess,
+    openAdminProductModal,
+    closeAdminProductModal,
     openCartModal,
     closeCartModal,
     openCheckoutModal,
@@ -231,7 +215,6 @@ const closeProductExtrasModal = () => dispatch(productExtrasModalClose());
     openUserModal,
     closeUserModal,
     setProductFilters,
-    setUserLoading,
     getUserDetails,
     editUserDetails,
     editUserPassword,

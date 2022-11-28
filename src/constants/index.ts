@@ -18,7 +18,7 @@ export const colors = {
 // Initial state
 export const AUTH_INITIAL_STATE = {
   isLoggedIn: false,
-  isAuthLoading: false,
+  isLoading: false,
   userLogin: {
     email: '',
     name: '',
@@ -77,7 +77,7 @@ export const CART_INITIAL_STATE: ProductType = {
 };
 
 export const USERS_INITIAL_STATE: UsersStateType = {
-  isUserDataLoading: false,
+  isLoading: false,
   user: APP_USER_INITIAL_STATE,
   users: [],
 };

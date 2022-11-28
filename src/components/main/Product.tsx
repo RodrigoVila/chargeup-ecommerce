@@ -9,20 +9,24 @@ import { colors } from '@constants';
 import useAppActions from '@hooks/useAppActions';
 import useMounted from '@hooks/useMounted';
 
-type Props = ProductType & { onClick: () => void };
+type Props = {
+  product: ProductType;
+  onClick: () => void;
+};
 
-const Product: FC<Props> = ({
-  id,
-  title,
-  description,
-  nutritionalInfo,
-  suitableForInfo,
-  price,
-  imgUri,
-  strapiId,
-  onClick,
-}) => {
+const Product: FC<Props> = ({ product, onClick }) => {
   const [count, setCount] = useState(0);
+
+  const {
+    title,
+    description,
+    nutritionalInfo,
+    suitableForInfo,
+    price,
+    priceLabel,
+    priceExtras,
+    imgUri,
+  } = product;
 
   const { addToCart, displayInfoMessage, displaySuccessMessage } = useAppActions();
   const { isMounted } = useMounted();
@@ -39,18 +43,13 @@ const Product: FC<Props> = ({
       displayInfoMessage('La cantidad tiene que ser mayor a 0');
       return;
     }
-    const item: ProductType = {
-      id,
-      title,
-      description,
-      nutritionalInfo,
-      suitableForInfo,
-      price,
+
+    const cartProduct = {
+      ...product,
       quantity: count,
-      imgUri,
-      strapiId,
     };
-    addToCart(item);
+
+    addToCart(cartProduct);
     displaySuccessMessage('Producto agregado!');
   };
 
@@ -60,12 +59,14 @@ const Product: FC<Props> = ({
     <>
       {isMounted ? <ReactTooltip /> : null}
 
-      <div className="flex flex-col items-center justify-end w-full max-w-sm mt-32 mb-4 text-white bg-black xs:mx-2 2xs:rounded-xl lg:mx-8 lg:max-w-360">
+      <div className="flex flex-col items-center justify-end w-full max-w-sm mt-32 mb-4 text-white bg-black 2xs:rounded-xl xs:mx-2 lg:mx-8 lg:max-w-360">
         <div className="relative flex flex-col justify-end h-full px-8 pb-4">
           <div className="flex items-center justify-center w-full h-32 mb-8 bg-black">
             {imgUri && <RoundImage imgUri={imgUri} />}
           </div>
-          <div className="text-lg font-semibold md:text-2xl font-dinMedium">{title.toUpperCase()}</div>
+          <div className="text-lg font-semibold font-dinMedium md:text-2xl">
+            {title.toUpperCase()}
+          </div>
           <div className="flex my-3 text-sm font-semibold md:text-base">
             {suitableForInfo.vegan && (
               <div className={`${iconStyle} mr-1`} data-tip="Vegano">
@@ -92,7 +93,10 @@ const Product: FC<Props> = ({
             {description?.short}
           </div>
           {/* text-[#a855f7] */}
-          <div className="font-semibold text-orange-400 cursor-pointer text-md md:text-xl" onClick={onClick}>
+          <div
+            className="font-semibold text-orange-400 cursor-pointer text-md md:text-xl"
+            onClick={onClick}
+          >
             ver +
           </div>
           <div className="flex flex-col my-4 text-md md:text-xl">

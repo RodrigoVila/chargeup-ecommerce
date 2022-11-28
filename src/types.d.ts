@@ -49,7 +49,7 @@ type PasswordType = {
 
 type AuthStateType = {
   isLoggedIn: boolean;
-  isAuthLoading: boolean;
+  isLoading: boolean;
   userLogin: StorageUserType | null;
   emailValidationError: Error | null;
   validationEmailResponse: any;
@@ -94,6 +94,7 @@ interface FiltersActionType {
 
 // Modals
 type ModalStateType = {
+  adminProduct: boolean;
   drawer: boolean;
   cart: boolean;
   checkout: boolean;
@@ -131,7 +132,7 @@ type OrderItemType = {
 type OrderStateType = {
   order: OrderItemType;
   orderResponse: OrderItemType;
-  error: string | null
+  error: string | null;
 };
 
 interface OrderActionType extends OrderStateType {
@@ -154,14 +155,23 @@ interface ISuitableForInfo {
   keto: boolean;
 }
 
+interface IProductDescription {
+  long: string[];
+  short: string;
+}
+
+interface IProductExtras {
+  label: string;
+  price: number;
+}
+
 type ProductType = {
   id: string;
   title: string;
-  description: {
-    short: string;
-    long: string[];
-  };
+  description: IProductDescription;
   price: number;
+  priceLabel: string;
+  priceExtras: IProductExtras[] | null;
   quantity: number;
   imgUri: string;
   nutritionalInfo: INutritionalInfo;
@@ -171,8 +181,8 @@ type ProductType = {
 
 type ProductsStateType = {
   products: ProductType[];
-  areProductsLoading: boolean;
-  error:null
+  isLoading: boolean;
+  error: null;
 };
 
 interface ProductsActionType extends ProductsStateType {
@@ -191,7 +201,7 @@ interface ToastActionType extends ToastStateType {
 
 //Users
 type UsersStateType = {
-  isUserDataLoading: boolean;
+  isLoading: boolean;
   user: UserDetailsType;
   users: UserDetailsType[];
 };

@@ -1,5 +1,8 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
-import { fetchProductsFromStoreError, fetchProductsFromStoreSuccess } from '@redux/actions/products';
+import {
+  fetchProductsFromStoreError,
+  fetchProductsFromStoreSuccess,
+} from '@redux/actions/products';
 import { FETCH_PRODUCTS } from '@redux/actions/types';
 
 const API_URL = '/api/products';

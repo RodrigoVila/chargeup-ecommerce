@@ -1,4 +1,11 @@
-import { ADD_PRODUCT, DELETE_PRODUCT, FETCH_PRODUCTS_SUCCESS, FETCH_PRODUCTS, FETCH_PRODUCTS_ERROR } from './types';
+import {
+  SET_PRODUCTS_LOADING,
+  ADD_PRODUCT,
+  DELETE_PRODUCT,
+  FETCH_PRODUCTS_SUCCESS,
+  FETCH_PRODUCTS,
+  FETCH_PRODUCTS_ERROR,
+} from './types';
 
 export const addProductToStore = (product: ProductType) => ({
   type: ADD_PRODUCT,

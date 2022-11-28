@@ -1,5 +1,4 @@
 import {
-  AUTH_LOADING,
   LOGIN_SUCCESS,
   USER_LOGIN_ERROR,
   LOGOUT,
@@ -17,23 +16,17 @@ const authReducer = (state: AuthStateType = AUTH_INITIAL_STATE, action: AuthActi
   const { type, userLogin, emailValidationError, validationEmailResponse } = action;
 
   switch (type) {
-    case AUTH_LOADING:
-      return {
-        ...state,
-        isAuthLoading: action.isAuthLoading,
-      };
-
     case REGISTER_USER_SUCCESS:
       return {
         ...state,
-        isAuthLoading: false,
+        isLoading: false,
       };
     case LOGIN_SUCCESS:
       userLogin && setValueToLocalStorage(LOCAL_STORAGE_DATA_KEY, userLogin);
       return {
         ...state,
+        isLoading: false,
         isLoggedIn: true,
-        isAuthLoading: false,
         userLogin,
       };
     case USER_LOGIN_ERROR:
@@ -43,7 +36,7 @@ const authReducer = (state: AuthStateType = AUTH_INITIAL_STATE, action: AuthActi
       return {
         ...state,
         isLoggedIn: false,
-        isAuthLoading: false,
+        isLoading: false,
         userLogin: null,
       };
     case REQUEST_EMAIL_VALIDATION_ERROR:

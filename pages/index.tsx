@@ -11,6 +11,7 @@ import Keto from '@sections/Keto';
 import Cakes from '@sections/Cakes';
 import WhyUs from '@sections/WhyUs';
 import Footer from '@sections/Footer';
+import AdminProductModal from '@admin/Modal/AdminProductModal';
 import CartModal from '@main/Modal/CartModal';
 import CheckoutModal from '@main/Modal/CheckoutModal';
 import DrawerModal from '@main/Modal/DrawerModal';
@@ -21,7 +22,8 @@ import UserModal from '@main/Modal/UserModal';
 import TopBar from '@main/TopBar/TopBar';
 import MobileTopBar from '@main/TopBar/MobileTopBar';
 import { getValueFromLocalStorage } from '@utils/localStorage';
-import { LOCAL_STORAGE_CART_KEY, LOCAL_STORAGE_DATA_KEY } from '@constants';
+import { LOCAL_STORAGE_DATA_KEY } from '@constants';
+
 
 const MainScreen = () => {
   const { checkUserToken } = useAppActions();
