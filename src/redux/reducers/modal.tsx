@@ -15,6 +15,8 @@ import {
   CLOSE_LOGIN_MODAL,
   OPEN_PRODUCT_DETAILS_MODAL,
   CLOSE_PRODUCT_DETAILS_MODAL,
+  OPEN_PRODUCT_EXTRAS_MODAL,
+  CLOSE_PRODUCT_EXTRAS_MODAL,
   OPEN_USER_MODAL,
   CLOSE_USER_MODAL,
 } from '../actions/types';
@@ -25,11 +27,13 @@ const initialState: ModalStateType = {
   checkout: false,
   checkout_success: false,
   checkout_error: false,
+  extraItems: null,
   filters: false,
   login: false,
   selectedProduct: null,
-  productModal: false,
-  userModal: false,
+  product: false,
+  productExtras: false,
+  user: false,
 };
 
 const modalReducer = (state = initialState, action: ModalActionType): ModalStateType => {
@@ -109,23 +113,33 @@ const modalReducer = (state = initialState, action: ModalActionType): ModalState
     case OPEN_PRODUCT_DETAILS_MODAL:
       return {
         ...state,
-        productModal: true,
+        product: true,
         selectedProduct,
       };
     case CLOSE_PRODUCT_DETAILS_MODAL:
       return {
         ...state,
-        productModal: false,
+        product: false,
       };
+      case OPEN_PRODUCT_EXTRAS_MODAL:
+        return {
+          ...state,
+          productExtras: true,
+        };
+      case CLOSE_PRODUCT_EXTRAS_MODAL:
+        return {
+          ...state,
+          productExtras: false,
+        };
     case OPEN_USER_MODAL:
       return {
         ...state,
-        userModal: true,
+        user: true,
       };
     case CLOSE_USER_MODAL:
       return {
         ...state,
-        userModal: false,
+        user: false,
       };
   }
 

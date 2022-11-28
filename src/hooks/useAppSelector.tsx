@@ -24,10 +24,13 @@ const useAppSelector = () => {
   const isCheckoutModalOpen = useSelector((state) => state.modal.checkout, shallowEqual);
   const isDrawerModalOpen: boolean = useSelector((state) => state.modal.drawer, shallowEqual);
   const isFilterModalOpen: boolean = useSelector((state) => state.modal.filters, shallowEqual);
-  const isLoginModalOpen: boolean = useSelector((state) => state.modal.login, shallowEqual);
-  const isUserModalOpen: boolean = useSelector((state) => state.modal.userModal, shallowEqual);
+  const isLoginModalOpen: boolean = useSelector((state) => state.modal.login, shallowEqual
+  );
+  const isExtraModalOpen: boolean = useSelector((state) => state.modal.productExtras, shallowEqual
+  );
+  const isUserModalOpen: boolean = useSelector((state) => state.modal.user, shallowEqual);
   const isProductModalOpen: boolean = useSelector(
-    (state) => state.modal.productModal,
+    (state) => state.modal.product,
     shallowEqual
   );
   const modalProduct: ProductType = useSelector(
@@ -55,6 +58,7 @@ const useAppSelector = () => {
     isDrawerModalOpen,
     isFilterModalOpen,
     isLoginModalOpen,
+    isExtraModalOpen,
     isUserModalOpen,
     isProductModalOpen,
     modalProduct,

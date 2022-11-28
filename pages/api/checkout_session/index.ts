@@ -17,12 +17,40 @@ const calculateOrderAmount = (items: CheckoutItem[]) => {
 export default async function (req: NextApiRequest, res: NextApiResponse) {
   const { method, body } = req;
 
+  const items = JSON.parse(body)
+
   const checkoutSession = async () => {
     try {
       // Create Checkout Sessions from body params.
       const session = await stripe.checkout.sessions.create({
-        line_items: JSON.parse(body),
-        // line_items: [{price: "price_1KsAUxBIc3UrM0KoIp5x43Qp", quantity: 2}],
+        shipping_address_collection: { allowed_countries: ['ES'] },
+        shipping_options: [
+          {
+            shipping_rate_data: {
+              type: 'fixed_amount',
+              fixed_amount: { amount: 0, currency: 'eur' },
+              display_name: 'Free shipping',
+              delivery_estimate: {
+                minimum: { unit: 'business_day', value: 2 },
+                maximum: { unit: 'business_day', value: 3 },
+              },
+            },
+          },
+        ],
+        // line_items: JSON.parse(body),
+        // line_items: [{ price: 'price_1KsAUxBIc3UrM0KoIp5x43Qp', quantity: 6 }],
+        line_items: [
+          {
+            price_data: {
+              unit_amount: calculateOrderAmount(items),
+              currency: 'eur',
+              product_data: {
+                name: 'Pedido',
+              },
+            },
+            quantity: 1
+          },
+        ],
         mode: 'payment',
         success_url: `${req.headers.origin}/?success=true`,
         cancel_url: `${req.headers.origin}/?success=false`,

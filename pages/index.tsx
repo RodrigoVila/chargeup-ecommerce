@@ -16,7 +16,7 @@ import CheckoutModal from '@main/Modal/CheckoutModal';
 import DrawerModal from '@main/Modal/DrawerModal';
 import FiltersModal from '@main/Modal/FiltersModal';
 import LoginModal from '@main/Modal/LoginModal';
-import ProductModal from '@main/Modal/ProductModal';
+import ProductModal from '@main/Modal/ProductExtrasModal';
 import UserModal from '@main/Modal/UserModal';
 import TopBar from '@main/TopBar/TopBar';
 import MobileTopBar from '@main/TopBar/MobileTopBar';

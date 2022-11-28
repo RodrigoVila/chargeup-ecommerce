@@ -1,15 +1,15 @@
-import { useState, useEffect, ChangeEvent, FC } from 'react';
+import { useState, ChangeEvent, FC } from 'react';
 
-import { APP_USER_INITIAL_STATE, colors, lang } from '@constants';
+import { colors, lang } from '@constants';
 import Input from '@shared/Input';
 import Button from '@main/Buttons/Button';
 import useAppSelector from '@hooks/useAppSelector';
-import Link from '@main/Link';
 import useAppActions from '@hooks/useAppActions';
 import CloseModalButton from '@main/Buttons/CloseModalButton';
 
 const UserDataForm: FC = () => {
   const { isUserDataLoading, user } = useAppSelector();
+  const [editingField, setEditingField] = useState('');
   const [userDetails, setUserDetails] = useState(user);
   const {
     name,
@@ -30,21 +30,37 @@ const UserDataForm: FC = () => {
 
   const handleLocationChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setUserDetails((prevDetails) => ({ ...prevDetails, location: { ...prevDetails.location, [name]: value } }));
+    setUserDetails((prevDetails) => ({
+      ...prevDetails,
+      location: { ...prevDetails.location, [name]: value },
+    }));
   };
 
-  const handleSubmit = () => editUserDetails(userDetails);
+  const handleSubmit = () => {
+    setEditingField("")
+    editUserDetails(userDetails);
+  }
 
-   return (
+  return (
     <div className="relative w-full p-6 overflow-scroll bg-white rounded-md">
       <CloseModalButton color="black" isAbsolute position="right" onClose={closeUserModal} />
-      <Input label={lang.es.NAME} type="text" name="name" value={name} onChange={handleChange} />
+      <Input
+        label={lang.es.NAME}
+        type="text"
+        name="name"
+        value={name}
+        disabled={editingField !== 'lastName'}
+        onChange={handleChange}
+        setEditingField={setEditingField}
+      />
       <Input
         label={lang.es.LASTNAME}
         type="text"
         name="lastName"
         value={lastName}
+        disabled={editingField !== 'lastName'}
         onChange={handleChange}
+        setEditingField={setEditingField}
       />
       <Input
         label={lang.es.EMAIL}
@@ -52,42 +68,52 @@ const UserDataForm: FC = () => {
         name="email"
         value={email}
         onChange={handleChange}
-        disabled={true}
+        disabled
       />
       <Input
         label={lang.es.PREFIX_NUMBER}
         type="text"
         name="prefixNo"
         value={prefixNo}
+        disabled={editingField !== 'prefixNo'}
         onChange={handleChange}
+        setEditingField={setEditingField}
       />
       <Input
         label={lang.es.MOBILE_NUMBER}
         type="text"
         name="mobileNo"
         value={mobileNo}
+        disabled={editingField !== 'mobileNo'}
         onChange={handleChange}
+        setEditingField={setEditingField}
       />
       <Input
         label={lang.es.LOCATION_STREET}
         type="text"
         name="street"
         value={location.street}
+        disabled={editingField !== 'street'}
         onChange={handleLocationChange}
+        setEditingField={setEditingField}
       />
       <Input
         label={lang.es.LOCATION_STREET_NUMBER}
         type="text"
         name="streetNumber"
         value={location.streetNumber}
+        disabled={editingField !== 'streetNumber'}
         onChange={handleLocationChange}
+        setEditingField={setEditingField}
       />
       <Input
         label={lang.es.LOCATION_POSTCODE}
         type="text"
         name="postCode"
         value={location.postCode}
+        disabled={editingField !== 'postCode'}
         onChange={handleLocationChange}
+        setEditingField={setEditingField}
       />
       <Input
         label={lang.es.LOCATION_EXTRAS}
@@ -95,28 +121,36 @@ const UserDataForm: FC = () => {
         name="extras"
         placeholder="Piso, puerta, etc"
         value={location.extras}
+        disabled={editingField !== 'extras'}
         onChange={handleLocationChange}
+        setEditingField={setEditingField}
       />
       <Input
         label={lang.es.LOCATION_CITY}
         type="text"
         name="city"
         value={location.city}
+        disabled={editingField !== 'city'}
         onChange={handleLocationChange}
+        setEditingField={setEditingField}
       />
       <Input
         label={lang.es.LOCATION_PROVINCE}
         type="text"
         name="province"
         value={location.province}
+        disabled={editingField !== 'province'}
         onChange={handleLocationChange}
+        setEditingField={setEditingField}
       />
       <Input
         label={lang.es.LOCATION_COUNTRY}
         type="text"
         name="country"
         value={location.country}
+        disabled={editingField !== 'country'}
         onChange={handleLocationChange}
+        setEditingField={setEditingField}
       />
       <Button
         title={lang.es.CHANGE_USER_DATA}

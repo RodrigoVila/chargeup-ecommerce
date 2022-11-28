@@ -45,6 +45,8 @@ import {
   loginModalClose,
   productModalOpen,
   productModalClose,
+  productExtrasModalOpen,
+  productExtrasModalClose,
   userModalOpen,
   userModalClose,
 } from '@redux/actions/modal';
@@ -144,6 +146,11 @@ const useAppActions = () => {
 
   const closeProductModal = () => dispatch(productModalClose());
 
+  const openProductExtrasModal = (extraItems: any) =>
+  dispatch(productExtrasModalOpen(extraItems));
+
+const closeProductExtrasModal = () => dispatch(productExtrasModalClose());
+
   const openUserModal = () => dispatch(userModalOpen());
 
   const closeUserModal = () => dispatch(userModalClose());
@@ -219,6 +226,8 @@ const useAppActions = () => {
     addOrder,
     openProductModal,
     closeProductModal,
+    openProductExtrasModal,
+    closeProductExtrasModal,
     openUserModal,
     closeUserModal,
     setProductFilters,

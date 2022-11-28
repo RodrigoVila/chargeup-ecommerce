@@ -97,6 +97,11 @@ export const stripePublicKey =
     ? process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_DEV_KEY
     : process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY;
 
+    export const stripeWebhookKey =
+  process.env.NODE_ENV === 'development'
+    ? process.env.STRIPE_WEBHOOK_SECRET_DEV_KEY
+    : process.env.STRIPE_WEBHOOK_SECRET_KEY;
+
 // Lang
 export const lang = {
   es: {

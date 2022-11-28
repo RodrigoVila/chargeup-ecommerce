@@ -1,11 +1,11 @@
-import { useEffect, useMemo } from 'react';
-import ReactTooltip from 'react-tooltip';
+import { useEffect, useMemo, useState } from 'react';
+import ReactTooltip   from 'react-tooltip';
 
 import useAppActions from '@hooks/useAppActions';
 import useAppSelector from '@hooks/useAppSelector';
 
 import Button from '@main/Buttons/Button';
-import {  colors } from '@constants';
+import { colors } from '@constants';
 import CartProduct from '@main/CartProduct';
 import CloseModalButton from '@main/Buttons/CloseModalButton';
 import Modal from '@shared/Modal';
@@ -14,6 +14,7 @@ import useLocalStorage from '@hooks/useLocalStorage';
 import useMounted from '@hooks/useMounted';
 
 const CartModal = () => {
+  const [disabled, setDisabled] = useState(false);
   const { isCartModalOpen, cartItems, checkoutSession } = useAppSelector();
 
   const { closeCartModal, createCheckoutSession } = useAppActions();
@@ -21,13 +22,14 @@ const CartModal = () => {
   const { isMounted } = useMounted();
 
   const router = useRouter();
-  
+
   const totalSum = useMemo(
     () => cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0),
     [cartItems]
   );
 
   const onSubmit = () => {
+    setDisabled(true)
     const items = cartItems.map((item) => {
       return {
         price: item.strapiId,
@@ -36,6 +38,10 @@ const CartModal = () => {
     });
     createCheckoutSession(items);
   };
+
+  useEffect(() => {
+    isCartModalOpen && setDisabled(false)
+  }, [isCartModalOpen]);
 
   useEffect(() => {
     cartItems.length === 0 ? closeCartModal() : null;
@@ -78,7 +84,7 @@ const CartModal = () => {
             {/* <form action="/checkout_sessions" method="POST">
           <Button title="Ir a pagar" color={colors.purple} onClick={()=>{}} isSubmit />
           </form> */}
-            <Button title="Ir a pagar" color={colors.purple} onClick={onSubmit} />
+            <Button title="Ir a pagar" color={colors.purple} onClick={onSubmit} disabled={disabled} />
           </div>
           <Button title="Cerrar" onClick={closeCartModal} type="outlined" />
         </div>

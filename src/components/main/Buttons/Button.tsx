@@ -8,6 +8,7 @@ interface Props {
   hoverColor?: string;
   hoverText?: string;
   type?: 'filled' | 'outlined';
+  className?: string;
   isSubmit?: boolean;
   disabled?: boolean;
   withGradient?: boolean;
@@ -19,6 +20,7 @@ const Button = ({
   color,
   hoverColor,
   hoverText,
+  className = '',
   type,
   isSubmit,
   disabled = false,
@@ -27,9 +29,11 @@ const Button = ({
 }: Props) => {
   const disabledStlye = `${
     disabled
-      ? 'cursor-default bg-gray-400 hover:text-gray-200 text-gray-200 transition-none'
+      ? 'cursor-default bg-gray-400 hover:text-gray-200 text-gray-200 transition-none hover:bg-none'
       : 'transition-all duration-200 ease-in-out'
   }`;
+
+  const hoverColorStyle = `${hoverColor && !disabled && `hover:bg-[${hoverColor}]`}`;
 
   return type === 'outlined' ? (
     <button
@@ -46,9 +50,7 @@ const Button = ({
     </button>
   ) : (
     <button
-      className={`${disabledStlye} ${disabled && 'hover:bg-none'} ${
-        hoverColor && !disabled && `hover:bg-[${hoverColor}]`
-      } ${withGradient && 'bg-gradient-to-br'} bg-[${
+      className={`${className} ${disabledStlye} ${hoverColorStyle} ${withGradient && 'bg-gradient-to-br'} bg-[${
         withGradient ? 'transparent' : color
       }] from-purple-600 via-[${color}] z-20 m-1 flex w-full cursor-pointer items-center justify-center rounded-md to-purple-700 py-2 px-4 text-white md:text-2xl xl:text-base`}
       onClick={onClick}

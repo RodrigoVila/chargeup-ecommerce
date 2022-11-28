@@ -99,11 +99,13 @@ type ModalStateType = {
   checkout: boolean;
   checkout_success: boolean;
   checkout_error: boolean;
+  extraItems: any;
   filters: boolean;
   login: boolean;
+  product: boolean;
+  productExtras: boolean;
   selectedProduct: ProductType;
-  productModal: boolean;
-  userModal: boolean;
+  user: boolean;
 };
 
 interface ModalActionType extends ModalStateType {
