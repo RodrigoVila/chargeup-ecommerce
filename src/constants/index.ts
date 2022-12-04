@@ -51,14 +51,18 @@ export const APP_USER_INITIAL_STATE: UserDetailsType = {
 };
 
 export const CART_INITIAL_STATE: ProductType = {
-  id: '',
+  _id: '',
   title: '',
   description: {
     short: '',
     long: [],
   },
   quantity: 0,
-  price: 0,
+  price:{
+    reg: 0,
+    lg: 0,
+    extras: null
+  },
   imgUri: '',
   nutritionalInfo: {
     weight: 0,

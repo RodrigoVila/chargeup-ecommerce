@@ -160,23 +160,21 @@ interface IProductDescription {
   short: string;
 }
 
-interface IProductExtras {
+interface IPriceExtras {
   label: string;
   price: number;
 }
 
 type ProductType = {
-  id: string;
+  _id: string;
   title: string;
   description: IProductDescription;
-  price: number;
-  priceLabel: string;
-  priceExtras: IProductExtras[] | null;
-  quantity: number;
   imgUri: string;
   nutritionalInfo: INutritionalInfo;
+  prices: IPriceExtras[];
+  extras?: IPriceExtras[];
+  quantity?: number;
   suitableForInfo: ISuitableForInfo;
-  strapiId?: string;
 };
 
 type ProductsStateType = {

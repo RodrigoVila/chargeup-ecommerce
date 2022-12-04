@@ -10,7 +10,7 @@ import Section from '@main/Section';
 
 const Products: FC = () => {
   const [searchValue, setSearchValue] = useState('');
-  const [filteredProducts, setFilteredProducts] = useState([]);
+  const [filteredProducts, setFilteredProducts] = useState<ProductType[]>([]);
 
   const { products, filters } = useAppSelector();
 
@@ -78,38 +78,20 @@ const Products: FC = () => {
       {products.length > 0 && (
         <div className="relative flex flex-wrap justify-center w-full mx-auto text-left">
           {filteredProducts.length > 0
-            ? filteredProducts?.map((p) => (
+            ? filteredProducts?.map((product) => (
                 <Product
-                  key={p.id}
-                  id={p.id}
-                  title={p.title}
-                  description={p.description}
-                  price={p.price}
-                  quantity={p.quantity}
-                  imgUri={p.imgUri}
-                  nutritionalInfo={p.nutritionalInfo}
-                  suitableForInfo={p.suitableForInfo}
-                  strapiId={p.strapiId}
-                  onClick={() => openProductModal(p)}
+                  key={product._id}
+                  product={product}
+                  onClick={() => openProductModal(product)}
                 />
               ))
-            : products.length > 0
-            ? products?.map((p) => (
+            : products?.map((product) => (
                 <Product
-                  key={p.id}
-                  id={p.id}
-                  title={p.title}
-                  description={p.description}
-                  price={p.price}
-                  quantity={p.quantity}
-                  imgUri={p.imgUri}
-                  nutritionalInfo={p.nutritionalInfo}
-                  suitableForInfo={p.suitableForInfo}
-                  strapiId={p.strapiId}
-                  onClick={() => openProductModal(p)}
+                  key={product._id}
+                  product={product}
+                  onClick={() => openProductModal(product)}
                 />
-              ))
-            : ''}
+              ))}
         </div>
       )}
     </Section>

@@ -15,8 +15,6 @@ const AdminProduct = ({ product }: Props) => {
     nutritionalInfo,
     suitableForInfo,
     price,
-    priceLabel,
-    priceExtras,
     imgUri,
   } = product;
 
@@ -40,7 +38,7 @@ const AdminProduct = ({ product }: Props) => {
       </td>
       {/* Precio */}
       <td className="px-6 py-4 whitespace-nowrap">
-        <div className="text-sm text-gray-900">{`€${price}`}</div>
+        <div className="text-sm text-gray-900">{`€${price.reg}`}</div>
       </td>
       <td className="px-6 py-4 whitespace-nowrap">
         {nutritionalInfo.calories && (

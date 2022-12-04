@@ -1,25 +1,33 @@
+import React, { useState, ChangeEvent } from 'react';
+import ReactTooltip from 'react-tooltip';
+
 import useAppActions from '@hooks/useAppActions';
+import useMounted from '@hooks/useMounted';
+
+import { TrashIcon } from '@heroicons/react/24/outline';
 import CloseModalButton from '@main/Buttons/CloseModalButton';
-import React, { useState } from 'react';
 
 interface Props {
   product: ProductType;
 }
 
+// TODO: Hacer un section style compartido
+
 const AdminProductDetails = ({ product }: Props) => {
   const [isEdit, setIsEdit] = useState(false);
+  const [editedProduct, setEditedProduct] = useState<ProductType>(product);
 
   const { closeDrawerModal } = useAppActions();
 
+  const { isMounted } = useMounted();
+
   const {
-    id,
+    _id,
     title,
     description,
     nutritionalInfo,
     suitableForInfo,
     price,
-    priceLabel,
-    priceExtras,
     imgUri,
   } = product;
 
@@ -27,65 +35,114 @@ const AdminProductDetails = ({ product }: Props) => {
 
   const handleSaveChanges = () => setIsEdit(false);
 
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setEditedProduct((currProduct) => ({ ...currProduct, [name]: value }));
+  };
+
+  const handleLongDescChange = (e: ChangeEvent<HTMLTextAreaElement>, index: number) => {
+    const { value } = e.target;
+    const newLongDescription = editedProduct.description.long.map((p, i) => {
+      if (i === index) {
+        return value;
+      } else {
+        return p;
+      }
+    });
+    setEditedProduct((currProduct) => ({
+      ...currProduct,
+      description: {
+        ...currProduct.description,
+        long: newLongDescription,
+      },
+    }));
+  };
+
+  const removeProduct = () => {
+    window.confirm('Desea eliminar el producto?') && console.log('DELETED!', id);
+  };
+
   return (
-    <div className="relative my-2 bg-white">
-      <CloseModalButton color="red" onClose={closeDrawerModal} isAbsolute position='right' className='z-30' />
+    <div className="relative max-h-screen my-2 overflow-scroll bg-white rounded-md">
+      {isMounted ? <ReactTooltip /> : null}
+      <CloseModalButton
+        color="black"
+        onClose={closeDrawerModal}
+        isAbsolute
+        position="right"
+        className="z-30"
+      />
       <div className="max-w-2xl px-4 py-2 mx-auto shadow-lg rounded-xl sm:py-8 sm:px-6 lg:max-w-xl lg:px-8">
-        <h2 className="py-2 text-2xl font-extrabold tracking-tight text-gray-900 border-b border-solid border-violet-500">
-          {title}
-        </h2>
+        {isEdit ? (
+          <input
+            className="px-2 py-1 border-2 border-green-500"
+            type="text"
+            placeholder={title}
+            onChange={handleChange}
+          />
+        ) : (
+          <h2 className="py-2 text-2xl font-extrabold tracking-tight text-gray-900 border-b border-solid border-violet-500">
+            {title}
+          </h2>
+        )}
 
         <div className="mt-6 align-middle">
-          <div key={id} className="relative group">
+          <div key={_id} className="relative group">
             <div className="object-center w-32 h-32 align-middle rounded-md shadow-xl bg-gray-25">
               <img src={'imageSrc'} alt={'imageAlt'} className="object-center align-middle" />
             </div>
             <div className="flex justify-between mt-4">
               <div>
                 <h3 className="py-2 text-sm font-bold text-gray-700 border-b border-solid border-zinc-300">
-                  Nombre de Producto:
+                  Precio:
+                </h3>
+                <div className="my-2 text-gray-500">
+                  {' '}
+                  <span className="font-bold">{price.reg}</span> ({'unit'})
+                </div>
+
+                {/* Short Description */}
+                <h3 className="py-2 text-sm font-bold text-gray-700 border-b border-solid border-zinc-300">
+                  Descripcion corta:
                 </h3>
                 {isEdit ? (
                   <input
                     className="px-2 py-1 border-2 border-green-500"
                     type="text"
-                    value={'name'}
-                    onChange={() => {}}
+                    value={description.short}
+                    onChange={handleChange}
                   />
                 ) : (
-                  <div className="my-2 text-gray-500"> {'name'} </div>
+                  <div className="my-2 text-gray-500"> {description.short}</div>
                 )}
 
+                {/* Long Description */}
                 <h3 className="py-2 text-sm font-bold text-gray-700 border-b border-solid border-zinc-300">
-                  Stock:
+                  Descripcion larga:
                 </h3>
-                <div className="my-2 text-gray-500">
-                  {' '}
-                  {'stock'}
-                  {'unit'}
-                </div>
-
-                <h3 className="py-2 text-sm font-bold text-gray-700 border-b border-solid border-zinc-300">
-                  Precio:
-                </h3>
-                <div className="my-2 text-gray-500">
-                  {' '}
-                  <span className="font-bold">{price}</span> ({'unit'})
-                </div>
-
-                <h3 className="py-2 text-sm font-bold text-gray-700 border-b border-solid border-zinc-300">
-                  Descripcion:
-                </h3>
-                <div className="my-2 text-gray-500"> {description.short}</div>
-
-                <h3 className="py-2 text-sm font-bold text-gray-700 border-b border-solid border-zinc-300">
-                  Última modificacion:
-                </h3>
-                <div className="my-2 text-gray-500"> {'last_update'}</div>
+                {isEdit ? (
+                  description.long.map((paragraph, index) => (
+                    <textarea
+                      className="px-2 py-1 border-2 border-green-500"
+                      value={paragraph}
+                      onChange={(event: ChangeEvent<HTMLTextAreaElement>) =>
+                        handleLongDescChange(event, index)
+                      }
+                    />
+                  ))
+                ) : (
+                  <div className="my-2 text-gray-500">
+                    {description.long.map((p, i) => (
+                      <p key={i} className="my-2">
+                        {p}
+                      </p>
+                    ))}
+                  </div>
+                )}
               </div>
             </div>
           </div>
-          <div className="object-center py-4 my-2 align-middle border-t border-solid border-gray200">
+          <div className="flex justify-between object-center w-full py-4 my-2 align-middle border-t border-solid border-gray200">
             <button
               className={`${
                 isEdit ? 'bg-pink-700' : 'bg-violet-700'
@@ -94,10 +151,15 @@ const AdminProductDetails = ({ product }: Props) => {
             >
               {isEdit ? 'Guardar Cambios' : 'Editar Producto'}
             </button>
-            <button className="px-4 py-2 mr-4 text-gray-200 rounded-lg shadow-xl bg-violet-700 shadow-violet-700/30 hover:text-gray-50">
-              {' '}
-              Eliminar producto
-            </button>
+            {isEdit && (
+              <button
+                className="w-6 h-6 cursor-pointer"
+                onClick={removeProduct}
+                data-tip="Eliminar Producto"
+              >
+                <TrashIcon color="red" />
+              </button>
+            )}
           </div>
         </div>
       </div>

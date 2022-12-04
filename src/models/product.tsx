@@ -5,6 +5,7 @@ const descriptionSchema = new mongoose.Schema({
   long: [String],
 });
 const nutritionalInfoSchema = new mongoose.Schema({
+  weight: Number,
   calories: Number,
   carbs: Number,
   fat: Number,
@@ -18,23 +19,21 @@ const suitableForInfoSchema = new mongoose.Schema({
   vegan: Boolean,
 });
 
-const productExtrasSchema = new mongoose.Schema({
+const priceAndExtrasSchema = new mongoose.Schema({
   label: String,
   price: Number,
 });
 
 const productSchema = new mongoose.Schema(
   {
-    id: String,
+    _id: String,
     title: String,
     description: descriptionSchema,
     nutritionalInfo: nutritionalInfoSchema,
     suitableForInfo: suitableForInfoSchema,
-    price: String,
-    priceLabel: String,
-    priceExtras: [productExtrasSchema] || null,
+    prices: [priceAndExtrasSchema],
+    extras: [priceAndExtrasSchema] || null,
     imgUri: String,
-    strapiId: String,
   },
   {
     collection: process.env.MONGO_PRODUCTS_COLLECTION,

@@ -8,6 +8,7 @@ import RoundImage from '@main/RoundImage';
 import { colors } from '@constants';
 import useAppActions from '@hooks/useAppActions';
 import useMounted from '@hooks/useMounted';
+import Dropdown from './Dropdown';
 
 type Props = {
   product: ProductType;
@@ -17,16 +18,7 @@ type Props = {
 const Product: FC<Props> = ({ product, onClick }) => {
   const [count, setCount] = useState(0);
 
-  const {
-    title,
-    description,
-    nutritionalInfo,
-    suitableForInfo,
-    price,
-    priceLabel,
-    priceExtras,
-    imgUri,
-  } = product;
+  const { title, description, nutritionalInfo, suitableForInfo, prices, imgUri } = product;
 
   const { addToCart, displayInfoMessage, displaySuccessMessage } = useAppActions();
   const { isMounted } = useMounted();
@@ -99,27 +91,32 @@ const Product: FC<Props> = ({ product, onClick }) => {
           >
             ver +
           </div>
+          {/* Nutritional Info */}
           <div className="flex flex-col my-4 text-md md:text-xl">
             <div className="mb-4">Info Nutricional:</div>
             <div className="flex items-center justify-between text-lg">
               <div className="flex flex-col items-center justify-center">
+                {/* Calories */}
                 <div className="relative w-12 h-12" data-tip="Calorias">
                   <Image src="/icons/kcal-white.svg" layout="fill" />
                 </div>
                 <div className="ml-1 text-center">{nutritionalInfo.calories}</div>
               </div>
+              {/* Carbs */}
               <div className="flex flex-col items-center justify-center">
                 <div className={iconStyle} data-tip="Carbohidratos">
                   <Image src="/icons/carbs-white.png" layout="fill" />
                 </div>
                 <div className="ml-1 text-center">{nutritionalInfo.carbs}</div>
               </div>
+              {/* Protein */}
               <div className="flex flex-col items-center justify-center">
                 <div className={iconStyle} data-tip="Proteina">
                   <Image src="/icons/protein-white.svg" layout="fill" />
                 </div>
                 <div className="ml-1 text-center">{nutritionalInfo.protein}</div>
               </div>
+              {/* Fats */}
               <div className="flex flex-col items-center justify-center">
                 <div className={iconStyle} data-tip="Grasas saludables">
                   <Image src="/icons/fat-white.png" layout="fill" />
@@ -128,14 +125,25 @@ const Product: FC<Props> = ({ product, onClick }) => {
               </div>
             </div>
           </div>
-
-          <div className="flex justify-end">
-            <div className="my-2 text-2xl font-semibold md:text-4xl">{`€${price}`}</div>
-          </div>
         </div>
-        <div className="flex items-center justify-center w-full px-4 mb-4">
-          <Counter count={count} subtractOne={subtractOne} addOne={addOne} />
-          <Button title="Agregar" color={colors.purple} onClick={addItemToCart} />
+        {/* Prices */}
+        <div className="flex flex-col items-center justify-between w-full px-4">
+          <div className="flex items-center justify-between w-full px-2">
+            {prices && prices.length > 1 ? (
+              <Dropdown label={prices[0].label} options={prices} />
+            ) : (
+              <div className="mb-3 text-md md:text-lg">
+                {prices[0].label}
+              </div>
+            )}
+
+            {/* <div className="my-2 text-2xl font-semibold md:text-4xl">{`€${price.reg | 0}`}</div> */}
+          </div>
+          {/* Buttons */}
+          <div className="flex items-center justify-center w-full mb-4">
+            <Counter count={count} subtractOne={subtractOne} addOne={addOne} />
+            <Button title="Agregar" color={colors.purple} onClick={addItemToCart} />
+          </div>
         </div>
       </div>
     </>

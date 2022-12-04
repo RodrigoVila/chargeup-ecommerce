@@ -6,21 +6,21 @@ import useAppActions from '@hooks/useAppActions';
 import Counter from './Counter';
 
 const CartProduct: FC<ProductType> = ({
-  id,
+  _id,
   title,
   description,
   nutritionalInfo,
   suitableForInfo,
-  price,
+  prices,
   quantity,
   imgUri,
   strapiId,
 }) => {
   const { removeFromCart, changeCartProductQuantity } = useAppActions();
 
-  const addOne = () => changeCartProductQuantity(id, quantity + 1);
+  const addOne = () => changeCartProductQuantity(_id, quantity + 1);
 
-  const subtractOne = () => (quantity > 1 ? changeCartProductQuantity(id, quantity - 1) : null);
+  const subtractOne = () => (quantity > 1 ? changeCartProductQuantity(_id, quantity - 1) : null);
 
   return (
     <div className="flex w-full">
@@ -30,9 +30,9 @@ const CartProduct: FC<ProductType> = ({
       <div className={`relative flex w-full flex-col justify-between border-b-2 border-gray-300`}>
         <div className="flex items-center justify-between mx-2">
           <div className="text-lg font-semibold">
-            {title.toUpperCase()} <span className="text-2xl font-semibold"> €{price}</span>
+            {/* {title.toUpperCase()} <span className="text-2xl font-semibold"> €{price.reg}</span> */}
           </div>
-          <button className="w-6 h-6 cursor-pointer" onClick={() => removeFromCart(id)}>
+          <button className="w-6 h-6 cursor-pointer" onClick={() => removeFromCart(_id)}>
             <TrashIcon color="red" />
           </button>
         </div>
@@ -70,7 +70,7 @@ const CartProduct: FC<ProductType> = ({
             />
           </div>
           <div className="flex items-center justify-center h-full text-2xl text-gray-700">{`€${
-            price * quantity
+            price.reg * quantity
           }`}</div>
         </div>
       </div>
