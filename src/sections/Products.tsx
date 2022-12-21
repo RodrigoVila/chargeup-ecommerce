@@ -14,7 +14,7 @@ const Products: FC = () => {
 
   const { products, filters } = useAppSelector();
 
-  const { fetchProducts, openProductModal } = useAppActions();
+  const { fetchProducts, clearCart } = useAppActions();
 
   const clearFilters = () => setFilteredProducts([]);
 
@@ -53,45 +53,23 @@ const Products: FC = () => {
 
   return (
     <Section id="products" bgImage="purpleTexture.jpeg" disabled={!products} noCenter>
+      <div
+        className="absolute top-0 right-0 px-1 text-sm bg-blue-500"
+        onClick={fetchProducts}
+      >
+        Fetch
+      </div>
+      <div className="absolute top-0 px-1 text-sm bg-red-500 right-16" onClick={() => clearCart()}>
+        Reset Cart
+      </div>
       <div className="flex flex-wrap items-center justify-center h-full pb-2">
         <ProductSearchBar setSearchValue={setSearchValue} />
-        {/* Filtros por tipo */}
-        {/* {isFilterModalOpen ? (
-          <BsFilterCircleFill
-            size={33}
-            color="white"
-            className="cursor-pointer"
-            onClick={closeModal}
-          />
-        ) : (
-          <a href="#products">
-            <BsFilterCircle
-              size={33}
-              color="white"
-              className="cursor-pointer"
-              onClick={openModal}
-            />
-          </a>
-        )} */}
       </div>
-
       {products.length > 0 && (
         <div className="relative flex flex-wrap justify-center w-full mx-auto text-left">
           {filteredProducts.length > 0
-            ? filteredProducts?.map((product) => (
-                <Product
-                  key={product._id}
-                  product={product}
-                  onClick={() => openProductModal(product)}
-                />
-              ))
-            : products?.map((product) => (
-                <Product
-                  key={product._id}
-                  product={product}
-                  onClick={() => openProductModal(product)}
-                />
-              ))}
+            ? filteredProducts?.map((product) => <Product key={product._id} product={product} />)
+            : products?.map((product) => <Product key={product._id} product={product} />)}
         </div>
       )}
     </Section>

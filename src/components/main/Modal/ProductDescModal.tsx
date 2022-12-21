@@ -6,8 +6,8 @@ import { colors } from '@constants';
 import Modal from '@shared/Modal';
 import Button from '@main/Buttons/Button';
 
-const ProductModal: FC = () => {
-  const { isProductModalOpen, modalProduct } = useAppSelector();
+const ProductDescModal: FC = () => {
+  const { isProductModalOpen, selectedModalProduct } = useAppSelector();
 
   const { closeProductModal } = useAppActions();
 
@@ -15,11 +15,11 @@ const ProductModal: FC = () => {
     <Modal isOpen={isProductModalOpen} transparent fullScreen>
       <div className="flex flex-col w-full bg-white rounded-md">
         {/*header*/}
-        <h3 className="my-2 text-2xl font-semibold text-center">{modalProduct?.title}</h3>
+        <h3 className="my-2 text-2xl font-semibold text-center">{selectedModalProduct?.title}</h3>
         {/*body*/}
         <div className="px-2 text-center">
           <div className="px-1 text-sm leading-relaxed text-slate-500">
-            {modalProduct?.description.long?.map((p,i) => (
+            {selectedModalProduct?.description.long?.map((p,i) => (
               <p key={i}>{p}</p>
             ))}
           </div>
@@ -32,4 +32,4 @@ const ProductModal: FC = () => {
   );
 };
 
-export default ProductModal;
+export default ProductDescModal;

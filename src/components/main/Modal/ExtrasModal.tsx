@@ -1,0 +1,167 @@
+import { useState, useEffect } from 'react';
+import useAppActions from '@hooks/useAppActions';
+import useAppSelector from '@hooks/useAppSelector';
+
+import { colors } from '@constants';
+import Modal from '@shared/Modal';
+import Button from '@main/Buttons/Button';
+import CloseModalButton from '@main/Buttons/CloseModalButton';
+import Counter from '@main/Counter';
+import CustomDropdown from '@main/Dropdown';
+import MultiSelector from '@main/Checkbox';
+import Checkbox from '@main/Checkbox';
+import { MdFormatSize } from 'react-icons/md';
+
+const ExtrasModal = () => {
+  const [isDropdownOpen, setDropdownOepn] = useState(false);
+
+  // Product specification before adding it to cart
+  const [itemCount, setItemCount] = useState(1);
+  const [selectedSize, setSelectedSize] = useState(null);
+  const [selectedExtras, setSelectedExtras] = useState<ILabelAndPrice[]>([]);
+
+  const { isExtrasModalOpen, selectedModalProduct } = useAppSelector();
+  const { displayInfoMessage, displaySuccessMessage, addToCart, closeExtrasModal } =
+    useAppActions();
+
+  const closeDropdown = () => setDropdownOepn(false);
+
+  const onItemCountChange = (type: string) => {
+    if (type === 'add') {
+      setItemCount((prevCount) => prevCount + 1);
+    } else {
+      if (itemCount < 2) return;
+      setItemCount((prevCount) => prevCount - 1);
+    }
+  };
+
+  const onSizeChange = (size: ILabelAndPrice) => {
+    console.log('size', size);
+    setSelectedSize(size);
+  };
+
+  const onExtrasChange = (extra: ILabelAndPrice) => {
+    const index = selectedExtras.findIndex((el) => el.label === extra.label);
+    index === -1
+      ? setSelectedExtras((prevExtras) => [...prevExtras, extra])
+      : setSelectedExtras((prevExtras) => prevExtras.filter((ex) => ex.label !== extra.label));
+  };
+
+  const onClose = () => closeExtrasModal();
+
+  const getTotalPrice = (): number => {
+    if (!selectedModalProduct || !selectedSize) return 0;
+    let extrasPrice = 0;
+
+    selectedExtras.map((extra) => {
+      if (extra.price) {
+        extrasPrice += extra.price;
+        return extra;
+      } else {
+        return extra;
+      }
+    });
+
+    const total = (selectedSize.price + extrasPrice) * itemCount;
+    return total;
+  };
+
+  const addItemToCart = () => {
+    const { _id, title, imgUri, suitableForInfo } = selectedModalProduct;
+
+    if (itemCount === 0) {
+      displayInfoMessage('La cantidad tiene que ser mayor a 0');
+      return;
+    }
+
+    const cartProduct: CartProductType = {
+      _id,
+      title,
+      selectedSize,
+      selectedExtras,
+      quantity: itemCount,
+      total: getTotalPrice(),
+    };
+
+    addToCart(cartProduct);
+    displaySuccessMessage('Producto agregado!');
+  };
+
+  useEffect(() => {
+    if (selectedModalProduct) {
+      setSelectedSize(selectedModalProduct.sizes[0]);
+    }
+  }, [selectedModalProduct]);
+
+  const labelStyle = 'text-md font-bold';
+
+  return (
+    <Modal isOpen={isExtrasModalOpen} transparent fullScreen>
+      <div
+        className="relative flex flex-col w-full bg-white rounded-md xl:p-2"
+        onClick={closeDropdown}
+      >
+        <CloseModalButton
+          color="black"
+          onClose={onClose}
+          isAbsolute
+          position="right"
+          className="mt-1 mr-1"
+        />
+        <h3 className="mt-2 text-xl font-semibold text-center xl:my-4">{selectedModalProduct?.title}</h3>
+        <div className="flex flex-col flex-wrap items-start mx-4 mt-4">
+          {/* sizes dropdown */}
+          {selectedModalProduct?.sizes ? (
+            <div className="flex flex-col justify-center">
+              <h6 className={labelStyle}>Presentacion</h6>
+              <CustomDropdown
+                className=""
+                label={selectedSize?.label}
+                options={selectedModalProduct?.sizes}
+                onChange={onSizeChange}
+              />
+            </div>
+          ) : null}
+          {/* extras dropdown */}
+          {selectedModalProduct?.extras.length > 0 ? (
+            <div className="flex flex-col justify-center w-full mt-4">
+              <h6 className={labelStyle}>Extras</h6>
+              {selectedModalProduct?.extras?.map((extra, index) => (
+                <Checkbox
+                  key={`${index}${extra}`}
+                  label={`${extra.label} (+ € ${extra.price.toFixed(2)})`}
+                  name="extras"
+                  onChange={() => onExtrasChange(extra)}
+                />
+              ))}
+            </div>
+          ) : null}
+
+          <div className="flex items-center justify-between w-full mt-4 mr-4">
+            <Counter
+              count={itemCount}
+              addOne={() => onItemCountChange('add')}
+              subtractOne={() => onItemCountChange('sub')}
+            />
+            {/* Price */}
+            <div className="flex flex-col items-end justify-center mr-3">
+              <h6 className="text-xl">Total</h6>
+              <h3 className="text-3xl">{`€${getTotalPrice().toFixed(2)}`}</h3>
+            </div>
+          </div>
+        </div>
+
+        <div className="flex items-center justify-center px-4 py-4 xl:p-0 xl:py-2">
+          <Button
+            title="Agregar"
+            color={colors.purple}
+            className="py-1 xl:w-1/2"
+            onClick={addItemToCart}
+          />
+        </div>
+      </div>
+    </Modal>
+  );
+};
+
+export default ExtrasModal;

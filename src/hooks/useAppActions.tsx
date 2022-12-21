@@ -20,6 +20,7 @@ import {
   addToCartState,
   removeFromCartState,
   changeProductQuantityState,
+  clearCartItems,
 } from '@redux/actions/cart';
 import { createNewCheckoutSession, createNewCheckoutSessionSuccess } from '@redux/actions/checkout';
 import {
@@ -44,8 +45,8 @@ import {
   loginModalClose,
   productModalOpen,
   productModalClose,
-  productExtrasModalOpen,
-  productExtrasModalClose,
+  extrasModalOpen,
+  extrasModalClose,
   userModalOpen,
   userModalClose,
   adminProductModalOpen,
@@ -75,14 +76,16 @@ const useAppActions = () => {
   const dBEmailValidation = (pid: string) => dispatch(validateEmailInDB(pid));
 
   // Cart
-  const loadCart = (products: ProductType[]) => dispatch(loadCartState(products));
+  const loadCart = (products: CartProductType[]) => dispatch(loadCartState(products));
 
-  const addToCart = (product: ProductType) => dispatch(addToCartState(product));
+  const addToCart = (product: CartProductType) => dispatch(addToCartState(product));
 
   const removeFromCart = (id: string) => dispatch(removeFromCartState(id));
 
+  const clearCart = () => dispatch(clearCartItems())
+
   // Checkout
-  const createCheckoutSession = (items: CheckoutItem[]) =>
+  const createCheckoutSession = (items: CartProductType[]) =>
     dispatch(createNewCheckoutSession(items));
 
   const createCheckoutSessionSuccess = (sessionURL: string) =>
@@ -139,9 +142,9 @@ const useAppActions = () => {
 
   const closeProductModal = () => dispatch(productModalClose());
 
-  const openProductExtrasModal = (extraItems: any) => dispatch(productExtrasModalOpen(extraItems));
+  const openExtrasModal = (sizesAndExtras: any) => dispatch(extrasModalOpen(sizesAndExtras));
 
-  const closeProductExtrasModal = () => dispatch(productExtrasModalClose());
+  const closeExtrasModal = () => dispatch(extrasModalClose());
 
   const openUserModal = () => dispatch(userModalOpen());
 
@@ -186,6 +189,7 @@ const useAppActions = () => {
     addToCart,
     removeFromCart,
     changeCartProductQuantity,
+    clearCart,
     displaySuccessMessage,
     displayErrorMessage,
     displayInfoMessage,
@@ -210,8 +214,8 @@ const useAppActions = () => {
     addOrder,
     openProductModal,
     closeProductModal,
-    openProductExtrasModal,
-    closeProductExtrasModal,
+    openExtrasModal,
+    closeExtrasModal,
     openUserModal,
     closeUserModal,
     setProductFilters,

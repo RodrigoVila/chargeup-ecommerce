@@ -33,17 +33,17 @@ const UserDetails = () => {
   return (
     <div className={`${!editing && "bg-white rounded-md p-4 pt-12"} relative w-full h-full overflow-scroll my-4`}>
 
-      {editing === 'userData' && <UserDataForm />}
+      {/* {editing === 'userData' && <UserDataForm />} */}
       {editing === 'password' && <UpdatePasswordForm />}
 
       {!editing && (
         <div className="flex flex-col items-center justify-center w-full mx-auto ">
           <CloseModalButton color="black" isAbsolute position="right" onClose={closeUserModal} />
-          <Button
+          {/* <Button
             title={lang.es.CHANGE_USER_DATA}
             color={colors.purple}
             onClick={() => setEdit('userData')}
-            />
+            /> */}
           <Button
             title={lang.es.CHANGE_PASSWORD}
             color={colors.purple}

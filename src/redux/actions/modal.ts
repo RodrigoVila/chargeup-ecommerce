@@ -17,8 +17,8 @@ import {
   CLOSE_PRODUCT_DETAILS_MODAL,
   OPEN_USER_MODAL,
   CLOSE_USER_MODAL,
-  OPEN_PRODUCT_EXTRAS_MODAL,
-  CLOSE_PRODUCT_EXTRAS_MODAL,
+  OPEN_EXTRAS_MODAL,
+  CLOSE_EXTRAS_MODAL,
   OPEN_ADMIN_PRODUCT_MODAL,
   CLOSE_ADMIN_PRODUCT_MODAL,
 } from './types';
@@ -47,10 +47,10 @@ export const productModalOpen = (selectedProduct: ProductType) => ({
   selectedProduct,
 });
 export const productModalClose = () => ({ type: CLOSE_PRODUCT_DETAILS_MODAL });
-export const productExtrasModalOpen = (extraItems: any) => ({
-  type: OPEN_PRODUCT_EXTRAS_MODAL,
-  extraItems,
-});
-export const productExtrasModalClose = () => ({ type: CLOSE_PRODUCT_EXTRAS_MODAL });
 export const userModalOpen = () => ({ type: OPEN_USER_MODAL });
 export const userModalClose = () => ({ type: CLOSE_USER_MODAL });
+export const extrasModalOpen = (selectedProduct: ProductType) => ({
+  type: OPEN_EXTRAS_MODAL,
+  selectedProduct,
+});
+export const extrasModalClose = () => ({ type: CLOSE_EXTRAS_MODAL });

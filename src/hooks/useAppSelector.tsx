@@ -15,7 +15,7 @@ const useAppSelector = () => {
   } = useSelector((state) => state.auth, shallowEqual);
 
   //Cart
-  const cartItems: ProductType[] = useSelector((state) => state.cart.items, shallowEqual);
+  const cartItems: CartProductType[] = useSelector((state) => state.cart.items, shallowEqual);
   //Checkout
   const checkoutSession = useSelector((state) => state.checkout.session, shallowEqual);
   //Filters TODO: Reduce one filter lvl
@@ -29,10 +29,10 @@ const useAppSelector = () => {
   const isDrawerModalOpen: boolean = useSelector((state) => state.modal.drawer, shallowEqual);
   const isFilterModalOpen: boolean = useSelector((state) => state.modal.filters, shallowEqual);
   const isLoginModalOpen: boolean = useSelector((state) => state.modal.login, shallowEqual);
-  const isExtraModalOpen: boolean = useSelector((state) => state.modal.productExtras, shallowEqual);
+  const isExtrasModalOpen: boolean = useSelector((state) => state.modal.extras, shallowEqual);
   const isUserModalOpen: boolean = useSelector((state) => state.modal.user, shallowEqual);
   const isProductModalOpen: boolean = useSelector((state) => state.modal.product, shallowEqual);
-  const modalProduct: ProductType = useSelector(
+  const selectedModalProduct: ProductType = useSelector(
     (state) => state.modal.selectedProduct,
     shallowEqual
   );
@@ -64,10 +64,10 @@ const useAppSelector = () => {
     isDrawerModalOpen,
     isFilterModalOpen,
     isLoginModalOpen,
-    isExtraModalOpen,
+    isExtrasModalOpen,
     isUserModalOpen,
     isProductModalOpen,
-    modalProduct,
+    selectedModalProduct,
     products,
     areProductsLoading,
     user,

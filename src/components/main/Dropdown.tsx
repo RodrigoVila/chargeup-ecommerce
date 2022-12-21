@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ChevronDownIcon, ChevronUpIcon } from '@heroicons/react/24/outline';
 import Button from './Buttons/Button';
 
@@ -7,33 +7,36 @@ interface Props {
   name?: string;
   options: string[] | object[];
   color?: string;
+  className?: string;
+  onChange: (option: string | ILabelAndPrice) => void;
 }
 
-const CustomDropdown = ({ label = 'hola', name, options, color = 'black' }: Props) => {
-  const [inputLabel, setInputLabel] = useState(label);
+const CustomDropdown = ({
+  label = '',
+  name,
+  options,
+  color = 'black',
+  className = '',
+  onChange,
+}: Props) => {
   const [isOpen, setOpen] = useState(false);
 
-  const toggleOpen = () => setOpen(!isOpen);
+  const toggle = () => setOpen(!isOpen);
 
-  const handleClick = (option) => {
-    setInputLabel(option);
-    toggleOpen();
+  const handleClick = (option: string | ILabelAndPrice) => {
+    onChange(option);
+    setOpen(false);
   };
 
-  useEffect(() => {
-    console.log("opt",options)
-  }, [options])
-  
-
   return (
-    <div className="flex flex-col items-center justify-center mb-2">
-      <div className="relative text-sm">
+    <div className={`${className} flex w-full flex-col items-center justify-center xl:text-sm`}>
+      <div className="relative w-full text-sm">
         <Button
-          title={inputLabel}
-          onClick={toggleOpen}
-          className="py-1"
+          title={label}
+          onClick={toggle}
+          className="w-full py-1 rounded-none xl:text-sm"
           type="outlined"
-          color="white"
+          color={color}
           rightIconComponent={
             isOpen ? (
               <ChevronUpIcon className="w-4 h-4 mr-1" />
@@ -43,12 +46,22 @@ const CustomDropdown = ({ label = 'hola', name, options, color = 'black' }: Prop
           }
         />
         {isOpen && options.length > 0 && (
-          <div className="absolute left-0 right-0 z-40 flex flex-col w-full bg-white color-black">
-            {options.map((option) => {
+          <div
+            className={`absolute left-0 right-0 z-40 flex w-full flex-col border border-t-0 bg-white border-[${color}] color-[${color}]`}
+          >
+            {options.map((option,index) => {
               if (typeof option === 'object') {
-                return <button className="py-2 text-black" onClick={() => handleClick(option.label)}>{option.label}</button>;
+                return (
+                  <button key={index} className="py-2 text-black" onClick={() => handleClick(option)}>
+                    {option.label}
+                  </button>
+                );
               } else {
-                return <button className="py-2 text-black" onClick={() => handleClick(option)}>{option}</button>;
+                return (
+                  <button key={index} className="py-2 text-black" onClick={() => handleClick(option)}>
+                    {option}
+                  </button>
+                );
               }
             })}
           </div>

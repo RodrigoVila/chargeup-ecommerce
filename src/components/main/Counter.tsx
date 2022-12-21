@@ -1,7 +1,16 @@
-const Counter = ({ count, subtractOne, addOne, color= "white" }) => {
-  const operClass = "mr-1 text-2xl leading-none cursor-pointer  p-2";
+import { FC } from 'react';
+
+type Props = {
+  count: number;
+  subtractOne: () => void;
+  addOne: () => void;
+  color?: string;
+};
+
+const Counter: FC<Props> = ({ count, subtractOne, addOne, color = 'black' }) => {
+  const operClass = 'mr-1 text-2xl leading-none cursor-pointer  p-2';
   return (
-    <div className={`flex items-center my-1 mx-2 font-bold border border-${color} rounded-md`}>
+    <div className={`my-1 flex items-center border font-bold border-${color} rounded-md`}>
       <button className={`${operClass}`} onClick={subtractOne}>
         -
       </button>

@@ -33,8 +33,10 @@ const UpdatePasswordForm: FC = () => {
     editUserPassword(oldPassword, encryptedPassword);
   };
   return (
-    <div className="relative p-6 bg-white rounded-xl">
-      <CloseModalButton color="black" isAbsolute position="right" onClose={closeUserModal} />
+    <div className="p-6 pt-4 bg-white rounded-xl">
+      <div className="relative flex items-center justify-end w-full">
+          <CloseModalButton color="black" onClose={closeUserModal} />
+        </div>
       <Input
         label={lang.es.OLD_PASSWORD}
         type="password"

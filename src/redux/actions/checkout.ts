@@ -6,7 +6,7 @@ import {
 
 //TODO: type
 
-export const createNewCheckoutSession = (items: CheckoutItem[]) => ({
+export const createNewCheckoutSession = (items: CartProductType[]) => ({
   type: CREATE_CHECKOUT_SESSION,
   items,
 });

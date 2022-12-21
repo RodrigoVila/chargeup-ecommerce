@@ -108,7 +108,7 @@ const Login = () => {
   return (
     <>
       <Toaster />
-      <div className="relative flex flex-col items-center justify-center w-full p-6 pb-8 font-semibold text-black bg-white rounded-md">
+      <div className="relative flex flex-col items-center justify-center w-full p-4 font-semibold text-black bg-white rounded-md">
         <div className="relative flex items-center justify-end w-full">
           <CloseModalButton color="black" onClose={() => closeLoginModal()} />
         </div>

@@ -19,7 +19,7 @@ const suitableForInfoSchema = new mongoose.Schema({
   vegan: Boolean,
 });
 
-const priceAndExtrasSchema = new mongoose.Schema({
+const sizesExtrasSchema = new mongoose.Schema({
   label: String,
   price: Number,
 });
@@ -31,8 +31,8 @@ const productSchema = new mongoose.Schema(
     description: descriptionSchema,
     nutritionalInfo: nutritionalInfoSchema,
     suitableForInfo: suitableForInfoSchema,
-    prices: [priceAndExtrasSchema],
-    extras: [priceAndExtrasSchema] || null,
+    sizes: [sizesExtrasSchema],
+    extras: [sizesExtrasSchema] || null,
     imgUri: String,
   },
   {

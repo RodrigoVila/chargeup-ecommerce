@@ -2,16 +2,13 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import { stripeSecretKey } from '@constants';
 const stripe = require('stripe')(stripeSecretKey);
 
-const calculateOrderAmount = (items: CheckoutItem[]) => {
-  // Replace this constant with a calculation of the order's amount
-  // Calculate the order total on the server to prevent
-  // people from directly manipulating the amount on the client
-  // let orderAmount = 0;
-  // items.map((item) => {
-  //   let itemAmount = item.quantity * item.price;
-  //   orderAmount = orderAmount += itemAmount;
-  // });
-  // return orderAmount;
+const calculateOrderAmount = (items: CartProductType[]): number => {
+  let orderAmount = 0;
+  items.map((item) => {
+    orderAmount = orderAmount += item.total;
+  });
+  return orderAmount * 100;
+
 };
 
 export default async function (req: NextApiRequest, res: NextApiResponse) {
@@ -23,22 +20,6 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
     try {
       // Create Checkout Sessions from body params.
       const session = await stripe.checkout.sessions.create({
-        shipping_address_collection: { allowed_countries: ['ES'] },
-        shipping_options: [
-          {
-            shipping_rate_data: {
-              type: 'fixed_amount',
-              fixed_amount: { amount: 0, currency: 'eur' },
-              display_name: 'Free shipping',
-              delivery_estimate: {
-                minimum: { unit: 'business_day', value: 2 },
-                maximum: { unit: 'business_day', value: 3 },
-              },
-            },
-          },
-        ],
-        // line_items: JSON.parse(body),
-        // line_items: [{ price: 'price_1KsAUxBIc3UrM0KoIp5x43Qp', quantity: 6 }],
         line_items: [
           {
             price_data: {

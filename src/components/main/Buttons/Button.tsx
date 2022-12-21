@@ -62,7 +62,7 @@ const Button = ({
         withGradient && 'bg-gradient-to-br'
       } bg-[${
         withGradient ? 'transparent' : color
-      }] from-purple-600 via-[${color}] z-20 m-1 flex w-full cursor-pointer items-center justify-center rounded-md to-purple-700 py-2 px-4 text-white md:text-2xl xl:text-base`}
+      }] from-purple-600 via-[${color}] z-20 flex w-full cursor-pointer items-center justify-center rounded-md to-purple-700 py-2 px-4 text-white text-sm`}
       onClick={onClick}
       type={isSubmit ? 'submit' : 'button'}
       role={isSubmit ? 'link' : 'button'}

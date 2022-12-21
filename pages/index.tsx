@@ -1,9 +1,11 @@
 import { useEffect } from 'react';
 import { Toaster } from 'react-hot-toast';
 
+// Hooks
 import useAppActions from '@hooks/useAppActions';
 import useAppSelector from '@hooks/useAppSelector';
 
+// Sections
 import Welcome from '@sections/Welcome';
 import Products from '@sections/Products';
 import About from '@sections/About';
@@ -11,18 +13,24 @@ import Keto from '@sections/Keto';
 import Cakes from '@sections/Cakes';
 import WhyUs from '@sections/WhyUs';
 import Footer from '@sections/Footer';
+
+// Modals
 import AdminProductModal from '@admin/Modal/AdminProductModal';
 import CartModal from '@main/Modal/CartModal';
 import CheckoutModal from '@main/Modal/CheckoutModal';
 import DrawerModal from '@main/Modal/DrawerModal';
 import FiltersModal from '@main/Modal/FiltersModal';
 import LoginModal from '@main/Modal/LoginModal';
-import ProductModal from '@main/Modal/ProductExtrasModal';
 import UserModal from '@main/Modal/UserModal';
+import ExtrasModal from '@main/Modal/ExtrasModal';
+import ProductDescModal from '@main/Modal/ProductDescModal';
+
+// Components
 import TopBar from '@main/TopBar/TopBar';
 import MobileTopBar from '@main/TopBar/MobileTopBar';
 import { getValueFromLocalStorage } from '@utils/localStorage';
 import { LOCAL_STORAGE_DATA_KEY } from '@constants';
+
 
 
 const MainScreen = () => {
@@ -48,8 +56,9 @@ const MainScreen = () => {
       <DrawerModal />
       <FiltersModal />
       <LoginModal />
-      <ProductModal />
       <UserModal />
+      <ProductDescModal />
+      <ExtrasModal />
       <div className="relative w-full h-screen">
         {/* Navigation */}
         <TopBar />

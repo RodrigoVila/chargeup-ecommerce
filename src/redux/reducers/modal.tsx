@@ -17,10 +17,10 @@ import {
   CLOSE_LOGIN_MODAL,
   OPEN_PRODUCT_DETAILS_MODAL,
   CLOSE_PRODUCT_DETAILS_MODAL,
-  OPEN_PRODUCT_EXTRAS_MODAL,
-  CLOSE_PRODUCT_EXTRAS_MODAL,
   OPEN_USER_MODAL,
   CLOSE_USER_MODAL,
+  OPEN_EXTRAS_MODAL,
+  CLOSE_EXTRAS_MODAL
 } from '../actions/types';
 
 const initialState: ModalStateType = {
@@ -30,17 +30,16 @@ const initialState: ModalStateType = {
   checkout: false,
   checkout_success: false,
   checkout_error: false,
-  extraItems: null,
   filters: false,
   login: false,
   selectedProduct: null,
   product: false,
-  productExtras: false,
+  extras:false,
   user: false,
 };
 
 const modalReducer = (state = initialState, action: ModalActionType): ModalStateType => {
-  const { type, selectedProduct } = action;
+  const { type, selectedProduct,} = action;
 
   switch (type) {
     case OPEN_ADMIN_PRODUCT_MODAL:
@@ -135,16 +134,6 @@ const modalReducer = (state = initialState, action: ModalActionType): ModalState
         ...state,
         product: false,
       };
-    case OPEN_PRODUCT_EXTRAS_MODAL:
-      return {
-        ...state,
-        productExtras: true,
-      };
-    case CLOSE_PRODUCT_EXTRAS_MODAL:
-      return {
-        ...state,
-        productExtras: false,
-      };
     case OPEN_USER_MODAL:
       return {
         ...state,
@@ -155,6 +144,18 @@ const modalReducer = (state = initialState, action: ModalActionType): ModalState
         ...state,
         user: false,
       };
+      case OPEN_EXTRAS_MODAL:
+        return {
+          ...state,
+          extras: true,
+          selectedProduct
+        };
+      case CLOSE_EXTRAS_MODAL:
+        return {
+          ...state,
+          extras: false,
+          selectedProduct: null
+        };
   }
 
   return state;

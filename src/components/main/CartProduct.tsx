@@ -5,73 +5,59 @@ import { TrashIcon } from '@heroicons/react/24/outline';
 import useAppActions from '@hooks/useAppActions';
 import Counter from './Counter';
 
-const CartProduct: FC<ProductType> = ({
-  _id,
-  title,
-  description,
-  nutritionalInfo,
-  suitableForInfo,
-  prices,
-  quantity,
-  imgUri,
-  strapiId,
-}) => {
+type Props = { product: CartProductType };
+
+const CartProduct: FC<Props> = ({ product }) => {
+  const { _id, title, quantity, total, suitableForInfo, selectedSize, selectedExtras } = product;
+  const { label: sizeLabel, price } = selectedSize;
+
   const { removeFromCart, changeCartProductQuantity } = useAppActions();
 
-  const addOne = () => changeCartProductQuantity(_id, quantity + 1);
+  const getSubtotal = () => {
+    if (!product || !selectedSize) return 0;
+    let extrasPrice = 0;
 
-  const subtractOne = () => (quantity > 1 ? changeCartProductQuantity(_id, quantity - 1) : null);
+    selectedExtras.map((extra) => {
+      if (extra.price) {
+        extrasPrice += extra.price;
+        return extra;
+      } else {
+        return extra;
+      }
+    });
+
+    const total = selectedSize.price + extrasPrice;
+    return total;
+  };
 
   return (
-    <div className="flex w-full">
-      <div className="relative w-1/3 border-b-2 border-white h-28 3xs:hidden xs:flex">
-        <Image className="" objectFit="cover" layout="fill" src={`/${imgUri}.jpg`} alt="" />
-      </div>
+    <div className="flex w-full mt-1">
       <div className={`relative flex w-full flex-col justify-between border-b-2 border-gray-300`}>
         <div className="flex items-center justify-between mx-2">
-          <div className="text-lg font-semibold">
-            {/* {title.toUpperCase()} <span className="text-2xl font-semibold"> €{price.reg}</span> */}
-          </div>
+          <div className="mt-2 text-lg font-semibold">{title.toUpperCase()}</div>
           <button className="w-6 h-6 cursor-pointer" onClick={() => removeFromCart(_id)}>
             <TrashIcon color="red" />
           </button>
         </div>
-        <div className="flex my-1 ml-2">
-          {suitableForInfo.vegan && (
-            <div className="relative w-10 h-10" data-tip="Apto Vegano">
-              <Image src="/icons/vegan.svg" layout="fill" />
-            </div>
-          )}
-          {suitableForInfo.protein && (
-            <div className="relative w-10 h-10" data-tip="Alto contenido de proteina">
-              <Image src="/icons/high-protein.svg" layout="fill" />
-            </div>
-          )}
-          {suitableForInfo.glutenFree && (
-            <div className="relative w-10 h-10" data-tip="Gluten Free">
-              <Image src="/icons/gluten-free.svg" layout="fill" />
-            </div>
-          )}
-          {suitableForInfo.keto && (
-            <div className="relative w-10 h-10" data-tip="Keto">
-              <Image src="/icons/keto.svg" layout="fill" />
-            </div>
-          )}
-        </div>
-
-        <div className="relative flex items-center justify-between mx-2 ">
-          <div className="flex items-center justify-center h-full mb-1 text-xl text-gray-700">
-            Cantidad:{' '}
-            <Counter
-              count={quantity}
-              addOne={addOne}
-              subtractOne={subtractOne}
-              color="black"
-            />
+        <div className="flex items-center justify-between mx-2">
+          <div className="">
+            {sizeLabel && <div className="">{`${sizeLabel} - €${price.toFixed(2)}`}</div>}
+            {selectedExtras.length >0 &&
+              selectedExtras.map((extra) => (
+                <div className="">{`${extra.label} - €${extra.price.toFixed(2)}`}</div>
+              ))}
+            {quantity && (
+              <div className="mt-2 font-bold">
+                Subtotal:
+                <div className="font-regular">{`€${getSubtotal().toFixed(2)} x ${quantity} ${
+                  quantity > 1 ? 'unidades' : 'unidad'
+                }`}</div>
+              </div>
+            )}
           </div>
-          <div className="flex items-center justify-center h-full text-2xl text-gray-700">{`€${
-            price.reg * quantity
-          }`}</div>
+          <div className="flex items-end justify-center h-full text-2xl text-gray-700">{`€${total.toFixed(
+            2
+          )}`}</div>
         </div>
       </div>
     </div>

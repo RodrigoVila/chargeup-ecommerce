@@ -62,15 +62,29 @@ interface AuthActionType extends AuthStateType {
 
 //Cart
 type CartStateType = {
-  items: ProductType[];
+  items: CartProductType[];
 };
 
 interface CartActionType {
   type: string;
   id?: string;
   newAmount?: number;
-  product: ProductType;
+  product: CartProductType;
 }
+
+type CartProductType = {
+  _id: string;
+  title: string;
+  selectedSize: ILabelAndPrice;
+  quantity: number;
+  suitableForInfo?: ISuitableForInfo;
+  selectedExtras?: ILabelAndPrice[] | null;
+  total: number;
+};
+
+interface ITotal {
+  total: number;
+};
 
 //Checkout Session
 type CheckoutStateType = {
@@ -100,18 +114,19 @@ type ModalStateType = {
   checkout: boolean;
   checkout_success: boolean;
   checkout_error: boolean;
-  extraItems: any;
+  extras: boolean;
   filters: boolean;
   login: boolean;
   product: boolean;
-  productExtras: boolean;
   selectedProduct: ProductType;
+  sizeAndExtras: any;
   user: boolean;
 };
 
 interface ModalActionType extends ModalStateType {
   type: string;
   selectedProduct: ProductType;
+  sizeAndExtras: any;
 }
 
 //Order
@@ -160,7 +175,7 @@ interface IProductDescription {
   short: string;
 }
 
-interface IPriceExtras {
+interface ILabelAndPrice {
   label: string;
   price: number;
 }
@@ -171,8 +186,8 @@ type ProductType = {
   description: IProductDescription;
   imgUri: string;
   nutritionalInfo: INutritionalInfo;
-  prices: IPriceExtras[];
-  extras?: IPriceExtras[];
+  sizes: ILabelAndPrice[];
+  extras?: ILabelAndPrice[];
   quantity?: number;
   suitableForInfo: ISuitableForInfo;
 };
