@@ -1,5 +1,6 @@
 import { LOCAL_STORAGE_CART_KEY } from '@constants';
 import { clearLocalStorage, setValueToLocalStorage } from '@utils/localStorage';
+import { getProductSubtotal } from '@utils/index';
 import {
   LOAD_CART,
   ADD_TO_CART,
@@ -14,7 +15,7 @@ const cartReducer = (
   state: CartStateType = initialState,
   action: CartActionType
 ): CartStateType => {
-  const { id: actionId, type, product, id, newAmount } = action;
+  const { id: actionID, type, product, newAmount } = action;
   const { items } = state;
 
   switch (type) {
@@ -23,26 +24,17 @@ const cartReducer = (
         ...state,
       };
     case ADD_TO_CART:
-      const hasSameID = (item: CartProductType): boolean => item._id === product._id;
-      const hasSameSize = (item: CartProductType): boolean =>
-        item.selectedSize.label === product.selectedSize.label;
-      const hasSameExtras = (item: CartProductType): boolean => {
-        return (
-          product.selectedExtras.length === item.selectedExtras.length &&
-          product.selectedExtras.every(function (element) {
-            return item.selectedExtras.includes(element);
-          })
-        );
-      };
-      const sameItem = (item) => hasSameID(item) && hasSameSize(item) && hasSameExtras(item);
       // Creates a copy of item found in Array (In case of duplicates)
-      let item = items.find((item) => sameItem(item));
-      console.log('itemReducer', item);
+      let item = items.find((item) => item.id === product.id);
       if (item) {
         const updatedItems = items.map((item) => {
-          if (sameItem(item)) {
+          if (item.id === product.id) {
             const newQuantity = item.quantity + product.quantity;
-            return { ...item, quantity: newQuantity };
+            return {
+              ...item,
+              quantity: newQuantity,
+              total: item.subTotal * newQuantity,
+            };
           } else {
             return item;
           }
@@ -63,7 +55,7 @@ const cartReducer = (
         };
       }
     case REMOVE_FROM_CART:
-      const updatedItems: CartProductType[] = items.filter((item: any) => item.id !== actionId);
+      const updatedItems: CartProductType[] = items.filter((item: any) => item.id !== actionID);
       setValueToLocalStorage(LOCAL_STORAGE_CART_KEY, updatedItems);
 
       return {
@@ -72,10 +64,11 @@ const cartReducer = (
       };
     case CHANGE_PRODUCT_QUANTITY:
       const newItems = items.map((item) => {
-        if (item._id === id) {
+        if (item.id === actionID) {
           return {
             ...item,
             quantity: newAmount,
+            total: item.subTotal * newAmount,
           };
         }
         return item;

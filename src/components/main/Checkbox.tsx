@@ -1,37 +1,32 @@
-import React, { ChangeEvent, useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 interface Props {
   label: string;
-  name: string;
-  onChange: (label: string) => void;
+  onChange: () => void;
 }
 
-const Checkbox = ({ label, name, onChange }: Props) => {
-  const [isChecked, setChecked] = useState(false);
+const Checkbox = ({ label, onChange }: Props) => {
+  const [checked, setChecked] = useState(false);
 
-  const onClick = (e: ChangeEvent<HTMLInputElement>) => {
+  const onChangeInput = (e: any) => {
     setChecked(e.target.checked);
-    onChange(label);
+    onChange();
   };
 
-  useEffect(() => {
-    console.log(label, isChecked);
-  }, [isChecked]);
-
   return (
-    <div className="flex items-center mt-1 mb-2">
+    <div className="flex items-center self-start mt-1 mb-2 cursor-pointer">
       <input
-        id={name}
+        id={label}
         type="checkbox"
-        value=""
+        checked={checked}
+        onChange={onChangeInput}
         className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-2 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:ring-offset-gray-800 dark:focus:ring-blue-600"
-        onChange={onClick}
       />
       <label
-        htmlFor={name}
+        htmlFor={label}
         className={`${
-          isChecked ? 'font-bold' : 'font-normal'
-        } ml-2 text-md text-black transition-all duration-200`}
+          checked ? 'font-bold' : 'font-normal'
+        } text-md ml-2 text-black transition-all duration-200`}
       >
         {label}
       </label>

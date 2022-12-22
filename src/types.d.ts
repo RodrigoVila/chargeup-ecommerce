@@ -73,13 +73,14 @@ interface CartActionType {
 }
 
 type CartProductType = {
-  _id: string;
+  id: string;
   title: string;
   selectedSize: ILabelAndPrice;
   quantity: number;
   suitableForInfo?: ISuitableForInfo;
   selectedExtras?: ILabelAndPrice[] | null;
-  total: number;
+  subTotal?: number;
+  total?: number;
 };
 
 interface ITotal {

@@ -1,27 +1,21 @@
 import { useEffect, useMemo, useState } from 'react';
 import ReactTooltip from 'react-tooltip';
 
-import useAppActions from '@hooks/useAppActions';
 import useAppSelector from '@hooks/useAppSelector';
+import useAppActions from '@hooks/useAppActions';
+import useMounted from '@hooks/useMounted';
 
+import Modal from '@shared/Modal';
 import Button from '@main/Buttons/Button';
-import { colors } from '@constants';
 import CartProduct from '@main/CartProduct';
 import CloseModalButton from '@main/Buttons/CloseModalButton';
-import Modal from '@shared/Modal';
-import { useRouter } from 'next/router';
-import useLocalStorage from '@hooks/useLocalStorage';
-import useMounted from '@hooks/useMounted';
+import { colors } from '@constants';
 
 const CartModal = () => {
   const [disabled, setDisabled] = useState(false);
-  const { isCartModalOpen, cartItems, checkoutSession } = useAppSelector();
-
+  const { isCartModalOpen, cartItems } = useAppSelector();
   const { closeCartModal, createCheckoutSession } = useAppActions();
-
   const { isMounted } = useMounted();
-
-  const router = useRouter();
 
   const totalSum = useMemo(() => cartItems.reduce((acc, item) => acc + item.total, 0), [cartItems]);
 
@@ -39,10 +33,6 @@ const CartModal = () => {
     cartItems.length === 0 ? closeCartModal() : null;
   }, [cartItems]);
 
-  useEffect(() => {
-    checkoutSession ? router.push(checkoutSession) : null;
-  }, [checkoutSession]);
-
   return (
     <Modal isOpen={isCartModalOpen} transparent fullScreen>
       {/* This avoid Hydration error so the Tooltip will be used only if the component is already mounted */}
@@ -52,8 +42,8 @@ const CartModal = () => {
         <div className="px-2 pt-8 pb-6 text-3xl text-center text-black">{`${cartItems.length} ${
           cartItems.length > 1 ? 'articulos' : 'articulo'
         } en la cesta`}</div>
-        {cartItems.map((item, i) => (
-          <CartProduct key={`[${i}]${item._id}`} product={item} />
+        {cartItems.map((item,i) => (
+          <CartProduct key={`${i}${item.id}`} product={item} />
         ))}
 
         <div className="flex items-center justify-between w-full py-2 pb-0 text-3xl text-black">

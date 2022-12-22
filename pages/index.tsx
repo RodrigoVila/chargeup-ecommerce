@@ -30,11 +30,14 @@ import TopBar from '@main/TopBar/TopBar';
 import MobileTopBar from '@main/TopBar/MobileTopBar';
 import { getValueFromLocalStorage } from '@utils/localStorage';
 import { LOCAL_STORAGE_DATA_KEY } from '@constants';
+import { useRouter } from 'next/router';
 
 
 
 const MainScreen = () => {
+  const router = useRouter()
   const { checkUserToken } = useAppActions();
+  const { checkoutSession } = useAppSelector();
 
   useEffect(() => {
     const getDataFromStorage = () => {
@@ -44,6 +47,10 @@ const MainScreen = () => {
     };
     getDataFromStorage();
   }, []);
+
+  useEffect(() => {
+    checkoutSession ? router.push(checkoutSession) : null;
+  }, [checkoutSession]);
 
   return (
     <div className="relative font-dinRegular">
