@@ -38,6 +38,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         stripeWebhookKey
       );
       if (type === 'checkout.session.completed') {
+        console.log("DATAOBJ!!!!!!!!", data.object)
         res.status(200).send({ success: true, payload: data.object });
       }
     } catch (err) {

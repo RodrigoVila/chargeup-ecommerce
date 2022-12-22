@@ -33,8 +33,8 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
           },
         ],
         mode: 'payment',
-        success_url: `${req.headers.origin}/?success=true`,
-        cancel_url: `${req.headers.origin}/?success=false`,
+        success_url: req.headers.origin,
+        cancel_url: req.headers.origin,
       });
       return res.status(200).json({
         success: true,

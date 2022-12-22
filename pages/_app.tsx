@@ -22,19 +22,11 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
     ],
   };
   return (
-    <>
-      <Head>
-        <link rel="preload" href="/fonts/DINPro-Medium.ttf" as="font" crossOrigin="" />
-        <link rel="stylesheet" href="https://rsms.me/inter/inter.css"></link>
-        <title>Charge UP Barcelona</title>
-        <script src="https://cdn.tailwindcss.com"></script>
-      </Head>
-      <Provider store={store}>
-        <Elements stripe={stripePromise} options={options}>
-          <Component {...pageProps} />
-        </Elements>
-      </Provider>
-    </>
+    <Provider store={store}>
+      <Elements stripe={stripePromise} options={options}>
+        <Component {...pageProps} />
+      </Elements>
+    </Provider>
   );
 }
 
