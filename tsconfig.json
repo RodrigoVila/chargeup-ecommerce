@@ -18,7 +18,7 @@
       "@admin/*": ["./components/admin/*"],
       "@main/*": ["./components/main/*"],
       "@shared/*": ["./components/shared/*"],
-      "@constants": ["./constants/index.ts"],
+      "@constants/*": ["./constants/*"],
       "@context/*": ["./context/*"],
       "@hooks/*": ["./hooks/*"],
       "@models/*": ["./models/*"],
@@ -29,6 +29,6 @@
     },
     "incremental": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/constants/colors.js"],
   "exclude": ["node_modules"]
 }

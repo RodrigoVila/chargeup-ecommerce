@@ -13,7 +13,7 @@ import {
   VALIDATE_EMAIL_IN_DB,
   VALIDATE_EMAIL_IN_DB_SUCCESS,
   VALIDATE_EMAIL_IN_DB_ERROR
-} from './types';
+} from '../../constants/ActionTypes';
 
 export const userTokenCheck = (user: UserLoginType) => ({
   type: CHECK_USER_TOKEN,

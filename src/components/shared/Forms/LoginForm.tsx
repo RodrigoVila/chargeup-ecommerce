@@ -1,7 +1,7 @@
 import { FC, ChangeEvent } from 'react';
 
 import Input from '@shared/Input';
-import { lang } from '@constants';
+import { lang } from '@constants/lang';
 
 type Props = {
   onInputChange: (e: ChangeEvent<HTMLInputElement>) => void;

@@ -4,7 +4,7 @@ import { UserIcon } from '@heroicons/react/24/outline';
 
 import useAppActions from '@hooks/useAppActions';
 import useAppSelector from '@hooks/useAppSelector';
-import { lang } from '@constants';
+import { lang } from '@constants/lang';
 
 type Props = {
   color?: 'black' | 'white';

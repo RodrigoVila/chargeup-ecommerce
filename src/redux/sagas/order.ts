@@ -1,6 +1,6 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 import { addNewOrderSuccess, addNewOrderError } from '@redux/actions/order';
-import { NEW_ORDER } from '@redux/actions/types';
+import { NEW_ORDER } from 'constants/ActionTypes';
 
 const API_URL = '/api/order';
 

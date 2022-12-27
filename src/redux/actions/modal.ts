@@ -21,7 +21,7 @@ import {
   CLOSE_EXTRAS_MODAL,
   OPEN_ADMIN_PRODUCT_MODAL,
   CLOSE_ADMIN_PRODUCT_MODAL,
-} from './types';
+} from '../../constants/ActionTypes';
 
 // ADMIN
 export const adminProductModalOpen = (selectedProduct:ProductType) => ({ type: OPEN_ADMIN_PRODUCT_MODAL, selectedProduct });

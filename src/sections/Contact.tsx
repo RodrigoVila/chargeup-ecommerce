@@ -1,30 +1,32 @@
 import { useRef, SyntheticEvent } from 'react';
-import emailjs from '@emailjs/browser'
+import emailjs from '@emailjs/browser';
 
 import useAppActions from '@hooks/useAppActions';
 
-import { colors, lang } from '@constants';
+import { colors } from '@constants/colors';
+import { lang } from '@constants/lang';
 import BackgroundOverlay from '@main/BackgroundOverlay';
 import Button from '@main/Buttons/Button';
-import { displayMessageError } from '@redux/actions';
 
 const ContactSection = () => {
-  const form = useRef()
+  const form = useRef();
 
-  const { displaySuccessMessage } = useAppActions()
+  const { displaySuccessMessage,displayErrorMessage } = useAppActions();
 
   const handleSubmit = async (e: SyntheticEvent) => {
-    e.preventDefault()
-    const serviceID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID
-    const formID = process.env.NEXT_PUBLIC_EMAILJS_CONTACT_FORM_ID
-    const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
+    e.preventDefault();
+    const serviceID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+    const formID = process.env.NEXT_PUBLIC_EMAILJS_CONTACT_FORM_ID;
+    const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
     try {
-      const result = await emailjs.sendForm(serviceID, formID, form.current, publicKey)
-      const { status } = result
-      status === 200 ? displaySuccessMessage(lang.es.CONTACT_FORM_SUCCESS) : displayMessageError(lang.es.CONTACT_FORM_ERROR)
+      const result = await emailjs.sendForm(serviceID, formID, form.current, publicKey);
+      const { status } = result;
+      status === 200
+        ? displaySuccessMessage(lang.es.CONTACT_FORM_SUCCESS)
+        : displayErrorMessage(lang.es.CONTACT_FORM_ERROR);
     } catch (e) {
-      console.error(e)
-      displayMessageError(lang.es.CONTACT_FORM_ERROR)
+      console.error(e);
+      displayErrorMessage(lang.es.CONTACT_FORM_ERROR);
     }
   };
 
@@ -39,21 +41,9 @@ const ContactSection = () => {
       <p className="z-10 w-full pb-12 text-5xl text-center text-white font-dinBold">CONTACTANOS</p>
       <div className="z-10 flex flex-col items-center justify-center w-full max-w-xl px-4 overflow-hidden text-white">
         <form ref={form} onSubmit={handleSubmit}>
-          <input
-            name="name"
-            placeholder={lang.es.NAME}
-            className={inputStyle}
-          />
-          <input
-            name="email"
-            placeholder={lang.es.EMAIL}
-            className={inputStyle}
-          />
-          <input
-            name="subject"
-            placeholder={lang.es.SUBJECT}
-            className={inputStyle}
-          />
+          <input name="name" placeholder={lang.es.NAME} className={inputStyle} />
+          <input name="email" placeholder={lang.es.EMAIL} className={inputStyle} />
+          <input name="subject" placeholder={lang.es.SUBJECT} className={inputStyle} />
           <textarea
             name="message"
             placeholder="Escribenos un mensaje!"

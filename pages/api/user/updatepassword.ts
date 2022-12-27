@@ -3,7 +3,7 @@ import User from '@models/user';
 import dbConnect from '@utils/dbConnect';
 import Id from '../order/[id]';
 import useEncryption from '@hooks/useEncryption';
-import { lang } from '@constants';
+import { lang } from '@constants/lang';
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   const { method, body } = req;

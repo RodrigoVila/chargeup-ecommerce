@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import BackgroundOverlay from 'components/main/BackgroundOverlay';
-import { colors } from '@constants';
+import { colors } from '@constants/colors';
 import Section from '@main/Section';
 
 const AboutSection: FC = () => {

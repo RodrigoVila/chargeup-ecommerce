@@ -22,11 +22,6 @@ const CartProduct: FC<Props> = ({ product }) => {
     changeCartProductQuantity(id, quantity - 1);
   };
 
-  useEffect(() => {
-    console.log("subTotal",subTotal,"total",total)
-  }, [product])
-  
-
   return (
     <div className="flex w-full mt-1">
       <div className={`relative flex w-full flex-col justify-between border-b-2 border-gray-300`}>
@@ -40,8 +35,8 @@ const CartProduct: FC<Props> = ({ product }) => {
           <div className="">
             {sizeLabel && <div className="">{`${sizeLabel} - €${price.toFixed(2)}`}</div>}
             {selectedExtras.length > 0 &&
-              selectedExtras.map((extra) => (
-                <div className="">{`${extra.label} - €${extra.price.toFixed(2)}`}</div>
+              selectedExtras.map((extra,index) => (
+                <div key={index} className="">{`${extra.label} - €${extra.price.toFixed(2)}`}</div>
               ))}
             {isEditingQuantity ? (
               <div className="flex items-center">

@@ -5,7 +5,7 @@ import {
   FETCH_PRODUCTS_SUCCESS,
   FETCH_PRODUCTS,
   FETCH_PRODUCTS_ERROR,
-} from './types';
+} from '../../constants/ActionTypes';
 
 export const addProductToStore = (product: ProductType) => ({
   type: ADD_PRODUCT,

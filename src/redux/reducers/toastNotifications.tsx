@@ -1,10 +1,10 @@
-// import { toast } from "react-toastify";
-import toast, { Toaster } from 'react-hot-toast';
-import { ERROR_MESSAGE, SUCCESS_MESSAGE, INFO_MESSAGE } from '../actions/types';
+import toast from 'react-hot-toast';
 import { AiOutlineCheckCircle } from 'react-icons/ai';
 import { BsExclamationOctagon } from 'react-icons/bs';
 import { MdCancel } from 'react-icons/md';
-import { colors } from '@constants';
+
+import { ERROR_MESSAGE, SUCCESS_MESSAGE, INFO_MESSAGE } from '@constants/ActionTypes';
+import { colors } from '@constants/colors';
 
 const initialState: ToastStateType = {
   message: '',

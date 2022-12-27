@@ -1,6 +1,7 @@
 import { useState, ChangeEvent, FC } from 'react';
 
-import { colors, lang } from '@constants';
+import { colors } from '@constants/colors';
+import { lang } from '@constants/lang';
 import Input from '@shared/Input';
 import Button from '@main/Buttons/Button';
 import useAppSelector from '@hooks/useAppSelector';
@@ -8,7 +9,7 @@ import useAppActions from '@hooks/useAppActions';
 import CloseModalButton from '@main/Buttons/CloseModalButton';
 
 const UserDataForm: FC = () => {
-  const { isLoading, user } = useAppSelector();
+  const { areUsersLoading, user } = useAppSelector();
   const [editingField, setEditingField] = useState('');
   const [userDetails, setUserDetails] = useState(user);
   const {
@@ -37,9 +38,9 @@ const UserDataForm: FC = () => {
   };
 
   const handleSubmit = () => {
-    setEditingField("")
+    setEditingField('');
     editUserDetails(userDetails);
-  }
+  };
 
   return (
     <div className="relative w-full p-6 overflow-scroll bg-white rounded-md">
@@ -156,7 +157,7 @@ const UserDataForm: FC = () => {
         title={lang.es.CHANGE_USER_DATA}
         color={colors.purple}
         onClick={handleSubmit}
-        disabled={isLoading}
+        disabled={areUsersLoading}
       />
     </div>
   );

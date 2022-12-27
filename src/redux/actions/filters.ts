@@ -1,4 +1,4 @@
-import { SET_FILTERS } from './types'
+import { SET_FILTERS } from '../../constants/ActionTypes'
 
 //TODO: type
 

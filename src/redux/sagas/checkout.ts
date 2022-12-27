@@ -3,16 +3,15 @@ import {
   createNewCheckoutSessionError,
   createNewCheckoutSessionSuccess,
 } from '@redux/actions/checkout';
-import { CREATE_CHECKOUT_SESSION } from '@redux/actions/types';
+import { CREATE_CHECKOUT_SESSION } from 'constants/ActionTypes';
 
 const API_URL = '/api/checkout_session';
 
 function* checkoutSession(payload: any) {
-  const { items } = payload;
-  try {
+    try {
     const response = yield call(fetch, API_URL, {
       method: 'POST',
-      body: JSON.stringify(items)
+      body: JSON.stringify(payload.newOrder)
     });
     const { url } = yield response.json();
     yield put(createNewCheckoutSessionSuccess(url));

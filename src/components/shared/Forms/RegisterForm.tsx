@@ -1,6 +1,6 @@
 import { FC, ChangeEvent } from 'react';
 
-import { lang } from '@constants';
+import { lang } from '@constants/lang';
 import Input from '@shared/Input';
 
 type Props = {

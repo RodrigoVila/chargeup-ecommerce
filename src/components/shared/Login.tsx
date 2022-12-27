@@ -6,7 +6,8 @@ import useAppSelector from '@hooks/useAppSelector';
 import useAppActions from '@hooks/useAppActions';
 import useEncryption from '@hooks/useEncryption';
 
-import { colors, lang } from '@constants';
+import { lang } from '@constants/lang';
+import { colors } from '@constants/colors';
 import RegisterForm from '@shared/Forms/RegisterForm';
 import LoginForm from '@shared/Forms/LoginForm';
 import Button from '@main/Buttons/Button';
@@ -112,23 +113,23 @@ const Login = () => {
         <div className="relative flex items-center justify-end w-full">
           <CloseModalButton color="black" onClose={() => closeLoginModal()} />
         </div>
-          {isRegisterForm ? (
-            <RegisterForm onInputChange={onInputChange} />
-          ) : (
-            <LoginForm onInputChange={onInputChange} />
-          )}
+        {isRegisterForm ? (
+          <RegisterForm onInputChange={onInputChange} />
+        ) : (
+          <LoginForm onInputChange={onInputChange} />
+        )}
 
-          <Button
-            title={isRegisterForm ? lang.es.USER_REGISTER : lang.es.LOGIN}
-            color={colors.purple}
-            hoverColor={colors.fuchsia}
-            onClick={isRegisterForm ? handleRegister : handleLogin}
-            disabled={isAuthLoading}
-          />
-          <Link
-            text={isRegisterForm ? lang.es.GO_TO_LOGIN : lang.es.USER_REGISTER}
-            onClick={toggleRegister}
-          />
+        <Button
+          title={isRegisterForm ? lang.es.USER_REGISTER : lang.es.LOGIN}
+          color={colors.purple}
+          hoverColor={colors.fuchsia}
+          onClick={isRegisterForm ? handleRegister : handleLogin}
+          disabled={isAuthLoading}
+        />
+        <Link
+          text={isRegisterForm ? lang.es.GO_TO_LOGIN : lang.es.USER_REGISTER}
+          onClick={toggleRegister}
+        />
       </div>
     </>
   );

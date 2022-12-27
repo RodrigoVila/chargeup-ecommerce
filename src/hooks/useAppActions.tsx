@@ -85,8 +85,8 @@ const useAppActions = () => {
   const clearCart = () => dispatch(clearCartItems())
 
   // Checkout
-  const createCheckoutSession = (items: CartProductType[]) =>
-    dispatch(createNewCheckoutSession(items));
+  const createCheckoutSession = (newOrder: OrderType) =>
+    dispatch(createNewCheckoutSession(newOrder));
 
   const createCheckoutSessionSuccess = (sessionURL: string) =>
     dispatch(createNewCheckoutSessionSuccess(sessionURL));
@@ -152,7 +152,7 @@ const useAppActions = () => {
 
   // Orders
 
-  const addOrder = (order: OrderItemType) => dispatch(addNewOrder(order));
+  const addOrder = (order: OrderType) => dispatch(addNewOrder(order));
 
   // Products
 

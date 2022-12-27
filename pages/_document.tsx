@@ -7,7 +7,6 @@ export default function Document() {
         <link rel="preload" href="/fonts/DINPro-Medium.ttf" as="font" crossOrigin="" />
         <link rel="stylesheet" href="https://rsms.me/inter/inter.css"></link>
         <script src="https://cdn.tailwindcss.com"></script>
-        <title>Charge UP Barcelona</title>
       </Head>
       <body>
         <Main />

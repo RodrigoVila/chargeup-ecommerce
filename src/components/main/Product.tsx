@@ -5,7 +5,7 @@ import ReactTooltip from 'react-tooltip';
 import Button from '@main/Buttons/Button';
 import Counter from '@main/Counter';
 import RoundImage from '@main/RoundImage';
-import { colors } from '@constants';
+import { colors } from '@constants/colors';
 import useAppActions from '@hooks/useAppActions';
 import useMounted from '@hooks/useMounted';
 import Dropdown from './Dropdown';

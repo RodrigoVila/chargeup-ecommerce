@@ -1,4 +1,4 @@
-import { colors } from '@constants'
+import { colors } from '@constants/colors'
 import NavItem from '@main/NavItem'
 
 interface Props {

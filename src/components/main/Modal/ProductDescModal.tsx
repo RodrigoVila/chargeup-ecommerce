@@ -2,7 +2,7 @@ import { FC } from 'react';
 import useAppActions from '@hooks/useAppActions';
 import useAppSelector from '@hooks/useAppSelector';
 
-import { colors } from '@constants';
+import { colors } from '@constants/colors';
 import Modal from '@shared/Modal';
 import Button from '@main/Buttons/Button';
 

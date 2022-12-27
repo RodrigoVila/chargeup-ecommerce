@@ -4,7 +4,7 @@ import createSagaMiddleware from '@redux-saga/core';
 import rootReducer from './reducers';
 import rootSaga from './sagas';
 
-import { LOCAL_STORAGE_DATA_KEY, AUTH_INITIAL_STATE, LOCAL_STORAGE_CART_KEY } from '@constants';
+import { LOCAL_STORAGE_DATA_KEY, AUTH_INITIAL_STATE, LOCAL_STORAGE_CART_KEY } from '@constants/keys';
 import { getValueFromLocalStorage } from '@utils/localStorage';
 
 const sagaMiddleware = createSagaMiddleware();

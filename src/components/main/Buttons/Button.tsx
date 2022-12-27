@@ -1,5 +1,5 @@
 import { FormEvent, ReactNode } from 'react';
-import { colors } from '@constants';
+import { colors } from '@constants/colors';
 import Spinner from '@shared/Spinner';
 
 interface Props {

@@ -29,10 +29,8 @@ import ProductDescModal from '@main/Modal/ProductDescModal';
 import TopBar from '@main/TopBar/TopBar';
 import MobileTopBar from '@main/TopBar/MobileTopBar';
 import { getValueFromLocalStorage } from '@utils/localStorage';
-import { LOCAL_STORAGE_DATA_KEY } from '@constants';
+import { LOCAL_STORAGE_DATA_KEY } from '@constants/keys';
 import { useRouter } from 'next/router';
-
-
 
 const MainScreen = () => {
   const router = useRouter()

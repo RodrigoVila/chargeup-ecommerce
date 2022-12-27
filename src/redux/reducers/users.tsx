@@ -1,4 +1,4 @@
-import { APP_USER_INITIAL_STATE, USERS_INITIAL_STATE } from '@constants';
+import { APP_USER_INITIAL_STATE, USERS_INITIAL_STATE } from '@constants/initialState';
 import {
   FETCH_USER_DETAILS,
   FETCH_USER_DETAILS_ERROR,
@@ -9,7 +9,7 @@ import {
   REQUEST_CHANGE_USER_PASSWORD,
   REQUEST_CHANGE_USER_PASSWORD_SUCCESS,
   REQUEST_CHANGE_USER_PASSWORD_ERROR,
-} from '../actions/types';
+} from '@constants/ActionTypes';
 
 const usersReducer = (state = USERS_INITIAL_STATE, action: UsersActionType) => {
   const { type, user } = action;

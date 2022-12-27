@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-import { colors } from '@constants';
+import { colors } from '@constants/colors';
 import Portal from '@utils/Portal';
 import BackgroundOverlay from '@main/BackgroundOverlay';
 import useAppActions from '@hooks/useAppActions';

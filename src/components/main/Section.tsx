@@ -2,7 +2,7 @@ import { FC, ReactNode } from 'react';
 import Image from 'next/image';
 
 import BackgroundOverlay from './BackgroundOverlay';
-import { colors } from '@constants';
+import { colors } from '@constants/colors';
 
 interface Props {
   id: string;

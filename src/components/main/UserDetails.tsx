@@ -3,7 +3,8 @@ import Link from '@main/Link';
 
 import useAppActions from '@hooks/useAppActions';
 import Input from '@shared/Input';
-import { colors, lang } from '@constants';
+import { lang } from '@constants/lang';
+import { colors } from '@constants/colors';
 import useAppSelector from '@hooks/useAppSelector';
 import UpdatePasswordForm from '@shared/Forms/UpdatePasswordForm';
 import UserDataForm from '@shared/Forms/UserDataForm';
@@ -31,8 +32,11 @@ const UserDetails = () => {
   }, []);
 
   return (
-    <div className={`${!editing && "bg-white rounded-md p-4 pt-12"} relative w-full h-full overflow-scroll my-4`}>
-
+    <div
+      className={`${
+        !editing && 'rounded-md bg-white p-4 pt-12'
+      } relative my-4 h-full w-full overflow-scroll`}
+    >
       {/* {editing === 'userData' && <UserDataForm />} */}
       {editing === 'password' && <UpdatePasswordForm />}
 

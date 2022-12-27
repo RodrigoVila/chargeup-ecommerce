@@ -1,13 +1,12 @@
-import { LOCAL_STORAGE_CART_KEY } from '@constants';
-import { clearLocalStorage, setValueToLocalStorage } from '@utils/localStorage';
-import { getProductSubtotal } from '@utils/index';
 import {
   LOAD_CART,
   ADD_TO_CART,
   REMOVE_FROM_CART,
   CHANGE_PRODUCT_QUANTITY,
   CLEAR_CART,
-} from '../actions/types';
+} from '@constants/ActionTypes';
+import { LOCAL_STORAGE_CART_KEY } from '@constants/keys';
+import { clearLocalStorage, setValueToLocalStorage } from '@utils/localStorage';
 
 const initialState: CartStateType = { items: [] };
 

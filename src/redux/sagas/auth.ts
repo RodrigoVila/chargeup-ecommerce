@@ -21,8 +21,8 @@ import {
   CHECK_USER_TOKEN,
   REQUEST_EMAIL_VALIDATION,
   VALIDATE_EMAIL_IN_DB,
-} from '@redux/actions/types';
-import { lang } from '@constants';
+} from 'constants/ActionTypes';
+import { lang } from '@constants/lang';
 
 const API_URL = '/api/auth';
 

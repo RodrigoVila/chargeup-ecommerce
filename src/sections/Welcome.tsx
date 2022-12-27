@@ -2,7 +2,7 @@ import { useState, useEffect, FC } from 'react';
 
 import useTypewriterEffect, { getTypewriter, useCursor } from '@hooks/useTypewriterEffect';
 
-import { colors } from '@constants';
+import { colors } from '@constants/colors';
 import BackgroundOverlay from '@main/BackgroundOverlay';
 
 const Welcome: FC = () => {

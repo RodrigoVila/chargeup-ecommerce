@@ -8,7 +8,7 @@ import {
   REQUEST_CHANGE_USER_PASSWORD,
   REQUEST_CHANGE_USER_PASSWORD_SUCCESS,
   REQUEST_CHANGE_USER_PASSWORD_ERROR,
-} from './types';
+} from '../../constants/ActionTypes';
 
 export const fetchUserDetails = () => ({
   type: FETCH_USER_DETAILS,

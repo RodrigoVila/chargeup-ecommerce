@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useMemo } from 'react';
 import Image from 'next/image';
 
 import useAppActions from '@hooks/useAppActions';
@@ -12,8 +12,10 @@ const CartButton: FC = () => {
 
   const { isMounted } = useMounted();
 
-  const cartLength = cartItems?.length;
-
+  const cartLength = useMemo(
+    () => (cartItems?.length !== 0 ? cartItems.length : null),
+    [cartItems]
+  );
   const openCart = () =>
     cartLength > 0 ? openCartModal() : displayInfoMessage('No hay productos en el carrito');
 
@@ -31,7 +33,7 @@ const CartButton: FC = () => {
       <div
         className={`absolute -right-2 -top-1 m-auto rounded-full bg-red-500 px-1 text-center text-sm font-bold leading-none text-white`}
       >
-        {isMounted && cartLength !== 0 ? cartLength : null}
+        {isMounted && cartLength}
       </div>
     </div>
   );

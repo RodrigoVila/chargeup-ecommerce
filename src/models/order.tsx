@@ -1,18 +1,31 @@
 import mongoose from 'mongoose';
 
-const itemSchema = new mongoose.Schema({
-  id:String,
-  name: String,
+const LabelPrice = new mongoose.Schema({
+  label: String,
   price: Number,
+});
+
+const itemSchema = new mongoose.Schema({
+  id: String,
+  title: String,
+  selectedSize: LabelPrice,
+  selectedExtras: [LabelPrice],
   quantity: Number,
+  subTotal: Number,
+  total: Number,
 });
 
 let orderSchema = new mongoose.Schema(
   {
     id: String,
-    buyerId: String,
+    email: String,
     items: [itemSchema],
     totalAmount: Number,
+    paidAmount:Number|| null,
+    buyerEmail:String|| null,
+    status:String,
+    created: Date,
+    orderSent: Boolean
   },
   {
     collection: process.env.MONGO_ORDERS_COLLECTION,

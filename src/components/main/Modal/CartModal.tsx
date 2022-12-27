@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import ReactTooltip from 'react-tooltip';
+import { v4 as uuidv4 } from 'uuid';
 
 import useAppSelector from '@hooks/useAppSelector';
 import useAppActions from '@hooks/useAppActions';
@@ -9,19 +10,27 @@ import Modal from '@shared/Modal';
 import Button from '@main/Buttons/Button';
 import CartProduct from '@main/CartProduct';
 import CloseModalButton from '@main/Buttons/CloseModalButton';
-import { colors } from '@constants';
+import { colors } from '@constants/colors';
 
 const CartModal = () => {
   const [disabled, setDisabled] = useState(false);
-  const { isCartModalOpen, cartItems } = useAppSelector();
+  const { isCartModalOpen, cartItems,user } = useAppSelector();
   const { closeCartModal, createCheckoutSession } = useAppActions();
   const { isMounted } = useMounted();
 
   const totalSum = useMemo(() => cartItems.reduce((acc, item) => acc + item.total, 0), [cartItems]);
 
   const onSubmit = () => {
+    const newOrder:OrderType = {
+      id: uuidv4(),
+      status: "pending",
+      email: user?.email ? user.email : "",
+      totalAmount: totalSum.toFixed(2),
+      items: cartItems,
+      created: new Date()
+    }
     setDisabled(true);
-    createCheckoutSession(cartItems);
+    createCheckoutSession(newOrder);
   };
 
   useEffect(() => {
@@ -29,7 +38,6 @@ const CartModal = () => {
   }, [isCartModalOpen]);
 
   useEffect(() => {
-    console.log(cartItems, 'cartItems');
     cartItems.length === 0 ? closeCartModal() : null;
   }, [cartItems]);
 
@@ -42,8 +50,8 @@ const CartModal = () => {
         <div className="px-2 pt-8 pb-6 text-3xl text-center text-black">{`${cartItems.length} ${
           cartItems.length > 1 ? 'articulos' : 'articulo'
         } en la cesta`}</div>
-        {cartItems.map((item,i) => (
-          <CartProduct key={`${i}${item.id}`} product={item} />
+        {cartItems.map((item) => (
+          <CartProduct key={item.id} product={item} />
         ))}
 
         <div className="flex items-center justify-between w-full py-2 pb-0 text-3xl text-black">

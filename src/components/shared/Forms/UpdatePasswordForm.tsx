@@ -1,6 +1,7 @@
 import { useState, ChangeEvent, FC } from 'react';
 
-import { colors, lang } from '@constants';
+import { lang } from '@constants/lang';
+import { colors } from '@constants/colors';
 import Input from '@shared/Input';
 import Button from '@main/Buttons/Button';
 import Link from '@main/Link';
@@ -29,14 +30,14 @@ const UpdatePasswordForm: FC = () => {
     }
 
     const encryptedPassword = await encryptPassword(password);
-    
+
     editUserPassword(oldPassword, encryptedPassword);
   };
   return (
     <div className="p-6 pt-4 bg-white rounded-xl">
       <div className="relative flex items-center justify-end w-full">
-          <CloseModalButton color="black" onClose={closeUserModal} />
-        </div>
+        <CloseModalButton color="black" onClose={closeUserModal} />
+      </div>
       <Input
         label={lang.es.OLD_PASSWORD}
         type="password"

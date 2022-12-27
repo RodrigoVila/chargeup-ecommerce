@@ -21,7 +21,7 @@ import {
   CLOSE_USER_MODAL,
   OPEN_EXTRAS_MODAL,
   CLOSE_EXTRAS_MODAL
-} from '../actions/types';
+} from '@constants/ActionTypes';
 
 const initialState: ModalStateType = {
   adminProduct: false,

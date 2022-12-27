@@ -4,18 +4,19 @@ import {
   FETCH_USER_DETAILS,
   REQUEST_CHANGE_USER_DETAILS,
   REQUEST_CHANGE_USER_PASSWORD,
-} from '@redux/actions/types';
+} from 'constants/ActionTypes';
 import {
   changeUserDetailsError,
   changeUserDetailsSuccess,
   fetchUserDetailsError,
   fetchUserDetailsSuccess,
 } from '@redux/actions/users';
+import { userModalClose } from '@redux/actions/modal';
+import { displayMessageError, displayMessageSuccess } from '@redux/actions/toastNotifications';
 
 import { getValueFromLocalStorage } from '@utils/localStorage';
-import { lang, LOCAL_STORAGE_DATA_KEY } from '@constants';
-import { displayMessageError, displayMessageSuccess } from '@redux/actions/toastNotifications';
-import { userModalClose } from '@redux/actions/modal';
+import { LOCAL_STORAGE_DATA_KEY } from '@constants/keys';
+import { lang } from '@constants/lang';
 
 const API_USERS = '/api/users';
 const API_USER = '/api/user';

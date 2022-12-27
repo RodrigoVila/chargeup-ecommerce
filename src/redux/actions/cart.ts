@@ -4,7 +4,7 @@ import {
   REMOVE_FROM_CART,
   CHANGE_PRODUCT_QUANTITY,
   CLEAR_CART,
-} from './types';
+} from '../../constants/ActionTypes';
 
 export const loadCartState = (products: CartProductType[]) => ({
   type: LOAD_CART,

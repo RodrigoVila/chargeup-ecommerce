@@ -7,21 +7,14 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
   await dbConnect();
 
-  const createNewOrder = async () => {
+  const getOrderByID = async () => {
     try {
-      const order = await Order.create(JSON.parse(body));
-      return res.status(201).json({ success: true, order });
-    } catch (e) {
-      return res.status(400).json({
-        success: false,
-        message: e.message,
-      });
-    }
+    } catch (e) {}
   };
 
   switch (method) {
     case 'POST':
-      return createNewOrder();
+      return getOrderByID();
     default:
       return res.status(405).end(`Method ${method} Not Allowed`);
   }

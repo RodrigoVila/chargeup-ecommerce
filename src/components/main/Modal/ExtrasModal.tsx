@@ -9,7 +9,7 @@ import CloseModalButton from '@main/Buttons/CloseModalButton';
 import Counter from '@main/Counter';
 import CustomDropdown from '@main/Dropdown';
 import Checkbox from '@main/Checkbox';
-import { colors } from '@constants';
+import { colors } from '@constants/colors';
 import { getProductSubtotal } from '@utils/index';
 
 const ExtrasModal = () => {
@@ -61,10 +61,8 @@ const ExtrasModal = () => {
       let extrasString = [];
       selectedExtras.map((extra) => extrasString.push(extra.label));
       const sorted = extrasString.sort();
-      console.log('ID!', `${title},${selectedSize.label},${sorted}`);
       return btoa(`${title},${selectedSize.label},${sorted}`);
     };
-    console.log(total,"Total")
     const cartProduct: CartProductType = {
       id: getUniqueID(),
       title,

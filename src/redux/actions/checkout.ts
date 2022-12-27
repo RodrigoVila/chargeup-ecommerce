@@ -2,13 +2,13 @@ import {
   CREATE_CHECKOUT_SESSION,
   CREATE_CHECKOUT_SESSION_ERROR,
   CREATE_CHECKOUT_SESSION_SUCCESS,
-} from './types';
+} from '../../constants/ActionTypes';
 
 //TODO: type
 
-export const createNewCheckoutSession = (items: CartProductType[]) => ({
+export const createNewCheckoutSession = (newOrder: OrderType) => ({
   type: CREATE_CHECKOUT_SESSION,
-  items,
+  newOrder,
 });
 
 export const createNewCheckoutSessionSuccess = (sessionURL: string) => ({

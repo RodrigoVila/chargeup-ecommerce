@@ -3,7 +3,8 @@ import { useRouter } from 'next/router';
 import { CheckCircleIcon } from '@heroicons/react/24/outline';
 import { XCircleIcon } from '@heroicons/react/24/outline';
 
-import { colors, lang } from '@constants';
+import { lang } from '@constants/lang';
+import { colors } from '@constants/colors';
 import Button from '@main/Buttons/Button';
 
 type Props = {

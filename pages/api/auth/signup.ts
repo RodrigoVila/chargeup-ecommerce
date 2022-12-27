@@ -2,7 +2,7 @@ import { NextApiRequest, NextApiResponse } from 'next';
 
 import User from '@models/user';
 import dbConnect from '@utils/dbConnect';
-import { lang } from '@constants';
+import { lang } from '@constants/lang';
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   const { method, body } = req;

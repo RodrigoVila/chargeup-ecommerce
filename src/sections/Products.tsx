@@ -7,12 +7,13 @@ import useAppSelector from '@hooks/useAppSelector';
 import Product from '@main/Product';
 import ProductSearchBar from '@main/ProductSearchBar';
 import Section from '@main/Section';
+import { parseNewOrderToHTML } from '@utils/htmlEmailParsers';
 
 const Products: FC = () => {
   const [searchValue, setSearchValue] = useState('');
   const [filteredProducts, setFilteredProducts] = useState<ProductType[]>([]);
 
-  const { products, filters } = useAppSelector();
+  const { products, filters,cartItems } = useAppSelector();
 
   const { fetchProducts, clearCart } = useAppActions();
 

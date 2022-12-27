@@ -1,11 +1,11 @@
-import { NEW_ORDER, NEW_ORDER_SUCCESS, NEW_ORDER_ERROR } from './types';
+import { NEW_ORDER, NEW_ORDER_SUCCESS, NEW_ORDER_ERROR } from '../../constants/ActionTypes';
 
-export const addNewOrder = (order: OrderItemType) => ({
+export const addNewOrder = (order: OrderType) => ({
   type: NEW_ORDER,
   order,
 });
 
-export const addNewOrderSuccess = (responseOrder: OrderItemType) => ({
+export const addNewOrderSuccess = (responseOrder: OrderType) => ({
   type: NEW_ORDER_SUCCESS,
   responseOrder,
 });

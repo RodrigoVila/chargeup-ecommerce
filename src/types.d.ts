@@ -120,7 +120,6 @@ type ModalStateType = {
   login: boolean;
   product: boolean;
   selectedProduct: ProductType;
-  sizeAndExtras: any;
   user: boolean;
 };
 
@@ -131,23 +130,18 @@ interface ModalActionType extends ModalStateType {
 }
 
 //Order
-
-interface IOrderItem {
-  id: string;
-  name: string;
-  price: number;
-  quantity: number;
+type OrderType = {
+  id: string,
+  email?: string,
+  items: CartProductType[],
+  totalAmount: string,
+  status?:string,
+  created: Date
 }
-type OrderItemType = {
-  id: string;
-  buyerId: string;
-  items: IOrderItem[];
-  totalAmount: number;
-};
 
 type OrderStateType = {
-  order: OrderItemType;
-  orderResponse: OrderItemType;
+  order: OrderType;
+  orderResponse: OrderType;
   error: string | null;
 };
 

@@ -4,7 +4,7 @@ import useAppActions from '@hooks/useAppActions';
 import Spinner from '@shared/Spinner';
 import useAppSelector from '@hooks/useAppSelector';
 import ErrorSucces from '@main/ErrorSuccess';
-import { lang } from '@constants';
+import { lang } from '@constants/lang';
 
 const EmailValidation = () => {
   const router = useRouter();

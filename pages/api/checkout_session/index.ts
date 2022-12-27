@@ -1,5 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { stripeSecretKey } from '@constants';
+import { stripeSecretKey } from '@constants/keys';
+import Order from '@models/order';
 const stripe = require('stripe')(stripeSecretKey);
 
 const calculateOrderAmount = (items: CartProductType[]): number => {
@@ -8,34 +9,38 @@ const calculateOrderAmount = (items: CartProductType[]): number => {
     orderAmount = orderAmount += item.total;
   });
   return orderAmount * 100;
-
 };
 
 export default async function (req: NextApiRequest, res: NextApiResponse) {
   const { method, body } = req;
 
-  const items = JSON.parse(body)
-
+  const newOrder = JSON.parse(body);
   const checkoutSession = async () => {
+    const saveOrderInDB = async () => await Order.create(newOrder);
+    
     try {
       // Create Checkout Sessions from body params.
       const session = await stripe.checkout.sessions.create({
         line_items: [
           {
             price_data: {
-              unit_amount: calculateOrderAmount(items),
+              unit_amount: calculateOrderAmount(newOrder.items),
               currency: 'eur',
               product_data: {
                 name: 'Pedido',
               },
             },
-            quantity: 1
+            quantity: 1,
           },
         ],
+        metadata: { orderId: newOrder.id },
         mode: 'payment',
-        success_url: req.headers.origin,
+        success_url: `${req.headers.origin}/ordersuccess/id=${newOrder.id}`,
         cancel_url: req.headers.origin,
       });
+
+      saveOrderInDB()
+
       return res.status(200).json({
         success: true,
         url: session.url,
