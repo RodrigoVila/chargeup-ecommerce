@@ -6,10 +6,9 @@ import {
 
 //TODO: type
 
-export const createNewCheckoutSession = (newOrder: OrderType, email?:string) => ({
+export const createNewCheckoutSession = (newOrder: OrderType) => ({
   type: CREATE_CHECKOUT_SESSION,
   newOrder,
-  email
 });
 
 export const createNewCheckoutSessionSuccess = (sessionURL: string) => ({

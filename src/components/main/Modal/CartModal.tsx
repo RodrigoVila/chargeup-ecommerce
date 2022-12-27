@@ -21,18 +21,16 @@ const CartModal = () => {
   const totalSum = useMemo(() => cartItems.reduce((acc, item) => acc + item.total, 0), [cartItems]);
 
   const onSubmit = () => {
-    const email= userLogin?.email ? userLogin.email : null
-    
     const newOrder:OrderType = {
       id: uuidv4(),
       status: "pending",
-      email,
+      email: userLogin?.email ? userLogin.email : null,
       totalAmount: totalSum.toFixed(2),
       items: cartItems,
       created: new Date()
     }
     setDisabled(true);
-    createCheckoutSession(newOrder,email);
+    createCheckoutSession(newOrder);
   };
 
   useEffect(() => {

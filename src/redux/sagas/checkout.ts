@@ -8,11 +8,11 @@ import { CREATE_CHECKOUT_SESSION } from 'constants/ActionTypes';
 const API_URL = '/api/checkout_session';
 
 function* checkoutSession(payload: any) {
-  const {newOrder, email} = payload
-    try {
+  const { newOrder } = payload;
+  try {
     const response = yield call(fetch, API_URL, {
       method: 'POST',
-      body: JSON.stringify({newOrder, email}),
+      body: JSON.stringify(newOrder),
     });
     const { url } = yield response.json();
     yield put(createNewCheckoutSessionSuccess(url));
