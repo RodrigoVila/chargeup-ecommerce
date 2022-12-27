@@ -14,23 +14,25 @@ import { colors } from '@constants/colors';
 
 const CartModal = () => {
   const [disabled, setDisabled] = useState(false);
-  const { isCartModalOpen, cartItems,user } = useAppSelector();
+  const { isCartModalOpen, cartItems,userLogin } = useAppSelector();
   const { closeCartModal, createCheckoutSession } = useAppActions();
   const { isMounted } = useMounted();
 
   const totalSum = useMemo(() => cartItems.reduce((acc, item) => acc + item.total, 0), [cartItems]);
 
   const onSubmit = () => {
+    const email= userLogin?.email ? userLogin.email : null
+    
     const newOrder:OrderType = {
       id: uuidv4(),
       status: "pending",
-      email: user?.email ? user.email : "",
+      email,
       totalAmount: totalSum.toFixed(2),
       items: cartItems,
       created: new Date()
     }
     setDisabled(true);
-    createCheckoutSession(newOrder);
+    createCheckoutSession(newOrder,email);
   };
 
   useEffect(() => {
@@ -64,14 +66,14 @@ const CartModal = () => {
           <Button title="Ir a pagar" color={colors.purple} onClick={()=>{}} isSubmit />
           </form> */}
             <Button
+              className="text-base"
               title="Ir a pagar"
               color={colors.purple}
-              className="text-base"
               onClick={onSubmit}
               disabled={disabled}
             />
           </div>
-          <Button title="Cerrar" onClick={closeCartModal} type="outlined" />
+          <Button className="text-base" title="Cerrar" onClick={closeCartModal} type="outlined" />
         </div>
       </div>
     </Modal>

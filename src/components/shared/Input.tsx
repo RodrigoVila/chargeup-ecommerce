@@ -16,7 +16,7 @@ const Input: FC<Props> = ({
   label,
   name,
   type,
-  value = null,
+  value,
   disabled = false,
   placeholder = '',
   onChange,

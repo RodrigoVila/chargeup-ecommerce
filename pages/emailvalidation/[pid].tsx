@@ -15,7 +15,7 @@ const EmailValidation = () => {
   const { isEmailValidated } = useAppSelector();
 
   useEffect(() => {
-    pid && dBEmailValidation(pid.toString());
+    pid && dBEmailValidation(pid.toString().slice(4));
   }, [pid]);
 
   if (isEmailValidated === null) {

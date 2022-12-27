@@ -12,7 +12,6 @@ import {
   loginUser,
   logoutUser,
   userTokenCheck,
-  sendEmailValidationRequest,
   validateEmailInDB,
 } from '@redux/actions/auth';
 import {
@@ -70,9 +69,6 @@ const useAppActions = () => {
 
   const registerUser = (user: UserRegisterType) => dispatch(registerNewUser(user));
 
-  const sendEmailValidation = (name: string, email: string, url: string) =>
-    dispatch(sendEmailValidationRequest(name, email, url));
-
   const dBEmailValidation = (pid: string) => dispatch(validateEmailInDB(pid));
 
   // Cart
@@ -82,11 +78,11 @@ const useAppActions = () => {
 
   const removeFromCart = (id: string) => dispatch(removeFromCartState(id));
 
-  const clearCart = () => dispatch(clearCartItems())
+  const clearCart = () => dispatch(clearCartItems());
 
   // Checkout
-  const createCheckoutSession = (newOrder: OrderType) =>
-    dispatch(createNewCheckoutSession(newOrder));
+  const createCheckoutSession = (newOrder: OrderType,email?:string) =>
+    dispatch(createNewCheckoutSession(newOrder,email));
 
   const createCheckoutSessionSuccess = (sessionURL: string) =>
     dispatch(createNewCheckoutSessionSuccess(sessionURL));
@@ -98,16 +94,20 @@ const useAppActions = () => {
     dispatch(changeProductQuantityState(id, newAmount));
 
   // Messages
-  const displaySuccessMessage = (msg: string) => dispatch(displayMessageSuccess(msg));
+  const displaySuccessMessage = (msg: string, duration?: number) =>
+    dispatch(displayMessageSuccess(msg, duration));
 
-  const displayErrorMessage = (msg: string) => dispatch(displayMessageError(msg));
+  const displayErrorMessage = (msg: string, duration?: number) =>
+    dispatch(displayMessageError(msg, duration));
 
-  const displayInfoMessage = (msg: string) => dispatch(displayMessageInfo(msg));
+  const displayInfoMessage = (msg: string, duration?: number) =>
+    dispatch(displayMessageInfo(msg, duration));
 
   // Modals: ADMIN
-  const openAdminProductModal = (selectedProduct: ProductType) => dispatch(adminProductModalOpen(selectedProduct));
+  const openAdminProductModal = (selectedProduct: ProductType) =>
+    dispatch(adminProductModalOpen(selectedProduct));
   const closeAdminProductModal = () => dispatch(adminProductModalClose());
-  
+
   // Modals: USERS
   const openCartModal = () => dispatch(cartModalOpen());
 
@@ -183,7 +183,6 @@ const useAppActions = () => {
     userLogin,
     userLogout,
     registerUser,
-    sendEmailValidation,
     dBEmailValidation,
     loadCart,
     addToCart,

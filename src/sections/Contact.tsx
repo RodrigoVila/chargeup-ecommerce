@@ -1,7 +1,4 @@
 import { useRef, SyntheticEvent } from 'react';
-import emailjs from '@emailjs/browser';
-
-import useAppActions from '@hooks/useAppActions';
 
 import { colors } from '@constants/colors';
 import { lang } from '@constants/lang';
@@ -11,23 +8,8 @@ import Button from '@main/Buttons/Button';
 const ContactSection = () => {
   const form = useRef();
 
-  const { displaySuccessMessage,displayErrorMessage } = useAppActions();
-
   const handleSubmit = async (e: SyntheticEvent) => {
     e.preventDefault();
-    const serviceID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
-    const formID = process.env.NEXT_PUBLIC_EMAILJS_CONTACT_FORM_ID;
-    const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
-    try {
-      const result = await emailjs.sendForm(serviceID, formID, form.current, publicKey);
-      const { status } = result;
-      status === 200
-        ? displaySuccessMessage(lang.es.CONTACT_FORM_SUCCESS)
-        : displayErrorMessage(lang.es.CONTACT_FORM_ERROR);
-    } catch (e) {
-      console.error(e);
-      displayErrorMessage(lang.es.CONTACT_FORM_ERROR);
-    }
   };
 
   const inputStyle =

@@ -4,8 +4,6 @@ import {
   LOGOUT,
   REGISTER_USER_SUCCESS,
   REGISTER_USER_ERROR,
-  REQUEST_EMAIL_VALIDATION_ERROR,
-  REQUEST_EMAIL_VALIDATION_SUCCESS,
   VALIDATE_EMAIL_IN_DB_SUCCESS,
   VALIDATE_EMAIL_IN_DB_ERROR,
 } from '../../constants/ActionTypes';
@@ -14,7 +12,7 @@ import { LOCAL_STORAGE_DATA_KEY } from '@constants/keys';
 import { AUTH_INITIAL_STATE } from '@constants/initialState';
 
 const authReducer = (state: AuthStateType = AUTH_INITIAL_STATE, action: AuthActionType) => {
-  const { type, userLogin, emailValidationError, validationEmailResponse } = action;
+  const { type, userLogin } = action;
 
   switch (type) {
     case REGISTER_USER_SUCCESS:
@@ -39,16 +37,6 @@ const authReducer = (state: AuthStateType = AUTH_INITIAL_STATE, action: AuthActi
         isLoggedIn: false,
         isLoading: false,
         userLogin: null,
-      };
-    case REQUEST_EMAIL_VALIDATION_ERROR:
-      return {
-        ...state,
-        emailValidationError,
-      };
-    case REQUEST_EMAIL_VALIDATION_SUCCESS:
-      return {
-        ...state,
-        validationEmailResponse,
       };
     case VALIDATE_EMAIL_IN_DB_SUCCESS:
       return {

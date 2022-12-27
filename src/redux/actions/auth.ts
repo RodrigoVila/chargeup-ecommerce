@@ -49,22 +49,6 @@ export const errorRegisterUser = () => ({
   type: REGISTER_USER_ERROR,
 });
 
-export const sendEmailValidationRequest = (name: string,email:string, link: string) => ({
-  type: REQUEST_EMAIL_VALIDATION,
-  name,
-  email,
-  link,
-});
-
-export const sendEmailValidationRequestSuccess = (validationEmailResponse: any) => ({
-  type: REQUEST_EMAIL_VALIDATION_SUCCESS,
-  validationEmailResponse,
-});
-
-export const sendEmailValidationRequestError = (validationEmailError: Error) => ({
-  type: REQUEST_EMAIL_VALIDATION_ERROR,
-  validationEmailError,
-});
 export const validateEmailInDB = (pid: string) => ({
   type: VALIDATE_EMAIL_IN_DB,
   pid,

@@ -45,7 +45,7 @@ const useAppSelector = () => {
 
   //Users
   const {
-    user,
+    user: userDetails,
     users,
     isLoading: areUsersLoading,
   } = useSelector((state) => state.users, shallowEqual);
@@ -70,7 +70,7 @@ const useAppSelector = () => {
     selectedModalProduct,
     products,
     areProductsLoading,
-    user,
+    userDetails,
     users,
     areUsersLoading,
   };

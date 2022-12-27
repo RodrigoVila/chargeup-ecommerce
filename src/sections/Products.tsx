@@ -7,15 +7,15 @@ import useAppSelector from '@hooks/useAppSelector';
 import Product from '@main/Product';
 import ProductSearchBar from '@main/ProductSearchBar';
 import Section from '@main/Section';
-import { parseNewOrderToHTML } from '@utils/htmlEmailParsers';
+import { newOrderToHTML } from '@utils/htmlEmailParsers';
 
 const Products: FC = () => {
   const [searchValue, setSearchValue] = useState('');
   const [filteredProducts, setFilteredProducts] = useState<ProductType[]>([]);
 
-  const { products, filters,cartItems } = useAppSelector();
+  const { products, filters } = useAppSelector();
 
-  const { fetchProducts, clearCart } = useAppActions();
+  const { fetchProducts } = useAppActions();
 
   const clearFilters = () => setFilteredProducts([]);
 
@@ -54,15 +54,6 @@ const Products: FC = () => {
 
   return (
     <Section id="products" bgImage="purpleTexture.jpeg" disabled={!products} noCenter>
-      <div
-        className="absolute top-0 right-0 px-1 text-sm bg-blue-500"
-        onClick={fetchProducts}
-      >
-        Fetch
-      </div>
-      <div className="absolute top-0 px-1 text-sm bg-red-500 right-16" onClick={() => clearCart()}>
-        Reset Cart
-      </div>
       <div className="flex flex-wrap items-center justify-center h-full pb-2">
         <ProductSearchBar setSearchValue={setSearchValue} />
       </div>

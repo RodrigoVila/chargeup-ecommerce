@@ -9,7 +9,6 @@
     "ngrok": "ngrok http 3000"
   },
   "dependencies": {
-    "@emailjs/browser": "^3.7.0",
     "@heroicons/react": "^2.0.12",
     "@reduxjs/toolkit": "^1.9.0",
     "axios": "^0.21.1",

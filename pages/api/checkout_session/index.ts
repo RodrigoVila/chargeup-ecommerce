@@ -14,32 +14,55 @@ const calculateOrderAmount = (items: CartProductType[]): number => {
 export default async function (req: NextApiRequest, res: NextApiResponse) {
   const { method, body } = req;
 
-  const newOrder = JSON.parse(body);
+  const { newOrder, email } = JSON.parse(body);
   const checkoutSession = async () => {
     const saveOrderInDB = async () => await Order.create(newOrder);
-    
+    console.log('emaillll', email, typeof email);
     try {
-      // Create Checkout Sessions from body params.
-      const session = await stripe.checkout.sessions.create({
-        line_items: [
-          {
-            price_data: {
-              unit_amount: calculateOrderAmount(newOrder.items),
-              currency: 'eur',
-              product_data: {
-                name: 'Pedido',
+      let session;
+      // Can I avoid DRY? I Can't pass a null to "customer_email" to do "email ? email : null"
+      if (email) {
+        session = await stripe.checkout.sessions.create({
+          customer_email: email,
+          line_items: [
+            {
+              price_data: {
+                unit_amount: calculateOrderAmount(newOrder.items),
+                currency: 'eur',
+                product_data: {
+                  name: 'Pedido',
+                },
               },
+              quantity: 1,
             },
-            quantity: 1,
-          },
-        ],
-        metadata: { orderId: newOrder.id },
-        mode: 'payment',
-        success_url: `${req.headers.origin}/ordersuccess/id=${newOrder.id}`,
-        cancel_url: req.headers.origin,
-      });
+          ],
+          metadata: { orderId: newOrder.id },
+          mode: 'payment',
+          success_url: `${req.headers.origin}/ordersuccess/id=${newOrder.id}`,
+          cancel_url: req.headers.origin,
+        });
+      } else {
+        session = await stripe.checkout.sessions.create({
+          line_items: [
+            {
+              price_data: {
+                unit_amount: calculateOrderAmount(newOrder.items),
+                currency: 'eur',
+                product_data: {
+                  name: 'Pedido',
+                },
+              },
+              quantity: 1,
+            },
+          ],
+          metadata: { orderId: newOrder.id },
+          mode: 'payment',
+          success_url: `${req.headers.origin}/ordersuccess/id=${newOrder.id}`,
+          cancel_url: req.headers.origin,
+        });
+      }
 
-      saveOrderInDB()
+      saveOrderInDB();
 
       return res.status(200).json({
         success: true,

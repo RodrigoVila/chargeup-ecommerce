@@ -51,8 +51,6 @@ type AuthStateType = {
   isLoggedIn: boolean;
   isLoading: boolean;
   userLogin: StorageUserType | null;
-  emailValidationError: Error | null;
-  validationEmailResponse: any;
   isEmailValidated: boolean;
 };
 
@@ -200,6 +198,7 @@ interface ProductsActionType extends ProductsStateType {
 //Toast
 type ToastStateType = {
   message: string;
+  duration?: number;
   icon?: null;
 };
 

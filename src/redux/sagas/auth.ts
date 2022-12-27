@@ -1,5 +1,4 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
-import emailjs from '@emailjs/browser';
 
 import {
   successRegisterUser,
@@ -7,9 +6,6 @@ import {
   errorLoginUser,
   successLoginUser,
   logoutUser,
-  sendEmailValidationRequestSuccess,
-  sendEmailValidationRequestError,
-  sendEmailValidationRequest,
   validateEmailInDBSuccess,
   validateEmailInDBError,
 } from '@redux/actions/auth';
@@ -19,7 +15,6 @@ import {
   REGISTER_USER,
   LOGIN_USER,
   CHECK_USER_TOKEN,
-  REQUEST_EMAIL_VALIDATION,
   VALIDATE_EMAIL_IN_DB,
 } from 'constants/ActionTypes';
 import { lang } from '@constants/lang';
@@ -28,7 +23,6 @@ const API_URL = '/api/auth';
 
 function* userRegister(payload: any) {
   const { user } = payload;
-  const { pid, name, email } = user;
   try {
     const response = yield call(fetch, API_URL + '/signup', {
       method: 'POST',
@@ -38,11 +32,8 @@ function* userRegister(payload: any) {
 
     const { success, message } = yield response.json();
     if (success) {
-      const link = `$http://localhost:3000/emailvalidation/${pid}`;
-
       yield put(successRegisterUser());
-      yield put(displayMessageSuccess(lang.es.USER_REGISTER_SUCCESS));
-      yield put(sendEmailValidationRequest(name, email, link));
+      yield put(displayMessageSuccess(lang.es.USER_REGISTER_SUCCESS, 7000));
       yield put(loginModalClose());
     } else {
       yield put(errorRegisterUser());
@@ -100,30 +91,6 @@ function* checkToken(payload: any) {
   }
 }
 
-function* sendEmailValidation(payload: any) {
-  const { name, email, link } = payload;
-  const serviceID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
-  const formID = process.env.NEXT_PUBLIC_EMAILJS_ACCOUNT_VERIFICATION_ID;
-  const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
-
-  try {
-    const result = yield emailjs.send(
-      serviceID,
-      formID,
-      { name, email, link }, //Name and message(Link to veritication)
-      publicKey
-    );
-    if (result.status === 200) {
-      yield put(sendEmailValidationRequestSuccess(result));
-    } else {
-      // yield put(displayMessageInfo('Posible error en validacion. Verificar consola.'));
-    }
-  } catch (error) {
-    yield put(sendEmailValidationRequestError(error));
-    yield put(displayMessageError(lang.es.CONTACT_FORM_ERROR));
-  }
-}
-
 function* validateEmailInDB(payload: any) {
   const { pid } = payload;
 
@@ -137,14 +104,11 @@ function* validateEmailInDB(payload: any) {
     const { success } = yield response.json();
     if (success) {
       yield put(validateEmailInDBSuccess());
-      // Envia yield.put ALGO OK?? ESTA CREADO ESTO?
     } else {
-      // Envia yield.put ALGO NO OK?? ESTA CREADO ESTO?
       yield put(validateEmailInDBError());
     }
   } catch (e) {
     yield put(validateEmailInDBError());
-    // Envia yield.put ALGO NO OK?? ESTA CREADO ESTO?
   }
 }
 
@@ -152,7 +116,6 @@ function* authSaga() {
   yield takeEvery(REGISTER_USER, userRegister);
   yield takeEvery(LOGIN_USER, userLogin);
   yield takeEvery(CHECK_USER_TOKEN, checkToken);
-  yield takeEvery(REQUEST_EMAIL_VALIDATION, sendEmailValidation);
   yield takeEvery(VALIDATE_EMAIL_IN_DB, validateEmailInDB);
 }
 

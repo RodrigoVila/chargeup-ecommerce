@@ -8,7 +8,7 @@ import { stripeSecretKey, stripeWebhookKey, LOCAL_STORAGE_CART_KEY } from '@cons
 import { lang } from '@constants/lang';
 import dbConnect from '@utils/dbConnect';
 import { decrypt, encrypt } from '@utils/encrypt';
-import { parseNewOrderToHTML } from '@utils/htmlEmailParsers';
+import { newOrderToHTML } from '@utils/htmlEmailParsers';
 import Order from '@models/order';
 
 const stripe = require('stripe')(stripeSecretKey);
@@ -36,7 +36,7 @@ const emailOrderToUser = async (email, orderId) => {
       from: `Charge UP Barcelona<${process.env.NODEMAILER_USER}>`,
       to: email,
       subject: `Tu pedido de ChargeUP BCN [#${orderId.substring(orderId.length - 5)}]`,
-      html: parseNewOrderToHTML(order),
+      html: newOrderToHTML(order),
     };
 
     transporter.sendMail(mailOption, (err, data) => {

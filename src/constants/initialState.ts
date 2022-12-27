@@ -7,8 +7,6 @@ export const AUTH_INITIAL_STATE = {
       name: '',
       token: '',
     },
-    validationEmailResponse: null,
-    emailValidationError: null,
     isEmailValidated: null,
   };
   

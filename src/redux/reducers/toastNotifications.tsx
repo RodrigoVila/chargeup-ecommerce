@@ -8,6 +8,7 @@ import { colors } from '@constants/colors';
 
 const initialState: ToastStateType = {
   message: '',
+  duration: 3000
 };
 
 const toastReducer = (
@@ -17,7 +18,7 @@ const toastReducer = (
   switch (action.type) {
     case SUCCESS_MESSAGE:
       toast(action.message, {
-        duration: 3000,
+        duration: action.duration || 3000,
         position: 'top-center',
         // Styling
         style: {
@@ -41,7 +42,7 @@ const toastReducer = (
       break;
     case ERROR_MESSAGE:
       toast(action.message, {
-        duration: 3000,
+        duration: action.duration || 3000,
         position: 'top-center',
         // Styling
         style: {
@@ -66,7 +67,7 @@ const toastReducer = (
       break;
     case INFO_MESSAGE:
       toast(action.message, {
-        duration: 3000,
+        duration: action.duration || 3000,
         position: 'top-center',
         // Styling
         style: {
