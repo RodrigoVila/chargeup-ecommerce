@@ -15,5 +15,5 @@ export const stripePublicKey =
 
 export const stripeWebhookKey =
   process.env.NODE_ENV === 'development'
-    ? process.env.STRIPE_WEBHOOK_SECRET_DEV_KEY
+    ? process.env.STRIPE_WEBHOOK_SECRET_KEY
     : process.env.STRIPE_WEBHOOK_SECRET_KEY;
