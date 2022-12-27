@@ -17,7 +17,6 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
   const { newOrder, email } = JSON.parse(body);
   const checkoutSession = async () => {
     const saveOrderInDB = async () => await Order.create(newOrder);
-    console.log('emaillll', email, typeof email);
     try {
       let session;
       // Can I avoid DRY? I Can't pass a null to "customer_email" to do "email ? email : null"
