@@ -82,7 +82,10 @@ const ExtrasModal = () => {
   }, [selectedModalProduct]);
 
   useEffect(() => {
-    !isExtrasModalOpen && setSelectedExtras([]);
+    if (!isExtrasModalOpen) {
+      setSelectedExtras([]);
+      setItemCount(1);
+    }
   }, [isExtrasModalOpen]);
 
   const labelStyle = 'text-md font-bold';
