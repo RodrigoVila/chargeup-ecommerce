@@ -15,10 +15,11 @@ const itemSchema = new mongoose.Schema({
   total: Number,
 });
 
-let orderSchema = new mongoose.Schema(
+export const orderSchema = new mongoose.Schema(
   {
     id: String,
     email: String,
+    name: String,
     items: [itemSchema],
     totalAmount: Number,
     paidAmount:Number|| null,
@@ -32,6 +33,6 @@ let orderSchema = new mongoose.Schema(
   }
 );
 
-let Order = mongoose.models.Order || mongoose.model('Order', orderSchema);
+const Order = mongoose.models.Order || mongoose.model('Order', orderSchema);
 
 export default Order;

@@ -31,7 +31,7 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
             quantity: 1,
           },
         ],
-        metadata: { orderId: newOrder.id },
+        metadata: { orderId: newOrder.id, name: newOrder.name },
         mode: 'payment',
         success_url: `${req.headers.origin}/ordersuccess/id=${newOrder.id}`,
         cancel_url: req.headers.origin,

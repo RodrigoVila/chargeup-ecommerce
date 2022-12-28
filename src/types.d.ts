@@ -131,6 +131,7 @@ interface ModalActionType extends ModalStateType {
 type OrderType = {
   id: string,
   email?: string,
+  name?:string,
   items: CartProductType[],
   totalAmount: string,
   status?:string,

@@ -13,8 +13,6 @@ const OrderSuccess = () => {
 
   const { clearCart } = useAppActions();
 
-  const onClick = () => router.push("/")
-
   useEffect(() => {
     clearCart();
   }, [queryID]);

@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 const { Schema } = mongoose;
+import {orderSchema} from './order'
 
 let userSchema = new Schema(
   {
@@ -27,6 +28,10 @@ let userSchema = new Schema(
     pid: {
       type: String,
       required: false,
+    },
+    orders: {
+      type: [orderSchema],
+      required: false
     },
     prefixNo: {
       type: String,

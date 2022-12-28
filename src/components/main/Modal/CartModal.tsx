@@ -21,9 +21,11 @@ const CartModal = () => {
   const totalSum = useMemo(() => cartItems.reduce((acc, item) => acc + item.total, 0), [cartItems]);
 
   const onSubmit = () => {
+    const name =  userLogin?.name ? userLogin.name : null;
     const newOrder:OrderType = {
       id: uuidv4(),
       status: "pending",
+      name,
       email: userLogin?.email ? userLogin.email : null,
       totalAmount: totalSum.toFixed(2),
       items: cartItems,

@@ -81,8 +81,8 @@ const useAppActions = () => {
   const clearCart = () => dispatch(clearCartItems());
 
   // Checkout
-  const createCheckoutSession = (newOrder: OrderType,email?:string) =>
-    dispatch(createNewCheckoutSession(newOrder,email));
+  const createCheckoutSession = (newOrder: OrderType) =>
+    dispatch(createNewCheckoutSession(newOrder));
 
   const createCheckoutSessionSuccess = (sessionURL: string) =>
     dispatch(createNewCheckoutSessionSuccess(sessionURL));
