@@ -1,15 +1,13 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import Stripe from 'stripe';
 import getRawBody from 'raw-body';
-import { v4 as uuidv4 } from 'uuid';
-import nodemailer from 'nodemailer';
 
-import { stripeSecretKey, stripeWebhookKey, LOCAL_STORAGE_CART_KEY } from '@constants/keys';
+import Order from '@models/order';
+import { stripeSecretKey, stripeWebhookKey } from '@constants/keys';
 import { lang } from '@constants/lang';
 import dbConnect from '@utils/dbConnect';
-import { decrypt, encrypt } from '@utils/encrypt';
 import { newOrderToHTML } from '@utils/htmlEmailParsers';
-import Order from '@models/order';
+import { sendEmailToUser } from '@utils/nodemailer';
 
 const stripe = require('stripe')(stripeSecretKey);
 
@@ -18,37 +16,6 @@ export const config = {
   api: {
     bodyParser: false,
   },
-};
-
-const transporter = nodemailer.createTransport({
-  service: process.env.NODEMAILER_SERVICE,
-  auth: {
-    user: process.env.NODEMAILER_USER,
-    pass: process.env.NODEMAILER_PWD,
-  },
-});
-
-const emailOrderToUser = async (email, orderId) => {
-  try {
-    const order = await Order.findOne({ id: orderId });
-
-    const mailOption = {
-      from: `Charge UP Barcelona<${process.env.NODEMAILER_USER}>`,
-      to: email,
-      subject: `Tu pedido de ChargeUP BCN [#${orderId.substring(orderId.length - 5)}]`,
-      html: newOrderToHTML(order),
-    };
-
-    transporter.sendMail(mailOption, (err, data) => {
-      if (err) {
-        console.log('err email', err);
-      } else {
-        console.log('email ok', data);
-      }
-    });
-  } catch (err) {
-    console.log('err email', err);
-  }
 };
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
@@ -60,15 +27,24 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     const {
       amount_total,
       payment_status: status,
-      customer_details: { email: buyerEmail },
+      customer_details: { email },
       metadata: { orderId },
     } = session;
     const paidAmount = amount_total / 100;
 
     try {
-      await Order.findOneAndUpdate({ id: orderId }, { status, paidAmount, buyerEmail });
+      await Order.findOneAndUpdate({ id: orderId }, { status, paidAmount, buyerEmail: email });
 
-      await emailOrderToUser(buyerEmail, orderId);
+      const order = await Order.findOne({ id: orderId });
+
+      const mailOption = {
+        from: `Charge UP Barcelona<${process.env.NODEMAILER_USER}>`,
+        to: email,
+        subject: `Tu pedido de ChargeUP BCN [#${orderId.substring(orderId.length - 5)}]`,
+        html: newOrderToHTML(order),
+      };
+
+      await sendEmailToUser(mailOption);
 
       return res.status(201).json({ success: true, message: lang.en.ORDER_SUCCESS });
     } catch (err) {
