@@ -151,7 +151,7 @@ const ExtrasModal = () => {
           <Button
             title="Agregar"
             color={colors.purple}
-            className="py-1 xl:w-1/2"
+            className="py-1"
             onClick={addItemToCart}
           />
         </div>

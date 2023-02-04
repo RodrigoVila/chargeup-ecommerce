@@ -33,9 +33,9 @@ import { LOCAL_STORAGE_DATA_KEY } from '@constants/keys';
 import { useRouter } from 'next/router';
 
 const MainScreen = () => {
-  const router = useRouter()
+  const router = useRouter();
   const { checkUserToken } = useAppActions();
-  const { checkoutSession } = useAppSelector();
+  const { checkoutSession, products } = useAppSelector();
 
   useEffect(() => {
     const getDataFromStorage = () => {
@@ -72,7 +72,7 @@ const MainScreen = () => {
         <Welcome />
       </div>
       <About />
-      <Products />
+      {products ? <Products /> : null}
       <Cakes />
       <Keto />
       <WhyUs />

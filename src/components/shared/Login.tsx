@@ -24,12 +24,13 @@ const initialState = {
 };
 
 const Login = () => {
+  const [isLoading, setLoading] = useState(false)
   const [isRegisterForm, setRegisterForm] = useState(false);
   const [credentials, setCredentials] = useState(initialState);
 
   const { name, lastName, email, password, repeatPassword } = credentials;
 
-  const { isAuthLoading } = useAppSelector();
+  const { isLoginModalOpen } = useAppSelector();
 
   const { displayErrorMessage, userLogin, registerUser, closeLoginModal } = useAppActions();
 
@@ -44,6 +45,7 @@ const Login = () => {
 
   const handleRegister = async (e: FormEvent<HTMLButtonElement>) => {
     e.preventDefault();
+    setLoading(true);
 
     const pid = uuidv4();
 
@@ -82,6 +84,7 @@ const Login = () => {
 
   const handleLogin = (e: FormEvent<HTMLButtonElement>) => {
     e.preventDefault();
+    setLoading(true);
 
     if (!email || !password) {
       displayErrorMessage(lang.es.ALL_INPUTS_REQUIRED);
@@ -106,6 +109,9 @@ const Login = () => {
     cleanCredentials();
   }, [isRegisterForm]);
 
+  useEffect(() => {
+    isLoginModalOpen && setLoading(false);
+  }, [isLoginModalOpen]);
   return (
     <>
       <Toaster />
@@ -124,7 +130,7 @@ const Login = () => {
           color={colors.purple}
           hoverColor={colors.fuchsia}
           onClick={isRegisterForm ? handleRegister : handleLogin}
-          disabled={isAuthLoading}
+          disabled={isLoading}
         />
         <Link
           text={isRegisterForm ? lang.es.GO_TO_LOGIN : lang.es.USER_REGISTER}

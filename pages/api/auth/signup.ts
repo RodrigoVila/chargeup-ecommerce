@@ -28,6 +28,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       return res.status(409).json({
         success: false,
         message: lang.en.USER_EXIST,
+        err: e
       });
     }
   };
