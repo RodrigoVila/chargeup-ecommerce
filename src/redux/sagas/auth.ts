@@ -16,6 +16,7 @@ import {
   LOGIN_USER,
   CHECK_USER_TOKEN,
   VALIDATE_EMAIL_IN_DB,
+  REQUEST_PASSWORD_RECOVERY,
 } from 'constants/ActionTypes';
 import { lang } from '@constants/lang';
 
@@ -112,11 +113,33 @@ function* validateEmailInDB(payload: any) {
   }
 }
 
+function* requestPasswordRecovery(payload: any) {
+  const { email } = payload;
+
+  try {
+    const response = yield call(fetch, API_URL + '/emailvalidation', {
+      method: 'POST',
+      headers: { Authorization: 'Token tokenid', 'Content-Type': 'application/json' },
+      body: JSON.stringify({ pid }),
+    });
+
+    const { success } = yield response.json();
+    if (success) {
+      yield put(validateEmailInDBSuccess());
+    } else {
+      yield put(validateEmailInDBError());
+    }
+  } catch (e) {
+    yield put(validateEmailInDBError());
+  }
+}
+
 function* authSaga() {
   yield takeEvery(REGISTER_USER, userRegister);
   yield takeEvery(LOGIN_USER, userLogin);
   yield takeEvery(CHECK_USER_TOKEN, checkToken);
   yield takeEvery(VALIDATE_EMAIL_IN_DB, validateEmailInDB);
+  yield takeEvery(REQUEST_PASSWORD_RECOVERY, requestPasswordRecovery);
 }
 
 export default authSaga;

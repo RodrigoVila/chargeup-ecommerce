@@ -34,6 +34,7 @@ export const lang = {
     ORDER_SUCCESS: "Orden creada con éxito",
     ORDER_ERROR: "Error procesando orden.",
     PASSWORD: 'Contraseña',
+    PASSWORD_RECOVERY: 'Recuperar contraseña',
     PASSWORD_REGEX:
       'La contraseña debe tener minimo 8 caracteres, al menos una mayuscula y al menos una minuscula',
     PASSWORDS_DONT_MATCH: 'Las contraseñas deben coincidir.',
@@ -87,6 +88,7 @@ export const lang = {
     ORDER_SUCCESS: "Order created",
     ORDER_ERROR: "Error processing order.",
     PASSWORD: 'Password',
+    PASSWORD_RECOVERY: 'Recover Password',
     PASSWORD_REGEX:
       'Password has to be minimum eight characters, at least one uppercase letter and one lowercase letter and one number:',
     PREFIX_NUMBER: 'Prefix',
@@ -138,6 +140,7 @@ export const lang = {
     ORDER_SUCCESS: "",
     ORDER_ERROR: "",
     PASSWORD: '',
+    PASSWORD_RECOVERY: '',
     PASSWORD_REGEX: '',
     PASSWORDS_DONT_MATCH: '',
     PREFIX_NUMBER: '',

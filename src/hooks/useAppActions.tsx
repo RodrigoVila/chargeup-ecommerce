@@ -13,6 +13,7 @@ import {
   logoutUser,
   userTokenCheck,
   validateEmailInDB,
+  requestPasswordRecovery
 } from '@redux/actions/auth';
 import {
   loadCartState,
@@ -70,6 +71,8 @@ const useAppActions = () => {
   const registerUser = (user: UserRegisterType) => dispatch(registerNewUser(user));
 
   const dBEmailValidation = (pid: string) => dispatch(validateEmailInDB(pid));
+
+  const passwordRecovery = (email: string) => dispatch(requestPasswordRecovery(email));
 
   // Cart
   const loadCart = (products: CartProductType[]) => dispatch(loadCartState(products));
@@ -184,6 +187,7 @@ const useAppActions = () => {
     userLogout,
     registerUser,
     dBEmailValidation,
+    passwordRecovery,
     loadCart,
     addToCart,
     removeFromCart,

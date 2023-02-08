@@ -5,9 +5,9 @@ import {
   REQUEST_CHANGE_USER_DETAILS,
   REQUEST_CHANGE_USER_DETAILS_SUCCESS,
   REQUEST_CHANGE_USER_DETAILS_ERROR,
-  REQUEST_CHANGE_USER_PASSWORD,
-  REQUEST_CHANGE_USER_PASSWORD_SUCCESS,
-  REQUEST_CHANGE_USER_PASSWORD_ERROR,
+  REQUEST_PASSWORD_RECOVERY,
+  REQUEST_PASSWORD_RECOVERY_SUCCESS,
+  REQUEST_PASSWORD_RECOVERY_ERROR,
 } from '../../constants/ActionTypes';
 
 export const fetchUserDetails = () => ({
@@ -37,17 +37,17 @@ export const changeUserDetailsError = (error: Error) => ({
 });
 
 export const changeUserPassword = (oldPassword: string, password: string) => ({
-  type: REQUEST_CHANGE_USER_PASSWORD,
+  type: REQUEST_PASSWORD_RECOVERY,
   oldPassword,
   password,
 });
 
 export const changeUserPasswordSuccess = () => ({
-  type: REQUEST_CHANGE_USER_PASSWORD_SUCCESS,
+  type: REQUEST_PASSWORD_RECOVERY_SUCCESS,
 });
 
 export const changeUserPasswordError = (error: Error) => ({
-  type: REQUEST_CHANGE_USER_PASSWORD_ERROR,
+  type: REQUEST_PASSWORD_RECOVERY_ERROR,
 
   error,
 });

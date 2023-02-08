@@ -6,9 +6,6 @@ import {
   REQUEST_CHANGE_USER_DETAILS_SUCCESS,
   REQUEST_CHANGE_USER_DETAILS_ERROR,
   REQUEST_CHANGE_USER_DETAILS,
-  REQUEST_CHANGE_USER_PASSWORD,
-  REQUEST_CHANGE_USER_PASSWORD_SUCCESS,
-  REQUEST_CHANGE_USER_PASSWORD_ERROR,
 } from '@constants/ActionTypes';
 
 const usersReducer = (state = USERS_INITIAL_STATE, action: UsersActionType) => {
@@ -17,7 +14,6 @@ const usersReducer = (state = USERS_INITIAL_STATE, action: UsersActionType) => {
   switch (type) {
     case FETCH_USER_DETAILS:
     case REQUEST_CHANGE_USER_DETAILS:
-    case REQUEST_CHANGE_USER_PASSWORD:
       return {
         ...state,
         isLoading: true,
@@ -32,8 +28,6 @@ const usersReducer = (state = USERS_INITIAL_STATE, action: UsersActionType) => {
 
     case REQUEST_CHANGE_USER_DETAILS_SUCCESS:
     case REQUEST_CHANGE_USER_DETAILS_ERROR:
-    case REQUEST_CHANGE_USER_PASSWORD_SUCCESS:
-    case REQUEST_CHANGE_USER_PASSWORD_ERROR:
       return {
         ...state,
         isLoading: false,

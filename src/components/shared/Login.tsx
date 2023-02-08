@@ -1,141 +1,53 @@
-import React, { useState, useEffect, FormEvent } from 'react';
 import { Toaster } from 'react-hot-toast';
-import { v4 as uuidv4 } from 'uuid';
-
-import useAppSelector from '@hooks/useAppSelector';
-import useAppActions from '@hooks/useAppActions';
-import useEncryption from '@hooks/useEncryption';
 
 import { lang } from '@constants/lang';
 import { colors } from '@constants/colors';
 import RegisterForm from '@shared/Forms/RegisterForm';
 import LoginForm from '@shared/Forms/LoginForm';
+import PasswordRecoveryForm from '@shared/Forms/PasswordRecoveryForm';
 import Button from '@main/Buttons/Button';
 import CloseModalButton from '@main/Buttons/CloseModalButton';
 import Link from '@main/Link';
-import { isEmailValid, isPasswordValid } from '@utils/index';
-
-const initialState = {
-  name: '',
-  lastName: '',
-  email: '',
-  password: '',
-  repeatPassword: '',
-};
+import useAppActions from '@hooks/useAppActions';
+import useLogin from '@hooks/useLogin';
+import useAppSelector from '@hooks/useAppSelector';
 
 const Login = () => {
-  const [isLoading, setLoading] = useState(false)
-  const [isRegisterForm, setRegisterForm] = useState(false);
-  const [credentials, setCredentials] = useState(initialState);
+  const { closeLoginModal } = useAppActions();
+  const { isAuthLoading } = useAppSelector();
+  const { formType, setFormType, onInputChange, getButtonTitle, handleButtonClick } = useLogin();
 
-  const { name, lastName, email, password, repeatPassword } = credentials;
-
-  const { isLoginModalOpen } = useAppSelector();
-
-  const { displayErrorMessage, userLogin, registerUser, closeLoginModal } = useAppActions();
-
-  const { encryptPassword } = useEncryption();
-
-  const onInputChange = (e: FormEvent<HTMLInputElement>) => {
-    const { name, value } = e.currentTarget;
-    setCredentials({ ...credentials, [name]: value });
-  };
-
-  const toggleRegister = () => setRegisterForm(!isRegisterForm);
-
-  const handleRegister = async (e: FormEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-    setLoading(true);
-
-    const pid = uuidv4();
-
-    if (!name || !lastName || !email || !password || !repeatPassword) {
-      displayErrorMessage(lang.es.ALL_INPUTS_REQUIRED);
-      return;
-    }
-
-    if (!isEmailValid(email)) {
-      displayErrorMessage(lang.es.INVALID_EMAIL);
-      return;
-    }
-
-    if (!isPasswordValid(password)) {
-      displayErrorMessage(lang.es.PASSWORD_REGEX);
-      return;
-    }
-
-    if (password !== repeatPassword) {
-      displayErrorMessage(lang.es.PASSWORDS_DONT_MATCH);
-      return;
-    }
-
-    const encryptedPassword = await encryptPassword(password);
-
-    const newUser = {
-      name,
-      lastName,
-      pid,
-      email,
-      password: encryptedPassword,
-    };
-
-    registerUser(newUser);
-  };
-
-  const handleLogin = (e: FormEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-    setLoading(true);
-
-    if (!email || !password) {
-      displayErrorMessage(lang.es.ALL_INPUTS_REQUIRED);
-      return;
-    }
-
-    if (!isEmailValid(email)) {
-      displayErrorMessage(lang.es.INVALID_EMAIL);
-      return;
-    }
-
-    const user = {
-      email,
-      password,
-    };
-    userLogin(user);
-  };
-
-  const cleanCredentials = () => setCredentials(initialState);
-
-  useEffect(() => {
-    cleanCredentials();
-  }, [isRegisterForm]);
-
-  useEffect(() => {
-    isLoginModalOpen && setLoading(false);
-  }, [isLoginModalOpen]);
   return (
     <>
       <Toaster />
+
       <div className="relative flex flex-col items-center justify-center w-full p-4 font-semibold text-black bg-white rounded-md">
         <div className="relative flex items-center justify-end w-full">
           <CloseModalButton color="black" onClose={() => closeLoginModal()} />
         </div>
-        {isRegisterForm ? (
-          <RegisterForm onInputChange={onInputChange} />
-        ) : (
-          <LoginForm onInputChange={onInputChange} />
-        )}
+
+        {formType === 'register' && <RegisterForm onInputChange={onInputChange} />}
+        {formType === 'login' && <LoginForm onInputChange={onInputChange} />}
+        {formType === 'passwordRecovery' && <PasswordRecoveryForm onInputChange={onInputChange} />}
 
         <Button
-          title={isRegisterForm ? lang.es.USER_REGISTER : lang.es.LOGIN}
+          title={getButtonTitle()}
           color={colors.purple}
           hoverColor={colors.fuchsia}
-          onClick={isRegisterForm ? handleRegister : handleLogin}
-          disabled={isLoading}
+          onClick={(e) => handleButtonClick(e)}
+          disabled={isAuthLoading}
         />
-        <Link
-          text={isRegisterForm ? lang.es.GO_TO_LOGIN : lang.es.USER_REGISTER}
-          onClick={toggleRegister}
-        />
+
+        {(formType === 'register' || formType === 'passwordRecovery') && (
+          <Link text={lang.es.GO_TO_LOGIN} onClick={() => setFormType('login')} />
+        )}
+
+        {formType === 'login' && (
+          <>
+            <Link text={lang.es.USER_REGISTER} onClick={() => setFormType('register')} />
+            <Link text={lang.es.PASSWORD_RECOVERY} onClick={() => setFormType('passwordRecovery')} />
+          </>
+        )}
       </div>
     </>
   );

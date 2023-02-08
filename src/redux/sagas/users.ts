@@ -3,7 +3,7 @@ import { call, put, takeEvery } from 'redux-saga/effects';
 import {
   FETCH_USER_DETAILS,
   REQUEST_CHANGE_USER_DETAILS,
-  REQUEST_CHANGE_USER_PASSWORD,
+  REQUEST_PASSWORD_RECOVERY,
 } from 'constants/ActionTypes';
 import {
   changeUserDetailsError,
@@ -96,7 +96,7 @@ function* updateUserPassword(payload: any) {
 function* usersSaga() {
   yield takeEvery(FETCH_USER_DETAILS, fetchUserDetails);
   yield takeEvery(REQUEST_CHANGE_USER_DETAILS, updateUserDetails);
-  yield takeEvery(REQUEST_CHANGE_USER_PASSWORD, updateUserPassword);
+  yield takeEvery(REQUEST_PASSWORD_RECOVERY, updateUserPassword);
 }
 
 export default usersSaga;

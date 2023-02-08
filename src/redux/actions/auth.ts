@@ -7,12 +7,12 @@ import {
   REGISTER_USER,
   REGISTER_USER_SUCCESS,
   REGISTER_USER_ERROR,
-  REQUEST_EMAIL_VALIDATION,
-  REQUEST_EMAIL_VALIDATION_SUCCESS,
-  REQUEST_EMAIL_VALIDATION_ERROR,
   VALIDATE_EMAIL_IN_DB,
   VALIDATE_EMAIL_IN_DB_SUCCESS,
-  VALIDATE_EMAIL_IN_DB_ERROR
+  VALIDATE_EMAIL_IN_DB_ERROR,
+  REQUEST_PASSWORD_RECOVERY,
+  REQUEST_PASSWORD_RECOVERY_SUCCESS,
+  REQUEST_PASSWORD_RECOVERY_ERROR
 } from '../../constants/ActionTypes';
 
 export const userTokenCheck = (user: UserLoginType) => ({
@@ -60,4 +60,17 @@ export const validateEmailInDBSuccess = () => ({
 
 export const validateEmailInDBError = () => ({
   type: VALIDATE_EMAIL_IN_DB_ERROR,
+});
+
+export const requestPasswordRecovery = (email: string) => ({
+  type: REQUEST_PASSWORD_RECOVERY,
+  email
+});
+
+export const prequestPasswordRecoverySuccess = () => ({
+  type: REQUEST_PASSWORD_RECOVERY_SUCCESS,
+});
+
+export const prequestPasswordRecoveryError = () => ({
+  type: REQUEST_PASSWORD_RECOVERY_ERROR,
 });

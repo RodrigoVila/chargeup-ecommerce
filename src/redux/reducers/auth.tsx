@@ -6,6 +6,11 @@ import {
   REGISTER_USER_ERROR,
   VALIDATE_EMAIL_IN_DB_SUCCESS,
   VALIDATE_EMAIL_IN_DB_ERROR,
+  LOGIN_USER,
+  REGISTER_USER,
+  REQUEST_PASSWORD_RECOVERY,
+  REQUEST_PASSWORD_RECOVERY_SUCCESS,
+  REQUEST_PASSWORD_RECOVERY_ERROR,
 } from '../../constants/ActionTypes';
 import { clearLocalStorage, setValueToLocalStorage } from '@utils/localStorage';
 import { LOCAL_STORAGE_DATA_KEY } from '@constants/keys';
@@ -15,7 +20,16 @@ const authReducer = (state: AuthStateType = AUTH_INITIAL_STATE, action: AuthActi
   const { type, userLogin } = action;
 
   switch (type) {
+    case LOGIN_USER:
+    case REGISTER_USER:
+    case REQUEST_PASSWORD_RECOVERY:
+      return {
+        ...state,
+        isLoading: true,
+      };
     case REGISTER_USER_SUCCESS:
+    case REQUEST_PASSWORD_RECOVERY_SUCCESS:
+    case REQUEST_PASSWORD_RECOVERY_ERROR:
       return {
         ...state,
         isLoading: false,
