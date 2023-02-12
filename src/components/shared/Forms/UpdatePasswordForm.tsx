@@ -11,10 +11,14 @@ import useEncryption from '@hooks/useEncryption';
 
 const INITIAL_STATE = { oldPassword: '', password: '', repeatPassword: '' };
 
-const UpdatePasswordForm: FC = () => {
+interface Props {
+  oldPassRequired: boolean;
+}
+
+const UpdatePasswordForm: FC = ({ oldPassRequired = false }: Props) => {
   const [userDetails, setUserDetails] = useState(INITIAL_STATE);
 
-  const { closeUserModal, displayErrorMessage, editUserPassword } = useAppActions();
+  const { closeUserModal, displayErrorMessage, editUserPassword,editUserPasswordWithoutLogin } = useAppActions();
   const { encryptPassword } = useEncryption();
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -31,19 +35,24 @@ const UpdatePasswordForm: FC = () => {
 
     const encryptedPassword = await encryptPassword(password);
 
-    editUserPassword(oldPassword, encryptedPassword);
+    oldPassRequired
+      ? editUserPassword(oldPassword, encryptedPassword)
+      : editUserPasswordWithoutLogin(encryptedPassword);
   };
   return (
     <div className="p-6 pt-4 bg-white rounded-xl">
       <div className="relative flex items-center justify-end w-full">
         <CloseModalButton color="black" onClose={closeUserModal} />
       </div>
-      <Input
-        label={lang.es.OLD_PASSWORD}
-        type="password"
-        name="oldPassword"
-        onChange={handleChange}
-      />
+      {oldPassRequired && (
+        <Input
+          label={lang.es.OLD_PASSWORD}
+          type="password"
+          name="oldPassword"
+          onChange={handleChange}
+        />
+      )}
+
       <Input label={lang.es.NEW_PASSWORD} type="password" name="password" onChange={handleChange} />
       <Input
         label={lang.es.REPEAT_PASSWORD}

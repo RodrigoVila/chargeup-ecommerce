@@ -8,6 +8,7 @@ export const AUTH_INITIAL_STATE = {
       token: '',
     },
     isEmailValidated: null,
+    isTokenForPasswordValidated: null,
   };
   
   export const APP_USER_INITIAL_STATE: UserDetailsType = {

@@ -8,6 +8,7 @@ import Product from '@main/Product';
 import ProductSearchBar from '@main/ProductSearchBar';
 import Section from '@main/Section';
 import { newOrderToHTML } from '@utils/htmlEmailParsers';
+import Spinner from '@shared/Spinner';
 
 const Products: FC = () => {
   const [searchValue, setSearchValue] = useState('');
@@ -57,11 +58,16 @@ const Products: FC = () => {
       <div className="flex flex-wrap items-center justify-center h-full pb-2">
         <ProductSearchBar setSearchValue={setSearchValue} />
       </div>
-      {products.length > 0 && (
+      {products.length > 0 ? (
         <div className="relative flex flex-wrap justify-center w-full mx-auto text-left">
           {filteredProducts.length > 0
             ? filteredProducts?.map((product) => <Product key={product._id} product={product} />)
             : products?.map((product) => <Product key={product._id} product={product} />)}
+        </div>
+      ) : (
+        <div className="flex items-center justify-center w-full h-full mt-20">
+          <Spinner />
+          Loading products...
         </div>
       )}
     </Section>

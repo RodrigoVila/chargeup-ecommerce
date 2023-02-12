@@ -1,5 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import User from '@models/user';
+import PasswordRecovery from '@models/passwordRecovery';
 import dbConnect from '@utils/dbConnect';
 import Id from '../order/[id]';
 import useEncryption from '@hooks/useEncryption';
@@ -17,18 +18,23 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     try {
       const userRecord = await User.findOne({ email });
       if (userRecord) {
-        const isPasswordOK = await compareHashedPassword(oldPassword, userRecord.password);
+        if (oldPassword) {
+          const isPasswordOK = await compareHashedPassword(oldPassword, userRecord.password);
 
-        if (isPasswordOK) {
-          await User.findOneAndUpdate({ email }, { password });
-
-          return res.status(200).json({
-            success: true,
-            message: lang.en.CHANGE_USER_DATA_SUCCESS,
-          });
+          if (isPasswordOK) {
+            await User.findOneAndUpdate({ email }, { password });
+          } else {
+            return res.status(401).json({ success: false, message: lang.en.PASSWORDS_DONT_MATCH });
+          }
         } else {
-          return res.status(401).json({ success: false, message: lang.en.INVALID_CREDENTIALS });
+          await User.findOneAndUpdate({ email }, { password });
+          // Funciona la siguiente linea?
+          await PasswordRecovery.findOneAndDelete({email})
         }
+        return res.status(200).json({
+          success: true,
+          message: lang.en.CHANGE_USER_DATA_SUCCESS,
+        });
       } else {
         return res.status(404).json({ success: false, message: lang.en.USER_NOT_FOUND });
       }

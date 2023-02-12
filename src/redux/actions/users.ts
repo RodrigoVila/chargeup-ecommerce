@@ -35,19 +35,3 @@ export const changeUserDetailsError = (error: Error) => ({
   type: REQUEST_CHANGE_USER_DETAILS_ERROR,
   error,
 });
-
-export const changeUserPassword = (oldPassword: string, password: string) => ({
-  type: REQUEST_PASSWORD_RECOVERY,
-  oldPassword,
-  password,
-});
-
-export const changeUserPasswordSuccess = () => ({
-  type: REQUEST_PASSWORD_RECOVERY_SUCCESS,
-});
-
-export const changeUserPasswordError = (error: Error) => ({
-  type: REQUEST_PASSWORD_RECOVERY_ERROR,
-
-  error,
-});

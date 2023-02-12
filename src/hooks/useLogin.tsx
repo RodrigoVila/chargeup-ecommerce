@@ -20,7 +20,7 @@ const useLogin = () => {
 
   const { name, lastName, email, password, repeatPassword } = credentials;
 
-  const { displayErrorMessage, userLogin, registerUser,passwordRecovery } = useAppActions();
+  const { displayErrorMessage, userLogin, registerUser, recoverUserPassword } = useAppActions();
 
   const { encryptPassword } = useEncryption();
 
@@ -101,7 +101,7 @@ const useLogin = () => {
       return;
     }
 
-    passwordRecovery(email);
+    recoverUserPassword(email);
   };
 
   const handleButtonClick = (e: FormEvent<HTMLButtonElement>) => {

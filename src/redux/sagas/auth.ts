@@ -8,6 +8,12 @@ import {
   logoutUser,
   validateEmailInDBSuccess,
   validateEmailInDBError,
+  requestPasswordRecoverySuccess,
+  requestPasswordRecoveryError,
+  validateTokenForPassChangeSucccess,
+  validateTokenForPassChangeError,
+  changeUserPasswordSuccess,
+  changeUserPasswordError,
 } from '@redux/actions/auth';
 import { displayMessageSuccess, displayMessageError } from '@redux/actions/toastNotifications';
 import { loginModalClose } from '@redux/actions/modal';
@@ -17,6 +23,8 @@ import {
   CHECK_USER_TOKEN,
   VALIDATE_EMAIL_IN_DB,
   REQUEST_PASSWORD_RECOVERY,
+  REQUEST_CHANGE_USER_PASSWORD,
+  VALIDATE_TOKEN_FOR_PASSWORD_CHANGE,
 } from 'constants/ActionTypes';
 import { lang } from '@constants/lang';
 
@@ -115,22 +123,74 @@ function* validateEmailInDB(payload: any) {
 
 function* requestPasswordRecovery(payload: any) {
   const { email } = payload;
-
   try {
-    const response = yield call(fetch, API_URL + '/emailvalidation', {
+    const response = yield call(fetch, API_URL + '/pwdrecovery', {
       method: 'POST',
       headers: { Authorization: 'Token tokenid', 'Content-Type': 'application/json' },
-      body: JSON.stringify({ pid }),
+      body: JSON.stringify({ email }),
     });
 
     const { success } = yield response.json();
     if (success) {
-      yield put(validateEmailInDBSuccess());
+      yield put(displayMessageSuccess(lang.es.REQUEST_PASSWORD, 7000));
+      yield put(requestPasswordRecoverySuccess());
+      yield put(loginModalClose());
     } else {
-      yield put(validateEmailInDBError());
+      yield put(displayMessageSuccess(lang.es.REQUEST_PASSWORD, 7000));
+      yield put(requestPasswordRecoveryError());
+      yield put(loginModalClose());
     }
   } catch (e) {
-    yield put(validateEmailInDBError());
+    console.log('errrr', e);
+    // yield put(requestPasswordRecoveryError());
+  }
+}
+
+function* passwordChangeTokenValidation(payload: any) {
+  const { email, token } = payload;
+
+  try {
+    const response = yield call(fetch, API_URL + '/pwdtokenvalidation', {
+      method: 'POST',
+      headers: { Authorization: 'Token tokenid', 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, token }),
+    });
+    const { success } = yield response.json();
+
+    if (success) {
+      yield put(validateTokenForPassChangeSucccess());
+    } else {
+      yield put(validateTokenForPassChangeError());
+    }
+  } catch (e) {
+    yield put(validateTokenForPassChangeError());
+  }
+}
+
+function* updateUserPassword(payload: any) {
+  const { email, oldPassword, password } = payload;
+
+  try {
+    const response = yield call(fetch, API_URL + '/updatepassword', {
+      method: 'PUT',
+      headers: { Authorization: 'Token tokenid', 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, oldPassword, password }),
+    });
+    const { success } = yield response.json();
+
+    if (success) {
+      yield put(changeUserPasswordSuccess());
+      // yield put(displayMessageSuccess(lang.es.CHANGE_USER_DATA_SUCCESS));
+      // yield put(userModalClose());
+    } else {
+      yield put(changeUserPasswordError());
+      // yield put(changeUserDetailsError(message));
+      // yield put(displayMessageError(lang.es.CHANGE_USER_DATA_ERROR));
+    }
+  } catch (e) {
+    yield put(changeUserPasswordError());
+    // yield put(changeUserDetailsError(e));
+    // yield put(displayMessageError(lang.es.CHANGE_USER_DATA_ERROR));
   }
 }
 
@@ -140,6 +200,8 @@ function* authSaga() {
   yield takeEvery(CHECK_USER_TOKEN, checkToken);
   yield takeEvery(VALIDATE_EMAIL_IN_DB, validateEmailInDB);
   yield takeEvery(REQUEST_PASSWORD_RECOVERY, requestPasswordRecovery);
+  yield takeEvery(VALIDATE_TOKEN_FOR_PASSWORD_CHANGE, passwordChangeTokenValidation);
+  yield takeEvery(REQUEST_CHANGE_USER_PASSWORD, updateUserPassword);
 }
 
 export default authSaga;

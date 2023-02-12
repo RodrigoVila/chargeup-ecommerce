@@ -52,6 +52,7 @@ type AuthStateType = {
   isLoading: boolean;
   userLogin: StorageUserType | null;
   isEmailValidated: boolean;
+  isTokenForPasswordValidated: boolean | null;
 };
 
 interface AuthActionType extends AuthStateType {

@@ -12,6 +12,7 @@ const useAppSelector = () => {
     isLoading: isAuthLoading,
     userLogin,
     isEmailValidated,
+    isTokenForPasswordValidated
   } = useSelector((state) => state.auth, shallowEqual);
 
   //Cart
@@ -55,6 +56,7 @@ const useAppSelector = () => {
     isAuthLoading,
     userLogin,
     isEmailValidated,
+    isTokenForPasswordValidated,
     checkoutSession,
     cartItems,
     filters,

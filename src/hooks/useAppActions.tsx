@@ -13,7 +13,10 @@ import {
   logoutUser,
   userTokenCheck,
   validateEmailInDB,
-  requestPasswordRecovery
+  requestPasswordRecovery,
+  validateTokenForPassChange,
+  changeUserPassword,
+  changeUserPasswordWithoutLogin,
 } from '@redux/actions/auth';
 import {
   loadCartState,
@@ -55,7 +58,7 @@ import {
 
 import { setFilters } from '@redux/actions/filters';
 
-import { fetchUserDetails, changeUserDetails, changeUserPassword } from '@redux/actions/users';
+import { fetchUserDetails, changeUserDetails } from '@redux/actions/users';
 import { addNewOrder } from '@redux/actions/order';
 
 const useAppActions = () => {
@@ -72,7 +75,17 @@ const useAppActions = () => {
 
   const dBEmailValidation = (pid: string) => dispatch(validateEmailInDB(pid));
 
-  const passwordRecovery = (email: string) => dispatch(requestPasswordRecovery(email));
+  const validateTokenForPasswordChange = (email: string, pid: string) =>
+    dispatch(validateTokenForPassChange(email, pid));
+
+  const recoverUserPassword = (email: string) => dispatch(requestPasswordRecovery(email));
+
+  const editUserPassword = (oldPassword: string, password: string) => {
+    dispatch(changeUserPassword(oldPassword, password));
+  };
+  const editUserPasswordWithoutLogin = (password: string) => {
+    dispatch(changeUserPasswordWithoutLogin(password));
+  };
 
   // Cart
   const loadCart = (products: CartProductType[]) => dispatch(loadCartState(products));
@@ -173,10 +186,6 @@ const useAppActions = () => {
 
   const editUserDetails = (user: UserDetailsType) => dispatch(changeUserDetails(user));
 
-  const editUserPassword = (oldPassword: string, password: string) => {
-    dispatch(changeUserPassword(oldPassword, password));
-  };
-
   return {
     addProduct,
     removeProduct,
@@ -187,7 +196,8 @@ const useAppActions = () => {
     userLogout,
     registerUser,
     dBEmailValidation,
-    passwordRecovery,
+    validateTokenForPasswordChange,
+    recoverUserPassword,
     loadCart,
     addToCart,
     removeFromCart,
@@ -225,6 +235,7 @@ const useAppActions = () => {
     getUserDetails,
     editUserDetails,
     editUserPassword,
+    editUserPasswordWithoutLogin,
   };
 };
 

@@ -11,6 +11,11 @@ import {
   REQUEST_PASSWORD_RECOVERY,
   REQUEST_PASSWORD_RECOVERY_SUCCESS,
   REQUEST_PASSWORD_RECOVERY_ERROR,
+  REQUEST_CHANGE_USER_PASSWORD,
+  REQUEST_CHANGE_USER_PASSWORD_SUCCESS,
+  REQUEST_CHANGE_USER_PASSWORD_ERROR,
+  VALIDATE_TOKEN_FOR_PASSWORD_CHANGE_SUCCESS,
+  VALIDATE_TOKEN_FOR_PASSWORD_CHANGE_ERROR,
 } from '../../constants/ActionTypes';
 import { clearLocalStorage, setValueToLocalStorage } from '@utils/localStorage';
 import { LOCAL_STORAGE_DATA_KEY } from '@constants/keys';
@@ -23,6 +28,7 @@ const authReducer = (state: AuthStateType = AUTH_INITIAL_STATE, action: AuthActi
     case LOGIN_USER:
     case REGISTER_USER:
     case REQUEST_PASSWORD_RECOVERY:
+    case REQUEST_CHANGE_USER_PASSWORD:
       return {
         ...state,
         isLoading: true,
@@ -30,6 +36,8 @@ const authReducer = (state: AuthStateType = AUTH_INITIAL_STATE, action: AuthActi
     case REGISTER_USER_SUCCESS:
     case REQUEST_PASSWORD_RECOVERY_SUCCESS:
     case REQUEST_PASSWORD_RECOVERY_ERROR:
+    case REQUEST_CHANGE_USER_PASSWORD_SUCCESS:
+    case REQUEST_CHANGE_USER_PASSWORD_ERROR:
       return {
         ...state,
         isLoading: false,
@@ -62,6 +70,16 @@ const authReducer = (state: AuthStateType = AUTH_INITIAL_STATE, action: AuthActi
         ...state,
         isEmailValidated: false,
       };
+    case VALIDATE_TOKEN_FOR_PASSWORD_CHANGE_SUCCESS:
+      return {
+        ...state,
+        isTokenForPasswordValidated: true,
+      };
+      case VALIDATE_TOKEN_FOR_PASSWORD_CHANGE_ERROR:
+        return {
+          ...state,
+          isTokenForPasswordValidated: false,
+        };
     default:
       return state;
   }

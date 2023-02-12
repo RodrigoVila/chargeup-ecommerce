@@ -38,7 +38,7 @@ const UserDetails = () => {
       } relative my-4 h-full w-full overflow-scroll`}
     >
       {/* {editing === 'userData' && <UserDataForm />} */}
-      {editing === 'password' && <UpdatePasswordForm />}
+      {editing === 'password' && <UpdatePasswordForm oldPassRequired />}
 
       {!editing && (
         <div className="flex flex-col items-center justify-center w-full mx-auto ">

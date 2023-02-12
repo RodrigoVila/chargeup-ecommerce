@@ -12,7 +12,13 @@ import {
   VALIDATE_EMAIL_IN_DB_ERROR,
   REQUEST_PASSWORD_RECOVERY,
   REQUEST_PASSWORD_RECOVERY_SUCCESS,
-  REQUEST_PASSWORD_RECOVERY_ERROR
+  REQUEST_PASSWORD_RECOVERY_ERROR,
+  VALIDATE_TOKEN_FOR_PASSWORD_CHANGE,
+  VALIDATE_TOKEN_FOR_PASSWORD_CHANGE_SUCCESS,
+  VALIDATE_TOKEN_FOR_PASSWORD_CHANGE_ERROR,
+  REQUEST_CHANGE_USER_PASSWORD,
+  REQUEST_CHANGE_USER_PASSWORD_SUCCESS,
+  REQUEST_CHANGE_USER_PASSWORD_ERROR,
 } from '../../constants/ActionTypes';
 
 export const userTokenCheck = (user: UserLoginType) => ({
@@ -64,13 +70,41 @@ export const validateEmailInDBError = () => ({
 
 export const requestPasswordRecovery = (email: string) => ({
   type: REQUEST_PASSWORD_RECOVERY,
-  email
+  email,
 });
 
-export const prequestPasswordRecoverySuccess = () => ({
+export const requestPasswordRecoverySuccess = () => ({
   type: REQUEST_PASSWORD_RECOVERY_SUCCESS,
 });
 
-export const prequestPasswordRecoveryError = () => ({
+export const requestPasswordRecoveryError = () => ({
   type: REQUEST_PASSWORD_RECOVERY_ERROR,
+});
+
+export const validateTokenForPassChange = (email: string, token: string) => ({
+  type: VALIDATE_TOKEN_FOR_PASSWORD_CHANGE,
+  email,
+  token,
+});
+
+export const validateTokenForPassChangeSucccess = () => ({
+  type: VALIDATE_TOKEN_FOR_PASSWORD_CHANGE_SUCCESS,
+});
+
+export const validateTokenForPassChangeError = () => ({
+  type: VALIDATE_TOKEN_FOR_PASSWORD_CHANGE_ERROR,
+});
+
+export const changeUserPassword = (oldPassword: string | undefined, password: string) => ({
+  type: REQUEST_CHANGE_USER_PASSWORD,
+  oldPassword,
+  password,
+});
+
+export const changeUserPasswordSuccess = () => ({
+  type: REQUEST_CHANGE_USER_PASSWORD_SUCCESS,
+});
+
+export const changeUserPasswordError = () => ({
+  type: REQUEST_CHANGE_USER_PASSWORD_ERROR,
 });
