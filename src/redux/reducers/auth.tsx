@@ -36,11 +36,16 @@ const authReducer = (state: AuthStateType = AUTH_INITIAL_STATE, action: AuthActi
     case REGISTER_USER_SUCCESS:
     case REQUEST_PASSWORD_RECOVERY_SUCCESS:
     case REQUEST_PASSWORD_RECOVERY_ERROR:
-    case REQUEST_CHANGE_USER_PASSWORD_SUCCESS:
     case REQUEST_CHANGE_USER_PASSWORD_ERROR:
       return {
         ...state,
         isLoading: false,
+      };
+    case REQUEST_CHANGE_USER_PASSWORD_SUCCESS:
+      return {
+        ...state,
+        isLoading: false,
+        redirect: true,
       };
     case LOGIN_SUCCESS:
       userLogin && setValueToLocalStorage(LOCAL_STORAGE_DATA_KEY, userLogin);
@@ -75,11 +80,11 @@ const authReducer = (state: AuthStateType = AUTH_INITIAL_STATE, action: AuthActi
         ...state,
         isTokenForPasswordValidated: true,
       };
-      case VALIDATE_TOKEN_FOR_PASSWORD_CHANGE_ERROR:
-        return {
-          ...state,
-          isTokenForPasswordValidated: false,
-        };
+    case VALIDATE_TOKEN_FOR_PASSWORD_CHANGE_ERROR:
+      return {
+        ...state,
+        isTokenForPasswordValidated: false,
+      };
     default:
       return state;
   }

@@ -10,14 +10,10 @@ export const passwordRecoverySchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    expireAt: {
-      type: Date,
-      default: Date.now,
-      index: { expires: '60m' },
-    },
   },
   {
     collection: process.env.MONGO_PASSWORD_RECOVERY_COLLECTION,
+    timestamps: true
   }
 );
 const PasswordRecovery = mongoose.models.PasswordRecovery || mongoose.model('PasswordRecovery', passwordRecoverySchema);

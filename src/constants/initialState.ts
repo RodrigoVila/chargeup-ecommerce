@@ -2,6 +2,7 @@
 export const AUTH_INITIAL_STATE = {
     isLoggedIn: false,
     isLoading: false,
+    redirect: false,
     userLogin: {
       email: '',
       name: '',

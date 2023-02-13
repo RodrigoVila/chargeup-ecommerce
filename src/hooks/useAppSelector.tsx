@@ -10,6 +10,7 @@ const useAppSelector = () => {
   const {
     isLoggedIn,
     isLoading: isAuthLoading,
+    redirect: authRedirect,
     userLogin,
     isEmailValidated,
     isTokenForPasswordValidated
@@ -54,6 +55,7 @@ const useAppSelector = () => {
   return {
     isLoggedIn,
     isAuthLoading,
+    authRedirect,
     userLogin,
     isEmailValidated,
     isTokenForPasswordValidated,

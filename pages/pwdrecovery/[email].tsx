@@ -6,17 +6,29 @@ import useAppSelector from '@hooks/useAppSelector';
 import ErrorSucces from '@main/ErrorSuccess';
 import { lang } from '@constants/lang';
 import UpdatePasswordForm from '@shared/Forms/UpdatePasswordForm';
+import Logo from '@main/Logo';
 
 const PasswordRecovery = () => {
   const router = useRouter();
   const { email, token } = router.query;
 
   const { validateTokenForPasswordChange } = useAppActions();
-  const { isTokenForPasswordValidated } = useAppSelector();
+  const { isTokenForPasswordValidated, authRedirect } = useAppSelector();
 
   useEffect(() => {
     email && token && validateTokenForPasswordChange(email.toString(), token.toString());
   }, [email, token]);
+
+  useEffect(() => {
+    // When user changed password successfully, authRedirect is set to true
+    let timer;
+    if (authRedirect) {
+      timer = setTimeout(() => {
+        router.push('/');
+      }, 2000);
+    }
+    return () => clearTimeout(timer);
+  }, [authRedirect]);
 
   if (isTokenForPasswordValidated === null) {
     return (
@@ -33,8 +45,11 @@ const PasswordRecovery = () => {
       } flex h-screen w-full items-center justify-center`}
     >
       {isTokenForPasswordValidated ? (
-        <div className="flex items-center justify-center w-full h-full max-w-md rounded-md">
-          <UpdatePasswordForm />
+        <div className="flex flex-col items-center justify-center w-full h-full">
+          <Logo logo="white.png" size="lg" />
+          <div className="max-w-md rounded-md">
+            <UpdatePasswordForm withoutCloseButton />
+          </div>
         </div>
       ) : (
         <ErrorSucces

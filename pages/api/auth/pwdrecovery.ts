@@ -28,7 +28,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       const userRecord = await User.findOne({ email });
       if (userRecord) {
         try {
-          await PasswordRecovery.create({ email, token });
+          await PasswordRecovery.create({ email, token, created: new Date() });
           await sendEmailToUser(mailOption);
           return res.status(200).json({ success: true });
         } catch (e) {

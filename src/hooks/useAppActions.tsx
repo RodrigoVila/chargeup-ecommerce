@@ -16,7 +16,6 @@ import {
   requestPasswordRecovery,
   validateTokenForPassChange,
   changeUserPassword,
-  changeUserPasswordWithoutLogin,
 } from '@redux/actions/auth';
 import {
   loadCartState,
@@ -80,11 +79,12 @@ const useAppActions = () => {
 
   const recoverUserPassword = (email: string) => dispatch(requestPasswordRecovery(email));
 
-  const editUserPassword = (oldPassword: string, password: string) => {
-    dispatch(changeUserPassword(oldPassword, password));
-  };
-  const editUserPasswordWithoutLogin = (password: string) => {
-    dispatch(changeUserPasswordWithoutLogin(password));
+  const editUserPassword = (
+    email: string,
+    newPassword: string,
+    oldPassword?: string | undefined
+  ) => {
+    dispatch(changeUserPassword(email, newPassword, oldPassword));
   };
 
   // Cart
@@ -235,7 +235,6 @@ const useAppActions = () => {
     getUserDetails,
     editUserDetails,
     editUserPassword,
-    editUserPasswordWithoutLogin,
   };
 };
 

@@ -8,17 +8,22 @@ import Link from '@main/Link';
 import useAppActions from '@hooks/useAppActions';
 import CloseModalButton from '@main/Buttons/CloseModalButton';
 import useEncryption from '@hooks/useEncryption';
+import { useRouter } from 'next/router';
 
 const INITIAL_STATE = { oldPassword: '', password: '', repeatPassword: '' };
 
 interface Props {
-  oldPassRequired: boolean;
+  oldPassRequired?: boolean;
+  withoutCloseButton?: boolean;
 }
 
-const UpdatePasswordForm: FC = ({ oldPassRequired = false }: Props) => {
+const UpdatePasswordForm: FC = ({ oldPassRequired = false, withoutCloseButton = false }: Props) => {
   const [userDetails, setUserDetails] = useState(INITIAL_STATE);
 
-  const { closeUserModal, displayErrorMessage, editUserPassword,editUserPasswordWithoutLogin } = useAppActions();
+  const router = useRouter();
+  const { email } = router.query;
+
+  const { closeUserModal, displayErrorMessage, editUserPassword } = useAppActions();
   const { encryptPassword } = useEncryption();
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -36,14 +41,17 @@ const UpdatePasswordForm: FC = ({ oldPassRequired = false }: Props) => {
     const encryptedPassword = await encryptPassword(password);
 
     oldPassRequired
-      ? editUserPassword(oldPassword, encryptedPassword)
-      : editUserPasswordWithoutLogin(encryptedPassword);
+      ? editUserPassword(email.toString(), encryptedPassword, oldPassword)
+      : editUserPassword(email.toString(), encryptedPassword);
   };
   return (
     <div className="p-6 pt-4 bg-white rounded-xl">
-      <div className="relative flex items-center justify-end w-full">
-        <CloseModalButton color="black" onClose={closeUserModal} />
-      </div>
+      {!withoutCloseButton && (
+        <div className="relative flex items-center justify-end w-full">
+          <CloseModalButton color="black" onClose={closeUserModal} />
+        </div>
+      )}
+
       {oldPassRequired && (
         <Input
           label={lang.es.OLD_PASSWORD}

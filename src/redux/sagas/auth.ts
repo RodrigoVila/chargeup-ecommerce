@@ -27,6 +27,7 @@ import {
   VALIDATE_TOKEN_FOR_PASSWORD_CHANGE,
 } from 'constants/ActionTypes';
 import { lang } from '@constants/lang';
+import { changeUserDetailsError } from '@redux/actions/users';
 
 const API_URL = '/api/auth';
 
@@ -168,28 +169,28 @@ function* passwordChangeTokenValidation(payload: any) {
 }
 
 function* updateUserPassword(payload: any) {
-  const { email, oldPassword, password } = payload;
+  const { email, oldPassword, newPassword } = payload;
 
   try {
     const response = yield call(fetch, API_URL + '/updatepassword', {
       method: 'PUT',
       headers: { Authorization: 'Token tokenid', 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, oldPassword, password }),
+      body: JSON.stringify({ email, oldPassword, newPassword }),
     });
     const { success } = yield response.json();
 
     if (success) {
       yield put(changeUserPasswordSuccess());
-      // yield put(displayMessageSuccess(lang.es.CHANGE_USER_DATA_SUCCESS));
+      yield put(displayMessageSuccess(lang.es.CHANGE_USER_DATA_SUCCESS));
       // yield put(userModalClose());
     } else {
       yield put(changeUserPasswordError());
-      // yield put(changeUserDetailsError(message));
+      yield put(displayMessageError(lang.es.CHANGE_USER_DATA_ERROR));
       // yield put(displayMessageError(lang.es.CHANGE_USER_DATA_ERROR));
     }
   } catch (e) {
     yield put(changeUserPasswordError());
-    // yield put(changeUserDetailsError(e));
+    yield put(displayMessageError(lang.es.CHANGE_USER_DATA_ERROR));
     // yield put(displayMessageError(lang.es.CHANGE_USER_DATA_ERROR));
   }
 }

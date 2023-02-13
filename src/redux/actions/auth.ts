@@ -95,10 +95,11 @@ export const validateTokenForPassChangeError = () => ({
   type: VALIDATE_TOKEN_FOR_PASSWORD_CHANGE_ERROR,
 });
 
-export const changeUserPassword = (oldPassword: string | undefined, password: string) => ({
+export const changeUserPassword = (email:string, newPassword: string, oldPassword?: string | undefined) => ({
   type: REQUEST_CHANGE_USER_PASSWORD,
+  email,
+  newPassword,
   oldPassword,
-  password,
 });
 
 export const changeUserPasswordSuccess = () => ({
