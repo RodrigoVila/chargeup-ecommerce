@@ -9,6 +9,7 @@ import useAppActions from '@hooks/useAppActions';
 import CloseModalButton from '@main/Buttons/CloseModalButton';
 import useEncryption from '@hooks/useEncryption';
 import { useRouter } from 'next/router';
+import useAppSelector from '@hooks/useAppSelector';
 
 const INITIAL_STATE = { oldPassword: '', password: '', repeatPassword: '' };
 
@@ -21,9 +22,10 @@ const UpdatePasswordForm: FC = ({ oldPassRequired = false, withoutCloseButton = 
   const [userDetails, setUserDetails] = useState(INITIAL_STATE);
 
   const router = useRouter();
-  const { email } = router.query;
+  const { email: queryEmail } = router.query;
 
   const { closeUserModal, displayErrorMessage, editUserPassword } = useAppActions();
+  const { userLogin: { email } } = useAppSelector();
   const { encryptPassword } = useEncryption();
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -41,8 +43,8 @@ const UpdatePasswordForm: FC = ({ oldPassRequired = false, withoutCloseButton = 
     const encryptedPassword = await encryptPassword(password);
 
     oldPassRequired
-      ? editUserPassword(email.toString(), encryptedPassword, oldPassword)
-      : editUserPassword(email.toString(), encryptedPassword);
+      ? editUserPassword(email, encryptedPassword, oldPassword)
+      : editUserPassword(queryEmail.toString(), encryptedPassword);
   };
   return (
     <div className="p-6 pt-4 bg-white rounded-xl">

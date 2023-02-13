@@ -8,7 +8,7 @@ import { lang } from '@constants/lang';
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   const { method, body } = req;
-  const { email, oldPassword, password } = body;
+  const { email, oldPassword, newPassword } = body;
 
   const { compareHashedPassword } = useEncryption();
 
@@ -22,14 +22,14 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
           const isPasswordOK = await compareHashedPassword(oldPassword, userRecord.password);
 
           if (isPasswordOK) {
-            await User.findOneAndUpdate({ email }, { password });
+            await User.findOneAndUpdate({ email }, { password: newPassword });
           } else {
             return res.status(401).json({ success: false, message: lang.en.PASSWORDS_DONT_MATCH });
           }
         } else {
-          await User.findOneAndUpdate({ email }, { password });
+          await User.findOneAndUpdate({ email }, { password: newPassword });
           // Funciona la siguiente linea?
-          await PasswordRecovery.findOneAndDelete({email})
+          await PasswordRecovery.findOneAndDelete({ email });
         }
         return res.status(200).json({
           success: true,

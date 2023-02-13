@@ -17,6 +17,8 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     html: emailVerificationToHTML(name, pid),
   };
 
+  console.log("name",name, "pid", pid)
+
   await dbConnect();
 
   const register = async () => {
