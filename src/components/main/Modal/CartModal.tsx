@@ -14,23 +14,23 @@ import { colors } from '@constants/colors';
 
 const CartModal = () => {
   const [disabled, setDisabled] = useState(false);
-  const { isCartModalOpen, cartItems,userLogin } = useAppSelector();
+  const { isCartModalOpen, cartItems, userLogin } = useAppSelector();
   const { closeCartModal, createCheckoutSession } = useAppActions();
   const { isMounted } = useMounted();
 
   const totalSum = useMemo(() => cartItems.reduce((acc, item) => acc + item.total, 0), [cartItems]);
 
   const onSubmit = () => {
-    const name =  userLogin?.name ? userLogin.name : null;
-    const newOrder:OrderType = {
+    const name = userLogin?.name ? userLogin.name : null;
+    const newOrder: OrderType = {
       id: uuidv4(),
-      status: "pending",
+      status: 'pending',
       name,
       email: userLogin?.email ? userLogin.email : null,
       totalAmount: totalSum.toFixed(2),
       items: cartItems,
-      created: new Date()
-    }
+      created: new Date(),
+    };
     setDisabled(true);
     createCheckoutSession(newOrder);
   };

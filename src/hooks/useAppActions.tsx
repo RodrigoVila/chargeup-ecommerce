@@ -100,9 +100,6 @@ const useAppActions = () => {
   const createCheckoutSession = (newOrder: OrderType) =>
     dispatch(createNewCheckoutSession(newOrder));
 
-  const createCheckoutSessionSuccess = (sessionURL: string) =>
-    dispatch(createNewCheckoutSessionSuccess(sessionURL));
-
   // Filters
   const setProductFilters = (filter: string) => dispatch(setFilters(filter));
 
@@ -207,7 +204,6 @@ const useAppActions = () => {
     displayErrorMessage,
     displayInfoMessage,
     createCheckoutSession,
-    createCheckoutSessionSuccess,
     openAdminProductModal,
     closeAdminProductModal,
     openCartModal,
