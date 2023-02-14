@@ -24,9 +24,14 @@ const UpdatePasswordForm: FC = ({ oldPassRequired = false, withoutCloseButton = 
   const router = useRouter();
   const { email: queryEmail } = router.query;
 
-  const { closeUserModal, displayErrorMessage, editUserPassword } = useAppActions();
-  const { userLogin: { email } } = useAppSelector();
   const { encryptPassword } = useEncryption();
+
+  const { closeUserModal, displayErrorMessage, editUserPassword } = useAppActions();
+  const {
+    userLogin: { email },
+    isAuthLoading,
+  } = useAppSelector();
+
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -70,7 +75,7 @@ const UpdatePasswordForm: FC = ({ oldPassRequired = false, withoutCloseButton = 
         name="repeatPassword"
         onChange={handleChange}
       />
-      <Button title={lang.es.CHANGE_PASSWORD} color={colors.purple} onClick={handleSubmit} />
+      <Button title={lang.es.CHANGE_PASSWORD} color={colors.purple} onClick={handleSubmit} disabled={isAuthLoading} />
     </div>
   );
 };

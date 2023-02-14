@@ -40,6 +40,7 @@ export const lang = {
       'La contraseña debe tener minimo 8 caracteres, al menos una mayuscula y al menos una minuscula',
     PASSWORDS_DONT_MATCH: 'Las contraseñas deben coincidir.',
     PREFIX_NUMBER: 'Prefijo',
+    REDIRECT_TO_MAIN_PAGE: 'Será redirigido a la pagina principal.',
     REPEAT_PASSWORD: 'Repetir Contraseña',
     REQUEST_PASSWORD:
       'Exito! Si su email se encuentra en nuesta base de datos, enviaremos instrucciones de como recuperar su contraseña',
@@ -95,8 +96,9 @@ export const lang = {
     PASSWORD_RECOVERY: 'Recover Password',
     PASSWORD_REGEX:
       'Password has to be minimum eight characters, at least one uppercase letter and one lowercase letter and one number:',
-    PREFIX_NUMBER: 'Prefix',
     PASSWORDS_DONT_MATCH: 'Passwords dont match.',
+    PREFIX_NUMBER: 'Prefix',
+    REDIRECT_TO_MAIN_PAGE: 'You will be redirected to the main site.',
     REPEAT_PASSWORD: 'Repeat Password',
     REQUEST_PASSWORD:
       'Success! If your email is in our database we will send an email with instructions',
@@ -151,6 +153,7 @@ export const lang = {
     PASSWORD_REGEX: '',
     PASSWORDS_DONT_MATCH: '',
     PREFIX_NUMBER: '',
+    REDIRECT_TO_MAIN_PAGE: '',
     REPEAT_PASSWORD: '',
     REQUEST_PASSWORD: '',
     SUBJECT: '',

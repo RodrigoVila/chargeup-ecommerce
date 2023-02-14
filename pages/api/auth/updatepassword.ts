@@ -27,9 +27,9 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
             return res.status(401).json({ success: false, message: lang.en.PASSWORDS_DONT_MATCH });
           }
         } else {
-          await User.findOneAndUpdate({ email }, { password: newPassword });
-          // Funciona la siguiente linea?
-          await PasswordRecovery.findOneAndDelete({ email });
+          const { confirmed } = await User.findOneAndUpdate({ email }, { password: newPassword });
+
+          confirmed && (await PasswordRecovery.findOneAndDelete({ email }));
         }
         return res.status(200).json({
           success: true,

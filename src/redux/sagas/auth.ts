@@ -177,15 +177,19 @@ function* updateUserPassword(payload: any) {
       headers: { Authorization: 'Token tokenid', 'Content-Type': 'application/json' },
       body: JSON.stringify({ email, oldPassword, newPassword }),
     });
-    const { success } = yield response.json();
+    const { success, message } = yield response.json();
 
     if (success) {
       yield put(changeUserPasswordSuccess());
-      yield put(displayMessageSuccess(lang.es.CHANGE_USER_DATA_SUCCESS));
+      yield put(displayMessageSuccess(`${lang.es.CHANGE_USER_DATA_SUCCESS}. ${lang.es.REDIRECT_TO_MAIN_PAGE}`));
       // yield put(userModalClose());
     } else {
       yield put(changeUserPasswordError());
-      yield put(displayMessageError(lang.es.CHANGE_USER_DATA_ERROR));
+      if (message === lang.en.PASSWORDS_DONT_MATCH) {
+        yield put(displayMessageError(lang.es.PASSWORDS_DONT_MATCH));
+      } else {
+        yield put(displayMessageError(lang.es.CHANGE_USER_DATA_ERROR));
+      }
       // yield put(displayMessageError(lang.es.CHANGE_USER_DATA_ERROR));
     }
   } catch (e) {
