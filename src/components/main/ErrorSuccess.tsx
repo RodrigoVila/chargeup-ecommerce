@@ -49,7 +49,7 @@ const ErrorSucces = ({
         <div className="w-1/2 mt-2 md:mt-4">
           {autoGoBackToHome ? (
             <h4 className="mx-2 my-2 text-xl md:my-4 md:text-2xl">
-              `Será redirigido a la home en ${timeRemaining / 1000}`
+              {`Será redirigido a la home en ${timeRemaining / 1000}`}
             </h4>
           ) : (
             <Button

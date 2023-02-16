@@ -1,7 +1,9 @@
+import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
 
-const useCountdown = () => {
+const useGobBackCountdown = () => {
   const [timeRemaining, setTimeRemaining] = useState(0);
+  const router = useRouter();
 
   useEffect(() => {
     let interval;
@@ -10,6 +12,7 @@ const useCountdown = () => {
         setTimeRemaining(timeRemaining - 1000);
       }, 1000);
     }
+    if (timeRemaining === 1000) router.push('/');
     return () => clearInterval(interval);
   }, [timeRemaining]);
 
@@ -20,4 +23,4 @@ const useCountdown = () => {
   return { timeRemaining, startCountdown };
 };
 
-export default useCountdown;
+export default useGobBackCountdown;

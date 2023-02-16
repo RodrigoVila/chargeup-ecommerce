@@ -8,13 +8,15 @@ import { lang } from '@constants/lang';
 import UpdatePasswordForm from '@shared/Forms/UpdatePasswordForm';
 import Logo from '@main/Logo';
 import { Toaster } from 'react-hot-toast';
+import useGobBackCountdown from '@hooks/useCountdown';
 
 const PasswordRecovery = () => {
   const router = useRouter();
-  const { email, token } = router.query;
-
   const { validateTokenForPasswordChange } = useAppActions();
   const { isTokenForPasswordValidated, authRedirect } = useAppSelector();
+  const { startCountdown } = useGobBackCountdown();
+
+  const { email, token } = router.query;
 
   useEffect(() => {
     email && token && validateTokenForPasswordChange(email.toString(), token.toString());
@@ -22,13 +24,7 @@ const PasswordRecovery = () => {
 
   useEffect(() => {
     // When user changed password successfully, authRedirect is set to true
-    let timer;
-    if (authRedirect) {
-      timer = setTimeout(() => {
-        router.push('/');
-      }, 2000);
-    }
-    return () => clearTimeout(timer);
+    authRedirect && startCountdown(2000);
   }, [authRedirect]);
 
   if (isTokenForPasswordValidated === null) {

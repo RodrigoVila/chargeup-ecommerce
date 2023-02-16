@@ -33,12 +33,14 @@ const EmailValidation = () => {
           type="success"
           title={lang.es.EMAIL_CONFIRMED}
           subTitle={lang.es.EMAIL_CONFIRMED_SUB}
+          autoGoBackToHome
         />
       ) : (
         <ErrorSucces
           type="error"
           title={lang.es.EMAIL_NOT_CONFIRMED}
           subTitle={lang.es.EMAIL_NOT_CONFIRMED_SUB}
+          autoGoBackToHome
         />
       )}
     </div>
