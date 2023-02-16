@@ -22,6 +22,7 @@ const OrderSuccess = () => {
       type="success"
       title={`Orden #${trimmedID} procesada correctamente`}
       subTitle="En instantes recibira un correo con la informacion de su pedido."
+      autoGoBackToHome
     />
   ) : null;
 };
