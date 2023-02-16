@@ -6,6 +6,7 @@ import useMounted from '@hooks/useMounted';
 
 import { TrashIcon } from '@heroicons/react/24/outline';
 import CloseModalButton from '@main/Buttons/CloseModalButton';
+import Image from 'next/image';
 
 interface Props {
   product: ProductType;
@@ -21,15 +22,7 @@ const AdminProductDetails = ({ product }: Props) => {
 
   const { isMounted } = useMounted();
 
-  const {
-    _id,
-    title,
-    description,
-    nutritionalInfo,
-    suitableForInfo,
-    price,
-    imgUri,
-  } = product;
+  const { _id, title, description, nutritionalInfo, suitableForInfo, price, imgUri } = product;
 
   const handleEdit = () => setIsEdit(true);
 
@@ -89,7 +82,7 @@ const AdminProductDetails = ({ product }: Props) => {
         <div className="mt-6 align-middle">
           <div key={_id} className="relative group">
             <div className="object-center w-32 h-32 align-middle rounded-md shadow-xl bg-gray-25">
-              <img src={'imageSrc'} alt={'imageAlt'} className="object-center align-middle" />
+              <Image src={'imageSrc'} alt={'imageAlt'} className="object-center align-middle" />
             </div>
             <div className="flex justify-between mt-4">
               <div>
@@ -123,6 +116,7 @@ const AdminProductDetails = ({ product }: Props) => {
                 {isEdit ? (
                   description.long.map((paragraph, index) => (
                     <textarea
+                      key={index}
                       className="px-2 py-1 border-2 border-green-500"
                       value={paragraph}
                       onChange={(event: ChangeEvent<HTMLTextAreaElement>) =>

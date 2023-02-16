@@ -2,6 +2,8 @@ import { FiInstagram } from 'react-icons/fi'
 import { AiOutlineMail, AiFillHeart, AiOutlineWhatsApp } from 'react-icons/ai'
 
 import ActiveLink from '@shared/ActiveLink'
+import Link from 'next/link'
+
 
 const ICON_SIZE = 40
 
@@ -26,13 +28,14 @@ const Footer = () => {
         </div>
         
         <div className="pb-4 text-sm text-center text-gray-300 xs:text-md md:text-lg xl:text-xl">
-          <a href="/terms">Terms & Conditions</a> | <a href="/cookies">Cookies policy</a> |{' '}
+          <Link href="/terms" >Terms & Conditions</Link> | <Link href="/cookies">Cookies policy</Link> |{' '}
           <a href="mailto:chargeupbcn@gmail.com">Feedback</a>
         </div>
         <div className="flex flex-wrap items-center justify-center pb-2 text-sm text-center text-gray-300 xl:text-xl xs:text-md md:text-lg xs:text-center">
           Made with <AiFillHeart className="mx-1" color="red" size={18} /> by{' '}
           <a
             target="_blank"
+            rel="noreferrer"
             className="mx-1 text-orange-400"
             href="https://www.linkedin.com/in/victoriacabello/"
           >
@@ -41,6 +44,7 @@ const Footer = () => {
           (Design) &
           <a
             target="_blank"
+            rel="noreferrer"
             className="mx-1 text-orange-400"
             href="https://www.linkedin.com/in/rsvila/"
           >
