@@ -20,6 +20,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
   const getProducts = async () => {
     try {
+      console.log("Env",process.env.NODE_ENV)
       const products = await Product.find({});
       return res.status(200).json({ success: true, products });
     } catch (e) {
