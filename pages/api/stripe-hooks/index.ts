@@ -18,7 +18,7 @@ export const config = {
   },
 };
 
-export default async (req: NextApiRequest, res: NextApiResponse) => {
+const StripHooksAPI = async (req: NextApiRequest, res: NextApiResponse) => {
   const { method, body, headers } = req;
   await dbConnect();
 
@@ -90,3 +90,5 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       return res.status(405).end(`Method ${method} Not Allowed`);
   }
 };
+
+export default StripHooksAPI
