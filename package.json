@@ -5,9 +5,9 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "lint": "next lint",
     "start": "next start",
     "ngrok": "ngrok http 3000"
-    
   },
   "dependencies": {
     "@heroicons/react": "^2.0.12",
@@ -49,6 +49,7 @@
     "@typescript-eslint/parser": "^5.20.0",
     "autoprefixer": "^10.4.0",
     "eslint": "^8.13.0",
+    "eslint-config-next": "13.1.6",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.29.4",

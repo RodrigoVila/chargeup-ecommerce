@@ -70,6 +70,10 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         stripeWebhookKey
       );
       if (type === 'checkout.session.completed') {
+        console.log("oaaaaaaaa",process.env.HOLA)
+        console.log("El que deberia ser para este env",process.env.STRIPE_WEBHOOK_SECRET_KEY)
+        console.log("ENV",process.env.NODE_ENV)
+        console.log("el que realmente es",stripeWebhookKey)
         const session = data.object;
         fullfillOrder(session);
       }

@@ -181,7 +181,7 @@ function* updateUserPassword(payload: any) {
 
     if (success) {
       yield put(changeUserPasswordSuccess());
-      yield put(displayMessageSuccess(`${lang.es.CHANGE_USER_DATA_SUCCESS}. ${lang.es.REDIRECT_TO_MAIN_PAGE}`));
+      yield put(displayMessageSuccess(lang.es.CHANGE_USER_DATA_SUCCESS))
       // yield put(userModalClose());
     } else {
       yield put(changeUserPasswordError());
