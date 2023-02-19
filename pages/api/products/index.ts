@@ -1,6 +1,8 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import Product from '@models/product';
 import dbConnect from '@utils/dbConnect';
+import { stripeWebhookKey } from '@constants/keys';
+
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   const { method, body } = req;
@@ -20,7 +22,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
   const getProducts = async () => {
     try {
-      console.log("Env",process.env.NODE_ENV)
+      console.log("Env",stripeWebhookKey)
       const products = await Product.find({});
       return res.status(200).json({ success: true, products });
     } catch (e) {
