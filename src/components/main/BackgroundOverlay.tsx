@@ -1,5 +1,15 @@
-const BackgroundOverlay = ({ color }) => {
-  return <div className={`absolute inset-0 z-10 bg-[${color}]`} />
+import { colors } from '@constants/colors';
+
+interface Props {
+  darker?: boolean;
+  lighter?: boolean
 }
 
-export default BackgroundOverlay
+const BackgroundOverlay = ({ darker,lighter }: Props) => {
+  
+  const getBgOpacity = () => darker ? "bg-overlayDark" : lighter ? "bg-overlayLight" : "bg-overlay"
+
+  return <div className={`${getBgOpacity()} absolute inset-0 z-10`} />;
+};
+
+export default BackgroundOverlay;

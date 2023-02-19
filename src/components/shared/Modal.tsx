@@ -36,7 +36,7 @@ const Modal = ({
             : 'top-20 items-center justify-center'
         } fixed z-40 flex flex-col min-h-screen h-full w-full`}
       >
-        {transparent && <BackgroundOverlay color={colors.overlay} />}
+        {transparent && <BackgroundOverlay />}
         <div className="z-50 flex flex-col items-center justify-center w-full max-w-md px-6 overflow-hidden">{children}</div>
       </div>
     </Portal>

@@ -30,7 +30,7 @@ const Welcome: FC = () => {
       id="welcome"
       className="absolute inset-0 bg-[url('/welcome.jpg')] z-0 bg-cover bg-center bg-no-repeat "
     >
-      <BackgroundOverlay color={colors.overlay} />
+      <BackgroundOverlay />
       <div className="relative z-10 flex flex-col items-center justify-center w-full h-full font-dinBold">
         <div className="px-2 pb-4 text-3xl font-semibold tracking-wide text-center text-white 2xs:text-4xl leading-0 md:px-4 md:text-6xl">
           TASTE THE LOVE AND FEEL RECHARGED

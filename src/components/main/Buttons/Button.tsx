@@ -4,85 +4,50 @@ import Spinner from '@shared/Spinner';
 
 interface Props {
   title: string;
-  color?: string;
-  hoverColor?: string;
-  hoverText?: string;
   leftIconComponent?: ReactNode;
   rightIconComponent?: ReactNode;
+  isSubmit?: boolean;
+  onClick: (e: FormEvent<HTMLButtonElement>) => void;
   type?: 'filled' | 'outlined';
   className?: string;
-  isSubmit?: boolean;
-  disabled?: boolean;
-  withGradient?: boolean;
- onClick: (e: FormEvent<HTMLButtonElement>) => void;
+  loading?: boolean;
 }
 
 const Button = ({
   title,
-  color,
-  hoverColor,
-  hoverText,
   leftIconComponent,
   rightIconComponent,
-  className = '',
-  type,
   isSubmit,
-  disabled = false,
-  withGradient,
   onClick,
+  type = 'filled',
+  className = '',
+  loading = false,
 }: Props) => {
-  const disabledStlye = `${
-    disabled
-      ? 'cursor-default bg-gray-400 hover:text-gray-200 text-gray-200 transition-none hover:bg-none'
-      : 'transition-all duration-200 ease-in-out'
-  }`;
+  const baseStyles =
+    'z-20 flex w-full cursor-pointer items-center justify-center rounded-md py-2 text-white py-2 px-4 text-sm';
 
-  const hoverColorStyle = `${hoverColor && !disabled && `hover:bg-[${hoverColor}]`}`;
+  const typeStyles = type === 'outlined' ? 'border border-black text-black hover:text-white hover:bg-black' : 'bg-mainPurple hover:bg-fuchsia-600';
+
+  const textStyles = type === 'outlined' ? 'text-black' : 'text-white';
 
   const iconStyle = 'h-full mx-1';
 
-  return type === 'outlined' ? (
-    <button
-      className={`${className} ${disabledStlye} ${`hover:bg-[${hoverColor}]`} hover:none items-center justify-between z-20 flex w-full cursor-pointer rounded-md border text-black shadow-sm lg:text-xl `}
-      onClick={onClick}
-      type={isSubmit ? 'submit' : 'button'}
-      role={isSubmit ? 'link' : 'button'}
-      style={{ color, borderColor: color }}
-      disabled={disabled}
-    >
-      {leftIconComponent && <div className={iconStyle}>{leftIconComponent}</div>}
-      <p className={`${disabledStlye} ${`hover:text-[${hoverText}]`} h-full w-full py-1 px-4`}>
-        {title}
-      </p>
-      {rightIconComponent && <div className={iconStyle}>{rightIconComponent}</div>}
+  return loading ? (
+    <button className={`${baseStyles} bg-gray-400 text-gray-200`} onClick={onClick} disabled={true}>
+      <Spinner />
     </button>
   ) : (
     <button
-      className={`${className} ${disabledStlye} ${hoverColorStyle} ${
-        withGradient && 'bg-gradient-to-br'
-      } bg-[${
-        withGradient ? 'transparent' : color
-      }] from-purple-600 via-[${color}] z-20 flex w-full cursor-pointer items-center justify-center rounded-md to-purple-700 py-2 px-4 text-white text-sm`}
+      className={`${baseStyles} ${typeStyles} ${className}`}
       onClick={onClick}
       type={isSubmit ? 'submit' : 'button'}
       role={isSubmit ? 'link' : 'button'}
-      disabled={disabled}
-      style={{
-        color: '#fff',
-        cursor: disabled ? 'default' : 'pointer',
-      }}
     >
-      {disabled ? (
-        <Spinner color={colors.disabled} backgroundColor={colors.purple} />
-      ) : (
-        <>
-          {leftIconComponent && <div className={iconStyle}>{leftIconComponent}</div>}
-          <p className={`h-full w-full py-1 px-4 ${hoverText && `hover:text-[${hoverText}]`}`}>
-            {title}
-          </p>
-          {rightIconComponent && <div className={iconStyle}>{rightIconComponent}</div>}
-        </>
-      )}
+      <>
+        {leftIconComponent && <div className={iconStyle}>{leftIconComponent}</div>}
+        <p className={`${textStyles} h-full w-full py-1 px-4`}>{title}</p>
+        {rightIconComponent && <div className={iconStyle}>{rightIconComponent}</div>}
+      </>
     </button>
   );
 };

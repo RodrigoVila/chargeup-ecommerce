@@ -1,20 +1,17 @@
 import { FC } from 'react';
 
 type Props = {
-  color?: string;
-  backgroundColor?: string;
+  className?: string;
 };
 
-const Spinner: FC<Props> = ({ color, backgroundColor }) => {
+const Spinner: FC<Props> = ({ className = '' }) => {
   return (
     <div role="status">
       <svg
         aria-hidden="true"
-        className={`${color ? `fill-[${color}]` : 'fill-blue-600'} ${
-          backgroundColor ? `text-[${backgroundColor}]` : 'text-gray-300'
-        } mr-2 h-8 w-8 animate-spin `}
+        className={`${className} mr-2 h-8 w-8 animate-spin fill-gray-400 text-gray-300 `}
         viewBox="0 0 100 101"
-        fill="none"
+        fill="bg-pink-400"
         xmlns="http://www.w3.org/2000/svg"
       >
         <path

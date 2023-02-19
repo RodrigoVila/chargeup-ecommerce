@@ -40,7 +40,10 @@ const useScroll = () => {
             setReverseOpacity(parsedReverseOpacity * 100)
         }
     }, [currentScrollPos])
-
+    
+    useEffect(() => {
+        console.log(opacity)
+      }, [opacity])
 
 
     return { opacity, reverseOpacity, currentScrollPos, windowHeight, getElementHeight }

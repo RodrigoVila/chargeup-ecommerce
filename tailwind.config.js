@@ -2,18 +2,25 @@
 
 module.exports = {
   content: [
-    './pages/**/*.{js,ts,jsx,tsx}',
+    "./app/**/*.{js,ts,jsx,tsx}",
+    "./pages/**/*.{js,ts,jsx,tsx}",
     "./components/**/*.{js,ts,jsx,tsx}",
-    './src/**/*.{js,ts,jsx,tsx}',
-    './public/**/*.html',
+    "./src/**/*.{js,ts,jsx,tsx}",
     './node_modules/flowbite-react/**/*.js',
   ],
   theme: {
     extend: {
-      animation: {
-        'ping-slow': 'ping 3s infinite ease-in-out',
-        fadeIn: "fadeIn 2s ease-in-out forwards",
-        fadeOut: "fadeOut 2s ease-in-out forwards"
+      colors: {
+        danger: '#ff4444',
+        disabled: '#b2b2b2',
+        info: '#33b5e5',
+        overlay: 'rgba(0,0,0,0.5)',
+        overlayDark: 'rgba(0,0,0,0.7)',
+        overlayLight: 'rgba(0,0,0,0.2)',
+        mainPurple: '#a855f7',
+        overlayPurple: 'rgba(168, 85, 247, 0.4)',
+        overlayPurple2: 'rgba(168, 85, 247, 0.7)',
+        success: '#21dbaa',
       },
       fontFamily: {
         sans: ['Inter var'],
@@ -43,38 +50,6 @@ module.exports = {
       },
       inset: {
         outofScreen: '-700px',
-      },
-      keyframes: {
-        fadeIn: {
-          "0%": { opacity: 0 },
-          "10%": { opacity: 0.1 },
-          "20%": { opacity: 0.2 },
-          "30%": { opacity: 0.3 },
-          "40%": { opacity: 0.4 },
-          "50%": { opacity: 0.5 },
-          "60%": { opacity: 0.6 },
-          "70%": { opacity: 0.7 },
-          "80%": { opacity: 0.8 },
-          "90%": { opacity: 0.9 },
-          "100%": { opacity: 1 }
-        },
-        fadeOut: {
-          "0%": { opacity: 1 },
-          "10%": { opacity: 0.9 },
-          "20%": { opacity: 0.8 },
-          "30%": { opacity: 0.7 },
-          "40%": { opacity: 0.6 },
-          "50%": { opacity: 0.5 },
-          "60%": { opacity: 0.4 },
-          "70%": { opacity: 0.3 },
-          "80%": { opacity: 0.2 },
-          "90%": { opacity: 0.1 },
-          "100%": { opacity: 0 }
-        },
-        wiggle: {
-          '0%, 100%': { transform: 'rotate(-3deg)' },
-          '50%': { transform: 'rotate(3deg)' },
-        },
       },
       maxWidth: {
         360: '360px',
@@ -138,9 +113,6 @@ module.exports = {
         full: '9999px',
       },
     },
-  },
-  variants: {
-    animation: ["motion-safe"]
   },
   plugins: [require('flowbite/plugin')],
 };

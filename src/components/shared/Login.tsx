@@ -32,10 +32,8 @@ const Login = () => {
 
         <Button
           title={getButtonTitle()}
-          color={colors.purple}
-          hoverColor={colors.fuchsia}
+          loading={isAuthLoading}
           onClick={(e) => handleButtonClick(e)}
-          disabled={isAuthLoading}
         />
 
         {(formType === 'register' || formType === 'passwordRecovery') && (
@@ -45,7 +43,10 @@ const Login = () => {
         {formType === 'login' && (
           <>
             <Link text={lang.es.USER_REGISTER} onClick={() => setFormType('register')} />
-            <Link text={lang.es.PASSWORD_RECOVERY} onClick={() => setFormType('passwordRecovery')} />
+            <Link
+              text={lang.es.PASSWORD_RECOVERY}
+              onClick={() => setFormType('passwordRecovery')}
+            />
           </>
         )}
       </div>

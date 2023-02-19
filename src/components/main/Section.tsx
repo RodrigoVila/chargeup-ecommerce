@@ -45,7 +45,7 @@ const Section: FC<Props> = ({
           objectPosition="center"
         />
       )}
-      {overlay && <BackgroundOverlay color={colors.overlayDark} />}
+     {overlay && <BackgroundOverlay />}
       {title && (
         <h1 className="z-20 w-full px-2 pb-8 text-3xl text-center uppercase font-dinBold md:text-5xl">
           {title}

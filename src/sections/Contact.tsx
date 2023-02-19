@@ -19,7 +19,7 @@ const ContactSection = () => {
       id="contact"
       className="relative m-auto flex h-screen w-full flex-col items-center justify-center bg-[url('/contact.jpg')] bg-cover bg-fixed bg-center bg-no-repeat"
     >
-      <BackgroundOverlay color={colors.overlay} />
+      <BackgroundOverlay />
       <p className="z-10 w-full pb-12 text-5xl text-center text-white font-dinBold">CONTACTANOS</p>
       <div className="z-10 flex flex-col items-center justify-center w-full max-w-xl px-4 overflow-hidden text-white">
         <form ref={form} onSubmit={handleSubmit}>
