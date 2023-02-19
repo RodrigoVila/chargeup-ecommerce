@@ -22,6 +22,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
   const getProducts = async () => {
     try {
+      console.log("Env",stripeWebhookKey)
       const products = await Product.find({});
       return res.status(200).json({ success: true, products });
     } catch (e) {
