@@ -1,9 +1,9 @@
-const defaultTheme = require('tailwindcss/defaultTheme');
+/** @type {import('tailwindcss').Config} */
 
 module.exports = {
   content: [
     './pages/**/*.{js,ts,jsx,tsx}',
-    './components/**/*.{js,ts,jsx,tsx}',
+    "./components/**/*.{js,ts,jsx,tsx}",
     './src/**/*.{js,ts,jsx,tsx}',
     './public/**/*.html',
     './node_modules/flowbite-react/**/*.js',
@@ -16,7 +16,7 @@ module.exports = {
         fadeOut: "fadeOut 2s ease-in-out forwards"
       },
       fontFamily: {
-        sans: ['Inter var', ...defaultTheme.fontFamily.sans],
+        sans: ['Inter var'],
         dinMedium: ['DINPro-Medium'],
         dinBold: ['DINPro-Bold'],
         dinRegular: ['DINPro-Regular'],
@@ -144,3 +144,4 @@ module.exports = {
   },
   plugins: [require('flowbite/plugin')],
 };
+

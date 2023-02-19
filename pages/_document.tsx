@@ -1,5 +1,4 @@
 import { Html, Head, Main, NextScript } from 'next/document';
-import Script from 'next/script';
 
 export default function Document() {
   return (
@@ -7,7 +6,7 @@ export default function Document() {
       <Head>
         <link rel="preload" href="/fonts/DINPro-Medium.ttf" as="font" crossOrigin="" />
         <link rel="stylesheet" href="https://rsms.me/inter/inter.css"></link>
-        <Script src="https://cdn.tailwindcss.com"></Script>
+        <script src="https://cdn.tailwindcss.com" async />
       </Head>
       <body>
         <Main />
