@@ -43,22 +43,22 @@ const Product: FC<Props> = ({ product }) => {
           <div className="flex my-3 text-sm font-semibold md:text-base">
             {vegan && (
               <div className={`${iconStyle} mr-1`} data-tip="Vegano">
-                <Image src="/icons/vegan-white.png" layout="fill" />
+                <Image src="/icons/vegan-white.png" alt="Vegan icon" layout="fill" />
               </div>
             )}
             {highProtein && (
               <div className={`${iconStyle} mx-1`} data-tip="Alto en proteina">
-                <Image src="/icons/high-protein-white.svg" layout="fill" />
+                <Image src="/icons/high-protein-white.svg" alt="High protein icon" layout="fill" />
               </div>
             )}
             {glutenFree && (
               <div className={`${iconStyle} mx-1`} data-tip="Gluten Free">
-                <Image src="/icons/gluten-free-white.png" layout="fill" />
+                <Image src="/icons/gluten-free-white.png" alt="Gluten Free icon" layout="fill" />
               </div>
             )}
             {keto && (
               <div className={`${iconStyle} mx-1`} data-tip="Keto">
-                <Image src="/icons/keto-white.svg" layout="fill" />
+                <Image src="/icons/keto-white.svg" alt="Keto icon" layout="fill" />
               </div>
             )}
           </div>
