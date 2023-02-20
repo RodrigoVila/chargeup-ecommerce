@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect,ReactNode } from 'react';
 
 import { colors } from '@constants/colors';
 import Portal from '@utils/Portal';
@@ -6,7 +6,7 @@ import BackgroundOverlay from '@main/BackgroundOverlay';
 import useAppActions from '@hooks/useAppActions';
 
 interface Props {
-  children: React.ReactNode;
+  children?: ReactNode;
   isOpen: boolean;
   transparent?: boolean;
   fullScreen?: boolean;

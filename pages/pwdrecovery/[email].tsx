@@ -6,7 +6,7 @@ import useAppSelector from '@hooks/useAppSelector';
 import ErrorSucces from '@main/ErrorSuccess';
 import { lang } from '@constants/lang';
 import UpdatePasswordForm from '@shared/Forms/UpdatePasswordForm';
-import Logo from '@main/Logo';
+import Logo from '@shared/Logo';
 import { Toaster } from 'react-hot-toast';
 import useGobBackCountdown from '@hooks/useCountdown';
 

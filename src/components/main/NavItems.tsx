@@ -1,9 +1,9 @@
-import { colors } from '@constants/colors'
-import NavItem from '@main/NavItem'
+import NavItem from '@main/NavItem';
 
 interface Props {
-  direction?: 'row' | 'column'
-  onClose?: () => void
+  direction?: 'row' | 'column';
+  onClose?: () => void;
+  className?: string;
 }
 
 const links = [
@@ -13,14 +13,14 @@ const links = [
   { label: 'KETO', href: 'keto' },
   { label: 'POR QUE ELEGIRNOS', href: 'whyus' },
   { label: 'CONTACTO', href: 'contact' },
-]
+];
 
-const NavItems = ({ direction, onClose }: Props) => {
+const NavItems = ({ direction, onClose, className = '' }: Props) => {
+  const directionStyles =
+    direction === 'row' ? 'flex-row pl-2 text-white hidden xl:flex' : 'flex-col text-purple-600 flex';
   return (
-    <div
-      className={`${
-        direction === 'row' ? 'flex-row pl-2 text-white' : 'flex-col text-purple-600'
-      } flex w-full items-center justify-center text-center font-dinBold z-10`}
+    <ul
+      className={`${directionStyles} ${className} z-10 w-full items-center justify-center text-center font-dinBold`}
     >
       {links.map((link, index) => (
         <NavItem
@@ -31,8 +31,8 @@ const NavItems = ({ direction, onClose }: Props) => {
           onClick={onClose}
         />
       ))}
-    </div>
-  )
-}
+    </ul>
+  );
+};
 
-export default NavItems
+export default NavItems;

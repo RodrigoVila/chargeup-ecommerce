@@ -1,12 +1,12 @@
 import { useState, useLayoutEffect, ReactNode } from 'react'
 import { createPortal } from 'react-dom'
 
-interface IPortal {
+interface Props {
   children: ReactNode
   wrapperId: string
 }
 
-const Portal = ({ children, wrapperId = 'react-portal-wrapper' }: IPortal) => {
+const Portal = ({ children, wrapperId = 'react-portal-wrapper' }: Props) => {
   const [wrapperElement, setWrapperElement] = useState(null)
 
   const createWrapperAndAppendToBody = (wrapperId: string) => {

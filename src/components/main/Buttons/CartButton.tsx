@@ -21,7 +21,7 @@ const CartButton: FC = () => {
 
   return (
     <div className={`relative mx-2 cursor-pointer`}>
-      <button className="w-8 h-8 md:h-10 md:w-10 lg:h-12 lg:w-12 xl:h-8 xl:w-8" onClick={openCart}>
+      <button className="w-8 h-8 md:h-10 md:w-10 lg:h-12 lg:w-12 xl:w-8 xl:h-8 2xl:w-10 2xl:h-10" onClick={openCart}>
         <Image
           className="text-white"
           objectFit="contain"

@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { useRouter } from 'next/router';
 import { Toaster } from 'react-hot-toast';
 
 // Hooks
@@ -26,11 +27,11 @@ import ExtrasModal from '@main/Modal/ExtrasModal';
 import ProductDescModal from '@main/Modal/ProductDescModal';
 
 // Components
-import TopBar from '@main/TopBar/TopBar';
-import MobileTopBar from '@main/TopBar/MobileTopBar';
+import Navbar from '@main/Navbar';
+
+// Utils
 import { getValueFromLocalStorage } from '@utils/localStorage';
 import { LOCAL_STORAGE_DATA_KEY } from '@constants/keys';
-import { useRouter } from 'next/router';
 
 const MainScreen = () => {
   const router = useRouter();
@@ -65,14 +66,11 @@ const MainScreen = () => {
       <ProductDescModal />
       <ExtrasModal />
       <div className="relative w-full h-screen">
-        {/* Navigation */}
-        <TopBar />
-        <MobileTopBar />
-        {/* Sections */}
+        <Navbar />
         <Welcome />
       </div>
       <About />
-      {products ? <Products /> : null}
+      <Products />
       <Cakes />
       <Keto />
       <WhyUs />
