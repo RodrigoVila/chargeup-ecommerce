@@ -11,7 +11,7 @@ const calculateOrderAmount = (items: CartProductType[]): number => {
   return orderAmount * 100;
 };
 
-export default async function (req: NextApiRequest, res: NextApiResponse) {
+const CheckoutSession = async (req: NextApiRequest, res: NextApiResponse) => {
   const { method, body } = req;
 
   const newOrder = JSON.parse(body);
@@ -55,4 +55,6 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
       res.setHeader('Allow', 'POST');
       res.status(405).end(`Method ${method} Not Allowed`);
   }
-}
+};
+
+export default CheckoutSession;

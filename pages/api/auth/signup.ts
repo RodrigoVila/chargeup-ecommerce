@@ -6,7 +6,7 @@ import dbConnect from '@utils/dbConnect';
 import { emailVerificationToHTML } from '@utils/htmlEmailParsers';
 import { sendEmailToUser } from '@utils/nodemailer';
 
-export default async (req: NextApiRequest, res: NextApiResponse) => {
+const SignUp = async (req: NextApiRequest, res: NextApiResponse) => {
   const { method, body } = req;
   const { name, lastName, email, password, pid } = body;
 
@@ -42,3 +42,5 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       return res.status(405).end(`Method ${method} Not Allowed`);
   }
 };
+
+export default SignUp

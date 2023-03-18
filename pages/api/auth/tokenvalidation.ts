@@ -3,7 +3,7 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import User from '@models/user';
 import dbConnect from '@utils/dbConnect';
 
-export default async (req: NextApiRequest, res: NextApiResponse) => {
+const TokenValidation = async (req: NextApiRequest, res: NextApiResponse) => {
   const { method, body } = req;
   const { email, token } = body;
 
@@ -29,3 +29,5 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       return res.status(405).end(`Method ${method} Not Allowed`);
   }
 };
+
+export default TokenValidation

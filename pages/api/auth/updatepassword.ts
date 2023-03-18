@@ -6,7 +6,7 @@ import Id from '../order/[id]';
 import useEncryption from '@hooks/useEncryption';
 import { lang } from '@constants/lang';
 
-export default async (req: NextApiRequest, res: NextApiResponse) => {
+const UpdatePassword = async (req: NextApiRequest, res: NextApiResponse) => {
   const { method, body } = req;
   const { email, oldPassword, newPassword } = body;
 
@@ -50,3 +50,5 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       return res.status(405).end(`Method ${method} Not Allowed`);
   }
 };
+
+export default UpdatePassword

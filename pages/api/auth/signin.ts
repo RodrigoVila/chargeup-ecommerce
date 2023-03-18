@@ -7,7 +7,7 @@ import User from '@models/user';
 import dbConnect from '@utils/dbConnect';
 import { lang } from '@constants/lang';
 
-export default async (req: NextApiRequest, res: NextApiResponse) => {
+const SignIn = async (req: NextApiRequest, res: NextApiResponse) => {
   const { method, body } = req;
   const { email, password } = body;
 
@@ -56,3 +56,5 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       return res.status(405).end(`Method ${method} Not Allowed`);
   }
 };
+
+export default SignIn

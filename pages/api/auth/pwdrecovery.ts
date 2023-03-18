@@ -8,7 +8,7 @@ import dbConnect from '@utils/dbConnect';
 import { passwordRecoveryToHTML } from '@utils/htmlEmailParsers';
 import { sendEmailToUser } from '@utils/nodemailer';
 
-export default async (req: NextApiRequest, res: NextApiResponse) => {
+const PasswordRecoveryAPI = async (req: NextApiRequest, res: NextApiResponse) => {
   const { method, body } = req;
   const { email } = body;
 
@@ -55,3 +55,5 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       return res.status(405).end(`Method ${method} Not Allowed`);
   }
 };
+
+export default PasswordRecoveryAPI

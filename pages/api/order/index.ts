@@ -2,7 +2,7 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import Order from '@models/order';
 import dbConnect from '@utils/dbConnect';
 
-export default async (req: NextApiRequest, res: NextApiResponse) => {
+const OrderAPI = async (req: NextApiRequest, res: NextApiResponse) => {
   const { method, body } = req;
 
   await dbConnect();
@@ -19,3 +19,5 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       return res.status(405).end(`Method ${method} Not Allowed`);
   }
 };
+
+export default OrderAPI

@@ -4,7 +4,7 @@ import dbConnect from '@utils/dbConnect';
 import { stripeWebhookKey } from '@constants/keys';
 
 
-export default async (req: NextApiRequest, res: NextApiResponse) => {
+const Products = async (req: NextApiRequest, res: NextApiResponse) => {
   const { method, body } = req;
 
   await dbConnect();
@@ -41,3 +41,5 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       return res.status(405).end(`Method ${method} Not Allowed`);
   }
 };
+
+export default Products

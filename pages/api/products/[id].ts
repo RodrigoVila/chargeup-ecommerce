@@ -2,7 +2,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 import Product from "@models/product";
 import dbConnect from "@utils/dbConnect";
 
-export default async (req: NextApiRequest, res: NextApiResponse) => {
+const ProductsByID = async (req: NextApiRequest, res: NextApiResponse) => {
   const {
     query: { id },
     method,
@@ -60,3 +60,5 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       return res.status(405).end(`Method ${method} Not Allowed`);
   }
 };
+
+export default ProductsByID
