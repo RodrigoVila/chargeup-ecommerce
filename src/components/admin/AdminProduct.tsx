@@ -28,7 +28,7 @@ const AdminProduct = ({ product }: Props) => {
         <div className="flex items-center">
           {/* Imagen */}
           <div className="relative flex-shrink-0 w-10 h-10">
-            <Image objectFit="cover" layout="fill" src={`/${imgUri}.jpg`} alt="" />
+            <Image objectFit="cover" layout="fill" src={`/images/${imgUri}.jpg`} alt="" />
           </div>
           {/* Titulo */}
           <div className="ml-4">

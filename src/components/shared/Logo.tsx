@@ -26,7 +26,7 @@ const Logo: FC<Props> = ({ logo, size = 'md', scrollOnClick = false, className =
       <div className={`${sizeStyle} ${cursorStyles} relative`}>
         <a className="w-full h-full p-0 m-0" href={`${scrollOnClick ? '#welcome' : ''}`}>
           <Image
-            src={`/logo-${logo}`}
+            src={`/images/logo-${logo}`}
             alt="Charge UP Barcelona Logo"
             layout="fill"
             objectFit="fill"

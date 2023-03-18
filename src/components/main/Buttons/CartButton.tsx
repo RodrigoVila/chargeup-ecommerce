@@ -26,7 +26,7 @@ const CartButton: FC = () => {
           className="text-white"
           objectFit="contain"
           layout="fill"
-          src="/cart_white.svg"
+          src="/images/cart_white.svg"
           alt=""
         />
       </button>

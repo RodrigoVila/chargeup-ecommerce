@@ -3,7 +3,6 @@ import useAppSelector from '@hooks/useAppSelector';
 
 import Modal from '@shared/Modal';
 import CloseModalButton from '@main/Buttons/CloseModalButton';
-import UserButton from '@main/Buttons/UserButton';
 import NavItems from '@main/NavItems';
 
 const DrawerModal = () => {
@@ -14,8 +13,7 @@ const DrawerModal = () => {
   return (
     <Modal isOpen={isDrawerModalOpen} transparent fullScreen>
       <div className="bg-white rounded-md ">
-        <div className="flex items-center justify-between w-full px-4 pt-4 pb-0">
-          <UserButton color="black" />
+        <div className="flex items-center justify-end w-full px-4 pt-4 pb-0">
           <CloseModalButton color="black" onClose={() => closeDrawerModal()} />
         </div>
         <div className="px-16 mb-6">

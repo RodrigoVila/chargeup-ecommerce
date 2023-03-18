@@ -8,36 +8,30 @@ interface Props {
   id: string;
   title?: string;
   bgImage?: string | null;
-  bgColor?: string;
-  textColor?: string;
   overlay?: boolean;
   disabled?: boolean;
-  noCenter?: boolean;
+  className?: string;
   children: ReactNode;
 }
 const Section: FC<Props> = ({
   id,
   title,
   bgImage = null,
-  bgColor,
-  textColor,
   overlay,
   disabled = false,
-  noCenter = false,
+  className,
   children,
 }) => {
-  const textStyle = textColor ? `text-[${textColor}]` : 'text-white';
-  const bgColorStyle = bgColor ? `bg-[${bgColor}]` : 'bg-white';
-  const centerStyle = noCenter ? "" : 'justify-center';
+  const textColor = id === "keto" ? "text-black" : "text-white"
 
   return disabled ? null : (
     <div
       id={id}
-      className={`${bgColorStyle} ${textStyle} ${centerStyle} relative mx-auto flex min-h-screen w-full flex-col items-center px-2 pb-16 pt-32 text-center`}
+      className={`relative mx-auto flex min-h-screen w-full flex-col items-center px-2 pb-16 pt-32 text-center text-white ${className}`}
     >
       {bgImage && (
         <Image
-          src={`/${bgImage}`}
+          src={`/images/${bgImage}`}
           alt="Section background image"
           className="z-0 h-screen"
           layout="fill"
@@ -45,13 +39,13 @@ const Section: FC<Props> = ({
           objectPosition="center"
         />
       )}
-     {overlay && <BackgroundOverlay />}
+      {overlay && <BackgroundOverlay />}
       {title && (
-        <h1 className="z-20 w-full px-2 pb-8 text-3xl text-center uppercase font-dinBold md:text-5xl">
+        <h1 className={`z-20 w-full px-2 pb-8 text-3xl text-center uppercase font-dinBold md:text-5xl ${textColor}`}>
           {title}
         </h1>
       )}
-      <div className="z-20 max-w-4xl pb-4 text-xl leading-snug 2xs:px-4 md:text-2xl xl:max-w-5xl xl:leading-normal">
+      <div className="z-20 h-full max-w-4xl pb-4 text-xl leading-snug bg-yellow-300 2xs:px-4 md:text-2xl xl:max-w-5xl xl:leading-normal">
         {children}
       </div>
     </div>

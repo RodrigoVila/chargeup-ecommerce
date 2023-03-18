@@ -106,7 +106,7 @@ const Product: FC<Props> = ({ product }) => {
               </div>
             </div>
           </div>
-          <Button title="Seleccionar" color={colors.purple} onClick={onClick} />
+          <Button title="Seleccionar" onClick={onClick} />
         </div>
       </div>
     </>

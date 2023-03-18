@@ -82,7 +82,7 @@ const AdminProductDetails = ({ product }: Props) => {
         <div className="mt-6 align-middle">
           <div key={_id} className="relative group">
             <div className="object-center w-32 h-32 align-middle rounded-md shadow-xl bg-gray-25">
-              <Image src={'imageSrc'} alt={'imageAlt'} className="object-center align-middle" />
+              <Image src={`/images/${imageSrc}`} alt={'imageAlt'} className="object-center align-middle" />
             </div>
             <div className="flex justify-between mt-4">
               <div>
