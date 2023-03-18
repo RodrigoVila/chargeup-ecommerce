@@ -15,16 +15,16 @@ const UserButton: FC<Props> = ({ color: propColor = 'white' }) => {
   const { openUserModal, openLoginModal } = useAppActions();
 
   const color = propColor === 'white' ? `text-white` : `text-black`;
+  const openModal = userLogin?.name ? openUserModal : openLoginModal;
 
   return (
     <div className={`${color} mt-1 flex cursor-pointer flex-col items-center justify-center`}>
-      <button
-        onClick={userLogin?.name ? openUserModal : openLoginModal}
-        className="w-6 h-6 md:h-8 md:w-8 2xl:h-0 2xl:w-10"
-      >
+      <button onClick={openModal} className="w-6 h-6 md:h-8 md:w-8 2xl:h-10 2xl:w-10">
         <UserIcon className={`${color} h-full w-full`} />
       </button>
-      <p className={`${color} text-s md:text-sm leading-none`}>{userLogin?.name ? userLogin.name : lang.en.LOGIN}</p>
+      <p onClick={openModal} className={`${color} text-s leading-none md:text-sm`}>
+        {userLogin?.name ? userLogin.name : lang.en.LOGIN}
+      </p>
     </div>
   );
 };
