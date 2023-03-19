@@ -12,6 +12,7 @@ interface Props {
   disabled?: boolean;
   className?: string;
   children: ReactNode;
+  childrenClassName?: string;
 }
 const Section: FC<Props> = ({
   id,
@@ -21,13 +22,17 @@ const Section: FC<Props> = ({
   disabled = false,
   className,
   children,
+  childrenClassName,
 }) => {
-  const textColor = id === "keto" ? "text-black" : "text-white"
+  const textColor = id === 'keto' ? 'text-black' : 'text-white';
+  const defaultStyles = 'px-2 pb-16 pt-32';
 
   return disabled ? null : (
-    <div
+    <section
       id={id}
-      className={`relative mx-auto flex min-h-screen w-full flex-col items-center px-2 pb-16 pt-32 text-center text-white ${className}`}
+      className={`relative flex h-full min-h-screen w-full flex-col items-center text-center text-white  ${
+        className ?? defaultStyles
+      }`}
     >
       {bgImage && (
         <Image
@@ -41,14 +46,19 @@ const Section: FC<Props> = ({
       )}
       {overlay && <BackgroundOverlay />}
       {title && (
-        <h1 className={`z-20 w-full px-2 pb-8 text-3xl text-center uppercase font-dinBold md:text-5xl ${textColor}`}>
+        <h1
+          className={`z-20 w-full px-2 pb-8 text-center font-dinBold text-3xl uppercase md:text-5xl ${textColor}`}
+        >
           {title}
         </h1>
       )}
-      <div className="z-20 h-full max-w-4xl pb-4 text-xl leading-snug bg-yellow-300 2xs:px-4 md:text-2xl xl:max-w-5xl xl:leading-normal">
+      <div
+        className={`z-20 h-full max-w-4xl text-xl leading-snug 2xs:px-4 md:text-2xl xl:max-w-5xl xl:leading-normal 
+        ${childrenClassName ?? ''}`}
+      >
         {children}
       </div>
-    </div>
+    </section>
   );
 };
 

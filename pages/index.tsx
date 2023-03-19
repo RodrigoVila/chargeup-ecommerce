@@ -55,6 +55,18 @@ const MainScreen = () => {
     <div className="relative font-dinRegular">
       {/* Toast messages component */}
       <Toaster />
+      {/* Navigation */}
+      <Navbar />
+
+      {/* Sections */}
+      <Welcome />
+      <About />
+      <Products />
+      <Cakes />
+      <Keto />
+      <WhyUs />
+      {/* <Contact /> */}
+      <Footer />
 
       {/* Modals */}
       <CartModal />
@@ -65,18 +77,6 @@ const MainScreen = () => {
       <UserModal />
       <ProductDescModal />
       <ExtrasModal />
-      <div className="relative w-full h-screen">
-        <Navbar />
-        <Welcome />
-      </div>
-      <About />
-      <Products />
-      <Cakes />
-      <Keto />
-      <WhyUs />
-      {/* Not avaiable until test how confirmation emails are working after some time */}
-      {/* <Contact /> */}
-      <Footer />
     </div>
   );
 };

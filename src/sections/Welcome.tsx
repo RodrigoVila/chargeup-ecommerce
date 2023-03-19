@@ -25,14 +25,14 @@ const Welcome: FC = () => {
   }, [dispatch]);
 
   return (
-    <Section id="welcome" bgImage="welcome.jpg" overlay>
-      <div className="z-10 flex flex-col items-center justify-center w-full h-full bg-red-300 font-dinBold">
-        <div className="px-2 pb-4 text-3xl font-semibold tracking-wide text-center text-white leading-0 2xs:text-4xl md:px-4 md:text-6xl">
+    <Section id="welcome" bgImage="welcome.jpg" overlay childrenClassName='absolute inset-0 mx-auto'>
+      <div className="flex flex-col items-center justify-center w-full h-full gap-4 font-dinBold">
+        <h1 className="text-3xl font-semibold tracking-wide text-center text-white leading-0 2xs:text-4xl md:px-4 md:text-6xl">
           TASTE THE LOVE AND FEEL RECHARGED
-        </div>
-        <div className="flex flex-col items-center justify-center px-8 font-semibold text-center text-white text-md leading-0 md:px-20 md:text-3xl lg:px-56 xl:flex-row xl:px-0">
-          <div className="mr-2">OUR MISSION IS TO MAKE HAPPY THOSE WHO CANNOT EAT</div>
-          <div>
+        </h1>
+        <div className="flex flex-col items-center justify-center font-semibold text-center text-white text-md leading-0 md:px-20 md:text-3xl lg:px-56 xl:flex-row xl:px-0">
+          <h3 className="mr-2">OUR MISSION IS TO MAKE HAPPY THOSE WHO CANNOT EAT</h3>
+          <div className="flex justify-center tems-center">
             {state}
             <span style={{ visibility: cursor ? 'visible' : 'hidden' }}>|</span>
           </div>

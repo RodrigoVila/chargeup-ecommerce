@@ -12,7 +12,7 @@ const Navbar = () => {
 
   return (
     <nav className={`${bgOpacity} h-26 fixed top-0 z-30 flex w-full justify-between`}>
-      {/* The next 3 hide/show/redistribute with Tailwind classes */}
+      {/* The next 3 comps hide/show/redistribute with Tailwind classes */}
       <BurgerButton />
       <Logo logo="white.png" scrollOnClick size="sm" />
       <NavItems direction="row" />
