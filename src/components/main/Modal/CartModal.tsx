@@ -13,7 +13,7 @@ import CloseModalButton from '@main/Buttons/CloseModalButton';
 import { colors } from '@constants/colors';
 
 const CartModal = () => {
-  const [disabled, setDisabled] = useState(false);
+  const [loading, setLoading] = useState(false);
   const { isCartModalOpen, cartItems, userLogin } = useAppSelector();
   const { closeCartModal, createCheckoutSession } = useAppActions();
   const { isMounted } = useMounted();
@@ -21,6 +21,8 @@ const CartModal = () => {
   const totalSum = useMemo(() => cartItems.reduce((acc, item) => acc + item.total, 0), [cartItems]);
 
   const onSubmit = () => {
+    setLoading(true);
+    
     const name = userLogin?.name ? userLogin.name : null;
     const newOrder: OrderType = {
       id: uuidv4(),
@@ -31,12 +33,12 @@ const CartModal = () => {
       items: cartItems,
       created: new Date(),
     };
-    setDisabled(true);
+    
     createCheckoutSession(newOrder);
   };
 
   useEffect(() => {
-    isCartModalOpen && setDisabled(false);
+    isCartModalOpen && setLoading(false);
   }, [isCartModalOpen]);
 
   useEffect(() => {
@@ -68,9 +70,8 @@ const CartModal = () => {
             <Button
               className="text-base"
               title="Ir a pagar"
-              color={colors.purple}
               onClick={onSubmit}
-              disabled={disabled}
+              loading={loading}
             />
           </div>
           <Button className="text-base" title="Cerrar" onClick={closeCartModal} type="outlined" />

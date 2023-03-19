@@ -93,7 +93,7 @@ const ExtrasModal = () => {
   return (
     <Modal isOpen={isExtrasModalOpen} transparent fullScreen>
       <div
-        className="relative flex flex-col w-full bg-white rounded-md xl:p-2"
+        className="relative flex flex-col w-full bg-white rounded-md xl:p-2 xl:pt-4"
         onClick={closeDropdown}
       >
         <CloseModalButton

@@ -11,12 +11,13 @@ const calculateOrderAmount = (items: CartProductType[]): number => {
   return orderAmount * 100;
 };
 
+const saveOrderInDB = async (newOrder: OrderType) => await Order.create(newOrder);
+
 const CheckoutSession = async (req: NextApiRequest, res: NextApiResponse) => {
   const { method, body } = req;
 
-  const newOrder = JSON.parse(body);
+  const newOrder: OrderType = JSON.parse(body);
   const checkoutSession = async () => {
-    const saveOrderInDB = async () => await Order.create(newOrder);
     try {
       const session = await stripe.checkout.sessions.create({
         line_items: [
@@ -33,11 +34,12 @@ const CheckoutSession = async (req: NextApiRequest, res: NextApiResponse) => {
         ],
         metadata: { orderId: newOrder.id, name: newOrder.name },
         mode: 'payment',
+        payment_method_types: ["card"],
         success_url: `${req.headers.origin}/ordersuccess/id=${newOrder.id}`,
         cancel_url: req.headers.origin,
       });
 
-      saveOrderInDB();
+      saveOrderInDB(newOrder);
 
       return res.status(200).json({
         success: true,

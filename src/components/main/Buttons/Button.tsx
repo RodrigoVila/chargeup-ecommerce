@@ -33,7 +33,7 @@ const Button = ({
   const iconStyle = 'h-full mx-1';
 
   return loading ? (
-    <button className={`${baseStyles} bg-gray-400 text-gray-200`} onClick={onClick} disabled={true}>
+    <button className={`${baseStyles} bg-gray-400 text-gray-200`} onClick={onClick} disabled>
       <Spinner />
     </button>
   ) : (
