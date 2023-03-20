@@ -29,44 +29,19 @@ const CustomDropdown = ({
   };
 
   return (
-    <div className={`${className} flex w-full flex-col items-center justify-center xl:text-sm`}>
-      <div className="relative w-full text-sm">
-        <Button
-          title={label}
-          onClick={toggle}
-          className="w-full py-1 rounded-none xl:text-sm"
-          type="outlined"
-          color={color}
-          rightIconComponent={
-            isOpen ? (
-              <ChevronUpIcon className="w-4 h-4 mr-1" />
-            ) : (
-              <ChevronDownIcon className="w-4 h-4 mr-1" />
-            )
-          }
-        />
-        {isOpen && options.length > 0 && (
-          <div
-            className={`absolute left-0 right-0 z-40 flex w-full flex-col border border-t-0 bg-white border-[${color}] color-[${color}]`}
-          >
-            {options.map((option,index) => {
-              if (typeof option === 'object') {
-                return (
-                  <button key={index} className="py-2 text-black" onClick={() => handleClick(option)}>
-                    {option.label}
-                  </button>
-                );
-              } else {
-                return (
-                  <button key={index} className="py-2 text-black" onClick={() => handleClick(option)}>
-                    {option}
-                  </button>
-                );
-              }
-            })}
-          </div>
-        )}
-      </div>
+    <div className={`xl:text-sm`}>
+      <label htmlFor={name} />
+      {isOpen && options.length > 0 ? (
+        <select
+          className={`w-full border border-black bg-white text-sm text-black transition-all hover:cursor-pointer ${className}`}
+        >
+          {options.map((option, index) => (
+            <option key={index} onClick={() => handleClick(option)}>
+              {typeof option === 'object' ? option.label : option}
+            </option>
+          ))}
+        </select>
+      ) : null}
     </div>
   );
 };

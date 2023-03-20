@@ -7,7 +7,7 @@ import Modal from '@shared/Modal';
 import Button from '@main/Buttons/Button';
 import CloseModalButton from '@main/Buttons/CloseModalButton';
 import Counter from '@main/Counter';
-import CustomDropdown from '@main/Dropdown';
+import Dropdown from '@main/Dropdown';
 import Checkbox from '@main/Checkbox';
 import { colors } from '@constants/colors';
 import { getProductSubtotal } from '@utils/index';
@@ -111,8 +111,8 @@ const ExtrasModal = () => {
           {selectedModalProduct?.sizes ? (
             <div className="flex flex-col justify-center">
               <h6 className={labelStyle}>Presentacion</h6>
-              <CustomDropdown
-                className=""
+              <Dropdown
+                name="sizes"
                 label={selectedSize?.label}
                 options={selectedModalProduct?.sizes}
                 onChange={onSizeChange}
@@ -148,12 +148,7 @@ const ExtrasModal = () => {
         </div>
 
         <div className="flex items-center justify-center px-4 py-4 xl:p-0 xl:py-2">
-          <Button
-            title="Agregar"
-            color={colors.purple}
-            className="py-1"
-            onClick={addItemToCart}
-          />
+          <Button title="Agregar" color={colors.purple} className="py-1" onClick={addItemToCart} />
         </div>
       </div>
     </Modal>
