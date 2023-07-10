@@ -22,7 +22,7 @@ const CartModal = () => {
 
   const onSubmit = () => {
     setLoading(true);
-    
+
     const name = userLogin?.name ? userLogin.name : null;
     const newOrder: OrderType = {
       id: uuidv4(),
@@ -33,7 +33,7 @@ const CartModal = () => {
       items: cartItems,
       created: new Date(),
     };
-    
+
     createCheckoutSession(newOrder);
   };
 
@@ -62,18 +62,8 @@ const CartModal = () => {
           <div>Total</div>
           <div>{`€${totalSum.toFixed(2)}`}</div>
         </div>
-        <div className="flex flex-col items-center justify-between w-full py-4 text-xl text-white md:text-3xl">
-          <div className="flex w-full">
-            {/* <form action="/checkout_sessions" method="POST">
-          <Button title="Ir a pagar" color={colors.purple} onClick={()=>{}} isSubmit />
-          </form> */}
-            <Button
-              className="text-base"
-              title="Ir a pagar"
-              onClick={onSubmit}
-              loading={loading}
-            />
-          </div>
+        <div className="flex flex-col items-center justify-between w-full gap-2 py-4 text-xl text-white md:text-3xl">
+          <Button className="w-full text-base" title="Ir a pagar" onClick={onSubmit} loading={loading} />
           <Button className="text-base" title="Cerrar" onClick={closeCartModal} type="outlined" />
         </div>
       </div>
