@@ -57,6 +57,7 @@ const ExtrasModal = () => {
       return;
     }
 
+    // It's just an ID that will be used to update/remove cart items. If it's exactly the same item, it updates it. If not, it add a new variant.
     const getUniqueID = () => {
       let extrasString = [];
       selectedExtras.map((extra) => extrasString.push(extra.label));
