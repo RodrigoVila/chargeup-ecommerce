@@ -17,7 +17,7 @@ const ExtrasModal = () => {
 
   // Product specification before adding it to cart
   const [itemCount, setItemCount] = useState(1);
-  const [selectedSize, setSelectedSize] = useState(null);
+  const [selectedSize, setSelectedSize] = useState<ILabelAndPrice| null>(null);
   const [selectedExtras, setSelectedExtras] = useState<ILabelAndPrice[]>([]);
 
   const { isExtrasModalOpen, selectedModalProduct } = useAppSelector();
