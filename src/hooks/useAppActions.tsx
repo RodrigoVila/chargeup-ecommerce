@@ -17,6 +17,7 @@ import {
   validateTokenForPassChange,
   changeUserPassword,
   googleUserData,
+  successLoginUser,
 } from '@redux/actions/auth';
 import {
   loadCartState,
@@ -60,7 +61,7 @@ import { setFilters } from '@redux/actions/filters';
 
 import { fetchUserDetails, changeUserDetails } from '@redux/actions/users';
 import { addNewOrder } from '@redux/actions/order';
-import { CartProductType, GoogleSignInSuccessResponse, OrderType, ProductType, UserDetailsType, UserLoginType, UserRegisterType } from 'types';
+import { CartProductType, GoogleSignInSuccessResponse, OrderType, ProductType, StorageUserType, UserDetailsType, UserLoginType, UserRegisterType } from 'types';
 
 const useAppActions = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -71,6 +72,8 @@ const useAppActions = () => {
   const getGoogleUserData = (payload: GoogleSignInSuccessResponse) => dispatch(googleUserData(payload));
 
   const userLogin = (user: UserLoginType) => dispatch(loginUser(user));
+
+  const userLoginSuccess = (user: StorageUserType) => successLoginUser(user)
 
   const userLogout = () => dispatch(logoutUser());
 
@@ -195,6 +198,7 @@ const useAppActions = () => {
     checkUserToken,
     getGoogleUserData,
     userLogin,
+    userLoginSuccess,
     userLogout,
     registerUser,
     dBEmailValidation,

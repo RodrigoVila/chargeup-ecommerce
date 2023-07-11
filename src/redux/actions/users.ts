@@ -1,3 +1,4 @@
+import { UserDetailsType } from 'types';
 import {
   FETCH_USER_DETAILS,
   FETCH_USER_DETAILS_ERROR,
@@ -5,9 +6,7 @@ import {
   REQUEST_CHANGE_USER_DETAILS,
   REQUEST_CHANGE_USER_DETAILS_SUCCESS,
   REQUEST_CHANGE_USER_DETAILS_ERROR,
-  REQUEST_PASSWORD_RECOVERY,
-  REQUEST_PASSWORD_RECOVERY_SUCCESS,
-  REQUEST_PASSWORD_RECOVERY_ERROR,
+
 } from '../../constants/ActionTypes';
 
 export const fetchUserDetails = () => ({

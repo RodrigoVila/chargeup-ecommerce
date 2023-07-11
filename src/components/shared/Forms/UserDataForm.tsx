@@ -1,6 +1,5 @@
 import { useState, ChangeEvent, FC } from 'react';
 
-import { colors } from '@constants/colors';
 import { lang } from '@constants/lang';
 import Input from '@shared/Input';
 import Button from '@shared/Buttons/CustomButton';

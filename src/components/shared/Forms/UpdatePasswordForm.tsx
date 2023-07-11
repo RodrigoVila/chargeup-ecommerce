@@ -48,7 +48,7 @@ const UpdatePasswordForm: FC = ({ oldPassRequired = false, withoutCloseButton = 
 
     oldPassRequired
       ? editUserPassword(email, encryptedPassword, oldPassword)
-      : editUserPassword(queryEmail.toString(), encryptedPassword);
+      : editUserPassword(email, encryptedPassword);
   };
   return (
     <div className="p-6 pt-4 bg-white rounded-xl">

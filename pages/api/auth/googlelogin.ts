@@ -24,7 +24,8 @@ const GoogleLogin = async (req: NextApiRequest, res: NextApiResponse) => {
           user: {
             email,
             token,
-            name,
+            //If there is a registered or modified name, bring that one.
+            name: userRecord.name,
           },
         });
       } else {
@@ -35,6 +36,7 @@ const GoogleLogin = async (req: NextApiRequest, res: NextApiResponse) => {
           user: {
             email,
             token,
+            //If creating account, then assign the one that google provides.
             name,
           },
         });

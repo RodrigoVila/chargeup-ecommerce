@@ -20,6 +20,7 @@ import {
 import { clearLocalStorage, setValueToLocalStorage } from '@utils/localStorage';
 import { LOCAL_STORAGE_DATA_KEY } from '@constants/keys';
 import { AUTH_INITIAL_STATE } from '@constants/initialState';
+import { AuthActionType, AuthStateType } from 'types';
 
 const authReducer = (state: AuthStateType = AUTH_INITIAL_STATE, action: AuthActionType) => {
   const { type, userLogin } = action;
