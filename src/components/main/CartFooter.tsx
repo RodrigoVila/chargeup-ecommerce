@@ -1,5 +1,5 @@
-import React from "react";
-import Button from "../shared/Buttons/CustomButton";
+import React from 'react';
+import Button from '../shared/Buttons/CustomButton';
 
 type Props = {
   onSubmit: () => void;
@@ -24,12 +24,9 @@ const CartFooter = ({ onSubmit }: Props) => {
         </div>
       </div>
       <div className="w-1/3 ml-auto">
-        <Button
-          title="Ir a pagar"
-          color="white"
-          type="outlined"
-          onClick={onSubmit}
-        />
+        <Button type="outlined" onClick={onSubmit}>
+          Ir a pagar
+        </Button>
       </div>
     </div>
   );

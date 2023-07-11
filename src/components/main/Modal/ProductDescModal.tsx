@@ -2,7 +2,6 @@ import { FC } from 'react';
 import useAppActions from '@hooks/useAppActions';
 import useAppSelector from '@hooks/useAppSelector';
 
-import { colors } from '@constants/colors';
 import Modal from '@shared/Modal';
 import Button from '@shared/Buttons/CustomButton';
 
@@ -25,7 +24,7 @@ const ProductDescModal: FC = () => {
           </div>
         </div>
         <div className="flex items-center px-4 pt-4 pb-4">
-          <Button title="Cerrar" color={colors.purple} onClick={() => closeProductModal()} />
+          <Button onClick={() => closeProductModal()}>Cerrar</Button>
         </div>
       </div>
     </Modal>

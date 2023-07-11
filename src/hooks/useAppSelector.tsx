@@ -2,6 +2,7 @@ import { shallowEqual } from 'react-redux';
 import { createSelectorHook } from 'react-redux';
 
 import type { RootState } from '@redux/store';
+import { CartProductType, ProductType } from 'types';
 
 export const useSelector = createSelectorHook<RootState>();
 

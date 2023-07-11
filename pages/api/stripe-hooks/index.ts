@@ -70,7 +70,6 @@ const StripHooksAPI = async (req: NextApiRequest, res: NextApiResponse) => {
         stripeWebhookKey
       );
       if (type === 'checkout.session.completed') {
-        console.log("hook ok",process.env.NODE_ENV)
         const session = data.object;
         fullfillOrder(session);
       }

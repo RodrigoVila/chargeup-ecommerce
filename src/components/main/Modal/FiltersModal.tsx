@@ -15,7 +15,7 @@ const FiltersModal = () => {
 
   return (
     <Modal isOpen={isFilterModalOpen} closeOnOverlayClick>
-      <div className="relative flex flex-col flex-wrap justify-start px-2 items-left">
+      <div className="relative flex flex-col flex-wrap justify-start gap-2 px-2 items-left">
         <div className="absolute -top-4 left-1">
           <FunnelIcon color="white" />
         </div>
@@ -29,15 +29,9 @@ const FiltersModal = () => {
             />
           ))}
         </div>
-        <div className="my-1">
-          <Button
-            title="Cerrar"
-            type="outlined"
-            onClick={() => {
-              closeFiltersModal();
-            }}
-          />
-        </div>
+        <Button type="outlined" onClick={() => closeFiltersModal()}>
+          Cerrar
+        </Button>
       </div>
     </Modal>
   );

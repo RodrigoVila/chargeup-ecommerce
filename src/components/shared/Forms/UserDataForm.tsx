@@ -9,7 +9,7 @@ import useAppActions from '@hooks/useAppActions';
 import CloseModalButton from '@shared/Buttons/CloseModalButton';
 
 const UserDataForm: FC = () => {
-  const { areUsersLoading, user } = useAppSelector();
+  const { areUsersLoading, userDetails: user } = useAppSelector();
   const [editingField, setEditingField] = useState('');
   const [userDetails, setUserDetails] = useState(user);
   const {
@@ -50,7 +50,7 @@ const UserDataForm: FC = () => {
         type="text"
         name="name"
         value={name}
-        disabled={editingField !== 'lastName'}
+        disabled={editingField !== 'name'}
         onChange={handleChange}
         setEditingField={setEditingField}
       />
@@ -70,15 +70,6 @@ const UserDataForm: FC = () => {
         value={email}
         onChange={handleChange}
         disabled
-      />
-      <Input
-        label={lang.es.PREFIX_NUMBER}
-        type="text"
-        name="prefixNo"
-        value={prefixNo}
-        disabled={editingField !== 'prefixNo'}
-        onChange={handleChange}
-        setEditingField={setEditingField}
       />
       <Input
         label={lang.es.MOBILE_NUMBER}
@@ -117,21 +108,21 @@ const UserDataForm: FC = () => {
         setEditingField={setEditingField}
       />
       <Input
+        label={lang.es.LOCATION_CITY}
+        type="text"
+        name="city"
+        value={location.city}
+        disabled={editingField !== 'city'}
+        onChange={handleLocationChange}
+        setEditingField={setEditingField}
+      />
+      <Input
         label={lang.es.LOCATION_EXTRAS}
         type="text"
         name="extras"
         placeholder="Piso, puerta, etc"
         value={location.extras}
         disabled={editingField !== 'extras'}
-        onChange={handleLocationChange}
-        setEditingField={setEditingField}
-      />
-      <Input
-        label={lang.es.LOCATION_CITY}
-        type="text"
-        name="city"
-        value={location.city}
-        disabled={editingField !== 'city'}
         onChange={handleLocationChange}
         setEditingField={setEditingField}
       />
@@ -153,12 +144,9 @@ const UserDataForm: FC = () => {
         onChange={handleLocationChange}
         setEditingField={setEditingField}
       />
-      <Button
-        title={lang.es.CHANGE_USER_DATA}
-        color={colors.purple}
-        onClick={handleSubmit}
-        disabled={areUsersLoading}
-      />
+      <Button onClick={handleSubmit} disabled={areUsersLoading}>
+        {lang.es.CHANGE_USER_DATA}
+      </Button>
     </div>
   );
 };

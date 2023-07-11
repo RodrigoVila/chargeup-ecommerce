@@ -52,13 +52,7 @@ const ErrorSucces = ({
               {`Será redirigido a la home en ${timeRemaining / 1000}`}
             </h4>
           ) : (
-            <Button
-              title={buttonLabel || lang.es.GO_HOME}
-              onClick={onClickButton || goHome}
-              color={colors.fuchsia}
-              type="filled"
-              hoverColor={colors.purple}
-            />
+            <Button onClick={onClickButton || goHome}>{buttonLabel || lang.es.GO_HOME}</Button>
           )}
         </div>
       </div>

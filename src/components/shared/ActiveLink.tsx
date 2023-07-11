@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import ReactTooltip from 'react-tooltip';
 import useMounted from '@hooks/useMounted';
 
 const ActiveLink = ({ children, href }) => {
@@ -11,12 +10,9 @@ const ActiveLink = ({ children, href }) => {
   };
 
   return (
-    <>
-      {isMounted ? <ReactTooltip /> : null}
-      <Link target="_blank" href={href} style={style} data-tip={href}>
-        {children}
-      </Link>
-    </>
+    <Link target="_blank" href={href} style={style}>
+      {children}
+    </Link>
   );
 };
 

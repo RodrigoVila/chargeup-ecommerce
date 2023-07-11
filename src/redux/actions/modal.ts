@@ -1,3 +1,4 @@
+import { ProductType } from 'types';
 import {
   OPEN_CART_MODAL,
   CLOSE_CART_MODAL,

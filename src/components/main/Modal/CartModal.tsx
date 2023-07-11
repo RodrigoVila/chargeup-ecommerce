@@ -10,7 +10,7 @@ import Modal from '@shared/Modal';
 import Button from '@shared/Buttons/CustomButton';
 import CartProduct from '@main/CartProduct';
 import CloseModalButton from '@shared/Buttons/CloseModalButton';
-import { colors } from '@constants/colors';
+import { OrderType } from 'types';
 
 const CartModal = () => {
   const [loading, setLoading] = useState(false);
@@ -63,8 +63,12 @@ const CartModal = () => {
           <div>{`€${totalSum.toFixed(2)}`}</div>
         </div>
         <div className="flex flex-col items-center justify-between w-full gap-2 py-4 text-xl text-white md:text-3xl">
-          <Button className="w-full text-base" title="Ir a pagar" onClick={onSubmit} loading={loading} />
-          <Button className="text-base" title="Cerrar" onClick={closeCartModal} type="outlined" />
+          <Button className="w-full text-base" onClick={onSubmit} loading={loading}>
+            Ir a pagar
+          </Button>
+          <Button className="text-base" onClick={closeCartModal} type="outlined">
+            Cerrar
+          </Button>
         </div>
       </div>
     </Modal>

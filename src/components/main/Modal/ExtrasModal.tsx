@@ -9,8 +9,8 @@ import CloseModalButton from '@shared/Buttons/CloseModalButton';
 import Counter from '@main/Counter';
 import Dropdown from '@main/Dropdown';
 import Checkbox from '@main/Checkbox';
-import { colors } from '@constants/colors';
 import { getProductSubtotal } from '@utils/index';
+import { CartProductType, ILabelAndPrice } from 'types';
 
 const ExtrasModal = () => {
   const [isDropdownOpen, setDropdownOepn] = useState(false);
@@ -94,7 +94,7 @@ const ExtrasModal = () => {
   return (
     <Modal isOpen={isExtrasModalOpen} transparent fullScreen>
       <div
-        className="relative flex flex-col w-full bg-white rounded-md xl:p-2 xl:pt-4"
+        className="relative flex flex-col w-full gap-2 bg-white rounded-md xl:p-2 xl:pt-4"
         onClick={closeDropdown}
       >
         <CloseModalButton
@@ -149,7 +149,7 @@ const ExtrasModal = () => {
         </div>
 
         <div className="flex items-center justify-center px-4 py-4 xl:p-0 xl:py-2">
-          <Button title="Agregar" color={colors.purple} className="py-1" onClick={addItemToCart} />
+          <Button onClick={addItemToCart}>Agregar</Button>
         </div>
       </div>
     </Modal>

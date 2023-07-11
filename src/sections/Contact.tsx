@@ -33,7 +33,7 @@ const ContactSection = () => {
             maxLength={250}
             className={`${inputStyle} resize-none`}
           />
-          <Button title="Enviar" color={colors.purple} onClick={handleSubmit} />
+          <Button onClick={handleSubmit}>Enviar</Button>
         </form>
       </div>
     </div>

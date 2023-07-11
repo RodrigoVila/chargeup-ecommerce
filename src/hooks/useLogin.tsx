@@ -14,8 +14,10 @@ const initialState = {
   repeatPassword: '',
 };
 
+type FormType = "login" | "register" | "passwordRecovery" 
+
 const useLogin = () => {
-  const [formType, setFormType] = useState('login');
+  const [formType, setFormType] = useState<FormType>('login');
   const [credentials, setCredentials] = useState(initialState);
 
   const { name, lastName, email, password, repeatPassword } = credentials;
@@ -31,11 +33,7 @@ const useLogin = () => {
 
   const cleanCredentials = () => setCredentials(initialState);
 
-  const getButtonTitle = () => {
-    if (formType === 'login') return lang.es.LOGIN;
-    if (formType === 'register') return lang.es.USER_REGISTER;
-    if (formType === 'passwordRecovery') return lang.es.PASSWORD_RECOVERY;
-  };
+
 
   const handleRegister = async () => {
     const pid = uuidv4();
@@ -119,7 +117,6 @@ const useLogin = () => {
     formType,
     setFormType,
     onInputChange,
-    getButtonTitle,
     handleButtonClick,
   };
 };

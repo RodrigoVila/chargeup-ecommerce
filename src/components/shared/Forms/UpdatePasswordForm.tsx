@@ -32,7 +32,6 @@ const UpdatePasswordForm: FC = ({ oldPassRequired = false, withoutCloseButton = 
     isAuthLoading,
   } = useAppSelector();
 
-
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setUserDetails((currDetails) => ({ ...currDetails, [name]: value }));
@@ -75,7 +74,9 @@ const UpdatePasswordForm: FC = ({ oldPassRequired = false, withoutCloseButton = 
         name="repeatPassword"
         onChange={handleChange}
       />
-      <Button title={lang.es.CHANGE_PASSWORD} color={colors.purple} onClick={handleSubmit} disabled={isAuthLoading} />
+      <Button onClick={handleSubmit} loading={isAuthLoading}>
+        {lang.es.CHANGE_PASSWORD}
+      </Button>
     </div>
   );
 };
