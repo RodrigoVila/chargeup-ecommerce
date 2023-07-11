@@ -5,6 +5,7 @@ import { UserIcon } from '@heroicons/react/24/outline';
 import useAppActions from '@hooks/useAppActions';
 import useAppSelector from '@hooks/useAppSelector';
 import { lang } from '@constants/lang';
+import { twMerge } from 'tailwind-merge';
 
 type Props = {
   color?: 'black' | 'white';
@@ -18,8 +19,8 @@ const UserButton: FC<Props> = ({ color: propColor = 'white' }) => {
   const openModal = userLogin?.name ? openUserModal : openLoginModal;
 
   return (
-    <div className={`${color} mt-1 flex cursor-pointer flex-col items-center justify-center`}>
-      <button onClick={openModal} className="w-6 h-6 md:h-8 md:w-8 2xl:h-10 2xl:w-10">
+    <div className={twMerge("flex cursor-pointer flex-col items-center justify-center", color)}>
+      <button onClick={openModal} className="w-6 h-6 md:h-8 md:w-8">
         <UserIcon className={`${color} h-full w-full`} />
       </button>
       <p onClick={openModal} className={`${color} text-s leading-none md:text-sm`}>

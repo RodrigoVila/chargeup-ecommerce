@@ -4,8 +4,8 @@ import useAppActions from '@hooks/useAppActions';
 import useAppSelector from '@hooks/useAppSelector';
 
 import Modal from '@shared/Modal';
-import Button from '@main/Buttons/Button';
-import CloseModalButton from '@main/Buttons/CloseModalButton';
+import Button from '@shared/Buttons/CustomButton';
+import CloseModalButton from '@shared/Buttons/CloseModalButton';
 import Counter from '@main/Counter';
 import Dropdown from '@main/Dropdown';
 import Checkbox from '@main/Checkbox';

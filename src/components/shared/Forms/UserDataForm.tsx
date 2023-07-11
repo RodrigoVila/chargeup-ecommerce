@@ -3,10 +3,10 @@ import { useState, ChangeEvent, FC } from 'react';
 import { colors } from '@constants/colors';
 import { lang } from '@constants/lang';
 import Input from '@shared/Input';
-import Button from '@main/Buttons/Button';
+import Button from '@shared/Buttons/CustomButton';
 import useAppSelector from '@hooks/useAppSelector';
 import useAppActions from '@hooks/useAppActions';
-import CloseModalButton from '@main/Buttons/CloseModalButton';
+import CloseModalButton from '@shared/Buttons/CloseModalButton';
 
 const UserDataForm: FC = () => {
   const { areUsersLoading, user } = useAppSelector();

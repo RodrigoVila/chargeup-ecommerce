@@ -2,7 +2,7 @@ import useAppActions from '@hooks/useAppActions';
 import useAppSelector from '@hooks/useAppSelector';
 
 import Modal from '@shared/Modal';
-import CloseModalButton from '@main/Buttons/CloseModalButton';
+import CloseModalButton from '@shared/Buttons/CloseModalButton';
 import NavItems from '@main/NavItems';
 
 const DrawerModal = () => {

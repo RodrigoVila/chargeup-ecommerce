@@ -1,7 +1,7 @@
 import React from 'react';
 
 import useAppActions from '@hooks/useAppActions';
-import Button from './Button';
+import Button from './CustomButton';
 import { colors } from '@constants/colors';
 import { lang } from '@constants/lang';
 

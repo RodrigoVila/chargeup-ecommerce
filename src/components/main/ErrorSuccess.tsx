@@ -5,7 +5,7 @@ import { XCircleIcon } from '@heroicons/react/24/outline';
 
 import { lang } from '@constants/lang';
 import { colors } from '@constants/colors';
-import Button from '@main/Buttons/Button';
+import Button from '@shared/Buttons/CustomButton';
 import useCountdown from '@hooks/useCountdown';
 
 type Props = {

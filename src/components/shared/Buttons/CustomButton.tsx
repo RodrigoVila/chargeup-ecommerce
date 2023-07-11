@@ -3,7 +3,6 @@ import Spinner from '@shared/Spinner';
 import { twMerge } from 'tailwind-merge';
 
 type ButtonProps = Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'type' | 'className'> & {
-  title: string;
   leftIconComponent?: ReactNode;
   rightIconComponent?: ReactNode;
   isSubmit?: boolean;
@@ -14,8 +13,7 @@ type ButtonProps = Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'type' | 'class
   labelClassName?: string;
 };
 
-const Button = ({
-  title,
+const CustomButton = ({
   leftIconComponent,
   rightIconComponent,
   isSubmit,
@@ -52,10 +50,10 @@ const Button = ({
       {...rest}
     >
       {leftIconComponent && <div className={iconStyle}>{leftIconComponent}</div>}
-      <p className={twMerge('h-full w-full py-1 px-4', textStyles, labelClassName)}>{title}</p>
+      <p className={twMerge('h-full w-full py-1 px-4', textStyles, labelClassName)}>{rest.children}</p>
       {rightIconComponent && <div className={iconStyle}>{rightIconComponent}</div>}
     </button>
   );
 };
 
-export default Button;
+export default CustomButton;

@@ -5,7 +5,7 @@ import useAppSelector from '@hooks/useAppSelector';
 
 import Modal from '@shared/Modal';
 import FilterPill from '@main/FilterPill';
-import Button from '@main/Buttons/Button';
+import Button from '@shared/Buttons/CustomButton';
 
 const labels = ['Keto', 'Vegano', 'Proteico', 'Gluten Free', 'Sin Azucar'];
 

@@ -5,8 +5,9 @@ import useAppActions from '@hooks/useAppActions';
 import useMounted from '@hooks/useMounted';
 
 import { TrashIcon } from '@heroicons/react/24/outline';
-import CloseModalButton from '@main/Buttons/CloseModalButton';
+import CloseModalButton from '@shared/Buttons/CloseModalButton';
 import Image from 'next/image';
+import { ProductType } from 'types';
 
 interface Props {
   product: ProductType;

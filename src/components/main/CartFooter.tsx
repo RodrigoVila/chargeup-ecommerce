@@ -1,5 +1,5 @@
 import React from "react";
-import Button from "./Buttons/Button";
+import Button from "../shared/Buttons/CustomButton";
 
 type Props = {
   onSubmit: () => void;

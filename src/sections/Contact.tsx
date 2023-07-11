@@ -3,7 +3,7 @@ import { useRef, SyntheticEvent } from 'react';
 import { colors } from '@constants/colors';
 import { lang } from '@constants/lang';
 import BackgroundOverlay from '@main/BackgroundOverlay';
-import Button from '@main/Buttons/Button';
+import Button from '@shared/Buttons/CustomButton';
 
 const ContactSection = () => {
   const form = useRef();

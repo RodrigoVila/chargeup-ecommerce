@@ -4,7 +4,7 @@ import useAppSelector from '@hooks/useAppSelector';
 
 import { colors } from '@constants/colors';
 import Modal from '@shared/Modal';
-import Button from '@main/Buttons/Button';
+import Button from '@shared/Buttons/CustomButton';
 
 const ProductDescModal: FC = () => {
   const { isProductModalOpen, selectedModalProduct } = useAppSelector();

@@ -7,9 +7,9 @@ import useAppActions from '@hooks/useAppActions';
 import useMounted from '@hooks/useMounted';
 
 import Modal from '@shared/Modal';
-import Button from '@main/Buttons/Button';
+import Button from '@shared/Buttons/CustomButton';
 import CartProduct from '@main/CartProduct';
-import CloseModalButton from '@main/Buttons/CloseModalButton';
+import CloseModalButton from '@shared/Buttons/CloseModalButton';
 import { colors } from '@constants/colors';
 
 const CartModal = () => {
