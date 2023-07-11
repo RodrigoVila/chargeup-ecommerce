@@ -14,13 +14,18 @@ let userSchema = new Schema(
     },
     password: {
       type: String,
-      required: true,
+      required: false,
     },
     email: {
       type: String,
       required: true,
     },
     confirmed: {
+      type: Boolean,
+      default: false,
+      required: false,
+    },
+    googleAccount: {
       type: Boolean,
       default: false,
       required: false,

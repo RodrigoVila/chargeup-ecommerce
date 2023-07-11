@@ -1,5 +1,4 @@
-declare module 'flowbite/plugin';
-
+import { TokenResponse } from '@react-oauth/google';
 //Auth TODO: Divide type in login/register (w pass and extra data) user and logged in (email,token)
 type UserRegisterType = {
   email: string;
@@ -53,7 +52,7 @@ type AuthStateType = {
   userLogin: StorageUserType | null;
   isEmailValidated: boolean;
   isTokenForPasswordValidated: boolean | null;
-  redirect: boolean
+  redirect: boolean;
 };
 
 interface AuthActionType extends AuthStateType {
@@ -85,7 +84,7 @@ type CartProductType = {
 
 interface ITotal {
   total: number;
-};
+}
 
 //Checkout Session
 type CheckoutStateType = {
@@ -131,14 +130,14 @@ interface ModalActionType extends ModalStateType {
 
 //Order
 type OrderType = {
-  id: string,
-  email?: string,
-  name?:string,
-  items: CartProductType[],
-  totalAmount: string,
-  status?:string,
-  created: Date
-}
+  id: string;
+  email?: string;
+  name?: string;
+  items: CartProductType[];
+  totalAmount: string;
+  status?: string;
+  created: Date;
+};
 
 type OrderStateType = {
   order: OrderType;
@@ -242,3 +241,13 @@ type StateType = {
 //Dispatch
 type DispatchType = (args: ProductActionType) => ProductActionType;
 type DispatchType = (args: CartAction) => CartAction;
+
+// Google Sign In
+export type GoogleSignInSuccessResponse = Omit<
+  TokenResponse,
+  'error' | 'error_description' | 'error_uri'
+>;
+export type GoogleSignInErrorResponse = Pick<
+  TokenResponse,
+  'error' | 'error_description' | 'error_uri'
+>;

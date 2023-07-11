@@ -1,4 +1,5 @@
 //AUTH
+export const LOGIN_WITH_GOOGLE = 'LOGIN_WITH_GOOGLE';
 export const CHECK_USER_TOKEN = 'CHECK_USER_TOKEN';
 export const LOGIN_USER = 'LOGIN_USER';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';

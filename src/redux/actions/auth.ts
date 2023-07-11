@@ -1,5 +1,7 @@
+import { GoogleSignInSuccessResponse, StorageUserType, UserLoginType, UserRegisterType } from 'types';
 import {
   CHECK_USER_TOKEN,
+  LOGIN_WITH_GOOGLE,
   LOGIN_SUCCESS,
   USER_LOGIN_ERROR,
   LOGOUT,
@@ -24,6 +26,11 @@ import {
 export const userTokenCheck = (user: UserLoginType) => ({
   type: CHECK_USER_TOKEN,
   user,
+});
+
+export const googleUserData = (response: GoogleSignInSuccessResponse) => ({
+  type: LOGIN_WITH_GOOGLE,
+  response,
 });
 
 export const loginUser = (user: UserLoginType) => ({

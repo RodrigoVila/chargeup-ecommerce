@@ -3,6 +3,7 @@ lockfileVersion: 5.4
 specifiers:
   '@fortawesome/fontawesome-svg-core': ^1.2.35
   '@heroicons/react': ^2.0.12
+  '@react-oauth/google': ^0.11.0
   '@reduxjs/toolkit': ^1.9.0
   '@stripe/react-stripe-js': ^1.7.2
   '@stripe/stripe-js': ^1.29.0
@@ -48,6 +49,7 @@ specifiers:
 
 dependencies:
   '@heroicons/react': 2.0.18_react@18.2.0
+  '@react-oauth/google': 0.11.0_biqbaboplfbrettd7655fr4n2y
   '@reduxjs/toolkit': 1.9.5_7ozmmenbreubqajvpxb2pmuuau
   bcryptjs: 2.4.3
   crypto-js: 4.1.1
@@ -386,6 +388,16 @@ packages:
       picocolors: 1.0.0
       tslib: 2.6.0
     dev: true
+
+  /@react-oauth/google/0.11.0_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-yeypwdQCcFIAo43OqVOLBfUXuxmxt3xiybfP9h3smtBW4UeFXFVQDsq+d+GlbZFo0TpONPR2+KCk/KT1/pQnvQ==}
+    peerDependencies:
+      react: '>=16.8.0'
+      react-dom: '>=16.8.0'
+    dependencies:
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+    dev: false
 
   /@redux-saga/core/1.2.3:
     resolution: {integrity: sha512-U1JO6ncFBAklFTwoQ3mjAeQZ6QGutsJzwNBjgVLSWDpZTRhobUzuVDS1qH3SKGJD8fvqoaYOjp6XJ3gCmeZWgA==}

@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { Toaster } from 'react-hot-toast';
+import { GoogleOAuthProvider } from '@react-oauth/google';
 
 // Hooks
 import useAppActions from '@hooks/useAppActions';
@@ -16,7 +17,6 @@ import WhyUs from '@sections/WhyUs';
 import Footer from '@sections/Footer';
 
 // Modals
-import AdminProductModal from '@admin/Modal/AdminProductModal';
 import CartModal from '@main/Modal/CartModal';
 import CheckoutModal from '@main/Modal/CheckoutModal';
 import DrawerModal from '@main/Modal/DrawerModal';
@@ -52,32 +52,34 @@ const MainScreen = () => {
   }, [checkoutSession]);
 
   return (
-    <div className="relative font-dinRegular">
-      {/* Toast messages component */}
-      <Toaster />
-      {/* Navigation */}
-      <Navbar />
+    <GoogleOAuthProvider clientId={process.env.NEXT_PUBLIC_GOOGLE_OAUTH_ID_CLIENT}>
+      <div className="relative font-dinRegular">
+        {/* Toast messages component */}
+        <Toaster />
+        {/* Navigation */}
+        <Navbar />
 
-      {/* Sections */}
-      <Welcome />
-      <About />
-      <Products />
-      <Cakes />
-      <Keto />
-      <WhyUs />
-      {/* <Contact /> */}
-      <Footer />
+        {/* Sections */}
+        <Welcome />
+        <About />
+        <Products />
+        <Cakes />
+        <Keto />
+        <WhyUs />
+        {/* <Contact /> */}
+        <Footer />
 
-      {/* Modals */}
-      <CartModal />
-      <CheckoutModal />
-      <DrawerModal />
-      <FiltersModal />
-      <LoginModal />
-      <UserModal />
-      <ProductDescModal />
-      <ExtrasModal />
-    </div>
+        {/* Modals */}
+        <CartModal />
+        <CheckoutModal />
+        <DrawerModal />
+        <FiltersModal />
+        <LoginModal />
+        <UserModal />
+        <ProductDescModal />
+        <ExtrasModal />
+      </div>
+    </GoogleOAuthProvider>
   );
 };
 

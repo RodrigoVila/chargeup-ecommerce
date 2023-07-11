@@ -1,21 +1,21 @@
 import { Toaster } from 'react-hot-toast';
 
 import { lang } from '@constants/lang';
-import { colors } from '@constants/colors';
 import RegisterForm from '@shared/Forms/RegisterForm';
 import LoginForm from '@shared/Forms/LoginForm';
 import PasswordRecoveryForm from '@shared/Forms/PasswordRecoveryForm';
-import Button from '@main/Buttons/Button';
-import CloseModalButton from '@main/Buttons/CloseModalButton';
+import Button from '@shared/Buttons/CustomButton';
+import CloseModalButton from '@shared/Buttons/CloseModalButton';
 import Link from '@main/Link';
 import useAppActions from '@hooks/useAppActions';
 import useLogin from '@hooks/useLogin';
+import GoogleSignInButton from './Buttons/GoogleSignInButton';
 import useAppSelector from '@hooks/useAppSelector';
 
 const Login = () => {
   const { closeLoginModal } = useAppActions();
   const { isAuthLoading } = useAppSelector();
-  const { formType, setFormType, onInputChange, getButtonTitle, handleButtonClick } = useLogin();
+  const { formType, setFormType, onInputChange, handleButtonClick } = useLogin();
 
   return (
     <>
@@ -30,25 +30,35 @@ const Login = () => {
         {formType === 'login' && <LoginForm onInputChange={onInputChange} />}
         {formType === 'passwordRecovery' && <PasswordRecoveryForm onInputChange={onInputChange} />}
 
-        <Button
-          title={getButtonTitle()}
-          loading={isAuthLoading}
-          onClick={(e) => handleButtonClick(e)}
-        />
+        <div className="flex flex-col w-full gap-2">
+          <Button loading={isAuthLoading} onClick={(e) => handleButtonClick(e)}>
+            {formType === 'login'
+              ? lang.es.LOGIN
+              : formType === 'register'
+              ? lang.es.USER_REGISTER
+              : lang.es.PASSWORD_RECOVERY}
+          </Button>
 
-        {(formType === 'register' || formType === 'passwordRecovery') && (
-          <Link text={lang.es.GO_TO_LOGIN} onClick={() => setFormType('login')} />
-        )}
-
-        {formType === 'login' && (
-          <>
-            <Link text={lang.es.USER_REGISTER} onClick={() => setFormType('register')} />
-            <Link
-              text={lang.es.PASSWORD_RECOVERY}
-              onClick={() => setFormType('passwordRecovery')}
+          {formType !== 'passwordRecovery' && (
+            <GoogleSignInButton
+              text={formType === 'login' ? 'Sign in with Google' : 'Sign up with Google'}
             />
-          </>
-        )}
+          )}
+
+          {(formType === 'register' || formType === 'passwordRecovery') && (
+            <Link text={lang.es.GO_TO_LOGIN} onClick={() => setFormType('login')} />
+          )}
+
+          {formType === 'login' && (
+            <>
+              <Link text={lang.es.USER_REGISTER} onClick={() => setFormType('register')} />
+              <Link
+                text={lang.es.PASSWORD_RECOVERY}
+                onClick={() => setFormType('passwordRecovery')}
+              />
+            </>
+          )}
+        </div>
       </div>
     </>
   );

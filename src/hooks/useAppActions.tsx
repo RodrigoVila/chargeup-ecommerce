@@ -16,6 +16,7 @@ import {
   requestPasswordRecovery,
   validateTokenForPassChange,
   changeUserPassword,
+  googleUserData,
 } from '@redux/actions/auth';
 import {
   loadCartState,
@@ -59,12 +60,15 @@ import { setFilters } from '@redux/actions/filters';
 
 import { fetchUserDetails, changeUserDetails } from '@redux/actions/users';
 import { addNewOrder } from '@redux/actions/order';
+import { CartProductType, GoogleSignInSuccessResponse, OrderType, ProductType, UserDetailsType, UserLoginType, UserRegisterType } from 'types';
 
 const useAppActions = () => {
   const dispatch = useDispatch<AppDispatch>();
 
   // Auth
   const checkUserToken = (user: UserLoginType) => dispatch(userTokenCheck(user));
+
+  const getGoogleUserData = (payload: GoogleSignInSuccessResponse) => dispatch(googleUserData(payload));
 
   const userLogin = (user: UserLoginType) => dispatch(loginUser(user));
 
@@ -189,6 +193,7 @@ const useAppActions = () => {
     fetchProducts,
     fetchProductsSuccess,
     checkUserToken,
+    getGoogleUserData,
     userLogin,
     userLogout,
     registerUser,

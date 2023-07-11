@@ -5,7 +5,6 @@ import {
   errorRegisterUser,
   errorLoginUser,
   successLoginUser,
-  logoutUser,
   validateEmailInDBSuccess,
   validateEmailInDBError,
   requestPasswordRecoverySuccess,
@@ -21,13 +20,13 @@ import {
   REGISTER_USER,
   LOGIN_USER,
   CHECK_USER_TOKEN,
+  LOGIN_WITH_GOOGLE,
   VALIDATE_EMAIL_IN_DB,
   REQUEST_PASSWORD_RECOVERY,
   REQUEST_CHANGE_USER_PASSWORD,
   VALIDATE_TOKEN_FOR_PASSWORD_CHANGE,
 } from 'constants/ActionTypes';
 import { lang } from '@constants/lang';
-import { changeUserDetailsError } from '@redux/actions/users';
 
 const API_URL = '/api/auth';
 
@@ -79,6 +78,54 @@ function* userLogin(payload: any) {
   }
 }
 
+function* googleLogin(payload: any) {
+  const { access_token } = payload.response;
+
+  try {
+    const response = yield call(
+      fetch,
+      `https://www.googleapis.com/oauth2/v1/userinfo?access_token=${access_token}`,
+      {
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${access_token}`,
+          Accept: 'application/json',
+        },
+      }
+    );
+
+    const data = yield response.json();
+
+    if (data) {
+      const { family_name: lastName, given_name: name, email } = data;
+
+      try {
+        const response = yield call(fetch, API_URL + '/googlelogin', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, name, lastName }),
+        });
+
+        const { success, user } = yield response.json();
+
+        if (success) {
+          yield put(successLoginUser(user));
+          yield put(displayMessageSuccess(`${lang.es.USER_LOGIN_SUCCESS}. Bienvenid@ ${name}.`));
+          yield put(loginModalClose());
+        } else {
+          yield put(errorLoginUser());
+        }
+      } catch (e) {
+        yield put(errorLoginUser());
+      }
+    } else {
+      yield put(errorLoginUser());
+    }
+  } catch (e) {
+    yield put(errorLoginUser());
+  }
+}
+
 function* checkToken(payload: any) {
   const { user } = payload;
   const { email, token } = user;
@@ -94,10 +141,10 @@ function* checkToken(payload: any) {
     if (success) {
       yield put(successLoginUser(user));
     } else {
-      yield put(logoutUser());
+      yield put(errorLoginUser());
     }
   } catch (e) {
-    yield put(logoutUser());
+    yield put(errorLoginUser());
   }
 }
 
@@ -181,7 +228,7 @@ function* updateUserPassword(payload: any) {
 
     if (success) {
       yield put(changeUserPasswordSuccess());
-      yield put(displayMessageSuccess(lang.es.CHANGE_USER_DATA_SUCCESS))
+      yield put(displayMessageSuccess(lang.es.CHANGE_USER_DATA_SUCCESS));
       // yield put(userModalClose());
     } else {
       yield put(changeUserPasswordError());
@@ -203,6 +250,7 @@ function* authSaga() {
   yield takeEvery(REGISTER_USER, userRegister);
   yield takeEvery(LOGIN_USER, userLogin);
   yield takeEvery(CHECK_USER_TOKEN, checkToken);
+  yield takeEvery(LOGIN_WITH_GOOGLE, googleLogin);
   yield takeEvery(VALIDATE_EMAIL_IN_DB, validateEmailInDB);
   yield takeEvery(REQUEST_PASSWORD_RECOVERY, requestPasswordRecovery);
   yield takeEvery(VALIDATE_TOKEN_FOR_PASSWORD_CHANGE, passwordChangeTokenValidation);
