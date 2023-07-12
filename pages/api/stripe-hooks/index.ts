@@ -8,6 +8,8 @@ import { lang } from '@constants/lang';
 import dbConnect from '@utils/dbConnect';
 import { newOrderToHTML } from '@utils/htmlEmailParsers';
 import { sendEmailToUser } from '@utils/nodemailer';
+import User from '@models/user';
+import { OrderType } from 'types';
 
 const stripe = require('stripe')(stripeSecretKey);
 
@@ -27,38 +29,62 @@ const StripHooksAPI = async (req: NextApiRequest, res: NextApiResponse) => {
     const {
       amount_total,
       payment_status: status,
-      customer_details: { email },
+      customer_details: { email, phone, name: stripeName },
       metadata: { orderId },
     } = session;
+
     const paidAmount = amount_total / 100;
 
     try {
-      await Order.findOneAndUpdate({ id: orderId }, { status, paidAmount, buyerEmail: email });
+      const order = await Order.findOneAndUpdate(
+        { id: orderId },
+        { status, paidAmount, email, phone, name: stripeName },
+        { returnDocument: 'after' } // Returns document after its updated
+      ).lean();
 
-      const order = await Order.findOne({ id: orderId });
+      const user = await User.findOneAndUpdate({ email }, { $push: { orders: order } });
 
-      const mailOption = {
-        from: `Charge UP Barcelona<${process.env.NODEMAILER_USER}>`,
-        to: email,
-        subject: `Tu pedido de ChargeUP BCN [#${orderId.substring(orderId.length - 5)}]`,
-        html: newOrderToHTML(order),
+      const newOrder = {
+        ...order,
+        name: user ? user.name : stripeName,
       };
 
-      await sendEmailToUser(mailOption);
+      const userMail = {
+        from: `Charge UP Barcelona<${process.env.NODEMAILER_USER}>`,
+        to: email,
+        subject: `Tu pedido de ChargeUP BCN [#${orderId.toString().substring(0, 8)}]`,
+        html: newOrderToHTML(newOrder),
+      };
+
+      const adminMail = {
+        from: `Charge UP Barcelona<${process.env.NODEMAILER_USER}>`,
+        to: 'style.alhwin@gmail.com',
+        subject: `Nuevo pedido en ChargeUP BCN [#${orderId.toString().substring(0, 8)}]`,
+        html: newOrderToHTML(newOrder, { isForAdmin: true, userRegistered: !!user }),
+      };
+
+      await sendEmailToUser(userMail);
+      await sendEmailToUser(adminMail);
 
       return res.status(201).json({ success: true, message: lang.en.ORDER_SUCCESS });
     } catch (err) {
+      const errorMail = {
+        from: `Charge UP Barcelona<${process.env.NODEMAILER_USER}>`,
+        to: 'rodrigo.s.vila@gmail.com',
+        subject: `Error al procesar orden [#${orderId}]`,
+        html: '<div>Hubo un error al procesar la orden. Verificar en el admin panel y con el cliente.</div>',
+      };
+
+      await sendEmailToUser(errorMail);
+
       console.log(`❌ Error message2: ${err.message}`);
+
       return res.status(400).json({
         success: false,
         message: lang.en.ORDER_ERROR,
       });
     }
   };
-  // Order.findOneAndUpdate({ id: orderId }, { emailSent: false });
-  // Send email to user
-  // send user to success screen
-
   const webHook = async () => {
     const rawBody = await getRawBody(req);
     const sig = headers['stripe-signature'];
@@ -87,4 +113,4 @@ const StripHooksAPI = async (req: NextApiRequest, res: NextApiResponse) => {
   }
 };
 
-export default StripHooksAPI
+export default StripHooksAPI;
