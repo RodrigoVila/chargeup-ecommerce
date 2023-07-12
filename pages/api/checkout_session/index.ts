@@ -1,6 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { stripeSecretKey } from '@constants/keys';
 import Order from '@models/order';
+import { CartProductType, OrderType } from 'types';
 const stripe = require('stripe')(stripeSecretKey);
 
 const calculateOrderAmount = (items: CartProductType[]): number => {
@@ -26,13 +27,17 @@ const CheckoutSession = async (req: NextApiRequest, res: NextApiResponse) => {
               unit_amount: calculateOrderAmount(newOrder.items),
               currency: 'eur',
               product_data: {
-                name: 'Pedido',
+                name: 'Tu pedido en Charge UP Barcelona',
               },
             },
             quantity: 1,
           },
         ],
-        metadata: { orderId: newOrder.id, name: newOrder.name },
+        customer_email: newOrder.email,
+        phone_number_collection: {
+          enabled: true,
+        },
+        metadata: { orderId: newOrder.id },
         mode: 'payment',
         payment_method_types: ["card"],
         success_url: `${req.headers.origin}/ordersuccess/id=${newOrder.id}`,
