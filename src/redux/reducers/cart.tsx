@@ -6,7 +6,8 @@ import {
   CLEAR_CART,
 } from '@constants/ActionTypes';
 import { LOCAL_STORAGE_CART_KEY } from '@constants/keys';
-import { clearLocalStorage, setValueToLocalStorage } from '@utils/localStorage';
+import { deleteValueFromLocalStorage, setValueToLocalStorage } from '@utils/localStorage';
+import { CartActionType, CartProductType, CartStateType } from 'types';
 
 const initialState: CartStateType = { items: [] };
 
@@ -80,7 +81,7 @@ const cartReducer = (
       };
 
     case CLEAR_CART:
-      clearLocalStorage();
+      deleteValueFromLocalStorage(LOCAL_STORAGE_CART_KEY);
       return {
         ...state,
         items: [],

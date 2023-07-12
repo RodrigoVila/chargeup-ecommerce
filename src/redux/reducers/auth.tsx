@@ -17,7 +17,7 @@ import {
   VALIDATE_TOKEN_FOR_PASSWORD_CHANGE_SUCCESS,
   VALIDATE_TOKEN_FOR_PASSWORD_CHANGE_ERROR,
 } from '../../constants/ActionTypes';
-import { clearLocalStorage, setValueToLocalStorage } from '@utils/localStorage';
+import { deleteValueFromLocalStorage, setValueToLocalStorage } from '@utils/localStorage';
 import { LOCAL_STORAGE_DATA_KEY } from '@constants/keys';
 import { AUTH_INITIAL_STATE } from '@constants/initialState';
 import { AuthActionType, AuthStateType } from 'types';
@@ -59,7 +59,7 @@ const authReducer = (state: AuthStateType = AUTH_INITIAL_STATE, action: AuthActi
     case USER_LOGIN_ERROR:
     case REGISTER_USER_ERROR:
     case LOGOUT:
-      clearLocalStorage();
+      deleteValueFromLocalStorage(LOCAL_STORAGE_DATA_KEY);
       return {
         ...state,
         isLoggedIn: false,

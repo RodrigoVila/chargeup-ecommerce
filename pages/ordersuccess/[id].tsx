@@ -9,7 +9,7 @@ const OrderSuccess = () => {
   const router = useRouter();
   const queryID = router.query.id;
 
-  const trimmedID = queryID?.toString().substring(queryID.length - 5);
+  const trimmedID = queryID?.toString().substring(4, 11);
 
   const { clearCart } = useAppActions();
 

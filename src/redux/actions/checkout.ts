@@ -1,3 +1,4 @@
+import { OrderType } from 'types';
 import {
   CREATE_CHECKOUT_SESSION,
   CREATE_CHECKOUT_SESSION_ERROR,

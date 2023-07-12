@@ -29,17 +29,17 @@ const UserDetails = () => {
   return (
     <div
       className={`${
-        !editing && 'rounded-md bg-white p-4 pt-12'
+        !editing && 'rounded-md bg-white p-2'
       } relative my-4 h-full w-full overflow-scroll`}
     >
       {editing === 'userData' && <UserDataForm />}
       {editing === 'password' && <UpdatePasswordForm />}
 
       {!editing && (
-        <div className="flex flex-col items-center justify-center w-full mx-auto">
-          <CloseModalButton color="black" isAbsolute position="right" onClose={closeUserModal} />
+        <div className="flex flex-col items-center justify-center w-full gap-2 mx-auto">
+          <CloseModalButton color="black" className="self-end" onClose={closeUserModal} />
 
-          <div className="flex flex-col w-full gap-2">
+          <div className="flex flex-col w-full gap-2 px-4 pb-4">
             <Button onClick={() => setEdit('userData')}>
               {lang.es.CHANGE_USER_DATA}
             </Button>

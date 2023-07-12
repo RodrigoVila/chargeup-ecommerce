@@ -38,10 +38,6 @@ let userSchema = new Schema(
       type: [orderSchema],
       required: false
     },
-    prefixNo: {
-      type: String,
-      required: false,
-    },
     mobileNo: {
       type: String,
       required: false,

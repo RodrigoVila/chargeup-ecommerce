@@ -1,18 +1,15 @@
 import { XMarkIcon } from '@heroicons/react/24/outline';
+import { twMerge } from 'tailwind-merge';
 
 interface Props {
   color: string;
   className?: string;
-  position?: string;
-  isAbsolute?: boolean;
   onClose: () => void;
 }
 
 const CloseModalButton = ({
   color: propColor,
   className = '',
-  position = 'right',
-  isAbsolute = false,
   onClose,
 }: Props) => {
   const color =
@@ -20,12 +17,10 @@ const CloseModalButton = ({
 
   return (
     <div
-      className={`${className} ${
-        isAbsolute && `absolute ${position}-0`
-      } top-0 h-9 w-9 cursor-pointer text-white`}
+      className={twMerge('top-0 h-9 w-9 cursor-pointer text-white', className)}
     >
       <button onClick={onClose}>
-        <XMarkIcon className={`${color} h-full w-full`} />
+        <XMarkIcon className={twMerge('h-full w-full', color)} />
       </button>
     </div>
   );

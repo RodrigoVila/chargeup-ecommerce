@@ -1,3 +1,4 @@
+import { CartProductType } from 'types';
 import {
   LOAD_CART,
   ADD_TO_CART,

@@ -22,3 +22,5 @@ export const setValueToLocalStorage = (key: string, value: string | object) => {
 };
 
 export const clearLocalStorage = () => window.localStorage.clear();
+
+export const deleteValueFromLocalStorage = (key: string) => window.localStorage.removeItem(key);

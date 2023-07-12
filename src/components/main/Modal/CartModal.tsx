@@ -23,14 +23,16 @@ const CartModal = () => {
   const onSubmit = () => {
     setLoading(true);
 
-    const name = userLogin?.name ? userLogin.name : null;
+    const name = userLogin?.name || undefined;
+    const email = userLogin?.email ||  undefined;
+
     const newOrder: OrderType = {
       id: uuidv4(),
-      status: 'pending',
       name,
-      email: userLogin?.email ? userLogin.email : null,
-      totalAmount: totalSum.toFixed(2),
+      email,
+      status: 'pending',
       items: cartItems,
+      totalAmount: totalSum.toFixed(2),
       created: new Date(),
     };
 
@@ -50,7 +52,7 @@ const CartModal = () => {
       {/* This avoid Hydration error so the Tooltip will be used only if the component is already mounted */}
       {isMounted ? <ReactTooltip /> : null}
       <div className="relative flex flex-col items-center w-full h-full max-w-xl p-2 my-2 overflow-y-scroll bg-white">
-        <CloseModalButton color="black" isAbsolute position="right" onClose={closeCartModal} />
+        <CloseModalButton color="black" className='absolute right-2 top-2' onClose={closeCartModal} />
         <div className="px-2 pt-8 pb-6 text-3xl text-center text-black">{`${cartItems.length} ${
           cartItems.length > 1 ? 'articulos' : 'articulo'
         } en la cesta`}</div>

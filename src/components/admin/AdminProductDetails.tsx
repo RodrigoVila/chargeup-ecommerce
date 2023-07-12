@@ -62,9 +62,7 @@ const AdminProductDetails = ({ product }: Props) => {
       <CloseModalButton
         color="black"
         onClose={closeDrawerModal}
-        isAbsolute
-        position="right"
-        className="z-30"
+        className="absolute z-30 right-2 top-2"
       />
       <div className="max-w-2xl px-4 py-2 mx-auto shadow-lg rounded-xl sm:py-8 sm:px-6 lg:max-w-xl lg:px-8">
         {isEdit ? (

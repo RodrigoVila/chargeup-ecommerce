@@ -94,20 +94,18 @@ const ExtrasModal = () => {
   return (
     <Modal isOpen={isExtrasModalOpen} transparent fullScreen>
       <div
-        className="relative flex flex-col w-full gap-2 bg-white rounded-md xl:p-2 xl:pt-4"
+        className="relative flex flex-col w-full gap-2 p-4 bg-white rounded-md"
         onClick={closeDropdown}
       >
         <CloseModalButton
           color="black"
           onClose={onClose}
-          isAbsolute
-          position="right"
-          className="mt-1 mr-1"
+          className="flex self-end -mt-2 -mr-2"
         />
-        <h3 className="mt-2 text-xl font-semibold text-center xl:my-4">
+        <h3 className="text-xl font-semibold text-center">
           {selectedModalProduct?.title}
         </h3>
-        <div className="flex flex-col flex-wrap items-start mx-4 mt-4">
+        <div className="flex flex-col flex-wrap items-start">
           {/* sizes dropdown */}
           {selectedModalProduct?.sizes ? (
             <div className="flex flex-col justify-center">
@@ -122,7 +120,7 @@ const ExtrasModal = () => {
           ) : null}
           {/* extras dropdown */}
           {selectedModalProduct?.extras.length > 0 ? (
-            <div className="flex flex-col justify-center w-full mt-4">
+            <div className="flex flex-col justify-center w-full">
               <h6 className={labelStyle}>Extras</h6>
               {selectedModalProduct?.extras?.map((extra, index) => (
                 <Checkbox
@@ -134,21 +132,21 @@ const ExtrasModal = () => {
             </div>
           ) : null}
 
-          <div className="flex items-center justify-between w-full mt-4 mr-4">
+          <div className="flex items-center justify-between w-full">
             <Counter
               count={itemCount}
               addOne={() => onItemCountChange('add')}
               subtractOne={() => onItemCountChange('sub')}
             />
             {/* Price */}
-            <div className="flex flex-col items-end justify-center mr-3">
+            <div className="flex flex-col items-end justify-center">
               <h6 className="text-xl">Total</h6>
               <h3 className="text-3xl">{`€${total.toFixed(2)}`}</h3>
             </div>
           </div>
         </div>
 
-        <div className="flex items-center justify-center px-4 py-4 xl:p-0 xl:py-2">
+        <div className="flex items-center justify-center">
           <Button onClick={addItemToCart}>Agregar</Button>
         </div>
       </div>

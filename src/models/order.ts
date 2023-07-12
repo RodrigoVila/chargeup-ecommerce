@@ -20,10 +20,10 @@ export const orderSchema = new mongoose.Schema(
     id: String,
     email: String,
     name: String,
+    phone: String,
     items: [itemSchema],
     totalAmount: Number,
-    paidAmount:Number|| null,
-    buyerEmail:String|| null,
+    paidAmount: Number|| null,
     status:String,
     created: Date,
     orderSent: Boolean

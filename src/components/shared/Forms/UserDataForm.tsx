@@ -43,7 +43,7 @@ const UserDataForm: FC = () => {
 
   return (
     <div className="relative w-full p-6 overflow-scroll bg-white rounded-md">
-      <CloseModalButton color="black" isAbsolute position="right" onClose={closeUserModal} />
+      <CloseModalButton color="black" className="absolute right-2 top-2" onClose={closeUserModal} />
       <Input
         label={lang.es.NAME}
         type="text"

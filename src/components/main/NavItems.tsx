@@ -1,4 +1,5 @@
 import NavItem from '@main/NavItem';
+import { twMerge } from 'tailwind-merge';
 
 interface Props {
   direction?: 'row' | 'column';
@@ -20,7 +21,7 @@ const NavItems = ({ direction, onClose, className = '' }: Props) => {
     direction === 'row' ? 'flex-row pl-2 text-white hidden xl:flex' : 'flex-col text-purple-600 flex';
   return (
     <ul
-      className={`${directionStyles} ${className} z-10 w-full items-center justify-center text-center font-dinBold`}
+      className={twMerge('z-10 w-full items-center justify-center text-center font-dinBold',directionStyles, className )}
     >
       {links.map((link, index) => (
         <NavItem
