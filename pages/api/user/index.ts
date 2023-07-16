@@ -1,6 +1,7 @@
 import User from '@models/user';
 import dbConnect from '@utils/dbConnect';
 import { NextApiRequest, NextApiResponse } from 'next';
+import { UserDetailsType } from 'types';
 
 const UserAPI = async (req: NextApiRequest, res: NextApiResponse) => {
   const { method, body } = req;
@@ -14,10 +15,8 @@ const UserAPI = async (req: NextApiRequest, res: NextApiResponse) => {
         id: userRecord.id,
         name: userRecord.name,
         lastName: userRecord.lastName,
-        location: userRecord.location,
+        address: userRecord.address,
         mobileNo: userRecord.mobileNo,
-        prefixNo: userRecord.prefixNo,
-        prefContact: userRecord.prefContact,
         email,
         token,
       };

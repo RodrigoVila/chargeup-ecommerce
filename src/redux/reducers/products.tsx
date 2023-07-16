@@ -3,6 +3,7 @@ import {
   FETCH_PRODUCTS_ERROR,
   FETCH_PRODUCTS_SUCCESS,
 } from '@constants/ActionTypes';
+import { ProductsActionType, ProductsStateType } from 'types';
 
 const initialState: ProductsStateType = { products: [], isLoading: false, error: null };
 

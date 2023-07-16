@@ -4,23 +4,6 @@ import { useEffect } from 'react';
 import AdminProduct from './AdminProduct';
 import AdminProductSearch from './AdminProductSearch';
 
-const product_data = [
-  {
-    id: 1,
-    name: 'Nueces Pecan',
-    orderdetail1: '$18.55',
-    orderdetail2: 'x Kg.',
-    description:
-      'Nueces Pecan BIO origen Francia, Paris. Batch#02665 .Proovedor: Catalunya Seeds (Barcelona)',
-    num: '#0244',
-    image: 'https://sc04.alicdn.com/kf/UTB83xRsE0oSdeJk43Owq6ya4XXaS.jpg',
-  },
-  // More people...
-];
-
-//JP levantar en esta var el name del array product_data
-const currentProduct = 'Nueces Pecan Bio (FR)';
-
 function AdminProducts() {
   const { products, areProductsLoading } = useAppSelector();
 
@@ -75,7 +58,7 @@ function AdminProducts() {
                 : products.length > 0 && (
                     <tbody className="bg-white divide-y divide-gray-200">
                       {products.map((product) => (
-                        <AdminProduct key={product.id} product={product} />
+                        <AdminProduct key={product._id} product={product} />
                       ))}
                     </tbody>
                   )}

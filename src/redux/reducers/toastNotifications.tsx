@@ -5,6 +5,7 @@ import { MdCancel } from 'react-icons/md';
 
 import { ERROR_MESSAGE, INFO_MESSAGE, SUCCESS_MESSAGE } from '@constants/ActionTypes';
 import { colors } from '@constants/colors';
+import { ToastActionType, ToastStateType } from 'types';
 
 const initialState: ToastStateType = {
   message: '',

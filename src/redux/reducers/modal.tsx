@@ -22,6 +22,7 @@ import {
   OPEN_PRODUCT_DETAILS_MODAL,
   OPEN_USER_MODAL,
 } from '@constants/ActionTypes';
+import { ModalActionType, ModalStateType } from 'types';
 
 const initialState: ModalStateType = {
   adminProduct: false,

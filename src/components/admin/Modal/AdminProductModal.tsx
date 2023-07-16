@@ -1,19 +1,15 @@
 import useAppSelector from '@hooks/useAppSelector';
-import { FC, useEffect } from 'react';
+import { FC } from 'react';
 
-import AdminProductDetails from '@admin/AdminProductDetails';
 import Modal from '@shared/Modal';
 
 const AdminProductModal: FC = () => {
-  const { isAdminProductModalOpen, modalProduct } = useAppSelector();
-
-  useEffect(() => {
-    isAdminProductModalOpen && console.log('modalProduct', modalProduct);
-  }, [isAdminProductModalOpen]);
+  const { isAdminProductModalOpen } = useAppSelector();
 
   return (
-    <Modal isOpen={isAdminProductModalOpen}>
-      <AdminProductDetails product={modalProduct} />
+    <Modal isOpen={isAdminProductModalOpen} onClose={() => {}}>
+      {/* For Future reference */}
+      {/* <AdminProductDetails product={modalProduct} /> */}
     </Modal>
   );
 };

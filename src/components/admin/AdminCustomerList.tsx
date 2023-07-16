@@ -1,17 +1,15 @@
-import { useEffect } from 'react';
-
-import useAppActions from '@hooks/useAppActions';
-
 const AdminCustomerList = () => {
-  const { getUserList } = useAppActions();
+  return null;
+  // For Future reference
+  // const { getUserList } = useAppActions();
 
-  const fetch = async () => {
-    const { data } = await getUserList();
-  };
-  useEffect(() => {
-    fetch();
-  }, []);
-  return <div></div>;
+  // const fetch = async () => {
+  //   const { data } = await getUserList();
+  // };
+  // useEffect(() => {
+  //   fetch();
+  // }, []);
+  // return <div></div>;
 };
 
 export default AdminCustomerList;

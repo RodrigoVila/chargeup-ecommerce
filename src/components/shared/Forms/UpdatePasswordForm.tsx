@@ -4,27 +4,17 @@ import { lang } from '@constants/lang';
 import useAppActions from '@hooks/useAppActions';
 import useAppSelector from '@hooks/useAppSelector';
 import useEncryption from '@hooks/useEncryption';
-import CloseModalButton from '@shared/Buttons/CloseModalButton';
 import Button from '@shared/Buttons/CustomButton';
 import Input from '@shared/Input';
-import { useRouter } from 'next/router';
 
 const INITIAL_STATE = { oldPassword: '', password: '', repeatPassword: '' };
 
-interface Props {
-  oldPassRequired?: boolean;
-  withoutCloseButton?: boolean;
-}
-
-const UpdatePasswordForm: FC = ({ oldPassRequired = false, withoutCloseButton = false }: Props) => {
+const UpdatePasswordForm: FC = () => {
   const [userDetails, setUserDetails] = useState(INITIAL_STATE);
-
-  const router = useRouter();
-  const { email: queryEmail } = router.query;
 
   const { encryptPassword } = useEncryption();
 
-  const { closeUserModal, displayErrorMessage, editUserPassword } = useAppActions();
+  const { displayErrorMessage, editUserPassword } = useAppActions();
   const {
     userLogin: { email },
     isAuthLoading,
@@ -36,7 +26,7 @@ const UpdatePasswordForm: FC = ({ oldPassRequired = false, withoutCloseButton = 
   };
 
   const handleSubmit = async () => {
-    const { oldPassword, password, repeatPassword } = userDetails;
+    const { password, repeatPassword } = userDetails;
     if (password !== repeatPassword) {
       displayErrorMessage(lang.es.PASSWORDS_DONT_MATCH);
       return;
@@ -44,27 +34,10 @@ const UpdatePasswordForm: FC = ({ oldPassRequired = false, withoutCloseButton = 
 
     const encryptedPassword = await encryptPassword(password);
 
-    oldPassRequired
-      ? editUserPassword(email, encryptedPassword, oldPassword)
-      : editUserPassword(email, encryptedPassword);
+    editUserPassword(email, encryptedPassword);
   };
   return (
     <div className="p-6 pt-4 bg-white rounded-xl">
-      {!withoutCloseButton && (
-        <div className="relative flex items-center justify-end w-full">
-          <CloseModalButton color="black" onClose={closeUserModal} />
-        </div>
-      )}
-
-      {oldPassRequired && (
-        <Input
-          label={lang.es.OLD_PASSWORD}
-          type="password"
-          name="oldPassword"
-          onChange={handleChange}
-        />
-      )}
-
       <Input label={lang.es.NEW_PASSWORD} type="password" name="password" onChange={handleChange} />
       <Input
         label={lang.es.REPEAT_PASSWORD}

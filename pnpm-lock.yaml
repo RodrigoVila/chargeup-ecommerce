@@ -11,6 +11,9 @@ dependencies:
   '@react-oauth/google':
     specifier: ^0.11.0
     version: 0.11.0(react-dom@18.2.0)(react@18.2.0)
+  '@redux-saga/core':
+    specifier: ^1.2.3
+    version: 1.2.3
   '@reduxjs/toolkit':
     specifier: ^1.9.0
     version: 1.9.5(react-redux@7.2.9)(react@18.2.0)

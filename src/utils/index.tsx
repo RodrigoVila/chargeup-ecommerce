@@ -1,3 +1,5 @@
+import { ILabelAndPrice } from 'types';
+
 export const isEmailValid = (email: string) => {
   return String(email)
     .toLowerCase()

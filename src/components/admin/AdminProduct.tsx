@@ -1,15 +1,12 @@
 import useAppActions from '@hooks/useAppActions';
 import Image from 'next/image';
+import { ProductType } from 'types';
 
-interface Props {
+type AdminProductProps = {
   product: ProductType;
-}
-
-const iconClassName =
-  'mx-auto text-xl cursor-pointer hover:text-red-500 transition duration-500 ease-in-out';
-
-const AdminProduct = ({ product }: Props) => {
-  const { title, description, nutritionalInfo, suitableForInfo, price, imgUri } = product;
+};
+const AdminProduct = ({ product }: AdminProductProps) => {
+  const { title, nutritionalInfo, suitableForInfo, imgUri } = product;
 
   const { openAdminProductModal } = useAppActions();
 
@@ -31,7 +28,7 @@ const AdminProduct = ({ product }: Props) => {
       </td>
       {/* Precio */}
       <td className="px-6 py-4 whitespace-nowrap">
-        <div className="text-sm text-gray-900">{`€${price.reg}`}</div>
+        <div className="text-sm text-gray-900">€0</div>
       </td>
       <td className="px-6 py-4 whitespace-nowrap">
         {nutritionalInfo.calories && (

@@ -46,7 +46,7 @@ const PasswordRecovery = () => {
           <div className="flex flex-col items-center justify-center w-full h-full">
             <Logo logo="white.png" size="lg" />
             <div className="max-w-md rounded-md">
-              <UpdatePasswordForm withoutCloseButton />
+              <UpdatePasswordForm />
             </div>
           </div>
         ) : (

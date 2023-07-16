@@ -7,6 +7,7 @@ import Product from '@main/Product';
 import ProductSearchBar from '@main/ProductSearchBar';
 import Section from '@main/Section';
 import Spinner from '@shared/Spinner';
+import { ProductType } from 'types';
 
 const Products: FC = () => {
   const [searchValue, setSearchValue] = useState('');
@@ -52,7 +53,7 @@ const Products: FC = () => {
   }, [filters]);
 
   return (
-    <Section id="products" bgImage="purpleTexture.jpeg" disabled={!products} noCenter>
+    <Section id="products" bgImage="purpleTexture.jpeg" disabled={!products}>
       <div className="flex flex-wrap items-center justify-center h-full pb-2">
         <ProductSearchBar setSearchValue={setSearchValue} />
       </div>

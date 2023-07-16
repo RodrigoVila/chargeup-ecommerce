@@ -144,8 +144,8 @@ function useTypewriterEffect() {
   });
 
   const { eventQueue, text, history, loop, delay } = state;
-  const lastFrameRef = React.useRef();
-  const pauseTimeRef = React.useRef();
+  const lastFrameRef = React.useRef<number | null>(null);
+  const pauseTimeRef = React.useRef<number | null>(null);
   React.useEffect(() => {
     function step() {
       if (!eventQueue.length) {

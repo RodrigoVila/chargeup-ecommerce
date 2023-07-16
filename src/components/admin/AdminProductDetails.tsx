@@ -9,13 +9,11 @@ import CloseModalButton from '@shared/Buttons/CloseModalButton';
 import Image from 'next/image';
 import { ProductType } from 'types';
 
-interface Props {
+type AdminProductDetailsProps = {
   product: ProductType;
-}
+};
 
-// TODO: Hacer un section style compartido
-
-const AdminProductDetails = ({ product }: Props) => {
+const AdminProductDetails = ({ product }: AdminProductDetailsProps) => {
   const [isEdit, setIsEdit] = useState(false);
   const [editedProduct, setEditedProduct] = useState<ProductType>(product);
 
@@ -23,7 +21,7 @@ const AdminProductDetails = ({ product }: Props) => {
 
   const { isMounted } = useMounted();
 
-  const { _id, title, description, nutritionalInfo, suitableForInfo, price, imgUri } = product;
+  const { _id, title, description, imgUri } = product;
 
   const handleEdit = () => setIsEdit(true);
 
@@ -53,7 +51,7 @@ const AdminProductDetails = ({ product }: Props) => {
   };
 
   const removeProduct = () => {
-    window.confirm('Desea eliminar el producto?') && console.log('DELETED!', id);
+    window.confirm('Desea eliminar el producto?') && console.log('DELETED!', _id);
   };
 
   return (
@@ -82,7 +80,7 @@ const AdminProductDetails = ({ product }: Props) => {
           <div key={_id} className="relative group">
             <div className="object-center w-32 h-32 align-middle rounded-md shadow-xl bg-gray-25">
               <Image
-                src={`/images/${imageSrc}`}
+                src={`/images/${imgUri}`}
                 alt={'imageAlt'}
                 className="object-center align-middle"
               />
@@ -93,8 +91,7 @@ const AdminProductDetails = ({ product }: Props) => {
                   Precio:
                 </h3>
                 <div className="my-2 text-gray-500">
-                  {' '}
-                  <span className="font-bold">{price.reg}</span> ({'unit'})
+                  <span className="font-bold">0</span>
                 </div>
 
                 {/* Short Description */}

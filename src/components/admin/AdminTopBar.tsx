@@ -1,31 +1,4 @@
-import { useState } from 'react';
-
 const AdminTopBar = () => {
-  const [showDropdown, setShowDropdown] = useState('invisible');
-
-  const handleDropdown = () => {
-    // function toggleDD(myDropMenu) {
-    //     document.getElementById(myDropMenu).classList.toggle("invisible");
-    // }
-  };
-
-  const handleFilters = () => {
-    // function filterDD(myDropMenu, myDropMenuSearch) {
-    //     var input, filter, ul, li, a, i;
-    //     input = document.getElementById(myDropMenuSearch);
-    //     filter = input.value.toUpperCase();
-    //     div = document.getElementById(myDropMenu);
-    //     a = div.getElementsByTagName("a");
-    //     for (i = 0; i < a.length; i++) {
-    //         if (a[i].innerHTML.toUpperCase().indexOf(filter) > -1) {
-    //             a[i].style.display = "";
-    //         } else {
-    //             a[i].style.display = "none";
-    //         }
-    //     }
-    // }
-  };
-
   return (
     <nav className="fixed top-0 z-20 w-full h-auto px-1 pt-2 pb-1 bg-gray-800 md:pt-1">
       <div className="flex flex-wrap items-center">
@@ -38,7 +11,7 @@ const AdminTopBar = () => {
             <input
               type="search"
               placeholder="Search"
-              className="w-full px-2 py-3 pl-10 leading-normal text-white bg-gray-900 border border-transparent rounded appearance-none transition focus:outline-none focus:border-gray-400"
+              className="w-full px-2 py-3 pl-10 leading-normal text-white transition bg-gray-900 border border-transparent rounded appearance-none focus:outline-none focus:border-gray-400"
             />
             <div className="absolute search-icon top-4 left-3.5">
               <svg
@@ -92,7 +65,6 @@ const AdminTopBar = () => {
                     className="p-2 text-gray-600 drop-search"
                     placeholder="Search.."
                     id="myInput"
-                    onKeyUp="filterDD('myDropdown','myInput')"
                   />
                   <a
                     href="#"

@@ -1,4 +1,5 @@
 import { SET_FILTERS } from '@constants/ActionTypes';
+import { FiltersActionType, FiltersStateType } from 'types';
 
 const initialState: FiltersStateType = { filters: [] };
 

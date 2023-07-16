@@ -1,3 +1,4 @@
+import { ProductType } from 'types';
 import {
   ADD_PRODUCT,
   DELETE_PRODUCT,

@@ -17,30 +17,30 @@ const AdminSidebar = ({ setSelected }) => {
       <div className="content-center justify-between text-left md:mt-12 md:w-48 md:fixed md:left-0 md:top-0 md:content-start">
         <ul className="flex flex-row px-1 py-0 text-center list-reset md:flex-col md:py-3 md:px-2 md:text-left">
           <NavItem
-            title="Analytics"
+            label="Analytics"
             icon={analyticsIcon}
-            borderColor="red"
             onClick={() => setSelected('Analytics')}
+            direction="column"
           />
           <NavItem
-            title="Customers"
+            label="Customers"
             icon={usersIcon}
-            borderColor="green"
             onClick={() => setSelected('Customers')}
+            direction="column"
           />
           <NavItem
-            title="Products"
+            label="Products"
             icon={productsIcon}
-            borderColor="blue"
             onClick={() => setSelected('Products')}
+            direction="column"
           />
           <NavItem
-            title="Transactions"
+            label="Transactions"
             icon={productsIcon}
-            borderColor="pink"
             onClick={() => setSelected('Transactions')}
+            direction="column"
           />
-          <NavItem title="Logout" icon={logOutIcon} borderColor="yellow" onClick={logout} />
+          <NavItem label="Logout" icon={logOutIcon} onClick={logout} direction="column" />
         </ul>
       </div>
     </div>

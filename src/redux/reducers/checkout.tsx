@@ -1,3 +1,4 @@
+import { CheckoutActionType, CheckoutStateType } from 'types';
 import {
   CREATE_CHECKOUT_SESSION_ERROR,
   CREATE_CHECKOUT_SESSION_SUCCESS,

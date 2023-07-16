@@ -1,9 +1,11 @@
+import Image from 'next/image';
+
 const navigation = [
-  { name: 'Dashboard', href: '#', current: true },
-  { name: 'Ordenes', href: '#', current: false },
-  { name: 'Clientes', href: '#', current: false },
-  { name: 'Productos', href: '#', current: false },
-  { name: 'Estadisticas', href: '#', current: false },
+  { name: 'Dashboard', href: '', current: true },
+  { name: 'Ordenes', href: '', current: false },
+  { name: 'Clientes', href: '', current: false },
+  { name: 'Productos', href: '', current: false },
+  { name: 'Estadisticas', href: '', current: false },
 ];
 
 function classNames(...classes) {
@@ -28,12 +30,12 @@ const AdminUserNav = ({ setActivePage, activePage }) => {
             </div>
             <div className="flex items-center justify-center flex-1">
               <div className="flex items-center flex-shrink-0">
-                <img
+                <Image
                   className="block w-auto h-16 lg:hidden"
                   src="./chargeup_logo_wg.svg"
                   alt="ChargeUP BCN"
                 />
-                <img
+                <Image
                   className="hidden w-auto lg:block h-14"
                   src="./chargeup_logo_wg.svg"
                   alt="ChargeUP BCN"
@@ -71,7 +73,7 @@ const AdminUserNav = ({ setActivePage, activePage }) => {
         <div className="sm:hidden">
           <div className="px-2 pt-2 pb-3 space-y-1">
             {navigation.map((item) => (
-              <div
+              <a
                 key={item.name}
                 href={item.href}
                 className={classNames(
@@ -83,7 +85,7 @@ const AdminUserNav = ({ setActivePage, activePage }) => {
                 aria-current={item.current ? 'page' : undefined}
               >
                 {item.name}
-              </div>
+              </a>
             ))}
           </div>
         </div>

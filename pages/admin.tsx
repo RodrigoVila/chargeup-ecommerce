@@ -1,6 +1,5 @@
 import { useState } from 'react';
 
-/* JP ADDS - import -*/
 import AdminCustomers from '@admin/AdminCustomers';
 import AdminDashboard from '@admin/AdminDashboard';
 import AdminOrderList from '@admin/AdminOrderList';
