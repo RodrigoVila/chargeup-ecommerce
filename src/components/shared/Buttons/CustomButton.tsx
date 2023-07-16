@@ -20,7 +20,7 @@ const CustomButton = ({
   onClick,
   type = 'filled',
   loading = false,
-  className= "",
+  className = '',
   labelClassName = '',
   ...rest
 }: ButtonProps) => {
@@ -37,20 +37,24 @@ const CustomButton = ({
 
   const iconStyle = 'h-full mx-1';
 
+  const disabledStyles = 'text-gray-200 bg-gray-400 disabled:bg-gray-400 cursor-default';
+
   return loading ? (
-    <button className={twMerge('bg-gray-400 text-gray-200', baseStyles)} onClick={onClick} disabled>
+    <button className={twMerge(baseStyles, disabledStyles)} onClick={onClick} disabled>
       <Spinner />
     </button>
   ) : (
     <button
-      className={twMerge(baseStyles, typeStyles, className)}
+      className={twMerge(baseStyles, typeStyles, className, rest.disabled && disabledStyles)}
       onClick={onClick}
       type={isSubmit ? 'submit' : 'button'}
       role={isSubmit ? 'link' : 'button'}
       {...rest}
     >
       {leftIconComponent && <div className={iconStyle}>{leftIconComponent}</div>}
-      <p className={twMerge('h-full w-full py-1 px-4', textStyles, labelClassName)}>{rest.children}</p>
+      <p className={twMerge('h-full w-full py-1 px-4', textStyles, labelClassName)}>
+        {rest.children}
+      </p>
       {rightIconComponent && <div className={iconStyle}>{rightIconComponent}</div>}
     </button>
   );

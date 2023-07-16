@@ -1,39 +1,8 @@
 import mongoose from 'mongoose';
-const { Schema } = mongoose;
-import { orderSchema } from './order';
+import { orderSchema, adressSchema } from './order';
 
-export const adressSchema = new Schema({
-  street: {
-    type: String,
-    required: false,
-  },
-  streetNumber: {
-    type: String,
-    required: false,
-  },
-  extras: {
-    type: String,
-    required: false,
-  },
-  postCode: {
-    type: String,
-    required: false,
-  },
-  city: {
-    type: String,
-    required: false,
-  },
-  province: {
-    type: String,
-    required: false,
-  },
-  country: {
-    type: String,
-    required: false,
-  },
-});
 
-const userSchema = new Schema(
+const userSchema = new mongoose.Schema(
   {
     name: {
       type: String,
@@ -77,7 +46,10 @@ const userSchema = new Schema(
       type: [String],
       required: false,
     },
-    address: adressSchema,
+    address: {
+      type: adressSchema,
+      required: false
+    },
     token: {
       type: String,
       required: false,

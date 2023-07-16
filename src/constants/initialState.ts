@@ -1,3 +1,5 @@
+import { ProductType, UserDetailsType, UsersStateType } from "types";
+
 // Initial state
 export const AUTH_INITIAL_STATE = {
     isLoggedIn: false,
@@ -20,9 +22,7 @@ export const AUTH_INITIAL_STATE = {
     password: '',
     repeatPassword: '',
     mobileNo: '',
-    prefixNo: '',
-    prefContact: [],
-    location: {
+    address: {
       street: '',
       streetNumber: '',
       postCode: '',

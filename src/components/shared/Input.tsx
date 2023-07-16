@@ -5,10 +5,9 @@ import { twMerge } from 'tailwind-merge';
 type Props = InputHTMLAttributes<HTMLInputElement> & {
   label: string;
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
-  setEditingField?: (field: string) => void;
 };
 
-const Input: FC<Props> = ({ label, onChange, setEditingField, className, ...rest }) => {
+const Input: FC<Props> = ({ label, onChange, className, ...rest }) => {
   const disabledStyles = rest.disabled ? 'bg-slate-300 text-slate-600' : '';
   return (
     <div className="w-full mb-4">
@@ -25,14 +24,6 @@ const Input: FC<Props> = ({ label, onChange, setEditingField, className, ...rest
           onChange={onChange}
           {...rest}
         />
-        {setEditingField && (
-          <button
-            className="w-6 h-6 ml-2 cursor-pointer"
-            onClick={() => setEditingField(rest.name)}
-          >
-            <PencilIcon />
-          </button>
-        )}
       </div>
     </div>
   );

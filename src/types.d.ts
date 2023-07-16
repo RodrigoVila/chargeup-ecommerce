@@ -30,17 +30,15 @@ type AddressType = {
 }
 
 type UserDetailsType = {
-  id: string;
+  id?: string;
   name: string;
   lastName: string;
   email: string;
+  mobileNo: string;
   address: AddressType;
   password?: string;
   repeatPassword?: string;
   token?: string;
-  mobileNo: string;
-  prefixNo: string;
-  prefContact: string[];
 };
 
 type PasswordType = {
