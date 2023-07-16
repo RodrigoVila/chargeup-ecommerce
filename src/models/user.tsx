@@ -1,8 +1,39 @@
 import mongoose from 'mongoose';
 const { Schema } = mongoose;
-import {orderSchema} from './order'
+import { orderSchema } from './order';
 
-let userSchema = new Schema(
+export const adressSchema = new Schema({
+  street: {
+    type: String,
+    required: false,
+  },
+  streetNumber: {
+    type: String,
+    required: false,
+  },
+  extras: {
+    type: String,
+    required: false,
+  },
+  postCode: {
+    type: String,
+    required: false,
+  },
+  city: {
+    type: String,
+    required: false,
+  },
+  province: {
+    type: String,
+    required: false,
+  },
+  country: {
+    type: String,
+    required: false,
+  },
+});
+
+const userSchema = new Schema(
   {
     name: {
       type: String,
@@ -36,7 +67,7 @@ let userSchema = new Schema(
     },
     orders: {
       type: [orderSchema],
-      required: false
+      required: false,
     },
     mobileNo: {
       type: String,
@@ -46,36 +77,7 @@ let userSchema = new Schema(
       type: [String],
       required: false,
     },
-    location: {
-      street: {
-        type: String,
-        required: false,
-      },
-      streetNumber: {
-        type: String,
-        required: false,
-      },
-      postCode: {
-        type: String,
-        required: false,
-      },
-      city: {
-        type: String,
-        required: false,
-      },
-      province: {
-        type: String,
-        required: false,
-      },
-      country: {
-        type: String,
-        required: false,
-      },
-      extras: {
-        type: String,
-        required: false,
-      },
-    },
+    address: adressSchema,
     token: {
       type: String,
       required: false,
@@ -90,6 +92,6 @@ let userSchema = new Schema(
   }
 );
 
-let User = mongoose.models.User || mongoose.model('User', userSchema);
+const User = mongoose.models.User || mongoose.model('User', userSchema);
 
 export default User;

@@ -19,26 +19,28 @@ type StorageUserType = {
   token: string;
 };
 
+type AddressType = {
+    street: string;
+    streetNumber: string;
+    extras: string;
+    postCode: string;
+    city: string;
+    province: string;
+    country: string;
+}
+
 type UserDetailsType = {
   id: string;
   name: string;
   lastName: string;
   email: string;
+  address: AddressType;
   password?: string;
   repeatPassword?: string;
   token?: string;
   mobileNo: string;
   prefixNo: string;
   prefContact: string[];
-  location: {
-    street: string;
-    streetNumber: string;
-    postCode: string;
-    city: string;
-    province: string;
-    country: string;
-    extras: string;
-  };
 };
 
 type PasswordType = {
@@ -135,6 +137,7 @@ type OrderType = {
   name?: string | null;
   phone?: string | null;
   items: CartProductType[];
+  address: AddressType | string;
   totalAmount: string;
   status?: string;
   created: Date;

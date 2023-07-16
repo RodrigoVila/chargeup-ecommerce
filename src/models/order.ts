@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import { adressSchema } from './user';
 
 const LabelPrice = new mongoose.Schema({
   label: String,
@@ -21,12 +22,13 @@ export const orderSchema = new mongoose.Schema(
     email: String,
     name: String,
     phone: String,
+    address: adressSchema,
     items: [itemSchema],
     totalAmount: Number,
-    paidAmount: Number|| null,
-    status:String,
+    paidAmount: Number || null,
+    status: String,
     created: Date,
-    orderSent: Boolean
+    orderSent: Boolean,
   },
   {
     collection: process.env.MONGO_ORDERS_COLLECTION,
