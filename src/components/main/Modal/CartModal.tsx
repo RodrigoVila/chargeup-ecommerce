@@ -1,46 +1,120 @@
-import { useEffect, useMemo, useState } from 'react';
-import ReactTooltip from 'react-tooltip';
+import { ChangeEvent, useEffect, useMemo, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
 import useAppSelector from '@hooks/useAppSelector';
 import useAppActions from '@hooks/useAppActions';
-import useMounted from '@hooks/useMounted';
 
 import Modal from '@shared/Modal';
-import Button from '@shared/Buttons/CustomButton';
-import CartProduct from '@main/CartProduct';
-import CloseModalButton from '@shared/Buttons/CloseModalButton';
-import { OrderType } from 'types';
+
+import { DeliveryType, OrderType, UserDetailsType } from 'types';
+import { CartSummary } from '@main/CartSummary';
+import { DeliveryOptions } from '@main/DeliveryOptions';
+import { CartModalButtons } from 'components/CartModalButtons';
+import UserDataForm from '@shared/Forms/UserDataForm';
 
 const CartModal = () => {
   const [loading, setLoading] = useState(false);
+  const [currentStep, setCurrentStep] = useState(1);
+  const [deliveryType, setDeliveryType] = useState<DeliveryType | null>(null);
+  const [hasUserAcceptedToSaveDetails, setHasUserAcceptedToSaveDetails] = useState(false);
+  const [userData, setUserData] = useState<UserDetailsType | null>(null);
+
   const { isCartModalOpen, cartItems, userLogin } = useAppSelector();
-  const { closeCartModal, createCheckoutSession } = useAppActions();
-  const { isMounted } = useMounted();
+  const { closeCartModal, createCheckoutSession, editUserDetails, openLoginModal } = useAppActions();
 
   const totalSum = useMemo(() => cartItems.reduce((acc, item) => acc + item.total, 0), [cartItems]);
 
-  const onSubmit = () => {
+  const nextStep = () => setCurrentStep((curr) => curr + 1);
+  const backStep = () => setCurrentStep((curr) => curr - 1);
+
+  const handleCheck = (e: ChangeEvent<HTMLInputElement>) => {
+    setHasUserAcceptedToSaveDetails(e.target.checked);
+  };
+
+  const onUserDataChange = (userDetails: UserDetailsType) => setUserData(userDetails);
+
+  const onSubmit = async () => {
     setLoading(true);
 
-    const name = userLogin?.name || undefined;
-    const email = userLogin?.email ||  undefined;
+    const name = userLogin?.name || userData.name;
+    const email = userLogin?.email || userData.email;
+    const address = userData.address || null;
 
     const newOrder: OrderType = {
       id: uuidv4(),
       name,
       email,
+      deliveryType,
+      address,
       status: 'pending',
       items: cartItems,
       totalAmount: totalSum.toFixed(2),
       created: new Date(),
     };
 
+    hasUserAcceptedToSaveDetails && userLogin?.email && editUserDetails(userData);
+
     createCheckoutSession(newOrder);
   };
 
+  const isEveryInputComplete = useMemo(
+    () =>
+      userData?.name &&
+      userData?.lastName &&
+      userData?.email &&
+      userData?.address &&
+      !!userData?.mobileNo,
+    [userData]
+  );
+
+  const Steps = {
+    1: {
+      component: <CartSummary products={cartItems} total={totalSum} />,
+      buttons: <CartModalButtons next={nextStep} />,
+    },
+    2: {
+      component: <DeliveryOptions value={deliveryType} setValue={setDeliveryType} />,
+      buttons:
+        deliveryType === 'Delivery' ? (
+          <CartModalButtons next={nextStep} back={backStep} disabled={!deliveryType} />
+        ) : (
+          <CartModalButtons
+            back={backStep}
+            submit={onSubmit}
+            loading={loading}
+            disabled={!deliveryType}
+          />
+        ),
+    },
+    3: {
+      component: (
+        <>
+          <UserDataForm isCheckoutForm onChange={onUserDataChange} />
+          {userLogin?.token ? (
+            <div className="flex items-center gap-2 mt-2">
+              <input type="checkbox" onChange={handleCheck} />
+              <p>Guardar mis datos para futuras compras.</p>
+            </div>
+          ): <p className='font-bold text-md'>Nota: Puedes <span onClick={openLoginModal} className='text-blue-400 cursor-pointer text-bold'>iniciar sesión</span> para guardar tus datos y no volver a escribirlos la próxima vez!</p>}
+        </>
+      ),
+      buttons: (
+        <CartModalButtons
+          back={backStep}
+          submit={onSubmit}
+          loading={loading}
+          disabled={!isEveryInputComplete}
+        />
+      ),
+    },
+  };
+
   useEffect(() => {
-    isCartModalOpen && setLoading(false);
+    if (isCartModalOpen) {
+      setLoading(false);
+    } else {
+      setCurrentStep(1);
+    }
   }, [isCartModalOpen]);
 
   useEffect(() => {
@@ -48,31 +122,9 @@ const CartModal = () => {
   }, [cartItems]);
 
   return (
-    <Modal isOpen={isCartModalOpen} transparent fullScreen>
-      {/* This avoid Hydration error so the Tooltip will be used only if the component is already mounted */}
-      {isMounted ? <ReactTooltip /> : null}
-      <div className="relative flex flex-col items-center w-full h-full max-w-xl p-2 my-2 overflow-y-scroll bg-white">
-        <CloseModalButton color="black" className='absolute right-2 top-2' onClose={closeCartModal} />
-        <div className="px-2 pt-8 pb-6 text-3xl text-center text-black">{`${cartItems.length} ${
-          cartItems.length > 1 ? 'articulos' : 'articulo'
-        } en la cesta`}</div>
-        {cartItems.map((item) => (
-          <CartProduct key={item.id} product={item} />
-        ))}
-
-        <div className="flex items-center justify-between w-full py-2 pb-0 text-3xl text-black">
-          <div>Total</div>
-          <div>{`€${totalSum.toFixed(2)}`}</div>
-        </div>
-        <div className="flex flex-col items-center justify-between w-full gap-2 py-4 text-xl text-white md:text-3xl">
-          <Button className="w-full text-base" onClick={onSubmit} loading={loading}>
-            Ir a pagar
-          </Button>
-          <Button className="text-base" onClick={closeCartModal} type="outlined">
-            Cerrar
-          </Button>
-        </div>
-      </div>
+    <Modal isOpen={isCartModalOpen} onClose={closeCartModal}>
+      {Steps[currentStep].component}
+      {Steps[currentStep].buttons}
     </Modal>
   );
 };

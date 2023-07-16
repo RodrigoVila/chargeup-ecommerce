@@ -10,22 +10,22 @@ import useAppActions from '@hooks/useAppActions';
 import useMounted from '@hooks/useMounted';
 import Dropdown from './Dropdown';
 import PreCartModal from './Modal/ExtrasModal';
+import { ProductType } from 'types';
 
 type Props = {
   product: ProductType;
 };
 
 const Product: FC<Props> = ({ product }) => {
-  const { _id, title, description, nutritionalInfo, suitableForInfo, imgUri } =
-    product;
+  const { title, description, nutritionalInfo, suitableForInfo, imgUri } = product;
   const { weight, calories, carbs, fat, protein } = nutritionalInfo;
   const { glutenFree, keto, vegan, protein: highProtein } = suitableForInfo;
 
   const { isMounted } = useMounted();
-  const { openExtrasModal,openProductModal } = useAppActions();
+  const { openExtrasModal, openProductModal } = useAppActions();
 
-  const onClickSeeMore = () => openProductModal(product)
-  const onClick = () => openExtrasModal(product)
+  const onClickSeeMore = () => openProductModal(product);
+  const onClickSelect = () => openExtrasModal(product);
 
   const iconStyle = 'relative h-11 w-11';
 
@@ -62,7 +62,7 @@ const Product: FC<Props> = ({ product }) => {
               </div>
             )}
           </div>
-          <div className="text-base cursor-pointer" onClick={onClick}>
+          <div className="text-base cursor-pointer" onClick={onClickSeeMore}>
             {description?.short}
           </div>
           {/* text-[#a855f7] */}
@@ -106,7 +106,7 @@ const Product: FC<Props> = ({ product }) => {
               </div>
             </div>
           </div>
-          <Button onClick={onClick}>Seleccionar</Button>
+          <Button onClick={onClickSelect}>Seleccionar</Button>
         </div>
       </div>
     </>
