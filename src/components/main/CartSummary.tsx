@@ -1,5 +1,4 @@
 import CartProduct from '@main/CartProduct';
-import React from 'react';
 import { CartProductType } from 'types';
 
 type CartSummaryProps = {

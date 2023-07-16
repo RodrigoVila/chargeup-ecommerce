@@ -1,26 +1,26 @@
+import { AUTH_INITIAL_STATE } from '@constants/initialState';
+import { LOCAL_STORAGE_DATA_KEY } from '@constants/keys';
+import { deleteValueFromLocalStorage, setValueToLocalStorage } from '@utils/localStorage';
+import { AuthActionType, AuthStateType } from 'types';
 import {
   LOGIN_SUCCESS,
-  USER_LOGIN_ERROR,
-  LOGOUT,
-  REGISTER_USER_SUCCESS,
-  REGISTER_USER_ERROR,
-  VALIDATE_EMAIL_IN_DB_SUCCESS,
-  VALIDATE_EMAIL_IN_DB_ERROR,
   LOGIN_USER,
+  LOGOUT,
   REGISTER_USER,
-  REQUEST_PASSWORD_RECOVERY,
-  REQUEST_PASSWORD_RECOVERY_SUCCESS,
-  REQUEST_PASSWORD_RECOVERY_ERROR,
+  REGISTER_USER_ERROR,
+  REGISTER_USER_SUCCESS,
   REQUEST_CHANGE_USER_PASSWORD,
-  REQUEST_CHANGE_USER_PASSWORD_SUCCESS,
   REQUEST_CHANGE_USER_PASSWORD_ERROR,
-  VALIDATE_TOKEN_FOR_PASSWORD_CHANGE_SUCCESS,
+  REQUEST_CHANGE_USER_PASSWORD_SUCCESS,
+  REQUEST_PASSWORD_RECOVERY,
+  REQUEST_PASSWORD_RECOVERY_ERROR,
+  REQUEST_PASSWORD_RECOVERY_SUCCESS,
+  USER_LOGIN_ERROR,
+  VALIDATE_EMAIL_IN_DB_ERROR,
+  VALIDATE_EMAIL_IN_DB_SUCCESS,
   VALIDATE_TOKEN_FOR_PASSWORD_CHANGE_ERROR,
+  VALIDATE_TOKEN_FOR_PASSWORD_CHANGE_SUCCESS,
 } from '../../constants/ActionTypes';
-import { deleteValueFromLocalStorage, setValueToLocalStorage } from '@utils/localStorage';
-import { LOCAL_STORAGE_DATA_KEY } from '@constants/keys';
-import { AUTH_INITIAL_STATE } from '@constants/initialState';
-import { AuthActionType, AuthStateType } from 'types';
 
 const authReducer = (state: AuthStateType = AUTH_INITIAL_STATE, action: AuthActionType) => {
   const { type, userLogin } = action;

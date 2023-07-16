@@ -1,14 +1,12 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 /* JP ADDS - import -*/
+import AdminCustomers from '@admin/AdminCustomers';
+import AdminDashboard from '@admin/AdminDashboard';
+import AdminOrderList from '@admin/AdminOrderList';
 import AdminProducts from '@admin/AdminProducts';
 import AdminStats from '@admin/AdminStats';
-import AdminTabDetails from '@admin/AdminTabDetails';
 import AdminUserNav from '@admin/AdminUserNav';
-import AdminOrderDetails from '@admin/AdminOrderDetails';
-import AdminOrderList from '@admin/AdminOrderList';
-import AdminDashboard from '@admin/AdminDashboard';
-import AdminCustomers from '@admin/AdminCustomers';
 import AdminProductModal from '@admin/Modal/AdminProductModal';
 
 const AdminScreen = () => {
@@ -17,7 +15,7 @@ const AdminScreen = () => {
   return (
     <>
       <AdminProductModal />
-      
+
       <AdminUserNav activePage={activePage} setActivePage={setActivePage} />
       {activePage === '' && <AdminDashboard />}
       {activePage === 'Dashboard' && <AdminDashboard />}

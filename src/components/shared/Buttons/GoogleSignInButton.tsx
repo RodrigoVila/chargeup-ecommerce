@@ -1,8 +1,8 @@
+import useAppActions from '@hooks/useAppActions';
 import { useGoogleLogin } from '@react-oauth/google';
 import CustomButton from '@shared/Buttons/CustomButton';
 import Image from 'next/image';
-import { GoogleSignInSuccessResponse, GoogleSignInErrorResponse } from 'types';
-import useAppActions from '@hooks/useAppActions';
+import { GoogleSignInErrorResponse, GoogleSignInSuccessResponse } from 'types';
 
 const GoogleSignInButton = ({ text }: { text: string }) => {
   const { getGoogleUserData, displayErrorMessage } = useAppActions();

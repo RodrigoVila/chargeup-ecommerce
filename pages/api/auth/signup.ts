@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 
-import User from '@models/user';
 import { lang } from '@constants/lang';
+import User from '@models/user';
 import dbConnect from '@utils/dbConnect';
 import { emailVerificationToHTML } from '@utils/htmlEmailParsers';
 import { sendEmailToUser } from '@utils/nodemailer';
@@ -28,7 +28,7 @@ const SignUp = async (req: NextApiRequest, res: NextApiResponse) => {
       return res.status(409).json({
         success: false,
         message: lang.en.USER_EXIST,
-        err: e
+        err: e,
       });
     }
   };
@@ -41,4 +41,4 @@ const SignUp = async (req: NextApiRequest, res: NextApiResponse) => {
   }
 };
 
-export default SignUp
+export default SignUp;

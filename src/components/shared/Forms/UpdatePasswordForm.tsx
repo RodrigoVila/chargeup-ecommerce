@@ -1,15 +1,13 @@
-import { useState, ChangeEvent, FC } from 'react';
+import { ChangeEvent, FC, useState } from 'react';
 
 import { lang } from '@constants/lang';
-import { colors } from '@constants/colors';
-import Input from '@shared/Input';
-import Button from '@shared/Buttons/CustomButton';
-import Link from '@main/Link';
 import useAppActions from '@hooks/useAppActions';
-import CloseModalButton from '@shared/Buttons/CloseModalButton';
-import useEncryption from '@hooks/useEncryption';
-import { useRouter } from 'next/router';
 import useAppSelector from '@hooks/useAppSelector';
+import useEncryption from '@hooks/useEncryption';
+import CloseModalButton from '@shared/Buttons/CloseModalButton';
+import Button from '@shared/Buttons/CustomButton';
+import Input from '@shared/Input';
+import { useRouter } from 'next/router';
 
 const INITIAL_STATE = { oldPassword: '', password: '', repeatPassword: '' };
 

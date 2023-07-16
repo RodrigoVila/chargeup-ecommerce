@@ -1,23 +1,19 @@
-import {
-  SUCCESS_MESSAGE,
-  ERROR_MESSAGE,
-  INFO_MESSAGE,
-} from "../../constants/ActionTypes";
+import { ERROR_MESSAGE, INFO_MESSAGE, SUCCESS_MESSAGE } from '../../constants/ActionTypes';
 
-export const displayMessageSuccess = (message: string,duration?: number) => ({
-  type:SUCCESS_MESSAGE,
+export const displayMessageSuccess = (message: string, duration?: number) => ({
+  type: SUCCESS_MESSAGE,
   message,
-  duration
+  duration,
 });
 
-export const displayMessageError = (message: string,duration?: number) => ({
+export const displayMessageError = (message: string, duration?: number) => ({
   type: ERROR_MESSAGE,
   message,
-  duration
+  duration,
 });
 
-export const displayMessageInfo = (message: string,duration?: number) => ({
+export const displayMessageInfo = (message: string, duration?: number) => ({
   type: INFO_MESSAGE,
   message,
-  duration
+  duration,
 });

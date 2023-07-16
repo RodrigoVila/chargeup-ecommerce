@@ -13,9 +13,10 @@ export const passwordRecoverySchema = new mongoose.Schema(
   },
   {
     collection: process.env.MONGO_PASSWORD_RECOVERY_COLLECTION,
-    timestamps: true
+    timestamps: true,
   }
 );
-const PasswordRecovery = mongoose.models.PasswordRecovery || mongoose.model('PasswordRecovery', passwordRecoverySchema);
+const PasswordRecovery =
+  mongoose.models.PasswordRecovery || mongoose.model('PasswordRecovery', passwordRecoverySchema);
 
 export default PasswordRecovery;

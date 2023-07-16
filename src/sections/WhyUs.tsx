@@ -1,6 +1,5 @@
 import { FC } from 'react';
 
-import BackgroundOverlay from '@main/BackgroundOverlay';
 import Section from '@main/Section';
 
 const WhyUsSection: FC = () => {

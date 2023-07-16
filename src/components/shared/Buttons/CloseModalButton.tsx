@@ -7,18 +7,12 @@ interface Props {
   onClose: () => void;
 }
 
-const CloseModalButton = ({
-  color: propColor,
-  className = '',
-  onClose,
-}: Props) => {
+const CloseModalButton = ({ color: propColor, className = '', onClose }: Props) => {
   const color =
     propColor === 'white' || propColor === 'black' ? `text-${propColor}` : `text-${propColor}-500`;
 
   return (
-    <div
-      className={twMerge('top-0 h-9 w-9 cursor-pointer text-white', className)}
-    >
+    <div className={twMerge('top-0 h-9 w-9 cursor-pointer text-white', className)}>
       <button onClick={onClose}>
         <XMarkIcon className={twMerge('h-full w-full', color)} />
       </button>

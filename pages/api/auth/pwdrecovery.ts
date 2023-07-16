@@ -1,9 +1,9 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { v4 as uuidv4 } from 'uuid';
 
-import User from '@models/user';
-import PasswordRecovery from '@models/passwordRecovery';
 import { lang } from '@constants/lang';
+import PasswordRecovery from '@models/passwordRecovery';
+import User from '@models/user';
 import dbConnect from '@utils/dbConnect';
 import { passwordRecoveryToHTML } from '@utils/htmlEmailParsers';
 import { sendEmailToUser } from '@utils/nodemailer';
@@ -56,4 +56,4 @@ const PasswordRecoveryAPI = async (req: NextApiRequest, res: NextApiResponse) =>
   }
 };
 
-export default PasswordRecoveryAPI
+export default PasswordRecoveryAPI;

@@ -1,4 +1,7 @@
-import { CREATE_CHECKOUT_SESSION_SUCCESS, CREATE_CHECKOUT_SESSION_ERROR } from '../../constants/ActionTypes';
+import {
+  CREATE_CHECKOUT_SESSION_ERROR,
+  CREATE_CHECKOUT_SESSION_SUCCESS,
+} from '../../constants/ActionTypes';
 
 const initialState: CheckoutStateType = { session: null, sessionError: null };
 

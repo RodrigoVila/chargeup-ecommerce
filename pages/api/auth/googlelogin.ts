@@ -1,9 +1,9 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { v4 as uuidv4 } from 'uuid';
 
+import { lang } from '@constants/lang';
 import User from '@models/user';
 import dbConnect from '@utils/dbConnect';
-import { lang } from '@constants/lang';
 
 const GoogleLogin = async (req: NextApiRequest, res: NextApiResponse) => {
   const { method, body } = req;

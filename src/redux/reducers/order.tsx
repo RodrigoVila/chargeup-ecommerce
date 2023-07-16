@@ -1,4 +1,4 @@
-import { NEW_ORDER_SUCCESS, NEW_ORDER_ERROR } from '@constants/ActionTypes';
+import { NEW_ORDER_ERROR, NEW_ORDER_SUCCESS } from '@constants/ActionTypes';
 
 const initialState: OrderStateType = { order: null, orderResponse: null, error: null };
 

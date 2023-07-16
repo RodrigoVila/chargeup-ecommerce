@@ -1,9 +1,9 @@
 import {
-  LOAD_CART,
   ADD_TO_CART,
-  REMOVE_FROM_CART,
   CHANGE_PRODUCT_QUANTITY,
   CLEAR_CART,
+  LOAD_CART,
+  REMOVE_FROM_CART,
 } from '@constants/ActionTypes';
 import { LOCAL_STORAGE_CART_KEY } from '@constants/keys';
 import { deleteValueFromLocalStorage, setValueToLocalStorage } from '@utils/localStorage';

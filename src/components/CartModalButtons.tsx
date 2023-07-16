@@ -1,4 +1,3 @@
-import React from 'react';
 import Button from '@shared/Buttons/CustomButton';
 
 type CartModaLButttonsProps = {
@@ -6,10 +5,16 @@ type CartModaLButttonsProps = {
   back?: () => void;
   submit?: () => void;
   loading?: boolean;
-  disabled?: boolean
+  disabled?: boolean;
 };
 
-export const CartModalButtons = ({ next, back, submit, loading, disabled }: CartModaLButttonsProps) => {
+export const CartModalButtons = ({
+  next,
+  back,
+  submit,
+  loading,
+  disabled,
+}: CartModaLButttonsProps) => {
   return (
     <div className="flex flex-col w-full gap-2 mt-4">
       {next && (

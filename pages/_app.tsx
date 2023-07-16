@@ -1,12 +1,12 @@
-import 'tailwindcss/tailwind.css';
-import '../global.css';
-import Head from 'next/head';
-import { Provider } from 'react-redux';
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
+import Head from 'next/head';
+import { Provider } from 'react-redux';
+import 'tailwindcss/tailwind.css';
+import '../global.css';
 
-import store from '@redux/store';
 import { stripePublicKey } from '@constants/keys';
+import store from '@redux/store';
 
 // Make sure to call `loadStripe` outside of a component’s render to avoid
 // recreating the `Stripe` object on every render.

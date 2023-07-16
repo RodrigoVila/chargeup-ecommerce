@@ -1,6 +1,6 @@
-import { NextApiRequest, NextApiResponse } from "next";
-import User from "@models/user";
-import dbConnect from "@utils/dbConnect";
+import User from '@models/user';
+import dbConnect from '@utils/dbConnect';
+import { NextApiRequest, NextApiResponse } from 'next';
 
 const UsersAPI = async (req: NextApiRequest, res: NextApiResponse) => {
   const { method, body } = req;
@@ -19,11 +19,11 @@ const UsersAPI = async (req: NextApiRequest, res: NextApiResponse) => {
   };
 
   switch (method) {
-    case "GET":
+    case 'GET':
       return getUsers();
     default:
       return res.status(405).end(`Method ${method} Not Allowed`);
   }
 };
 
-export default UsersAPI
+export default UsersAPI;

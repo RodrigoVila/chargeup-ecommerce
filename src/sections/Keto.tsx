@@ -1,6 +1,6 @@
-import { FC } from 'react';
-import Image from 'next/image';
 import Section from '@main/Section';
+import Image from 'next/image';
+import { FC } from 'react';
 
 const KetoSection: FC = () => {
   return (

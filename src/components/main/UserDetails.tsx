@@ -1,11 +1,10 @@
-import { useState, useEffect, ChangeEvent } from 'react';
-import useAppActions from '@hooks/useAppActions';
 import { lang } from '@constants/lang';
+import useAppActions from '@hooks/useAppActions';
+import { googleLogout } from '@react-oauth/google';
 import UpdatePasswordForm from '@shared/Forms/UpdatePasswordForm';
 import UserDataForm from '@shared/Forms/UserDataForm';
+import { useEffect, useState } from 'react';
 import Button from '../shared/Buttons/CustomButton';
-import CloseModalButton from '../shared/Buttons/CloseModalButton';
-import { googleLogout } from '@react-oauth/google';
 
 type EditingType = 'password' | 'userData' | null;
 

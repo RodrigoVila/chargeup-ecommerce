@@ -20,14 +20,14 @@ type StorageUserType = {
 };
 
 type AddressType = {
-    street: string;
-    streetNumber: string;
-    extras: string;
-    postCode: string;
-    city: string;
-    province: string;
-    country: string;
-}
+  street: string;
+  streetNumber: string;
+  extras: string;
+  postCode: string;
+  city: string;
+  province: string;
+  country: string;
+};
 
 type UserDetailsType = {
   id?: string;
@@ -128,7 +128,7 @@ interface ModalActionType extends ModalStateType {
   sizeAndExtras: any;
 }
 
-type DeliveryType = "Pick UP" | "Delivery"
+type DeliveryType = 'Pick UP' | 'Delivery';
 
 //Order
 type OrderType = {
@@ -137,7 +137,7 @@ type OrderType = {
   name?: string | null;
   phone?: string | null;
   items: CartProductType[];
-  deliveryType: DeliveryType
+  deliveryType: DeliveryType;
   address?: AddressType;
   totalAmount: string;
   status?: string;

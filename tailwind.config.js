@@ -2,10 +2,10 @@
 
 module.exports = {
   content: [
-    "./app/**/*.{js,ts,jsx,tsx}",
-    "./pages/**/*.{js,ts,jsx,tsx}",
-    "./components/**/*.{js,ts,jsx,tsx}",
-    "./src/**/*.{js,ts,jsx,tsx}",
+    './app/**/*.{js,ts,jsx,tsx}',
+    './pages/**/*.{js,ts,jsx,tsx}',
+    './components/**/*.{js,ts,jsx,tsx}',
+    './src/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
     extend: {
@@ -44,8 +44,8 @@ module.exports = {
         'screen*2': '200vh',
         'screen*1.5': '150vh',
         'screen*3': '300vh',
-        21: "5.25rem",
-        22: "5.5rem"
+        21: '5.25rem',
+        22: '5.5rem',
       },
       inset: {
         outofScreen: '-700px',
@@ -89,8 +89,8 @@ module.exports = {
         100: 1,
       },
       screens: {
-        "3xs": '280px',
-        "2xs": '370px',
+        '3xs': '280px',
+        '2xs': '370px',
         xs: '512px',
         sm: '640px',
         md: '768px',
@@ -99,14 +99,14 @@ module.exports = {
         '2xl': '1536px',
       },
       transitionDuration: {
-        "2000": "2000ms",
-        "3000": "3000ms",
-        "4000": "4000ms"
+        2000: '2000ms',
+        3000: '3000ms',
+        4000: '4000ms',
       },
       width: {
         adminWidth: 'calc(100vw -8rem)',
-        21: "5.25rem",
-        22: "5.5rem"
+        21: '5.25rem',
+        22: '5.5rem',
       },
       zIndex: {
         full: '9999px',
@@ -114,4 +114,3 @@ module.exports = {
     },
   },
 };
-

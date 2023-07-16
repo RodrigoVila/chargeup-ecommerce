@@ -11,7 +11,10 @@ export const isPasswordValid = (password: string) => {
   return reg.test(password);
 };
 
-export const getProductSubtotal = (selectedSize: ILabelAndPrice,selectedExtras: ILabelAndPrice[]) => {
+export const getProductSubtotal = (
+  selectedSize: ILabelAndPrice,
+  selectedExtras: ILabelAndPrice[]
+) => {
   if (!selectedSize || !selectedExtras) return 0;
   let extrasPrice = 0;
 

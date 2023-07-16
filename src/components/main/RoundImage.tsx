@@ -1,5 +1,5 @@
-import { FC } from 'react';
 import LazyImage from '@shared/LazyImage';
+import { FC } from 'react';
 
 interface Props {
   imgUri: string;

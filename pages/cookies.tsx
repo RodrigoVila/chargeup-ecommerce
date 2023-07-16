@@ -1,5 +1,3 @@
-import React from 'react'
-
 const cookies = () => {
   return (
     <div style={{ margin: '20px' }}>
@@ -182,7 +180,7 @@ const cookies = () => {
         </li>
       </ul>
     </div>
-  )
-}
+  );
+};
 
-export default cookies
+export default cookies;

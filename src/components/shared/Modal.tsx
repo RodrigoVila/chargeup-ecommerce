@@ -1,8 +1,8 @@
-import { useEffect, ReactNode } from 'react';
+import { ReactNode, useEffect } from 'react';
 
-import Portal from '@utils/Portal';
-import BackgroundOverlay from '@main/BackgroundOverlay';
 import useAppActions from '@hooks/useAppActions';
+import BackgroundOverlay from '@main/BackgroundOverlay';
+import Portal from '@utils/Portal';
 import { twMerge } from 'tailwind-merge';
 import CloseModalButton from './Buttons/CloseModalButton';
 
@@ -39,7 +39,7 @@ const Modal = ({
         onClick={closeOnOverlayClick ? closeDrawerModal : undefined}
         className={twMerge(
           'bg-transparent inset-0 items-center justify-center fixed z-40 flex flex-col min-h-screen h-full w-full',
-          className,
+          className
         )}
       >
         <BackgroundOverlay />

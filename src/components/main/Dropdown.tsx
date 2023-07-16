@@ -1,4 +1,4 @@
-import React, { useState, SelectHTMLAttributes } from 'react';
+import { SelectHTMLAttributes } from 'react';
 import { twMerge } from 'tailwind-merge';
 
 type CustomDropDownProps = Omit<

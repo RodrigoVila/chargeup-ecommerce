@@ -1,8 +1,6 @@
-import { NextApiRequest, NextApiResponse } from 'next';
 import Product from '@models/product';
 import dbConnect from '@utils/dbConnect';
-import { stripeWebhookKey } from '@constants/keys';
-
+import { NextApiRequest, NextApiResponse } from 'next';
 
 const Products = async (req: NextApiRequest, res: NextApiResponse) => {
   const { method, body } = req;
@@ -42,4 +40,4 @@ const Products = async (req: NextApiRequest, res: NextApiResponse) => {
   }
 };
 
-export default Products
+export default Products;

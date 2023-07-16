@@ -1,8 +1,6 @@
-import React from 'react';
-
+import { lang } from '@constants/lang';
 import useAppActions from '@hooks/useAppActions';
 import Button from './CustomButton';
-import { lang } from '@constants/lang';
 
 const LoginButton = () => {
   const { openLoginModal } = useAppActions();

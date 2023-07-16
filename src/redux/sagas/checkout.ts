@@ -1,9 +1,9 @@
-import { call, put, takeEvery } from 'redux-saga/effects';
 import {
   createNewCheckoutSessionError,
   createNewCheckoutSessionSuccess,
 } from '@redux/actions/checkout';
 import { CREATE_CHECKOUT_SESSION } from 'constants/ActionTypes';
+import { call, put, takeEvery } from 'redux-saga/effects';
 
 const API_URL = '/api/checkout_session';
 

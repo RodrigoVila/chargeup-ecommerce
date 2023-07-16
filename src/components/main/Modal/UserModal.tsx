@@ -1,8 +1,8 @@
 import useAppActions from '@hooks/useAppActions';
 import useAppSelector from '@hooks/useAppSelector';
 
-import Modal from '@shared/Modal';
 import UserDetails from '@main/UserDetails';
+import Modal from '@shared/Modal';
 
 const UserModal = () => {
   const { isUserModalOpen } = useAppSelector();

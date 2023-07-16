@@ -1,4 +1,3 @@
-import React from 'react';
 import Button from '../shared/Buttons/CustomButton';
 
 type Props = {

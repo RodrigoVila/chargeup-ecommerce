@@ -1,4 +1,4 @@
-import NavItem from "@atoms/NavItem";
+import NavItem from '@atoms/NavItem';
 
 interface ICategory {
   title: string;

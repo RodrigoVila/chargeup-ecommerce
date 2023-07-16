@@ -1,6 +1,5 @@
-import { useRef, SyntheticEvent } from 'react';
+import { SyntheticEvent, useRef } from 'react';
 
-import { colors } from '@constants/colors';
 import { lang } from '@constants/lang';
 import BackgroundOverlay from '@main/BackgroundOverlay';
 import Button from '@shared/Buttons/CustomButton';

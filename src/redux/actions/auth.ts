@@ -1,26 +1,31 @@
-import { GoogleSignInSuccessResponse, StorageUserType, UserLoginType, UserRegisterType } from 'types';
+import {
+  GoogleSignInSuccessResponse,
+  StorageUserType,
+  UserLoginType,
+  UserRegisterType,
+} from 'types';
 import {
   CHECK_USER_TOKEN,
-  LOGIN_WITH_GOOGLE,
   LOGIN_SUCCESS,
-  USER_LOGIN_ERROR,
-  LOGOUT,
   LOGIN_USER,
+  LOGIN_WITH_GOOGLE,
+  LOGOUT,
   REGISTER_USER,
-  REGISTER_USER_SUCCESS,
   REGISTER_USER_ERROR,
-  VALIDATE_EMAIL_IN_DB,
-  VALIDATE_EMAIL_IN_DB_SUCCESS,
-  VALIDATE_EMAIL_IN_DB_ERROR,
-  REQUEST_PASSWORD_RECOVERY,
-  REQUEST_PASSWORD_RECOVERY_SUCCESS,
-  REQUEST_PASSWORD_RECOVERY_ERROR,
-  VALIDATE_TOKEN_FOR_PASSWORD_CHANGE,
-  VALIDATE_TOKEN_FOR_PASSWORD_CHANGE_SUCCESS,
-  VALIDATE_TOKEN_FOR_PASSWORD_CHANGE_ERROR,
+  REGISTER_USER_SUCCESS,
   REQUEST_CHANGE_USER_PASSWORD,
-  REQUEST_CHANGE_USER_PASSWORD_SUCCESS,
   REQUEST_CHANGE_USER_PASSWORD_ERROR,
+  REQUEST_CHANGE_USER_PASSWORD_SUCCESS,
+  REQUEST_PASSWORD_RECOVERY,
+  REQUEST_PASSWORD_RECOVERY_ERROR,
+  REQUEST_PASSWORD_RECOVERY_SUCCESS,
+  USER_LOGIN_ERROR,
+  VALIDATE_EMAIL_IN_DB,
+  VALIDATE_EMAIL_IN_DB_ERROR,
+  VALIDATE_EMAIL_IN_DB_SUCCESS,
+  VALIDATE_TOKEN_FOR_PASSWORD_CHANGE,
+  VALIDATE_TOKEN_FOR_PASSWORD_CHANGE_ERROR,
+  VALIDATE_TOKEN_FOR_PASSWORD_CHANGE_SUCCESS,
 } from '../../constants/ActionTypes';
 
 export const userTokenCheck = (user: UserLoginType) => ({
@@ -102,7 +107,11 @@ export const validateTokenForPassChangeError = () => ({
   type: VALIDATE_TOKEN_FOR_PASSWORD_CHANGE_ERROR,
 });
 
-export const changeUserPassword = (email:string, newPassword: string, oldPassword?: string | undefined) => ({
+export const changeUserPassword = (
+  email: string,
+  newPassword: string,
+  oldPassword?: string | undefined
+) => ({
   type: REQUEST_CHANGE_USER_PASSWORD,
   email,
   newPassword,

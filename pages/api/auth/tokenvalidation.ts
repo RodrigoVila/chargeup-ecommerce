@@ -30,4 +30,4 @@ const TokenValidation = async (req: NextApiRequest, res: NextApiResponse) => {
   }
 };
 
-export default TokenValidation
+export default TokenValidation;

@@ -1,6 +1,9 @@
 import { OrderType } from 'types';
 
-export const newOrderToHTML = (order: OrderType, options?: { isForAdmin?: boolean, userRegistered?: boolean }) => {
+export const newOrderToHTML = (
+  order: OrderType,
+  options?: { isForAdmin?: boolean; userRegistered?: boolean }
+) => {
   let itemsDiv = [];
   order.items.map((item) => {
     const extraItems = [];
@@ -19,9 +22,9 @@ export const newOrderToHTML = (order: OrderType, options?: { isForAdmin?: boolea
 
     itemsDiv.push(newItem);
   });
-  const name = order?.name || "";
-  const email = order?.email || "";
-  const phone = order?.phone || "";
+  const name = order?.name || '';
+  const email = order?.email || '';
+  const phone = order?.phone || '';
 
   const userHTML = `<div><div>Hola ${name},</div><br/><div>Hiciste una compra a través de <span style="font-weight: 700">www.chargeupbcn.com</span>. El detalle de tu pedido está a continuación</div><br/>${itemsDiv.join(
     ''
@@ -36,7 +39,9 @@ export const newOrderToHTML = (order: OrderType, options?: { isForAdmin?: boolea
     order.totalAmount
   ).toFixed(
     2
-  )}</span></div><br/><div>Datos del usuario: <br/>Nombre: ${name} <br/>Mail: ${email} <br/>Movil: ${phone} <br/>Registrado: ${options?.userRegistered ? "SI" : "NO"}</div></div><div><br/>Para ver mas, dirigite al admin panel.</div></div><br/><div style="font-weight: 700">⚡️ Charge UP Barcelona ⚡️</div><div/></div>`;
+  )}</span></div><br/><div>Datos del usuario: <br/>Nombre: ${name} <br/>Mail: ${email} <br/>Movil: ${phone} <br/>Registrado: ${
+    options?.userRegistered ? 'SI' : 'NO'
+  }</div></div><div><br/>Para ver mas, dirigite al admin panel.</div></div><br/><div style="font-weight: 700">⚡️ Charge UP Barcelona ⚡️</div><div/></div>`;
 
   return options?.isForAdmin ? adminHTML : userHTML;
 };

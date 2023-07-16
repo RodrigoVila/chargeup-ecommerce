@@ -1,9 +1,9 @@
-import { FC } from 'react';
 import useAppActions from '@hooks/useAppActions';
 import useAppSelector from '@hooks/useAppSelector';
+import { FC } from 'react';
 
-import Modal from '@shared/Modal';
 import Button from '@shared/Buttons/CustomButton';
+import Modal from '@shared/Modal';
 
 const ProductDescModal: FC = () => {
   const { isProductModalOpen, selectedModalProduct } = useAppSelector();

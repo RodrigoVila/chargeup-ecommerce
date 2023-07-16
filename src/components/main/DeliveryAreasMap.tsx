@@ -1,13 +1,12 @@
 import Modal from '@shared/Modal';
-import React, { useEffect, useState } from 'react';
-import BackgroundOverlay from './BackgroundOverlay';
+import { useEffect, useState } from 'react';
 
 export const DeliveryAreasMap = () => {
   const [isExpanded, setExpanded] = useState(false);
   const [label, setLabel] = useState('');
 
   useEffect(() => {
-    if(!isExpanded) document.body.style.overflow = 'hidden';
+    if (!isExpanded) document.body.style.overflow = 'hidden';
   }, [isExpanded]);
 
   return (

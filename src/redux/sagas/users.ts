@@ -1,22 +1,17 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 
-import {
-  FETCH_USER_DETAILS,
-  REQUEST_CHANGE_USER_DETAILS,
-  REQUEST_PASSWORD_RECOVERY,
-} from 'constants/ActionTypes';
+import { displayMessageError, displayMessageSuccess } from '@redux/actions/toastNotifications';
 import {
   changeUserDetailsError,
   changeUserDetailsSuccess,
   fetchUserDetailsError,
   fetchUserDetailsSuccess,
 } from '@redux/actions/users';
-import { userModalClose } from '@redux/actions/modal';
-import { displayMessageError, displayMessageSuccess } from '@redux/actions/toastNotifications';
+import { FETCH_USER_DETAILS, REQUEST_CHANGE_USER_DETAILS } from 'constants/ActionTypes';
 
-import { getValueFromLocalStorage } from '@utils/localStorage';
 import { LOCAL_STORAGE_DATA_KEY } from '@constants/keys';
 import { lang } from '@constants/lang';
+import { getValueFromLocalStorage } from '@utils/localStorage';
 
 const API_USERS = '/api/users';
 const API_USER = '/api/user';
@@ -64,7 +59,6 @@ function* updateUserDetails(payload: any) {
     yield put(displayMessageError(lang.es.CHANGE_USER_DATA_ERROR));
   }
 }
-
 
 // Future implementation
 // function* deleteUser(payload: any) {}

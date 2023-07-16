@@ -3,12 +3,12 @@ import { AiOutlineCheckCircle } from 'react-icons/ai';
 import { BsExclamationOctagon } from 'react-icons/bs';
 import { MdCancel } from 'react-icons/md';
 
-import { ERROR_MESSAGE, SUCCESS_MESSAGE, INFO_MESSAGE } from '@constants/ActionTypes';
+import { ERROR_MESSAGE, INFO_MESSAGE, SUCCESS_MESSAGE } from '@constants/ActionTypes';
 import { colors } from '@constants/colors';
 
 const initialState: ToastStateType = {
   message: '',
-  duration: 3000
+  duration: 3000,
 };
 
 const toastReducer = (

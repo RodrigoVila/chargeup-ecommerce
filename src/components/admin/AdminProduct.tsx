@@ -9,14 +9,7 @@ const iconClassName =
   'mx-auto text-xl cursor-pointer hover:text-red-500 transition duration-500 ease-in-out';
 
 const AdminProduct = ({ product }: Props) => {
-  const {
-    title,
-    description,
-    nutritionalInfo,
-    suitableForInfo,
-    price,
-    imgUri,
-  } = product;
+  const { title, description, nutritionalInfo, suitableForInfo, price, imgUri } = product;
 
   const { openAdminProductModal } = useAppActions();
 

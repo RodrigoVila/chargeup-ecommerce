@@ -1,7 +1,6 @@
-import { NextApiRequest, NextApiResponse } from 'next';
 import User from '@models/user';
 import dbConnect from '@utils/dbConnect';
-import Id from '../order/[id]';
+import { NextApiRequest, NextApiResponse } from 'next';
 
 const UserAPI = async (req: NextApiRequest, res: NextApiResponse) => {
   const { method, body } = req;
@@ -64,4 +63,4 @@ const UserAPI = async (req: NextApiRequest, res: NextApiResponse) => {
   }
 };
 
-export default UserAPI
+export default UserAPI;

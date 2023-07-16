@@ -1,5 +1,4 @@
-import { FC, useState, useEffect } from 'react';
-import { BsFilterCircle, BsFilterCircleFill } from 'react-icons/bs';
+import { FC, useEffect, useState } from 'react';
 
 import useAppActions from '@hooks/useAppActions';
 import useAppSelector from '@hooks/useAppSelector';
@@ -7,7 +6,6 @@ import useAppSelector from '@hooks/useAppSelector';
 import Product from '@main/Product';
 import ProductSearchBar from '@main/ProductSearchBar';
 import Section from '@main/Section';
-import { newOrderToHTML } from '@utils/htmlEmailParsers';
 import Spinner from '@shared/Spinner';
 
 const Products: FC = () => {

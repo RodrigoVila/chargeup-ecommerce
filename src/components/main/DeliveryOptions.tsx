@@ -1,4 +1,4 @@
-import React, { ChangeEvent, Dispatch, SetStateAction } from 'react';
+import { ChangeEvent, Dispatch, SetStateAction } from 'react';
 import { DeliveryType } from 'types';
 import { DeliveryAreasMap } from './DeliveryAreasMap';
 

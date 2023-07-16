@@ -1,16 +1,14 @@
 import { Toaster } from 'react-hot-toast';
 
 import { lang } from '@constants/lang';
-import RegisterForm from '@shared/Forms/RegisterForm';
+import useAppSelector from '@hooks/useAppSelector';
+import useLogin from '@hooks/useLogin';
+import Link from '@main/Link';
+import Button from '@shared/Buttons/CustomButton';
 import LoginForm from '@shared/Forms/LoginForm';
 import PasswordRecoveryForm from '@shared/Forms/PasswordRecoveryForm';
-import Button from '@shared/Buttons/CustomButton';
-import CloseModalButton from '@shared/Buttons/CloseModalButton';
-import Link from '@main/Link';
-import useAppActions from '@hooks/useAppActions';
-import useLogin from '@hooks/useLogin';
+import RegisterForm from '@shared/Forms/RegisterForm';
 import GoogleSignInButton from './Buttons/GoogleSignInButton';
-import useAppSelector from '@hooks/useAppSelector';
 
 const Login = () => {
   const { isAuthLoading } = useAppSelector();
@@ -21,7 +19,6 @@ const Login = () => {
       <Toaster />
 
       <div className="relative flex flex-col items-center justify-center w-full p-4 font-semibold text-black bg-white rounded-md">
-
         {formType === 'register' && <RegisterForm onInputChange={onInputChange} />}
         {formType === 'login' && <LoginForm onInputChange={onInputChange} />}
         {formType === 'passwordRecovery' && <PasswordRecoveryForm onInputChange={onInputChange} />}

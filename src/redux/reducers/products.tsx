@@ -1,4 +1,8 @@
-import { FETCH_PRODUCTS, FETCH_PRODUCTS_ERROR, FETCH_PRODUCTS_SUCCESS } from '@constants/ActionTypes';
+import {
+  FETCH_PRODUCTS,
+  FETCH_PRODUCTS_ERROR,
+  FETCH_PRODUCTS_SUCCESS,
+} from '@constants/ActionTypes';
 
 const initialState: ProductsStateType = { products: [], isLoading: false, error: null };
 
@@ -47,7 +51,7 @@ const productsReducer = (state = initialState, action: ProductsActionType): Prod
       return {
         ...state,
         error,
-        isLoading:false
+        isLoading: false,
       };
   }
   return state;

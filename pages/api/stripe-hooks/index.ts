@@ -1,15 +1,14 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import Stripe from 'stripe';
 import getRawBody from 'raw-body';
+import Stripe from 'stripe';
 
-import Order from '@models/order';
 import { stripeSecretKey, stripeWebhookKey } from '@constants/keys';
 import { lang } from '@constants/lang';
+import Order from '@models/order';
+import User from '@models/user';
 import dbConnect from '@utils/dbConnect';
 import { newOrderToHTML } from '@utils/htmlEmailParsers';
 import { sendEmailToUser } from '@utils/nodemailer';
-import User from '@models/user';
-import { OrderType } from 'types';
 
 const stripe = require('stripe')(stripeSecretKey);
 

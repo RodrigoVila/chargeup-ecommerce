@@ -1,7 +1,5 @@
-import { FC } from 'react';
-import BackgroundOverlay from 'components/main/BackgroundOverlay';
-import { colors } from '@constants/colors';
 import Section from '@main/Section';
+import { FC } from 'react';
 
 const AboutSection: FC = () => {
   // bg-fixed bg-center bg-no-repeat  bg-[url('/wooden.jpg')] bg-cover

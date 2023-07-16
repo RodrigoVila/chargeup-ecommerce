@@ -1,12 +1,11 @@
-import React, { useEffect } from 'react';
+import { CheckCircleIcon, XCircleIcon } from '@heroicons/react/24/outline';
 import { useRouter } from 'next/router';
-import { CheckCircleIcon } from '@heroicons/react/24/outline';
-import { XCircleIcon } from '@heroicons/react/24/outline';
+import { useEffect } from 'react';
 
-import { lang } from '@constants/lang';
 import { colors } from '@constants/colors';
-import Button from '@shared/Buttons/CustomButton';
+import { lang } from '@constants/lang';
 import useCountdown from '@hooks/useCountdown';
+import Button from '@shared/Buttons/CustomButton';
 
 type Props = {
   type: 'error' | 'success';

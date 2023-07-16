@@ -1,12 +1,12 @@
-import { APP_USER_INITIAL_STATE, USERS_INITIAL_STATE } from '@constants/initialState';
 import {
   FETCH_USER_DETAILS,
   FETCH_USER_DETAILS_ERROR,
   FETCH_USER_DETAILS_SUCCESS,
-  REQUEST_CHANGE_USER_DETAILS_SUCCESS,
-  REQUEST_CHANGE_USER_DETAILS_ERROR,
   REQUEST_CHANGE_USER_DETAILS,
+  REQUEST_CHANGE_USER_DETAILS_ERROR,
+  REQUEST_CHANGE_USER_DETAILS_SUCCESS,
 } from '@constants/ActionTypes';
+import { APP_USER_INITIAL_STATE, USERS_INITIAL_STATE } from '@constants/initialState';
 
 const usersReducer = (state = USERS_INITIAL_STATE, action: UsersActionType) => {
   const { type, user } = action;

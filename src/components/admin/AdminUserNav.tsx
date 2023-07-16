@@ -1,27 +1,22 @@
-import React, {useEffect} from 'react'
-import { Fragment, useState } from 'react'
-import { BellIcon, MenuIcon, XIcon } from '@heroicons/react/outline'
-import { GiConsoleController } from 'react-icons/gi'
-import NavItems from '@main/NavItems'
-
 const navigation = [
-    { name: 'Dashboard', href: '#', current: true },
-    { name: 'Ordenes', href: '#', current: false },
-    { name: 'Clientes', href: '#', current: false },
-    { name: 'Productos', href: '#', current: false },
-    { name: 'Estadisticas', href: '#', current: false },
-  ]
+  { name: 'Dashboard', href: '#', current: true },
+  { name: 'Ordenes', href: '#', current: false },
+  { name: 'Clientes', href: '#', current: false },
+  { name: 'Productos', href: '#', current: false },
+  { name: 'Estadisticas', href: '#', current: false },
+];
 
-function classNames(...classes) { return classes.filter(Boolean).join(' ') }
+function classNames(...classes) {
+  return classes.filter(Boolean).join(' ');
+}
 
-const AdminUserNav = ({setActivePage, activePage}) => {
+const AdminUserNav = ({ setActivePage, activePage }) => {
+  const handleClick = (item: string): any => {
+    setActivePage(item);
+  };
 
-  const handleClick = (item:string):any => {
-    setActivePage(item)
-  }
-
-return (
-    <div  className="bg-violet-900">
+  return (
+    <div className="bg-violet-900">
       <>
         <div className="max-w-xl px-2 mx-auto sm:px-6 lg:px-8">
           <div className="relative flex items-center justify-between h-16">
@@ -44,21 +39,21 @@ return (
                   alt="ChargeUP BCN"
                 />
               </div>
-                
+
               <div className="hidden sm:block sm:ml-6">
                 <div className="flex space-x-4">
-                  {navigation.map((item) => ( 
-                      
+                  {navigation.map((item) => (
                     <button
                       key={item.name}
-                      name= {item.name}
+                      name={item.name}
                       // onClick={() => setActivePage(item.name)}
                       onClick={() => handleClick(item.name)}
                       // onClick={() => props.setMkactive(true) }
-                      
 
                       className={classNames(
-                        activePage ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                        activePage
+                          ? 'bg-gray-900 text-white'
+                          : 'text-gray-300 hover:bg-gray-700 hover:text-white',
                         'px-3 py-2 rounded-md text-sm font-medium'
                       )}
                       aria-current={activePage ? 'page' : undefined}
@@ -69,9 +64,7 @@ return (
                 </div>
               </div>
             </div>
-            <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-              
-            </div>
+            <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0"></div>
           </div>
         </div>
 
@@ -82,7 +75,9 @@ return (
                 key={item.name}
                 href={item.href}
                 className={classNames(
-                  item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                  item.current
+                    ? 'bg-gray-900 text-white'
+                    : 'text-gray-300 hover:bg-gray-700 hover:text-white',
                   'block px-3 py-2 rounded-md text-base font-medium'
                 )}
                 aria-current={item.current ? 'page' : undefined}
@@ -93,10 +88,8 @@ return (
           </div>
         </div>
       </>
-      
-  </div>
-)
-
-}
+    </div>
+  );
+};
 
 export default AdminUserNav;

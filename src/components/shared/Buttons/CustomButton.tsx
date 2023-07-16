@@ -1,5 +1,5 @@
-import { ButtonHTMLAttributes, FormEvent, ReactNode } from 'react';
 import Spinner from '@shared/Spinner';
+import { ButtonHTMLAttributes, FormEvent, ReactNode } from 'react';
 import { twMerge } from 'tailwind-merge';
 
 type ButtonProps = Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'type' | 'className'> & {

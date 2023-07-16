@@ -1,67 +1,76 @@
-import { useDispatch } from 'react-redux';
 import type { AppDispatch } from '@redux/store';
+import { useDispatch } from 'react-redux';
 
 import {
-  addProductToStore,
-  removeProductFromStore,
-  fetchProductsFromStore,
-  fetchProductsFromStoreSuccess,
-} from '@redux/actions/products';
-import {
-  registerNewUser,
-  loginUser,
-  logoutUser,
-  userTokenCheck,
-  validateEmailInDB,
-  requestPasswordRecovery,
-  validateTokenForPassChange,
   changeUserPassword,
   googleUserData,
+  loginUser,
+  logoutUser,
+  registerNewUser,
+  requestPasswordRecovery,
   successLoginUser,
+  userTokenCheck,
+  validateEmailInDB,
+  validateTokenForPassChange,
 } from '@redux/actions/auth';
 import {
-  loadCartState,
   addToCartState,
-  removeFromCartState,
   changeProductQuantityState,
   clearCartItems,
+  loadCartState,
+  removeFromCartState,
 } from '@redux/actions/cart';
-import { createNewCheckoutSession, createNewCheckoutSessionSuccess } from '@redux/actions/checkout';
+import { createNewCheckoutSession } from '@redux/actions/checkout';
 import {
-  displayMessageSuccess,
+  adminProductModalClose,
+  adminProductModalOpen,
+  cartModalClose,
+  cartModalOpen,
+  checkoutErrorModalClose,
+  checkoutErrorModalOpen,
+  checkoutModalClose,
+  checkoutModalOpen,
+  checkoutSuccessModalClose,
+  checkoutSuccessModalOpen,
+  drawerModalClose,
+  drawerModalOpen,
+  extrasModalClose,
+  extrasModalOpen,
+  filtersModalClose,
+  filtersModalOpen,
+  loginModalClose,
+  loginModalOpen,
+  productModalClose,
+  productModalOpen,
+  userModalClose,
+  userModalOpen,
+} from '@redux/actions/modal';
+import {
+  addProductToStore,
+  fetchProductsFromStore,
+  fetchProductsFromStoreSuccess,
+  removeProductFromStore,
+} from '@redux/actions/products';
+import {
   displayMessageError,
   displayMessageInfo,
+  displayMessageSuccess,
 } from '@redux/actions/toastNotifications';
-import {
-  cartModalOpen,
-  cartModalClose,
-  checkoutModalOpen,
-  checkoutModalClose,
-  checkoutSuccessModalOpen,
-  checkoutSuccessModalClose,
-  checkoutErrorModalOpen,
-  checkoutErrorModalClose,
-  drawerModalOpen,
-  drawerModalClose,
-  filtersModalOpen,
-  filtersModalClose,
-  loginModalOpen,
-  loginModalClose,
-  productModalOpen,
-  productModalClose,
-  extrasModalOpen,
-  extrasModalClose,
-  userModalOpen,
-  userModalClose,
-  adminProductModalOpen,
-  adminProductModalClose,
-} from '@redux/actions/modal';
 
 import { setFilters } from '@redux/actions/filters';
 
-import { fetchUserDetails, changeUserDetails } from '@redux/actions/users';
 import { addNewOrder } from '@redux/actions/order';
-import { CartProductType, GoogleSignInSuccessResponse, OrderType, ProductType, StorageUserType, UserDetailsType, UserLoginType, UserRegisterType } from 'types';
+import { changeUserDetails, fetchUserDetails } from '@redux/actions/users';
+import {
+  CartProductType,
+  GoogleSignInSuccessResponse,
+  OrderType,
+  ProductType,
+  StorageUserType,
+  UserDetailsType,
+  UserLoginType,
+  UserRegisterType,
+} from 'types';
 
 const useAppActions = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -69,11 +78,12 @@ const useAppActions = () => {
   // Auth
   const checkUserToken = (user: UserLoginType) => dispatch(userTokenCheck(user));
 
-  const getGoogleUserData = (payload: GoogleSignInSuccessResponse) => dispatch(googleUserData(payload));
+  const getGoogleUserData = (payload: GoogleSignInSuccessResponse) =>
+    dispatch(googleUserData(payload));
 
   const userLogin = (user: UserLoginType) => dispatch(loginUser(user));
 
-  const userLoginSuccess = (user: StorageUserType) => successLoginUser(user)
+  const userLoginSuccess = (user: StorageUserType) => successLoginUser(user);
 
   const userLogout = () => dispatch(logoutUser());
 

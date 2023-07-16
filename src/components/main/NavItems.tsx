@@ -18,10 +18,16 @@ const links = [
 
 const NavItems = ({ direction, onClose, className = '' }: Props) => {
   const directionStyles =
-    direction === 'row' ? 'flex-row pl-2 text-white hidden xl:flex' : 'flex-col text-purple-600 flex';
+    direction === 'row'
+      ? 'flex-row pl-2 text-white hidden xl:flex'
+      : 'flex-col text-purple-600 flex';
   return (
     <ul
-      className={twMerge('z-10 w-full items-center justify-center text-center font-dinBold',directionStyles, className )}
+      className={twMerge(
+        'z-10 w-full items-center justify-center text-center font-dinBold',
+        directionStyles,
+        className
+      )}
     >
       {links.map((link, index) => (
         <NavItem

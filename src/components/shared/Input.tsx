@@ -1,5 +1,4 @@
-import React, { FC, ChangeEvent, InputHTMLAttributes } from 'react';
-import { PencilIcon } from '@heroicons/react/24/outline';
+import { ChangeEvent, FC, InputHTMLAttributes } from 'react';
 import { twMerge } from 'tailwind-merge';
 
 type Props = InputHTMLAttributes<HTMLInputElement> & {

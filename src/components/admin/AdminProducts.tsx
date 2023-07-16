@@ -1,9 +1,7 @@
 import useAppActions from '@hooks/useAppActions';
 import useAppSelector from '@hooks/useAppSelector';
-import React, { useEffect, useState } from 'react';
-import { GiConsoleController } from 'react-icons/gi';
+import { useEffect } from 'react';
 import AdminProduct from './AdminProduct';
-import AdminProductDetails from './AdminProductDetails';
 import AdminProductSearch from './AdminProductSearch';
 
 const product_data = [

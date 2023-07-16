@@ -1,9 +1,9 @@
-import { FC, useEffect, useState } from 'react';
-import { TrashIcon, PencilIcon } from '@heroicons/react/24/outline';
+import { PencilIcon, TrashIcon } from '@heroicons/react/24/outline';
+import { FC, useState } from 'react';
 
 import useAppActions from '@hooks/useAppActions';
-import Counter from './Counter';
 import { CartProductType } from 'types';
+import Counter from './Counter';
 
 type Props = { product: CartProductType };
 
@@ -36,7 +36,7 @@ const CartProduct: FC<Props> = ({ product }) => {
           <div className="">
             {sizeLabel && <div className="">{`${sizeLabel} - €${price.toFixed(2)}`}</div>}
             {selectedExtras.length > 0 &&
-              selectedExtras.map((extra,index) => (
+              selectedExtras.map((extra, index) => (
                 <div key={index} className="">{`${extra.label} - €${extra.price.toFixed(2)}`}</div>
               ))}
             {isEditingQuantity ? (

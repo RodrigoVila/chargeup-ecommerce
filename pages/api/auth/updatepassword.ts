@@ -1,10 +1,9 @@
-import { NextApiRequest, NextApiResponse } from 'next';
-import User from '@models/user';
-import PasswordRecovery from '@models/passwordRecovery';
-import dbConnect from '@utils/dbConnect';
-import Id from '../order/[id]';
-import useEncryption from '@hooks/useEncryption';
 import { lang } from '@constants/lang';
+import useEncryption from '@hooks/useEncryption';
+import PasswordRecovery from '@models/passwordRecovery';
+import User from '@models/user';
+import dbConnect from '@utils/dbConnect';
+import { NextApiRequest, NextApiResponse } from 'next';
 
 const UpdatePassword = async (req: NextApiRequest, res: NextApiResponse) => {
   const { method, body } = req;
@@ -51,4 +50,4 @@ const UpdatePassword = async (req: NextApiRequest, res: NextApiResponse) => {
   }
 };
 
-export default UpdatePassword
+export default UpdatePassword;

@@ -1,13 +1,13 @@
-import { combineReducers } from 'redux'
+import { combineReducers } from 'redux';
 
-import authReducer from './auth'
-import cartReducer from './cart'
-import checkoutReducer from './checkout'
-import filtersReducer from './filters'
-import modalReducer from './modal'
-import productsReducer from './products'
-import toastReducer from './toastNotifications'
-import usersReducer from './users'
+import authReducer from './auth';
+import cartReducer from './cart';
+import checkoutReducer from './checkout';
+import filtersReducer from './filters';
+import modalReducer from './modal';
+import productsReducer from './products';
+import toastReducer from './toastNotifications';
+import usersReducer from './users';
 
 const rootReducer = combineReducers({
   auth: authReducer,
@@ -17,7 +17,7 @@ const rootReducer = combineReducers({
   modal: modalReducer,
   products: productsReducer,
   toastMessage: toastReducer,
-  users: usersReducer
-})
+  users: usersReducer,
+});
 
-export default rootReducer
+export default rootReducer;

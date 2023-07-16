@@ -1,10 +1,10 @@
 import { CartProductType } from 'types';
 import {
-  LOAD_CART,
   ADD_TO_CART,
-  REMOVE_FROM_CART,
   CHANGE_PRODUCT_QUANTITY,
   CLEAR_CART,
+  LOAD_CART,
+  REMOVE_FROM_CART,
 } from '../../constants/ActionTypes';
 
 export const loadCartState = (products: CartProductType[]) => ({

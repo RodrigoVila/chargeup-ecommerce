@@ -1,6 +1,6 @@
+import useMounted from '@hooks/useMounted';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import useMounted from '@hooks/useMounted';
 
 const ActiveLink = ({ children, href }) => {
   const { isMounted } = useMounted();

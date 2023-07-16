@@ -1,37 +1,37 @@
-import { useEffect } from 'react';
-import { useRouter } from 'next/router';
-import { Toaster } from 'react-hot-toast';
 import { GoogleOAuthProvider } from '@react-oauth/google';
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
+import { Toaster } from 'react-hot-toast';
 
 // Hooks
 import useAppActions from '@hooks/useAppActions';
 import useAppSelector from '@hooks/useAppSelector';
 
 // Sections
-import Welcome from '@sections/Welcome';
-import Products from '@sections/Products';
 import About from '@sections/About';
-import Keto from '@sections/Keto';
 import Cakes from '@sections/Cakes';
-import WhyUs from '@sections/WhyUs';
 import Footer from '@sections/Footer';
+import Keto from '@sections/Keto';
+import Products from '@sections/Products';
+import Welcome from '@sections/Welcome';
+import WhyUs from '@sections/WhyUs';
 
 // Modals
 import CartModal from '@main/Modal/CartModal';
 import CheckoutModal from '@main/Modal/CheckoutModal';
 import DrawerModal from '@main/Modal/DrawerModal';
+import ExtrasModal from '@main/Modal/ExtrasModal';
 import FiltersModal from '@main/Modal/FiltersModal';
 import LoginModal from '@main/Modal/LoginModal';
-import UserModal from '@main/Modal/UserModal';
-import ExtrasModal from '@main/Modal/ExtrasModal';
 import ProductDescModal from '@main/Modal/ProductDescModal';
+import UserModal from '@main/Modal/UserModal';
 
 // Components
 import Navbar from '@main/Navbar';
 
 // Utils
-import { getValueFromLocalStorage } from '@utils/localStorage';
 import { LOCAL_STORAGE_DATA_KEY } from '@constants/keys';
+import { getValueFromLocalStorage } from '@utils/localStorage';
 
 const MainScreen = () => {
   const router = useRouter();

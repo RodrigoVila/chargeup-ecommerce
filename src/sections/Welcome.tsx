@@ -1,4 +1,4 @@
-import { useEffect, FC } from 'react';
+import { FC, useEffect } from 'react';
 
 import useTypewriterEffect, { getTypewriter, useCursor } from '@hooks/useTypewriterEffect';
 
@@ -25,7 +25,12 @@ const Welcome: FC = () => {
   }, [dispatch]);
 
   return (
-    <Section id="welcome" bgImage="welcome.jpg" overlay childrenClassName='absolute inset-0 mx-auto'>
+    <Section
+      id="welcome"
+      bgImage="welcome.jpg"
+      overlay
+      childrenClassName="absolute inset-0 mx-auto"
+    >
       <div className="flex flex-col items-center justify-center w-full h-full gap-4 font-dinBold">
         <h1 className="text-3xl font-semibold tracking-wide text-center text-white leading-0 2xs:text-4xl md:px-4 md:text-6xl">
           TASTE THE LOVE AND FEEL RECHARGED

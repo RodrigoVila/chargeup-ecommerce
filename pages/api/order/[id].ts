@@ -1,6 +1,6 @@
-import { NextApiRequest, NextApiResponse } from "next";
-import Order from "@models/order";
-import dbConnect from "@utils/dbConnect";
+import Order from '@models/order';
+import dbConnect from '@utils/dbConnect';
+import { NextApiRequest, NextApiResponse } from 'next';
 
 const OrderAPIByID = async (req: NextApiRequest, res: NextApiResponse) => {
   const {
@@ -41,7 +41,7 @@ const OrderAPIByID = async (req: NextApiRequest, res: NextApiResponse) => {
     try {
       await Order.deleteOne({ _id: id });
 
-      return res.status(200).json({message: `Order ${id} deleted successfully`});
+      return res.status(200).json({ message: `Order ${id} deleted successfully` });
     } catch (e) {
       return res.status(400).json({
         success: false,
@@ -50,15 +50,15 @@ const OrderAPIByID = async (req: NextApiRequest, res: NextApiResponse) => {
   };
 
   switch (method) {
-    case "GET":
+    case 'GET':
       return getOrder();
-    case "PUT":
+    case 'PUT':
       return updateOrder();
-    case "DELETE":
+    case 'DELETE':
       return deleteOrder();
     default:
       return res.status(405).end(`Method ${method} Not Allowed`);
   }
 };
 
-export default OrderAPIByID
+export default OrderAPIByID;

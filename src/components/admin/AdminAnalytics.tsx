@@ -1,5 +1,4 @@
-import React from "react";
-import MetricCard from "@admin/MetricCard";
+import MetricCard from '@admin/MetricCard';
 
 const AdminAnalytics = () => {
   return (

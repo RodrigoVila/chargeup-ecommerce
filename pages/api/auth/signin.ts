@@ -3,9 +3,9 @@ import { v4 as uuidv4 } from 'uuid';
 
 import useEncryption from '@hooks/useEncryption';
 
+import { lang } from '@constants/lang';
 import User from '@models/user';
 import dbConnect from '@utils/dbConnect';
-import { lang } from '@constants/lang';
 
 const SignIn = async (req: NextApiRequest, res: NextApiResponse) => {
   const { method, body } = req;
@@ -44,7 +44,7 @@ const SignIn = async (req: NextApiRequest, res: NextApiResponse) => {
     } catch (e) {
       return res.status(400).json({
         success: false,
-        error: e.message
+        error: e.message,
       });
     }
   };
@@ -57,4 +57,4 @@ const SignIn = async (req: NextApiRequest, res: NextApiResponse) => {
   }
 };
 
-export default SignIn
+export default SignIn;

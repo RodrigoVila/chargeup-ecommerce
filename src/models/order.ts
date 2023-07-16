@@ -15,7 +15,6 @@ const itemSchema = new mongoose.Schema({
   total: Number,
 });
 
-
 export const adressSchema = new mongoose.Schema({
   street: {
     type: String,

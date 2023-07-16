@@ -1,26 +1,26 @@
 import {
-  OPEN_ADMIN_PRODUCT_MODAL,
   CLOSE_ADMIN_PRODUCT_MODAL,
-  OPEN_CART_MODAL,
   CLOSE_CART_MODAL,
-  OPEN_CHECKOUT_MODAL,
   CLOSE_CHECKOUT_MODAL,
-  OPEN_CHECKOUT_MODAL_SUCCESS,
-  CLOSE_OPEN_CHECKOUT_MODAL_SUCCESS,
-  OPEN_CHECKOUT_MODAL_ERROR,
   CLOSE_CHECKOUT_MODAL_ERROR,
-  OPEN_DRAWER_MODAL,
   CLOSE_DRAWER_MODAL,
-  OPEN_FILTERS_MODAL,
+  CLOSE_EXTRAS_MODAL,
   CLOSE_FILTERS_MODAL,
-  OPEN_LOGIN_MODAL,
   CLOSE_LOGIN_MODAL,
-  OPEN_PRODUCT_DETAILS_MODAL,
+  CLOSE_OPEN_CHECKOUT_MODAL_SUCCESS,
   CLOSE_PRODUCT_DETAILS_MODAL,
-  OPEN_USER_MODAL,
   CLOSE_USER_MODAL,
+  OPEN_ADMIN_PRODUCT_MODAL,
+  OPEN_CART_MODAL,
+  OPEN_CHECKOUT_MODAL,
+  OPEN_CHECKOUT_MODAL_ERROR,
+  OPEN_CHECKOUT_MODAL_SUCCESS,
+  OPEN_DRAWER_MODAL,
   OPEN_EXTRAS_MODAL,
-  CLOSE_EXTRAS_MODAL
+  OPEN_FILTERS_MODAL,
+  OPEN_LOGIN_MODAL,
+  OPEN_PRODUCT_DETAILS_MODAL,
+  OPEN_USER_MODAL,
 } from '@constants/ActionTypes';
 
 const initialState: ModalStateType = {
@@ -34,19 +34,19 @@ const initialState: ModalStateType = {
   login: false,
   selectedProduct: null,
   product: false,
-  extras:false,
+  extras: false,
   user: false,
 };
 
 const modalReducer = (state = initialState, action: ModalActionType): ModalStateType => {
-  const { type, selectedProduct,} = action;
+  const { type, selectedProduct } = action;
 
   switch (type) {
     case OPEN_ADMIN_PRODUCT_MODAL:
       return {
         ...state,
         adminProduct: true,
-        selectedProduct
+        selectedProduct,
       };
     case CLOSE_ADMIN_PRODUCT_MODAL:
       return {
@@ -144,18 +144,18 @@ const modalReducer = (state = initialState, action: ModalActionType): ModalState
         ...state,
         user: false,
       };
-      case OPEN_EXTRAS_MODAL:
-        return {
-          ...state,
-          extras: true,
-          selectedProduct
-        };
-      case CLOSE_EXTRAS_MODAL:
-        return {
-          ...state,
-          extras: false,
-          selectedProduct: null
-        };
+    case OPEN_EXTRAS_MODAL:
+      return {
+        ...state,
+        extras: true,
+        selectedProduct,
+      };
+    case CLOSE_EXTRAS_MODAL:
+      return {
+        ...state,
+        extras: false,
+        selectedProduct: null,
+      };
   }
 
   return state;

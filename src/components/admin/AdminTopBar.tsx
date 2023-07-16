@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import { useState } from 'react';
 
 const AdminTopBar = () => {
-  const [showDropdown, setShowDropdown] = useState("invisible");
+  const [showDropdown, setShowDropdown] = useState('invisible');
 
   const handleDropdown = () => {
     // function toggleDD(myDropMenu) {
@@ -55,10 +55,7 @@ const AdminTopBar = () => {
         <div className="flex content-center justify-between w-full pt-2 md:w-1/3 md:justify-end">
           <ul className="flex items-center justify-between flex-1 list-reset md:flex-none">
             <li className="flex-1 md:flex-none md:mr-3">
-              <a
-                className="inline-block px-4 py-2 text-white no-underline"
-                href="#"
-              >
+              <a className="inline-block px-4 py-2 text-white no-underline" href="#">
                 Active
               </a>
             </li>
@@ -72,15 +69,12 @@ const AdminTopBar = () => {
             </li>
             <li className="flex-1 md:flex-none md:mr-3">
               <div className="relative inline-block">
-                <button
-                  onClick={() => {}}
-                  className="text-white drop-button focus:outline-none"
-                >
-                  {" "}
+                <button onClick={() => {}} className="text-white drop-button focus:outline-none">
+                  {' '}
                   <span className="pr-2">
                     <i className="em em-robot_face"></i>
-                  </span>{" "}
-                  Hi, User{" "}
+                  </span>{' '}
+                  Hi, User{' '}
                   <svg
                     className="inline h-3 fill-current"
                     xmlns="http://www.w3.org/2000/svg"

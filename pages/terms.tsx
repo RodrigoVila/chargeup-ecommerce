@@ -1,5 +1,3 @@
-import React from 'react'
-
 const terms = () => {
   return (
     <div style={{ margin: '20px' }}>
@@ -260,7 +258,7 @@ const terms = () => {
         </li>
       </ul>
     </div>
-  )
-}
+  );
+};
 
-export default terms
+export default terms;

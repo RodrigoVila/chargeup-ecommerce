@@ -1,16 +1,16 @@
-import { ChangeEvent, useEffect, useMemo, useState } from 'react';
-import { v4 as uuidv4 } from 'uuid';
-
-import useAppSelector from '@hooks/useAppSelector';
 import useAppActions from '@hooks/useAppActions';
+import useAppSelector from '@hooks/useAppSelector';
 
 import Modal from '@shared/Modal';
 
-import { DeliveryType, OrderType, UserDetailsType } from 'types';
 import { CartSummary } from '@main/CartSummary';
 import { DeliveryOptions } from '@main/DeliveryOptions';
-import { CartModalButtons } from 'components/CartModalButtons';
 import UserDataForm from '@shared/Forms/UserDataForm';
+import { CartModalButtons } from 'components/CartModalButtons';
+import { DeliveryType, OrderType, UserDetailsType } from 'types';
+
+import { ChangeEvent, useEffect, useMemo, useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
 const CartModal = () => {
   const [loading, setLoading] = useState(false);
@@ -20,7 +20,8 @@ const CartModal = () => {
   const [userData, setUserData] = useState<UserDetailsType | null>(null);
 
   const { isCartModalOpen, cartItems, userLogin } = useAppSelector();
-  const { closeCartModal, createCheckoutSession, editUserDetails, openLoginModal } = useAppActions();
+  const { closeCartModal, createCheckoutSession, editUserDetails, openLoginModal } =
+    useAppActions();
 
   const totalSum = useMemo(() => cartItems.reduce((acc, item) => acc + item.total, 0), [cartItems]);
 
@@ -95,7 +96,15 @@ const CartModal = () => {
               <input type="checkbox" onChange={handleCheck} />
               <p>Guardar mis datos para futuras compras.</p>
             </div>
-          ): <p className='font-bold text-md'>Nota: Puedes <span onClick={openLoginModal} className='text-blue-400 cursor-pointer text-bold'>iniciar sesión</span> para guardar tus datos y no volver a escribirlos la próxima vez!</p>}
+          ) : (
+            <p className="font-bold text-md">
+              Nota: Puedes{' '}
+              <span onClick={openLoginModal} className="text-blue-400 cursor-pointer text-bold">
+                iniciar sesión
+              </span>{' '}
+              para guardar tus datos y no volver a escribirlos la próxima vez!
+            </p>
+          )}
         </>
       ),
       buttons: (

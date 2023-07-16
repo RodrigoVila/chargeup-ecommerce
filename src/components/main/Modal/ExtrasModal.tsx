@@ -1,14 +1,13 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 import useAppActions from '@hooks/useAppActions';
 import useAppSelector from '@hooks/useAppSelector';
 
-import Modal from '@shared/Modal';
-import Button from '@shared/Buttons/CustomButton';
-import CloseModalButton from '@shared/Buttons/CloseModalButton';
+import Checkbox from '@main/Checkbox';
 import Counter from '@main/Counter';
 import Dropdown from '@main/Dropdown';
-import Checkbox from '@main/Checkbox';
+import Button from '@shared/Buttons/CustomButton';
+import Modal from '@shared/Modal';
 import { getProductSubtotal } from '@utils/index';
 import { CartProductType, ILabelAndPrice } from 'types';
 
@@ -17,7 +16,7 @@ const ExtrasModal = () => {
 
   // Product specification before adding it to cart
   const [itemCount, setItemCount] = useState(1);
-  const [selectedSize, setSelectedSize] = useState<ILabelAndPrice| null>(null);
+  const [selectedSize, setSelectedSize] = useState<ILabelAndPrice | null>(null);
   const [selectedExtras, setSelectedExtras] = useState<ILabelAndPrice[]>([]);
 
   const { isExtrasModalOpen, selectedModalProduct } = useAppSelector();
@@ -90,14 +89,9 @@ const ExtrasModal = () => {
   const labelStyle = 'text-md font-bold';
 
   return (
-    <Modal isOpen={isExtrasModalOpen} onClose={closeExtrasModal} >
-      <div
-        className="flex flex-col w-full gap-2"
-        onClick={closeDropdown}
-      >
-        <h3 className="text-xl font-semibold text-center">
-          {selectedModalProduct?.title}
-        </h3>
+    <Modal isOpen={isExtrasModalOpen} onClose={closeExtrasModal}>
+      <div className="flex flex-col w-full gap-2" onClick={closeDropdown}>
+        <h3 className="text-xl font-semibold text-center">{selectedModalProduct?.title}</h3>
         <div className="flex flex-col flex-wrap items-start">
           {/* sizes dropdown */}
           {selectedModalProduct?.sizes ? (

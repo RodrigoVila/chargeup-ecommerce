@@ -1,4 +1,4 @@
-import { FC, ChangeEvent } from 'react';
+import { ChangeEvent, FC } from 'react';
 
 import { lang } from '@constants/lang';
 import Input from '@shared/Input';

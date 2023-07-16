@@ -1,5 +1,5 @@
-import { FC } from 'react';
 import Section from '@main/Section';
+import { FC } from 'react';
 
 const CakesSection: FC = () => {
   return (

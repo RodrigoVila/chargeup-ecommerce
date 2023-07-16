@@ -1,32 +1,32 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 
+import { lang } from '@constants/lang';
 import {
-  successRegisterUser,
-  errorRegisterUser,
-  errorLoginUser,
-  successLoginUser,
-  validateEmailInDBSuccess,
-  validateEmailInDBError,
-  requestPasswordRecoverySuccess,
-  requestPasswordRecoveryError,
-  validateTokenForPassChangeSucccess,
-  validateTokenForPassChangeError,
-  changeUserPasswordSuccess,
   changeUserPasswordError,
+  changeUserPasswordSuccess,
+  errorLoginUser,
+  errorRegisterUser,
+  requestPasswordRecoveryError,
+  requestPasswordRecoverySuccess,
+  successLoginUser,
+  successRegisterUser,
+  validateEmailInDBError,
+  validateEmailInDBSuccess,
+  validateTokenForPassChangeError,
+  validateTokenForPassChangeSucccess,
 } from '@redux/actions/auth';
-import { displayMessageSuccess, displayMessageError } from '@redux/actions/toastNotifications';
 import { loginModalClose } from '@redux/actions/modal';
+import { displayMessageError, displayMessageSuccess } from '@redux/actions/toastNotifications';
 import {
-  REGISTER_USER,
-  LOGIN_USER,
   CHECK_USER_TOKEN,
+  LOGIN_USER,
   LOGIN_WITH_GOOGLE,
-  VALIDATE_EMAIL_IN_DB,
-  REQUEST_PASSWORD_RECOVERY,
+  REGISTER_USER,
   REQUEST_CHANGE_USER_PASSWORD,
+  REQUEST_PASSWORD_RECOVERY,
+  VALIDATE_EMAIL_IN_DB,
   VALIDATE_TOKEN_FOR_PASSWORD_CHANGE,
 } from 'constants/ActionTypes';
-import { lang } from '@constants/lang';
 
 const API_URL = '/api/auth';
 

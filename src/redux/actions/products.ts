@@ -1,10 +1,9 @@
 import {
-  SET_PRODUCTS_LOADING,
   ADD_PRODUCT,
   DELETE_PRODUCT,
-  FETCH_PRODUCTS_SUCCESS,
   FETCH_PRODUCTS,
   FETCH_PRODUCTS_ERROR,
+  FETCH_PRODUCTS_SUCCESS,
 } from '../../constants/ActionTypes';
 
 export const addProductToStore = (product: ProductType) => ({

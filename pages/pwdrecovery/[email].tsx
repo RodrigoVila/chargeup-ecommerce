@@ -1,14 +1,13 @@
-import { useEffect } from 'react';
-import { useRouter } from 'next/router';
 import useAppActions from '@hooks/useAppActions';
-import Spinner from '@shared/Spinner';
 import useAppSelector from '@hooks/useAppSelector';
+import useGobBackCountdown from '@hooks/useCountdown';
 import ErrorSucces from '@main/ErrorSuccess';
-import { lang } from '@constants/lang';
 import UpdatePasswordForm from '@shared/Forms/UpdatePasswordForm';
 import Logo from '@shared/Logo';
+import Spinner from '@shared/Spinner';
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 import { Toaster } from 'react-hot-toast';
-import useGobBackCountdown from '@hooks/useCountdown';
 
 const PasswordRecovery = () => {
   const router = useRouter();

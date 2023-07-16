@@ -1,5 +1,3 @@
-import React from "react";
-
 interface Props {
   title: string;
   metric: string;
@@ -19,11 +17,9 @@ const MetricCard = ({ title, metric, cardColor }: Props) => {
             </div>
           </div>
           <div className="flex-1 text-right md:text-center">
-            <h5 className="font-bold text-gray-600 uppercase">
-              {title || "Total Revenue"}
-            </h5>
+            <h5 className="font-bold text-gray-600 uppercase">{title || 'Total Revenue'}</h5>
             <h3 className="text-3xl font-bold">
-              {metric || "$3.250"}
+              {metric || '$3.250'}
               <span className={`text-${cardColor}-500`}>
                 <i className="fas fa-caret-up"></i>
               </span>

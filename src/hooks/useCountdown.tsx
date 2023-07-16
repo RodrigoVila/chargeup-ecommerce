@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 const useGobBackCountdown = () => {
   const [timeRemaining, setTimeRemaining] = useState(0);

@@ -1,6 +1,5 @@
 import mongoose from 'mongoose';
-import { orderSchema, adressSchema } from './order';
-
+import { adressSchema, orderSchema } from './order';
 
 const userSchema = new mongoose.Schema(
   {
@@ -48,7 +47,7 @@ const userSchema = new mongoose.Schema(
     },
     address: {
       type: adressSchema,
-      required: false
+      required: false,
     },
     token: {
       type: String,

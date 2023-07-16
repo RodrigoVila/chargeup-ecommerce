@@ -1,5 +1,4 @@
-import { shallowEqual } from 'react-redux';
-import { createSelectorHook } from 'react-redux';
+import { createSelectorHook, shallowEqual } from 'react-redux';
 
 import type { RootState } from '@redux/store';
 import { CartProductType, ProductType } from 'types';
@@ -14,7 +13,7 @@ const useAppSelector = () => {
     redirect: authRedirect,
     userLogin,
     isEmailValidated,
-    isTokenForPasswordValidated
+    isTokenForPasswordValidated,
   } = useSelector((state) => state.auth, shallowEqual);
 
   //Cart
@@ -25,7 +24,10 @@ const useAppSelector = () => {
   const filters = useSelector((state) => state.filters.filters, shallowEqual);
 
   //Admin MOdals
-  const isAdminProductModalOpen: boolean = useSelector((state) => state.modal.adminProduct, shallowEqual);
+  const isAdminProductModalOpen: boolean = useSelector(
+    (state) => state.modal.adminProduct,
+    shallowEqual
+  );
   //User Modals
   const isCartModalOpen: boolean = useSelector((state) => state.modal.cart, shallowEqual);
   const isCheckoutModalOpen = useSelector((state) => state.modal.checkout, shallowEqual);

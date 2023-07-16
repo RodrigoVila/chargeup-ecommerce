@@ -1,14 +1,14 @@
 import useAppSelector from '@hooks/useAppSelector';
 
-import Modal from '@shared/Modal';
-import useAppActions from '@hooks/useAppActions';
 import { lang } from '@constants/lang';
-import RegisterForm from '@shared/Forms/RegisterForm';
+import useAppActions from '@hooks/useAppActions';
+import useLogin from '@hooks/useLogin';
+import Link from '@main/Link';
+import { CustomButton, GoogleSignInButton } from '@shared/Buttons';
 import LoginForm from '@shared/Forms/LoginForm';
 import PasswordRecoveryForm from '@shared/Forms/PasswordRecoveryForm';
-import Link from '@main/Link';
-import useLogin from '@hooks/useLogin';
-import { GoogleSignInButton, CustomButton } from '@shared/Buttons';
+import RegisterForm from '@shared/Forms/RegisterForm';
+import Modal from '@shared/Modal';
 
 const LoginModal = () => {
   const { isLoginModalOpen, isAuthLoading } = useAppSelector();

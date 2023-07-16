@@ -1,10 +1,10 @@
-import { useEffect } from 'react';
-import { useRouter } from 'next/router';
+import { lang } from '@constants/lang';
 import useAppActions from '@hooks/useAppActions';
-import Spinner from '@shared/Spinner';
 import useAppSelector from '@hooks/useAppSelector';
 import ErrorSucces from '@main/ErrorSuccess';
-import { lang } from '@constants/lang';
+import Spinner from '@shared/Spinner';
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 
 const EmailValidation = () => {
   const router = useRouter();

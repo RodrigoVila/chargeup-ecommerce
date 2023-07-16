@@ -1,9 +1,8 @@
 import useAppActions from '@hooks/useAppActions';
 import useAppSelector from '@hooks/useAppSelector';
 
-import Modal from '@shared/Modal';
-import CloseModalButton from '@shared/Buttons/CloseModalButton';
 import NavItems from '@main/NavItems';
+import Modal from '@shared/Modal';
 
 const DrawerModal = () => {
   const { isDrawerModalOpen } = useAppSelector();

@@ -1,7 +1,6 @@
-import React, { useState } from "react";
-import AdminClientInvite from "./AdminClientInvite";
-import AdminCustomerSearch from "./AdminCustomerSearch";
-import AdminCustomerList from "./AdminCustomerList";
+import AdminClientInvite from './AdminClientInvite';
+import AdminCustomerList from './AdminCustomerList';
+import AdminCustomerSearch from './AdminCustomerSearch';
 
 const AdminCustomers = () => {
   return (

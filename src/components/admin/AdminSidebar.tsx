@@ -1,9 +1,9 @@
-import NavItem from "@main/NavItem";
-import { FaUsers, FaPagelines } from "react-icons/fa";
-import { RiLogoutCircleLine } from "react-icons/ri";
-import { IoMdAnalytics } from "react-icons/io";
+import NavItem from '@main/NavItem';
+import { FaPagelines, FaUsers } from 'react-icons/fa';
+import { IoMdAnalytics } from 'react-icons/io';
+import { RiLogoutCircleLine } from 'react-icons/ri';
 
-const iconClassName = "pr-0 md:pr-3 text-3xl";
+const iconClassName = 'pr-0 md:pr-3 text-3xl';
 
 const analyticsIcon = <IoMdAnalytics className={iconClassName} />;
 const productsIcon = <FaPagelines className={iconClassName} />;
@@ -20,32 +20,27 @@ const AdminSidebar = ({ setSelected }) => {
             title="Analytics"
             icon={analyticsIcon}
             borderColor="red"
-            onClick={() => setSelected("Analytics")}
+            onClick={() => setSelected('Analytics')}
           />
           <NavItem
             title="Customers"
             icon={usersIcon}
             borderColor="green"
-            onClick={() => setSelected("Customers")}
+            onClick={() => setSelected('Customers')}
           />
           <NavItem
             title="Products"
             icon={productsIcon}
             borderColor="blue"
-            onClick={() => setSelected("Products")}
+            onClick={() => setSelected('Products')}
           />
           <NavItem
             title="Transactions"
             icon={productsIcon}
             borderColor="pink"
-            onClick={() => setSelected("Transactions")}
+            onClick={() => setSelected('Transactions')}
           />
-          <NavItem
-            title="Logout"
-            icon={logOutIcon}
-            borderColor="yellow"
-            onClick={logout}
-          />
+          <NavItem title="Logout" icon={logOutIcon} borderColor="yellow" onClick={logout} />
         </ul>
       </div>
     </div>

@@ -1,10 +1,10 @@
-import { useState, useEffect, FormEvent } from 'react';
+import { FormEvent, useEffect, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
+import { lang } from '@constants/lang';
 import useAppActions from '@hooks/useAppActions';
 import useEncryption from '@hooks/useEncryption';
 import { isEmailValid, isPasswordValid } from '@utils/index';
-import { lang } from '@constants/lang';
 
 const initialState = {
   name: '',
@@ -14,7 +14,7 @@ const initialState = {
   repeatPassword: '',
 };
 
-type FormType = "login" | "register" | "passwordRecovery" 
+type FormType = 'login' | 'register' | 'passwordRecovery';
 
 const useLogin = () => {
   const [formType, setFormType] = useState<FormType>('login');
@@ -32,8 +32,6 @@ const useLogin = () => {
   };
 
   const cleanCredentials = () => setCredentials(initialState);
-
-
 
   const handleRegister = async () => {
     const pid = uuidv4();

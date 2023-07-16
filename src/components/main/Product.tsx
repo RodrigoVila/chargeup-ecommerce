@@ -1,15 +1,11 @@
-import { FC } from 'react';
 import Image from 'next/image';
+import { FC } from 'react';
 import ReactTooltip from 'react-tooltip';
 
-import Button from '@shared/Buttons/CustomButton';
-import Counter from '@main/Counter';
-import RoundImage from '@main/RoundImage';
-import { colors } from '@constants/colors';
 import useAppActions from '@hooks/useAppActions';
 import useMounted from '@hooks/useMounted';
-import Dropdown from './Dropdown';
-import PreCartModal from './Modal/ExtrasModal';
+import RoundImage from '@main/RoundImage';
+import Button from '@shared/Buttons/CustomButton';
 import { ProductType } from 'types';
 
 type Props = {

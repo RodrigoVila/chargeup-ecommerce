@@ -1,7 +1,7 @@
-import { FC } from 'react'
+import { FC } from 'react';
 
 interface Props {
-  setSearchValue: (value: string) => void
+  setSearchValue: (value: string) => void;
 }
 
 const ProductSearchBar: FC<Props> = ({ setSearchValue }) => {
@@ -15,7 +15,7 @@ const ProductSearchBar: FC<Props> = ({ setSearchValue }) => {
         className="w-full px-2 py-2 pl-4 text-lg leading-normal transition border border-transparent rounded appearance-none focus:border-gray-400 focus:outline-none"
       />
     </div>
-  )
-}
+  );
+};
 
-export default ProductSearchBar
+export default ProductSearchBar;

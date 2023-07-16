@@ -1,6 +1,6 @@
-import { NextApiRequest, NextApiResponse } from 'next';
 import { stripeSecretKey } from '@constants/keys';
 import Order from '@models/order';
+import { NextApiRequest, NextApiResponse } from 'next';
 import { CartProductType, OrderType } from 'types';
 const stripe = require('stripe')(stripeSecretKey);
 
@@ -39,7 +39,7 @@ const CheckoutSession = async (req: NextApiRequest, res: NextApiResponse) => {
         },
         metadata: { orderId: newOrder.id },
         mode: 'payment',
-        payment_method_types: ["card"],
+        payment_method_types: ['card'],
         success_url: `${req.headers.origin}/ordersuccess/id=${newOrder.id}`,
         cancel_url: req.headers.origin,
       });

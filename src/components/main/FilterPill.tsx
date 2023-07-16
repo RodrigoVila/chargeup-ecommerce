@@ -1,26 +1,26 @@
-import { useState, useEffect } from 'react'
-import Image from 'next/image'
+import Image from 'next/image';
+import { useEffect, useState } from 'react';
 
-import { colors } from '@constants/colors'
+import { colors } from '@constants/colors';
 
 interface Props {
-  label: string
-  selected: boolean
-  onClick: (value: string) => void
+  label: string;
+  selected: boolean;
+  onClick: (value: string) => void;
 }
 
 const FilterPill = ({ label, selected, onClick }: Props) => {
-  const [isActive, setActive] = useState(false)
+  const [isActive, setActive] = useState(false);
 
   const handleClick = (e) => {
-    e.stopPropagation()
-    setActive(!isActive)
-    onClick(label)
-  }
+    e.stopPropagation();
+    setActive(!isActive);
+    onClick(label);
+  };
 
   useEffect(() => {
-    selected && setActive(true)
-  }, [selected])
+    selected && setActive(true);
+  }, [selected]);
 
   return (
     <div
@@ -37,7 +37,7 @@ const FilterPill = ({ label, selected, onClick }: Props) => {
       </div>
       <p className={`${isActive ? 'font-bold' : ''} select-none text-white`}>{label}</p>
     </div>
-  )
-}
+  );
+};
 
-export default FilterPill
+export default FilterPill;
