@@ -11,15 +11,8 @@ const DrawerModal = () => {
   const { closeDrawerModal } = useAppActions();
 
   return (
-    <Modal isOpen={isDrawerModalOpen} transparent fullScreen>
-      <div className="bg-white rounded-md">
-        <div className="flex items-center justify-end w-full px-4 pt-4 pb-0">
-          <CloseModalButton color="black" onClose={() => closeDrawerModal()} />
-        </div>
-        <div className="px-16 mb-6">
-          <NavItems direction="column" onClose={() => closeDrawerModal()} />
-        </div>
-      </div>
+    <Modal isOpen={isDrawerModalOpen} onClose={closeDrawerModal}>
+      <NavItems direction="column" onClose={() => closeDrawerModal()} />
     </Modal>
   );
 };

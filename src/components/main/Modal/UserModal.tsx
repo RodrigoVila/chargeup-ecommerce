@@ -6,9 +6,9 @@ import UserDetails from '@main/UserDetails';
 
 const UserModal = () => {
   const { isUserModalOpen } = useAppSelector();
-
+  const { closeUserModal } = useAppActions();
   return (
-    <Modal isOpen={isUserModalOpen} transparent fullScreen>
+    <Modal isOpen={isUserModalOpen} onClose={closeUserModal}>
       <UserDetails />
     </Modal>
   );

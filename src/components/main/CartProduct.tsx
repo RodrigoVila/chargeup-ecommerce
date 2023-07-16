@@ -3,6 +3,7 @@ import { TrashIcon, PencilIcon } from '@heroicons/react/24/outline';
 
 import useAppActions from '@hooks/useAppActions';
 import Counter from './Counter';
+import { CartProductType } from 'types';
 
 type Props = { product: CartProductType };
 

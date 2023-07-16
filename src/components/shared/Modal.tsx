@@ -1,23 +1,26 @@
-import { useEffect,ReactNode } from 'react';
+import { useEffect, ReactNode } from 'react';
 
-import { colors } from '@constants/colors';
 import Portal from '@utils/Portal';
 import BackgroundOverlay from '@main/BackgroundOverlay';
 import useAppActions from '@hooks/useAppActions';
+import { twMerge } from 'tailwind-merge';
+import CloseModalButton from './Buttons/CloseModalButton';
 
 interface Props {
   children?: ReactNode;
   isOpen: boolean;
-  transparent?: boolean;
-  fullScreen?: boolean;
+  onClose: () => void;
+  className?: string;
+  bodyClassName?: string;
   closeOnOverlayClick?: boolean;
 }
 
 const Modal = ({
   children,
   isOpen,
-  transparent,
-  fullScreen = false,
+  onClose,
+  className,
+  bodyClassName,
   closeOnOverlayClick = false,
 }: Props) => {
   const { closeDrawerModal } = useAppActions();
@@ -30,14 +33,21 @@ const Modal = ({
     <Portal wrapperId="react-portal-modal-container">
       <div
         onClick={closeOnOverlayClick ? closeDrawerModal : undefined}
-        className={`${transparent ? 'bg-transparent' : 'bg-white'} ${
-          fullScreen
-            ? 'inset-0 items-center justify-center'
-            : 'top-20 items-center justify-center'
-        } fixed z-40 flex flex-col min-h-screen h-full w-full`}
+        className={twMerge(
+          'bg-transparent inset-0 items-center justify-center fixed z-40 flex flex-col min-h-screen h-full w-full',
+          className
+        )}
       >
-        {transparent && <BackgroundOverlay />}
-        <div className="z-50 flex flex-col items-center justify-center w-full max-w-md px-6 overflow-hidden">{children}</div>
+        <BackgroundOverlay />
+        <div
+          className={twMerge(
+            'bg-white z-50 flex flex-col items-center justify-center w-full max-w-md p-6 pt-10 overflow-hidden relative',
+            bodyClassName
+          )}
+        >
+          <CloseModalButton color="black" className="absolute right-2 top-2 z-70" onClose={onClose} />
+          {children}
+        </div>
       </div>
     </Portal>
   ) : null;

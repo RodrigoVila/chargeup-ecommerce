@@ -11,21 +11,19 @@ const ProductDescModal: FC = () => {
   const { closeProductModal } = useAppActions();
 
   return (
-    <Modal isOpen={isProductModalOpen} transparent fullScreen>
-      <div className="flex flex-col w-full bg-white rounded-md">
+    <Modal isOpen={isProductModalOpen} onClose={closeProductModal}>
+      <div className="flex flex-col w-full gap-3">
         {/*header*/}
-        <h3 className="my-2 text-2xl font-semibold text-center">{selectedModalProduct?.title}</h3>
+        <h3 className="text-2xl font-semibold text-center">{selectedModalProduct?.title}</h3>
         {/*body*/}
-        <div className="px-2 text-center">
+        <div className="text-center">
           <div className="px-1 text-sm leading-relaxed text-slate-500">
-            {selectedModalProduct?.description.long?.map((p,i) => (
+            {selectedModalProduct?.description.long?.map((p, i) => (
               <p key={i}>{p}</p>
             ))}
           </div>
         </div>
-        <div className="flex items-center px-4 pt-4 pb-4">
-          <Button onClick={() => closeProductModal()}>Cerrar</Button>
-        </div>
+        <Button onClick={() => closeProductModal()}>Cerrar</Button>
       </div>
     </Modal>
   );

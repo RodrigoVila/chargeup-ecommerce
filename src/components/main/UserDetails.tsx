@@ -37,17 +37,9 @@ const UserDetails = () => {
 
       {!editing && (
         <div className="flex flex-col items-center justify-center w-full gap-2 mx-auto">
-          <CloseModalButton color="black" className="self-end" onClose={closeUserModal} />
-
-          <div className="flex flex-col w-full gap-2 px-4 pb-4">
-            <Button onClick={() => setEdit('userData')}>
-              {lang.es.CHANGE_USER_DATA}
-            </Button>
-            <Button onClick={() => setEdit('password')}>
-              {lang.es.CHANGE_PASSWORD}
-            </Button>
-            <Button onClick={onClickLogout}>{lang.es.LOGOUT}</Button>
-          </div>
+          <Button onClick={() => setEdit('userData')}>{lang.es.CHANGE_USER_DATA}</Button>
+          <Button onClick={() => setEdit('password')}>{lang.es.CHANGE_PASSWORD}</Button>
+          <Button onClick={onClickLogout}>{lang.es.LOGOUT}</Button>
         </div>
       )}
     </div>

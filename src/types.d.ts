@@ -130,6 +130,8 @@ interface ModalActionType extends ModalStateType {
   sizeAndExtras: any;
 }
 
+type DeliveryType = "Pick UP" | "Delivery"
+
 //Order
 type OrderType = {
   id: string;
@@ -137,7 +139,8 @@ type OrderType = {
   name?: string | null;
   phone?: string | null;
   items: CartProductType[];
-  address: AddressType | string;
+  deliveryType: DeliveryType
+  address?: AddressType;
   totalAmount: string;
   status?: string;
   created: Date;

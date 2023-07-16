@@ -42,8 +42,6 @@ const ExtrasModal = () => {
       : setSelectedExtras((prevExtras) => prevExtras.filter((ex) => ex.label !== extra.label));
   };
 
-  const onClose = () => closeExtrasModal();
-
   const closeDropdown = () => setDropdownOepn(false);
 
   const subTotal = getProductSubtotal(selectedSize, selectedExtras);
@@ -92,16 +90,11 @@ const ExtrasModal = () => {
   const labelStyle = 'text-md font-bold';
 
   return (
-    <Modal isOpen={isExtrasModalOpen} transparent fullScreen>
+    <Modal isOpen={isExtrasModalOpen} onClose={closeExtrasModal} >
       <div
-        className="relative flex flex-col w-full gap-2 p-4 bg-white rounded-md"
+        className="flex flex-col w-full gap-2"
         onClick={closeDropdown}
       >
-        <CloseModalButton
-          color="black"
-          onClose={onClose}
-          className="flex self-end -mt-2 -mr-2"
-        />
         <h3 className="text-xl font-semibold text-center">
           {selectedModalProduct?.title}
         </h3>

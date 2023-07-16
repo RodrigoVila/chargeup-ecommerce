@@ -12,7 +12,7 @@ const AdminProductModal: FC = () => {
   }, [isAdminProductModalOpen]);
 
   return (
-    <Modal isOpen={isAdminProductModalOpen} transparent fullScreen>
+    <Modal isOpen={isAdminProductModalOpen} >
       <AdminProductDetails product={modalProduct} />
     </Modal>
   );

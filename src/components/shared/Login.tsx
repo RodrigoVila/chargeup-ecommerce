@@ -13,7 +13,6 @@ import GoogleSignInButton from './Buttons/GoogleSignInButton';
 import useAppSelector from '@hooks/useAppSelector';
 
 const Login = () => {
-  const { closeLoginModal } = useAppActions();
   const { isAuthLoading } = useAppSelector();
   const { formType, setFormType, onInputChange, handleButtonClick } = useLogin();
 
@@ -22,9 +21,6 @@ const Login = () => {
       <Toaster />
 
       <div className="relative flex flex-col items-center justify-center w-full p-4 font-semibold text-black bg-white rounded-md">
-        <div className="relative flex items-center justify-end w-full">
-          <CloseModalButton color="black" onClose={() => closeLoginModal()} />
-        </div>
 
         {formType === 'register' && <RegisterForm onInputChange={onInputChange} />}
         {formType === 'login' && <LoginForm onInputChange={onInputChange} />}

@@ -14,7 +14,7 @@ const FiltersModal = () => {
   const { closeFiltersModal, setProductFilters } = useAppActions();
 
   return (
-    <Modal isOpen={isFilterModalOpen} closeOnOverlayClick>
+    <Modal isOpen={isFilterModalOpen} closeOnOverlayClick onClose={()=>{}}>
       <div className="relative flex flex-col flex-wrap justify-start gap-2 px-2 items-left">
         <div className="absolute -top-4 left-1">
           <FunnelIcon color="white" />
