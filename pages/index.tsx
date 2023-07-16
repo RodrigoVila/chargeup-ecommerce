@@ -33,10 +33,13 @@ import Navbar from '@main/Navbar';
 import { LOCAL_STORAGE_DATA_KEY } from '@constants/keys';
 import { getValueFromLocalStorage } from '@utils/localStorage';
 
+// i18n config
+import '../i18n';
+
 const MainScreen = () => {
   const router = useRouter();
   const { checkUserToken } = useAppActions();
-  const { checkoutSession, products } = useAppSelector();
+  const { checkoutSession } = useAppSelector();
 
   useEffect(() => {
     const getDataFromStorage = () => {

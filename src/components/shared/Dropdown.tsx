@@ -1,22 +1,23 @@
-import { SelectHTMLAttributes } from 'react';
+import { ReactNode, SelectHTMLAttributes } from 'react';
 import { twMerge } from 'tailwind-merge';
 import { ILabelAndPrice } from 'types';
+
+type OptionObject = {
+  label:string
+  icon?: ReactNode
+}
 
 type CustomDropDownProps = Omit<
   SelectHTMLAttributes<HTMLSelectElement>,
   'onChange' | 'className'
 > & {
-  label: string;
-  options: string[] | object[];
-  color?: string;
+  options: string[] | OptionObject[];
   className?: string;
-  onChange: (option: string | ILabelAndPrice) => void;
+  onChange: (option: string | OptionObject) => void;
 };
 
 const CustomDropdown = ({
-  label = '',
   options,
-  color = 'black',
   className = '',
   onChange,
   ...rest
@@ -37,6 +38,7 @@ const CustomDropdown = ({
           >
             {options.map((option) => (
               <option key={option.label} value={JSON.stringify(option)} className="capitalize">
+                {typeof option === 'object' && option.icon || null}
                 {typeof option === 'object' ? option.label : option}
               </option>
             ))}

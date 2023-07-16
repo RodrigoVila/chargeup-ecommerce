@@ -1,3 +1,4 @@
+import { TFunction } from 'i18next';
 import {
   GoogleSignInSuccessResponse,
   StorageUserType,
@@ -28,19 +29,25 @@ import {
   VALIDATE_TOKEN_FOR_PASSWORD_CHANGE_SUCCESS,
 } from '../../constants/ActionTypes';
 
-export const userTokenCheck = (user: UserLoginType) => ({
+export const userTokenCheck = (user: UserLoginType, t: TFunction<'translation', undefined>) => ({
   type: CHECK_USER_TOKEN,
   user,
+  t,
 });
 
-export const googleUserData = (response: GoogleSignInSuccessResponse) => ({
+export const googleUserData = (
+  response: GoogleSignInSuccessResponse,
+  t: TFunction<'translation', undefined>
+) => ({
   type: LOGIN_WITH_GOOGLE,
   response,
+  t,
 });
 
-export const loginUser = (user: UserLoginType) => ({
+export const loginUser = (user: UserLoginType, t: TFunction<'translation', undefined>) => ({
   type: LOGIN_USER,
   user,
+  t,
 });
 
 export const successLoginUser = (userLogin: StorageUserType) => ({
@@ -54,9 +61,13 @@ export const errorLoginUser = () => ({
 
 export const logoutUser = () => ({ type: LOGOUT });
 
-export const registerNewUser = (user: UserRegisterType) => ({
+export const registerNewUser = (
+  user: UserRegisterType,
+  t: TFunction<'translation', undefined>
+) => ({
   type: REGISTER_USER,
   user,
+  t,
 });
 
 export const successRegisterUser = () => ({
@@ -80,9 +91,10 @@ export const validateEmailInDBError = () => ({
   type: VALIDATE_EMAIL_IN_DB_ERROR,
 });
 
-export const requestPasswordRecovery = (email: string) => ({
+export const requestPasswordRecovery = (email: string, t: TFunction<'translation', undefined>) => ({
   type: REQUEST_PASSWORD_RECOVERY,
   email,
+  t,
 });
 
 export const requestPasswordRecoverySuccess = () => ({
@@ -110,11 +122,13 @@ export const validateTokenForPassChangeError = () => ({
 export const changeUserPassword = (
   email: string,
   newPassword: string,
-  oldPassword?: string | undefined
+  t: TFunction<'translation', undefined>,
+  oldPassword?: string
 ) => ({
   type: REQUEST_CHANGE_USER_PASSWORD,
   email,
   newPassword,
+  t,
   oldPassword,
 });
 

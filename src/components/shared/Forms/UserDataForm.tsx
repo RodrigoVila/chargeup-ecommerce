@@ -1,10 +1,10 @@
 import { ChangeEvent, useState } from 'react';
 
-import { lang } from '@constants/lang';
 import useAppActions from '@hooks/useAppActions';
 import useAppSelector from '@hooks/useAppSelector';
 import Button from '@shared/Buttons/CustomButton';
 import Input from '@shared/Input';
+import { useTranslation } from 'react-i18next';
 import { UserDetailsType } from 'types';
 
 type UserDataFormType = {
@@ -16,6 +16,8 @@ const UserDataForm = ({ isCheckoutForm, onChange }: UserDataFormType) => {
   const { areUsersLoading, userDetails } = useAppSelector();
   const [userData, setUserData] = useState<UserDetailsType>(userDetails);
   const { name, lastName, email, mobileNo, address } = userDetails;
+
+  const { t } = useTranslation();
 
   const { editUserDetails } = useAppActions();
 
@@ -42,44 +44,39 @@ const UserDataForm = ({ isCheckoutForm, onChange }: UserDataFormType) => {
 
   return (
     <div className="w-full p-6 overflow-scroll">
-      <Input label={lang.es.NAME} type="text" name="name" onChange={handleChange} />
-      <Input label={lang.es.LASTNAME} type="text" name="lastName" onChange={handleChange} />
+      <Input label={t('NAME')} type="text" name="name" onChange={handleChange} />
+      <Input label={t('LASTNAME')} type="text" name="lastName" onChange={handleChange} />
       <Input
-        label={lang.es.EMAIL}
+        label={t('EMAIL')}
         type="text"
         name="email"
         onChange={handleChange}
         disabled={!isCheckoutForm}
       />
-      <Input label={lang.es.MOBILE_NUMBER} type="text" name="mobileNo" onChange={handleChange} />
+      <Input label={t('MOBILE_NUMBER')} type="text" name="mobileNo" onChange={handleChange} />
+      <Input label={t('ADDRESS_STREET')} type="text" name="street" onChange={handleAddressChange} />
       <Input
-        label={lang.es.ADDRESS_STREET}
-        type="text"
-        name="street"
-        onChange={handleAddressChange}
-      />
-      <Input
-        label={lang.es.ADDRESS_STREET_NUMBER}
+        label={t('ADDRESS_STREET_NUMBER')}
         type="text"
         name="streetNumber"
         onChange={handleAddressChange}
       />
       <Input
-        label={lang.es.ADDRESS_EXTRAS}
+        label={t('ADDRESS_EXTRAS')}
         type="text"
         name="extras"
         placeholder="Piso, puerta, etc"
         onChange={handleAddressChange}
       />
       <Input
-        label={lang.es.ADDRESS_POSTCODE}
+        label={t('ADDRESS_POSTCODE')}
         type="text"
         name="postCode"
         onChange={handleAddressChange}
       />
-      <Input label={lang.es.ADDRESS_CITY} type="text" name="city" onChange={handleAddressChange} />
+      <Input label={t('ADDRESS_CITY')} type="text" name="city" onChange={handleAddressChange} />
       <Input
-        label={lang.es.ADDRESS_PROVINCE}
+        label={t('ADDRESS_PROVINCE')}
         type="text"
         name="province"
         value={'Barcelona'}
@@ -87,7 +84,7 @@ const UserDataForm = ({ isCheckoutForm, onChange }: UserDataFormType) => {
         disabled
       />
       <Input
-        label={lang.es.ADDRESS_COUNTRY}
+        label={t('ADDRESS_COUNTRY')}
         type="text"
         name="country"
         value={'España'}
@@ -96,7 +93,7 @@ const UserDataForm = ({ isCheckoutForm, onChange }: UserDataFormType) => {
       />
       {!isCheckoutForm && (
         <Button onClick={handleSubmit} disabled={areUsersLoading}>
-          {lang.es.CHANGE_USER_DATA}
+          {t('CHANGE_USER_DATA')}
         </Button>
       )}
     </div>

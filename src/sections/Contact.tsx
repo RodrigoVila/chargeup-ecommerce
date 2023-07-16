@@ -1,11 +1,13 @@
 import { SyntheticEvent, useRef } from 'react';
 
-import { lang } from '@constants/lang';
 import BackgroundOverlay from '@main/BackgroundOverlay';
 import Button from '@shared/Buttons/CustomButton';
+import { useTranslation } from 'react-i18next';
 
 const ContactSection = () => {
   const form = useRef();
+
+  const { t } = useTranslation();
 
   const handleSubmit = async (e: SyntheticEvent) => {
     e.preventDefault();
@@ -22,9 +24,9 @@ const ContactSection = () => {
       <p className="z-10 w-full pb-12 text-5xl text-center text-white font-dinBold">CONTACTANOS</p>
       <div className="z-10 flex flex-col items-center justify-center w-full max-w-xl px-4 overflow-hidden text-white">
         <form ref={form} onSubmit={handleSubmit}>
-          <input name="name" placeholder={lang.es.NAME} className={inputStyle} />
-          <input name="email" placeholder={lang.es.EMAIL} className={inputStyle} />
-          <input name="subject" placeholder={lang.es.SUBJECT} className={inputStyle} />
+          <input name="name" placeholder={t('NAME')} className={inputStyle} />
+          <input name="email" placeholder={t('EMAIL')} className={inputStyle} />
+          <input name="subject" placeholder={t('SUBJECT')} className={inputStyle} />
           <textarea
             name="message"
             placeholder="Escribenos un mensaje!"

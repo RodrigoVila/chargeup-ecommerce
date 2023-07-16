@@ -1,11 +1,11 @@
 import { ChangeEvent, FC, useState } from 'react';
 
-import { lang } from '@constants/lang';
 import useAppActions from '@hooks/useAppActions';
 import useAppSelector from '@hooks/useAppSelector';
 import useEncryption from '@hooks/useEncryption';
 import Button from '@shared/Buttons/CustomButton';
 import Input from '@shared/Input';
+import { useTranslation } from 'react-i18next';
 
 const INITIAL_STATE = { oldPassword: '', password: '', repeatPassword: '' };
 
@@ -20,6 +20,8 @@ const UpdatePasswordForm: FC = () => {
     isAuthLoading,
   } = useAppSelector();
 
+  const { t } = useTranslation();
+
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setUserDetails((currDetails) => ({ ...currDetails, [name]: value }));
@@ -28,7 +30,7 @@ const UpdatePasswordForm: FC = () => {
   const handleSubmit = async () => {
     const { password, repeatPassword } = userDetails;
     if (password !== repeatPassword) {
-      displayErrorMessage(lang.es.PASSWORDS_DONT_MATCH);
+      displayErrorMessage(t('PASSWORDS_DONT_MATCH'));
       return;
     }
 
@@ -38,15 +40,15 @@ const UpdatePasswordForm: FC = () => {
   };
   return (
     <div className="p-6 pt-4 bg-white rounded-xl">
-      <Input label={lang.es.NEW_PASSWORD} type="password" name="password" onChange={handleChange} />
+      <Input label={t('NEW_PASSWORD')} type="password" name="password" onChange={handleChange} />
       <Input
-        label={lang.es.REPEAT_PASSWORD}
+        label={t('REPEAT_PASSWORD')}
         type="password"
         name="repeatPassword"
         onChange={handleChange}
       />
       <Button onClick={handleSubmit} loading={isAuthLoading}>
-        {lang.es.CHANGE_PASSWORD}
+        {t('CHANGE_PASSWORD')}
       </Button>
     </div>
   );

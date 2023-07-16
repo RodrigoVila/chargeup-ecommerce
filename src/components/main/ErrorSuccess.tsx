@@ -3,9 +3,10 @@ import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 
 import { colors } from '@constants/colors';
-import { lang } from '@constants/lang';
+
 import useCountdown from '@hooks/useCountdown';
 import Button from '@shared/Buttons/CustomButton';
+import { useTranslation } from 'react-i18next';
 
 type Props = {
   type: 'error' | 'success';
@@ -26,6 +27,8 @@ const ErrorSucces = ({
 }: Props) => {
   const router = useRouter();
   const { startCountdown, timeRemaining } = useCountdown();
+
+  const { t } = useTranslation();
 
   const goHome = () => router.push('/');
 
@@ -51,7 +54,7 @@ const ErrorSucces = ({
               {`Será redirigido a la home en ${timeRemaining / 1000}`}
             </h4>
           ) : (
-            <Button onClick={onClickButton || goHome}>{buttonLabel || lang.es.GO_HOME}</Button>
+            <Button onClick={onClickButton || goHome}>{buttonLabel || t('GO_HOME')}</Button>
           )}
         </div>
       </div>

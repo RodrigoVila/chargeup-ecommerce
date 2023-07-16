@@ -1,6 +1,5 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 
-import { lang } from '@constants/lang';
 import {
   changeUserPasswordError,
   changeUserPasswordSuccess,
@@ -31,7 +30,7 @@ import {
 const API_URL = '/api/auth';
 
 function* userRegister(payload: any) {
-  const { user } = payload;
+  const { user, t } = payload;
   try {
     const response = yield call(fetch, API_URL + '/signup', {
       method: 'POST',
@@ -42,19 +41,20 @@ function* userRegister(payload: any) {
     const { success, message } = yield response.json();
     if (success) {
       yield put(successRegisterUser());
-      yield put(displayMessageSuccess(lang.es.USER_REGISTER_SUCCESS, 7000));
+      yield put(displayMessageSuccess(t('USER_REGISTER_SUCCESS'), 7000));
       yield put(loginModalClose());
     } else {
       yield put(errorRegisterUser());
       yield put(displayMessageError(message));
     }
   } catch (e) {
-    yield put(displayMessageError(lang.es.USER_EXIST));
+    yield put(displayMessageError(t('USER_EXIST')));
     yield put(errorRegisterUser());
   }
 }
 
 function* userLogin(payload: any) {
+  const { t } = payload;
   try {
     const response = yield call(fetch, API_URL + '/signin', {
       method: 'POST',
@@ -66,20 +66,23 @@ function* userLogin(payload: any) {
 
     if (success) {
       yield put(successLoginUser(user));
-      yield put(displayMessageSuccess(lang.es.USER_LOGIN_SUCCESS));
+      yield put(displayMessageSuccess(t('USER_LOGIN_SUCCESS')));
       yield put(loginModalClose());
     } else {
-      yield put(displayMessageError(lang.es.INVALID_CREDENTIALS));
+      yield put(displayMessageError(t('INVALID_CREDENTIALS')));
       yield put(errorLoginUser());
     }
   } catch (e) {
-    yield put(displayMessageError(lang.es.USER_LOGIN_ERROR));
+    yield put(displayMessageError(t('USER_LOGIN_ERROR')));
     yield put(errorLoginUser());
   }
 }
 
 function* googleLogin(payload: any) {
-  const { access_token } = payload.response;
+  const {
+    t,
+    response: { access_token },
+  } = payload;
 
   try {
     const response = yield call(
@@ -110,7 +113,7 @@ function* googleLogin(payload: any) {
 
         if (success) {
           yield put(successLoginUser(user));
-          yield put(displayMessageSuccess(`${lang.es.USER_LOGIN_SUCCESS}. Bienvenid@ ${name}.`));
+          yield put(displayMessageSuccess(t('USER_LOGIN_SUCCESS')));
           yield put(loginModalClose());
         } else {
           yield put(errorLoginUser());
@@ -170,7 +173,7 @@ function* validateEmailInDB(payload: any) {
 }
 
 function* requestPasswordRecovery(payload: any) {
-  const { email } = payload;
+  const { email, t } = payload;
   try {
     const response = yield call(fetch, API_URL + '/pwdrecovery', {
       method: 'POST',
@@ -180,17 +183,16 @@ function* requestPasswordRecovery(payload: any) {
 
     const { success } = yield response.json();
     if (success) {
-      yield put(displayMessageSuccess(lang.es.REQUEST_PASSWORD, 7000));
+      yield put(displayMessageSuccess(t('REQUEST_PASSWORD'), 7000));
       yield put(requestPasswordRecoverySuccess());
       yield put(loginModalClose());
     } else {
-      yield put(displayMessageSuccess(lang.es.REQUEST_PASSWORD, 7000));
+      yield put(displayMessageSuccess(t('REQUEST_PASSWORD'), 7000));
       yield put(requestPasswordRecoveryError());
       yield put(loginModalClose());
     }
   } catch (e) {
-    console.log('errrr', e);
-    // yield put(requestPasswordRecoveryError());
+    yield put(requestPasswordRecoveryError());
   }
 }
 
@@ -216,7 +218,7 @@ function* passwordChangeTokenValidation(payload: any) {
 }
 
 function* updateUserPassword(payload: any) {
-  const { email, oldPassword, newPassword } = payload;
+  const { email, oldPassword, newPassword, t } = payload;
 
   try {
     const response = yield call(fetch, API_URL + '/updatepassword', {
@@ -228,21 +230,21 @@ function* updateUserPassword(payload: any) {
 
     if (success) {
       yield put(changeUserPasswordSuccess());
-      yield put(displayMessageSuccess(lang.es.CHANGE_USER_DATA_SUCCESS));
+      yield put(displayMessageSuccess(t('CHANGE_USER_DATA_SUCCESS')));
       // yield put(userModalClose());
     } else {
       yield put(changeUserPasswordError());
-      if (message === lang.en.PASSWORDS_DONT_MATCH) {
-        yield put(displayMessageError(lang.es.PASSWORDS_DONT_MATCH));
+      if (message === t('PASSWORDS_DONT_MATCH')) {
+        yield put(displayMessageError(t('PASSWORDS_DONT_MATCH')));
       } else {
-        yield put(displayMessageError(lang.es.CHANGE_USER_DATA_ERROR));
+        yield put(displayMessageError(t('CHANGE_USER_DATA_ERROR')));
       }
-      // yield put(displayMessageError(lang.es.CHANGE_USER_DATA_ERROR));
+      // yield put(displayMessageError(t("CHANGE_USER_DATA_ERROR));
     }
   } catch (e) {
     yield put(changeUserPasswordError());
-    yield put(displayMessageError(lang.es.CHANGE_USER_DATA_ERROR));
-    // yield put(displayMessageError(lang.es.CHANGE_USER_DATA_ERROR));
+    yield put(displayMessageError(t('CHANGE_USER_DATA_ERROR')));
+    // yield put(displayMessageError(t("CHANGE_USER_DATA_ERROR));
   }
 }
 

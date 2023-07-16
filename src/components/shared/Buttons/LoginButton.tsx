@@ -1,13 +1,15 @@
-import { lang } from '@constants/lang';
 import useAppActions from '@hooks/useAppActions';
+import { useTranslation } from 'react-i18next';
 import Button from './CustomButton';
 
 const LoginButton = () => {
   const { openLoginModal } = useAppActions();
 
+  const { t } = useTranslation();
+
   return (
     <Button onClick={openLoginModal} type="outlined">
-      {lang.en.LOGIN}
+      {t('LOGIN')}
     </Button>
   );
 };

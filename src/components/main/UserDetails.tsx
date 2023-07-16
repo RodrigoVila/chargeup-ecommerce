@@ -1,9 +1,9 @@
-import { lang } from '@constants/lang';
 import useAppActions from '@hooks/useAppActions';
 import { googleLogout } from '@react-oauth/google';
 import UpdatePasswordForm from '@shared/Forms/UpdatePasswordForm';
 import UserDataForm from '@shared/Forms/UserDataForm';
 import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import Button from '../shared/Buttons/CustomButton';
 
 type EditingType = 'password' | 'userData' | null;
@@ -12,6 +12,8 @@ const UserDetails = () => {
   const [editing, setEditing] = useState<EditingType>(null);
 
   const { userLogout, closeUserModal, getUserDetails } = useAppActions();
+
+  const { t } = useTranslation();
 
   const setEdit = (type: EditingType) => setEditing(type);
 
@@ -36,9 +38,9 @@ const UserDetails = () => {
 
       {!editing && (
         <div className="flex flex-col items-center justify-center w-full gap-2 mx-auto">
-          <Button onClick={() => setEdit('userData')}>{lang.es.CHANGE_USER_DATA}</Button>
-          <Button onClick={() => setEdit('password')}>{lang.es.CHANGE_PASSWORD}</Button>
-          <Button onClick={onClickLogout}>{lang.es.LOGOUT}</Button>
+          <Button onClick={() => setEdit('userData')}>{t('CHANGE_USER_DATA')}</Button>
+          <Button onClick={() => setEdit('password')}>{t('CHANGE_PASSWORD')}</Button>
+          <Button onClick={onClickLogout}>{t('LOGOUT')}</Button>
         </div>
       )}
     </div>

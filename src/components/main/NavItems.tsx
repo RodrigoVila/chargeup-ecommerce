@@ -1,4 +1,5 @@
 import NavItem from '@main/NavItem';
+import { useTranslation } from 'react-i18next';
 import { twMerge } from 'tailwind-merge';
 
 interface Props {
@@ -7,16 +8,17 @@ interface Props {
   className?: string;
 }
 
-const links = [
-  { label: 'QUIENES SOMOS', href: 'about' },
-  { label: 'PRODUCTOS', href: 'products' },
-  { label: 'CAKES', href: 'cakes' },
-  { label: 'KETO', href: 'keto' },
-  { label: 'POR QUE ELEGIRNOS', href: 'whyus' },
-  { label: 'CONTACTO', href: 'contact' },
-];
-
 const NavItems = ({ direction, onClose, className = '' }: Props) => {
+  const { t } = useTranslation();
+
+  const links = [
+    { label: t('ABOUT_US'), href: 'about' },
+    { label: t('PRODUCTS'), href: 'products' },
+    { label: t('CAKES'), href: 'cakes' },
+    { label: t('KETO'), href: 'keto' },
+    { label: t('WHY_US'), href: 'whyus' },
+    { label: t('CONTACT'), href: 'contact' },
+  ];
   const directionStyles =
     direction === 'row'
       ? 'flex-row pl-2 text-white hidden xl:flex'

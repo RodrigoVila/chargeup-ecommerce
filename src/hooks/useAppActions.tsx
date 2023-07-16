@@ -61,6 +61,7 @@ import { setFilters } from '@redux/actions/filters';
 
 import { addNewOrder } from '@redux/actions/order';
 import { changeUserDetails, fetchUserDetails } from '@redux/actions/users';
+import { useTranslation } from 'react-i18next';
 import {
   CartProductType,
   GoogleSignInSuccessResponse,
@@ -74,34 +75,35 @@ import {
 
 const useAppActions = () => {
   const dispatch = useDispatch<AppDispatch>();
+  const { t } = useTranslation();
 
   // Auth
-  const checkUserToken = (user: UserLoginType) => dispatch(userTokenCheck(user));
+  const checkUserToken = (user: UserLoginType) => dispatch(userTokenCheck(user, t));
 
   const getGoogleUserData = (payload: GoogleSignInSuccessResponse) =>
-    dispatch(googleUserData(payload));
+    dispatch(googleUserData(payload, t));
 
-  const userLogin = (user: UserLoginType) => dispatch(loginUser(user));
+  const userLogin = (user: UserLoginType) => dispatch(loginUser(user, t));
 
   const userLoginSuccess = (user: StorageUserType) => successLoginUser(user);
 
   const userLogout = () => dispatch(logoutUser());
 
-  const registerUser = (user: UserRegisterType) => dispatch(registerNewUser(user));
+  const registerUser = (user: UserRegisterType) => dispatch(registerNewUser(user, t));
 
   const dBEmailValidation = (pid: string) => dispatch(validateEmailInDB(pid));
 
   const validateTokenForPasswordChange = (email: string, pid: string) =>
     dispatch(validateTokenForPassChange(email, pid));
 
-  const recoverUserPassword = (email: string) => dispatch(requestPasswordRecovery(email));
+  const recoverUserPassword = (email: string) => dispatch(requestPasswordRecovery(email, t));
 
   const editUserPassword = (
     email: string,
     newPassword: string,
     oldPassword?: string | undefined
   ) => {
-    dispatch(changeUserPassword(email, newPassword, oldPassword));
+    dispatch(changeUserPassword(email, newPassword, t, oldPassword));
   };
 
   // Cart
@@ -198,7 +200,7 @@ const useAppActions = () => {
   //Users
   const getUserDetails = () => dispatch(fetchUserDetails());
 
-  const editUserDetails = (user: UserDetailsType) => dispatch(changeUserDetails(user));
+  const editUserDetails = (user: UserDetailsType) => dispatch(changeUserDetails(user, t));
 
   return {
     addProduct,

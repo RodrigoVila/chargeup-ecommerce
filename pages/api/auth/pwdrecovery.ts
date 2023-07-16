@@ -1,7 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { v4 as uuidv4 } from 'uuid';
 
-import { lang } from '@constants/lang';
 import PasswordRecovery from '@models/passwordRecovery';
 import User from '@models/user';
 import dbConnect from '@utils/dbConnect';
@@ -38,12 +37,12 @@ const PasswordRecoveryAPI = async (req: NextApiRequest, res: NextApiResponse) =>
           });
         }
       } else {
-        return res.status(404).json({ success: false, message: lang.en.USER_NOT_FOUND });
+        return res.status(404).json({ success: false, message: 'User Not Found' });
       }
     } catch (e) {
       return res.status(409).json({
         success: false,
-        message: lang.en.INVALID_TOKEN,
+        message: 'Invalid Token',
       });
     }
   };

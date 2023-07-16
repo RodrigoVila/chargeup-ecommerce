@@ -1,10 +1,10 @@
-import { lang } from '@constants/lang';
 import useAppActions from '@hooks/useAppActions';
 import useAppSelector from '@hooks/useAppSelector';
 import ErrorSucces from '@main/ErrorSuccess';
 import Spinner from '@shared/Spinner';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 
 const EmailValidation = () => {
   const router = useRouter();
@@ -13,6 +13,8 @@ const EmailValidation = () => {
   } = router;
   const { dBEmailValidation } = useAppActions();
   const { isEmailValidated } = useAppSelector();
+
+  const { t } = useTranslation();
 
   useEffect(() => {
     pid && dBEmailValidation(pid.toString().slice(4));
@@ -31,15 +33,15 @@ const EmailValidation = () => {
       {isEmailValidated ? (
         <ErrorSucces
           type="success"
-          title={lang.es.EMAIL_CONFIRMED}
-          subTitle={lang.es.EMAIL_CONFIRMED_SUB}
+          title={t('EMAIL_CONFIRMED')}
+          subTitle={t('EMAIL_CONFIRMED_SUB')}
           autoGoBackToHome
         />
       ) : (
         <ErrorSucces
           type="error"
-          title={lang.es.EMAIL_NOT_CONFIRMED}
-          subTitle={lang.es.EMAIL_NOT_CONFIRMED_SUB}
+          title={t('EMAIL_NOT_CONFIRMED')}
+          subTitle={t('EMAIL_NOT_CONFIRMED_SUB')}
           autoGoBackToHome
         />
       )}

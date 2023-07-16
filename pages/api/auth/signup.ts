@@ -1,6 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 
-import { lang } from '@constants/lang';
 import User from '@models/user';
 import dbConnect from '@utils/dbConnect';
 import { emailVerificationToHTML } from '@utils/htmlEmailParsers';
@@ -23,11 +22,11 @@ const SignUp = async (req: NextApiRequest, res: NextApiResponse) => {
     try {
       await User.create({ name, lastName, email, password, pid });
       await sendEmailToUser(mailOption);
-      return res.status(201).json({ success: true, message: lang.en.USER_REGISTER_SUCCESS });
+      return res.status(201).json({ success: true, message: 'User registered Successfully' });
     } catch (e) {
       return res.status(409).json({
         success: false,
-        message: lang.en.USER_EXIST,
+        message: 'User Exists',
         err: e,
       });
     }

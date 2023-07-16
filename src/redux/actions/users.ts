@@ -1,3 +1,4 @@
+import { TFunction } from 'i18next';
 import { UserDetailsType } from 'types';
 import {
   FETCH_USER_DETAILS,
@@ -20,9 +21,13 @@ export const fetchUserDetailsError = (error: Error) => ({
   error,
 });
 
-export const changeUserDetails = (user: UserDetailsType) => ({
+export const changeUserDetails = (
+  user: UserDetailsType,
+  t: TFunction<'translation', undefined>
+) => ({
   type: REQUEST_CHANGE_USER_DETAILS,
   user,
+  t,
 });
 
 export const changeUserDetailsSuccess = () => ({

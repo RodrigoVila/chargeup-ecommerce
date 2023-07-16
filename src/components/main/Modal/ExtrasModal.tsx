@@ -5,15 +5,13 @@ import useAppSelector from '@hooks/useAppSelector';
 
 import Checkbox from '@main/Checkbox';
 import Counter from '@main/Counter';
-import Dropdown from '@main/Dropdown';
+import Dropdown from '@shared/Dropdown';
 import Button from '@shared/Buttons/CustomButton';
 import Modal from '@shared/Modal';
 import { getProductSubtotal } from '@utils/index';
 import { CartProductType, ILabelAndPrice } from 'types';
 
 const ExtrasModal = () => {
-  const [isDropdownOpen, setDropdownOepn] = useState(false);
-
   // Product specification before adding it to cart
   const [itemCount, setItemCount] = useState(1);
   const [selectedSize, setSelectedSize] = useState<ILabelAndPrice | null>(null);
@@ -40,8 +38,6 @@ const ExtrasModal = () => {
       ? setSelectedExtras((prevExtras) => [...prevExtras, extra])
       : setSelectedExtras((prevExtras) => prevExtras.filter((ex) => ex.label !== extra.label));
   };
-
-  const closeDropdown = () => setDropdownOepn(false);
 
   const subTotal = getProductSubtotal(selectedSize, selectedExtras);
   const total = subTotal * itemCount;
@@ -90,7 +86,7 @@ const ExtrasModal = () => {
 
   return (
     <Modal isOpen={isExtrasModalOpen} onClose={closeExtrasModal}>
-      <div className="flex flex-col w-full gap-2" onClick={closeDropdown}>
+      <div className="flex flex-col w-full gap-2">
         <h3 className="text-xl font-semibold text-center">{selectedModalProduct?.title}</h3>
         <div className="flex flex-col flex-wrap items-start">
           {/* sizes dropdown */}

@@ -1,6 +1,5 @@
 import { Toaster } from 'react-hot-toast';
 
-import { lang } from '@constants/lang';
 import useAppSelector from '@hooks/useAppSelector';
 import useLogin from '@hooks/useLogin';
 import Link from '@main/Link';
@@ -8,11 +7,14 @@ import Button from '@shared/Buttons/CustomButton';
 import LoginForm from '@shared/Forms/LoginForm';
 import PasswordRecoveryForm from '@shared/Forms/PasswordRecoveryForm';
 import RegisterForm from '@shared/Forms/RegisterForm';
+import { useTranslation } from 'react-i18next';
 import GoogleSignInButton from './Buttons/GoogleSignInButton';
 
 const Login = () => {
   const { isAuthLoading } = useAppSelector();
   const { formType, setFormType, onInputChange, handleButtonClick } = useLogin();
+
+  const { t } = useTranslation();
 
   return (
     <>
@@ -26,10 +28,10 @@ const Login = () => {
         <div className="flex flex-col w-full gap-2">
           <Button loading={isAuthLoading} onClick={(e) => handleButtonClick(e)}>
             {formType === 'login'
-              ? lang.es.LOGIN
+              ? t('LOGIN')
               : formType === 'register'
-              ? lang.es.USER_REGISTER
-              : lang.es.PASSWORD_RECOVERY}
+              ? t('USER_REGISTER')
+              : t('PASSWORD_RECOVERY')}
           </Button>
 
           {formType !== 'passwordRecovery' && (
@@ -39,16 +41,13 @@ const Login = () => {
           )}
 
           {(formType === 'register' || formType === 'passwordRecovery') && (
-            <Link text={lang.es.GO_TO_LOGIN} onClick={() => setFormType('login')} />
+            <Link text={t('GO_TO_LOGIN')} onClick={() => setFormType('login')} />
           )}
 
           {formType === 'login' && (
             <>
-              <Link text={lang.es.USER_REGISTER} onClick={() => setFormType('register')} />
-              <Link
-                text={lang.es.PASSWORD_RECOVERY}
-                onClick={() => setFormType('passwordRecovery')}
-              />
+              <Link text={t('USER_REGISTER')} onClick={() => setFormType('register')} />
+              <Link text={t('PASSWORD_RECOVERY')} onClick={() => setFormType('passwordRecovery')} />
             </>
           )}
         </div>

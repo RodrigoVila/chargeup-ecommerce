@@ -1,9 +1,9 @@
 import { UserIcon } from '@heroicons/react/24/outline';
 import { FC } from 'react';
 
-import { lang } from '@constants/lang';
 import useAppActions from '@hooks/useAppActions';
 import useAppSelector from '@hooks/useAppSelector';
+import { useTranslation } from 'react-i18next';
 import { twMerge } from 'tailwind-merge';
 
 type Props = {
@@ -13,6 +13,8 @@ type Props = {
 const UserButton: FC<Props> = ({ color: propColor = 'white' }) => {
   const { userLogin } = useAppSelector();
   const { openUserModal, openLoginModal } = useAppActions();
+
+  const { t } = useTranslation();
 
   const color = propColor === 'white' ? `text-white` : `text-black`;
   const openModal = userLogin?.name ? openUserModal : openLoginModal;
@@ -26,7 +28,7 @@ const UserButton: FC<Props> = ({ color: propColor = 'white' }) => {
         onClick={openModal}
         className={twMerge('ext-s leading-none md:text-sm text-center', color)}
       >
-        {userLogin?.name ? userLogin.name : lang.en.LOGIN}
+        {userLogin?.name ? userLogin.name : t('LOGIN')}
       </p>
     </div>
   );

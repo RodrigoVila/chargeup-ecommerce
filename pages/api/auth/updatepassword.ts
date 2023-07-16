@@ -1,4 +1,3 @@
-import { lang } from '@constants/lang';
 import useEncryption from '@hooks/useEncryption';
 import PasswordRecovery from '@models/passwordRecovery';
 import User from '@models/user';
@@ -23,7 +22,7 @@ const UpdatePassword = async (req: NextApiRequest, res: NextApiResponse) => {
           if (isPasswordOK) {
             await User.findOneAndUpdate({ email }, { password: newPassword });
           } else {
-            return res.status(401).json({ success: false, message: lang.en.PASSWORDS_DONT_MATCH });
+            return res.status(401).json({ success: false, message: "Passwords don't match" });
           }
         } else {
           const { confirmed } = await User.findOneAndUpdate({ email }, { password: newPassword });
@@ -32,10 +31,10 @@ const UpdatePassword = async (req: NextApiRequest, res: NextApiResponse) => {
         }
         return res.status(200).json({
           success: true,
-          message: lang.en.CHANGE_USER_DATA_SUCCESS,
+          message: 'Data modified succesfully',
         });
       } else {
-        return res.status(404).json({ success: false, message: lang.en.USER_NOT_FOUND });
+        return res.status(404).json({ success: false, message: 'User not found' });
       }
     } catch (e) {
       return res.status(404).json({ success: false, message: e.message });

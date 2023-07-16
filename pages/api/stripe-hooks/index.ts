@@ -3,7 +3,7 @@ import getRawBody from 'raw-body';
 import Stripe from 'stripe';
 
 import { stripeSecretKey, stripeWebhookKey } from '@constants/keys';
-import { lang } from '@constants/lang';
+
 import Order from '@models/order';
 import User from '@models/user';
 import dbConnect from '@utils/dbConnect';
@@ -20,7 +20,7 @@ export const config = {
 };
 
 const StripHooksAPI = async (req: NextApiRequest, res: NextApiResponse) => {
-  const { method, body, headers } = req;
+  const { method, headers } = req;
   await dbConnect();
 
   // Updates order status and buyer email in DB
@@ -65,7 +65,7 @@ const StripHooksAPI = async (req: NextApiRequest, res: NextApiResponse) => {
       await sendEmailToUser(userMail);
       await sendEmailToUser(adminMail);
 
-      return res.status(201).json({ success: true, message: lang.en.ORDER_SUCCESS });
+      return res.status(201).json({ success: true, message: 'Order saved succesfully' });
     } catch (err) {
       const errorMail = {
         from: `Charge UP Barcelona<${process.env.NODEMAILER_USER}>`,
@@ -80,7 +80,7 @@ const StripHooksAPI = async (req: NextApiRequest, res: NextApiResponse) => {
 
       return res.status(400).json({
         success: false,
-        message: lang.en.ORDER_ERROR,
+        message: 'Stripe Hooks: Order error',
       });
     }
   };

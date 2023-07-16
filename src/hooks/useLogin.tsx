@@ -1,10 +1,10 @@
 import { FormEvent, useEffect, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
-import { lang } from '@constants/lang';
 import useAppActions from '@hooks/useAppActions';
 import useEncryption from '@hooks/useEncryption';
 import { isEmailValid, isPasswordValid } from '@utils/index';
+import { useTranslation } from 'react-i18next';
 
 const initialState = {
   name: '',
@@ -26,6 +26,8 @@ const useLogin = () => {
 
   const { encryptPassword } = useEncryption();
 
+  const { t } = useTranslation();
+
   const onInputChange = (e: FormEvent<HTMLInputElement>) => {
     const { name, value } = e.currentTarget;
     setCredentials({ ...credentials, [name]: value });
@@ -37,22 +39,22 @@ const useLogin = () => {
     const pid = uuidv4();
 
     if (!name || !lastName || !email || !password || !repeatPassword) {
-      displayErrorMessage(lang.es.ALL_INPUTS_REQUIRED);
+      displayErrorMessage(t('ALL_INPUTS_REQUIRED'));
       return;
     }
 
     if (!isEmailValid(email)) {
-      displayErrorMessage(lang.es.INVALID_EMAIL);
+      displayErrorMessage(t('INVALID_EMAIL'));
       return;
     }
 
     if (!isPasswordValid(password)) {
-      displayErrorMessage(lang.es.PASSWORD_REGEX);
+      displayErrorMessage(t('PASSWORD_REGEX'));
       return;
     }
 
     if (password !== repeatPassword) {
-      displayErrorMessage(lang.es.PASSWORDS_DONT_MATCH);
+      displayErrorMessage(t('PASSWORDS_DONT_MATCH'));
       return;
     }
 
@@ -71,12 +73,12 @@ const useLogin = () => {
 
   const handleLogin = () => {
     if (!email || !password) {
-      displayErrorMessage(lang.es.ALL_INPUTS_REQUIRED);
+      displayErrorMessage(t('ALL_INPUTS_REQUIRED'));
       return;
     }
 
     if (!isEmailValid(email)) {
-      displayErrorMessage(lang.es.INVALID_EMAIL);
+      displayErrorMessage(t('INVALID_EMAIL'));
       return;
     }
 
@@ -89,11 +91,11 @@ const useLogin = () => {
 
   const handlePasswordRecovery = () => {
     if (!email) {
-      displayErrorMessage(lang.es.ALL_INPUTS_REQUIRED);
+      displayErrorMessage(t('ALL_INPUTS_REQUIRED'));
       return;
     }
     if (!isEmailValid(email)) {
-      displayErrorMessage(lang.es.INVALID_EMAIL);
+      displayErrorMessage(t('INVALID_EMAIL'));
       return;
     }
 

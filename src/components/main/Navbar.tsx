@@ -5,6 +5,7 @@ import CartButton from '@shared/Buttons/CartButton';
 import UserButton from '@shared/Buttons/UserButton';
 import Logo from '@shared/Logo';
 import { twMerge } from 'tailwind-merge';
+import LanguageSelector from './LanguageSelector';
 
 const Navbar = () => {
   const { backgroundOpacity } = useNavbarOpacity();
@@ -26,7 +27,8 @@ const Navbar = () => {
         size="sm"
       />
       <NavItems direction="row" className="flex-1" />
-      <div className="z-10 flex items-center justify-end flex-1 mr-3">
+      <div className="z-10 flex items-center justify-end flex-1 gap-2 mr-3">
+        <LanguageSelector />
         <UserButton />
         <CartButton />
       </div>

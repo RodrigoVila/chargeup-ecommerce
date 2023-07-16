@@ -3,7 +3,6 @@ import { v4 as uuidv4 } from 'uuid';
 
 import useEncryption from '@hooks/useEncryption';
 
-import { lang } from '@constants/lang';
 import User from '@models/user';
 import dbConnect from '@utils/dbConnect';
 
@@ -28,7 +27,7 @@ const SignIn = async (req: NextApiRequest, res: NextApiResponse) => {
 
           return res.status(201).json({
             success: true,
-            message: lang.en.USER_LOGIN_SUCCESS,
+            message: 'Login Success',
             user: {
               email,
               token,
@@ -36,10 +35,10 @@ const SignIn = async (req: NextApiRequest, res: NextApiResponse) => {
             },
           });
         } else {
-          return res.status(401).json({ success: false, message: lang.en.INVALID_CREDENTIALS });
+          return res.status(401).json({ success: false, message: 'Invalid credentials' });
         }
       } else {
-        return res.status(404).json({ success: false, message: lang.en.USER_NOT_FOUND });
+        return res.status(404).json({ success: false, message: 'User not found' });
       }
     } catch (e) {
       return res.status(400).json({

@@ -1,6 +1,5 @@
 import useAppSelector from '@hooks/useAppSelector';
 
-import { lang } from '@constants/lang';
 import useAppActions from '@hooks/useAppActions';
 import useLogin from '@hooks/useLogin';
 import Link from '@main/Link';
@@ -9,11 +8,14 @@ import LoginForm from '@shared/Forms/LoginForm';
 import PasswordRecoveryForm from '@shared/Forms/PasswordRecoveryForm';
 import RegisterForm from '@shared/Forms/RegisterForm';
 import Modal from '@shared/Modal';
+import { useTranslation } from 'react-i18next';
 
 const LoginModal = () => {
   const { isLoginModalOpen, isAuthLoading } = useAppSelector();
   const { closeLoginModal } = useAppActions();
   const { formType, setFormType, onInputChange, handleButtonClick } = useLogin();
+
+  const { t } = useTranslation();
 
   return (
     <Modal isOpen={isLoginModalOpen} onClose={closeLoginModal}>
@@ -25,10 +27,10 @@ const LoginModal = () => {
         <div className="flex flex-col w-full gap-2">
           <CustomButton loading={isAuthLoading} onClick={(e) => handleButtonClick(e)}>
             {formType === 'login'
-              ? lang.es.LOGIN
+              ? t('LOGIN')
               : formType === 'register'
-              ? lang.es.USER_REGISTER
-              : lang.es.PASSWORD_RECOVERY}
+              ? t('USER_REGISTER')
+              : t('PASSWORD_RECOVERY')}
           </CustomButton>
 
           {formType !== 'passwordRecovery' && (
@@ -38,16 +40,13 @@ const LoginModal = () => {
           )}
 
           {(formType === 'register' || formType === 'passwordRecovery') && (
-            <Link text={lang.es.GO_TO_LOGIN} onClick={() => setFormType('login')} />
+            <Link text={t('GO_TO_LOGIN')} onClick={() => setFormType('login')} />
           )}
 
           {formType === 'login' && (
             <>
-              <Link text={lang.es.USER_REGISTER} onClick={() => setFormType('register')} />
-              <Link
-                text={lang.es.PASSWORD_RECOVERY}
-                onClick={() => setFormType('passwordRecovery')}
-              />
+              <Link text={t('USER_REGISTER')} onClick={() => setFormType('register')} />
+              <Link text={t('PASSWORD_RECOVERY')} onClick={() => setFormType('passwordRecovery')} />
             </>
           )}
         </div>

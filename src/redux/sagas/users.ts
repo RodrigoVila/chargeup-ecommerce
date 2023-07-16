@@ -10,7 +10,7 @@ import {
 import { FETCH_USER_DETAILS, REQUEST_CHANGE_USER_DETAILS } from 'constants/ActionTypes';
 
 import { LOCAL_STORAGE_DATA_KEY } from '@constants/keys';
-import { lang } from '@constants/lang';
+
 import { getValueFromLocalStorage } from '@utils/localStorage';
 
 const API_USERS = '/api/users';
@@ -38,7 +38,7 @@ function* fetchUserDetails() {
 }
 
 function* updateUserDetails(payload: any) {
-  const { user } = payload;
+  const { user, t } = payload;
   try {
     const response = yield call(fetch, API_USER, {
       method: 'PUT',
@@ -49,14 +49,14 @@ function* updateUserDetails(payload: any) {
 
     if (success) {
       yield put(changeUserDetailsSuccess());
-      yield put(displayMessageSuccess(lang.es.CHANGE_USER_DATA_SUCCESS));
+      yield put(displayMessageSuccess(t('CHANGE_USER_DATA_SUCCESS')));
     } else {
       yield put(changeUserDetailsError(message));
-      yield put(displayMessageError(lang.es.CHANGE_USER_DATA_ERROR));
+      yield put(displayMessageError(t('CHANGE_USER_DATA_ERROR')));
     }
   } catch (e) {
     yield put(changeUserDetailsError(e));
-    yield put(displayMessageError(lang.es.CHANGE_USER_DATA_ERROR));
+    yield put(displayMessageError(t('CHANGE_USER_DATA_ERROR')));
   }
 }
 
