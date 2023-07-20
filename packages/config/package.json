@@ -1,0 +1,6 @@
+{
+  "name": "@packages/config",
+  "version": "1.0.0",
+  "private": true,
+  "files": ["tailwind-config.cjs", "postcss.config.cjs", "ts-base.json", "ts-node.json"]
+}
