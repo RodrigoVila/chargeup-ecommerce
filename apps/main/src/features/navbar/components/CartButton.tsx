@@ -1,18 +1,16 @@
-'use client'
+import Image from 'next/image';
+import { useMemo } from 'react';
 
-import Image from 'next/image'
-import { useMemo } from 'react'
-
-import { useAppActions, useAppSelector } from '~hooks'
+import { useAppActions, useAppSelector } from '~hooks';
 
 export const CartButton = () => {
-  const { cartItems } = useAppSelector()
-  const { openCartModal, displayInfoMessage } = useAppActions()
+  const { cartItems } = useAppSelector();
+  const { openCartModal, displayInfoMessage } = useAppActions();
 
-  const cartLength = useMemo(() => (cartItems?.length !== 0 ? cartItems.length : null), [cartItems])
+  const cartLength = useMemo(() => cartItems?.length ?? 0, [cartItems]);
 
   const openCart = () =>
-    cartLength > 0 ? openCartModal() : displayInfoMessage('No hay productos en el carrito')
+    cartLength > 0 ? openCartModal() : displayInfoMessage('No hay productos en el carrito');
 
   return (
     <div className={`relative mx-2 cursor-pointer`}>
@@ -28,11 +26,13 @@ export const CartButton = () => {
           alt=""
         />
       </button>
-      <div
-        className={`absolute -right-2 -top-1 m-auto rounded-full bg-red-500 px-1 text-center text-sm font-bold leading-none text-white`}
-      >
-        {cartLength}
-      </div>
+      {cartLength > 0 && (
+        <div
+          className={`absolute -right-2 -top-1 m-auto rounded-full bg-red-500 px-1 text-center text-sm font-bold leading-none text-white`}
+        >
+          {cartLength}
+        </div>
+      )}
     </div>
-  )
-}
+  );
+};

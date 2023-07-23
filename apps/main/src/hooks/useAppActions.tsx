@@ -1,3 +1,4 @@
+
 import { useDispatch } from 'react-redux';
 
 import type { AppDispatch } from '~redux/store';
@@ -62,7 +63,7 @@ import { setFilters } from '~redux/actions/filters';
 
 import { addNewOrder } from '~redux/actions/order';
 import { changeUserDetails, fetchUserDetails } from '~redux/actions/users';
-import { useTranslation } from 'react-i18next';
+import { useIntl } from 'react-intl';
 import {
   CartProductType,
   GoogleSignInSuccessResponse,
@@ -76,7 +77,7 @@ import {
 
 export const useAppActions = () => {
   const dispatch = useDispatch<AppDispatch>();
-  const { t } = useTranslation();
+  const { formatMessage } = useIntl();;;
 
   // Auth
   const checkUserToken = (user: UserLoginType) => dispatch(userTokenCheck(user, t));

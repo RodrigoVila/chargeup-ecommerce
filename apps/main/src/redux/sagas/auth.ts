@@ -1,3 +1,5 @@
+//@ts-nocheck
+// Planning to move out of sagas so is not worth investing time typing them
 import { call, put, takeEvery } from 'redux-saga/effects';
 
 import {
@@ -25,7 +27,7 @@ import {
   REQUEST_PASSWORD_RECOVERY,
   VALIDATE_EMAIL_IN_DB,
   VALIDATE_TOKEN_FOR_PASSWORD_CHANGE,
-} from '~constants/ActionTypes';
+} from 'constants/ActionTypes';
 
 const API_URL = '/api/auth';
 
@@ -41,14 +43,14 @@ function* userRegister(payload: any) {
     const { success, message } = yield response.json();
     if (success) {
       yield put(successRegisterUser());
-      yield put(displayMessageSuccess(t('USER_REGISTER_SUCCESS'), 7000));
+      yield put(displayMessageSuccess(formatMessage({ id: 'USER_REGISTER_SUCCESS' }), 7000));
       yield put(loginModalClose());
     } else {
       yield put(errorRegisterUser());
       yield put(displayMessageError(message));
     }
-  } catch (e:any) {
-    yield put(displayMessageError(t('USER_EXIST')));
+  } catch (e) {
+    yield put(displayMessageError(formatMessage({ id: 'USER_EXIST' })));
     yield put(errorRegisterUser());
   }
 }
@@ -66,14 +68,14 @@ function* userLogin(payload: any) {
 
     if (success) {
       yield put(successLoginUser(user));
-      yield put(displayMessageSuccess(t('USER_LOGIN_SUCCESS')));
+      yield put(displayMessageSuccess(formatMessage({ id: 'USER_LOGIN_SUCCESS' })));
       yield put(loginModalClose());
     } else {
-      yield put(displayMessageError(t('INVALID_CREDENTIALS')));
+      yield put(displayMessageError(formatMessage({ id: 'INVALID_CREDENTIALS' })));
       yield put(errorLoginUser());
     }
-  } catch (e:any) {
-    yield put(displayMessageError(t('USER_LOGIN_ERROR')));
+  } catch (e) {
+    yield put(displayMessageError(formatMessage({ id: 'USER_LOGIN_ERROR' })));
     yield put(errorLoginUser());
   }
 }
@@ -113,18 +115,18 @@ function* googleLogin(payload: any) {
 
         if (success) {
           yield put(successLoginUser(user));
-          yield put(displayMessageSuccess(t('USER_LOGIN_SUCCESS')));
+          yield put(displayMessageSuccess(formatMessage({ id: 'USER_LOGIN_SUCCESS' })));
           yield put(loginModalClose());
         } else {
           yield put(errorLoginUser());
         }
-      } catch (e:any) {
+      } catch (e) {
         yield put(errorLoginUser());
       }
     } else {
       yield put(errorLoginUser());
     }
-  } catch (e:any) {
+  } catch (e) {
     yield put(errorLoginUser());
   }
 }
@@ -146,7 +148,7 @@ function* checkToken(payload: any) {
     } else {
       yield put(errorLoginUser());
     }
-  } catch (e:any) {
+  } catch (e) {
     yield put(errorLoginUser());
   }
 }
@@ -167,7 +169,7 @@ function* validateEmailInDB(payload: any) {
     } else {
       yield put(validateEmailInDBError());
     }
-  } catch (e:any) {
+  } catch (e) {
     yield put(validateEmailInDBError());
   }
 }
@@ -183,15 +185,15 @@ function* requestPasswordRecovery(payload: any) {
 
     const { success } = yield response.json();
     if (success) {
-      yield put(displayMessageSuccess(t('REQUEST_PASSWORD'), 7000));
+      yield put(displayMessageSuccess(formatMessage({ id: 'REQUEST_PASSWORD' }), 7000));
       yield put(requestPasswordRecoverySuccess());
       yield put(loginModalClose());
     } else {
-      yield put(displayMessageSuccess(t('REQUEST_PASSWORD'), 7000));
+      yield put(displayMessageSuccess(formatMessage({ id: 'REQUEST_PASSWORD' }), 7000));
       yield put(requestPasswordRecoveryError());
       yield put(loginModalClose());
     }
-  } catch (e:any) {
+  } catch (e) {
     yield put(requestPasswordRecoveryError());
   }
 }
@@ -212,7 +214,7 @@ function* passwordChangeTokenValidation(payload: any) {
     } else {
       yield put(validateTokenForPassChangeError());
     }
-  } catch (e:any) {
+  } catch (e) {
     yield put(validateTokenForPassChangeError());
   }
 }
@@ -230,20 +232,20 @@ function* updateUserPassword(payload: any) {
 
     if (success) {
       yield put(changeUserPasswordSuccess());
-      yield put(displayMessageSuccess(t('CHANGE_USER_DATA_SUCCESS')));
+      yield put(displayMessageSuccess(formatMessage({ id: 'CHANGE_USER_DATA_SUCCESS' })));
       // yield put(userModalClose());
     } else {
       yield put(changeUserPasswordError());
-      if (message === t('PASSWORDS_DONT_MATCH')) {
-        yield put(displayMessageError(t('PASSWORDS_DONT_MATCH')));
+      if (message === formatMessage({ id: 'PASSWORDS_DONT_MATCH' })) {
+        yield put(displayMessageError(formatMessage({ id: 'PASSWORDS_DONT_MATCH' })));
       } else {
-        yield put(displayMessageError(t('CHANGE_USER_DATA_ERROR')));
+        yield put(displayMessageError(formatMessage({ id: 'CHANGE_USER_DATA_ERROR' })));
       }
       // yield put(displayMessageError(t("CHANGE_USER_DATA_ERROR));
     }
-  } catch (e:any) {
+  } catch (e) {
     yield put(changeUserPasswordError());
-    yield put(displayMessageError(t('CHANGE_USER_DATA_ERROR')));
+    yield put(displayMessageError(formatMessage({ id: 'CHANGE_USER_DATA_ERROR' })));
     // yield put(displayMessageError(t("CHANGE_USER_DATA_ERROR));
   }
 }

@@ -1,4 +1,4 @@
-'use client'
+
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import ReactTooltip from 'react-tooltip'
@@ -109,7 +109,7 @@ export const Product = ({ product }: ProductProps) => {
               </div>
             </div>
           </div>
-          <Button onClick={onClickSelect}>Seleccionar</Button>
+          <Button onClick={onClickSelect} className='uppercase'>Seleccionar</Button>
         </div>
       </div>
     </>

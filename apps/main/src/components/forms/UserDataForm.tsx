@@ -1,84 +1,109 @@
-import { ChangeEvent, useState } from 'react'
-import { useTranslation } from 'react-i18next'
+import { ChangeEvent, useState } from 'react';
+import { useIntl } from 'react-intl';
 
-import { Button } from '@packages/button'
-import { Input } from '@packages/input'
+import { Button } from '@packages/button';
+import { Input } from '@packages/input';
 
-import { useAppActions, useAppSelector } from '~hooks'
-import { UserDetailsType } from '~types'
+import { useAppActions, useAppSelector } from '~hooks';
+import { UserDetailsType } from '~types';
 
 type UserDataFormType = {
-  isCheckoutForm?: boolean
-  onChange?: (userDetails: UserDetailsType | any) => void
-}
+  isCheckoutForm?: boolean;
+  onChange?: (userDetails: UserDetailsType | any) => void;
+};
 
 export const UserDataForm = ({ isCheckoutForm, onChange }: UserDataFormType) => {
-  const { areUsersLoading, userDetails } = useAppSelector()
-  const [userData, setUserData] = useState<UserDetailsType>(userDetails)
+  const { areUsersLoading, userDetails } = useAppSelector();
+  const [userData, setUserData] = useState<UserDetailsType>(userDetails);
 
-  const { t } = useTranslation()
+  const { formatMessage } = useIntl();
 
-  const { editUserDetails } = useAppActions()
+  const { editUserDetails } = useAppActions();
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target
-    setUserData((prevDetails) => ({ ...prevDetails, [name]: value }))
+    const { name, value } = e.target;
+    setUserData((prevDetails) => ({ ...prevDetails, [name]: value }));
     isCheckoutForm &&
       onChange &&
-      onChange((prevDetails: UserDetailsType) => ({ ...prevDetails, [name]: value }))
-  }
+      onChange((prevDetails: UserDetailsType) => ({ ...prevDetails, [name]: value }));
+  };
 
   const handleAddressChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target
+    const { name, value } = e.target;
     setUserData((prevDetails) => ({
       ...prevDetails,
       address: { ...prevDetails.address, [name]: value },
-    }))
+    }));
     isCheckoutForm &&
       onChange &&
       onChange((prevDetails: UserDetailsType) => ({
         ...prevDetails,
         address: { ...prevDetails.address, [name]: value },
-      }))
-  }
+      }));
+  };
 
-  const handleSubmit = () => editUserDetails(userData)
+  const handleSubmit = () => editUserDetails(userData);
 
   return (
     <div className="w-full p-6 overflow-scroll">
-      <Input label={t('NAME')} type="text" name="name" onChange={handleChange} />
-      <Input label={t('LASTNAME')} type="text" name="lastName" onChange={handleChange} />
       <Input
-        label={t('EMAIL')}
+        label={formatMessage({ id: 'NAME' })}
+        type="text"
+        name="name"
+        onChange={handleChange}
+      />
+      <Input
+        label={formatMessage({ id: 'LASTNAME' })}
+        type="text"
+        name="lastName"
+        onChange={handleChange}
+      />
+      <Input
+        label={formatMessage({ id: 'EMAIL' })}
         type="text"
         name="email"
         onChange={handleChange}
         disabled={!isCheckoutForm}
       />
-      <Input label={t('MOBILE_NUMBER')} type="text" name="mobileNo" onChange={handleChange} />
-      <Input label={t('ADDRESS_STREET')} type="text" name="street" onChange={handleAddressChange} />
       <Input
-        label={t('ADDRESS_STREET_NUMBER')}
+        label={formatMessage({ id: 'MOBILE_NUMBER' })}
+        type="text"
+        name="mobileNo"
+        onChange={handleChange}
+      />
+      <Input
+        label={formatMessage({ id: 'ADDRESS_STREET' })}
+        type="text"
+        name="street"
+        onChange={handleAddressChange}
+      />
+      <Input
+        label={formatMessage({ id: 'ADDRESS_STREET_NUMBER' })}
         type="text"
         name="streetNumber"
         onChange={handleAddressChange}
       />
       <Input
-        label={t('ADDRESS_EXTRAS')}
+        label={formatMessage({ id: 'ADDRESS_EXTRAS' })}
         type="text"
         name="extras"
         placeholder="Piso, puerta, etc"
         onChange={handleAddressChange}
       />
       <Input
-        label={t('ADDRESS_POSTCODE')}
+        label={formatMessage({ id: 'ADDRESS_POSTCODE' })}
         type="text"
         name="postCode"
         onChange={handleAddressChange}
       />
-      <Input label={t('ADDRESS_CITY')} type="text" name="city" onChange={handleAddressChange} />
       <Input
-        label={t('ADDRESS_PROVINCE')}
+        label={formatMessage({ id: 'ADDRESS_CITY' })}
+        type="text"
+        name="city"
+        onChange={handleAddressChange}
+      />
+      <Input
+        label={formatMessage({ id: 'ADDRESS_PROVINCE' })}
         type="text"
         name="province"
         value={'Barcelona'}
@@ -86,7 +111,7 @@ export const UserDataForm = ({ isCheckoutForm, onChange }: UserDataFormType) => 
         disabled
       />
       <Input
-        label={t('ADDRESS_COUNTRY')}
+        label={formatMessage({ id: 'ADDRESS_COUNTRY' })}
         type="text"
         name="country"
         value={'España'}
@@ -95,9 +120,9 @@ export const UserDataForm = ({ isCheckoutForm, onChange }: UserDataFormType) => 
       />
       {!isCheckoutForm && (
         <Button onClick={handleSubmit} disabled={areUsersLoading}>
-          {t('CHANGE_USER_DATA')}
+          {formatMessage({ id: 'CHANGE_USER_DATA' })}
         </Button>
       )}
     </div>
-  )
-}
+  );
+};

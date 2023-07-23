@@ -1,18 +1,28 @@
-import { ChangeEvent } from 'react'
-import { useTranslation } from 'react-i18next'
+import { ChangeEvent } from 'react';
+import { useIntl } from 'react-intl';
 
-import { Input } from '@packages/input'
+import { Input } from '@packages/input';
 
 type LoginFormProps = {
-  onInputChange: (e: ChangeEvent<HTMLInputElement>) => void
-}
+  onInputChange: (e: ChangeEvent<HTMLInputElement>) => void;
+};
 
 export const LoginForm = ({ onInputChange }: LoginFormProps) => {
-  const { t } = useTranslation()
+  const { formatMessage } = useIntl();
   return (
     <form className="w-full rounded">
-      <Input label={t('EMAIL')} name="email" type="text" onChange={onInputChange} />
-      <Input label={t('PASSWORD')} name="password" type="password" onChange={onInputChange} />
+      <Input
+        label={formatMessage({ id: 'EMAIL' })}
+        name="email"
+        type="text"
+        onChange={onInputChange}
+      />
+      <Input
+        label={formatMessage({ id: 'PASSWORD' })}
+        name="password"
+        type="password"
+        onChange={onInputChange}
+      />
     </form>
-  )
-}
+  );
+};

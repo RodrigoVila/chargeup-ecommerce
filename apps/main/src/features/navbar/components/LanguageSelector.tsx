@@ -1,5 +1,7 @@
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { SelectHTMLAttributes } from 'react';
-import { useTranslation } from 'react-i18next';
+import { useIntl } from 'react-intl';
 import { twMerge } from 'tailwind-merge';
 
 type LanguageDetectorProps = Omit<SelectHTMLAttributes<HTMLSelectElement>, 'className'> & {
@@ -7,19 +9,19 @@ type LanguageDetectorProps = Omit<SelectHTMLAttributes<HTMLSelectElement>, 'clas
 };
 
 export const LanguageSelector = ({ className, ...rest }: LanguageDetectorProps) => {
-  const { i18n } = useTranslation();
+  const { locale, locales, asPath } = useRouter();
 
-  const changeLanguage = (lng: string) => {
-    i18n.changeLanguage(lng);
-  };
+  // const changeLanguage = (lng: string) => {
+  //   i18n.changeLanguage(lng);
+  // };
+
   return (
-    <select
-      className={twMerge('bg-transparent text-white', className)}
-      onChange={(event) => changeLanguage(event.target.value)}
-      {...rest}
-    >
-      <option value="es">🇪🇸</option>
-      <option value="en">🇬🇧</option>
+    <select className={twMerge('bg-transparent text-white', className)} {...rest}>
+      {locales.map((l) => (
+        <Link href={asPath}>
+          <option value={l}>{l}</option>
+        </Link>
+      ))}
     </select>
   );
 };

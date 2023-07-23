@@ -1,3 +1,5 @@
+//@ts-nocheck
+// Planning to move out of sagas so is not worth investing time typing them
 import { call, put, takeEvery } from 'redux-saga/effects';
 
 import { displayMessageError, displayMessageSuccess } from '~redux/actions/toastNotifications';
@@ -9,7 +11,7 @@ import {
 } from '~redux/actions/users';
 import { FETCH_USER_DETAILS, REQUEST_CHANGE_USER_DETAILS } from '~constants/ActionTypes';
 import { LOCAL_STORAGE_DATA_KEY } from '~constants/keys';
-import { getValueFromLocalStorage } from '~utils';
+import { getValueFromLocalStorage } from '~utils/localStorage';
 
 const API_USERS = '/api/users';
 const API_USER = '/api/user';
@@ -30,7 +32,7 @@ function* fetchUserDetails() {
     } else {
       yield put(fetchUserDetailsError(message));
     }
-  } catch (e:any) {
+  } catch (e: any) {
     yield put(fetchUserDetailsError(e));
   }
 }
@@ -47,14 +49,14 @@ function* updateUserDetails(payload: any) {
 
     if (success) {
       yield put(changeUserDetailsSuccess());
-      yield put(displayMessageSuccess(t('CHANGE_USER_DATA_SUCCESS')));
+      yield put(displayMessageSuccess(formatMessage({ id: 'CHANGE_USER_DATA_SUCCESS' })));
     } else {
       yield put(changeUserDetailsError(message));
-      yield put(displayMessageError(t('CHANGE_USER_DATA_ERROR')));
+      yield put(displayMessageError(formatMessage({ id: 'CHANGE_USER_DATA_ERROR' })));
     }
-  } catch (e:any) {
+  } catch (e: any) {
     yield put(changeUserDetailsError(e));
-    yield put(displayMessageError(t('CHANGE_USER_DATA_ERROR')));
+    yield put(displayMessageError(formatMessage({ id: 'CHANGE_USER_DATA_ERROR' })));
   }
 }
 

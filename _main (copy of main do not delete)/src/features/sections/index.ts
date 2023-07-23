@@ -1,0 +1,8 @@
+export { AboutSection } from './About'
+export { CakesSection } from './Cakes'
+export { ContactSection } from './Contact'
+export { FooterSection } from './Footer'
+export { KetoSection } from './Keto'
+export { ProductsSection } from './Products'
+export { WelcomeSection } from './Welcome'
+export { WhyUsSection } from './WhyUs'

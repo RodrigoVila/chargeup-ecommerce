@@ -1,7 +1,7 @@
-import { AUTH_INITIAL_STATE } from '~constants/initialState';
-import { LOCAL_STORAGE_DATA_KEY } from '~constants/keys';
-import { deleteValueFromLocalStorage, setValueToLocalStorage } from '~utils';
-import { AuthActionType, AuthStateType } from '~types';
+import { AUTH_INITIAL_STATE } from '~constants/initialState'
+import { LOCAL_STORAGE_DATA_KEY } from '~constants/keys'
+import { deleteValueFromLocalStorage, setValueToLocalStorage } from '~utils/localStorage'
+import { AuthActionType, AuthStateType } from '~types'
 import {
   LOGIN_SUCCESS,
   LOGIN_USER,
@@ -20,10 +20,10 @@ import {
   VALIDATE_EMAIL_IN_DB_SUCCESS,
   VALIDATE_TOKEN_FOR_PASSWORD_CHANGE_ERROR,
   VALIDATE_TOKEN_FOR_PASSWORD_CHANGE_SUCCESS,
-} from '~constants/ActionTypes';
+} from '~constants/ActionTypes'
 
 const authReducer = (state: AuthStateType = AUTH_INITIAL_STATE, action: AuthActionType) => {
-  const { type, userLogin } = action;
+  const { type, userLogin } = action
 
   switch (type) {
     case LOGIN_USER:
@@ -33,7 +33,7 @@ const authReducer = (state: AuthStateType = AUTH_INITIAL_STATE, action: AuthActi
       return {
         ...state,
         isLoading: true,
-      };
+      }
     case REGISTER_USER_SUCCESS:
     case REQUEST_PASSWORD_RECOVERY_SUCCESS:
     case REQUEST_PASSWORD_RECOVERY_ERROR:
@@ -41,54 +41,54 @@ const authReducer = (state: AuthStateType = AUTH_INITIAL_STATE, action: AuthActi
       return {
         ...state,
         isLoading: false,
-      };
+      }
     case REQUEST_CHANGE_USER_PASSWORD_SUCCESS:
       return {
         ...state,
         isLoading: false,
         redirect: true,
-      };
+      }
     case LOGIN_SUCCESS:
-      userLogin && setValueToLocalStorage(LOCAL_STORAGE_DATA_KEY, userLogin);
+      userLogin && setValueToLocalStorage(LOCAL_STORAGE_DATA_KEY, userLogin)
       return {
         ...state,
         isLoading: false,
         isLoggedIn: true,
         userLogin,
-      };
+      }
     case USER_LOGIN_ERROR:
     case REGISTER_USER_ERROR:
     case LOGOUT:
-      deleteValueFromLocalStorage(LOCAL_STORAGE_DATA_KEY);
+      deleteValueFromLocalStorage(LOCAL_STORAGE_DATA_KEY)
       return {
         ...state,
         isLoggedIn: false,
         isLoading: false,
         userLogin: null,
-      };
+      }
     case VALIDATE_EMAIL_IN_DB_SUCCESS:
       return {
         ...state,
         isEmailValidated: true,
-      };
+      }
     case VALIDATE_EMAIL_IN_DB_ERROR:
       return {
         ...state,
         isEmailValidated: false,
-      };
+      }
     case VALIDATE_TOKEN_FOR_PASSWORD_CHANGE_SUCCESS:
       return {
         ...state,
         isTokenForPasswordValidated: true,
-      };
+      }
     case VALIDATE_TOKEN_FOR_PASSWORD_CHANGE_ERROR:
       return {
         ...state,
         isTokenForPasswordValidated: false,
-      };
+      }
     default:
-      return state;
+      return state
   }
-};
+}
 
-export default authReducer;
+export default authReducer

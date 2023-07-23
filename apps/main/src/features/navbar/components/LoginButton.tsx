@@ -1,17 +1,17 @@
-import { useTranslation } from 'react-i18next'
+import { useIntl } from 'react-intl';
 
-import { Button } from '@packages/button'
+import { Button } from '@packages/button';
 
-import { useAppActions } from '~hooks'
+import { useAppActions } from '~hooks';
 
 export const LoginButton = () => {
-  const { openLoginModal } = useAppActions()
+  const { openLoginModal } = useAppActions();
 
-  const { t } = useTranslation()
+  const { formatMessage } = useIntl();
 
   return (
     <Button onClick={openLoginModal} type="outlined">
-      {t('LOGIN')}
+      {formatMessage({ id: 'LOGIN' })}
     </Button>
-  )
-}
+  );
+};

@@ -1,29 +1,27 @@
-import { useTranslation } from 'react-i18next'
+import { useIntl } from 'react-intl';
 import { twMerge } from 'tailwind-merge'
 
 import { NavItem } from './NavItem'
 
 type NavItemsProps = {
-  direction?: 'row' | 'column'
-  onClose?: () => void
+  type: 'drawer' | 'navbar'
   className?: string
+  onClick?: () => void
 }
 
-export const NavItems = ({ direction, onClose, className = '' }: NavItemsProps) => {
-  const { t } = useTranslation()
+export const NavItems = ({ type, className = '', onClick }: NavItemsProps) => {
+  const { formatMessage } = useIntl();;
 
   const links = [
-    { label: t('ABOUT_US'), href: 'about' },
-    { label: t('PRODUCTS'), href: 'products' },
-    { label: t('CAKES'), href: 'cakes' },
-    { label: t('KETO'), href: 'keto' },
-    { label: t('WHY_US'), href: 'whyus' },
-    { label: t('CONTACT'), href: 'contact' },
+    { label: formatMessage({ id: 'ABOUT_US' }), href: 'about' },
+    { label: formatMessage({ id: 'PRODUCTS' }), href: 'products' },
+    { label: formatMessage({ id: 'CAKES' }), href: 'cakes' },
+    { label: formatMessage({ id: 'KETO' }), href: 'keto' },
+    { label: formatMessage({ id: 'WHY_US' }), href: 'whyus' },
+    { label: formatMessage({ id: 'CONTACT' }), href: 'contact' },
   ]
   const directionStyles =
-    direction === 'row'
-      ? 'flex-row pl-2 text-white hidden xl:flex'
-      : 'flex-col text-purple-600 flex'
+    type === 'navbar' ? 'flex-row pl-2 text-white hidden xl:flex gap-4' : 'flex-col text-purple-600 flex'
   return (
     <ul
       className={twMerge(
@@ -37,8 +35,8 @@ export const NavItems = ({ direction, onClose, className = '' }: NavItemsProps) 
           key={index}
           label={link.label}
           href={link.href}
-          direction={direction}
-          onClick={onClose}
+          className={type === 'drawer' ? ' mx-2 xl:mx-4' : 'my-4'}
+          onClick={onClick}
         />
       ))}
     </ul>

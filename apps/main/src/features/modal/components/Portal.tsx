@@ -1,4 +1,4 @@
-'use client'
+
 import { ReactNode, useLayoutEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
 
@@ -8,7 +8,7 @@ type PortalProps = {
 }
 
 export const Portal = ({ children, wrapperId = 'react-portal-wrapper' }: PortalProps) => {
-  const [wrapperElement, setWrapperElement] = useState(null)
+  const [wrapperElement, setWrapperElement] = useState<HTMLElement| null>(null)
 
   const createWrapperAndAppendToBody = (wrapperId: string) => {
     const wrapperElement = document.createElement('div')
@@ -30,12 +30,13 @@ export const Portal = ({ children, wrapperId = 'react-portal-wrapper' }: PortalP
 
     return () => {
       // delete the programatically created element
-      if (systemCreated && element.parentNode) {
+      if (systemCreated && element?.parentNode) {
         element.parentNode.removeChild(element)
       }
     }
   }, [wrapperId])
 
   if (wrapperElement === null) return null
+  //@ts-ignore TODO: Type next line
   return createPortal(children, document.getElementById(wrapperId))
 }

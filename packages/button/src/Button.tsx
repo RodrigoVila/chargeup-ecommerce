@@ -27,7 +27,7 @@ export const Button = ({
   ...rest
 }: ButtonProps) => {
   const baseStyles =
-    'group z-20 flex w-full cursor-pointer items-center justify-center rounded-md py-2 py-2 px-4'
+    'group z-20 flex w-full cursor-pointer items-center justify-center rounded-md py-2 py-2 px-4 bg-purple-700'
 
   const typeStyles =
     type === 'outlined'

@@ -1,6 +1,6 @@
-'use client'
 
-import { ChangeEvent, useEffect, useMemo, useState } from 'react'
+
+import { ChangeEvent, ReactNode, useEffect, useMemo, useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
 import { useAppActions, useAppSelector } from '~hooks'
@@ -10,17 +10,24 @@ import { DeliveryType, OrderType, UserDetailsType } from '~types'
 
 import { CartSummary, DeliveryOptions, CartModalButtons } from './components'
 
+type StepsType = {
+  [currentStep: number]: {
+    component: ReactNode;
+    buttons: ReactNode;
+  };
+}
+
 export const CartModal = () => {
   const [loading, setLoading] = useState(false)
   const [currentStep, setCurrentStep] = useState(1)
-  const [deliveryType, setDeliveryType] = useState<DeliveryType | null>(null)
+  const [deliveryType, setDeliveryType] = useState<DeliveryType>("Pick UP")
   const [hasUserAcceptedToSaveDetails, setHasUserAcceptedToSaveDetails] = useState(false)
   const [userData, setUserData] = useState<UserDetailsType | null>(null)
 
   const { isCartModalOpen, cartItems, userLogin } = useAppSelector()
   const { closeCartModal, createCheckoutSession, editUserDetails, openLoginModal } = useAppActions()
 
-  const totalSum = useMemo(() => cartItems.reduce((acc, item) => acc + item.total, 0), [cartItems])
+  const totalSum = useMemo(() => cartItems.reduce((acc, item) => acc + item.total!, 0), [cartItems])
 
   const nextStep = () => setCurrentStep((curr) => curr + 1)
   const backStep = () => setCurrentStep((curr) => curr - 1)
@@ -34,9 +41,9 @@ export const CartModal = () => {
   const onSubmit = async () => {
     setLoading(true)
 
-    const name = userLogin?.name || userData.name
-    const email = userLogin?.email || userData.email
-    const address = userData.address || null
+    const name = userLogin?.name || userData?.name
+    const email = userLogin?.email || userData?.email
+    const address = userData?.address
 
     const newOrder: OrderType = {
       id: uuidv4(),
@@ -50,7 +57,7 @@ export const CartModal = () => {
       created: new Date(),
     }
 
-    hasUserAcceptedToSaveDetails && userLogin?.email && editUserDetails(userData)
+    hasUserAcceptedToSaveDetails && userLogin?.email && editUserDetails(userData as UserDetailsType)
 
     createCheckoutSession(newOrder)
   }
@@ -65,7 +72,7 @@ export const CartModal = () => {
     [userData],
   )
 
-  const Steps = {
+  const Steps:StepsType = {
     1: {
       component: <CartSummary products={cartItems} total={totalSum} />,
       buttons: <CartModalButtons next={nextStep} />,

@@ -1,20 +1,20 @@
-import { useTranslation } from 'react-i18next'
-import { UserIcon } from '@heroicons/react/24/outline'
-import { twMerge } from 'tailwind-merge'
+import { useIntl } from 'react-intl';
+import { UserIcon } from '@heroicons/react/24/outline';
+import { twMerge } from 'tailwind-merge';
 
-import { useAppActions, useAppSelector } from '~hooks'
+import { useAppActions, useAppSelector } from '~hooks';
 
 type UserButtonProps = {
-  color?: 'black' | 'white'
-}
+  color?: 'black' | 'white';
+};
 
 export const UserButton = ({ color: propColor = 'white' }: UserButtonProps) => {
-  const { userLogin } = useAppSelector()
-  const { openUserModal, openLoginModal } = useAppActions()
-  const { t } = useTranslation()
+  const { userLogin } = useAppSelector();
+  const { openUserModal, openLoginModal } = useAppActions();
+  const { formatMessage } = useIntl();
 
-  const color = propColor === 'white' ? `text-white` : `text-black`
-  const openModal = userLogin?.name ? openUserModal : openLoginModal
+  const color = propColor === 'white' ? `text-white` : `text-black`;
+  const openModal = userLogin?.name ? openUserModal : openLoginModal;
 
   return (
     <div className={twMerge('flex cursor-pointer flex-col items-center justify-center', color)}>
@@ -25,9 +25,8 @@ export const UserButton = ({ color: propColor = 'white' }: UserButtonProps) => {
         onClick={openModal}
         className={twMerge('ext-s text-center leading-none md:text-sm', color)}
       >
-        {userLogin?.name ? userLogin.name : t('LOGIN')}
+        {userLogin?.name ? userLogin.name : formatMessage({ id: 'LOGIN' })}
       </p>
     </div>
-  )
-}
-
+  );
+};
