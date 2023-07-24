@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react';
 
 export const DeliveryAreasMap = () => {
   const [isExpanded, setExpanded] = useState(false);
-  const [label, setLabel] = useState('');
 
   useEffect(() => {
     if (!isExpanded) document.body.style.overflow = 'hidden';

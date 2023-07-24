@@ -3,13 +3,11 @@ import { v4 as uuidv4 } from 'uuid';
 
 import User from '@models/user';
 import dbConnect from '@utils/dbConnect';
-import { useTranslation } from 'react-i18next';
 
 const GoogleLogin = async (req: NextApiRequest, res: NextApiResponse) => {
   const { method, body } = req;
   const { email, name, lastName } = body;
 
-  const { t } = useTranslation();
 
   await dbConnect();
 
@@ -22,7 +20,7 @@ const GoogleLogin = async (req: NextApiRequest, res: NextApiResponse) => {
 
         return res.status(200).json({
           success: true,
-          message: t('USER_LOGIN_SUCCESS'),
+          message: 'Login realizado con éxito!',
           user: {
             email,
             token,
@@ -34,7 +32,7 @@ const GoogleLogin = async (req: NextApiRequest, res: NextApiResponse) => {
         await User.create({ name, lastName, email, token, googleAcount: true, confirmed: true });
         return res.status(201).json({
           success: true,
-          message: t('USER_REGISTER_SUCCESS'),
+          message: 'Login realizado con éxito!',
           user: {
             email,
             token,
