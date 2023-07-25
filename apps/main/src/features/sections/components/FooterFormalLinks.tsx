@@ -1,10 +1,14 @@
 import Link from 'next/link';
+import { useIntl } from 'react-intl';
 
 export const FooterFormalLinks = () => {
+  const { formatMessage } = useIntl();
+
   return (
     <div className="pb-4 text-sm text-center text-gray-300 text-md">
-      <Link href="/terms">Terms & Conditions</Link> | <Link href="/cookies">Cookies policy</Link> |{' '}
-      <a href="mailto:chargeupbcn@gmail.com">Feedback</a>
+      <a href="/terms"> {formatMessage({ id: 'FOOTER_TERMS' })}</a> |
+      <a href="/cookies"> {formatMessage({ id: 'FOOTER_COOKIES' })}</a>
+      <a href="mailto:chargeupbcn@gmail.com">{formatMessage({ id: 'FOOTER_FEEDBACK' })}</a>
     </div>
   );
 };

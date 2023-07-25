@@ -1,7 +1,5 @@
-import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { SelectHTMLAttributes } from 'react';
-import { useIntl } from 'react-intl';
 import { twMerge } from 'tailwind-merge';
 
 type LanguageDetectorProps = Omit<SelectHTMLAttributes<HTMLSelectElement>, 'className'> & {
@@ -9,14 +7,22 @@ type LanguageDetectorProps = Omit<SelectHTMLAttributes<HTMLSelectElement>, 'clas
 };
 
 export const LanguageSelector = ({ className, ...rest }: LanguageDetectorProps) => {
-  const { locales, asPath } = useRouter();
+  const router = useRouter();
+  const { pathname, asPath, query, locales, locale } = router;
+
+  const changeLocale = (newLocale: string) =>
+    router.push({ pathname, query }, asPath, { locale: newLocale });
 
   return (
-    <select className={twMerge('bg-transparent text-xl', className)} {...rest}>
+    <select
+      className={twMerge('bg-transparent text-xl', className)}
+      {...rest}
+      onChange={(e) => changeLocale(e.target.value)}
+    >
       {locales.map((l) => (
-        <Link href={asPath} key={l}>
-          <option value={l}>{l.toUpperCase()}</option>
-        </Link>
+        <option key={l} value={l} selected={l === locale}>
+          {l.toUpperCase()}
+        </option>
       ))}
     </select>
   );

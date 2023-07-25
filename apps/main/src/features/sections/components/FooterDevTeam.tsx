@@ -1,9 +1,12 @@
 import { AiFillHeart } from 'react-icons/ai';
+import { useIntl } from 'react-intl';
 
 export const FooterDevTeam = () => {
+  const { formatMessage } = useIntl();
+  // <AiFillHeart className="mx-1" color="red" size={18} />
   return (
     <div className="flex flex-wrap items-center justify-center pb-2 text-sm text-center text-gray-300">
-      Made with <AiFillHeart className="mx-1" color="red" size={18} />
+      {formatMessage({ id: 'FOOTER_MADE_WITH' })}
       <a
         target="_blank"
         rel="noreferrer"

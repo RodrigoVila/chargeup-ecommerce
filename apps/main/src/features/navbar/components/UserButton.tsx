@@ -18,7 +18,7 @@ export const UserButton = ({ color: propColor = 'white' }: UserButtonProps) => {
 
   return (
     <div className={twMerge('flex cursor-pointer flex-col items-center justify-center', color)}>
-      <button onClick={openModal} className="w-6 h-6 md:h-8 md:w-8 lg:w-10 lg:h-10 2xl:h-8 2xl:w-8">
+      <button onClick={openModal} className="w-6 h-6 md:h-8 md:w-8">
         <UserIcon className={`${color} h-full w-full`} />
       </button>
       <p

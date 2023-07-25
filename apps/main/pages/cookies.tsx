@@ -1,4 +1,4 @@
-export const CookiesPage = () => {
+const CookiesPage = () => {
     return (
       <div style={{ margin: '20px' }}>
         <h1>Cookies Policy</h1>
@@ -182,3 +182,5 @@ export const CookiesPage = () => {
       </div>
     );
   };
+
+  export default CookiesPage

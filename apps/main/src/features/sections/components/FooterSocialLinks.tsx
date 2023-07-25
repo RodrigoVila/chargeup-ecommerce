@@ -5,9 +5,10 @@ import Link from 'next/link'
 const ICON_SIZE = 30
 
 export const FooterSocialLinks = () => {
+
   return (
     <div className="flex flex-row pb-4">
-      <Link href="https://www.instagram.com/chargeupbcn/" data-tip="Alto en proteina">
+      <Link href="https://www.instagram.com/chargeupbcn/">
         <FiInstagram color="white" className="cursor-pointer" size={ICON_SIZE} />
       </Link>
       <Link href="mailto:chargeupbcn@gmail.com">

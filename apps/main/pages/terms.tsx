@@ -1,4 +1,4 @@
-export const TermsPage = () => {
+const TermsPage = () => {
     return (
       <div style={{ margin: '20px' }}>
         <h1>Terms and Conditions</h1>
@@ -261,3 +261,4 @@ export const TermsPage = () => {
     );
   };
   
+  export default TermsPage

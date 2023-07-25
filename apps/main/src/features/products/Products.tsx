@@ -1,54 +1,57 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react';
 
-import { Spinner } from '@packages/spinner'
+import { Spinner } from '@packages/spinner';
 
-import { useAppActions, useAppSelector } from '~hooks'
-import { ProductType } from '~types'
+import { useAppActions, useAppSelector } from '~hooks';
+import { ProductType } from '~types';
 
-import { Product, ProductSearchBar } from './components'
+import { Product, ProductSearchBar } from './components';
+import { useIntl } from 'react-intl';
 
 export const Products = () => {
-  const [searchValue, setSearchValue] = useState('')
-  const [filteredProducts, setFilteredProducts] = useState<ProductType[]>([])
+  const [searchValue, setSearchValue] = useState('');
+  const [filteredProducts, setFilteredProducts] = useState<ProductType[]>([]);
 
-  const { products, filters } = useAppSelector()
+  const { products, filters } = useAppSelector();
 
-  const { fetchProducts } = useAppActions()
+  const { fetchProducts } = useAppActions();
 
-  const clearFilters = () => setFilteredProducts([])
+  const { formatMessage } = useIntl();
+
+  const clearFilters = () => setFilteredProducts([]);
 
   useEffect(() => {
-    fetchProducts()
-  }, [])
+    fetchProducts();
+  }, []);
 
   // TODO: Los filtros se seleccionan en el modal OK y guardan su state en Redux. Falta que impacten en este componente
   useEffect(() => {
     const filterByProductName = () => {
       const filter = products.filter((product) =>
-        product.title.toLowerCase().includes(searchValue.toLowerCase()),
-      )
-      searchValue.length > 1 ? setFilteredProducts(filter) : clearFilters()
-    }
+        product.title.toLowerCase().includes(searchValue.toLowerCase())
+      );
+      searchValue.length > 1 ? setFilteredProducts(filter) : clearFilters();
+    };
 
-    filterByProductName()
-  }, [searchValue])
+    filterByProductName();
+  }, [searchValue]);
 
   useEffect(() => {
     const filterByType = () => {
       if (filters.length > 0) {
         filters.map((f) => {
           const filter = products.filter((product) =>
-            product.title.toLowerCase().includes(f.toLowerCase()),
-          )
-          setFilteredProducts(filter)
-        })
+            product.title.toLowerCase().includes(f.toLowerCase())
+          );
+          setFilteredProducts(filter);
+        });
       } else {
-        clearFilters()
+        clearFilters();
       }
-    }
+    };
 
-    filterByType()
-  }, [filters])
+    filterByType();
+  }, [filters]);
 
   return (
     <>
@@ -64,9 +67,9 @@ export const Products = () => {
       ) : (
         <div className="flex items-center justify-center w-full h-full mt-20">
           <Spinner />
-          Loading products...
+          {formatMessage({ id: 'PRODUCTS_LOADING' })}
         </div>
       )}
     </>
-  )
-}
+  );
+};
