@@ -28,7 +28,7 @@ const GoogleLogin = async (req: NextApiRequest, res: NextApiResponse) => {
           },
         })
       } else {
-        await User.create({ name, lastName, email, token, googleAcount: true, confirmed: true })
+        await User.create({ name, lastName, email, token, googleAccount: true, confirmed: true })
         return res.status(201).json({
           success: true,
           message: "User registered OK",

@@ -49,8 +49,8 @@ export const newOrderToHTML = (
 export const emailVerificationToHTML = (name: string, pid: string) => {
   const link =
     process.env.NODE_ENV === 'development'
-      ? `http://localhost:3000/emailvalidation/pid=${pid}`
-      : `https://chargeupbcn.vercel.app/emailvalidation/pid=${pid}`;
+      ? `http://localhost:3000/emailvalidation/${pid}`
+      : `https://chargeupbcn.vercel.app/emailvalidation/${pid}`;
 
   return `<div>Hola ${name},</div><br><div>Te registraste a través de <span style="font-weight: 700">www.chargeupbcn.com</span>. Para validar tu cuenta, por favor haz click en el siguiente enlace: </div><br><a href=${link}>${link}</a><br><br><div>Si tu no has iniciado esta solicitud, por favor descarta este email.</div><br><div>Gracias por confiar en nosotros.</div><br><div style="font-weight: 700">⚡️ Charge UP Barcelona ⚡️</div>`;
 };

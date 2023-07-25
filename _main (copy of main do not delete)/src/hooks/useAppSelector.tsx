@@ -52,7 +52,7 @@ export const useAppSelector = () => {
   const {
     user: userDetails,
     users,
-    isLoading: areUsersLoading,
+    isLoading: isUserLoading,
   } = useSelector((state) => state.users, shallowEqual)
 
   return {
@@ -79,6 +79,6 @@ export const useAppSelector = () => {
     areProductsLoading,
     userDetails,
     users,
-    areUsersLoading,
+    isUserLoading,
   }
 }

@@ -13,7 +13,7 @@ type UserDataFormType = {
 }
 
 export const UserDataForm = ({ isCheckoutForm, onChange }: UserDataFormType) => {
-  const { areUsersLoading, userDetails } = useAppSelector()
+  const { isUserLoading, userDetails } = useAppSelector()
   const [userData, setUserData] = useState<UserDetailsType>(userDetails)
 
   const { t } = useTranslation()
@@ -94,7 +94,7 @@ export const UserDataForm = ({ isCheckoutForm, onChange }: UserDataFormType) => 
         disabled
       />
       {!isCheckoutForm && (
-        <Button onClick={handleSubmit} disabled={areUsersLoading}>
+        <Button onClick={handleSubmit} disabled={isUserLoading}>
           {t('CHANGE_USER_DATA')}
         </Button>
       )}

@@ -4,7 +4,7 @@ import createSagaMiddleware from '@redux-saga/core'
 import rootReducer from './reducers'
 import rootSaga from './sagas'
 
-import { AUTH_INITIAL_STATE } from '~constants/initialState'
+import { APP_USER_INITIAL_STATE, AUTH_INITIAL_STATE } from '~constants/initialState'
 import { LOCAL_STORAGE_CART_KEY, LOCAL_STORAGE_DATA_KEY } from '~constants/keys'
 import { getValueFromLocalStorage } from '~utils/localStorage'
 
@@ -18,6 +18,7 @@ const preloadState = {
   cart: {
     items: storedCart ? storedCart : [],
   },
+  user: APP_USER_INITIAL_STATE as any
 }
 
 const store = configureStore({

@@ -1,6 +1,6 @@
-import { twMerge } from 'tailwind-merge'
+import { twMerge } from 'tailwind-merge';
 
-import { useNavbarOpacity } from '~hooks'
+import { useNavbarOpacity } from '~hooks';
 
 import {
   BurgerButton,
@@ -9,12 +9,12 @@ import {
   Logo,
   NavItems,
   UserButton,
-} from './components'
+} from './components';
 
 export const Navbar = () => {
-  const { backgroundOpacity } = useNavbarOpacity()
+  const { backgroundOpacity } = useNavbarOpacity();
 
-  const bgOpacity = backgroundOpacity ? backgroundOpacity : 'bg-black/0'
+  const bgOpacity = backgroundOpacity ? backgroundOpacity : 'bg-black/0';
 
   return (
     <nav
@@ -24,18 +24,19 @@ export const Navbar = () => {
       <div className="flex items-center justify-start flex-1 xl:hidden">
         <BurgerButton />
       </div>
-      <Logo
-        logo="white.png"
-        className="flex items-center justify-center flex-1 xl:justify-start"
-        scrollOnClick
-        size="sm"
-      />
+      <div className="flex items-center justify-center flex-1 gap-4 xl:justify-start">
+        <Logo
+          logo="white.png"
+          scrollOnClick
+          size="sm"
+        />
+        <LanguageSelector className="hidden text-white xl:block" />
+      </div>
       <NavItems type="navbar" className="flex-1" />
-      <div className="z-10 flex items-center justify-end flex-1 gap-2 mr-3">
-        <LanguageSelector />
+      <div className="z-10 flex items-center justify-end flex-1 md:mr-3 md:gap-2">
         <UserButton />
         <CartButton />
       </div>
     </nav>
-  )
-}
+  );
+};

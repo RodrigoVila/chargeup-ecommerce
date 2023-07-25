@@ -1,4 +1,3 @@
-
 import { useDispatch } from 'react-redux';
 
 import type { AppDispatch } from '~redux/store';
@@ -62,8 +61,7 @@ import {
 import { setFilters } from '~redux/actions/filters';
 
 import { addNewOrder } from '~redux/actions/order';
-import { changeUserDetails, fetchUserDetails } from '~redux/actions/users';
-import { useIntl } from 'react-intl';
+import { changeUserDetails, fetchUserDetails } from '~redux/actions/user';
 import {
   CartProductType,
   GoogleSignInSuccessResponse,
@@ -74,38 +72,41 @@ import {
   UserLoginType,
   UserRegisterType,
 } from '~types';
+import { useIntl } from 'react-intl';
 
 export const useAppActions = () => {
   const dispatch = useDispatch<AppDispatch>();
-  const { formatMessage } = useIntl();;;
+
+  const { formatMessage } = useIntl();
 
   // Auth
-  const checkUserToken = (user: UserLoginType) => dispatch(userTokenCheck(user, t));
+  const checkUserToken = (user: UserLoginType) => dispatch(userTokenCheck(user));
 
   const getGoogleUserData = (payload: GoogleSignInSuccessResponse) =>
-    dispatch(googleUserData(payload, t));
+    dispatch(googleUserData(payload, formatMessage));
 
-  const userLogin = (user: UserLoginType) => dispatch(loginUser(user, t));
+  const userLogin = (user: UserLoginType) => dispatch(loginUser(user, formatMessage));
 
   const userLoginSuccess = (user: StorageUserType) => successLoginUser(user);
 
   const userLogout = () => dispatch(logoutUser());
 
-  const registerUser = (user: UserRegisterType) => dispatch(registerNewUser(user, t));
+  const registerUser = (user: UserRegisterType) => dispatch(registerNewUser(user, formatMessage));
 
   const dBEmailValidation = (pid: string) => dispatch(validateEmailInDB(pid));
 
   const validateTokenForPasswordChange = (email: string, pid: string) =>
     dispatch(validateTokenForPassChange(email, pid));
 
-  const recoverUserPassword = (email: string) => dispatch(requestPasswordRecovery(email, t));
+  const recoverUserPassword = (email: string) =>
+    dispatch(requestPasswordRecovery(email, formatMessage));
 
   const editUserPassword = (
     email: string,
     newPassword: string,
     oldPassword?: string | undefined
   ) => {
-    dispatch(changeUserPassword(email, newPassword, t, oldPassword));
+    dispatch(changeUserPassword(email, newPassword, formatMessage, oldPassword));
   };
 
   // Cart
@@ -142,7 +143,7 @@ export const useAppActions = () => {
     dispatch(adminProductModalOpen(selectedProduct));
   const closeAdminProductModal = () => dispatch(adminProductModalClose());
 
-  // Modals: USERS
+  // Modals: USER
   const openCartModal = () => dispatch(cartModalOpen());
 
   const closeCartModal = () => dispatch(cartModalClose());
@@ -202,7 +203,8 @@ export const useAppActions = () => {
   //Users
   const getUserDetails = () => dispatch(fetchUserDetails());
 
-  const editUserDetails = (user: UserDetailsType) => dispatch(changeUserDetails(user, t));
+  const editUserDetails = (user: UserDetailsType) =>
+    dispatch(changeUserDetails(user, formatMessage));
 
   return {
     addProduct,

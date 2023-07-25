@@ -1,9 +1,9 @@
-import { createSelectorHook, shallowEqual } from 'react-redux'
+import { createSelectorHook, shallowEqual } from 'react-redux';
 
-import type { RootState } from '~redux/store'
-import { CartProductType, ProductType } from '~types'
+import type { RootState } from '~redux/store';
+import { CartProductType, ProductType } from '~types';
 
-export const useSelector = createSelectorHook<RootState>()
+export const useSelector = createSelectorHook<RootState>();
 
 export const useAppSelector = () => {
   //Auth
@@ -14,46 +14,45 @@ export const useAppSelector = () => {
     userLogin,
     isEmailValidated,
     isTokenForPasswordValidated,
-  } = useSelector((state) => state.auth, shallowEqual)
+  } = useSelector((state) => state.auth, shallowEqual);
 
   //Cart
-  const cartItems: CartProductType[] = useSelector((state) => state.cart.items, shallowEqual)
+  const cartItems: CartProductType[] = useSelector((state) => state.cart.items, shallowEqual);
   //Checkout
-  const checkoutSession = useSelector((state) => state.checkout.session, shallowEqual)
+  const checkoutSession = useSelector((state) => state.checkout.session, shallowEqual);
   //Filters TODO: Reduce one filter lvl
-  const filters = useSelector((state) => state.filters.filters, shallowEqual)
+  const filters = useSelector((state) => state.filters.filters, shallowEqual);
 
   //Admin MOdals
   const isAdminProductModalOpen: boolean = useSelector(
     (state) => state.modal.adminProduct,
-    shallowEqual,
-  )
+    shallowEqual
+  );
   //User Modals
-  const isCartModalOpen: boolean = useSelector((state) => state.modal.cart, shallowEqual)
-  const isCheckoutModalOpen = useSelector((state) => state.modal.checkout, shallowEqual)
-  const isDrawerModalOpen: boolean = useSelector((state) => state.modal.drawer, shallowEqual)
-  const isFilterModalOpen: boolean = useSelector((state) => state.modal.filters, shallowEqual)
-  const isLoginModalOpen: boolean = useSelector((state) => state.modal.login, shallowEqual)
-  const isExtrasModalOpen: boolean = useSelector((state) => state.modal.extras, shallowEqual)
-  const isUserModalOpen: boolean = useSelector((state) => state.modal.user, shallowEqual)
-  const isProductModalOpen: boolean = useSelector((state) => state.modal.product, shallowEqual)
+  const isCartModalOpen: boolean = useSelector((state) => state.modal.cart, shallowEqual);
+  const isCheckoutModalOpen = useSelector((state) => state.modal.checkout, shallowEqual);
+  const isDrawerModalOpen: boolean = useSelector((state) => state.modal.drawer, shallowEqual);
+  const isFilterModalOpen: boolean = useSelector((state) => state.modal.filters, shallowEqual);
+  const isLoginModalOpen: boolean = useSelector((state) => state.modal.login, shallowEqual);
+  const isExtrasModalOpen: boolean = useSelector((state) => state.modal.extras, shallowEqual);
+  const isUserModalOpen: boolean = useSelector((state) => state.modal.user, shallowEqual);
+  const isProductModalOpen: boolean = useSelector((state) => state.modal.product, shallowEqual);
   const selectedModalProduct: ProductType | null = useSelector(
     (state) => state.modal.selectedProduct,
-    shallowEqual,
-  )
+    shallowEqual
+  );
 
   //Products
   const { products, isLoading: areProductsLoading } = useSelector(
     (state) => state.products,
-    shallowEqual,
-  )
+    shallowEqual
+  );
 
-  //Users
-  const {
-    user: userDetails,
-    users,
-    isLoading: areUsersLoading,
-  } = useSelector((state) => state.users, shallowEqual)
+  //User
+  const { user: userDetails, isLoading: isUserLoading } = useSelector(
+    (state) => state.user,
+    shallowEqual
+  );
 
   return {
     isLoggedIn,
@@ -78,7 +77,6 @@ export const useAppSelector = () => {
     products,
     areProductsLoading,
     userDetails,
-    users,
-    areUsersLoading,
-  }
-}
+    isUserLoading,
+  };
+};

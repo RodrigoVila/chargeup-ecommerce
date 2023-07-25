@@ -22,17 +22,19 @@ export const GoogleSignInButton = () => {
   const login = useGoogleLogin({ onSuccess, onError });
 
   return (
-    <div
-      className="relative flex items-center justify-center w-1/2 h-12 mx-auto cursor-pointer"
+    <button
+      className="relative flex items-center justify-center w-full gap-4 py-2 mx-auto border-2 border-black rounded-md cursor-pointer group hover:bg-black"
       onClick={() => login()}
     >
       <Image
-        src="/images/btn_google_signin.png"
+        src="/images/google_logo.svg"
         alt="Google logo"
-        layout="fill"
         data-atf="true"
         data-iml="513"
+        height={24}
+        width={24}
       />
-    </div>
+      <span className='group-hover:text-white group-hover:bg-black'>Sign in with Google</span>
+    </button>
   );
 };

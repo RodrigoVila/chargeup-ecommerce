@@ -9,7 +9,11 @@ import { encryptPassword } from '~utils/encrypt';
 
 const INITIAL_STATE = { oldPassword: '', password: '', repeatPassword: '' };
 
-export const UpdatePasswordForm = () => {
+type UpdatePasswordFormProps = {
+  requestFromMail?: string;
+};
+
+export const UpdatePasswordForm = ({ requestFromMail }: UpdatePasswordFormProps) => {
   const [userDetails, setUserDetails] = useState(INITIAL_STATE);
 
   const { displayErrorMessage, editUserPassword } = useAppActions();
@@ -30,8 +34,13 @@ export const UpdatePasswordForm = () => {
     }
 
     const encryptedPassword = await encryptPassword(password);
-
-    userLogin?.email && editUserPassword(userLogin.email, encryptedPassword);
+    // If requesst has been made from email (not logged)
+    if (requestFromMail) {
+      editUserPassword(requestFromMail, encryptedPassword);
+    } else {
+      // Otherwise request is from user detail (logged user)
+      userLogin?.email && editUserPassword(userLogin.email, encryptedPassword);
+    }
   };
   return (
     <div className="p-6 pt-4 bg-white rounded-xl">

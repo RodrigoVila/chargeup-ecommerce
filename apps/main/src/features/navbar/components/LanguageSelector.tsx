@@ -9,17 +9,13 @@ type LanguageDetectorProps = Omit<SelectHTMLAttributes<HTMLSelectElement>, 'clas
 };
 
 export const LanguageSelector = ({ className, ...rest }: LanguageDetectorProps) => {
-  const { locale, locales, asPath } = useRouter();
-
-  // const changeLanguage = (lng: string) => {
-  //   i18n.changeLanguage(lng);
-  // };
+  const { locales, asPath } = useRouter();
 
   return (
-    <select className={twMerge('bg-transparent text-white', className)} {...rest}>
+    <select className={twMerge('bg-transparent text-xl', className)} {...rest}>
       {locales.map((l) => (
-        <Link href={asPath}>
-          <option value={l}>{l}</option>
+        <Link href={asPath} key={l}>
+          <option value={l}>{l.toUpperCase()}</option>
         </Link>
       ))}
     </select>

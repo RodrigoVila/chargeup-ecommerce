@@ -21,8 +21,8 @@ export const LoginModal = () => {
         {formType === 'login' && <LoginForm onInputChange={onInputChange} />}
         {formType === 'passwordRecovery' && <PasswordRecoveryForm onInputChange={onInputChange} />}
 
-        <div className="flex flex-col w-full gap-2">
-          <Button loading={isAuthLoading} onClick={(e) => handleButtonClick(e)}>
+        <div className="flex flex-col items-center w-full gap-4">
+          <Button loading={isAuthLoading} onClick={handleButtonClick}>
             {formType === 'login'
               ? formatMessage({ id: 'LOGIN' })
               : formType === 'register'
@@ -33,17 +33,17 @@ export const LoginModal = () => {
           {formType !== 'passwordRecovery' && <GoogleSignInButton />}
 
           {(formType === 'register' || formType === 'passwordRecovery') && (
-            <div onClick={() => setFormType('login')}>{formatMessage({ id: 'GO_TO_LOGIN' })}</div>
+            <button onClick={() => setFormType('login')}>{formatMessage({ id: 'GO_TO_LOGIN' })}</button>
           )}
 
           {formType === 'login' && (
             <>
-              <div onClick={() => setFormType('register')}>
+              <button onClick={() => setFormType('register')}>
                 {formatMessage({ id: 'USER_REGISTER' })}
-              </div>
-              <div onClick={() => setFormType('passwordRecovery')}>
+              </button>
+              <button onClick={() => setFormType('passwordRecovery')}>
                 {formatMessage({ id: 'PASSWORD_RECOVERY' })}
-              </div>
+              </button>
             </>
           )}
         </div>

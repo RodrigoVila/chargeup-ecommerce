@@ -21,11 +21,11 @@ export const NavItems = ({ type, className = '', onClick }: NavItemsProps) => {
     { label: formatMessage({ id: 'CONTACT' }), href: 'contact' },
   ]
   const directionStyles =
-    type === 'navbar' ? 'flex-row pl-2 text-white hidden xl:flex gap-4' : 'flex-col text-purple-600 flex'
+    type === 'navbar' ? 'flex-row pl-2 text-white hidden xl:flex' : 'flex-col text-purple-600 flex'
   return (
     <ul
       className={twMerge(
-        'font-dinBold z-10 w-full items-center justify-center text-center',
+        'font-dinBold z-10 w-full items-center justify-center text-center gap-4',
         directionStyles,
         className,
       )}

@@ -1,4 +1,3 @@
-import { TFunction } from 'i18next';
 import { UserDetailsType } from '~types';
 import {
   FETCH_USER_DETAILS,
@@ -8,6 +7,7 @@ import {
   REQUEST_CHANGE_USER_DETAILS_ERROR,
   REQUEST_CHANGE_USER_DETAILS_SUCCESS,
 } from '~constants/ActionTypes';
+import { IntlFormatters } from 'react-intl';
 
 export const fetchUserDetails = () => ({
   type: FETCH_USER_DETAILS,
@@ -23,11 +23,11 @@ export const fetchUserDetailsError = (error: Error) => ({
 
 export const changeUserDetails = (
   user: UserDetailsType,
-  t: TFunction<'translation', undefined>
+  formatMessage: IntlFormatters['formatMessage']
 ) => ({
   type: REQUEST_CHANGE_USER_DETAILS,
   user,
-  t,
+  formatMessage,
 });
 
 export const changeUserDetailsSuccess = () => ({

@@ -27,12 +27,12 @@ export const Button = ({
   ...rest
 }: ButtonProps) => {
   const baseStyles =
-    'group z-20 flex w-full cursor-pointer items-center justify-center rounded-md py-2 py-2 px-4 bg-purple-700'
+    'group z-20 flex w-full cursor-pointer items-center justify-center rounded-md py-2 py-2 px-4'
 
   const typeStyles =
     type === 'outlined'
       ? 'border border-black hover:bg-black'
-      : 'bg-mainPurple hover:bg-fuchsia-600'
+      : 'bg-purple-700 hover:bg-fuchsia-600'
 
   const textStyles =
     type === 'outlined' ? 'text-black group-hover:text-white text-sm' : 'text-white text-sm'

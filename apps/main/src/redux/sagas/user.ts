@@ -8,12 +8,11 @@ import {
   changeUserDetailsSuccess,
   fetchUserDetailsError,
   fetchUserDetailsSuccess,
-} from '~redux/actions/users';
+} from '~redux/actions/user';
 import { FETCH_USER_DETAILS, REQUEST_CHANGE_USER_DETAILS } from '~constants/ActionTypes';
 import { LOCAL_STORAGE_DATA_KEY } from '~constants/keys';
 import { getValueFromLocalStorage } from '~utils/localStorage';
 
-const API_USERS = '/api/users';
 const API_USER = '/api/user';
 
 function* fetchUserDetails() {
@@ -38,7 +37,7 @@ function* fetchUserDetails() {
 }
 
 function* updateUserDetails(payload: any) {
-  const { user, t } = payload;
+  const { user, formatMessage } = payload;
   try {
     const response = yield call(fetch, API_USER, {
       method: 'PUT',
@@ -63,9 +62,9 @@ function* updateUserDetails(payload: any) {
 // Future implementation
 // function* deleteUser(payload: any) {}
 
-function* usersSaga() {
+function* userSaga() {
   yield takeEvery(FETCH_USER_DETAILS, fetchUserDetails);
   yield takeEvery(REQUEST_CHANGE_USER_DETAILS, updateUserDetails);
 }
 
-export default usersSaga;
+export default userSaga;

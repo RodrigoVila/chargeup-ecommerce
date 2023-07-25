@@ -1,10 +1,10 @@
-import { TFunction } from 'i18next'
+import { TFunction } from 'i18next';
 import {
   GoogleSignInSuccessResponse,
   StorageUserType,
   UserLoginType,
   UserRegisterType,
-} from '~types'
+} from '~types';
 import {
   CHECK_USER_TOKEN,
   LOGIN_SUCCESS,
@@ -27,115 +27,118 @@ import {
   VALIDATE_TOKEN_FOR_PASSWORD_CHANGE,
   VALIDATE_TOKEN_FOR_PASSWORD_CHANGE_ERROR,
   VALIDATE_TOKEN_FOR_PASSWORD_CHANGE_SUCCESS,
-} from '~constants/ActionTypes'
+} from '~constants/ActionTypes';
+import { IntlFormatters } from 'react-intl';
 
-export const userTokenCheck = (user: UserLoginType, t: TFunction<'translation', undefined>) => ({
+export const userTokenCheck = (user: UserLoginType) => ({
   type: CHECK_USER_TOKEN,
   user,
-  t,
-})
+});
 
 export const googleUserData = (
   response: GoogleSignInSuccessResponse,
-  t: TFunction<'translation', undefined>,
+  formatMessage: IntlFormatters['formatMessage']
 ) => ({
   type: LOGIN_WITH_GOOGLE,
   response,
-  t,
-})
+  formatMessage,
+});
 
-export const loginUser = (user: UserLoginType, t: TFunction<'translation', undefined>) => ({
+export const loginUser = (user: UserLoginType, formatMessage: IntlFormatters['formatMessage']) => ({
   type: LOGIN_USER,
   user,
-  t,
-})
+  formatMessage,
+});
 
 export const successLoginUser = (userLogin: StorageUserType) => ({
   type: LOGIN_SUCCESS,
   userLogin,
-})
+});
 
 export const errorLoginUser = () => ({
   type: USER_LOGIN_ERROR,
-})
+});
 
-export const logoutUser = () => ({ type: LOGOUT })
+export const logoutUser = () => ({ type: LOGOUT });
 
 export const registerNewUser = (
   user: UserRegisterType,
-  t: TFunction<'translation', undefined>,
+  formatMessage: IntlFormatters['formatMessage']
 ) => ({
   type: REGISTER_USER,
   user,
-  t,
-})
+  formatMessage,
+});
 
 export const successRegisterUser = () => ({
   type: REGISTER_USER_SUCCESS,
-})
+});
 
 export const errorRegisterUser = () => ({
   type: REGISTER_USER_ERROR,
-})
+});
 
 export const validateEmailInDB = (pid: string) => ({
   type: VALIDATE_EMAIL_IN_DB,
   pid,
-})
+});
 
 export const validateEmailInDBSuccess = () => ({
   type: VALIDATE_EMAIL_IN_DB_SUCCESS,
-})
+});
 
 export const validateEmailInDBError = () => ({
   type: VALIDATE_EMAIL_IN_DB_ERROR,
-})
+});
 
-export const requestPasswordRecovery = (email: string, t: TFunction<'translation', undefined>) => ({
+export const requestPasswordRecovery = (
+  email: string,
+  formatMessage: IntlFormatters['formatMessage']
+) => ({
   type: REQUEST_PASSWORD_RECOVERY,
   email,
-  t,
-})
+  formatMessage,
+});
 
 export const requestPasswordRecoverySuccess = () => ({
   type: REQUEST_PASSWORD_RECOVERY_SUCCESS,
-})
+});
 
 export const requestPasswordRecoveryError = () => ({
   type: REQUEST_PASSWORD_RECOVERY_ERROR,
-})
+});
 
 export const validateTokenForPassChange = (email: string, token: string) => ({
   type: VALIDATE_TOKEN_FOR_PASSWORD_CHANGE,
   email,
   token,
-})
+});
 
 export const validateTokenForPassChangeSucccess = () => ({
   type: VALIDATE_TOKEN_FOR_PASSWORD_CHANGE_SUCCESS,
-})
+});
 
 export const validateTokenForPassChangeError = () => ({
   type: VALIDATE_TOKEN_FOR_PASSWORD_CHANGE_ERROR,
-})
+});
 
 export const changeUserPassword = (
   email: string,
   newPassword: string,
-  t: TFunction<'translation', undefined>,
-  oldPassword?: string,
+  formatMessage: IntlFormatters['formatMessage'],
+  oldPassword?: string
 ) => ({
   type: REQUEST_CHANGE_USER_PASSWORD,
   email,
   newPassword,
-  t,
+  formatMessage,
   oldPassword,
-})
+});
 
 export const changeUserPasswordSuccess = () => ({
   type: REQUEST_CHANGE_USER_PASSWORD_SUCCESS,
-})
+});
 
 export const changeUserPasswordError = () => ({
   type: REQUEST_CHANGE_USER_PASSWORD_ERROR,
-})
+});

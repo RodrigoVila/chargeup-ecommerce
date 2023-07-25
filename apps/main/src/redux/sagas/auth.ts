@@ -32,7 +32,7 @@ import {
 const API_URL = '/api/auth';
 
 function* userRegister(payload: any) {
-  const { user, t } = payload;
+  const { user, formatMessage } = payload;
   try {
     const response = yield call(fetch, API_URL + '/signup', {
       method: 'POST',
@@ -56,7 +56,7 @@ function* userRegister(payload: any) {
 }
 
 function* userLogin(payload: any) {
-  const { t } = payload;
+  const { formatMessage } = payload;
   try {
     const response = yield call(fetch, API_URL + '/signin', {
       method: 'POST',
@@ -64,14 +64,20 @@ function* userLogin(payload: any) {
       body: JSON.stringify(payload.user),
     });
 
-    const { success, user } = yield response.json();
+    const { success, user, message } = yield response.json();
 
     if (success) {
       yield put(successLoginUser(user));
       yield put(displayMessageSuccess(formatMessage({ id: 'USER_LOGIN_SUCCESS' })));
       yield put(loginModalClose());
     } else {
-      yield put(displayMessageError(formatMessage({ id: 'INVALID_CREDENTIALS' })));
+      message === 'Email registered with google' &&
+        (yield put(displayMessageError(formatMessage({ id: 'USER_CREATED_WITH_GOOGLE' }))));
+      message === 'Need to validate account' &&
+        (yield put(displayMessageError(formatMessage({ id: 'USER_NEED_TO_VALIDATE_ACCOUNT' }))));
+      message === 'Invalid credentials' &&
+        (yield put(displayMessageError(formatMessage({ id: 'INVALID_CREDENTIALS' }))));
+
       yield put(errorLoginUser());
     }
   } catch (e) {
@@ -82,8 +88,8 @@ function* userLogin(payload: any) {
 
 function* googleLogin(payload: any) {
   const {
-    t,
     response: { access_token },
+    formatMessage,
   } = payload;
 
   try {
@@ -175,7 +181,7 @@ function* validateEmailInDB(payload: any) {
 }
 
 function* requestPasswordRecovery(payload: any) {
-  const { email, t } = payload;
+  const { email, formatMessage } = payload;
   try {
     const response = yield call(fetch, API_URL + '/pwdrecovery', {
       method: 'POST',
@@ -220,7 +226,7 @@ function* passwordChangeTokenValidation(payload: any) {
 }
 
 function* updateUserPassword(payload: any) {
-  const { email, oldPassword, newPassword, t } = payload;
+  const { email, oldPassword, newPassword, formatMessage } = payload;
 
   try {
     const response = yield call(fetch, API_URL + '/updatepassword', {

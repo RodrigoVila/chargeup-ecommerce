@@ -18,6 +18,25 @@ const SignIn = async (req: NextApiRequest, res: NextApiResponse) => {
       if (userRecord) {
         const token = uuidv4();
 
+        const userHasRegisteredWithGoogleAccount = userRecord.googleAccount;
+        const userHasAPassword = !!userRecord.password;
+
+        if (userHasRegisteredWithGoogleAccount && !userHasAPassword) {
+          return res.status(409).json({
+            success: false,
+            message: 'Email registered with google',
+          });
+        }
+
+        const hasUserValidatedAccount = userRecord.confirmed
+
+        if (!hasUserValidatedAccount) {
+          return res.status(401).json({
+            success: false,
+            message: 'Need to validate account',
+          });
+        }
+
         const isPasswordOK = await compareHashedPassword(password, userRecord.password);
 
         if (isPasswordOK) {

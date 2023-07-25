@@ -25,3 +25,5 @@ pnpm-debug.log*
 
 #Vscode user config
 .vscode/*
+
+.DS_Store

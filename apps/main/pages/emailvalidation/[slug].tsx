@@ -5,7 +5,7 @@ import { useIntl } from 'react-intl';
 import { Spinner } from '@packages/spinner';
 
 import { useAppActions, useAppSelector } from '~hooks';
-import { ErrorSuccess } from './components/ErrorSuccess';
+import { ErrorSuccess } from '~components/ErrorSuccess';
 
 const EmailValidation = () => {
   const router = useRouter();
@@ -13,11 +13,11 @@ const EmailValidation = () => {
   const { isEmailValidated } = useAppSelector();
   const { formatMessage } = useIntl();
 
-  const pid = router.query.id;
+  const { slug } = router.query;
 
   useEffect(() => {
-    pid && dBEmailValidation(pid.toString().slice(4));
-  }, [pid]);
+    slug && dBEmailValidation(slug.toString());
+  }, [slug]);
 
   if (isEmailValidated === null) {
     return (

@@ -2,22 +2,22 @@ import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 
 import { useAppActions } from '~hooks'
-import { ErrorSuccess } from '_app/emailvalidation/components/ErrorSuccess'
+import { ErrorSuccess } from '~components/ErrorSuccess'
 
 const OrderSuccess = () => {
   const router = useRouter()
 
-  const queryID = router.query.id
+  const {slug} = router.query
 
-  const trimmedID = queryID?.toString().substring(4, 11)
+  const trimmedID = slug?.toString().substring(4, 11)
 
   const { clearCart } = useAppActions()
 
   useEffect(() => {
     clearCart()
-  }, [queryID])
+  }, [slug])
 
-  return queryID ? (
+  return slug ? (
     <ErrorSuccess
       type="success"
       title={`Orden #${trimmedID} procesada correctamente`}

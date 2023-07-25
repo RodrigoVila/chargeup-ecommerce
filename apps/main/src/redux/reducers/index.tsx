@@ -7,7 +7,7 @@ import filtersReducer from './filters';
 import modalReducer from './modal';
 import productsReducer from './products';
 import toastReducer from './toastNotifications';
-import usersReducer from './users';
+import userReducer from './user';
 
 const rootReducer = combineReducers({
   auth: authReducer,
@@ -17,7 +17,7 @@ const rootReducer = combineReducers({
   modal: modalReducer,
   products: productsReducer,
   toastMessage: toastReducer,
-  users: usersReducer,
+  user: userReducer,
 });
 
 export default rootReducer;

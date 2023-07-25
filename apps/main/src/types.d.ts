@@ -25,8 +25,8 @@ export type AddressType = {
   extras: string
   postCode: string
   city: string
-  province: string
-  country: string
+  province?: string
+  country?: string
 }
 
 export type UserDetailsType = {
@@ -209,13 +209,12 @@ export type ToastActionType = ToastStateType & {
   type: string
 }
 
-//Users
-export type UsersStateType = {
+//User
+export type UserStateType = {
   isLoading: boolean
   user: UserDetailsType
-  users: UserDetailsType[]
 }
-export type UsersActionType = UsersStateType & {
+export type UserActionType = UserStateType & {
   type: string
 }
 

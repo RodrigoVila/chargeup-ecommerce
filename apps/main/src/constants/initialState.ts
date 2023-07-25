@@ -1,4 +1,4 @@
-import { AuthStateType, ProductType, UserDetailsType, UsersStateType } from '~types'
+import { AuthStateType, ProductType, UserDetailsType, UserStateType } from '~types'
 
 // Initial state
 export const AUTH_INITIAL_STATE: AuthStateType = {
@@ -58,8 +58,7 @@ export const CART_INITIAL_STATE: ProductType = {
   },
 }
 
-export const USERS_INITIAL_STATE: UsersStateType = {
+export const USER_INITIAL_STATE: UserStateType = {
   isLoading: false,
   user: APP_USER_INITIAL_STATE,
-  users: [],
 }

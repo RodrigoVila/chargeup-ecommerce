@@ -3,10 +3,10 @@ import { all } from 'redux-saga/effects';
 import authSaga from './auth';
 import checkoutSaga from './checkout';
 import productsSaga from './products';
-import usersSaga from './users';
+import userSaga from './user';
 
 function* rootSaga() {
-  yield all([productsSaga(), checkoutSaga(), authSaga(), usersSaga() /*, otherSagas()*/]);
+  yield all([productsSaga(), checkoutSaga(), authSaga(), userSaga() /*, otherSagas()*/]);
 }
 
 export default rootSaga;
