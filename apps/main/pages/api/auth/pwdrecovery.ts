@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 import { User, PasswordRecovery } from '~models';
 import { dbConnect } from '~utils/dbConnect';
-import { sendEmailToUser } from '~utils/nodemailer';
+import { sendEmail } from '~utils/nodemailer';
 import { passwordRecoveryToHTML } from '~utils/htmlEmailParsers';
 
 const PasswordRecoveryAPI = async (req: NextApiRequest, res: NextApiResponse) => {
@@ -27,7 +27,7 @@ const PasswordRecoveryAPI = async (req: NextApiRequest, res: NextApiResponse) =>
       if (userRecord) {
         try {
           await PasswordRecovery.create({ email, token, created: new Date() });
-          await sendEmailToUser(mailOption);
+          await sendEmail(mailOption);
           return res.status(200).json({ success: true });
         } catch (e: any) {
           return res.status(409).json({

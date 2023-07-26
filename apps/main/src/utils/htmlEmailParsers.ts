@@ -32,7 +32,7 @@ export const newOrderToHTML = (
     order.totalAmount
   ).toFixed(
     2
-  )}</span></div><br/><div>El pedido se retira por Poblenou en 48hs habiles</div><br/></div><div>Gracias por tu compra.</div></div><br/><div style="font-weight: 700">⚡️ Charge UP Barcelona ⚡️</div><div/></div>`;
+  )}</span></div><br/><div>Alguien de nuestro equipo se pondra en contacto contigo para organizar la entrega o el retiro.</div><br/></div><div>Gracias por tu compra.</div></div><br/><div style="font-weight: 700">⚡️ Charge UP Barcelona ⚡️</div><div/></div>`;
   const adminHTML = `<div><div>Hola Daniela,</div><br/><div>Recibiste un nuevo pedido a través de la web de <span style="font-weight: 700">www.chargeupbcn.com</span>. El detalle de tu pedido está a continuación</div><br/>${itemsDiv.join(
     ''
   )}<div><div style="font-size: large">Total abonado: <span style="font-weight: 700">€ ${parseInt(

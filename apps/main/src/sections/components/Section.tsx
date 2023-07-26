@@ -1,18 +1,19 @@
-import Image from 'next/image'
-import { ReactNode } from 'react'
+import Image from 'next/image';
+import { ReactNode } from 'react';
+import { twMerge } from 'tailwind-merge';
 
-import { BackgroundOverlay } from '~components/BackgroundOverlay'
+import { BackgroundOverlay } from '~components/BackgroundOverlay';
 
 type SectionProps = {
-  id: string
-  title?: string
-  bgImage?: string | null
-  overlay?: boolean
-  disabled?: boolean
-  className?: string
-  children: ReactNode
-  childrenClassName?: string
-}
+  id: string;
+  title?: string;
+  bgImage?: string | null;
+  overlay?: boolean;
+  disabled?: boolean;
+  className?: string;
+  children: ReactNode;
+  bodyClassName?: string;
+};
 export const Section = ({
   id,
   title,
@@ -21,10 +22,10 @@ export const Section = ({
   disabled = false,
   className,
   children,
-  childrenClassName,
+  bodyClassName,
 }: SectionProps) => {
-  const textColor = id === 'keto' ? 'text-black' : 'text-white'
-  const defaultStyles = 'px-2 pb-16 pt-32'
+  const textColor = id === 'keto' ? 'text-black' : 'text-white';
+  const defaultStyles = 'px-2 pb-16 pt-32';
 
   return disabled ? null : (
     <section
@@ -46,17 +47,22 @@ export const Section = ({
       {overlay && <BackgroundOverlay />}
       {title && (
         <h1
-          className={`font-dinBold z-20 w-full px-2 pb-8 text-center text-3xl uppercase md:text-5xl ${textColor}`}
+          className={twMerge(
+            'font-dinBold z-20 w-full px-2 pb-8 text-center text-3xl uppercase md:text-5xl',
+            textColor
+          )}
         >
           {title}
         </h1>
       )}
       <div
-        className={`2xs:px-4 z-20 h-full max-w-4xl text-xl leading-snug md:text-2xl xl:max-w-5xl xl:leading-normal 
-        ${childrenClassName ?? ''}`}
+        className={twMerge(
+          '2xs:px-4 z-20 h-full max-w-4xl text-xl leading-snug md:text-2xl xl:max-w-5xl xl:leading-normal',
+          bodyClassName
+        )}
       >
         {children}
       </div>
     </section>
-  )
-}
+  );
+};

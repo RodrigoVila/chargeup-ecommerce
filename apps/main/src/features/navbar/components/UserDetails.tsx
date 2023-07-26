@@ -12,7 +12,7 @@ type EditingType = 'password' | 'userData' | null;
 export const UserDetails = () => {
   const [editing, setEditing] = useState<EditingType>(null);
 
-  const { userLogout, closeUserModal, getUserDetails } = useAppActions();
+  const { userLogout, closeUserModal } = useAppActions();
 
   const { formatMessage } = useIntl();
 
@@ -23,10 +23,6 @@ export const UserDetails = () => {
     googleLogout();
     closeUserModal();
   };
-
-  useEffect(() => {
-    getUserDetails();
-  }, []);
 
   return (
     <div

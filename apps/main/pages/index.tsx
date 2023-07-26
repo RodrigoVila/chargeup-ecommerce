@@ -21,6 +21,7 @@ import { getValueFromLocalStorage } from '~utils/localStorage';
 import {
   AboutSection,
   CakesSection,
+  ContactSection,
   FooterSection,
   KetoSection,
   ProductsSection,
@@ -61,7 +62,7 @@ const MainScreen = () => {
       <CakesSection />
       <KetoSection />
       <WhyUsSection />
-      {/* <Contact /> */}
+      <ContactSection />
       <FooterSection />
 
       {/* Modals */}

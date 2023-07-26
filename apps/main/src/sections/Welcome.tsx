@@ -30,7 +30,7 @@ export const WelcomeSection: FC = () => {
       id="welcome"
       bgImage="welcome.jpg"
       overlay
-      childrenClassName="absolute inset-0 mx-auto"
+      bodyClassName="absolute inset-0 mx-auto"
     >
       <div className="flex flex-col items-center justify-center w-full h-full gap-4 font-dinBold">
         <h1 className="text-3xl font-semibold tracking-wide text-center text-white leading-0 2xs:text-4xl md:px-4 md:text-6xl">

@@ -49,10 +49,12 @@ export const useAppSelector = () => {
   );
 
   //User
-  const { user: userDetails, isLoading: isUserLoading } = useSelector(
+  const { user: userDetails, isLoading: isUserDataLoading } = useSelector(
     (state) => state.user,
     shallowEqual
   );
+
+  const { isContactFormLoading } = useSelector((state) => state.email, shallowEqual);
 
   return {
     isLoggedIn,
@@ -77,6 +79,7 @@ export const useAppSelector = () => {
     products,
     areProductsLoading,
     userDetails,
-    isUserLoading,
+    isUserDataLoading,
+    isContactFormLoading
   };
 };

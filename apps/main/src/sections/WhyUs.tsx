@@ -7,7 +7,7 @@ export const WhyUsSection = () => {
     <Section
       id="whyus"
       title={formatMessage({ id: 'WHY_US_TITLE' })}
-      bgImage="peanut-butter.jpg"
+      bgImage="wooden.jpg"
       overlay
     >
       <p className="py-2">{formatMessage({ id: 'WHY_US_PARAGRAPH_1' })}</p>

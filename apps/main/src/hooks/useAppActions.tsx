@@ -62,8 +62,10 @@ import { setFilters } from '~redux/actions/filters';
 
 import { addNewOrder } from '~redux/actions/order';
 import { changeUserDetails, fetchUserDetails } from '~redux/actions/user';
+import { contactFormSend } from '~redux/actions/email';
 import {
   CartProductType,
+  ContactFormType,
   GoogleSignInSuccessResponse,
   OrderType,
   ProductType,
@@ -206,6 +208,9 @@ export const useAppActions = () => {
   const editUserDetails = (user: UserDetailsType) =>
     dispatch(changeUserDetails(user, formatMessage));
 
+  const sendContactForm = (contacForm: ContactFormType) =>
+    dispatch(contactFormSend(contacForm, formatMessage));
+
   return {
     addProduct,
     removeProduct,
@@ -256,5 +261,6 @@ export const useAppActions = () => {
     getUserDetails,
     editUserDetails,
     editUserPassword,
+    sendContactForm,
   };
 };

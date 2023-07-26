@@ -15,8 +15,6 @@
     "@heroicons/react": "^2.0.18",
     "@packages/button": "workspace:*",
     "@packages/checkbox": "workspace:*",
-    "@packages/config": "workspace:*",
-    "@packages/eslint-config": "workspace:*",
     "@packages/input": "workspace:*",
     "@packages/spinner": "workspace:*",
     "@react-oauth/google": "^0.11.0",

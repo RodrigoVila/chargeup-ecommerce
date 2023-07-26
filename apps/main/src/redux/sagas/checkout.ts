@@ -8,7 +8,7 @@ import {
 } from '~redux/actions/checkout';
 import { CREATE_CHECKOUT_SESSION } from '~constants/ActionTypes';
 
-const API_URL = '/api/checkout_session';
+const API_URL = '/api/checkout-session';
 
 function* checkoutSession(payload: any) {
   const { newOrder } = payload;

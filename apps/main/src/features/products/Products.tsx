@@ -55,7 +55,7 @@ export const Products = () => {
 
   return (
     <>
-      <div className="flex flex-wrap items-center justify-center h-full pb-2">
+      <div className="flex flex-wrap items-center justify-center h-full pb-2 mt-6">
         <ProductSearchBar setSearchValue={setSearchValue} />
       </div>
       {products.length > 0 ? (

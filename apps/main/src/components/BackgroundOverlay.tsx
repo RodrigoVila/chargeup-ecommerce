@@ -9,7 +9,7 @@ type BackgroundOverlayProps = {
 
 export const BackgroundOverlay = ({ darker, lighter }: BackgroundOverlayProps) => {
   const opacity = useMemo(
-    () => (darker ? 'bg-overlayDark' : lighter ? 'bg-overlayLight' : 'bg-overlay'),
+    () => (darker ? 'bg-[rgba(0,0,0,0.7)]' : lighter ? 'bg-[rgba(0,0,0,0.2)]' : 'bg-[rgba(0,0,0,0.5)]'),
     [darker, lighter],
   )
 

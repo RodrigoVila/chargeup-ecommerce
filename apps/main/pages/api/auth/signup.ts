@@ -3,7 +3,7 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import { User } from '~models';
 import { dbConnect } from '~utils/dbConnect';
 import { emailVerificationToHTML } from '~utils/htmlEmailParsers';
-import { sendEmailToUser } from '~utils/nodemailer';
+import { sendEmail } from '~utils/nodemailer';
 
 const SignUp = async (req: NextApiRequest, res: NextApiResponse) => {
   const { method, body } = req;
@@ -21,7 +21,7 @@ const SignUp = async (req: NextApiRequest, res: NextApiResponse) => {
   const register = async () => {
     try {
       await User.create({ name, lastName, email, password, pid });
-      await sendEmailToUser(mailOption);
+      await sendEmail(mailOption);
       return res.status(201).json({ success: true, message: 'User registered Successfully' });
     } catch (e: any) {
       return res.status(409).json({

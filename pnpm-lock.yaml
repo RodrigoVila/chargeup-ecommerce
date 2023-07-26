@@ -76,12 +76,6 @@ importers:
       '@packages/checkbox':
         specifier: workspace:*
         version: link:../../packages/checkbox
-      '@packages/config':
-        specifier: workspace:*
-        version: link:../../packages/config
-      '@packages/eslint-config':
-        specifier: workspace:*
-        version: link:../../packages/config/eslint-config
       '@packages/input':
         specifier: workspace:*
         version: link:../../packages/input

@@ -5,34 +5,27 @@ import { Button } from '@packages/button';
 import { Input } from '@packages/input';
 
 import { useAppActions, useAppSelector } from '~hooks';
-import { AddressType, UserDetailsType } from '~types';
+import { AddressType, StorageUserType, UserDetailsType } from '~types';
 import { getValueFromLocalStorage } from '~utils/localStorage';
 import { LOCAL_STORAGE_DATA_KEY } from '~constants/keys';
+import { Spinner } from '@packages/spinner';
+import { APP_USER_INITIAL_STATE } from '~constants/initialState';
 
 type UserDataFormType = {
   isCheckoutForm?: boolean;
   onChange?: (userDetails: UserDetailsType | any) => void;
 };
 
-const address: AddressType = {
-  street: '',
-  streetNumber: '',
-  extras: '',
-  postCode: '',
-  city: '',
-};
-
 export const UserDataForm = ({ isCheckoutForm, onChange }: UserDataFormType) => {
-  const { isUserLoading, userDetails } = useAppSelector();
-  // TODO: Find a better way to do this
-  const data = userDetails.address ? userDetails : { ...userDetails, address };
-  const [userData, setUserData] = useState<UserDetailsType>(data);
+  const [userData, setUserData] = useState<UserDetailsType>(APP_USER_INITIAL_STATE);
+
+  const { isUserDataLoading, userDetails } = useAppSelector();
 
   const { formatMessage } = useIntl();
 
-  const { editUserDetails } = useAppActions();
+  const { editUserDetails, getUserDetails } = useAppActions();
 
-  const storedUser = getValueFromLocalStorage(LOCAL_STORAGE_DATA_KEY);
+  const storedUser: StorageUserType = getValueFromLocalStorage(LOCAL_STORAGE_DATA_KEY);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -59,11 +52,16 @@ export const UserDataForm = ({ isCheckoutForm, onChange }: UserDataFormType) => 
   const handleSubmit = () => editUserDetails(userData);
 
   useEffect(() => {
-    console.log({ userData });
-    // getUserDetails();
+    getUserDetails();
   }, []);
 
-  return (
+  useEffect(() => {
+    userDetails?.token && setUserData(userDetails);
+  }, [userDetails]);
+
+  return isUserDataLoading ? (
+    <Spinner />
+  ) : (
     <div className="w-full p-6 overflow-scroll">
       <Input
         label={formatMessage({ id: 'NAME' })}
@@ -83,9 +81,9 @@ export const UserDataForm = ({ isCheckoutForm, onChange }: UserDataFormType) => 
         label={formatMessage({ id: 'EMAIL' })}
         type="text"
         name="email"
-        value={userData.email || storedUser?.email || ''}
+        value={userData.email || ''}
         onChange={handleChange}
-        disabled={!isCheckoutForm}
+        disabled={!!storedUser?.email || !isCheckoutForm}
       />
       <Input
         label={formatMessage({ id: 'MOBILE_NUMBER' })}
@@ -150,7 +148,7 @@ export const UserDataForm = ({ isCheckoutForm, onChange }: UserDataFormType) => 
           />
         </>
       ) : (
-        <Button onClick={handleSubmit} disabled={isUserLoading}>
+        <Button onClick={handleSubmit} disabled={isUserDataLoading}>
           {formatMessage({ id: 'CHANGE_USER_DATA' })}
         </Button>
       )}

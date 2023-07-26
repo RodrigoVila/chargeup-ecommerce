@@ -15,7 +15,7 @@ const transporter = nodemailer.createTransport({
   },
 })
 
-export const sendEmailToUser = async (mailOption: MailOption) => {
+export const sendEmail = async (mailOption: MailOption) => {
   await new Promise((resolve, reject) => {
     // verify connection configuration
     transporter.verify(function (error, success) {
