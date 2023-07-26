@@ -22,7 +22,7 @@
       "~hooks": ["./hooks/index.ts"],
       "~models": ["./models/index.ts"],
       "~redux/*": ["./redux/*"],
-      "~sections": ["./features/sections/index.ts"],
+      "~sections": ["./sections/index.ts"],
       "~types": ["./types.d.ts"],
       "~utils/*": ["./utils/*"]
     },

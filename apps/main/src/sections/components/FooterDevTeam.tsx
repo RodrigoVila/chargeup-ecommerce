@@ -1,4 +1,3 @@
-import { AiFillHeart } from 'react-icons/ai';
 import { useIntl } from 'react-intl';
 
 export const FooterDevTeam = () => {
