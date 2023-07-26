@@ -1,4 +1,3 @@
-import { TFunction } from 'i18next';
 import {
   GoogleSignInSuccessResponse,
   StorageUserType,
