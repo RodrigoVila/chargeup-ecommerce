@@ -1,4 +1,4 @@
-import { useIntl } from 'react-intl';
+import { useIntl } from 'react-intl'
 import { twMerge } from 'tailwind-merge'
 
 import { NavItem } from './NavItem'
@@ -10,7 +10,7 @@ type NavItemsProps = {
 }
 
 export const NavItems = ({ type, className = '', onClick }: NavItemsProps) => {
-  const { formatMessage } = useIntl();;
+  const { formatMessage } = useIntl()
 
   const links = [
     { label: formatMessage({ id: 'ABOUT_US' }), href: 'about' },
@@ -25,7 +25,7 @@ export const NavItems = ({ type, className = '', onClick }: NavItemsProps) => {
   return (
     <ul
       className={twMerge(
-        'font-dinBold z-10 w-full items-center justify-center text-center gap-4',
+        'font-dinBold z-10 w-full items-center justify-center gap-4 text-center',
         directionStyles,
         className,
       )}

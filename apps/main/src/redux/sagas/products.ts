@@ -1,31 +1,28 @@
 //@ts-nocheck
 // Planning to move out of sagas so is not worth investing time typing them
-import {
-  fetchProductsFromStoreError,
-  fetchProductsFromStoreSuccess,
-} from '~redux/actions/products';
-import { FETCH_PRODUCTS } from '~constants/ActionTypes';
-import { call, put, takeEvery } from 'redux-saga/effects';
+import { fetchProductsFromStoreError, fetchProductsFromStoreSuccess } from '~redux/actions/products'
+import { FETCH_PRODUCTS } from '~constants/ActionTypes'
+import { call, put, takeEvery } from 'redux-saga/effects'
 
-const API_URL = '/api/products';
+const API_URL = '/api/products'
 
 function* fetchProducts() {
   try {
-    const response = yield call(fetch, API_URL);
-    const { success, products } = yield response.json();
+    const response = yield call(fetch, API_URL)
+    const { success, products } = yield response.json()
 
     if (success) {
-      yield put(fetchProductsFromStoreSuccess(products));
+      yield put(fetchProductsFromStoreSuccess(products))
     } else {
-      yield put(fetchProductsFromStoreError('fetch product error'));
+      yield put(fetchProductsFromStoreError('fetch product error'))
     }
-  } catch (e:any) {
-    yield put(fetchProductsFromStoreError(e.message));
+  } catch (e: any) {
+    yield put(fetchProductsFromStoreError(e.message))
   }
 }
 
 function* productsSaga() {
-  yield takeEvery(FETCH_PRODUCTS, fetchProducts);
+  yield takeEvery(FETCH_PRODUCTS, fetchProducts)
 }
 
-export default productsSaga;
+export default productsSaga

@@ -25,20 +25,20 @@ export const FilterPill = ({ label, selected, onClick }: FilterPillProps) => {
   return (
     <div
       style={{ background: isActive ? colors.purple : colors.overlayPurple2 }}
-      className="flex items-center justify-center px-2 m-2 cursor-pointer rounded-3xl"
+      className='m-2 flex cursor-pointer items-center justify-center rounded-3xl px-2'
       onClick={handleClick}
     >
-      <div className="relative w-12 h-12 mr-1">
-        {label === 'Keto' && <Image src="/icons/keto-white.svg" layout="fill" alt="Keto" />}
-        {label === 'Vegano' && <Image src="/icons/vegan-white.png" layout="fill" alt="Vegan" />}
+      <div className='relative mr-1 h-12 w-12'>
+        {label === 'Keto' && <Image src='/icons/keto-white.svg' layout='fill' alt='Keto' />}
+        {label === 'Vegano' && <Image src='/icons/vegan-white.png' layout='fill' alt='Vegan' />}
         {label === 'Proteico' && (
-          <Image src="/icons/high-protein-white.svg" layout="fill" alt="High Protein" />
+          <Image src='/icons/high-protein-white.svg' layout='fill' alt='High Protein' />
         )}
         {label === 'Gluten Free' && (
-          <Image src="/icons/gluten-free-white.png" layout="fill" alt="Gluten Free" />
+          <Image src='/icons/gluten-free-white.png' layout='fill' alt='Gluten Free' />
         )}
         {label === 'Sin Azucar' && (
-          <Image src="/icons/sugar-free-white.png" layout="fill" alt="Sugar Free" />
+          <Image src='/icons/sugar-free-white.png' layout='fill' alt='Sugar Free' />
         )}
       </div>
       <p className={`${isActive ? 'font-bold' : ''} select-none text-white`}>{label}</p>

@@ -1,4 +1,3 @@
-
 import { ReactNode, useLayoutEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
 
@@ -8,7 +7,7 @@ type PortalProps = {
 }
 
 export const Portal = ({ children, wrapperId = 'react-portal-wrapper' }: PortalProps) => {
-  const [wrapperElement, setWrapperElement] = useState<HTMLElement| null>(null)
+  const [wrapperElement, setWrapperElement] = useState<HTMLElement | null>(null)
 
   const createWrapperAndAppendToBody = (wrapperId: string) => {
     const wrapperElement = document.createElement('div')

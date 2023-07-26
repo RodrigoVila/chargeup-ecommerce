@@ -1,5 +1,5 @@
-import mongoose from 'mongoose';
-import { adressSchema, orderSchema } from './order';
+import mongoose from 'mongoose'
+import { adressSchema, orderSchema } from './order'
 
 const userSchema = new mongoose.Schema(
   {
@@ -60,7 +60,7 @@ const userSchema = new mongoose.Schema(
   },
   {
     collection: process.env.MONGO_USERS_COLLECTION,
-  }
-);
+  },
+)
 
-export const User = mongoose.models.User || mongoose.model('User', userSchema);
+export const User = mongoose.models.User || mongoose.model('User', userSchema)

@@ -1,20 +1,20 @@
-import toast from 'react-hot-toast';
-import { AiOutlineCheckCircle } from 'react-icons/ai';
-import { BsExclamationOctagon } from 'react-icons/bs';
-import { MdCancel } from 'react-icons/md';
+import toast from 'react-hot-toast'
+import { AiOutlineCheckCircle } from 'react-icons/ai'
+import { BsExclamationOctagon } from 'react-icons/bs'
+import { MdCancel } from 'react-icons/md'
 
-import { ERROR_MESSAGE, INFO_MESSAGE, SUCCESS_MESSAGE } from '~constants/ActionTypes';
-import { colors } from '~constants/colors';
-import { ToastActionType, ToastStateType } from '~types';
+import { ERROR_MESSAGE, INFO_MESSAGE, SUCCESS_MESSAGE } from '~constants/ActionTypes'
+import { colors } from '~constants/colors'
+import { ToastActionType, ToastStateType } from '~types'
 
 const initialState: ToastStateType = {
   message: '',
   duration: 3000,
-};
+}
 
 const toastReducer = (
   state: ToastStateType = initialState,
-  action: ToastActionType
+  action: ToastActionType,
 ): ToastStateType => {
   switch (action.type) {
     case SUCCESS_MESSAGE:
@@ -39,8 +39,8 @@ const toastReducer = (
           role: 'status',
           'aria-live': 'polite',
         },
-      });
-      break;
+      })
+      break
     case ERROR_MESSAGE:
       toast(action.message, {
         duration: action.duration || 3000,
@@ -64,8 +64,8 @@ const toastReducer = (
           role: 'status',
           'aria-live': 'polite',
         },
-      });
-      break;
+      })
+      break
     case INFO_MESSAGE:
       toast(action.message, {
         duration: action.duration || 3000,
@@ -89,10 +89,10 @@ const toastReducer = (
           role: 'status',
           'aria-live': 'polite',
         },
-      });
-      break;
+      })
+      break
   }
-  return state;
-};
+  return state
+}
 
-export default toastReducer;
+export default toastReducer

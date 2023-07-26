@@ -6,8 +6,8 @@ type RoundImageProps = {
 
 export const RoundImage = ({ imgUri }: RoundImageProps) => {
   return (
-    <div className="absolute mx-auto mb-6 overflow-hidden bg-black bg-contain border-2 rounded-full -top-28 h-60 w-60">
-      <LazyImage src={`/images/${imgUri}.jpg`} alt={`${imgUri}`} width="100%" height="100%" />
+    <div className='absolute -top-28 mx-auto mb-6 h-60 w-60 overflow-hidden rounded-full border-2 bg-black bg-contain'>
+      <LazyImage src={`/images/${imgUri}.jpg`} alt={`${imgUri}`} width='100%' height='100%' />
     </div>
   )
 }

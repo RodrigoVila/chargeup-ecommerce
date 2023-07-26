@@ -1,22 +1,22 @@
-import { useEffect } from 'react';
-import { useRouter } from 'next/router';
-import { Toaster } from 'react-hot-toast';
+import { useEffect } from 'react'
+import { useRouter } from 'next/router'
+import { Toaster } from 'react-hot-toast'
 
-import { LOCAL_STORAGE_DATA_KEY } from '~constants/keys';
+import { LOCAL_STORAGE_DATA_KEY } from '~constants/keys'
 
-import { useAppActions, useAppSelector } from '~hooks';
+import { useAppActions, useAppSelector } from '~hooks'
 
-import { CartModal } from '~features/cart/CartModal';
-import { CheckoutModal } from '~features/checkout/CheckoutModal';
-import { DrawerModal } from '~features/navbar/components/DrawerModal';
-import { ProductExtrasModal } from '~features/products/components/ProductExtrasModal';
-import { FiltersModal } from '~features/products/components/FiltersModal';
-import { LoginModal } from '~features/auth/LoginModal';
-import { ProductDescModal } from '~features/products/components/ProductDescModal';
-import { UserModal } from '~features/navbar/components/UserModal';
-import { Navbar } from '~features/navbar/Navbar';
+import { CartModal } from '~features/cart/CartModal'
+import { CheckoutModal } from '~features/checkout/CheckoutModal'
+import { DrawerModal } from '~features/navbar/components/DrawerModal'
+import { ProductExtrasModal } from '~features/products/components/ProductExtrasModal'
+import { FiltersModal } from '~features/products/components/FiltersModal'
+import { LoginModal } from '~features/auth/LoginModal'
+import { ProductDescModal } from '~features/products/components/ProductDescModal'
+import { UserModal } from '~features/navbar/components/UserModal'
+import { Navbar } from '~features/navbar/Navbar'
 
-import { getValueFromLocalStorage } from '~utils/localStorage';
+import { getValueFromLocalStorage } from '~utils/localStorage'
 
 import {
   AboutSection,
@@ -27,29 +27,29 @@ import {
   ProductsSection,
   WelcomeSection,
   WhyUsSection,
-} from '~sections';
+} from '~sections'
 
 const MainScreen = () => {
-  const router = useRouter();
-  const { checkUserToken } = useAppActions();
-  const { checkoutSession } = useAppSelector();
+  const router = useRouter()
+  const { checkUserToken } = useAppActions()
+  const { checkoutSession } = useAppSelector()
 
   useEffect(() => {
     const getDataFromStorage = () => {
-      const storedUser = getValueFromLocalStorage(LOCAL_STORAGE_DATA_KEY);
+      const storedUser = getValueFromLocalStorage(LOCAL_STORAGE_DATA_KEY)
       //Validates stored and DB token
-      storedUser ? checkUserToken(storedUser) : null;
-    };
-    getDataFromStorage();
+      storedUser ? checkUserToken(storedUser) : null
+    }
+    getDataFromStorage()
     // eslint-disable-next-line
-  }, []);
+  }, [])
 
   useEffect(() => {
-    checkoutSession ? router.push(checkoutSession) : null;
-  }, [checkoutSession, router]);
+    checkoutSession ? router.push(checkoutSession) : null
+  }, [checkoutSession, router])
 
   return (
-    <div className="relative font-dinRegular">
+    <div className='font-dinRegular relative'>
       {/* Toast messages component */}
       <Toaster />
       {/* Navigation */}
@@ -75,7 +75,7 @@ const MainScreen = () => {
       <ProductDescModal />
       <ProductExtrasModal />
     </div>
-  );
-};
+  )
+}
 
-export default MainScreen;
+export default MainScreen

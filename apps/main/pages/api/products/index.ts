@@ -12,7 +12,7 @@ const Products = async (req: NextApiRequest, res: NextApiResponse) => {
     try {
       const product = await Product.create(body)
       return res.status(201).json({ success: true })
-    } catch (e:any) {
+    } catch (e: any) {
       return res.status(400).json({
         success: false,
       })
@@ -23,7 +23,7 @@ const Products = async (req: NextApiRequest, res: NextApiResponse) => {
     try {
       const products = await Product.find({})
       return res.status(200).json({ success: true, products })
-    } catch (e:any) {
+    } catch (e: any) {
       return res.status(400).json({
         success: false,
         message: e.message,

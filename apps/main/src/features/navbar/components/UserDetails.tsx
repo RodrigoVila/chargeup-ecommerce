@@ -1,28 +1,28 @@
-import { useEffect, useState } from 'react';
-import { googleLogout } from '@react-oauth/google';
-import { useIntl } from 'react-intl';
+import { useEffect, useState } from 'react'
+import { googleLogout } from '@react-oauth/google'
+import { useIntl } from 'react-intl'
 
-import { Button } from '@packages/button';
+import { Button } from '@packages/button'
 
-import { useAppActions } from '~hooks';
-import { UpdatePasswordForm, UserDataForm } from '~components/forms';
+import { useAppActions } from '~hooks'
+import { UpdatePasswordForm, UserDataForm } from '~components/forms'
 
-type EditingType = 'password' | 'userData' | null;
+type EditingType = 'password' | 'userData' | null
 
 export const UserDetails = () => {
-  const [editing, setEditing] = useState<EditingType>(null);
+  const [editing, setEditing] = useState<EditingType>(null)
 
-  const { userLogout, closeUserModal } = useAppActions();
+  const { userLogout, closeUserModal } = useAppActions()
 
-  const { formatMessage } = useIntl();
+  const { formatMessage } = useIntl()
 
-  const setEdit = (type: EditingType) => setEditing(type);
+  const setEdit = (type: EditingType) => setEditing(type)
 
   const onClickLogout = () => {
-    userLogout();
-    googleLogout();
-    closeUserModal();
-  };
+    userLogout()
+    googleLogout()
+    closeUserModal()
+  }
 
   return (
     <div
@@ -34,7 +34,7 @@ export const UserDetails = () => {
       {editing === 'password' && <UpdatePasswordForm />}
 
       {!editing && (
-        <div className="flex flex-col items-center justify-center w-full gap-2 mx-auto">
+        <div className='mx-auto flex w-full flex-col items-center justify-center gap-2'>
           <Button onClick={() => setEdit('userData')}>
             {formatMessage({ id: 'CHANGE_USER_DATA' })}
           </Button>
@@ -45,5 +45,5 @@ export const UserDetails = () => {
         </div>
       )}
     </div>
-  );
-};
+  )
+}

@@ -1,30 +1,30 @@
-import Image from 'next/image';
+import Image from 'next/image'
 
-import { Section } from './components';
-import { useIntl } from 'react-intl';
+import { Section } from './components'
+import { useIntl } from 'react-intl'
 
 export const KetoSection = () => {
-  const { formatMessage } = useIntl();
+  const { formatMessage } = useIntl()
   return (
-    <Section id="keto" title={formatMessage({ id: 'KETO_TITLE' })}>
-      <div className="text-black">
-        <p className="py-2">{formatMessage({ id: 'KETO_PARAGRAPH_1' })}</p>
-        <p className="py-2">{formatMessage({ id: 'KETO_PARAGRAPH_2' })}</p>
-        <p className="py-2">{formatMessage({ id: 'KETO_PARAGRAPH_3' })}</p>
-        <p className="py-2">{formatMessage({ id: 'KETO_PARAGRAPH_4' })}</p>
-        <p className="py-2">{formatMessage({ id: 'KETO_PARAGRAPH_5' })}</p>
-        <div className="relative w-full my-8 bg-contain h-screen/2">
+    <Section id='keto' title={formatMessage({ id: 'KETO_TITLE' })}>
+      <div className='text-black'>
+        <p className='py-2'>{formatMessage({ id: 'KETO_PARAGRAPH_1' })}</p>
+        <p className='py-2'>{formatMessage({ id: 'KETO_PARAGRAPH_2' })}</p>
+        <p className='py-2'>{formatMessage({ id: 'KETO_PARAGRAPH_3' })}</p>
+        <p className='py-2'>{formatMessage({ id: 'KETO_PARAGRAPH_4' })}</p>
+        <p className='py-2'>{formatMessage({ id: 'KETO_PARAGRAPH_5' })}</p>
+        <div className='h-screen/2 relative my-8 w-full bg-contain'>
           <Image
-            src="/images/keto-graphic2.png"
-            alt="Keto Diet Graphic"
-            objectFit="contain"
-            layout="fill"
+            src='/images/keto-graphic2.png'
+            alt='Keto Diet Graphic'
+            objectFit='contain'
+            layout='fill'
           />
         </div>
-        <h4 className="w-full pt-8 pb-4 text-3xl font-dinBold lg:text-left">
+        <h4 className='font-dinBold w-full pb-4 pt-8 text-3xl lg:text-left'>
           {formatMessage({ id: 'KETO_TIPICAL_FOOD_TITLE' })}
         </h4>
-        <ul className="flex flex-col px-4 text-left">
+        <ul className='flex flex-col px-4 text-left'>
           <li>{formatMessage({ id: 'KETO_TIPICAL_FOOD_OPT_1' })}</li>
           <li>{formatMessage({ id: 'KETO_TIPICAL_FOOD_OPT_2' })}</li>
           <li>{formatMessage({ id: 'KETO_TIPICAL_FOOD_OPT_3' })}</li>
@@ -32,10 +32,10 @@ export const KetoSection = () => {
           <li>{formatMessage({ id: 'KETO_TIPICAL_FOOD_OPT_5' })}</li>
           <li>{formatMessage({ id: 'KETO_TIPICAL_FOOD_OPT_6' })}</li>
         </ul>
-        <h4 className="w-full pt-8 pb-4 text-3xl font-dinBold lg:text-left">
+        <h4 className='font-dinBold w-full pb-4 pt-8 text-3xl lg:text-left'>
           {formatMessage({ id: 'KETO_NOT_TIPICAL_FOOD_TITLE' })}
         </h4>
-        <ul className="flex flex-col px-4 pb-10 text-left">
+        <ul className='flex flex-col px-4 pb-10 text-left'>
           <li>{formatMessage({ id: 'KETO_NOT_TIPICAL_FOOD_OPT_1' })}</li>
           <li>{formatMessage({ id: 'KETO_NOT_TIPICAL_FOOD_OPT_2' })}</li>
           <li>{formatMessage({ id: 'KETO_NOT_TIPICAL_FOOD_OPT_3' })}</li>
@@ -51,5 +51,5 @@ export const KetoSection = () => {
         </ul>
       </div>
     </Section>
-  );
-};
+  )
+}

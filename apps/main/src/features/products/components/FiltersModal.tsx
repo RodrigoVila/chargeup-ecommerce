@@ -15,11 +15,11 @@ export const FiltersModal = () => {
 
   return (
     <Modal isOpen={isFilterModalOpen} closeOnOverlayClick onClose={() => {}}>
-      <div className="relative flex flex-col flex-wrap justify-start gap-2 px-2 items-left">
-        <div className="absolute -top-4 left-1">
-          <FunnelIcon color="white" />
+      <div className='items-left relative flex flex-col flex-wrap justify-start gap-2 px-2'>
+        <div className='absolute -top-4 left-1'>
+          <FunnelIcon color='white' />
         </div>
-        <div className="px-2">
+        <div className='px-2'>
           {labels.map((label, index) => (
             <FilterPill
               key={index}
@@ -29,7 +29,7 @@ export const FiltersModal = () => {
             />
           ))}
         </div>
-        <Button type="outlined" onClick={() => closeFiltersModal()}>
+        <Button type='outlined' onClick={() => closeFiltersModal()}>
           Cerrar
         </Button>
       </div>

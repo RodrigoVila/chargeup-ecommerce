@@ -12,7 +12,7 @@ export const Counter = ({ count, subtractOne, addOne, color = 'black' }: Counter
       <button className={`${operClass}`} onClick={subtractOne}>
         -
       </button>
-      <div className="mx-2 text-xl leading-none ">{count}</div>
+      <div className='mx-2 text-xl leading-none '>{count}</div>
       <button className={`${operClass}`} onClick={addOne}>
         +
       </button>

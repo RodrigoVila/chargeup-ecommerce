@@ -2,13 +2,13 @@ import {
   FETCH_PRODUCTS,
   FETCH_PRODUCTS_ERROR,
   FETCH_PRODUCTS_SUCCESS,
-} from '~constants/ActionTypes';
-import { ProductsActionType, ProductsStateType } from '~types';
+} from '~constants/ActionTypes'
+import { ProductsActionType, ProductsStateType } from '~types'
 
-const initialState: ProductsStateType = { products: [], isLoading: false, error: null };
+const initialState: ProductsStateType = { products: [], isLoading: false, error: null }
 
 const productsReducer = (state = initialState, action: ProductsActionType): ProductsStateType => {
-  const { type, products, error } = action;
+  const { type, products, error } = action
 
   switch (type) {
     // Future implementation
@@ -40,22 +40,22 @@ const productsReducer = (state = initialState, action: ProductsActionType): Prod
       return {
         ...state,
         isLoading: true,
-      };
+      }
 
     case FETCH_PRODUCTS_SUCCESS:
       return {
         ...state,
         products,
         isLoading: false,
-      };
+      }
     case FETCH_PRODUCTS_ERROR:
       return {
         ...state,
         error,
         isLoading: false,
-      };
+      }
   }
-  return state;
-};
+  return state
+}
 
-export default productsReducer;
+export default productsReducer

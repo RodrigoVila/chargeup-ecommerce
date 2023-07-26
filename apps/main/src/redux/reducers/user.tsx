@@ -5,12 +5,12 @@ import {
   REQUEST_CHANGE_USER_DETAILS,
   REQUEST_CHANGE_USER_DETAILS_ERROR,
   REQUEST_CHANGE_USER_DETAILS_SUCCESS,
-} from '~constants/ActionTypes';
-import { APP_USER_INITIAL_STATE, USER_INITIAL_STATE } from '~constants/initialState';
-import { UserActionType } from '~types';
+} from '~constants/ActionTypes'
+import { APP_USER_INITIAL_STATE, USER_INITIAL_STATE } from '~constants/initialState'
+import { UserActionType } from '~types'
 
 const userReducer = (state = USER_INITIAL_STATE, action: UserActionType) => {
-  const { type, user } = action;
+  const { type, user } = action
 
   switch (type) {
     case FETCH_USER_DETAILS:
@@ -18,30 +18,30 @@ const userReducer = (state = USER_INITIAL_STATE, action: UserActionType) => {
       return {
         ...state,
         isLoading: true,
-      };
+      }
     case FETCH_USER_DETAILS_SUCCESS:
       return {
         ...state,
         isLoading: false,
         user: user || APP_USER_INITIAL_STATE,
-      };
+      }
     case FETCH_USER_DETAILS_ERROR:
       return {
         ...state,
         isLoading: false,
         user: APP_USER_INITIAL_STATE,
-      };
+      }
 
     case REQUEST_CHANGE_USER_DETAILS_SUCCESS:
     case REQUEST_CHANGE_USER_DETAILS_ERROR:
       return {
         ...state,
         isLoading: false,
-      };
+      }
 
     default:
-      return state;
+      return state
   }
-};
+}
 
-export default userReducer;
+export default userReducer

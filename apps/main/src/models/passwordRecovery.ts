@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+import mongoose from 'mongoose'
 
 export const passwordRecoverySchema = new mongoose.Schema(
   {
@@ -14,7 +14,7 @@ export const passwordRecoverySchema = new mongoose.Schema(
   {
     collection: process.env.MONGO_PASSWORD_RECOVERY_COLLECTION,
     timestamps: true,
-  }
-);
+  },
+)
 export const PasswordRecovery =
-  mongoose.models.PasswordRecovery || mongoose.model('PasswordRecovery', passwordRecoverySchema);
+  mongoose.models.PasswordRecovery || mongoose.model('PasswordRecovery', passwordRecoverySchema)

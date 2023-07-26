@@ -18,7 +18,7 @@ export const BurgerButton = ({ className }: Props) => {
       )}
       onClick={() => openDrawerModal()}
     >
-      <Bars3Icon className="w-8 h-8 text-white md:h-10 md:w-10 lg:h-14 lg:w-14" />
+      <Bars3Icon className='h-8 w-8 text-white md:h-10 md:w-10 lg:h-14 lg:w-14' />
     </div>
   )
 }

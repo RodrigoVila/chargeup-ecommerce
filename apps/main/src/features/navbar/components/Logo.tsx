@@ -24,12 +24,12 @@ export const Logo = ({ logo, size = 'md', scrollOnClick = false, className = '' 
   return (
     <div className={className}>
       <div className={twMerge('relative', sizeStyle, cursorStyles)}>
-        <a className="w-full h-full p-0 m-0" href={`${scrollOnClick ? '#welcome' : ''}`}>
+        <a className='m-0 h-full w-full p-0' href={`${scrollOnClick ? '#welcome' : ''}`}>
           <Image
             src={`/images/logo-${logo}`}
-            alt="Charge UP Barcelona Logo"
-            layout="fill"
-            objectFit="fill"
+            alt='Charge UP Barcelona Logo'
+            layout='fill'
+            objectFit='fill'
           />
         </a>
       </div>

@@ -1,5 +1,5 @@
 const AdminTransactions = () => {
-  return <div>Transactions</div>;
-};
+  return <div>Transactions</div>
+}
 
-export default AdminTransactions;
+export default AdminTransactions

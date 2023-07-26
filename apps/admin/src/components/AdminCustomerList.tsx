@@ -1,5 +1,5 @@
 const AdminCustomerList = () => {
-  return null;
+  return null
   // For Future reference
   // const { getUserList } = useAppActions();
 
@@ -10,6 +10,6 @@ const AdminCustomerList = () => {
   //   fetch();
   // }, []);
   // return <div></div>;
-};
+}
 
-export default AdminCustomerList;
+export default AdminCustomerList

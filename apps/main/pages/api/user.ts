@@ -16,7 +16,7 @@ const UserAPI = async (req: NextApiRequest, res: NextApiResponse) => {
         id: userRecord.id,
         name: userRecord.name,
         lastName: userRecord.lastName,
-        address: userRecord.address,
+        address: userRecord.address || {},
         mobileNo: userRecord.mobileNo,
         email,
         token,
@@ -24,7 +24,7 @@ const UserAPI = async (req: NextApiRequest, res: NextApiResponse) => {
       userRecord && userRecord.token === token
         ? res.status(200).json({ success: true, user })
         : res.status(404).json({ success: false })
-    } catch (e:any) {
+    } catch (e: any) {
       return res.status(404).json({ success: false })
     }
   }
@@ -37,7 +37,7 @@ const UserAPI = async (req: NextApiRequest, res: NextApiResponse) => {
       })
 
       return res.status(200).json({ success: true })
-    } catch (e:any) {
+    } catch (e: any) {
       return res.status(400).json({ success: false, message: e.message })
     }
   }
@@ -46,7 +46,7 @@ const UserAPI = async (req: NextApiRequest, res: NextApiResponse) => {
       await User.deleteOne({ email })
 
       return res.status(200).json({ success: true })
-    } catch (e:any) {
+    } catch (e: any) {
       return res.status(400).json({ success: false })
     }
   }

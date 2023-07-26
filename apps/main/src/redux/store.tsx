@@ -18,7 +18,7 @@ const preloadState = {
   cart: {
     items: storedCart ? storedCart : [],
   },
-  user: APP_USER_INITIAL_STATE as any
+  user: APP_USER_INITIAL_STATE as any,
 }
 
 const store = configureStore({

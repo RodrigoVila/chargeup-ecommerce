@@ -51,7 +51,7 @@ const CheckoutSession = async (req: NextApiRequest, res: NextApiResponse) => {
         success: true,
         url: session.url,
       })
-    } catch (e:any) {
+    } catch (e: any) {
       res.status(e.statusCode || 500).json(e.message)
     }
   }

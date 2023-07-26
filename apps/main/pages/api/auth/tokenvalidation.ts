@@ -15,7 +15,7 @@ const TokenValidation = async (req: NextApiRequest, res: NextApiResponse) => {
       userRecord && userRecord.token === token
         ? res.status(200).json({ success: true })
         : res.status(404).json({ success: false })
-    } catch (e:any) {
+    } catch (e: any) {
       return res.status(404).json({
         success: false,
       })

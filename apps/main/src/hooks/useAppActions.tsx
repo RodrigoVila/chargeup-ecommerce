@@ -1,6 +1,6 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux'
 
-import type { AppDispatch } from '~redux/store';
+import type { AppDispatch } from '~redux/store'
 
 import {
   changeUserPassword,
@@ -13,15 +13,15 @@ import {
   userTokenCheck,
   validateEmailInDB,
   validateTokenForPassChange,
-} from '~redux/actions/auth';
+} from '~redux/actions/auth'
 import {
   addToCartState,
   changeProductQuantityState,
   clearCartItems,
   loadCartState,
   removeFromCartState,
-} from '~redux/actions/cart';
-import { createNewCheckoutSession } from '~redux/actions/checkout';
+} from '~redux/actions/cart'
+import { createNewCheckoutSession } from '~redux/actions/checkout'
 import {
   adminProductModalClose,
   adminProductModalOpen,
@@ -45,24 +45,24 @@ import {
   productModalOpen,
   userModalClose,
   userModalOpen,
-} from '~redux/actions/modal';
+} from '~redux/actions/modal'
 import {
   addProductToStore,
   fetchProductsFromStore,
   fetchProductsFromStoreSuccess,
   removeProductFromStore,
-} from '~redux/actions/products';
+} from '~redux/actions/products'
 import {
   displayMessageError,
   displayMessageInfo,
   displayMessageSuccess,
-} from '~redux/actions/toastNotifications';
+} from '~redux/actions/toastNotifications'
 
-import { setFilters } from '~redux/actions/filters';
+import { setFilters } from '~redux/actions/filters'
 
-import { addNewOrder } from '~redux/actions/order';
-import { changeUserDetails, fetchUserDetails } from '~redux/actions/user';
-import { contactFormSend } from '~redux/actions/email';
+import { addNewOrder } from '~redux/actions/order'
+import { changeUserDetails, fetchUserDetails } from '~redux/actions/user'
+import { contactFormSend } from '~redux/actions/email'
 import {
   CartProductType,
   ContactFormType,
@@ -73,143 +73,143 @@ import {
   UserDetailsType,
   UserLoginType,
   UserRegisterType,
-} from '~types';
-import { useIntl } from 'react-intl';
+} from '~types'
+import { useIntl } from 'react-intl'
 
 export const useAppActions = () => {
-  const dispatch = useDispatch<AppDispatch>();
+  const dispatch = useDispatch<AppDispatch>()
 
-  const { formatMessage } = useIntl();
+  const { formatMessage } = useIntl()
 
   // Auth
-  const checkUserToken = (user: UserLoginType) => dispatch(userTokenCheck(user));
+  const checkUserToken = (user: UserLoginType) => dispatch(userTokenCheck(user))
 
   const getGoogleUserData = (payload: GoogleSignInSuccessResponse) =>
-    dispatch(googleUserData(payload, formatMessage));
+    dispatch(googleUserData(payload, formatMessage))
 
-  const userLogin = (user: UserLoginType) => dispatch(loginUser(user, formatMessage));
+  const userLogin = (user: UserLoginType) => dispatch(loginUser(user, formatMessage))
 
-  const userLoginSuccess = (user: StorageUserType) => successLoginUser(user);
+  const userLoginSuccess = (user: StorageUserType) => successLoginUser(user)
 
-  const userLogout = () => dispatch(logoutUser());
+  const userLogout = () => dispatch(logoutUser())
 
-  const registerUser = (user: UserRegisterType) => dispatch(registerNewUser(user, formatMessage));
+  const registerUser = (user: UserRegisterType) => dispatch(registerNewUser(user, formatMessage))
 
-  const dBEmailValidation = (pid: string) => dispatch(validateEmailInDB(pid));
+  const dBEmailValidation = (pid: string) => dispatch(validateEmailInDB(pid))
 
   const validateTokenForPasswordChange = (email: string, pid: string) =>
-    dispatch(validateTokenForPassChange(email, pid));
+    dispatch(validateTokenForPassChange(email, pid))
 
   const recoverUserPassword = (email: string) =>
-    dispatch(requestPasswordRecovery(email, formatMessage));
+    dispatch(requestPasswordRecovery(email, formatMessage))
 
   const editUserPassword = (
     email: string,
     newPassword: string,
-    oldPassword?: string | undefined
+    oldPassword?: string | undefined,
   ) => {
-    dispatch(changeUserPassword(email, newPassword, formatMessage, oldPassword));
-  };
+    dispatch(changeUserPassword(email, newPassword, formatMessage, oldPassword))
+  }
 
   // Cart
-  const loadCart = (products: CartProductType[]) => dispatch(loadCartState(products));
+  const loadCart = (products: CartProductType[]) => dispatch(loadCartState(products))
 
-  const addToCart = (product: CartProductType) => dispatch(addToCartState(product));
+  const addToCart = (product: CartProductType) => dispatch(addToCartState(product))
 
-  const removeFromCart = (id: string) => dispatch(removeFromCartState(id));
+  const removeFromCart = (id: string) => dispatch(removeFromCartState(id))
 
-  const clearCart = () => dispatch(clearCartItems());
+  const clearCart = () => dispatch(clearCartItems())
 
   // Checkout
   const createCheckoutSession = (newOrder: OrderType) =>
-    dispatch(createNewCheckoutSession(newOrder));
+    dispatch(createNewCheckoutSession(newOrder))
 
   // Filters
-  const setProductFilters = (filter: string) => dispatch(setFilters(filter));
+  const setProductFilters = (filter: string) => dispatch(setFilters(filter))
 
   const changeCartProductQuantity = (id: string, newAmount: number) =>
-    dispatch(changeProductQuantityState(id, newAmount));
+    dispatch(changeProductQuantityState(id, newAmount))
 
   // Messages
   const displaySuccessMessage = (msg: string, duration?: number) =>
-    dispatch(displayMessageSuccess(msg, duration));
+    dispatch(displayMessageSuccess(msg, duration))
 
   const displayErrorMessage = (msg: string, duration?: number) =>
-    dispatch(displayMessageError(msg, duration));
+    dispatch(displayMessageError(msg, duration))
 
   const displayInfoMessage = (msg: string, duration?: number) =>
-    dispatch(displayMessageInfo(msg, duration));
+    dispatch(displayMessageInfo(msg, duration))
 
   // Modals: ADMIN
   const openAdminProductModal = (selectedProduct: ProductType) =>
-    dispatch(adminProductModalOpen(selectedProduct));
-  const closeAdminProductModal = () => dispatch(adminProductModalClose());
+    dispatch(adminProductModalOpen(selectedProduct))
+  const closeAdminProductModal = () => dispatch(adminProductModalClose())
 
   // Modals: USER
-  const openCartModal = () => dispatch(cartModalOpen());
+  const openCartModal = () => dispatch(cartModalOpen())
 
-  const closeCartModal = () => dispatch(cartModalClose());
+  const closeCartModal = () => dispatch(cartModalClose())
 
-  const openCheckoutModal = () => dispatch(checkoutModalOpen());
+  const openCheckoutModal = () => dispatch(checkoutModalOpen())
 
-  const closeCheckoutModal = () => dispatch(checkoutModalClose());
+  const closeCheckoutModal = () => dispatch(checkoutModalClose())
 
-  const openCheckoutSuccessModal = () => dispatch(checkoutSuccessModalOpen());
+  const openCheckoutSuccessModal = () => dispatch(checkoutSuccessModalOpen())
 
-  const closeCheckoutSuccessModal = () => dispatch(checkoutSuccessModalClose());
+  const closeCheckoutSuccessModal = () => dispatch(checkoutSuccessModalClose())
 
-  const openCheckoutErrorModal = () => dispatch(checkoutErrorModalOpen());
+  const openCheckoutErrorModal = () => dispatch(checkoutErrorModalOpen())
 
-  const closeCheckoutErrorModal = () => dispatch(checkoutErrorModalClose());
+  const closeCheckoutErrorModal = () => dispatch(checkoutErrorModalClose())
 
-  const openDrawerModal = () => dispatch(drawerModalOpen());
+  const openDrawerModal = () => dispatch(drawerModalOpen())
 
-  const closeDrawerModal = () => dispatch(drawerModalClose());
+  const closeDrawerModal = () => dispatch(drawerModalClose())
 
-  const openFiltersModal = () => dispatch(filtersModalOpen());
+  const openFiltersModal = () => dispatch(filtersModalOpen())
 
-  const closeFiltersModal = () => dispatch(filtersModalClose());
+  const closeFiltersModal = () => dispatch(filtersModalClose())
 
-  const openLoginModal = () => dispatch(loginModalOpen());
+  const openLoginModal = () => dispatch(loginModalOpen())
 
-  const closeLoginModal = () => dispatch(loginModalClose());
+  const closeLoginModal = () => dispatch(loginModalClose())
 
   const openProductModal = (selectedProduct: ProductType) =>
-    dispatch(productModalOpen(selectedProduct));
+    dispatch(productModalOpen(selectedProduct))
 
-  const closeProductModal = () => dispatch(productModalClose());
+  const closeProductModal = () => dispatch(productModalClose())
 
-  const openExtrasModal = (sizesAndExtras: any) => dispatch(extrasModalOpen(sizesAndExtras));
+  const openExtrasModal = (sizesAndExtras: any) => dispatch(extrasModalOpen(sizesAndExtras))
 
-  const closeExtrasModal = () => dispatch(extrasModalClose());
+  const closeExtrasModal = () => dispatch(extrasModalClose())
 
-  const openUserModal = () => dispatch(userModalOpen());
+  const openUserModal = () => dispatch(userModalOpen())
 
-  const closeUserModal = () => dispatch(userModalClose());
+  const closeUserModal = () => dispatch(userModalClose())
 
   // Orders
 
-  const addOrder = (order: OrderType) => dispatch(addNewOrder(order));
+  const addOrder = (order: OrderType) => dispatch(addNewOrder(order))
 
   // Products
 
-  const addProduct = (product: ProductType) => dispatch(addProductToStore(product));
+  const addProduct = (product: ProductType) => dispatch(addProductToStore(product))
 
-  const removeProduct = (id: string) => dispatch(removeProductFromStore(id));
+  const removeProduct = (id: string) => dispatch(removeProductFromStore(id))
 
-  const fetchProducts = () => dispatch(fetchProductsFromStore());
+  const fetchProducts = () => dispatch(fetchProductsFromStore())
 
   const fetchProductsSuccess = (products: ProductType[]) =>
-    dispatch(fetchProductsFromStoreSuccess(products));
+    dispatch(fetchProductsFromStoreSuccess(products))
 
   //Users
-  const getUserDetails = () => dispatch(fetchUserDetails());
+  const getUserDetails = () => dispatch(fetchUserDetails())
 
   const editUserDetails = (user: UserDetailsType) =>
-    dispatch(changeUserDetails(user, formatMessage));
+    dispatch(changeUserDetails(user, formatMessage))
 
   const sendContactForm = (contacForm: ContactFormType) =>
-    dispatch(contactFormSend(contacForm, formatMessage));
+    dispatch(contactFormSend(contacForm, formatMessage))
 
   return {
     addProduct,
@@ -262,5 +262,5 @@ export const useAppActions = () => {
     editUserDetails,
     editUserPassword,
     sendContactForm,
-  };
-};
+  }
+}

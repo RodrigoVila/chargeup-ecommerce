@@ -31,7 +31,7 @@ export const Modal = ({
   }, [isOpen])
 
   return isOpen ? (
-    <Portal wrapperId="react-portal-modal-container">
+    <Portal wrapperId='react-portal-modal-container'>
       <div
         onClick={closeOnOverlayClick ? onClose : undefined}
         className={twMerge(
@@ -48,8 +48,8 @@ export const Modal = ({
           )}
         >
           <CloseModalButton
-            color="black"
-            className="absolute z-70 right-2 top-2"
+            color='black'
+            className='z-70 absolute right-2 top-2'
             onClose={onClose}
           />
           {children}

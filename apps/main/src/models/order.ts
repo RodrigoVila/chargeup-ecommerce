@@ -1,9 +1,9 @@
-import mongoose from 'mongoose';
+import mongoose from 'mongoose'
 
 const LabelPrice = new mongoose.Schema({
   label: String,
   price: Number,
-});
+})
 
 const itemSchema = new mongoose.Schema({
   id: String,
@@ -13,7 +13,7 @@ const itemSchema = new mongoose.Schema({
   quantity: Number,
   subTotal: Number,
   total: Number,
-});
+})
 
 export const adressSchema = new mongoose.Schema({
   street: {
@@ -44,7 +44,7 @@ export const adressSchema = new mongoose.Schema({
     type: String,
     required: false,
   },
-});
+})
 
 export const orderSchema = new mongoose.Schema(
   {
@@ -62,7 +62,7 @@ export const orderSchema = new mongoose.Schema(
   },
   {
     collection: process.env.MONGO_ORDERS_COLLECTION,
-  }
-);
+  },
+)
 
-export const Order = mongoose.models.Order || mongoose.model('Order', orderSchema);
+export const Order = mongoose.models.Order || mongoose.model('Order', orderSchema)

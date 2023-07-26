@@ -1,18 +1,18 @@
-import Image from 'next/image';
-import { useRouter } from 'next/router';
-import { SelectHTMLAttributes } from 'react';
-import { twMerge } from 'tailwind-merge';
+import Image from 'next/image'
+import { useRouter } from 'next/router'
+import { SelectHTMLAttributes } from 'react'
+import { twMerge } from 'tailwind-merge'
 
 type LanguageDetectorProps = Omit<SelectHTMLAttributes<HTMLSelectElement>, 'className'> & {
-  className?: string;
-};
+  className?: string
+}
 
 export const LanguageSelector = ({ className, ...rest }: LanguageDetectorProps) => {
-  const router = useRouter();
-  const { pathname, asPath, query, locale } = router;
+  const router = useRouter()
+  const { pathname, asPath, query, locale } = router
 
   const changeLocale = (newLocale: string) =>
-    router.push({ pathname, query }, asPath, { locale: newLocale });
+    router.push({ pathname, query }, asPath, { locale: newLocale })
 
   return (
     <select
@@ -20,17 +20,12 @@ export const LanguageSelector = ({ className, ...rest }: LanguageDetectorProps) 
       {...rest}
       onChange={(e) => changeLocale(e.target.value)}
     >
-      <option key="es" value="es" selected={'es' === locale}>
+      <option key='es' value='es' selected={'es' === locale}>
         🇪🇸
       </option>
-      <option
-        key="en"
-        value="en"
-        selected={'en' === locale}
-        className="p-4"
-      >
+      <option key='en' value='en' selected={'en' === locale} className='p-4'>
         🇬🇧
       </option>
     </select>
-  );
-};
+  )
+}

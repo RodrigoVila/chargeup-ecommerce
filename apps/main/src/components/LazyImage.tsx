@@ -12,7 +12,7 @@ type LazyImageProps = {
 export const LazyImage = ({ alt, height, src, width, caption }: LazyImageProps) => {
   return (
     <div>
-      <LazyLoadImage alt={alt} height={height} src={src} width={width} effect="blur" />
+      <LazyLoadImage alt={alt} height={height} src={src} width={width} effect='blur' />
       {caption ? <span>{caption}</span> : null}
     </div>
   )

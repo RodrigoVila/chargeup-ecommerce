@@ -8,8 +8,8 @@ export const CheckoutModal = () => {
 
   return (
     <Modal isOpen={isCheckoutModalOpen} onClose={closeCheckoutModal}>
-      <div className="px-16 mb-6">
-        {checkoutSession ? <iframe src={checkoutSession} title="description"></iframe> : null}
+      <div className='mb-6 px-16'>
+        {checkoutSession ? <iframe src={checkoutSession} title='description'></iframe> : null}
       </div>
     </Modal>
   )

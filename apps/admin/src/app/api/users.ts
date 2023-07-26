@@ -12,7 +12,7 @@ const UsersAPI = async (req: NextApiRequest, res: NextApiResponse) => {
     try {
       const userList = await User.find({})
       return res.status(200).json(userList)
-    } catch (e:any) {
+    } catch (e: any) {
       return res.status(400).json({
         success: false,
       })

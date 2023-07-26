@@ -12,4 +12,4 @@ export const colors = {
   overlayPurple2: 'rgba(168, 85, 247, 0.7)',
   success: '#21dbaa',
   white: '#fff',
-};
+}

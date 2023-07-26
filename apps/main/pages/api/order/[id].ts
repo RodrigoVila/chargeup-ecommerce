@@ -18,7 +18,7 @@ const OrderAPIByID = async (req: NextApiRequest, res: NextApiResponse) => {
       const order = await Order.findById(id)
 
       return res.status(200).json(order)
-    } catch (e:any) {
+    } catch (e: any) {
       return res.status(404).json({
         success: false,
       })
@@ -33,7 +33,7 @@ const OrderAPIByID = async (req: NextApiRequest, res: NextApiResponse) => {
       })
 
       return res.status(200).json(order)
-    } catch (e:any) {
+    } catch (e: any) {
       return res.status(400).json({
         success: false,
       })
@@ -44,7 +44,7 @@ const OrderAPIByID = async (req: NextApiRequest, res: NextApiResponse) => {
       await Order.deleteOne({ _id: id })
 
       return res.status(200).json({ message: `Order ${id} deleted successfully` })
-    } catch (e:any) {
+    } catch (e: any) {
       return res.status(400).json({
         success: false,
       })
