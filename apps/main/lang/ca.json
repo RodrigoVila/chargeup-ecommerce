@@ -50,7 +50,7 @@
   "UPDATE_USER_DATA": "",
   "UPDATE_USER_PASSWORD": "",
   "USER_CREATED_WITH_GOOGLE": "",
-  "USER_DATA_LOADING": "",
+  "LOADING": "",
   "USER_EXIST": "",
   "USER_LOGIN_ERROR": "",
   "USER_LOGIN_SUCCESS": "",
@@ -112,5 +112,9 @@
   "FOOTER_TERMS": "",
   "FOOTER_COOKIES": "",
   "FOOTER_FEEDBACK": "",
-  "FOOTER_MADE_WITH": ""
+  "FOOTER_MADE_WITH": "",
+  "NEXT": "",
+  "FOR_EVERY": "",
+  "SEE_MORE": "",
+  "EXPAND_MAP": ""
 }

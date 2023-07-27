@@ -1,55 +1,110 @@
+import { Button } from '@packages/button'
 import { ChangeEvent, Dispatch, SetStateAction } from 'react'
+import { useIntl } from 'react-intl'
 
 import { DeliveryAreasMap } from '~features/cart/components/DeliveryAreasMap'
 import { DeliveryType } from '~types'
 
 type DeliveryOptionsProps = {
-  value: DeliveryType
-  setValue: Dispatch<SetStateAction<DeliveryType>>
+  deliveryType: DeliveryType | null
+  setDeliveryType: Dispatch<SetStateAction<DeliveryType>>
+  loading: boolean
+  disabled: boolean
+  next: () => void
+  back: () => void
+  onSubmit: () => void
 }
 
-export const DeliveryOptions = ({ value, setValue }: DeliveryOptionsProps) => {
-  const handleCheck = (event: ChangeEvent<HTMLInputElement>) => {
-    setValue(event.currentTarget.value as DeliveryType)
+export const DeliveryOptions = ({
+  deliveryType,
+  setDeliveryType,
+  loading,
+  disabled,
+  next,
+  back,
+  onSubmit,
+}: DeliveryOptionsProps) => {
+  const { formatMessage } = useIntl()
+
+  const buttonStyles = 'w-full text-base'
+
+  const handleCheck = (value: DeliveryType) => {
+    setDeliveryType(value)
+  }
+
+  const handleBack = () => {
+    setDeliveryType(null)
+    back()
   }
 
   return (
-    <div className='flex h-full w-full flex-col gap-4 overflow-y-auto'>
-      <h3 className='text-center text-2xl'>Opciones de envio</h3>
-      <p>
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aliquid ipsum maxime doloremque
-        repellendus magnam odit officia ullam maiores sint est molestiae dolorem id excepturi, sed
-        necessitatibus pariatur dolor beatae magni.
-      </p>
-      <DeliveryAreasMap />
-      <p className='py-2'>Por favor seleccione modo de envío:</p>
-      <div className='flex w-full flex-col gap-3'>
-        <div className='flex gap-2'>
-          <input
-            type='radio'
-            id='radioOption1'
-            value='Delivery'
-            name='delivery'
-            onChange={handleCheck}
-          />
-          <label className='font-bold' htmlFor='radioOption1'>
-            Acepto los costos de envio de GLOVO y las posibles modificaciones de precio descriptas
-            arriba.
-          </label>
-        </div>
-        <div className='flex gap-2'>
-          <input
-            type='radio'
-            id='radioOption1'
-            value='Pick UP'
-            name='delivery'
-            onChange={handleCheck}
-          />
-          <label className='font-bold' htmlFor='radioOption1'>
-            Retira en Charge UP BCN Hospitalet. Av Carrilet 123 (Free!)
-          </label>
+    <>
+      <div className='flex flex-col w-full h-full gap-4 overflow-y-auto'>
+        <h3 className='text-2xl text-center'>{formatMessage({ id: 'DELIVERY_OPTIONS' })}</h3>
+        <p>
+        {formatMessage({ id: 'DELIVERY_DATA' })}
+        </p>
+        <DeliveryAreasMap />
+        <p className='py-2'>{`${formatMessage({ id: 'CHOOSE_DELIVERY_MODE' })}: `}</p>
+        <div className='flex flex-col w-full gap-3'>
+          <div className='flex gap-2'>
+            <input
+              type='radio'
+              id='radioOption1'
+              value='Delivery'
+              name='delivery'
+              onChange={() => handleCheck('Delivery')}
+            />
+            <label
+              className='font-bold'
+              htmlFor='radioOption1'
+              onClick={() => handleCheck('Delivery')}
+            >
+              {formatMessage({ id: 'ACCEPT_CHARGES' })}
+            </label>
+          </div>
+          <div className='flex gap-2'>
+            <input
+              type='radio'
+              id='radioOption2'
+              value='Pick UP'
+              name='delivery'
+              onChange={() => handleCheck('Pick UP')}
+            />
+            <label
+              className='font-bold'
+              htmlFor='radioOption2'
+              onClick={() => handleCheck('Pick UP')}
+            >
+              {formatMessage({ id: 'DELIVERY_PICK_UP' })}
+            </label>
+          </div>
         </div>
       </div>
-    </div>
+
+      <div className='flex flex-col w-full gap-2 mt-2'>
+        {deliveryType === 'Delivery' ? (
+          <Button className={buttonStyles} onClick={next}>
+            {formatMessage({ id: 'NEXT' })}
+          </Button>
+        ) : deliveryType === 'Pick UP' ? (
+          <Button
+            className={buttonStyles}
+            onClick={() => onSubmit()}
+            loading={loading}
+            disabled={disabled}
+          >
+            {formatMessage({ id: 'GO_TO_PAY' })}
+          </Button>
+        ) : (
+          <Button className={buttonStyles} loading={loading} disabled>
+            {formatMessage({ id: 'CHOOSE_AN_OPTION' })}
+          </Button>
+        )}
+        <Button className={buttonStyles} type='outlined' onClick={handleBack}>
+          {formatMessage({ id: 'GO_BACK' })}
+        </Button>
+      </div>
+    </>
   )
 }

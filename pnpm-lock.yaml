@@ -173,6 +173,9 @@ importers:
       '@types/react-redux':
         specifier: ^7.1.19
         version: 7.1.19
+      '@types/react-tooltip':
+        specifier: ^4.2.4
+        version: 4.2.4(react-dom@17.0.2)(react@17.0.2)
       '@types/redux':
         specifier: ^3.6.0
         version: 3.6.0
@@ -1753,6 +1756,16 @@ packages:
       '@types/react': 18.2.17
       hoist-non-react-statics: 3.3.2
       redux: 4.1.2
+
+  /@types/react-tooltip@4.2.4(react-dom@17.0.2)(react@17.0.2):
+    resolution: {integrity: sha512-UzjzmgY/VH3Str6DcAGTLMA1mVVhGOyARNTANExrirtp+JgxhaIOVDxq4TIRmpSi4voLv+w4HA9CC5GvhhCA0A==}
+    deprecated: This is a stub types definition. react-tooltip provides its own type definitions, so you do not need this installed.
+    dependencies:
+      react-tooltip: 4.2.21(react-dom@17.0.2)(react@17.0.2)
+    transitivePeerDependencies:
+      - react
+      - react-dom
+    dev: true
 
   /@types/react@17.0.11:
     resolution: {integrity: sha512-yFRQbD+whVonItSk7ZzP/L+gPTJVBkL/7shLEF+i9GC/1cV3JmUxEQz6+9ylhUpWSDuqo1N9qEvqS6vTj4USUA==}
@@ -5222,7 +5235,6 @@ packages:
       react: 17.0.2
       react-dom: 17.0.2(react@17.0.2)
       uuid: 7.0.3
-    dev: false
 
   /react@17.0.2:
     resolution: {integrity: sha512-gnhPt75i/dq/z3/6q/0asP78D0u592D5L1pd7M8P+dck6Fu/jJeL6iVVK23fptSUZj8Vjf++7wXA8UNclGQcbA==}
@@ -6105,7 +6117,6 @@ packages:
   /uuid@7.0.3:
     resolution: {integrity: sha512-DPSke0pXhTZgoF/d+WSt2QaKMCFSfx7QegxEWT+JOuHF5aWrKEn0G+ztjuJg/gG8/ItK+rbPCD/yNv8yyih6Cg==}
     hasBin: true
-    dev: false
 
   /uuid@8.3.2:
     resolution: {integrity: sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==}

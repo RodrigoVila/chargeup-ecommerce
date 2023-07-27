@@ -14,7 +14,7 @@ export const LanguageSelector = ({ className, ...rest }: LanguageDetectorProps) 
   const changeLocale = (newLocale: string) =>
     router.push({ pathname, query }, asPath, { locale: newLocale })
 
-  return (
+  return locale ?(
     <select
       className={twMerge('bg-transparent', className)}
       {...rest}
@@ -23,9 +23,9 @@ export const LanguageSelector = ({ className, ...rest }: LanguageDetectorProps) 
       <option key='es' value='es' selected={'es' === locale}>
         🇪🇸
       </option>
-      <option key='en' value='en' selected={'en' === locale} className='p-4'>
+      <option key='en' value='en' selected={'en' === locale}>
         🇬🇧
       </option>
     </select>
-  )
+  ) : null
 }

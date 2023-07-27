@@ -6,6 +6,7 @@ import {
   REQUEST_CHANGE_USER_DETAILS,
   REQUEST_CHANGE_USER_DETAILS_ERROR,
   REQUEST_CHANGE_USER_DETAILS_SUCCESS,
+  CLEAR_USER_DETAILS
 } from '~constants/ActionTypes'
 import { IntlFormatters } from 'react-intl'
 
@@ -37,4 +38,8 @@ export const changeUserDetailsSuccess = () => ({
 export const changeUserDetailsError = (error: Error) => ({
   type: REQUEST_CHANGE_USER_DETAILS_ERROR,
   error,
+})
+
+export const userDetailsClear = () => ({
+  type: CLEAR_USER_DETAILS,
 })

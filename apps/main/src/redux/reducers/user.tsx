@@ -1,4 +1,5 @@
 import {
+  CLEAR_USER_DETAILS,
   FETCH_USER_DETAILS,
   FETCH_USER_DETAILS_ERROR,
   FETCH_USER_DETAILS_SUCCESS,
@@ -7,9 +8,9 @@ import {
   REQUEST_CHANGE_USER_DETAILS_SUCCESS,
 } from '~constants/ActionTypes'
 import { APP_USER_INITIAL_STATE, USER_INITIAL_STATE } from '~constants/initialState'
-import { UserActionType } from '~types'
+import { UserActionType, UserStateType } from '~types'
 
-const userReducer = (state = USER_INITIAL_STATE, action: UserActionType) => {
+const userReducer = (state:UserStateType = USER_INITIAL_STATE, action: UserActionType) => {
   const { type, user } = action
 
   switch (type) {
@@ -38,6 +39,12 @@ const userReducer = (state = USER_INITIAL_STATE, action: UserActionType) => {
         ...state,
         isLoading: false,
       }
+
+      case CLEAR_USER_DETAILS:
+        return {
+          state: APP_USER_INITIAL_STATE,
+          isLoading: false,
+        }
 
     default:
       return state

@@ -34,7 +34,7 @@ const CheckoutSession = async (req: NextApiRequest, res: NextApiResponse) => {
             quantity: 1,
           },
         ],
-        customer_email: newOrder.email,
+        customer_email: newOrder.email || undefined,
         phone_number_collection: {
           enabled: true,
         },

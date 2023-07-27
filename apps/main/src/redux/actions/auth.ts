@@ -6,7 +6,7 @@ import {
 } from '~types'
 import {
   CHECK_USER_TOKEN,
-  LOGIN_SUCCESS,
+  USER_LOGIN_SUCCESS,
   LOGIN_USER,
   LOGIN_WITH_GOOGLE,
   LOGOUT,
@@ -50,7 +50,7 @@ export const loginUser = (user: UserLoginType, formatMessage: IntlFormatters['fo
 })
 
 export const successLoginUser = (userLogin: StorageUserType) => ({
-  type: LOGIN_SUCCESS,
+  type: USER_LOGIN_SUCCESS,
   userLogin,
 })
 

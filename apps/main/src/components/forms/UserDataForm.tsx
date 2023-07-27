@@ -1,38 +1,26 @@
-import { ChangeEvent, useEffect, useState } from 'react'
+import { ChangeEvent } from 'react'
 import { useIntl } from 'react-intl'
 
-import { Button } from '@packages/button'
 import { Input } from '@packages/input'
 
-import { useAppActions, useAppSelector } from '~hooks'
 import { StorageUserType, UserDetailsType } from '~types'
 import { getValueFromLocalStorage } from '~utils/localStorage'
 import { LOCAL_STORAGE_DATA_KEY } from '~constants/keys'
-import { Spinner } from '@packages/spinner'
-import { APP_USER_INITIAL_STATE } from '~constants/initialState'
 
 type UserDataFormType = {
   isCheckoutForm?: boolean
-  onChange?: (userDetails: UserDetailsType | any) => void
+  userData: UserDetailsType
+  setUserData: React.Dispatch<React.SetStateAction<UserDetailsType>>
 }
 
-export const UserDataForm = ({ isCheckoutForm, onChange }: UserDataFormType) => {
-  const [userData, setUserData] = useState<UserDetailsType>(APP_USER_INITIAL_STATE)
-
-  const { isUserDataLoading, userDetails } = useAppSelector()
-
+export const UserDataForm = ({ isCheckoutForm, userData, setUserData }: UserDataFormType) => {
   const { formatMessage } = useIntl()
-
-  const { editUserDetails, getUserDetails } = useAppActions()
 
   const storedUser: StorageUserType = getValueFromLocalStorage(LOCAL_STORAGE_DATA_KEY)
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
     setUserData((prevDetails) => ({ ...prevDetails, [name]: value }))
-    isCheckoutForm &&
-      onChange &&
-      onChange((prevDetails: UserDetailsType) => ({ ...prevDetails, [name]: value }))
   }
 
   const handleAddressChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -41,32 +29,10 @@ export const UserDataForm = ({ isCheckoutForm, onChange }: UserDataFormType) => 
       ...prevDetails,
       address: { ...prevDetails.address, [name]: value },
     }))
-    isCheckoutForm &&
-      onChange &&
-      onChange((prevDetails: UserDetailsType) => ({
-        ...prevDetails,
-        address: { ...prevDetails.address, [name]: value },
-      }))
   }
 
-  const handleSubmit = () => editUserDetails(userData)
-
-  useEffect(() => {
-    getUserDetails()
-  }, [])
-
-  useEffect(() => {
-    userDetails?.address && setUserData(userDetails)
-  }, [userDetails])
-
-  useEffect(() => {
-    console.log({ isUserDataLoading, userDetails })
-  }, [isUserDataLoading])
-
-  return isUserDataLoading ? (
-    <Spinner />
-  ) : (
-    <div className='w-full overflow-scroll p-6'>
+  return userData ? (
+    <div className='w-full p-6 overflow-scroll'>
       <Input
         label={formatMessage({ id: 'NAME' })}
         type='text'
@@ -132,7 +98,7 @@ export const UserDataForm = ({ isCheckoutForm, onChange }: UserDataFormType) => 
         value={userData.address.city || ''}
         onChange={handleAddressChange}
       />
-      {isCheckoutForm ? (
+      {isCheckoutForm && (
         <>
           <Input
             label={formatMessage({ id: 'ADDRESS_PROVINCE' })}
@@ -151,11 +117,7 @@ export const UserDataForm = ({ isCheckoutForm, onChange }: UserDataFormType) => 
             disabled
           />
         </>
-      ) : (
-        <Button onClick={handleSubmit} disabled={isUserDataLoading}>
-          {formatMessage({ id: 'CHANGE_USER_DATA' })}
-        </Button>
       )}
     </div>
-  )
+  ) : null
 }

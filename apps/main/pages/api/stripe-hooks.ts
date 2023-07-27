@@ -16,15 +16,16 @@ export const config = {
 
 const updateOrderWithBuyersData = async (
   orderId: string,
-  status: string,
-  paidAmount: number,
+  name: string,
   email: string,
   phone: string,
+  status: string,
+  paidAmount: number,
 ) => {
   try {
     const order = await Order.findOneAndUpdate(
       { id: orderId },
-      { status, paidAmount, email, phone },
+      { name, email, phone, status, paidAmount },
       { returnDocument: 'after' }, // Returns document after its updated
     ).lean()
 
@@ -100,7 +101,14 @@ const StripHooksAPI = async (req: NextApiRequest, res: NextApiResponse) => {
     const paidAmount = amount_total / 100
 
     try {
-      const order = await updateOrderWithBuyersData(orderId, status, paidAmount, email, phone)
+      const order = await updateOrderWithBuyersData(
+        orderId,
+        stripeName,
+        email,
+        phone,
+        status,
+        paidAmount,
+      )
       const user = await associateOrderWithRegisteredUser(email, order)
 
       const name = user ? user.name : order?.name ?? stripeName

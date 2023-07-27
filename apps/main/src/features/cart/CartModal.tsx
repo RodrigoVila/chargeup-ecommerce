@@ -1,130 +1,62 @@
-import { ChangeEvent, ReactNode, useEffect, useMemo, useState } from 'react'
+import { ReactNode, useEffect, useMemo, useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
 import { useAppActions, useAppSelector } from '~hooks'
 import { Modal } from '~features/modal'
-import { UserDataForm } from '~components/forms'
 import { DeliveryType, OrderType, UserDetailsType } from '~types'
 
-import { CartSummary, DeliveryOptions, CartModalButtons } from './components'
+import { CartSummary, DeliveryOptions } from './components'
+import { DeliveryDataForm } from './components/DeliveryDataForm'
 
 type StepsType = {
-  [currentStep: number]: {
-    component: ReactNode
-    buttons: ReactNode
-  }
+  [currentStep: number]: ReactNode
 }
 
 export const CartModal = () => {
   const [loading, setLoading] = useState(false)
   const [currentStep, setCurrentStep] = useState(1)
-  const [deliveryType, setDeliveryType] = useState<DeliveryType>('Pick UP')
-  const [hasUserAcceptedToSaveDetails, setHasUserAcceptedToSaveDetails] = useState(false)
-  const [userData, setUserData] = useState<UserDetailsType | null>(null)
+  const [deliveryType, setDeliveryType] = useState<DeliveryType | null>(null)
 
-  const { isCartModalOpen, cartItems, userLogin, userDetails } = useAppSelector()
-  const { closeCartModal, createCheckoutSession, editUserDetails, openLoginModal } = useAppActions()
+  const { isCartModalOpen, cartItems, userLogin } = useAppSelector()
+  const { closeCartModal, createCheckoutSession } = useAppActions()
 
   const totalSum = useMemo(() => cartItems.reduce((acc, item) => acc + item.total!, 0), [cartItems])
 
   const nextStep = () => setCurrentStep((curr) => curr + 1)
   const backStep = () => setCurrentStep((curr) => curr - 1)
 
-  const handleCheck = (e: ChangeEvent<HTMLInputElement>) => {
-    setHasUserAcceptedToSaveDetails(e.target.checked)
-  }
-
-  const onUserDataChange = (userDetails: UserDetailsType) => setUserData(userDetails)
-
-  const onSubmit = async () => {
+  const onSubmit = async (userData?: UserDetailsType) => {
     setLoading(true)
-
-    const name = userLogin?.name || userData?.name
-    const email = userLogin?.email || userData?.email
-    const address = userData?.address
-
+console.log("userData", userData)
+console.log("userLogin", userLogin)
     const newOrder: OrderType = {
       id: uuidv4(),
-      name,
-      email,
+      name: userData?.name || userLogin?.name,
+      email: userData?.email || userLogin?.email,
       deliveryType,
-      address,
-      status: 'pending',
+      address: userData?.address,
       items: cartItems,
       totalAmount: totalSum.toFixed(2),
       created: new Date(),
     }
 
-    hasUserAcceptedToSaveDetails && userLogin?.email && editUserDetails(userData as UserDetailsType)
-
     createCheckoutSession(newOrder)
   }
 
-  const isEveryInputComplete = useMemo(
-    () =>
-      userData?.name &&
-      userData?.lastName &&
-      userData?.email &&
-      userData?.address &&
-      !!userData?.mobileNo,
-    [userData],
-  )
-
-  const hasRegisteredAddress = userDetails?.address?.street !== undefined
-  const isLoggedInWithNoAddress = userLogin?.token && !hasRegisteredAddress
-
   const Steps: StepsType = {
-    1: {
-      component: <CartSummary products={cartItems} total={totalSum} />,
-      buttons: <CartModalButtons next={nextStep} />,
-    },
-    2: {
-      component: <DeliveryOptions value={deliveryType} setValue={setDeliveryType} />,
-      buttons:
-        deliveryType === 'Delivery' ? (
-          <CartModalButtons next={nextStep} back={backStep} disabled={!deliveryType} />
-        ) : (
-          <CartModalButtons
-            back={backStep}
-            submit={onSubmit}
-            loading={loading}
-            disabled={!deliveryType}
-          />
-        ),
-    },
-    3: {
-      component: (
-        <>
-          <UserDataForm isCheckoutForm onChange={onUserDataChange} />
-          {
-            isLoggedInWithNoAddress ? (
-              // User is logged in but doesn't have an address, ask to save details
-              <div className='mt-2 flex items-center gap-2'>
-                <input type='checkbox' onChange={handleCheck} />
-                <p>Guardar mis datos para futuras compras.</p>
-              </div>
-            ) : !hasRegisteredAddress ? (
-              // Otherwise, user is not logged in, ask to log in
-              <p className='text-md font-bold'>
-                Nota: Puedes{' '}
-                <span onClick={openLoginModal} className='text-bold cursor-pointer text-blue-400'>
-                  iniciar sesión
-                </span>{' '}
-                para guardar tus datos y no volver a escribirlos la próxima vez!
-              </p>
-            ) : null /* User has a registered address, do nothing */
-          }
-        </>
-      ),
-      buttons: (
-        <CartModalButtons
-          back={backStep}
-          submit={onSubmit}
-          loading={loading}
-          disabled={!isEveryInputComplete}
-        />
-      ),
-    },
+    1: <CartSummary products={cartItems} total={totalSum} next={nextStep} />,
+    2: (
+      <DeliveryOptions
+        deliveryType={deliveryType}
+        setDeliveryType={setDeliveryType}
+        loading={loading}
+        disabled={!deliveryType}
+        next={nextStep}
+        back={backStep}
+        onSubmit={onSubmit}
+      />
+    ),
+    3: <DeliveryDataForm loading={loading} onSubmit={onSubmit} />,
   }
 
   useEffect(() => {
@@ -141,8 +73,7 @@ export const CartModal = () => {
 
   return (
     <Modal isOpen={isCartModalOpen} onClose={closeCartModal}>
-      {Steps[currentStep].component}
-      {Steps[currentStep].buttons}
+      {Steps[currentStep]}
     </Modal>
   )
 }

@@ -12,6 +12,8 @@ import {
 import { FETCH_USER_DETAILS, REQUEST_CHANGE_USER_DETAILS } from '~constants/ActionTypes'
 import { LOCAL_STORAGE_DATA_KEY } from '~constants/keys'
 import { getValueFromLocalStorage } from '~utils/localStorage'
+import { successLoginUser } from '~redux/actions/auth'
+import { userModalClose } from '~redux/actions/modal'
 
 const API_USER = '/api/user'
 
@@ -47,8 +49,15 @@ function* updateUserDetails(payload: any) {
     const { success, message } = yield response.json()
 
     if (success) {
+      const { name, email, token } = user
+
       yield put(changeUserDetailsSuccess())
+
+      const updatedStateAndStorageUser = { name, email, token }
+      yield put(successLoginUser(updatedStateAndStorageUser))
+
       yield put(displayMessageSuccess(formatMessage({ id: 'CHANGE_USER_DATA_SUCCESS' })))
+      yield put(userModalClose())
     } else {
       yield put(changeUserDetailsError(message))
       yield put(displayMessageError(formatMessage({ id: 'CHANGE_USER_DATA_ERROR' })))

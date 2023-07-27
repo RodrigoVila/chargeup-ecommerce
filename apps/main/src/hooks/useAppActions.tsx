@@ -61,7 +61,7 @@ import {
 import { setFilters } from '~redux/actions/filters'
 
 import { addNewOrder } from '~redux/actions/order'
-import { changeUserDetails, fetchUserDetails } from '~redux/actions/user'
+import { changeUserDetails, fetchUserDetails, userDetailsClear } from '~redux/actions/user'
 import { contactFormSend } from '~redux/actions/email'
 import {
   CartProductType,
@@ -205,11 +205,14 @@ export const useAppActions = () => {
   //Users
   const getUserDetails = () => dispatch(fetchUserDetails())
 
-  const editUserDetails = (user: UserDetailsType) =>
-    dispatch(changeUserDetails(user, formatMessage))
+  const editUserDetails = async (user: UserDetailsType) =>
+    await dispatch(changeUserDetails(user, formatMessage))
 
   const sendContactForm = (contacForm: ContactFormType) =>
     dispatch(contactFormSend(contacForm, formatMessage))
+
+    const clearUserDetails = () =>
+    dispatch(userDetailsClear())
 
   return {
     addProduct,
@@ -262,5 +265,6 @@ export const useAppActions = () => {
     editUserDetails,
     editUserPassword,
     sendContactForm,
+    clearUserDetails
   }
 }

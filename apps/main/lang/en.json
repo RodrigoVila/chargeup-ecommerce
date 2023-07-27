@@ -31,6 +31,7 @@
   "ADDRESS_COUNTRY": "Country",
   "ADDRESS_EXTRAS": "Extra info",
   "LOGIN": "Login",
+  "LOGIN_2": "Login",
   "LOGOUT": "Logout",
   "MOBILE_NUMBER": "Mobile number",
   "NEW_PASSWORD": "New password",
@@ -50,7 +51,7 @@
   "UPDATE_USER_DATA": "Update user data",
   "UPDATE_USER_PASSWORD": "Update user password",
   "USER_CREATED_WITH_GOOGLE": "This email has been registered with a Google Account. Please use that sign in method",
-  "USER_DATA_LOADING": "Loading user data...",
+  "LOADING": "Loading...",
   "USER_EXIST": "Email already exist in our database.",
   "USER_LOGIN_ERROR": "Login Error. Please try again later or contact website admin.",
   "USER_LOGIN_SUCCESS": "Login successful",
@@ -112,5 +113,20 @@
   "FOOTER_TERMS": "Terms & conditions",
   "FOOTER_COOKIES": "Cookies policy",
   "FOOTER_FEEDBACK": "Feedback",
-  "FOOTER_MADE_WITH": "Made with ❤️ by"
+  "FOOTER_MADE_WITH": "Made with ❤️ by",
+  "CART_MODAL_SAVE_DATA": "Remember my details",
+  "CART_MODAL_NOTE": "Note: You can",
+  "CART_MODAL_NOTE_2": "to save your details and don't write them next time!",
+  "NEXT": "Continue",
+  "FOR_EVERY": "For every",
+  "SEE_MORE": "See more",
+  "EXPAND_MAP": "Expand map",
+  "GO_TO_PAY": "Go to pay",
+  "CHOOSE_AN_OPTION": "Choose an option",
+  "CHOOSE_DELIVERY_MODE": "Please choose shipping method",
+  "DELIVERY_PICK_UP": "Pick UP & Charge UP BCN Hospitalet. Av Carrilet 123 (Free!)",
+  "DELIVERY_OPTIONS": "Shipping options",
+  "DELIVERY_DATA":"We ship through GLOVO company. Shipping is at the buyer's expense. Below is a map with approximate prices by area. These may vary according to the regulations of the company Glovo by variants such as rain or concurrency.",
+  "ACCEPT_CHARGES": "I accept GLOVO's shipping costs and the possible price modifications described above."
+
 }

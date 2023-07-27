@@ -5,21 +5,23 @@ import { useIntl } from 'react-intl'
 import { Button } from '@packages/button'
 
 import { useAppActions } from '~hooks'
-import { UpdatePasswordForm, UserDataForm } from '~components/forms'
+import { UpdatePasswordForm } from '~components/forms'
+import { UpdateDataForm } from './UpdateDataForm'
 
 type EditingType = 'password' | 'userData' | null
 
 export const UserDetails = () => {
   const [editing, setEditing] = useState<EditingType>(null)
 
-  const { userLogout, closeUserModal } = useAppActions()
+  const { userLogout, closeUserModal, clearUserDetails } = useAppActions()
 
   const { formatMessage } = useIntl()
 
   const setEdit = (type: EditingType) => setEditing(type)
 
   const onClickLogout = () => {
-    userLogout()
+    userLogout() //This one also clears local storage
+    clearUserDetails()
     googleLogout()
     closeUserModal()
   }
@@ -30,11 +32,11 @@ export const UserDetails = () => {
         !editing && 'rounded-md bg-white p-2'
       } relative my-4 h-full w-full overflow-scroll`}
     >
-      {editing === 'userData' && <UserDataForm />}
+      {editing === 'userData' && <UpdateDataForm />}
       {editing === 'password' && <UpdatePasswordForm />}
 
       {!editing && (
-        <div className='mx-auto flex w-full flex-col items-center justify-center gap-2'>
+        <div className='flex flex-col items-center justify-center w-full gap-2 mx-auto'>
           <Button onClick={() => setEdit('userData')}>
             {formatMessage({ id: 'CHANGE_USER_DATA' })}
           </Button>

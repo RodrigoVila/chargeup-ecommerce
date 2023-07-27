@@ -3,7 +3,7 @@ import { LOCAL_STORAGE_DATA_KEY } from '~constants/keys'
 import { deleteValueFromLocalStorage, setValueToLocalStorage } from '~utils/localStorage'
 import { AuthActionType, AuthStateType } from '~types'
 import {
-  LOGIN_SUCCESS,
+  USER_LOGIN_SUCCESS,
   LOGIN_USER,
   LOGOUT,
   REGISTER_USER,
@@ -48,7 +48,7 @@ const authReducer = (state: AuthStateType = AUTH_INITIAL_STATE, action: AuthActi
         isLoading: false,
         redirect: true,
       }
-    case LOGIN_SUCCESS:
+    case USER_LOGIN_SUCCESS:
       userLogin && setValueToLocalStorage(LOCAL_STORAGE_DATA_KEY, userLogin)
       return {
         ...state,

@@ -56,7 +56,10 @@ export const orderSchema = new mongoose.Schema(
     items: [itemSchema],
     totalAmount: Number,
     paidAmount: Number || null,
-    status: String,
+    status: {
+      type: String,
+      default: "pending"
+    },
     created: Date,
     orderSent: Boolean,
   },
