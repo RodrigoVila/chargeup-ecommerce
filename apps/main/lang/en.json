@@ -50,6 +50,7 @@
   "UPDATE_USER_DATA": "Update user data",
   "UPDATE_USER_PASSWORD": "Update user password",
   "USER_CREATED_WITH_GOOGLE": "This email has been registered with a Google Account. Please use that sign in method",
+  "USER_DATA_LOADING": "Loading user data...",
   "USER_EXIST": "Email already exist in our database.",
   "USER_LOGIN_ERROR": "Login Error. Please try again later or contact website admin.",
   "USER_LOGIN_SUCCESS": "Login successful",
