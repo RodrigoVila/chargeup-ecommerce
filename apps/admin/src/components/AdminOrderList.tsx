@@ -1,4 +1,4 @@
-import AdminOrderDetails from '~components/AdminOrderDetails'
+import { AdminOrderDetails } from '~components/AdminOrderDetails'
 import { useState } from 'react'
 
 const people = [
@@ -44,41 +44,37 @@ const people = [
   },
 ]
 
-function classNames(...classes) {
-  return classes.filter(Boolean).join(' ')
-}
-
-function AdminOrderList() {
+export const AdminOrderList = () => {
   const [loaded, loadDetails] = useState(false)
   return (
     <div className='flex flex-col'>
       <div className='-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8'>
         <div className='inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8'>
-          <div className='overflow-hidden border-b border-gray-200 bg-zinc-300 shadow sm:rounded-lg'>
+          <div className='overflow-hidden border-b border-gray-200 shadow bg-zinc-300 sm:rounded-lg'>
             <table className='min-w-full divide-y divide-gray-200'>
               <thead className='bg-gray-50'>
                 <tr>
                   <th
                     scope='col'
-                    className='px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500'
+                    className='px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase'
                   >
                     Cliente
                   </th>
                   <th
                     scope='col'
-                    className='px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500'
+                    className='px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase'
                   >
                     Detalles de la orden
                   </th>
                   <th
                     scope='col'
-                    className='px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500'
+                    className='px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase'
                   >
                     Estado
                   </th>
                   <th
                     scope='col'
-                    className='px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500'
+                    className='px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase'
                   >
                     Comentarios
                   </th>
@@ -87,13 +83,13 @@ function AdminOrderList() {
                   </th>
                 </tr>
               </thead>
-              <tbody className='divide-y divide-gray-200 bg-white'>
+              <tbody className='bg-white divide-y divide-gray-200'>
                 {people.map((person) => (
                   <tr key={person.email}>
-                    <td className='whitespace-nowrap px-6 py-4'>
+                    <td className='px-6 py-4 whitespace-nowrap'>
                       <div className='flex items-center'>
-                        <div className='h-10 w-10 flex-shrink-0'>
-                          <img className='h-10 w-10 rounded-full' src={person.image} alt='' />
+                        <div className='flex-shrink-0 w-10 h-10'>
+                          <img className='w-10 h-10 rounded-full' src={person.image} alt='' />
                         </div>
                         <div className='ml-4'>
                           <div className='text-sm font-medium text-gray-900'>{person.name}</div>
@@ -101,23 +97,23 @@ function AdminOrderList() {
                         </div>
                       </div>
                     </td>
-                    <td className='whitespace-nowrap px-6 py-4'>
+                    <td className='px-6 py-4 whitespace-nowrap'>
                       <div className='text-sm text-gray-900'>{person.orderdetail1}</div>
                       <div className='text-sm text-gray-500'>{person.orderdetail2}</div>
                     </td>
-                    <td className='whitespace-nowrap px-6 py-4'>
-                      <span className='inline-flex rounded-full bg-green-100 px-2 text-xs font-semibold leading-5 text-green-800'>
+                    <td className='px-6 py-4 whitespace-nowrap'>
+                      <span className='inline-flex px-2 text-xs font-semibold leading-5 text-green-800 bg-green-100 rounded-full'>
                         Enviado
                       </span>
                     </td>
-                    <td className='whitespace-nowrap px-6 py-4 text-sm text-gray-500'>
+                    <td className='px-6 py-4 text-sm text-gray-500 whitespace-nowrap'>
                       {person.comments}
                     </td>
-                    <td className='whitespace-nowrap px-6 py-4 text-right text-sm font-medium'>
+                    <td className='px-6 py-4 text-sm font-medium text-right whitespace-nowrap'>
                       <button
                         onClick={() => loadDetails(true)}
                         type='button'
-                        className='m-1 rounded-full bg-zinc-800 px-3 py-2 text-xs text-zinc-300 shadow-xl shadow-zinc-400/50'
+                        className='px-3 py-2 m-1 text-xs rounded-full shadow-xl bg-zinc-800 text-zinc-300 shadow-zinc-400/50'
                       >
                         Detalles{' '}
                       </button>
@@ -133,5 +129,3 @@ function AdminOrderList() {
     </div>
   )
 }
-
-export default AdminOrderList

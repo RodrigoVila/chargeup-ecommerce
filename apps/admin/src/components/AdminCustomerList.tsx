@@ -1,5 +1,5 @@
-const AdminCustomerList = () => {
-  return null
+export const AdminCustomerList = () => {
+  return "AdminCustomerList"
   // For Future reference
   // const { getUserList } = useAppActions();
 
@@ -11,5 +11,3 @@ const AdminCustomerList = () => {
   // }, []);
   // return <div></div>;
 }
-
-export default AdminCustomerList

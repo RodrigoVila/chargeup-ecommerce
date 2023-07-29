@@ -1,6 +1,6 @@
 import MetricCard from '~components/MetricCard'
 
-const AdminAnalytics = () => {
+export const AdminAnalytics = () => {
   return (
     <div className='flex flex-wrap'>
       <MetricCard title='Total Products' metric='12' cardColor='purple' />
@@ -13,5 +13,3 @@ const AdminAnalytics = () => {
     </div>
   )
 }
-
-export default AdminAnalytics
