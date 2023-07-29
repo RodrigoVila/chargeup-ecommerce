@@ -48,6 +48,9 @@ pnpm --filter main dev
 ```
 As mentioned, Admin app is not working and it won't be included in the building list.
 
+## Live demo
+Usually the app is running [here](https://chargeupbcn.vercel.app/) and will have it's own domain soon at https://www.chargeupbcn.com
+
 ## Next steps
 - Tests!! Lot's of them. My idea is to reach a 50% coverage and then move to 80%
 - Implement the Admin site.
