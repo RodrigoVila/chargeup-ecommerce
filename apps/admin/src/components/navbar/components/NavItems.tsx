@@ -30,7 +30,7 @@ export const NavItems = ({ type, className = '', onClick }: NavItemsProps) => {
           key={index}
           label={link.label}
           href={link.href}
-          className={type === 'drawer' ? ' mx-2 xl:mx-4' : 'my-4'}
+          className={type === 'navbar' ? ' mx-2 xl:mx-4' : 'my-4'}
           onClick={onClick}
         />
       ))}

@@ -1,41 +1,49 @@
+'use client'
+import { useRouter } from 'next/navigation'
+import { IoMdHome, IoMdSettings } from 'react-icons/io'
+import { IoLogOut } from 'react-icons/io5'
+import { FaBoxes } from 'react-icons/fa'
+import { RiListSettingsFill } from 'react-icons/ri'
+import { BsFillPeopleFill } from 'react-icons/bs'
+
 import { NavItem } from '~components/NavItem'
-import { FaPagelines, FaUsers } from 'react-icons/fa'
-import { IoMdAnalytics } from 'react-icons/io'
-import { RiLogoutCircleLine } from 'react-icons/ri'
+import { Logo } from './navbar/components'
 
-const iconClassName = 'pr-0 md:pr-3 text-3xl'
+const Sidebar = () => {
+  const router = useRouter()
 
-const analyticsIcon = <IoMdAnalytics className={iconClassName} />
-const productsIcon = <FaPagelines className={iconClassName} />
-const usersIcon = <FaUsers className={iconClassName} />
-const logOutIcon = <RiLogoutCircleLine className={iconClassName} />
-
-type SidebarProps = {
-  setSelected: (item: string) => void
-}
-
-const Sidebar = ({ setSelected }: SidebarProps) => {
-  const logout = () => {}
   return (
-    <div className='fixed bottom-0 z-10 mt-12 h-16 w-full bg-gray-800 shadow-xl md:relative md:h-screen md:w-48'>
-      <div className='content-center justify-between text-left md:fixed md:left-0 md:top-0 md:mt-12 md:w-48 md:content-start'>
-        <ul className='list-reset flex flex-row px-1 py-0 text-center md:flex-col md:px-2 md:py-3 md:text-left'>
-          <NavItem
-            label='Analytics'
-            icon={analyticsIcon}
-            onClick={() => setSelected('Analytics')}
-          />
-          <NavItem label='Customers' icon={usersIcon} onClick={() => setSelected('Customers')} />
-          <NavItem label='Products' icon={productsIcon} onClick={() => setSelected('Products')} />
-          <NavItem
-            label='Transactions'
-            icon={productsIcon}
-            onClick={() => setSelected('Transactions')}
-          />
-          <NavItem label='Logout' icon={logOutIcon} onClick={logout} />
-        </ul>
-      </div>
-    </div>
+    <aside className='w-max border-r-2 border-r-slate-800 text-white'>
+      <Logo />
+      <ul className='flex min-h-screen flex-col text-center'>
+        <NavItem
+          label='Dashboard'
+          icon={<IoMdHome size={25} />}
+          onClick={() => router.push('/dashboard')}
+        />
+        <NavItem
+          label='Products'
+          icon={<FaBoxes size={25} />}
+          onClick={() => router.push('/products')}
+        />
+        <NavItem
+          label='Orders'
+          icon={<RiListSettingsFill size={25} />}
+          onClick={() => router.push('/orders')}
+        />
+        <NavItem
+          label='Customers'
+          icon={<BsFillPeopleFill size={25} />}
+          onClick={() => router.push('/customers')}
+        />
+        <NavItem
+          label='Settings'
+          icon={<IoMdSettings size={25} />}
+          onClick={() => router.push('/settings')}
+        />
+        <NavItem label='Logout' icon={<IoLogOut size={25} />} onClick={() => {}} />
+      </ul>
+    </aside>
   )
 }
 
