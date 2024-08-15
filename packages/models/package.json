@@ -9,9 +9,9 @@
       "require": "./dist/index.cjs"
     }
   },
-  "types": "./dist/index.d.ts",
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "files": [
     "dist"
   ],
@@ -20,13 +20,13 @@
     "lint": "eslint ./src",
     "test": "vitest"
   },
-  "devDependencies": {
-    "@types/mongoose": "^5.11.97",
-    "typescript": "^4.9.5",
-    "eslint": "^8.13.0",
-    "vitest": "^0.33.0"
-  },
   "dependencies": {
-    "mongoose": "^6.0.0"
+    "mongodb": "^3.6.9",
+    "mongoose": "^5.12.14"
+  },
+  "devDependencies": {
+    "eslint": "^8.13.0",
+    "typescript": "^4.9.5",
+    "vitest": "^0.33.0"
   }
 }
