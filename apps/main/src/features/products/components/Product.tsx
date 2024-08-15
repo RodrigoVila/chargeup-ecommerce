@@ -37,15 +37,15 @@ export const Product = ({ product }: ProductProps) => {
   return (
     <>
       {isMounted ? <ReactTooltip /> : null}
-      <div className='flex flex-col items-center justify-end w-full max-w-sm mt-32 mb-4 text-white bg-black 2xs:rounded-xl xs:mx-2 lg:max-w-360 lg:mx-8'>
-        <div className='relative flex flex-col justify-end h-full px-6 pb-6'>
-          <div className='flex items-center justify-center w-full h-32 mb-8 bg-black'>
+      <div className='2xs:rounded-xl xs:mx-2 lg:max-w-360 mb-4 mt-32 flex w-full max-w-sm flex-col items-center justify-end bg-black text-white lg:mx-8'>
+        <div className='relative flex h-full flex-col justify-end px-6 pb-6'>
+          <div className='mb-8 flex h-32 w-full items-center justify-center bg-black'>
             {imgUri && <RoundImage imgUri={imgUri} />}
           </div>
-          <div className='text-lg font-semibold font-dinMedium md:text-2xl'>
+          <div className='font-dinMedium text-lg font-semibold md:text-2xl'>
             {title.toUpperCase()}
           </div>
-          <div className='flex my-3 text-sm font-semibold md:text-base'>
+          <div className='my-3 flex text-sm font-semibold md:text-base'>
             {vegan && (
               <div className={`${iconStyle} mr-1`} data-tip='Vegano'>
                 <Image src='/icons/vegan-white.png' alt='Vegan icon' layout='fill' />
@@ -67,24 +67,26 @@ export const Product = ({ product }: ProductProps) => {
               </div>
             )}
           </div>
-          <div className='text-base cursor-pointer' onClick={onClickSeeMore}>
+          <div className='cursor-pointer text-base' onClick={onClickSeeMore}>
             {description?.short}
           </div>
           {/* text-[#a855f7] */}
           <button
-            className='flex self-start text-left text-orange-400 cursor-pointer text-md md:text-lg'
+            className='text-md flex cursor-pointer self-start text-left text-orange-400 md:text-lg'
             onClick={onClickSeeMore}
           >
             {formatMessage({ id: 'SEE_MORE' })}
           </button>
           {/* Nutritional Info */}
-          <div className='flex flex-col my-4'>
-            <div className='mb-4 text-base'>{`${formatMessage({ id: 'FOR_EVERY' })} ${weight}gr:`}</div>
+          <div className='my-4 flex flex-col'>
+            <div className='mb-4 text-base'>{`${formatMessage({
+              id: 'FOR_EVERY',
+            })} ${weight}gr:`}</div>
             <div className='flex items-center justify-between text-lg'>
               <div className='flex flex-col items-center justify-center'>
                 {/* Calories */}
                 <div
-                  className='relative w-12 h-12'
+                  className='relative h-12 w-12'
                   data-tip={formatMessage({ id: 'PRODUCTS_CALORIES' })}
                 >
                   <Image src='/icons/kcal-white.svg' layout='fill' alt='calories' />

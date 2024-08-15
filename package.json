@@ -16,8 +16,18 @@
     "ts:emit": "turbo run ts:emit",
     "typecheck": "turbo run typecheck"
   },
+  "resolutions": {
+    "@types/react": "17.0.2",
+    "@types/react-dom": "17.0.2"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
   "devDependencies": {
     "@trivago/prettier-plugin-sort-imports": "^4.1.1",
+    "@types/react": "^18.0.28",
+    "@types/react-dom": "^18.0.10",
     "prettier": "^2.6.2",
     "prettier-plugin-packagejson": "^2.4.5",
     "prettier-plugin-tailwindcss": "^0.1.10",

@@ -211,8 +211,7 @@ export const useAppActions = () => {
   const sendContactForm = (contacForm: ContactFormType) =>
     dispatch(contactFormSend(contacForm, formatMessage))
 
-    const clearUserDetails = () =>
-    dispatch(userDetailsClear())
+  const clearUserDetails = () => dispatch(userDetailsClear())
 
   return {
     addProduct,
@@ -265,6 +264,6 @@ export const useAppActions = () => {
     editUserDetails,
     editUserPassword,
     sendContactForm,
-    clearUserDetails
+    clearUserDetails,
   }
 }

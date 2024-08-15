@@ -6,7 +6,7 @@ import {
   REQUEST_CHANGE_USER_DETAILS,
   REQUEST_CHANGE_USER_DETAILS_ERROR,
   REQUEST_CHANGE_USER_DETAILS_SUCCESS,
-  CLEAR_USER_DETAILS
+  CLEAR_USER_DETAILS,
 } from '~constants/ActionTypes'
 import { IntlFormatters } from 'react-intl'
 

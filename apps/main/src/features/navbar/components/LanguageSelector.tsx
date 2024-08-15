@@ -14,7 +14,7 @@ export const LanguageSelector = ({ className, ...rest }: LanguageDetectorProps) 
   const changeLocale = (newLocale: string) =>
     router.push({ pathname, query }, asPath, { locale: newLocale })
 
-  return locale ?(
+  return locale ? (
     <select
       className={twMerge('bg-transparent', className)}
       {...rest}

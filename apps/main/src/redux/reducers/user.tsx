@@ -10,7 +10,7 @@ import {
 import { APP_USER_INITIAL_STATE, USER_INITIAL_STATE } from '~constants/initialState'
 import { UserActionType, UserStateType } from '~types'
 
-const userReducer = (state:UserStateType = USER_INITIAL_STATE, action: UserActionType) => {
+const userReducer = (state: UserStateType = USER_INITIAL_STATE, action: UserActionType) => {
   const { type, user } = action
 
   switch (type) {
@@ -40,11 +40,11 @@ const userReducer = (state:UserStateType = USER_INITIAL_STATE, action: UserActio
         isLoading: false,
       }
 
-      case CLEAR_USER_DETAILS:
-        return {
-          state: APP_USER_INITIAL_STATE,
-          isLoading: false,
-        }
+    case CLEAR_USER_DETAILS:
+      return {
+        user: APP_USER_INITIAL_STATE,
+        isLoading: false,
+      }
 
     default:
       return state

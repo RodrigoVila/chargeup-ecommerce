@@ -37,7 +37,7 @@ const PasswordRecovery = () => {
         {isTokenForPasswordValidated ? (
           <div className='flex h-full w-full flex-col items-center justify-center gap-3'>
             <Logo logo='white.png' size='lg' />
-            <UpdatePasswordForm requestFromMail={email} />
+            <UpdatePasswordForm requestFromMail={email as string} />
           </div>
         ) : (
           <ErrorSuccess

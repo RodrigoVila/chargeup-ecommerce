@@ -76,7 +76,7 @@ export const DeliveryDataForm = ({ loading, onSubmit }: DeliveryDataFormProps) =
       {
         isLoggedInWithNoAddress ? (
           // User is logged in but doesn't have an address, ask to save details
-          <div className='flex items-center w-full gap-2 py-2 border-t border-t-black'>
+          <div className='flex w-full items-center gap-2 border-t border-t-black py-2'>
             <Button
               onClick={handleSaveData}
               disabled={userDataFlag || isButtonDisabled}
@@ -88,9 +88,9 @@ export const DeliveryDataForm = ({ loading, onSubmit }: DeliveryDataFormProps) =
           </div>
         ) : !hasRegisteredAddress ? (
           // Otherwise, user is not logged in, ask to log in
-          <p className='py-2 font-bold border-t text-md border-t-black'>
+          <p className='text-md border-t border-t-black py-2 font-bold'>
             {formatMessage({ id: 'CART_MODAL_NOTE' })}
-            <span onClick={handleGoToLogin} className='text-blue-400 cursor-pointer text-bold'>
+            <span onClick={handleGoToLogin} className='text-bold cursor-pointer text-blue-400'>
               {` ${formatMessage({ id: 'LOGIN_2' })} `}
             </span>
             {formatMessage({ id: 'CART_MODAL_NOTE_2' })}

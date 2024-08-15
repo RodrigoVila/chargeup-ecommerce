@@ -36,7 +36,7 @@ export const UserDetails = () => {
       {editing === 'password' && <UpdatePasswordForm />}
 
       {!editing && (
-        <div className='flex flex-col items-center justify-center w-full gap-2 mx-auto'>
+        <div className='mx-auto flex w-full flex-col items-center justify-center gap-2'>
           <Button onClick={() => setEdit('userData')}>
             {formatMessage({ id: 'CHANGE_USER_DATA' })}
           </Button>

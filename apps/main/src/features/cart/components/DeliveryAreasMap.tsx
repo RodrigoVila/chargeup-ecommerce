@@ -14,7 +14,7 @@ export const DeliveryAreasMap = () => {
 
   return (
     <>
-      <div className='relative flex items-center justify-center w-full h-64 font-bold bg-green-400'>
+      <div className='relative flex h-64 w-full items-center justify-center bg-green-400 font-bold'>
         <div
           className='flex h-full w-full cursor-pointer items-center justify-center hover:bg-[rgba(0,0,0,0.3)]'
           onClick={() => setExpanded(true)}
@@ -23,7 +23,7 @@ export const DeliveryAreasMap = () => {
         </div>
       </div>
       <Modal isOpen={isExpanded} onClose={() => setExpanded(false)} fullScreen>
-        <div className='flex items-center justify-center w-full h-full font-bold bg-green-400 2xl:h-full'>
+        <div className='flex h-full w-full items-center justify-center bg-green-400 font-bold 2xl:h-full'>
           Mapa Grande
         </div>
       </Modal>

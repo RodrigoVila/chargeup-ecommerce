@@ -58,7 +58,7 @@ export const orderSchema = new mongoose.Schema(
     paidAmount: Number || null,
     status: {
       type: String,
-      default: "pending"
+      default: 'pending',
     },
     created: Date,
     orderSent: Boolean,

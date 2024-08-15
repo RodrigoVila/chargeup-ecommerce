@@ -55,17 +55,17 @@ export const Products = () => {
 
   return (
     <>
-      <div className='flex flex-wrap items-center justify-center h-full pb-2 mt-6'>
+      <div className='mt-6 flex h-full flex-wrap items-center justify-center pb-2'>
         <ProductSearchBar setSearchValue={setSearchValue} />
       </div>
       {products.length > 0 ? (
-        <div className='relative flex flex-wrap justify-center w-full mx-auto text-left'>
+        <div className='relative mx-auto flex w-full flex-wrap justify-center text-left'>
           {filteredProducts.length > 0
             ? filteredProducts?.map((product) => <Product key={product._id} product={product} />)
             : products?.map((product) => <Product key={product._id} product={product} />)}
         </div>
       ) : (
-        <div className='flex items-center justify-center w-full h-full mt-20'>
+        <div className='mt-20 flex h-full w-full items-center justify-center'>
           <Spinner> {formatMessage({ id: 'PRODUCTS_LOADING' })}</Spinner>
         </div>
       )}
