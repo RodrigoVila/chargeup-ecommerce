@@ -1,16 +1,16 @@
-import useAppActions from '~hooks'
+// import useAppActions from '~hooks'
 import Image from 'next/image'
-import { ProductType } from 'types'
+import { ProductType } from '@packages/types'
 
-type AdminProductProps = {
+type ProductProps = {
   product: ProductType
 }
-const AdminProduct = ({ product }: AdminProductProps) => {
+const Product = ({ product }: ProductProps) => {
   const { title, nutritionalInfo, suitableForInfo, imgUri } = product
 
-  const { openAdminProductModal } = useAppActions()
+  // const { openProductModal } = useAppActions()
 
-  const handleEditing = () => openAdminProductModal(product)
+  // const handleEditing = () => openProductModal(product)
 
   return (
     <tr>
@@ -81,7 +81,7 @@ const AdminProduct = ({ product }: AdminProductProps) => {
       </td>
       <td className='whitespace-nowrap px-6 py-4 text-right text-sm font-medium'>
         <button
-          onClick={handleEditing}
+          // onClick={handleEditing}
           type='button'
           className='m-1 rounded-full bg-zinc-800 px-3 py-2 text-xs text-zinc-300 shadow-xl shadow-zinc-400/50'
         >
@@ -92,4 +92,4 @@ const AdminProduct = ({ product }: AdminProductProps) => {
   )
 }
 
-export default AdminProduct
+export default Product

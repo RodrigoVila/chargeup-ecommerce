@@ -1,4 +1,4 @@
-function AdminStats() {
+function Stats() {
   return (
     <div className='mx-auto mb-5 mt-5 max-w-xl px-2 sm:px-6 lg:px-8'>
       <div className='items-left'>
@@ -41,4 +41,4 @@ function AdminStats() {
     </div>
   )
 }
-export default AdminStats
+export default Stats

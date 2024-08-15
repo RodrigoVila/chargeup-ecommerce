@@ -3,15 +3,15 @@
 import { useState } from 'react'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
-import AdminCustomers from '~components/AdminCustomers'
-import AdminDashboard from '~components/AdminDashboard'
-import AdminOrderList from '~components/AdminOrderList'
-import AdminProducts from '~components/AdminProducts'
-import AdminStats from '~components/AdminStats'
-import AdminUserNav from '~components/AdminUserNav'
-import AdminProductModal from '~components/AdminProductModal'
+import AdminCustomers from '~components/Customers'
+import AdminDashboard from '~components/Dashboard'
+import AdminOrderList from '~components/OrderList'
+import AdminProducts from '~components/Products'
+import AdminStats from '~components/Stats'
+import AdminUserNav from '~components/UserNav'
+// import AdminProductModal from '~components/AdminProductModal'
 
-type ActivePage = 'Dashboard' | 'Orders' | 'Customers' | 'Products' | 'Estadistics'
+export type ActivePage = 'Dashboard' | 'Orders' | 'Customers' | 'Products' | 'Estadistics'
 
 const AdminScreen = () => {
   const [activePage, setActivePage] = useState<ActivePage>('Dashboard')
@@ -19,7 +19,7 @@ const AdminScreen = () => {
   const queryClient = new QueryClient()
   return (
     <QueryClientProvider client={queryClient}>
-      <AdminProductModal />
+      {/* <AdminProductModal /> */}
 
       <AdminUserNav activePage={activePage} setActivePage={setActivePage} />
 

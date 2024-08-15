@@ -1,24 +1,53 @@
+import AdminOrderDetails from '~components/OrderDetails'
+import { useState } from 'react'
+
 const people = [
   {
-    name: 'Jane Cooper - LOAD COMP LOADED',
+    name: 'Jane Cooper',
     orderdetail1: 'Order #00574 (10/12/2021)',
     orderdetail2: ' Total: $58.65',
     comments: 'Deliver on 12/12 Joan Miro 10, St Boi, Barcelona.',
-    email: 'jane.cooper@example.com',
-    image:
-      'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60',
+    email: 'jane@example.com',
+    image: 'https://www.svgrepo.com/show/157823/user.svg',
   },
-  // More people...
+  {
+    name: 'Jorge Formento',
+    orderdetail1: 'Order #00575 (10/12/2021)',
+    orderdetail2: ' Total: $18.65',
+    comments: 'Deliver on 12/12 Joan Miro 10, St Boi, Barcelona.',
+    email: 'janr@example.com',
+    image: 'https://www.svgrepo.com/show/157823/user.svg',
+  },
+  {
+    name: 'Connor Mc Gregor',
+    orderdetail1: 'Order #00576 (10/12/2021)',
+    orderdetail2: ' Total: $12258.65',
+    comments: 'Deliver on 12/12 Joan Miro 10, St Boi, Barcelona.',
+    email: 'jaooper@example.com',
+    image: 'https://www.svgrepo.com/show/157823/user.svg',
+  },
+  {
+    name: 'Jerry Spring',
+    orderdetail1: 'Order #00577 (10/12/2021)',
+    orderdetail2: ' Total: $58.65',
+    comments: 'Deliver on 12/12 Joan Miro 10, St Boi, Barcelona.',
+    email: 'jar@example.com',
+    image: 'https://www.svgrepo.com/show/157823/user.svg',
+  },
+  {
+    name: 'Laura Hills',
+    orderdetail1: 'Order #00578 (10/12/2021)',
+    orderdetail2: ' Total: $958.65',
+    comments: 'Deliver on 12/12 Joan Miro 10, St Boi, Barcelona.',
+    email: 'janer@example.com',
+    image: 'https://www.svgrepo.com/show/157823/user.svg',
+  },
 ]
-
-function classNames(...classes) {
-  return classes.filter(Boolean).join(' ')
-}
-
-function AdminTabDetails() {
+function OrderList() {
+  const [loaded, loadDetails] = useState(false)
   return (
     <div className='flex flex-col'>
-      <div className='-my-2 overflow-x-auto bg-zinc-600 sm:-mx-6 lg:-mx-8'>
+      <div className='-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8'>
         <div className='inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8'>
           <div className='overflow-hidden border-b border-gray-200 bg-zinc-300 shadow sm:rounded-lg'>
             <table className='min-w-full divide-y divide-gray-200'>
@@ -81,6 +110,7 @@ function AdminTabDetails() {
                     </td>
                     <td className='whitespace-nowrap px-6 py-4 text-right text-sm font-medium'>
                       <button
+                        onClick={() => loadDetails(true)}
                         type='button'
                         className='m-1 rounded-full bg-zinc-800 px-3 py-2 text-xs text-zinc-300 shadow-xl shadow-zinc-400/50'
                       >
@@ -94,8 +124,9 @@ function AdminTabDetails() {
           </div>
         </div>
       </div>
+      {loaded && <AdminOrderDetails />}
     </div>
   )
 }
 
-export default AdminTabDetails
+export default OrderList

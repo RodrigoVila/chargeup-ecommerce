@@ -1,13 +1,7 @@
 import { ChangeEvent, useState } from 'react'
-import ReactTooltip from 'react-tooltip'
 
-import useAppActions from '~hooks/useAppActions'
-import useMounted from '~hooks/useMounted'
-
-import { TrashIcon } from '@heroicons/react/24/outline'
-import CloseModalButton from '@shared/Buttons/CloseModalButton'
 import Image from 'next/image'
-import { ProductType } from 'types'
+import { ProductType } from '@packages/types'
 
 type AdminProductDetailsProps = {
   product: ProductType
@@ -16,10 +10,6 @@ type AdminProductDetailsProps = {
 const AdminProductDetails = ({ product }: AdminProductDetailsProps) => {
   const [isEdit, setIsEdit] = useState(false)
   const [editedProduct, setEditedProduct] = useState<ProductType>(product)
-
-  const { closeDrawerModal } = useAppActions()
-
-  const { isMounted } = useMounted()
 
   const { _id, title, description, imgUri } = product
 
@@ -56,12 +46,12 @@ const AdminProductDetails = ({ product }: AdminProductDetailsProps) => {
 
   return (
     <div className='relative my-2 max-h-screen overflow-scroll rounded-md bg-white'>
-      {isMounted ? <ReactTooltip /> : null}
+      {/* {isMounted ? <ReactTooltip /> : null}
       <CloseModalButton
         color='black'
         onClose={closeDrawerModal}
         className='absolute right-2 top-2 z-30'
-      />
+      /> */}
       <div className='mx-auto max-w-2xl rounded-xl px-4 py-2 shadow-lg sm:px-6 sm:py-8 lg:max-w-xl lg:px-8'>
         {isEdit ? (
           <input
@@ -151,7 +141,7 @@ const AdminProductDetails = ({ product }: AdminProductDetailsProps) => {
                 onClick={removeProduct}
                 data-tip='Eliminar Producto'
               >
-                <TrashIcon color='red' />
+                {/* <TrashIcon color='red' /> */}
               </button>
             )}
           </div>

@@ -1,21 +1,21 @@
-import useAppActions from '~hooks/useAppActions'
-import useAppSelector from '~hooks/useAppSelector'
+// import useAppActions from '~hooks/useAppActions'
+// import useAppSelector from '~hooks/useAppSelector'
 import { useEffect } from 'react'
-import AdminProduct from '~components/AdminProduct'
-import AdminProductSearch from '~components/AdminProductSearch'
+import AdminProduct from '~components/Product'
+import ProductSearch from '~components/ProductSearch'
 
-function AdminProducts() {
-  const { products, areProductsLoading } = useAppSelector()
+function Products() {
+  // const { products, areProductsLoading } = useAppSelector()
 
-  const { fetchProducts } = useAppActions()
+  // const { fetchProducts } = useAppActions()
 
-  useEffect(() => {
-    fetchProducts()
-  }, [])
+  // useEffect(() => {
+  //   fetchProducts()
+  // }, [])
 
   return (
     <div className='flex flex-col'>
-      <AdminProductSearch />
+      <ProductSearch />
 
       <div className='-my-2 overflow-x-auto'>
         <div className='inline-block min-w-full py-2 align-middle'>
@@ -53,7 +53,7 @@ function AdminProducts() {
                 </tr>
               </thead>
 
-              {areProductsLoading
+              {/* {areProductsLoading
                 ? 'Loading'
                 : products.length > 0 && (
                     <tbody className='divide-y divide-gray-200 bg-white'>
@@ -61,7 +61,7 @@ function AdminProducts() {
                         <AdminProduct key={product._id} product={product} />
                       ))}
                     </tbody>
-                  )}
+                  )} */}
             </table>
           </div>
         </div>
@@ -70,4 +70,4 @@ function AdminProducts() {
   )
 }
 
-export default AdminProducts
+export default Products

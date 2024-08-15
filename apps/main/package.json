@@ -12,7 +12,6 @@
     "typecheck": "tsc --skipLibCheck"
   },
   "dependencies": {
-    "@heroicons/react": "^2.0.18",
     "@packages/button": "workspace:*",
     "@packages/checkbox": "workspace:*",
     "@packages/input": "workspace:*",

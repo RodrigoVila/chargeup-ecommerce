@@ -46,6 +46,24 @@ importers:
 
   apps/admin:
     dependencies:
+      '@packages/button':
+        specifier: workspace:*
+        version: link:../../packages/button
+      '@packages/checkbox':
+        specifier: workspace:*
+        version: link:../../packages/checkbox
+      '@packages/input':
+        specifier: workspace:*
+        version: link:../../packages/input
+      '@packages/models':
+        specifier: workspace:*
+        version: link:../../packages/models
+      '@packages/spinner':
+        specifier: workspace:*
+        version: link:../../packages/spinner
+      '@packages/types':
+        specifier: workspace:*
+        version: link:../../packages/types
       '@tanstack/react-query':
         specifier: ^5.51.23
         version: 5.51.23(react@18.3.1)
@@ -79,15 +97,18 @@ importers:
       react-dom:
         specifier: ^18.2.0
         version: 18.3.1(react@18.3.1)
+      react-icons:
+        specifier: ^4.2.0
+        version: 4.2.0(react@18.3.1)
+      tailwind-merge:
+        specifier: ^1.14.0
+        version: 1.14.0
       tailwindcss:
         specifier: ^3.2.7
         version: 3.3.3
 
   apps/main:
     dependencies:
-      '@heroicons/react':
-        specifier: ^2.0.18
-        version: 2.0.18(react@17.0.2)
       '@packages/button':
         specifier: workspace:*
         version: link:../../packages/button
@@ -1220,14 +1241,6 @@ packages:
     dependencies:
       '@fortawesome/fontawesome-common-types': 0.2.36
     dev: true
-
-  /@heroicons/react@2.0.18(react@17.0.2):
-    resolution: {integrity: sha512-7TyMjRrZZMBPa+/5Y8lN0iyvUU/01PeMGX2+RE7cQWpEUIcb4QotzUObFkJDejj/HUH4qjP/eQ0gzzKs2f+6Yw==}
-    peerDependencies:
-      react: '>= 16'
-    dependencies:
-      react: 17.0.2
-    dev: false
 
   /@humanwhocodes/config-array@0.11.10:
     resolution: {integrity: sha512-KVVjQmNUepDVGXNuoRRdmmEjruj0KfiGSbS8LVc12LMsWDQzRXJ0qdhN8L8uUigKpfEHRhlaQFY0ib1tnUbNeQ==}
@@ -5210,6 +5223,14 @@ packages:
       react: '*'
     dependencies:
       react: 17.0.2
+    dev: false
+
+  /react-icons@4.2.0(react@18.3.1):
+    resolution: {integrity: sha512-rmzEDFt+AVXRzD7zDE21gcxyBizD/3NqjbX6cmViAgdqfJ2UiLer8927/QhhrXQV7dEj/1EGuOTPp7JnLYVJKQ==}
+    peerDependencies:
+      react: '*'
+    dependencies:
+      react: 18.3.1
     dev: false
 
   /react-intl@6.4.4(react@17.0.2)(typescript@4.9.5):

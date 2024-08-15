@@ -1,4 +1,4 @@
-const AdminTopBar = () => {
+const TopBar = () => {
   return (
     <nav className='fixed top-0 z-20 h-auto w-full bg-gray-800 px-1 pb-1 pt-2 md:pt-1'>
       <div className='flex flex-wrap items-center'>
@@ -95,4 +95,4 @@ const AdminTopBar = () => {
   )
 }
 
-export default AdminTopBar
+export default TopBar

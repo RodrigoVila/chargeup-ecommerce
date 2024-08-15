@@ -1,4 +1,4 @@
-import NavItem from '@main/NavItem'
+import { NavItem } from '~components/NavItem'
 import { FaPagelines, FaUsers } from 'react-icons/fa'
 import { IoMdAnalytics } from 'react-icons/io'
 import { RiLogoutCircleLine } from 'react-icons/ri'
@@ -10,7 +10,11 @@ const productsIcon = <FaPagelines className={iconClassName} />
 const usersIcon = <FaUsers className={iconClassName} />
 const logOutIcon = <RiLogoutCircleLine className={iconClassName} />
 
-const AdminSidebar = ({ setSelected }) => {
+type SidebarProps = {
+  setSelected: (item: string) => void
+}
+
+const Sidebar = ({ setSelected }: SidebarProps) => {
   const logout = () => {}
   return (
     <div className='fixed bottom-0 z-10 mt-12 h-16 w-full bg-gray-800 shadow-xl md:relative md:h-screen md:w-48'>
@@ -20,31 +24,19 @@ const AdminSidebar = ({ setSelected }) => {
             label='Analytics'
             icon={analyticsIcon}
             onClick={() => setSelected('Analytics')}
-            direction='column'
           />
-          <NavItem
-            label='Customers'
-            icon={usersIcon}
-            onClick={() => setSelected('Customers')}
-            direction='column'
-          />
-          <NavItem
-            label='Products'
-            icon={productsIcon}
-            onClick={() => setSelected('Products')}
-            direction='column'
-          />
+          <NavItem label='Customers' icon={usersIcon} onClick={() => setSelected('Customers')} />
+          <NavItem label='Products' icon={productsIcon} onClick={() => setSelected('Products')} />
           <NavItem
             label='Transactions'
             icon={productsIcon}
             onClick={() => setSelected('Transactions')}
-            direction='column'
           />
-          <NavItem label='Logout' icon={logOutIcon} onClick={logout} direction='column' />
+          <NavItem label='Logout' icon={logOutIcon} onClick={logout} />
         </ul>
       </div>
     </div>
   )
 }
 
-export default AdminSidebar
+export default Sidebar

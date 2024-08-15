@@ -1,7 +1,7 @@
-import AdminClientInvite from '~components/AdminClientInvite'
-import AdminStats from '~components/AdminStats'
+import AdminClientInvite from '~components/ClientInvite'
+import AdminStats from '~components/Stats'
 
-export default function AdminDashboard() {
+export default function Dashboard() {
   return (
     <div className='align-center object-center xl:w-full'>
       <main className='xl:mt-18 mx-auto mt-10 max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:w-max lg:px-8 xl:w-max'>

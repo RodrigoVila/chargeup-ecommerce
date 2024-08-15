@@ -1,4 +1,4 @@
-export default function AdminCustomerSearch() {
+export default function ProductSearch() {
   return (
     <div className='flex justify-center bg-violet-800 py-4'>
       <div className='bg-gray-200 '>
@@ -11,9 +11,8 @@ export default function AdminCustomerSearch() {
             <input
               type='text'
               className='z-0 h-12 w-96 rounded-xl bg-violet-100 pl-10 pr-20 focus:shadow focus:outline-none'
-              placeholder='Buscar cliente...'
+              placeholder='Buscar producto...'
             ></input>
-
             <div className='absolute right-2 top-2'>
               {' '}
               <button className='h-8 w-20 rounded-lg bg-violet-500 text-white hover:bg-violet-300 hover:text-violet-900'>
@@ -22,7 +21,7 @@ export default function AdminCustomerSearch() {
             </div>
           </div>
         </div>
-      </div>{' '}
+      </div>
     </div>
   )
 }

@@ -1,4 +1,4 @@
-export default function AdminClientInvite() {
+export default function ClientInvite() {
   return (
     <div className='mt-5 justify-center sm:mt-8 sm:flex'>
       <div className='xl:align-center rounded-md shadow xl:object-center'>

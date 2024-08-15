@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 
 import { User } from '@packages/models'
-import { dbConnect } from '~utils'
+import { dbConnect } from '~utils/dbConnect'
 
 const UsersAPI = async (req: NextApiRequest, res: NextApiResponse) => {
   const { method, body } = req

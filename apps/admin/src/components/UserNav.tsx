@@ -1,19 +1,25 @@
+import { ActivePage } from 'app/page'
 import Image from 'next/image'
+import { Dispatch, SetStateAction } from 'react'
+import { twMerge } from 'tailwind-merge'
 
-const navigation = [
-  { name: 'Dashboard', href: '', current: true },
-  { name: 'Ordenes', href: '', current: false },
-  { name: 'Clientes', href: '', current: false },
-  { name: 'Productos', href: '', current: false },
-  { name: 'Estadisticas', href: '', current: false },
-]
-
-function classNames(...classes) {
-  return classes.filter(Boolean).join(' ')
+type UserNavProps = {
+  activePage: string
+  setActivePage: Dispatch<SetStateAction<ActivePage>>
 }
 
-const AdminUserNav = ({ setActivePage, activePage }) => {
-  const handleClick = (item: string): any => {
+type NavigationItem = { name: ActivePage; href: string; current: boolean }
+
+const navigation: NavigationItem[] = [
+  { name: 'Dashboard', href: '', current: true },
+  { name: 'Orders', href: '', current: false },
+  { name: 'Customers', href: '', current: false },
+  { name: 'Products', href: '', current: false },
+  { name: 'Estadistics', href: '', current: false },
+]
+
+const UserNav = ({ setActivePage, activePage }: UserNavProps) => {
+  const handleClick = (item: ActivePage): any => {
     setActivePage(item)
   }
 
@@ -34,11 +40,15 @@ const AdminUserNav = ({ setActivePage, activePage }) => {
                   className='block h-16 w-auto lg:hidden'
                   src='./chargeup_logo_wg.svg'
                   alt='ChargeUP BCN'
+                  height={120}
+                  width={120}
                 />
                 <Image
                   className='hidden h-14 w-auto lg:block'
                   src='./chargeup_logo_wg.svg'
                   alt='ChargeUP BCN'
+                  height={120}
+                  width={120}
                 />
               </div>
 
@@ -52,11 +62,11 @@ const AdminUserNav = ({ setActivePage, activePage }) => {
                       onClick={() => handleClick(item.name)}
                       // onClick={() => props.setMkactive(true) }
 
-                      className={classNames(
+                      className={twMerge(
+                        'rounded-md px-3 py-2 text-sm font-medium',
                         activePage
                           ? 'bg-gray-900 text-white'
                           : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                        'rounded-md px-3 py-2 text-sm font-medium',
                       )}
                       aria-current={activePage ? 'page' : undefined}
                     >
@@ -76,11 +86,11 @@ const AdminUserNav = ({ setActivePage, activePage }) => {
               <a
                 key={item.name}
                 href={item.href}
-                className={classNames(
+                className={twMerge(
+                  'block rounded-md px-3 py-2 text-base font-medium',
                   item.current
                     ? 'bg-gray-900 text-white'
                     : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                  'block rounded-md px-3 py-2 text-base font-medium',
                 )}
                 aria-current={item.current ? 'page' : undefined}
               >
@@ -94,4 +104,4 @@ const AdminUserNav = ({ setActivePage, activePage }) => {
   )
 }
 
-export default AdminUserNav
+export default UserNav
