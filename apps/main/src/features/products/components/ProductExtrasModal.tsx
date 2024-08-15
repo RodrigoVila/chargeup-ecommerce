@@ -4,7 +4,7 @@ import { Button } from '@packages/button'
 import { Checkbox } from '@packages/checkbox'
 
 import { useAppActions, useAppSelector } from '~hooks'
-import { Modal } from '~features/modal'
+import { Modal } from '@packages/modal'
 import { Counter } from '~components/Counter'
 import { Dropdown } from '~components/Dropdown'
 import { getProductSubtotal } from '~utils/products'

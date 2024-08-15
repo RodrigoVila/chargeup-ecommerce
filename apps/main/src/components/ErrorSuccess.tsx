@@ -1,7 +1,8 @@
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 import { useIntl } from 'react-intl'
-import { CheckCircleIcon, XCircleIcon } from '@heroicons/react/24/outline'
+import { IoMdClose } from 'react-icons/io'
+import { FaRegCheckCircle } from 'react-icons/fa'
 
 import { Button } from '@packages/button'
 
@@ -41,9 +42,9 @@ export const ErrorSuccess = ({
       <div className='flex flex-col items-center justify-center text-center'>
         <div className='h-full max-h-[150px] w-full max-w-[150px] '>
           {type === 'error' ? (
-            <XCircleIcon color={colors.danger} />
+            <IoMdClose color={colors.danger} />
           ) : (
-            <CheckCircleIcon color={colors.success} />
+            <FaRegCheckCircle color={colors.success} />
           )}
         </div>
         <h1 className='mx-2 mt-4 text-3xl font-bold md:text-4xl'>{title}</h1>

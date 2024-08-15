@@ -2,7 +2,7 @@ import { useIntl } from 'react-intl'
 
 import { Button } from '@packages/button'
 
-import { Modal } from '~features/modal'
+import { Modal } from '@packages/modal'
 import { useAppSelector, useAppActions, useLogin } from '~hooks'
 
 import { GoogleSignInButton, LoginForm, PasswordRecoveryForm, RegisterForm } from './components'

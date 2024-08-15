@@ -8,7 +8,7 @@ import AdminDashboard from '~components/Dashboard'
 import AdminOrderList from '~components/OrderList'
 import AdminProducts from '~components/Products'
 import AdminStats from '~components/Stats'
-import AdminUserNav from '~components/UserNav'
+import { Navbar } from '~components/navbar/Navbar'
 // import AdminProductModal from '~components/AdminProductModal'
 
 export type ActivePage = 'Dashboard' | 'Orders' | 'Customers' | 'Products' | 'Estadistics'
@@ -21,7 +21,7 @@ const AdminScreen = () => {
     <QueryClientProvider client={queryClient}>
       {/* <AdminProductModal /> */}
 
-      <AdminUserNav activePage={activePage} setActivePage={setActivePage} />
+      <Navbar />
 
       {activePage === 'Dashboard' && <AdminDashboard />}
       {activePage === 'Orders' && <AdminOrderList />}

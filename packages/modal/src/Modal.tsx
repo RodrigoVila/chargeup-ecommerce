@@ -1,9 +1,9 @@
 import { ReactNode, useEffect } from 'react'
 import { twMerge } from 'tailwind-merge'
 
-import { BackgroundOverlay } from '~components/BackgroundOverlay'
-
-import { Portal, CloseModalButton } from './components'
+import { BackgroundOverlay } from './components/BackgroundOverlay'
+import { Portal } from './components/Portal'
+import { CloseModalButton } from './components/CloseModalButton'
 
 type ModalProps = {
   children?: ReactNode

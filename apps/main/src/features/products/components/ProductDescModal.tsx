@@ -2,7 +2,7 @@ import { useAppActions, useAppSelector } from '~hooks'
 
 import { Button } from '@packages/button'
 
-import { Modal } from '~features/modal'
+import { Modal } from '@packages/modal'
 
 export const ProductDescModal = () => {
   const { isProductModalOpen, selectedModalProduct } = useAppSelector()

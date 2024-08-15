@@ -2,7 +2,7 @@ import { ReactNode, useEffect, useMemo, useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
 import { useAppActions, useAppSelector } from '~hooks'
-import { Modal } from '~features/modal'
+import { Modal } from '@packages/modal'
 import { DeliveryType, OrderType, UserDetailsType } from '@packages/types'
 
 import { CartSummary, DeliveryOptions } from './components'

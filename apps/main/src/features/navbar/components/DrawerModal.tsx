@@ -1,6 +1,6 @@
 import { useAppActions, useAppSelector } from '~hooks'
 
-import { Modal } from '~features/modal'
+import { Modal } from '@packages/modal'
 
 import { NavItems } from './NavItems'
 import { LanguageSelector } from './LanguageSelector'

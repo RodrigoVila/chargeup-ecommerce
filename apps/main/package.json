@@ -15,6 +15,7 @@
     "@packages/button": "workspace:*",
     "@packages/checkbox": "workspace:*",
     "@packages/input": "workspace:*",
+    "@packages/modal": "workspace:*",
     "@packages/models": "workspace:*",
     "@packages/spinner": "workspace:*",
     "@packages/types": "workspace:*",

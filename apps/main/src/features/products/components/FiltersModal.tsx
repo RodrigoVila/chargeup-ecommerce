@@ -1,9 +1,9 @@
-import { FunnelIcon } from '@heroicons/react/24/outline'
+import { IoFilter } from 'react-icons/io5'
 
 import { Button } from '@packages/button'
 
 import { useAppActions, useAppSelector } from '~hooks'
-import { Modal } from '~features/modal'
+import { Modal } from '@packages/modal'
 
 import { FilterPill } from './FilterPill'
 
@@ -17,7 +17,7 @@ export const FiltersModal = () => {
     <Modal isOpen={isFilterModalOpen} closeOnOverlayClick onClose={() => {}}>
       <div className='items-left relative flex flex-col flex-wrap justify-start gap-2 px-2'>
         <div className='absolute -top-4 left-1'>
-          <FunnelIcon color='white' />
+          <IoFilter color='white' />
         </div>
         <div className='px-2'>
           {labels.map((label, index) => (

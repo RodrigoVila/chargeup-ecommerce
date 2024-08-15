@@ -1,4 +1,4 @@
-import { XMarkIcon } from '@heroicons/react/24/outline'
+import { IoMdClose } from 'react-icons/io'
 import { twMerge } from 'tailwind-merge'
 
 type CloseModalButtonProps = {
@@ -18,7 +18,7 @@ export const CloseModalButton = ({
   return (
     <div className={twMerge('top-0 h-9 w-9 cursor-pointer text-white', className)}>
       <button onClick={onClose}>
-        <XMarkIcon className={twMerge('h-full w-full', color)} />
+        <IoMdClose className={twMerge('h-full w-full', color)} />
       </button>
     </div>
   )

@@ -1,5 +1,5 @@
 import { useAppActions, useAppSelector } from '~hooks'
-import { Modal } from '~features/modal'
+import { Modal } from '@packages/modal'
 
 import { UserDetails } from './UserDetails'
 

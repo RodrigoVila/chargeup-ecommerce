@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useIntl } from 'react-intl'
 
-import { Modal } from '~features/modal'
+import { Modal } from '@packages/modal'
 
 export const DeliveryAreasMap = () => {
   const [isExpanded, setExpanded] = useState(false)

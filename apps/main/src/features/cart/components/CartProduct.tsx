@@ -1,4 +1,5 @@
-import { PencilIcon, TrashIcon } from '@heroicons/react/24/outline'
+import { FaRegTrashAlt } from 'react-icons/fa'
+import { GoPencil } from 'react-icons/go'
 import { useState } from 'react'
 
 import { useAppActions } from '~hooks'
@@ -31,7 +32,7 @@ export const CartProduct = ({ product }: CartProductProps) => {
         <div className='mx-2 flex items-center justify-between'>
           <div className='mt-2 text-lg font-semibold'>{title.toUpperCase()}</div>
           <button className='h-6 w-6 cursor-pointer' onClick={() => removeFromCart(id)}>
-            <TrashIcon color='red' />
+            <FaRegTrashAlt color='red' />
           </button>
         </div>
         <div className='mx-2 flex items-center justify-between'>
@@ -61,7 +62,7 @@ export const CartProduct = ({ product }: CartProductProps) => {
                     quantity > 1 ? 'unidades' : 'unidad'
                   }`}</p>
                   <button className='ml-2 h-5 w-5 cursor-pointer' onClick={toggleEdit}>
-                    <PencilIcon color='black' />
+                    <GoPencil color='black' />
                   </button>
                 </div>
               </div>

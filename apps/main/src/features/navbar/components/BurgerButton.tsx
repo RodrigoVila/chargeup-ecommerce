@@ -1,4 +1,4 @@
-import { Bars3Icon } from '@heroicons/react/24/outline'
+import { FaBars } from 'react-icons/fa'
 import { twMerge } from 'tailwind-merge'
 
 import { useAppActions } from '~hooks'
@@ -18,7 +18,7 @@ export const BurgerButton = ({ className }: Props) => {
       )}
       onClick={() => openDrawerModal()}
     >
-      <Bars3Icon className='h-8 w-8 text-white md:h-10 md:w-10 lg:h-14 lg:w-14' />
+      <FaBars className='h-8 w-8 text-white md:h-10 md:w-10 lg:h-14 lg:w-14' />
     </div>
   )
 }

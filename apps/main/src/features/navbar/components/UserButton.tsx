@@ -1,5 +1,5 @@
 import { useIntl } from 'react-intl'
-import { UserIcon } from '@heroicons/react/24/outline'
+import { FaRegUser } from 'react-icons/fa'
 import { twMerge } from 'tailwind-merge'
 
 import { useAppActions, useAppSelector } from '~hooks'
@@ -19,7 +19,7 @@ export const UserButton = ({ color: propColor = 'white' }: UserButtonProps) => {
   return (
     <div className={twMerge('flex cursor-pointer flex-col items-center justify-center', color)}>
       <button onClick={openModal} className='h-6 w-6 md:h-8 md:w-8'>
-        <UserIcon className={`${color} h-full w-full`} />
+        <FaRegUser className={`${color} h-full w-full`} />
       </button>
       <p
         onClick={openModal}
