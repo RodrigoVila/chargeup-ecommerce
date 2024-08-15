@@ -1,9 +1,9 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 
-import { Product } from '@packages/models'
+import { User } from '@packages/models'
 import { dbConnect } from '~/utils/dbConnect'
 
-const ProductsByID = async (req: NextApiRequest, res: NextApiResponse) => {
+const UserByID = async (req: NextApiRequest, res: NextApiResponse) => {
   const {
     query: { id },
     method,
@@ -12,11 +12,11 @@ const ProductsByID = async (req: NextApiRequest, res: NextApiResponse) => {
 
   await dbConnect()
 
-  const getProduct = async () => {
+  const getUserById = async () => {
     try {
-      const product = await Product.findById(id)
+      const user = await User.findById(id)
 
-      return res.status(200).json(product)
+      return res.status(200).json(user)
     } catch (e: any) {
       return res.status(404).json({
         success: false,
@@ -24,25 +24,25 @@ const ProductsByID = async (req: NextApiRequest, res: NextApiResponse) => {
     }
   }
 
-  const updateProduct = async () => {
+  const updateUser = async () => {
     try {
-      const product = await Product.findByIdAndUpdate(id, body, {
+      const user = await User.findByIdAndUpdate(id, body, {
         new: true,
         runValidators: true,
       })
 
-      return res.status(200).json(product)
+      return res.status(200).json(user)
     } catch (e: any) {
       return res.status(400).json({
         success: false,
       })
     }
   }
-  const deleteProduct = async () => {
+  const deleteUser = async () => {
     try {
-      await Product.deleteOne({ _id: id })
+      await User.deleteOne({ _id: id })
 
-      return res.status(200).json({ message: `Product ${id} deleted successfully` })
+      return res.status(200).json({ message: `User ${id} deleted successfully` })
     } catch (e: any) {
       return res.status(400).json({
         success: false,
@@ -52,14 +52,14 @@ const ProductsByID = async (req: NextApiRequest, res: NextApiResponse) => {
 
   switch (method) {
     case 'GET':
-      return getProduct()
+      return getUserById()
     case 'PUT':
-      return updateProduct()
+      return updateUser()
     case 'DELETE':
-      return deleteProduct()
+      return deleteUser()
     default:
       return res.status(405).end(`Method ${method} Not Allowed`)
   }
 }
 
-export default ProductsByID
+export default UserByID

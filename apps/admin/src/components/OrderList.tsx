@@ -1,4 +1,4 @@
-import AdminOrderDetails from '~components/OrderDetails'
+import AdminOrderDetails from '~/components/OrderDetails'
 import { useState } from 'react'
 
 const people = [

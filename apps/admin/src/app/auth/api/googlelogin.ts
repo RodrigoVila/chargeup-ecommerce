@@ -2,7 +2,7 @@ import { NextApiRequest, NextApiResponse } from 'next'
 import { v4 as uuidv4 } from 'uuid'
 
 import { User } from '@packages/models'
-import { dbConnect } from '~utils/dbConnect'
+import { dbConnect } from '~/utils/dbConnect'
 
 const GoogleLogin = async (req: NextApiRequest, res: NextApiResponse) => {
   const { method, body } = req

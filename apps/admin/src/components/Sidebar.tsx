@@ -6,7 +6,7 @@ import { FaBoxes } from 'react-icons/fa'
 import { RiListSettingsFill } from 'react-icons/ri'
 import { BsFillPeopleFill } from 'react-icons/bs'
 
-import { NavItem } from '~components/NavItem'
+import { NavItem } from '~/components/NavItem'
 import { Logo } from './navbar/components'
 
 const Sidebar = () => {

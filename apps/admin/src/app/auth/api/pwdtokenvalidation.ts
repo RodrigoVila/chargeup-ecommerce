@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 
 import { PasswordRecovery } from '@packages/models'
-import { dbConnect } from '~utils/dbConnect'
+import { dbConnect } from '~/utils/dbConnect'
 
 const PasswordTokenValidation = async (req: NextApiRequest, res: NextApiResponse) => {
   const { method, body } = req

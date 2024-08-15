@@ -1,8 +1,8 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 
 import { User, PasswordRecovery } from '@packages/models'
-import { dbConnect } from '~utils/dbConnect'
-import { compareHashedPassword } from '~utils/encrypt'
+import { dbConnect } from '~/utils/dbConnect'
+import { compareHashedPassword } from '~/utils/encrypt'
 
 const UpdatePassword = async (req: NextApiRequest, res: NextApiResponse) => {
   const { method, body } = req

@@ -82,6 +82,9 @@ importers:
       autoprefixer:
         specifier: ^10.4.13
         version: 10.4.14(postcss@8.4.26)
+      bcryptjs:
+        specifier: ^2.4.3
+        version: 2.4.3
       eslint:
         specifier: ^8.13.0
         version: 8.45.0
@@ -91,6 +94,9 @@ importers:
       next:
         specifier: ^13.4.10
         version: 13.4.10(react-dom@18.3.1)(react@18.3.1)
+      nodemailer:
+        specifier: ^6.9.4
+        version: 6.9.4
       postcss:
         specifier: ^8.4.21
         version: 8.4.26
@@ -109,6 +115,19 @@ importers:
       tailwindcss:
         specifier: ^3.2.7
         version: 3.3.3
+      uuid:
+        specifier: ^8.3.2
+        version: 8.3.2
+    devDependencies:
+      '@types/bcryptjs':
+        specifier: ^2.4.2
+        version: 2.4.2
+      '@types/nodemailer':
+        specifier: ^6.4.15
+        version: 6.4.15
+      '@types/uuid':
+        specifier: ^8.3.1
+        version: 8.3.1
 
   apps/main:
     dependencies:
@@ -1920,6 +1939,12 @@ packages:
   /@types/node@20.4.2:
     resolution: {integrity: sha512-Dd0BYtWgnWJKwO1jkmTrzofjK2QXXcai0dmtzvIBhcA+RsG5h8R3xlyta0kGOZRNfL9GuRtb1knmPEhQrePCEw==}
 
+  /@types/nodemailer@6.4.15:
+    resolution: {integrity: sha512-0EBJxawVNjPkng1zm2vopRctuWVCxk34JcIlRuXSf54habUWdz1FB7wHDqOqvDa8Mtpt0Q3LTXQkAs2LNyK5jQ==}
+    dependencies:
+      '@types/node': 20.4.2
+    dev: true
+
   /@types/prop-types@15.7.5:
     resolution: {integrity: sha512-JCB8C6SnDoQf0cNycqd/35A7MjcnK+ZTqE7judS6o7utxUCg6imJg3QK2qzHKszlTjcj2cn+NwMB2i96ubpj7w==}
 
@@ -2478,7 +2503,6 @@ packages:
 
   /bcryptjs@2.4.3:
     resolution: {integrity: sha512-V/Hy/X9Vt7f3BbPJEi8BdVFMByHi+jNXrYkW3huaybV/kQ0KJg0Y6PkEMbn+zeT+i+SiKZ/HMqJGIIt4LZDqNQ==}
-    dev: true
 
   /big-integer@1.6.51:
     resolution: {integrity: sha512-GPEid2Y9QU1Exl1rpO9B2IPJGHPSupF5GnVIP0blYvNOMer2bTvSWs1jGOUg04hTmu67nmLsQ9TBo1puaotBHg==}

@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 
 import { Product } from '@packages/models'
-import { dbConnect } from '~utils/dbConnect'
+import { dbConnect } from '~/utils/dbConnect'
 
 const Products = async (req: NextApiRequest, res: NextApiResponse) => {
   const { method, body } = req
@@ -32,10 +32,10 @@ const Products = async (req: NextApiRequest, res: NextApiResponse) => {
   }
 
   switch (method) {
-    case 'POST':
-      return createProduct()
     case 'GET':
       return getProducts()
+    case 'POST':
+      return createProduct()
     default:
       return res.status(405).end(`Method ${method} Not Allowed`)
   }

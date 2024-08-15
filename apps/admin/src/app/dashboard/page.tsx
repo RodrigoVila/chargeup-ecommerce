@@ -1,5 +1,5 @@
-import AdminClientInvite from '~components/ClientInvite'
-import AdminStats from '~components/Stats'
+import AdminClientInvite from '~/components/ClientInvite'
+import AdminStats from '~/components/Stats'
 
 export default function Dashboard() {
   return (

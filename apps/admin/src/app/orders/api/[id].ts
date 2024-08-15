@@ -2,7 +2,7 @@ import { useRouter } from 'next/router'
 import { NextApiRequest, NextApiResponse } from 'next'
 
 import { Order } from '@packages/models'
-import { dbConnect } from '~utils/dbConnect'
+import { dbConnect } from '~/utils/dbConnect'
 
 const OrderAPIByID = async (req: NextApiRequest, res: NextApiResponse) => {
   const { method, body } = req

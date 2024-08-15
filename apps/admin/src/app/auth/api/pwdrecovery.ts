@@ -2,9 +2,9 @@ import { NextApiRequest, NextApiResponse } from 'next'
 import { v4 as uuidv4 } from 'uuid'
 
 import { User, PasswordRecovery } from '@packages/models'
-import { dbConnect } from '~utils/dbConnect'
-import { sendEmail } from '~utils/nodemailer'
-import { passwordRecoveryToHTML } from '~utils/htmlEmailParsers'
+import { dbConnect } from '~/utils/dbConnect'
+import { sendEmail } from '~/utils/nodemailer'
+import { passwordRecoveryToHTML } from '~/utils/htmlEmailParsers'
 
 const PasswordRecoveryAPI = async (req: NextApiRequest, res: NextApiResponse) => {
   const { method, body } = req

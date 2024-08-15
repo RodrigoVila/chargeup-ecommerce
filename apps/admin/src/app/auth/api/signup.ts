@@ -1,9 +1,9 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 
 import { User } from '@packages/models'
-import { dbConnect } from '~utils/dbConnect'
-import { emailVerificationToHTML } from '~utils/htmlEmailParsers'
-import { sendEmail } from '~utils/nodemailer'
+import { dbConnect } from '~/utils/dbConnect'
+import { emailVerificationToHTML } from '~/utils/htmlEmailParsers'
+import { sendEmail } from '~/utils/nodemailer'
 
 const SignUp = async (req: NextApiRequest, res: NextApiResponse) => {
   const { method, body } = req

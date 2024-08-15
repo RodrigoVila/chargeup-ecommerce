@@ -1,6 +1,6 @@
-import ClientInvite from '~components/ClientInvite'
-import CustomerList from '~components/CustomerList'
-import CustomerSearch from '~components/CustomerSearch'
+import ClientInvite from '~/components/ClientInvite'
+import CustomerList from '~/components/CustomerList'
+import CustomerSearch from '~/components/CustomerSearch'
 
 const Customers = () => {
   return (

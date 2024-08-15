@@ -3,8 +3,8 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { User } from '@packages/models'
 
-import { dbConnect } from '~utils/dbConnect'
-import { compareHashedPassword } from '~utils/encrypt'
+import { dbConnect } from '~/utils/dbConnect'
+import { compareHashedPassword } from '~/utils/encrypt'
 
 const SignIn = async (req: NextApiRequest, res: NextApiResponse) => {
   const { method, body } = req

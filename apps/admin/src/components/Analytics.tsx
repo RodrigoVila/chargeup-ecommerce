@@ -1,4 +1,4 @@
-import MetricCard from '~components/MetricCard'
+import MetricCard from '~/components/MetricCard'
 
 const Analytics = () => {
   return (

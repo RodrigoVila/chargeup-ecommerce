@@ -1,4 +1,4 @@
-// import useAppActions from '~hooks'
+// import useAppActions from '~/hooks'
 import Image from 'next/image'
 import { ProductType } from '@packages/types'
 
