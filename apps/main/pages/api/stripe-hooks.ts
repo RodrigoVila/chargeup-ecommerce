@@ -2,7 +2,7 @@ import { NextApiRequest, NextApiResponse } from 'next'
 import getRawBody from 'raw-body'
 import Stripe from 'stripe'
 
-import { Order, User } from '~models'
+import { Order, User } from '@packages/models'
 import { dbConnect } from '~utils/dbConnect'
 import { sendEmail } from '~utils/nodemailer'
 import { newOrderToHTML } from '~utils/htmlEmailParsers'

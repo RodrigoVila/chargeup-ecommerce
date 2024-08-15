@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 
-import { User } from '~models'
+import { User } from '@packages/models'
 import { dbConnect } from '~utils/dbConnect'
 import { UserDetailsType } from '~types'
 

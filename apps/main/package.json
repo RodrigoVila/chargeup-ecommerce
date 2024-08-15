@@ -16,6 +16,7 @@
     "@packages/button": "workspace:*",
     "@packages/checkbox": "workspace:*",
     "@packages/input": "workspace:*",
+    "@packages/models": "workspace:*",
     "@packages/spinner": "workspace:*",
     "@react-oauth/google": "^0.11.0",
     "@redux-saga/core": "^1.2.3",

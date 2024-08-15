@@ -97,6 +97,9 @@ importers:
       '@packages/input':
         specifier: workspace:*
         version: link:../../packages/input
+      '@packages/models':
+        specifier: workspace:*
+        version: link:../../packages/models
       '@packages/spinner':
         specifier: workspace:*
         version: link:../../packages/spinner

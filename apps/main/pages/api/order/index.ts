@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next'
-import { Order } from '~models'
+import { Order } from '@packages/models'
 import { dbConnect } from '~utils/dbConnect'
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {

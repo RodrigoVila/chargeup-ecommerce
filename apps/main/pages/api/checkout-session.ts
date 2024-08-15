@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 
-import { Order } from '~models'
+import { Order } from '@packages/models'
 import { CartProductType, OrderType } from '~types'
 
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)

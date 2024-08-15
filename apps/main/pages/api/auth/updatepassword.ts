@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 
-import { User, PasswordRecovery } from '~models'
+import { User, PasswordRecovery } from '@packages/models'
 import { dbConnect } from '~utils/dbConnect'
 import { compareHashedPassword } from '~utils/encrypt'
 

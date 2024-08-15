@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 
-import { Product } from '~models'
+import { Product } from '@packages/models'
 import { dbConnect } from '~utils/dbConnect'
 
 const ProductsByID = async (req: NextApiRequest, res: NextApiResponse) => {

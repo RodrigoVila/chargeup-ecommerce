@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 
-import { User } from '~models'
+import { User } from '@packages/models'
 import { dbConnect } from '~utils/dbConnect'
 import { emailVerificationToHTML } from '~utils/htmlEmailParsers'
 import { sendEmail } from '~utils/nodemailer'
