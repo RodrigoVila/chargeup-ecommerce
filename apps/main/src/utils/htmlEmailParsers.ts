@@ -1,4 +1,4 @@
-import { OrderType } from '~types'
+import { OrderType } from '@packages/types'
 
 export const newOrderToHTML = (
   order: OrderType,

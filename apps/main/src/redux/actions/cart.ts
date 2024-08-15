@@ -1,4 +1,4 @@
-import { CartProductType } from '~types'
+import { CartProductType } from '@packages/types'
 import {
   ADD_TO_CART,
   CHANGE_PRODUCT_QUANTITY,

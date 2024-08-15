@@ -7,7 +7,7 @@ import {
 } from '~constants/ActionTypes'
 import { LOCAL_STORAGE_CART_KEY } from '~constants/keys'
 import { deleteValueFromLocalStorage, setValueToLocalStorage } from '~utils/localStorage'
-import { CartActionType, CartProductType, CartStateType } from '~types'
+import { CartActionType, CartProductType, CartStateType } from '@packages/types'
 
 const initialState: CartStateType = { items: [] }
 

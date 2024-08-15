@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import { Spinner } from '@packages/spinner'
 
 import { useAppActions, useAppSelector } from '~hooks'
-import { ProductType } from '~types'
+import { ProductType } from '@packages/types'
 
 import { Product, ProductSearchBar } from './components'
 import { useIntl } from 'react-intl'

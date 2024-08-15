@@ -237,11 +237,6 @@ export type StateType = {
   products: ProductType[]
   toastMessages: ToastStateType
 }
-
-//Dispatch
-export type DispatchType = (args: ProductActionType) => ProductActionType
-export type DispatchType = (args: CartAction) => CartAction
-
 // Google Sign In
 export type GoogleSignInSuccessResponse = Omit<
   TokenResponse,

@@ -2,7 +2,7 @@ import { PencilIcon, TrashIcon } from '@heroicons/react/24/outline'
 import { useState } from 'react'
 
 import { useAppActions } from '~hooks'
-import { CartProductType } from '~types'
+import { CartProductType } from '@packages/types'
 import { Counter } from '~components/Counter'
 
 type CartProductProps = {

@@ -8,7 +8,7 @@ import { Modal } from '~features/modal'
 import { Counter } from '~components/Counter'
 import { Dropdown } from '~components/Dropdown'
 import { getProductSubtotal } from '~utils/products'
-import { CartProductType, LabelAndPriceType } from '~types'
+import { CartProductType, LabelAndPriceType } from '@packages/types'
 
 export const ProductExtrasModal = () => {
   // Product specification before adding it to cart

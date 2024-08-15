@@ -4,7 +4,7 @@ import {
   SEND_CONTACT_FORM_ERROR,
   SEND_CONTACT_FORM_SUCCESS,
 } from '~constants/ActionTypes'
-import { ContactFormType } from '~types'
+import { ContactFormType } from '@packages/types'
 
 export const contactFormSend = (
   contactForm: ContactFormType,

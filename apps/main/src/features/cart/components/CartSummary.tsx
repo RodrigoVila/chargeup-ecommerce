@@ -1,4 +1,4 @@
-import { CartProductType } from '~types'
+import { CartProductType } from '@packages/types'
 
 import { CartProduct } from './CartProduct'
 import { Button } from '@packages/button'

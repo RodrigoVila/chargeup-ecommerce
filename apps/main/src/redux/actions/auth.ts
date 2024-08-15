@@ -3,7 +3,7 @@ import {
   StorageUserType,
   UserLoginType,
   UserRegisterType,
-} from '~types'
+} from '@packages/types'
 import {
   CHECK_USER_TOKEN,
   USER_LOGIN_SUCCESS,

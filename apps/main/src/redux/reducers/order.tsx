@@ -1,5 +1,5 @@
 import { NEW_ORDER_ERROR, NEW_ORDER_SUCCESS } from '~constants/ActionTypes'
-import { OrderActionType, OrderStateType } from '~types'
+import { OrderActionType, OrderStateType } from '@packages/types'
 
 const initialState: OrderStateType = { order: null, orderResponse: null, error: null }
 

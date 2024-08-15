@@ -4,7 +4,7 @@ import Image from 'next/image'
 import { Button } from '@packages/button'
 
 import { useAppActions } from '~hooks'
-import { GoogleSignInErrorResponse, GoogleSignInSuccessResponse } from '~types'
+import { GoogleSignInErrorResponse, GoogleSignInSuccessResponse } from '@packages/types'
 
 export const GoogleSignInButton = () => {
   const { getGoogleUserData, displayErrorMessage } = useAppActions()

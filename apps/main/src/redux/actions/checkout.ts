@@ -1,4 +1,4 @@
-import { OrderType } from '~types'
+import { OrderType } from '@packages/types'
 import {
   CREATE_CHECKOUT_SESSION,
   CREATE_CHECKOUT_SESSION_ERROR,

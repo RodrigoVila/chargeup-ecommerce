@@ -3,7 +3,7 @@ import { ChangeEvent, Dispatch, SetStateAction } from 'react'
 import { useIntl } from 'react-intl'
 
 import { DeliveryAreasMap } from '~features/cart/components/DeliveryAreasMap'
-import { DeliveryType } from '~types'
+import { DeliveryType } from '@packages/types'
 
 type DeliveryOptionsProps = {
   deliveryType: DeliveryType | null

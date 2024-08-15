@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { useAppActions, useAppSelector } from '~hooks'
 import { Modal } from '~features/modal'
-import { DeliveryType, OrderType, UserDetailsType } from '~types'
+import { DeliveryType, OrderType, UserDetailsType } from '@packages/types'
 
 import { CartSummary, DeliveryOptions } from './components'
 import { DeliveryDataForm } from './components/DeliveryDataForm'

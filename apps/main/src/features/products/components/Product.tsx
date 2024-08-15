@@ -5,7 +5,7 @@ import ReactTooltip from 'react-tooltip'
 import { Button } from '@packages/button'
 
 import { useAppActions } from '~hooks'
-import { ProductType } from '~types'
+import { ProductType } from '@packages/types'
 
 import { RoundImage } from './RoundImage'
 import { useIntl } from 'react-intl'

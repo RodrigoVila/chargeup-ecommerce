@@ -3,7 +3,7 @@ import { useIntl } from 'react-intl'
 
 import { Input } from '@packages/input'
 
-import { StorageUserType, UserDetailsType } from '~types'
+import { StorageUserType, UserDetailsType } from '@packages/types'
 import { getValueFromLocalStorage } from '~utils/localStorage'
 import { LOCAL_STORAGE_DATA_KEY } from '~constants/keys'
 

@@ -8,7 +8,7 @@ import {
   REQUEST_CHANGE_USER_DETAILS_SUCCESS,
 } from '~constants/ActionTypes'
 import { APP_USER_INITIAL_STATE, USER_INITIAL_STATE } from '~constants/initialState'
-import { UserActionType, UserStateType } from '~types'
+import { UserActionType, UserStateType } from '@packages/types'
 
 const userReducer = (state: UserStateType = USER_INITIAL_STATE, action: UserActionType) => {
   const { type, user } = action

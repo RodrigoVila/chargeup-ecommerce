@@ -1,4 +1,4 @@
-import { LabelAndPriceType } from '~types'
+import { LabelAndPriceType } from '@packages/types'
 
 export const getProductSubtotal = (
   selectedSize?: LabelAndPriceType | null,

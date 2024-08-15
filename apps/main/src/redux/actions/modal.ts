@@ -1,4 +1,4 @@
-import { ProductType } from '~types'
+import { ProductType } from '@packages/types'
 import {
   CLOSE_ADMIN_PRODUCT_MODAL,
   CLOSE_CART_MODAL,

@@ -1,4 +1,4 @@
-import { OrderType } from '~types'
+import { OrderType } from '@packages/types'
 import { NEW_ORDER, NEW_ORDER_ERROR, NEW_ORDER_SUCCESS } from '~constants/ActionTypes'
 
 export const addNewOrder = (order: OrderType) => ({

@@ -1,6 +1,6 @@
 import { SelectHTMLAttributes } from 'react'
 import { twMerge } from 'tailwind-merge'
-import { LabelAndPriceType } from '~types'
+import { LabelAndPriceType } from '@packages/types'
 
 type CustomDropDownProps = Omit<
   SelectHTMLAttributes<HTMLSelectElement>,

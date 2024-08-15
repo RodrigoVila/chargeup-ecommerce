@@ -8,7 +8,7 @@ import { useAppActions, useAppSelector } from '~hooks'
 import { UserDataForm } from '~components/forms'
 import { APP_USER_INITIAL_STATE } from '~constants/initialState'
 
-import { UserDetailsType } from '~types'
+import { UserDetailsType } from '@packages/types'
 
 type DeliveryDataFormProps = {
   loading: boolean

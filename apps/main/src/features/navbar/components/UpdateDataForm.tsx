@@ -4,7 +4,7 @@ import { useIntl } from 'react-intl'
 import { UserDataForm } from '~components/forms'
 import { APP_USER_INITIAL_STATE } from '~constants/initialState'
 import { useAppActions, useAppSelector } from '~hooks'
-import { UserDetailsType } from '~types'
+import { UserDetailsType } from '@packages/types'
 
 export const UpdateDataForm = () => {
   const [userData, setUserData] = useState<UserDetailsType>(APP_USER_INITIAL_STATE)

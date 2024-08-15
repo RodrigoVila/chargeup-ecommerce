@@ -1,5 +1,5 @@
 import { SET_FILTERS } from '~constants/ActionTypes'
-import { FiltersActionType, FiltersStateType } from '~types'
+import { FiltersActionType, FiltersStateType } from '@packages/types'
 
 const initialState: FiltersStateType = { filters: [] }
 

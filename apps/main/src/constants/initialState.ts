@@ -1,4 +1,4 @@
-import { AuthStateType, ProductType, UserDetailsType, UserStateType } from '~types'
+import { AuthStateType, ProductType, UserDetailsType, UserStateType } from '@packages/types'
 
 // Initial state
 export const AUTH_INITIAL_STATE: AuthStateType = {

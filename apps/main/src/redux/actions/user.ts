@@ -1,4 +1,4 @@
-import { UserDetailsType } from '~types'
+import { UserDetailsType } from '@packages/types'
 import {
   FETCH_USER_DETAILS,
   FETCH_USER_DETAILS_ERROR,

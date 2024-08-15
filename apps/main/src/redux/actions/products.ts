@@ -1,4 +1,4 @@
-import { ProductType } from '~types'
+import { ProductType } from '@packages/types'
 import {
   ADD_PRODUCT,
   DELETE_PRODUCT,

@@ -73,7 +73,7 @@ import {
   UserDetailsType,
   UserLoginType,
   UserRegisterType,
-} from '~types'
+} from '@packages/types'
 import { useIntl } from 'react-intl'
 
 export const useAppActions = () => {

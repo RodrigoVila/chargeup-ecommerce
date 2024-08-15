@@ -1,7 +1,7 @@
 import { AUTH_INITIAL_STATE } from '~constants/initialState'
 import { LOCAL_STORAGE_DATA_KEY } from '~constants/keys'
 import { deleteValueFromLocalStorage, setValueToLocalStorage } from '~utils/localStorage'
-import { AuthActionType, AuthStateType } from '~types'
+import { AuthActionType, AuthStateType } from '@packages/types'
 import {
   USER_LOGIN_SUCCESS,
   LOGIN_USER,

@@ -2,7 +2,7 @@ import { NextApiRequest, NextApiResponse } from 'next'
 
 import { User } from '@packages/models'
 import { dbConnect } from '~utils/dbConnect'
-import { UserDetailsType } from '~types'
+import { UserDetailsType } from '@packages/types'
 import { sendEmail } from '~utils/nodemailer'
 
 const ContactFormAPI = async (req: NextApiRequest, res: NextApiResponse) => {

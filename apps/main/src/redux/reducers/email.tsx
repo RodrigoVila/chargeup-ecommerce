@@ -3,7 +3,7 @@ import {
   CheckoutStateType,
   ContactFormActionType,
   ContactFormStateType,
-} from '~types'
+} from '@packages/types'
 import {
   SEND_CONTACT_FORM,
   SEND_CONTACT_FORM_ERROR,
