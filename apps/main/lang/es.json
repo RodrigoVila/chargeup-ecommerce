@@ -126,6 +126,8 @@
   "CHOOSE_DELIVERY_MODE": "Por favor seleccione modo de envío",
   "DELIVERY_PICK_UP": "Retira en Charge UP BCN Hospitalet. Av Carrilet 123 (Free!)",
   "DELIVERY_OPTIONS": "Opciones de envio",
-  "DELIVERY_DATA":"Realizamos envíos por medio de la empresa GLOVO. Los mismos son a cargo del comprador. Debajo hay un mapa con precios aproximados por zona. Los mismos pueden variar segun las normas de la empresa Glovo por variantes como lluvia o concurrencia.",
+  "DELIVERY_DATA_A": "Puedes retirar tu pedido en Charge UP en Av. Carrilet 123",
+  "DELIVERY_DATA_B": "Tambien, realizamos envíos por medio de la empresa GLOVO, los mismos son a cargo del comprador y pueden variar segun las normas de la empresa Glovo por variantes como lluvia o concurrencia.",
+  "DELIVERY_DATA_C": "Una vez confirmado el pedido, nos contactaremos contigo para coordinar el retiro o pactar la entrega y su valor.",
   "ACCEPT_CHARGES": "Acepto los costos de envio de GLOVO y las posibles modificaciones de precio descriptas arriba."
 }

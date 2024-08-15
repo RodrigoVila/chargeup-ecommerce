@@ -126,7 +126,8 @@
   "CHOOSE_DELIVERY_MODE": "Please choose shipping method",
   "DELIVERY_PICK_UP": "Pick UP & Charge UP BCN Hospitalet. Av Carrilet 123 (Free!)",
   "DELIVERY_OPTIONS": "Shipping options",
-  "DELIVERY_DATA":"We ship through GLOVO company. Shipping is at the buyer's expense. Below is a map with approximate prices by area. These may vary according to the regulations of the company Glovo by variants such as rain or concurrency.",
+  "DELIVERY_DATA_A": "You can pick up your order at Charge UP on Av. Carrilet 123",
+  "DELIVERY_DATA_B": "We also deliver via the GLOVO company. The cost is borne by the buyer and may vary according to Glovo's rules due to factors such as rain or high demand.",
+  "DELIVERY_DATA_C": "Once the order is confirmed, we will contact you to coordinate the pickup or arrange the delivery and its cost.",
   "ACCEPT_CHARGES": "I accept GLOVO's shipping costs and the possible price modifications described above."
-
 }

@@ -41,8 +41,10 @@ export const DeliveryOptions = ({
     <>
       <div className='flex h-full w-full flex-col gap-4 overflow-y-auto'>
         <h3 className='text-center text-2xl'>{formatMessage({ id: 'DELIVERY_OPTIONS' })}</h3>
-        <p>{formatMessage({ id: 'DELIVERY_DATA' })}</p>
-        <DeliveryAreasMap />
+        <p className='text-lg'>{formatMessage({ id: 'DELIVERY_DATA_A' })}</p>
+        <p className='text-lg'>{formatMessage({ id: 'DELIVERY_DATA_B' })}</p>
+        <p className='text-lg'>{formatMessage({ id: 'DELIVERY_DATA_C' })}</p>
+        {/*<DeliveryAreasMap />
         <p className='py-2'>{`${formatMessage({ id: 'CHOOSE_DELIVERY_MODE' })}: `}</p>
         <div className='flex w-full flex-col gap-3'>
           <div className='flex gap-2'>
@@ -77,11 +79,19 @@ export const DeliveryOptions = ({
               {formatMessage({ id: 'DELIVERY_PICK_UP' })}
             </label>
           </div>
-        </div>
+        </div> */}
       </div>
 
-      <div className='mt-2 flex w-full flex-col gap-2'>
-        {deliveryType === 'Delivery' ? (
+      <div className='mt-4 flex w-full flex-col gap-2'>
+        <Button
+          className={buttonStyles}
+          onClick={() => onSubmit()}
+          loading={loading}
+          // disabled={disabled}
+        >
+          {formatMessage({ id: 'GO_TO_PAY' })}
+        </Button>
+        {/* {deliveryType === 'Delivery' ? (
           <Button className={buttonStyles} onClick={next}>
             {formatMessage({ id: 'NEXT' })}
           </Button>
@@ -98,7 +108,7 @@ export const DeliveryOptions = ({
           <Button className={buttonStyles} loading={loading} disabled>
             {formatMessage({ id: 'CHOOSE_AN_OPTION' })}
           </Button>
-        )}
+        )} */}
         <Button className={buttonStyles} type='outlined' onClick={handleBack}>
           {formatMessage({ id: 'GO_BACK' })}
         </Button>
