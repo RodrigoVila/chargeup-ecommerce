@@ -32,9 +32,9 @@ const Sidebar = () => {
           onClick={() => router.push('/orders')}
         />
         <NavItem
-          label='Customers'
+          label='Users'
           icon={<BsFillPeopleFill size={25} />}
-          onClick={() => router.push('/customers')}
+          onClick={() => router.push('/users')}
         />
         <NavItem
           label='Settings'

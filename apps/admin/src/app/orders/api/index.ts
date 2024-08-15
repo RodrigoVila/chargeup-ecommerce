@@ -1,18 +1,17 @@
 import { NextApiRequest, NextApiResponse } from 'next'
-
-import { User } from '@packages/models'
+import { Order } from '@packages/models'
 import { dbConnect } from '~utils/dbConnect'
 
-const UsersAPI = async (req: NextApiRequest, res: NextApiResponse) => {
+export default async (req: NextApiRequest, res: NextApiResponse) => {
   const { method, body } = req
 
   await dbConnect()
 
-  const getUsers = async () => {
+  const addNewOrder = async () => {
     try {
-      const userList = await User.find({})
-      return res.status(200).json(userList)
-    } catch (e: any) {
+      const order = await Order.create(body)
+      return res.status(201).json(order)
+    } catch (e) {
       return res.status(400).json({
         success: false,
       })
@@ -20,11 +19,9 @@ const UsersAPI = async (req: NextApiRequest, res: NextApiResponse) => {
   }
 
   switch (method) {
-    case 'GET':
-      return getUsers()
+    case 'POST':
+      return addNewOrder()
     default:
       return res.status(405).end(`Method ${method} Not Allowed`)
   }
 }
-
-export default UsersAPI
