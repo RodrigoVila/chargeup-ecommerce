@@ -12,6 +12,7 @@
   "dependencies": {
     "@packages/button": "workspace:*",
     "@packages/checkbox": "workspace:*",
+    "@packages/floating-menu": "workspace:*",
     "@packages/input": "workspace:*",
     "@packages/modal": "workspace:*",
     "@packages/models": "workspace:*",
