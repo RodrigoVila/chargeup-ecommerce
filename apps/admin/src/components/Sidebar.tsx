@@ -38,8 +38,9 @@ const Sidebar = () => {
           label='Settings'
           icon={<IoSettingsOutline size={20} />}
           onClick={() => router.push('/settings')}
+          disabled
         />
-        <NavItem label='Logout' icon={<IoLogOutOutline size={20} />} onClick={() => {}} />
+        <NavItem label='Logout' icon={<IoLogOutOutline size={20} />} onClick={() => {}} disabled />
       </ul>
     </aside>
   )
