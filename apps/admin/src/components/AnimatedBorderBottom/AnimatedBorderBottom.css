@@ -1,0 +1,23 @@
+/* HoverBorder.css */
+.hover-border {
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.hover-border::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0%;
+  height: 1px;
+  background-color: white;
+  transition: width 0.5s ease-out, left 0.5s ease-out;
+}
+
+.hover-border:hover::after {
+  width: 100%;
+  left: 0;
+}

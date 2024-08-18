@@ -9,23 +9,23 @@ type LanguageDetectorProps = Omit<SelectHTMLAttributes<HTMLSelectElement>, 'clas
 
 export const LanguageSelector = ({ className, ...rest }: LanguageDetectorProps) => {
   const router = useRouter()
-  const { pathname, asPath, query, locale } = router
+  // const { pathname, asPath, query, locale } = router
+  return null
+  // const changeLocale = (newLocale: string) =>
+  //   router.push({ pathname, query }, asPath, { locale: newLocale })
 
-  const changeLocale = (newLocale: string) =>
-    router.push({ pathname, query }, asPath, { locale: newLocale })
-
-  return locale ? (
-    <select
-      className={twMerge('bg-transparent', className)}
-      {...rest}
-      onChange={(e) => changeLocale(e.target.value)}
-    >
-      <option key='es' value='es' selected={'es' === locale}>
-        🇪🇸
-      </option>
-      <option key='en' value='en' selected={'en' === locale}>
-        🇬🇧
-      </option>
-    </select>
-  ) : null
+  // return locale ? (
+  //   <select
+  //     className={twMerge('bg-transparent', className)}
+  //     {...rest}
+  //     onChange={(e) => changeLocale(e.target.value)}
+  //   >
+  //     <option key='es' value='es' selected={'es' === locale}>
+  //       🇪🇸
+  //     </option>
+  //     <option key='en' value='en' selected={'en' === locale}>
+  //       🇬🇧
+  //     </option>
+  //   </select>
+  // ) : null
 }
