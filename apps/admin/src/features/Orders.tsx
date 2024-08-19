@@ -71,7 +71,7 @@ const data = orders.map((order) => ({
   Address: order.address
     ? `${order.address.street} ${order.address.streetNumber}, ${order.address.city}`
     : 'N/A',
-  Total: `$${order.totalAmount}`,
+  Total: `€ ${order.totalAmount}`,
 }))
 
 const actions: Action[] = [

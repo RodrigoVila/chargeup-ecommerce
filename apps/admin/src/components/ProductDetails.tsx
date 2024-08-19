@@ -1,6 +1,5 @@
 import { ChangeEvent, useState } from 'react'
 
-import Image from 'next/image'
 import { ProductType } from '@packages/types'
 
 type AdminProductDetailsProps = {
@@ -69,7 +68,7 @@ const AdminProductDetails = ({ product }: AdminProductDetailsProps) => {
         <div className='mt-6 align-middle'>
           <div key={_id} className='group relative'>
             <div className='bg-gray-25 h-32 w-32 rounded-md object-center align-middle shadow-xl'>
-              <Image
+              <img
                 src={`/images/${imgUri}`}
                 alt={'imageAlt'}
                 className='object-center align-middle'

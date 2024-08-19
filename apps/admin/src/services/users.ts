@@ -1,7 +1,7 @@
-const baseUrl = '/api/users'
+const API_URL = 'http://localhost:3000/api/users'
 
 export const getUsers = async () => {
-  const response = await fetch(baseUrl)
+  const response = await fetch(API_URL)
   if (!response.ok) {
     throw new Error('Failed to fetch users')
   }
@@ -9,7 +9,7 @@ export const getUsers = async () => {
 }
 
 export const getUser = async (email: string, token: string) => {
-  const response = await fetch(baseUrl, {
+  const response = await fetch(API_URL, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -23,7 +23,7 @@ export const getUser = async (email: string, token: string) => {
 }
 
 export const updateUser = async (id: string, userData: any) => {
-  const response = await fetch(baseUrl, {
+  const response = await fetch(API_URL, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
@@ -37,7 +37,7 @@ export const updateUser = async (id: string, userData: any) => {
 }
 
 export const deleteUser = async (email: string) => {
-  const response = await fetch(baseUrl, {
+  const response = await fetch(API_URL, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',

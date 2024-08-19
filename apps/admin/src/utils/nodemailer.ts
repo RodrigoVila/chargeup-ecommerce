@@ -1,11 +1,5 @@
 import nodemailer from 'nodemailer'
-
-type MailOption = {
-  from: string
-  to: string
-  subject: string
-  html: any
-}
+import Mail from 'nodemailer/lib/mailer'
 
 const transporter = nodemailer.createTransport({
   service: process.env.NODEMAILER_SERVICE,
@@ -15,7 +9,7 @@ const transporter = nodemailer.createTransport({
   },
 })
 
-export const sendEmail = async (mailOption: MailOption) => {
+export const sendEmail = async (mailOption: Mail.Options) => {
   await new Promise((resolve, reject) => {
     // verify connection configuration
     transporter.verify(function (error, success) {

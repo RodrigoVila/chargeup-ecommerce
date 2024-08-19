@@ -1,6 +1,6 @@
 import { ProductType } from '@packages/types'
 
-const API_URL = '/api/products'
+const API_URL = 'http://localhost:3000/api/products'
 
 export const getProducts = async (): Promise<ProductType[]> => {
   const response = await fetch(API_URL)
