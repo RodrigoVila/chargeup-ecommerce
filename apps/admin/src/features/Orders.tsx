@@ -1,4 +1,3 @@
-'use client'
 import { twMerge } from 'tailwind-merge'
 import { IoCheckmark, IoTrashOutline } from 'react-icons/io5'
 import { BsPencil } from 'react-icons/bs'
@@ -91,12 +90,10 @@ const actions: Action[] = [
     onClick: () => {},
   },
 ]
-function OrderList() {
+export const OrderList = () => {
   return (
     <AdminSection>
       <Table columns={columns} data={data} actions={actions} />
     </AdminSection>
   )
 }
-
-export default OrderList

@@ -1,6 +1,5 @@
-'use client'
 import { twMerge } from 'tailwind-merge'
-import { IoCheckmark, IoTrashOutline } from 'react-icons/io5'
+import { IoTrashOutline } from 'react-icons/io5'
 import { BsPencil } from 'react-icons/bs'
 
 import { OrderType } from '@packages/types'
@@ -86,12 +85,10 @@ const actions: Action[] = [
     onClick: () => {},
   },
 ]
-function UserList() {
+export const UserList = () => {
   return (
     <AdminSection>
       <Table columns={columns} data={data} actions={actions} />
     </AdminSection>
   )
 }
-
-export default UserList

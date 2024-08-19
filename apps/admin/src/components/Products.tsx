@@ -1,7 +1,3 @@
-// import useAppActions from '~/hooks/useAppActions'
-// import useAppSelector from '~/hooks/useAppSelector'
-import { useEffect } from 'react'
-import AdminProduct from '~/components/Product'
 import ProductSearch from '~/components/ProductSearch'
 
 function Products() {

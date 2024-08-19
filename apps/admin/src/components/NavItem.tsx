@@ -1,33 +1,16 @@
-import { AnchorHTMLAttributes, ReactNode } from 'react'
+import { ReactNode } from 'react'
 import { twMerge } from 'tailwind-merge'
 import { AnimatedBorderBottom } from './AnimatedBorderBottom'
+import { Link, LinkProps } from 'react-router-dom'
 
-type NavItemProps = AnchorHTMLAttributes<HTMLAnchorElement> & {
+type NavItemProps = LinkProps & {
   label: string
-  href?: string
   icon?: ReactNode
   className?: string
-  onClick?: () => void
   disabled?: boolean
 }
 
-export const NavItem = ({
-  label,
-  href,
-  icon,
-  className,
-  onClick,
-  disabled,
-  ...rest
-}: NavItemProps) => {
-  const handleClick = (e: React.MouseEvent<HTMLLIElement | HTMLAnchorElement, MouseEvent>) => {
-    if (disabled) {
-      e.preventDefault()
-      e.stopPropagation()
-    } else if (onClick) {
-      onClick()
-    }
-  }
+export const NavItem = ({ label, icon, className, disabled, ...rest }: NavItemProps) => {
   return (
     <li
       className={twMerge(
@@ -35,10 +18,10 @@ export const NavItem = ({
         disabled && 'pointer-events-none select-none text-gray-500',
         className,
       )}
-      onClick={handleClick}
     >
-      <a
+      <Link
         className='flex items-center gap-2 py-1 pl-0 align-middle no-underline transition duration-300 ease-in-out md:py-3 md:pl-1'
+        aria-disabled={disabled}
         {...rest}
       >
         {icon ? <span className='mb-1'>{icon}</span> : null}
@@ -48,7 +31,7 @@ export const NavItem = ({
             {label}
           </span>
         </AnimatedBorderBottom>
-      </a>
+      </Link>
     </li>
   )
 }

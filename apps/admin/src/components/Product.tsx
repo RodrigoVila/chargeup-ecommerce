@@ -1,5 +1,3 @@
-// import useAppActions from '~/hooks'
-import Image from 'next/image'
 import { ProductType } from '@packages/types'
 
 type ProductProps = {
@@ -18,7 +16,7 @@ const Product = ({ product }: ProductProps) => {
         <div className='flex items-center'>
           {/* Imagen */}
           <div className='relative h-10 w-10 flex-shrink-0'>
-            <Image objectFit='cover' layout='fill' src={`/images/${imgUri}.jpg`} alt='' />
+            <img src={`/images/${imgUri}.jpg`} alt='' />
           </div>
           {/* Titulo */}
           <div className='ml-4'>
