@@ -11,11 +11,13 @@
     "typecheck": "tsc"
   },
   "dependencies": {
+    "@packages/assets": "workspace:*",
     "@packages/button": "workspace:*",
     "@packages/checkbox": "workspace:*",
     "@packages/config": "workspace:*",
     "@packages/floating-menu": "workspace:*",
     "@packages/input": "workspace:*",
+    "@packages/lazy-image": "workspace:*",
     "@packages/modal": "workspace:*",
     "@packages/models": "workspace:*",
     "@packages/spinner": "workspace:*",
@@ -30,6 +32,7 @@
     "react-dom": "^18.3.1",
     "react-icons": "^4.2.0",
     "react-router-dom": "^6.26.1",
+    "recharts": "^2.12.7",
     "tailwind-merge": "^1.14.0",
     "tailwindcss": "^3.2.7",
     "uuid": "^8.3.2"

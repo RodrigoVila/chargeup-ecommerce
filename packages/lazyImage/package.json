@@ -27,10 +27,14 @@
     "ts:emit": "tsc --noEmit false --declaration --emitDeclarationOnly --declarationDir dist/",
     "typecheck": "tsc"
   },
-  "devDependencies": {
+  "dependencies": {
+    "@packages/assets": "workspace:*",
     "@packages/config": "workspace:*",
     "@packages/eslint-config": "workspace:*",
     "@packages/spinner": "workspace:*",
+    "react-lazy-load-image-component": "^1.6.2"
+  },
+  "devDependencies": {
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^14.0.0",
     "@testing-library/user-event": "^14.4.3",
@@ -54,8 +58,5 @@
   "peerDependencies": {
     "react": "^16.8.0 || 17.x || 18.x",
     "react-dom": "^16.8.0 || 17.x || 18.x"
-  },
-  "dependencies": {
-    "react-lazy-load-image-component": "^1.6.2"
   }
 }

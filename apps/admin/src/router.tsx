@@ -2,6 +2,7 @@ import { createBrowserRouter, Navigate } from 'react-router-dom'
 
 import { Layout } from '~/components/Layout'
 import { Dashboard } from '~/features/Dashboard'
+import { ProductList } from '~/features/Products'
 import { OrderList } from '~/features/Orders'
 import { UserList } from '~/features/Users'
 import { Home } from './features/Home'
@@ -24,6 +25,11 @@ export const router = createBrowserRouter([
       {
         path: 'dashboard',
         element: <Dashboard />,
+        // loader: dashboardLoader,
+      },
+      {
+        path: 'products',
+        element: <ProductList />,
         // loader: dashboardLoader,
       },
       {

@@ -5,54 +5,11 @@ import { BsPencil } from 'react-icons/bs'
 import { OrderType } from '@packages/types'
 import { AdminSection } from '~/components/AdminSection'
 import { Action, Table } from '~/components/Table'
+import ordersMock from '../mocks/orders.json'
 
 const columns = ['Name', 'Phone', 'Type', 'Address', 'Total']
 
-const orders: OrderType[] = [
-  {
-    id: '1',
-    name: 'John Doe',
-    email: 'jdoe@gmail.com',
-    phone: '665 443 434',
-    deliveryType: 'Delivery',
-    address: {
-      street: 'C. Joan Miro',
-      streetNumber: '12',
-      extras: '2-4',
-      postCode: '08831',
-      city: 'Viladecans',
-    },
-    created: new Date(),
-    totalAmount: '100',
-    items: [
-      {
-        id: '1',
-        quantity: 2,
-        title: 'Pepe item',
-        total: 2,
-        selectedSize: { label: 'Pepe 1', price: 12 },
-      },
-    ],
-  },
-  {
-    id: '2',
-    name: 'Jane Doe',
-    email: 'jndoe@gmail.com',
-    phone: '665 443 432',
-    deliveryType: 'Pick UP',
-    created: new Date(),
-    totalAmount: '100',
-    items: [
-      {
-        id: '1',
-        quantity: 2,
-        title: 'Pepe item',
-        total: 2,
-        selectedSize: { label: 'Pepe 1', price: 12 },
-      },
-    ],
-  },
-]
+const orders: OrderType[] = ordersMock // The mocks we just created
 
 const data = orders.map((order) => ({
   Name: order.name,

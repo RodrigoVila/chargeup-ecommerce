@@ -34,7 +34,7 @@
       }
     ],
     "extras": null,
-    "imgUri": "https://example.com/images/almond_butter.jpg"
+    "imgUri": "brownie-avocado-fresa"
   },
   {
     "_id": "product_02",
@@ -80,7 +80,7 @@
         "price": 1.49
       }
     ],
-    "imgUri": "https://example.com/images/vegan_protein_bar.jpg"
+    "imgUri": "brownie-avocado-fresa"
   },
   {
     "_id": "product_03",
@@ -113,7 +113,7 @@
       }
     ],
     "extras": null,
-    "imgUri": "https://example.com/images/gluten_free_pasta.jpg"
+    "imgUri": "brownie-avocado-fresa"
   },
   {
     "_id": "product_04",
@@ -151,7 +151,7 @@
         "price": 1.99
       }
     ],
-    "imgUri": "https://example.com/images/keto_cookies.jpg"
+    "imgUri": "brownie-avocado-fresa"
   },
   {
     "_id": "product_05",
@@ -184,7 +184,7 @@
       }
     ],
     "extras": null,
-    "imgUri": "https://example.com/images/vegan_omega3.jpg"
+    "imgUri": "brownie-avocado-fresa"
   },
   {
     "_id": "product_06",
@@ -217,7 +217,7 @@
       }
     ],
     "extras": null,
-    "imgUri": "https://example.com/images/matcha_powder.jpg"
+    "imgUri": "brownie-avocado-fresa"
   },
   {
     "_id": "product_07",
@@ -255,7 +255,7 @@
         "price": 1.49
       }
     ],
-    "imgUri": "https://example.com/images/protein_pancake_mix.jpg"
+    "imgUri": "brownie-avocado-fresa"
   },
   {
     "_id": "product_08",
@@ -288,7 +288,7 @@
       }
     ],
     "extras": null,
-    "imgUri": "https://example.com/images/gluten_free_bread.jpg"
+    "imgUri": "brownie-avocado-fresa"
   },
   {
     "_id": "product_09",
@@ -321,7 +321,7 @@
       }
     ],
     "extras": null,
-    "imgUri": "https://example.com/images/vegan_cheese.jpg"
+    "imgUri": "brownie-avocado-fresa"
   },
   {
     "_id": "product_10",
@@ -359,7 +359,7 @@
         "price": 1.49
       }
     ],
-    "imgUri": "https://example.com/images/keto_granola.jpg"
+    "imgUri": "brownie-avocado-fresa"
   },
   {
     "_id": "product_11",
@@ -396,7 +396,7 @@
       }
     ],
     "extras": null,
-    "imgUri": "https://example.com/images/peanut_butter.jpg"
+    "imgUri": "brownie-avocado-fresa"
   },
   {
     "_id": "product_12",
@@ -429,6 +429,6 @@
       }
     ],
     "extras": null,
-    "imgUri": "https://example.com/images/chocolate_spread.jpg"
+    "imgUri": "brownie-avocado-fresa"
   }
 ]
