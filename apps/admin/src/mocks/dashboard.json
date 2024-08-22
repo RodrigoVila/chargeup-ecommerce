@@ -1,0 +1,50 @@
+{
+  "stats": {
+    "totalSales": "$120,540",
+    "orders": 320,
+    "users": 1540,
+    "products": 80
+  },
+  "recentOrders": [
+    {
+      "id": 1,
+      "product": "Banana Bread",
+      "customer": "John Doe",
+      "date": "2024-08-21",
+      "amount": "$99.99"
+    },
+    {
+      "id": 2,
+      "product": "Energy balls",
+      "customer": "Jane Smith",
+      "date": "2024-08-20",
+      "amount": "$49.99"
+    },
+    {
+      "id": 3,
+      "product": "Protein Bread",
+      "customer": "Chris Johnson",
+      "date": "2024-08-19",
+      "amount": "$199.99"
+    }
+  ],
+  "topProducts": [
+    { "name": "Protein Bread", "sales": 300 },
+    { "name": "Banana Bread", "sales": 250 },
+    { "name": "Energy balls", "sales": 150 }
+  ],
+  "userActivity": [
+    { "id": 1, "user": "Alice Brown", "action": "Signed up", "date": "2024-08-22" },
+    { "id": 2, "user": "Bob Green", "action": "Order placed", "date": "2024-08-21" },
+    { "id": 3, "user": "Carol White", "action": "Added Review", "date": "2024-08-20" }
+  ],
+  "salesData": [
+    { "date": "2024-08-16", "sales": 400 },
+    { "date": "2024-08-17", "sales": 600 },
+    { "date": "2024-08-18", "sales": 800 },
+    { "date": "2024-08-19", "sales": 700 },
+    { "date": "2024-08-20", "sales": 1000 },
+    { "date": "2024-08-21", "sales": 1200 },
+    { "date": "2024-08-22", "sales": 1500 }
+  ]
+}

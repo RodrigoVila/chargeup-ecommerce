@@ -1,0 +1,434 @@
+[
+  {
+    "_id": "product_01",
+    "title": "Organic Almond Butter",
+    "description": {
+      "short": "Smooth and creamy organic almond butter.",
+      "long": [
+        "Made from 100% organic almonds.",
+        "No added sugar or salt.",
+        "Rich in healthy fats and protein."
+      ]
+    },
+    "nutritionalInfo": {
+      "weight": 250,
+      "calories": 180,
+      "carbs": 6,
+      "fat": 16,
+      "protein": 7
+    },
+    "suitableForInfo": {
+      "glutenFree": true,
+      "keto": true,
+      "protein": true,
+      "vegan": true
+    },
+    "sizes": [
+      {
+        "label": "250g",
+        "price": 12.99
+      },
+      {
+        "label": "500g",
+        "price": 22.99
+      }
+    ],
+    "extras": null,
+    "imgUri": "https://example.com/images/almond_butter.jpg"
+  },
+  {
+    "_id": "product_02",
+    "title": "Vegan Protein Bar",
+    "description": {
+      "short": "High-protein vegan snack bar.",
+      "long": [
+        "Packed with plant-based protein.",
+        "Perfect for post-workout recovery.",
+        "Delicious chocolate flavor."
+      ]
+    },
+    "nutritionalInfo": {
+      "weight": 60,
+      "calories": 220,
+      "carbs": 20,
+      "fat": 8,
+      "protein": 15
+    },
+    "suitableForInfo": {
+      "glutenFree": true,
+      "keto": false,
+      "protein": true,
+      "vegan": true
+    },
+    "sizes": [
+      {
+        "label": "Single",
+        "price": 2.99
+      },
+      {
+        "label": "Box of 12",
+        "price": 32.99
+      }
+    ],
+    "extras": [
+      {
+        "label": "Add nuts",
+        "price": 0.99
+      },
+      {
+        "label": "Add dried fruits",
+        "price": 1.49
+      }
+    ],
+    "imgUri": "https://example.com/images/vegan_protein_bar.jpg"
+  },
+  {
+    "_id": "product_03",
+    "title": "Gluten-Free Pasta",
+    "description": {
+      "short": "Delicious gluten-free pasta.",
+      "long": [
+        "Made with a blend of rice and corn flour.",
+        "Cooks in just 8 minutes.",
+        "Perfect for those with gluten sensitivity."
+      ]
+    },
+    "nutritionalInfo": {
+      "weight": 500,
+      "calories": 200,
+      "carbs": 42,
+      "fat": 1.5,
+      "protein": 7
+    },
+    "suitableForInfo": {
+      "glutenFree": true,
+      "keto": false,
+      "protein": false,
+      "vegan": true
+    },
+    "sizes": [
+      {
+        "label": "500g",
+        "price": 4.99
+      }
+    ],
+    "extras": null,
+    "imgUri": "https://example.com/images/gluten_free_pasta.jpg"
+  },
+  {
+    "_id": "product_04",
+    "title": "Keto Chocolate Chip Cookies",
+    "description": {
+      "short": "Low-carb keto-friendly chocolate chip cookies.",
+      "long": [
+        "Sweetened with erythritol and stevia.",
+        "Made with almond flour and coconut oil.",
+        "Perfect for keto diets."
+      ]
+    },
+    "nutritionalInfo": {
+      "weight": 150,
+      "calories": 120,
+      "carbs": 8,
+      "fat": 10,
+      "protein": 3
+    },
+    "suitableForInfo": {
+      "glutenFree": true,
+      "keto": true,
+      "protein": false,
+      "vegan": false
+    },
+    "sizes": [
+      {
+        "label": "Pack of 6",
+        "price": 9.99
+      }
+    ],
+    "extras": [
+      {
+        "label": "Extra chocolate chips",
+        "price": 1.99
+      }
+    ],
+    "imgUri": "https://example.com/images/keto_cookies.jpg"
+  },
+  {
+    "_id": "product_05",
+    "title": "Vegan Omega-3 Supplement",
+    "description": {
+      "short": "Plant-based omega-3 supplement.",
+      "long": [
+        "Derived from algae oil.",
+        "Supports heart and brain health.",
+        "Contains EPA and DHA."
+      ]
+    },
+    "nutritionalInfo": {
+      "weight": 90,
+      "calories": 10,
+      "carbs": 0,
+      "fat": 1,
+      "protein": 0
+    },
+    "suitableForInfo": {
+      "glutenFree": true,
+      "keto": true,
+      "protein": false,
+      "vegan": true
+    },
+    "sizes": [
+      {
+        "label": "90 Capsules",
+        "price": 24.99
+      }
+    ],
+    "extras": null,
+    "imgUri": "https://example.com/images/vegan_omega3.jpg"
+  },
+  {
+    "_id": "product_06",
+    "title": "Organic Matcha Powder",
+    "description": {
+      "short": "Premium organic matcha green tea powder.",
+      "long": [
+        "Rich in antioxidants.",
+        "Provides a natural energy boost.",
+        "Perfect for lattes and smoothies."
+      ]
+    },
+    "nutritionalInfo": {
+      "weight": 100,
+      "calories": 3,
+      "carbs": 1,
+      "fat": 0,
+      "protein": 0.3
+    },
+    "suitableForInfo": {
+      "glutenFree": true,
+      "keto": true,
+      "protein": false,
+      "vegan": true
+    },
+    "sizes": [
+      {
+        "label": "100g",
+        "price": 18.99
+      }
+    ],
+    "extras": null,
+    "imgUri": "https://example.com/images/matcha_powder.jpg"
+  },
+  {
+    "_id": "product_07",
+    "title": "Protein Pancake Mix",
+    "description": {
+      "short": "High-protein pancake mix.",
+      "long": [
+        "Quick and easy to prepare.",
+        "Contains 20g of protein per serving.",
+        "Perfect for a healthy breakfast."
+      ]
+    },
+    "nutritionalInfo": {
+      "weight": 400,
+      "calories": 150,
+      "carbs": 20,
+      "fat": 3,
+      "protein": 20
+    },
+    "suitableForInfo": {
+      "glutenFree": false,
+      "keto": false,
+      "protein": true,
+      "vegan": false
+    },
+    "sizes": [
+      {
+        "label": "400g",
+        "price": 14.99
+      }
+    ],
+    "extras": [
+      {
+        "label": "Add chocolate chips",
+        "price": 1.49
+      }
+    ],
+    "imgUri": "https://example.com/images/protein_pancake_mix.jpg"
+  },
+  {
+    "_id": "product_08",
+    "title": "Gluten-Free Bread",
+    "description": {
+      "short": "Soft and tasty gluten-free bread.",
+      "long": [
+        "Made with a blend of rice and tapioca flour.",
+        "Perfect for sandwiches and toast.",
+        "Free from artificial preservatives."
+      ]
+    },
+    "nutritionalInfo": {
+      "weight": 500,
+      "calories": 100,
+      "carbs": 22,
+      "fat": 2,
+      "protein": 3
+    },
+    "suitableForInfo": {
+      "glutenFree": true,
+      "keto": false,
+      "protein": false,
+      "vegan": true
+    },
+    "sizes": [
+      {
+        "label": "500g",
+        "price": 6.99
+      }
+    ],
+    "extras": null,
+    "imgUri": "https://example.com/images/gluten_free_bread.jpg"
+  },
+  {
+    "_id": "product_09",
+    "title": "Vegan Cheese",
+    "description": {
+      "short": "Dairy-free vegan cheese alternative.",
+      "long": [
+        "Melts perfectly for pizza and sandwiches.",
+        "Made from coconut oil and potato starch.",
+        "Rich in flavor and texture."
+      ]
+    },
+    "nutritionalInfo": {
+      "weight": 200,
+      "calories": 70,
+      "carbs": 1,
+      "fat": 7,
+      "protein": 0
+    },
+    "suitableForInfo": {
+      "glutenFree": true,
+      "keto": true,
+      "protein": false,
+      "vegan": true
+    },
+    "sizes": [
+      {
+        "label": "200g",
+        "price": 8.99
+      }
+    ],
+    "extras": null,
+    "imgUri": "https://example.com/images/vegan_cheese.jpg"
+  },
+  {
+    "_id": "product_10",
+    "title": "Keto Granola",
+    "description": {
+      "short": "Low-carb, high-fiber keto granola.",
+      "long": [
+        "Made with nuts, seeds, and coconut flakes.",
+        "Sweetened with erythritol and monk fruit.",
+        "Perfect for a healthy, keto-friendly breakfast."
+      ]
+    },
+    "nutritionalInfo": {
+      "weight": 300,
+      "calories": 150,
+      "carbs": 5,
+      "fat": 12,
+      "protein": 4
+    },
+    "suitableForInfo": {
+      "glutenFree": true,
+      "keto": true,
+      "protein": false,
+      "vegan": true
+    },
+    "sizes": [
+      {
+        "label": "300g",
+        "price": 12.99
+      }
+    ],
+    "extras": [
+      {
+        "label": "Add dried fruits",
+        "price": 1.49
+      }
+    ],
+    "imgUri": "https://example.com/images/keto_granola.jpg"
+  },
+  {
+    "_id": "product_11",
+    "title": "Organic Peanut Butter",
+    "description": {
+      "short": "Creamy organic peanut butter.",
+      "long": [
+        "Made from 100% organic peanuts.",
+        "No added sugar or preservatives.",
+        "Rich in protein and healthy fats."
+      ]
+    },
+    "nutritionalInfo": {
+      "weight": 350,
+      "calories": 190,
+      "carbs": 6,
+      "fat": 16,
+      "protein": 8
+    },
+    "suitableForInfo": {
+      "glutenFree": true,
+      "keto": true,
+      "protein": true,
+      "vegan": true
+    },
+    "sizes": [
+      {
+        "label": "350g",
+        "price": 9.99
+      },
+      {
+        "label": "700g",
+        "price": 17.99
+      }
+    ],
+    "extras": null,
+    "imgUri": "https://example.com/images/peanut_butter.jpg"
+  },
+  {
+    "_id": "product_12",
+    "title": "Vegan Chocolate Spread",
+    "description": {
+      "short": "Delicious vegan chocolate spread.",
+      "long": [
+        "Made with hazelnuts and cocoa.",
+        "Perfect for spreading on toast or pancakes.",
+        "Dairy-free and gluten-free."
+      ]
+    },
+    "nutritionalInfo": {
+      "weight": 300,
+      "calories": 200,
+      "carbs": 22,
+      "fat": 12,
+      "protein": 3
+    },
+    "suitableForInfo": {
+      "glutenFree": true,
+      "keto": false,
+      "protein": false,
+      "vegan": true
+    },
+    "sizes": [
+      {
+        "label": "300g",
+        "price": 8.99
+      }
+    ],
+    "extras": null,
+    "imgUri": "https://example.com/images/chocolate_spread.jpg"
+  }
+]
