@@ -1,6 +1,4 @@
 {
-  "extends": "./tsconfig.json",
-  "compilerOptions": {
-    "module": "CommonJS"
-  }
+  "extends": "@packages/config/ts-node.json",
+  "include": ["vite.config.ts"]
 }

@@ -28,7 +28,6 @@
     "typecheck": "tsc"
   },
   "dependencies": {
-    "@packages/assets": "workspace:*",
     "@packages/config": "workspace:*",
     "@packages/eslint-config": "workspace:*",
     "@packages/spinner": "workspace:*",

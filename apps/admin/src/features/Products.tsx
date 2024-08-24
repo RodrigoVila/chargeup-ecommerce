@@ -26,10 +26,12 @@ export const ProductList = () => {
   }
   return (
     <AdminSection>
-      {products.map((product) => (
-        <ProductCard product={product} onEdit={handleEdit} onDelete={handleDelete} />
-        // <Product product={product} />
-      ))}
+      <div className='flex flex-wrap justify-center gap-6'>
+        {products.map((product) => (
+          <ProductCard product={product} onEdit={handleEdit} onDelete={handleDelete} />
+          // <Product product={product} />
+        ))}
+      </div>
     </AdminSection>
   )
 }

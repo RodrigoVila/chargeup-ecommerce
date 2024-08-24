@@ -66,7 +66,7 @@ importers:
         version: link:../../packages/input
       '@packages/lazy-image':
         specifier: workspace:*
-        version: link:../../packages/lazyImage
+        version: link:../../packages/lazy-image
       '@packages/modal':
         specifier: workspace:*
         version: link:../../packages/modal
@@ -109,6 +109,9 @@ importers:
       react-router-dom:
         specifier: ^6.26.1
         version: 6.26.1(react-dom@18.3.1)(react@18.3.1)
+      react-tooltip:
+        specifier: ^4.2.21
+        version: 4.2.21(react-dom@18.3.1)(react@18.3.1)
       recharts:
         specifier: ^2.12.7
         version: 2.12.7(react-dom@18.3.1)(react@18.3.1)
@@ -175,7 +178,7 @@ importers:
         version: link:../../packages/input
       '@packages/lazy-image':
         specifier: workspace:*
-        version: link:../../packages/lazyImage
+        version: link:../../packages/lazy-image
       '@packages/modal':
         specifier: workspace:*
         version: link:../../packages/modal
@@ -407,87 +410,7 @@ importers:
         specifier: ^0.33.0
         version: 0.33.0(@vitest/ui@0.33.0)(jsdom@22.1.0)
 
-  packages/assets:
-    dependencies:
-      '@packages/assets':
-        specifier: workspace:*
-        version: 'link:'
-      '@packages/config':
-        specifier: workspace:*
-        version: link:../config
-      '@packages/eslint-config':
-        specifier: workspace:*
-        version: link:../config/eslint-config
-      '@packages/spinner':
-        specifier: workspace:*
-        version: link:../spinner
-      react:
-        specifier: ^16.8.0 || 17.x || 18.x
-        version: 18.3.1
-      react-dom:
-        specifier: ^16.8.0 || 17.x || 18.x
-        version: 18.3.1(react@18.3.1)
-      react-lazy-load-image-component:
-        specifier: ^1.6.2
-        version: 1.6.2(react@18.3.1)
-    devDependencies:
-      '@testing-library/jest-dom':
-        specifier: ^5.17.0
-        version: 5.17.0
-      '@testing-library/react':
-        specifier: ^14.0.0
-        version: 14.0.0(react-dom@18.3.1)(react@18.3.1)
-      '@testing-library/user-event':
-        specifier: ^14.4.3
-        version: 14.4.3(@testing-library/dom@9.3.1)
-      '@types/react':
-        specifier: 17.0.2
-        version: 17.0.2
-      '@types/react-dom':
-        specifier: 17.0.2
-        version: 17.0.2
-      '@types/react-lazy-load-image-component':
-        specifier: ^1.6.4
-        version: 1.6.4
-      '@types/testing-library__jest-dom':
-        specifier: ^5.14.8
-        version: 5.14.8
-      '@vitejs/plugin-react':
-        specifier: ^4.0.3
-        version: 4.3.1(vite@4.4.4)
-      '@vitest/coverage-c8':
-        specifier: ^0.33.0
-        version: 0.33.0(vitest@0.33.0)
-      '@vitest/ui':
-        specifier: ^0.33.0
-        version: 0.33.0(vitest@0.33.0)
-      autoprefixer:
-        specifier: ^10.4.14
-        version: 10.4.14(postcss@8.4.41)
-      eslint-config-custom:
-        specifier: ^0.0.0
-        version: 0.0.0(eslint@8.45.0)(typescript@4.9.5)
-      jsdom:
-        specifier: ^22.1.0
-        version: 22.1.0
-      postcss:
-        specifier: ^8.4.26
-        version: 8.4.41
-      tailwind-merge:
-        specifier: ^1.14.0
-        version: 1.14.0
-      tailwindcss:
-        specifier: ^3.3.3
-        version: 3.3.3
-      typescript:
-        specifier: ^4.9.5
-        version: 4.9.5
-      vite:
-        specifier: ^4.4.4
-        version: 4.4.4(@types/node@20.4.2)
-      vitest:
-        specifier: ^0.33.0
-        version: 0.33.0(@vitest/ui@0.33.0)(jsdom@22.1.0)
+  packages/assets: {}
 
   packages/button:
     dependencies:
@@ -750,11 +673,8 @@ importers:
         specifier: ^0.33.0
         version: 0.33.0(@vitest/ui@0.33.0)(jsdom@22.1.0)
 
-  packages/lazyImage:
+  packages/lazy-image:
     dependencies:
-      '@packages/assets':
-        specifier: workspace:*
-        version: link:../assets
       '@packages/config':
         specifier: workspace:*
         version: link:../config
@@ -4181,7 +4101,6 @@ packages:
     dependencies:
       graceful-fs: 4.2.11
       tapable: 2.2.1
-    dev: false
 
   /entities@4.5.0:
     resolution: {integrity: sha512-V0hjH4dGPh9Ao5p0MoRY6BVqtwCjhz6vI5LT8AJ55H+4g9/4vbHx1I54fS0XuclLhDHArPQCiMjDxjaL8fPxhw==}
@@ -4476,7 +4395,6 @@ packages:
       - eslint-import-resolver-node
       - eslint-import-resolver-webpack
       - supports-color
-    dev: false
 
   /eslint-module-utils@2.8.0(@typescript-eslint/parser@5.20.0)(eslint-import-resolver-node@0.3.7)(eslint-import-resolver-typescript@3.5.5)(eslint@8.45.0):
     resolution: {integrity: sha512-aWajIYfsqCKRDgUfjEXNN/JlrzauMuSEy5sbd7WXbtW3EH6A6MpwEh42c7qD+MqQo9QMJ6fWLAeIJynx0g6OAw==}
@@ -4506,37 +4424,6 @@ packages:
       eslint-import-resolver-typescript: 3.5.5(@typescript-eslint/parser@5.20.0)(eslint-plugin-import@2.27.5)(eslint@8.45.0)
     transitivePeerDependencies:
       - supports-color
-    dev: false
-
-  /eslint-module-utils@2.8.0(@typescript-eslint/parser@5.62.0)(eslint-import-resolver-node@0.3.7)(eslint-import-resolver-typescript@2.7.1)(eslint@8.45.0):
-    resolution: {integrity: sha512-aWajIYfsqCKRDgUfjEXNN/JlrzauMuSEy5sbd7WXbtW3EH6A6MpwEh42c7qD+MqQo9QMJ6fWLAeIJynx0g6OAw==}
-    engines: {node: '>=4'}
-    peerDependencies:
-      '@typescript-eslint/parser': '*'
-      eslint: '*'
-      eslint-import-resolver-node: '*'
-      eslint-import-resolver-typescript: '*'
-      eslint-import-resolver-webpack: '*'
-    peerDependenciesMeta:
-      '@typescript-eslint/parser':
-        optional: true
-      eslint:
-        optional: true
-      eslint-import-resolver-node:
-        optional: true
-      eslint-import-resolver-typescript:
-        optional: true
-      eslint-import-resolver-webpack:
-        optional: true
-    dependencies:
-      '@typescript-eslint/parser': 5.62.0(eslint@8.45.0)(typescript@4.9.5)
-      debug: 3.2.7
-      eslint: 8.45.0
-      eslint-import-resolver-node: 0.3.7
-      eslint-import-resolver-typescript: 2.7.1(eslint-plugin-import@2.27.5)(eslint@8.45.0)
-    transitivePeerDependencies:
-      - supports-color
-    dev: true
 
   /eslint-plugin-import@2.27.5(@typescript-eslint/parser@5.20.0)(eslint-import-resolver-typescript@3.5.5)(eslint@8.45.0):
     resolution: {integrity: sha512-LmEt3GVofgiGuiE+ORpnvP+kAm3h6MLZJ4Q5HCyHADofsb4VzXFsRiWj3c0OFiV+3DWFh0qg3v9gcPlfc3zRow==}
@@ -4569,7 +4456,6 @@ packages:
       - eslint-import-resolver-typescript
       - eslint-import-resolver-webpack
       - supports-color
-    dev: false
 
   /eslint-plugin-import@2.27.5(@typescript-eslint/parser@5.62.0)(eslint-import-resolver-typescript@2.7.1)(eslint@8.45.0):
     resolution: {integrity: sha512-LmEt3GVofgiGuiE+ORpnvP+kAm3h6MLZJ4Q5HCyHADofsb4VzXFsRiWj3c0OFiV+3DWFh0qg3v9gcPlfc3zRow==}
@@ -4589,7 +4475,7 @@ packages:
       doctrine: 2.1.0
       eslint: 8.45.0
       eslint-import-resolver-node: 0.3.7
-      eslint-module-utils: 2.8.0(@typescript-eslint/parser@5.62.0)(eslint-import-resolver-node@0.3.7)(eslint-import-resolver-typescript@2.7.1)(eslint@8.45.0)
+      eslint-module-utils: 2.8.0(@typescript-eslint/parser@5.20.0)(eslint-import-resolver-node@0.3.7)(eslint-import-resolver-typescript@3.5.5)(eslint@8.45.0)
       has: 1.0.3
       is-core-module: 2.12.1
       is-glob: 4.0.3
@@ -5192,7 +5078,6 @@ packages:
     resolution: {integrity: sha512-E5XrT4CbbXcXWy+1jChlZmrmCwd5KGx502kDCXJJ7y898TtWW9FwoG5HfOLVRKmlmDGkWN2HM9Ho+/Y8F0sJDg==}
     dependencies:
       resolve-pkg-maps: 1.0.0
-    dev: false
 
   /git-hooks-list@3.1.0:
     resolution: {integrity: sha512-LF8VeHeR7v+wAbXqfgRlTSX/1BJR9Q1vEMR8JAz1cEg6GX07+zyj3sAdDvYjj/xnlIfVuGgj4qBei1K3hKH+PA==}
@@ -6802,6 +6687,19 @@ packages:
       react-dom: 17.0.2(react@17.0.2)
       uuid: 7.0.3
 
+  /react-tooltip@4.2.21(react-dom@18.3.1)(react@18.3.1):
+    resolution: {integrity: sha512-zSLprMymBDowknr0KVDiJ05IjZn9mQhhg4PRsqln0OZtURAJ1snt1xi5daZfagsh6vfsziZrc9pErPTDY1ACig==}
+    engines: {npm: '>=6.13'}
+    peerDependencies:
+      react: '>=16.0.0'
+      react-dom: '>=16.0.0'
+    dependencies:
+      prop-types: 15.8.1
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
+      uuid: 7.0.3
+    dev: false
+
   /react-transition-group@4.4.5(react-dom@18.3.1)(react@18.3.1):
     resolution: {integrity: sha512-pZcd1MCJoiKiBR2NRxeCRg13uCXbydPnmB4EOeRrY7480qNWO8IIgQG6zlDkm6uRMsURXPuKq0GWtiM59a5Q6g==}
     peerDependencies:
@@ -6962,7 +6860,6 @@ packages:
 
   /resolve-pkg-maps@1.0.0:
     resolution: {integrity: sha512-seS2Tj26TBVOC2NIc2rOe2y2ZO7efxITtLZcGSOnHHNOQ7CkiUBfw0Iw2ck6xkIhPwLhKNLS8BO+hEpngQlqzw==}
-    dev: false
 
   /resolve@1.1.7:
     resolution: {integrity: sha512-9znBF0vBcaSN3W2j7wKvdERPwqTxSpCq+if5C0WoTCyV9n24rua28jeuQ2pL/HOf+yUe/Mef+H/5p60K0Id3bg==}
@@ -7445,7 +7342,6 @@ packages:
   /tapable@2.2.1:
     resolution: {integrity: sha512-GNzQvQTOIP6RyTfE2Qxb8ZVlNmw0n88vp1szwWRimP02mnTsx3Wtn5qRdqY9w2XduFNUgvOwhNnQsjwCp+kqaQ==}
     engines: {node: '>=6'}
-    dev: false
 
   /test-exclude@6.0.0:
     resolution: {integrity: sha512-cAGWPIyOHU6zlmg88jwm7VRyXnMN7iV68OGAbYDk/Mh/xC/pzVPlQtY6ngoIH/5/tciuhGfvESU8GrHrcxD56w==}
