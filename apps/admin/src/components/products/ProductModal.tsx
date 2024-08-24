@@ -1,5 +1,6 @@
 import { useState, ChangeEvent } from 'react'
 import { Modal, ModalContent } from '@packages/modal'
+import { Button } from '@packages/button'
 import { Input } from '@packages/input'
 
 import { ProductType, LabelAndPriceType } from '@packages/types'
@@ -38,30 +39,29 @@ export const ProductModal = ({ isOpen, product }: ProductModalProps) => {
   }
 
   return (
-    <Modal open={isOpen}>
+    <Modal open={isOpen} className='bg-black'>
       <ModalContent className='m-4 mx-auto max-w-lg rounded-xl bg-slate-800 p-8'>
         {/* Title */}
         <Input
+          labelClassName='text-gray-300 font-semibold'
           label='Title'
-          type='text'
           name='title'
           value={productData.title}
-          onChange={handleChange}
         />
-
         {/* Description */}
         <Input
+          labelClassName='text-gray-300 font-semibold'
           label='Short Description'
           type='text'
           name='description.short'
           value={productData.description.short}
           onChange={handleChange}
         />
-
         {/* Long Description */}
         {productData.description.long.map((desc, index) => (
           <Input
             key={index}
+            labelClassName='text-gray-300 font-semibold'
             label={`Long Description ${index + 1}`}
             type='text'
             value={desc}
@@ -75,26 +75,27 @@ export const ProductModal = ({ isOpen, product }: ProductModalProps) => {
             }}
           />
         ))}
-
         {/* Image URI */}
         <Input
+          labelClassName='text-gray-300 font-semibold'
           label='Image URI'
           type='text'
           name='imgUri'
           value={productData.imgUri}
           onChange={handleChange}
         />
-
         {/* Sizes */}
         {productData.sizes?.map((size, index) => (
           <div key={index}>
             <Input
+              labelClassName='text-gray-300 font-semibold'
               label={`Size Label ${index + 1}`}
               type='text'
               value={size.label}
               onChange={(e) => handleSizeChange(index, e.target.value, 'label')}
             />
             <Input
+              labelClassName='text-gray-300 font-semibold'
               label={`Size Price ${index + 1}`}
               type='number'
               value={size.price}
@@ -102,17 +103,18 @@ export const ProductModal = ({ isOpen, product }: ProductModalProps) => {
             />
           </div>
         ))}
-
         {/* Extras */}
         {productData.extras?.map((extra, index) => (
           <div key={index}>
             <Input
+              labelClassName='text-gray-300 font-semibold'
               label={`Extra Label ${index + 1}`}
               type='text'
               value={extra.label}
               onChange={(e) => handleExtrasChange(index, e.target.value, 'label')}
             />
             <Input
+              labelClassName='text-gray-300 font-semibold'
               label={`Extra Price ${index + 1}`}
               type='number'
               value={extra.price}
@@ -120,9 +122,9 @@ export const ProductModal = ({ isOpen, product }: ProductModalProps) => {
             />
           </div>
         ))}
-
         {/* Nutritional Info */}
         <Input
+          labelClassName='text-gray-300 font-semibold'
           label='Weight (g)'
           type='number'
           name='nutritionalInfo.weight'
@@ -130,6 +132,7 @@ export const ProductModal = ({ isOpen, product }: ProductModalProps) => {
           onChange={handleChange}
         />
         <Input
+          labelClassName='text-gray-300 font-semibold'
           label='Calories'
           type='number'
           name='nutritionalInfo.calories'
@@ -137,6 +140,7 @@ export const ProductModal = ({ isOpen, product }: ProductModalProps) => {
           onChange={handleChange}
         />
         <Input
+          labelClassName='text-gray-300 font-semibold'
           label='Protein (g)'
           type='number'
           name='nutritionalInfo.protein'
@@ -144,6 +148,7 @@ export const ProductModal = ({ isOpen, product }: ProductModalProps) => {
           onChange={handleChange}
         />
         <Input
+          labelClassName='text-gray-300 font-semibold'
           label='Carbs (g)'
           type='number'
           name='nutritionalInfo.carbs'
@@ -151,15 +156,15 @@ export const ProductModal = ({ isOpen, product }: ProductModalProps) => {
           onChange={handleChange}
         />
         <Input
+          labelClassName='text-gray-300 font-semibold'
           label='Fat (g)'
           type='number'
           name='nutritionalInfo.fat'
           value={productData.nutritionalInfo.fat}
           onChange={handleChange}
         />
-
         {/* Add a Save Button */}
-        <button onClick={handleSave}>Save Product</button>
+        <Button onClick={handleSave}>Save Product</Button>
       </ModalContent>
     </Modal>
   )

@@ -1,12 +1,5 @@
 import * as React from 'react'
-import {
-  useFloating,
-  useClick,
-  useDismiss,
-  useRole,
-  useInteractions,
-  UseFloatingReturn,
-} from '@floating-ui/react'
+import { useFloating, useClick, useDismiss, useRole, useInteractions } from '@floating-ui/react'
 
 interface ModalOptions {
   initialOpen?: boolean
@@ -14,20 +7,11 @@ interface ModalOptions {
   onOpenChange?: (open: boolean) => void
 }
 
-interface UseModalReturn extends UseFloatingReturn<HTMLElement> {
-  labelId: string | undefined
-  descriptionId: string | undefined
-  setLabelId: React.Dispatch<React.SetStateAction<string | undefined>>
-  setDescriptionId: React.Dispatch<React.SetStateAction<string | undefined>>
-  open: boolean
-  setOpen: (open: boolean) => void
-}
-
 export function useModal({
   initialOpen = false,
   open: controlledOpen,
   onOpenChange: setControlledOpen,
-}: ModalOptions = {}): UseModalReturn {
+}: ModalOptions = {}): any {
   const [uncontrolledOpen, setUncontrolledOpen] = React.useState(initialOpen)
   const [labelId, setLabelId] = React.useState<string | undefined>()
   const [descriptionId, setDescriptionId] = React.useState<string | undefined>()

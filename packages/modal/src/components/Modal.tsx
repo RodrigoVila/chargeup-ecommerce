@@ -1,21 +1,16 @@
 import * as React from 'react'
 import { useModal } from '../hooks/useModal'
-import { UseFloatingReturn } from '@floating-ui/react'
 
-interface UseModalReturn extends UseFloatingReturn<HTMLElement> {
-  labelId: string | undefined
-  descriptionId: string | undefined
-  setLabelId: React.Dispatch<React.SetStateAction<string | undefined>>
-  setDescriptionId: React.Dispatch<React.SetStateAction<string | undefined>>
-  open: boolean
-  setOpen: (open: boolean) => void
-}
+type ContextType =
+  | (ReturnType<typeof useModal> & {
+      setLabelId: React.Dispatch<React.SetStateAction<string | undefined>>
+      setDescriptionId: React.Dispatch<React.SetStateAction<string | undefined>>
+    })
+  | null
 
-type ModalContextType = UseModalReturn | null
+const ModalContext = React.createContext<ContextType>(null)
 
-const ModalContext = React.createContext<ModalContextType>(null)
-
-export const useModalContext = (): UseModalReturn => {
+export const useModalContext = (): any => {
   const context = React.useContext(ModalContext)
 
   if (context == null) {
