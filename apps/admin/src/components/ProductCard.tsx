@@ -18,6 +18,9 @@ import proteinBreadImg from '@packages/assets/images/keto-protein-bread.jpg'
 import matchaBreadImg from '@packages/assets/images/matcha-bread.jpg'
 import peanutBallsImg from '@packages/assets/images/peanut-balls.jpg'
 import strawberriesCookiesImg from '@packages/assets/images/strawberry-cookies-tea.jpg'
+import { ActionsMenu } from './ActionsMenu'
+import { Action } from './Table'
+import { IoTrashOutline } from 'react-icons/io5'
 
 type ProductCardProps = {
   product: ProductType
@@ -46,6 +49,19 @@ export const ProductCard = ({ product, onEdit, onDelete }: ProductCardProps) => 
   const { glutenFree, keto, vegan, protein: highProtein } = suitableForInfo
 
   const iconStyle = 'h-10 w-10'
+
+  const actions: Action[] = [
+    {
+      label: 'Edit product',
+      icon: <BsPencil />,
+      onClick: () => onEdit(product),
+    },
+    {
+      label: 'Delete product',
+      icon: <IoTrashOutline className='text-red-500' />,
+      onClick: () => onDelete(product),
+    },
+  ]
 
   return (
     <div className='max-h-72 w-full max-w-2xl overflow-hidden rounded-xl bg-slate-800 text-white shadow-md'>
@@ -103,25 +119,8 @@ export const ProductCard = ({ product, onEdit, onDelete }: ProductCardProps) => 
             </div>
           </div>
         </div>
-        <div className='m-2 flex gap-4'>
-          <div className='group self-start'>
-            <button
-              onClick={() => onEdit(product)}
-              className='self-start rounded-full p-[6px] group-hover:bg-blue-500'
-              data-tip='Edit product'
-            >
-              <BsPencil size={18} className='group-hover:text-white' />
-            </button>
-          </div>
-          <div className='group'>
-            <button
-              onClick={() => onDelete(product)}
-              className='self-start rounded-full p-[6px] duration-300 group-hover:bg-red-500'
-              data-tip='Delete product'
-            >
-              <BsTrash size={18} className='group-hover:white duration-300' />
-            </button>
-          </div>
+        <div className='m-2'>
+          <ActionsMenu actions={actions} />
         </div>
       </div>
     </div>
