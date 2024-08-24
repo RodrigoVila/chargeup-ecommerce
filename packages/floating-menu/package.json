@@ -9,7 +9,8 @@
   "exports": {
     ".": {
       "import": "./dist/package.floating-menu.es.js",
-      "require": "./dist/package.floating-menu.cjs.js"
+      "require": "./dist/package.floating-menu.cjs.js",
+      "types": "./dist/index.d.ts"
     }
   },
   "types": "./dist/index.d.ts",
