@@ -1,17 +1,12 @@
 {
   "extends": "@packages/config/ts-base.json",
   "compilerOptions": {
-    "jsx": "react",
     "types": ["vitest/globals", "@types/testing-library__jest-dom"],
-    "baseUrl": "./",
-    "paths": {
-      "@packages/*": ["../*"]
-    }
+    "declaration": true,
+    "declarationMap": true,
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "esModuleInterop": true
   },
-  "include": ["src"],
-  "references": [
-    {
-      "path": "./tsconfig.node.json"
-    }
-  ]
+  "include": ["src"]
 }

@@ -1,18 +1,26 @@
 import { BsThreeDotsVertical } from 'react-icons/bs'
 import { FloatingMenu, FloatingMenuContent, FloatingMenuTrigger } from '@packages/floating-menu'
 import { Action } from './Table'
+import { useState } from 'react'
 
 type ActionMenuProps = {
   actions: Action[]
 }
 
 export const ActionsMenu = ({ actions }: ActionMenuProps) => {
+  const [isOpen, setOpen] = useState(false)
   return (
-    <FloatingMenu>
-      <FloatingMenuTrigger className='rounded-full p-[6px] hover:bg-slate-600'>
+    <FloatingMenu open={isOpen} onOpenChange={setOpen}>
+      <FloatingMenuTrigger
+        className='rounded-full p-[6px] hover:bg-slate-600'
+        onClick={() => setOpen(true)}
+      >
         <BsThreeDotsVertical size={20} />
       </FloatingMenuTrigger>
-      <FloatingMenuContent className='flex flex-col gap-2 overflow-hidden rounded-lg bg-slate-800 text-lg text-gray-300 shadow-xl'>
+      <FloatingMenuContent
+        className='flex flex-col gap-2 overflow-hidden rounded-lg bg-slate-800 text-lg text-gray-300 shadow-xl'
+        onClick={() => setOpen(false)}
+      >
         {actions.map((action) => (
           <button
             key={action.label}

@@ -2,12 +2,13 @@ import { twMerge } from 'tailwind-merge'
 import { IoTrashOutline } from 'react-icons/io5'
 import { BsPencil } from 'react-icons/bs'
 
-import productsMock from '../mocks/products.json' // Assuming your mock products are stored here
+import productsMock from '../mocks/products.json'
 import { AdminSection } from '~/components/AdminSection'
 import { Action } from '~/components/Table'
-import ProductCard from '~/components/ProductCard'
+import ProductCard from '~/components/products/ProductCard'
 import { ProductType } from '@packages/types'
 import { useState } from 'react'
+import { ProductModal } from '~/components/products/ProductModal'
 
 export const ProductList = () => {
   const [isModalOpen, setModalOpen] = useState(false)
@@ -15,9 +16,8 @@ export const ProductList = () => {
   const [selectedProduct, setSelectedProduct] = useState<ProductType | null>(null)
 
   const handleEdit = (product: ProductType) => {
-    alert('Edit user not avaiable')
-    // setSelectedProduct(product)
-    // setModalOpen(true)
+    setSelectedProduct(product)
+    setModalOpen(true)
   }
   const handleDelete = (product: ProductType) => {
     if (window.confirm(`Are you sure you want to delete product: ${product.title}?`)) {
@@ -32,6 +32,7 @@ export const ProductList = () => {
           // <Product product={product} />
         ))}
       </div>
+      {selectedProduct && <ProductModal isOpen={isModalOpen} product={selectedProduct} />}
     </AdminSection>
   )
 }
