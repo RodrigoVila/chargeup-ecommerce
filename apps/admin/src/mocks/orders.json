@@ -46,7 +46,7 @@
     ],
     "totalAmount": 59.96,
     "paidAmount": 59.96,
-    "status": "completed",
+    "status": "pending",
     "created": "2024-08-20T10:30:00Z",
     "deliveryType": "Delivery",
     "orderSent": true
@@ -98,7 +98,7 @@
     ],
     "totalAmount": 38.93,
     "paidAmount": 38.93,
-    "status": "completed",
+    "status": "pending",
     "created": "2024-08-21T14:45:00Z",
     "deliveryType": "Pick UP",
     "orderSent": true
@@ -185,7 +185,7 @@
     ],
     "totalAmount": 49.44,
     "paidAmount": 49.44,
-    "status": "completed",
+    "status": "pending",
     "created": "2024-08-22T16:00:00Z",
     "deliveryType": "Pick UP",
     "orderSent": true
@@ -232,7 +232,7 @@
     ],
     "totalAmount": 45.94,
     "paidAmount": 45.94,
-    "status": "completed",
+    "status": "pending",
     "created": "2024-08-21T11:30:00Z",
     "deliveryType": "Pick UP",
     "orderSent": true
@@ -272,7 +272,7 @@
     ],
     "totalAmount": 43.44,
     "paidAmount": 43.44,
-    "status": "completed",
+    "status": "pending",
     "created": "2024-08-20T08:30:00Z",
     "deliveryType": "Delivery",
     "orderSent": true
@@ -319,7 +319,7 @@
     ],
     "totalAmount": 37.96,
     "paidAmount": 37.96,
-    "status": "completed",
+    "status": "pending",
     "created": "2024-08-19T15:00:00Z",
     "deliveryType": "Pick UP",
     "orderSent": true
@@ -406,7 +406,7 @@
     ],
     "totalAmount": 30.46,
     "paidAmount": 30.46,
-    "status": "completed",
+    "status": "pending",
     "created": "2024-08-18T10:00:00Z",
     "deliveryType": "Pick UP",
     "orderSent": true
@@ -465,7 +465,7 @@
     ],
     "totalAmount": 44.96,
     "paidAmount": 44.96,
-    "status": "completed",
+    "status": "pending",
     "created": "2024-08-17T13:30:00Z",
     "deliveryType": "Delivery",
     "orderSent": true

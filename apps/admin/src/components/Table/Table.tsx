@@ -1,22 +1,24 @@
 import { ReactNode } from 'react'
 import { twMerge } from 'tailwind-merge'
 import { ActionsMenu } from '../ActionsMenu'
+import { OrderData } from '~/features/Orders'
 
 export type Action = {
   label: string
   icon: ReactNode
-  onClick: () => void
+  type: 'complete' | 'edit' | 'delete'
 }
 
 export type TableProps = {
   columns: string[]
   data: any[]
-  actions?: Action[]
+  getActions?: (order: OrderData) => Action[]
+  handleActions: (actionType: Action['type'], orderId: string) => void
 }
 
 const headerStyles = 'px-6 py-3 text-left text-s font-medium uppercase tracking-wider'
 
-export const Table = ({ columns, data, actions }: TableProps) => {
+export const Table = ({ columns, data, getActions, handleActions }: TableProps) => {
   return (
     <div className='overflow-x-auto rounded-xl'>
       <table className='min-w-full border-collapse bg-slate-900'>
@@ -27,7 +29,7 @@ export const Table = ({ columns, data, actions }: TableProps) => {
                 {column}
               </th>
             ))}
-            {actions && (
+            {getActions && (
               <th scope='col' className={headerStyles}>
                 Actions
               </th>
@@ -44,13 +46,23 @@ export const Table = ({ columns, data, actions }: TableProps) => {
               )}
             >
               {columns.map((column) => (
-                <td key={column} className='px-6 py-4'>
+                <td
+                  key={column}
+                  className={twMerge(
+                    'px-6 py-4',
+                    column === 'completed' && 'flex items-center justify-center',
+                  )}
+                >
                   <div className='text-sm'>{row[column]}</div>
                 </td>
               ))}
-              {actions && (
+              {getActions && (
                 <td className='px-4 text-center align-middle'>
-                  <ActionsMenu actions={actions} />
+                  <ActionsMenu
+                    actions={getActions(row)}
+                    rowId={row.id}
+                    handleActions={handleActions}
+                  />
                 </td>
               )}
             </tr>

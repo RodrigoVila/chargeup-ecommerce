@@ -5,9 +5,11 @@ import { useState } from 'react'
 
 type ActionMenuProps = {
   actions: Action[]
+  rowId: string
+  handleActions: (actionType: Action['type'], orderId: string) => void
 }
 
-export const ActionsMenu = ({ actions }: ActionMenuProps) => {
+export const ActionsMenu = ({ actions, rowId, handleActions }: ActionMenuProps) => {
   const [isOpen, setOpen] = useState(false)
   return (
     <FloatingMenu open={isOpen} onOpenChange={setOpen}>
@@ -24,11 +26,11 @@ export const ActionsMenu = ({ actions }: ActionMenuProps) => {
         {actions.map((action) => (
           <button
             key={action.label}
-            onClick={action.onClick}
-            className='flex items-center gap-2 py-2 px-4 duration-150 hover:bg-blue-100 hover:text-black'
+            onClick={() => handleActions(action.type, rowId)}
+            className='flex items-center gap-4 py-2 px-4 duration-150 hover:bg-blue-100 hover:text-black'
           >
-            {action.icon}
-            {action.label}
+            <span className='mb-1'>{action.icon}</span>
+            <span>{action.label}</span>
           </button>
         ))}
       </FloatingMenuContent>
