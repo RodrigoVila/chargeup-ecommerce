@@ -1,16 +1,18 @@
 import * as React from 'react'
 import { useFloating, useClick, useDismiss, useRole, useInteractions } from '@floating-ui/react'
 
-interface ModalOptions {
+export interface ModalOptions {
   initialOpen?: boolean
   open?: boolean
   onOpenChange?: (open: boolean) => void
+  enableCloseOnOutsideClick?: boolean
 }
 
 export function useModal({
   initialOpen = false,
   open: controlledOpen,
   onOpenChange: setControlledOpen,
+  enableCloseOnOutsideClick = false,
 }: ModalOptions = {}): any {
   const [uncontrolledOpen, setUncontrolledOpen] = React.useState(initialOpen)
   const [labelId, setLabelId] = React.useState<string | undefined>()
@@ -29,7 +31,9 @@ export function useModal({
   const click = useClick(context, {
     enabled: controlledOpen == null,
   })
-  const dismiss = useDismiss(context, { outsidePressEvent: 'mousedown' })
+  const dismiss = useDismiss(context, {
+    enabled: enableCloseOnOutsideClick,
+  })
   const role = useRole(context)
 
   const interactions = useInteractions([click, dismiss, role])

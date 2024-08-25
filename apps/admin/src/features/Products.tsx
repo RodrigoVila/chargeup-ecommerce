@@ -28,7 +28,9 @@ export const ProductList = () => {
           <ProductCard product={product} onEdit={handleEdit} onDelete={handleDelete} />
         ))}
       </div>
-      {selectedProduct && <ProductModal isOpen={isModalOpen} product={selectedProduct} />}
+      {selectedProduct && (
+        <ProductModal isOpen={isModalOpen} setOpen={setModalOpen} product={selectedProduct} />
+      )}
     </AdminSection>
   )
 }

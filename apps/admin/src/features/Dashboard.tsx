@@ -7,6 +7,9 @@ import {
 import { BsInboxes } from 'react-icons/bs'
 import { MdTrendingUp } from 'react-icons/md'
 import { IoPeopleOutline } from 'react-icons/io5'
+import { FaRegArrowAltCircleRight } from 'react-icons/fa'
+import { Tooltip as ReactTooltip } from 'react-tooltip'
+
 import {
   LineChart,
   Line,
@@ -19,8 +22,11 @@ import {
 
 import { AdminSection } from '~/components/AdminSection'
 import dashboardMocks from '~/mocks/dashboard.json'
+import { useToastNotifications } from '@packages/toast-notifications'
 
 const { stats, recentOrders, topProducts, userActivity, salesData } = dashboardMocks
+
+const { showInfoNotification } = useToastNotifications()
 
 export const Dashboard = () => {
   return (
@@ -63,14 +69,22 @@ export const Dashboard = () => {
           </h2>
           <ul>
             {recentOrders.map((order) => (
-              <li key={order.id} className='flex justify-between border-b border-slate-700 py-2'>
-                <span>{order.product}</span>
-                <span>{order.customer}</span>
-                <span>{order.date}</span>
-                <span>{order.amount}</span>
-                <a href={`/admin/orders/${order.id}`} className='text-blue-400 hover:underline'>
-                  Go to order
-                </a>
+              <li
+                key={order.id}
+                className='flex w-full justify-between border-b border-slate-700 py-2'
+              >
+                <span className='flex-1'>{order.product}</span>
+                <span className='flex-1'>{order.customer}</span>
+                <span className='flex-1'>{order.date}</span>
+                <span className='flex-1'>{order.amount}</span>
+                <button
+                  className='hover:text-blue-400'
+                  data-tooltip-id='dashboard-tooltip'
+                  data-tooltip-content='Go to order'
+                  onClick={() => showInfoNotification('Go to specific order will be avaiable soon')}
+                >
+                  <FaRegArrowAltCircleRight size={25} />
+                </button>
               </li>
             ))}
           </ul>
@@ -123,6 +137,7 @@ export const Dashboard = () => {
           </ul>
         </div>
       </div>
+      <ReactTooltip id='dashboard-tooltip' />
     </AdminSection>
   )
 }

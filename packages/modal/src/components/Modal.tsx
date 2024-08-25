@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { useModal } from '../hooks/useModal'
+import { ModalOptions, useModal } from '../hooks/useModal'
 
 type ContextType =
   | (ReturnType<typeof useModal> & {
@@ -20,7 +20,7 @@ export const useModalContext = (): any => {
   return context
 }
 
-interface ModalProps {
+type ModalProps = ModalOptions & {
   children: React.ReactNode
 }
 
