@@ -1,3 +1,4 @@
+import React from 'react'
 import { Tooltip } from 'react-tooltip'
 import { BsPencil } from 'react-icons/bs'
 import { IoTrashOutline } from 'react-icons/io5'
@@ -49,7 +50,7 @@ export const ProductCard = ({ product, onEdit, onDelete }: ProductCardProps) => 
   const { calories, carbs, fat, protein } = nutritionalInfo
   const { glutenFree, keto, vegan, protein: highProtein } = suitableForInfo
 
-  const iconStyle = 'h-10 w-10'
+  const iconStyle = 'h-8 w-8 md:h-10 md:w-10' // Responsive icon sizes
 
   const actions: ActionWithOnClick[] = [
     {
@@ -66,78 +67,77 @@ export const ProductCard = ({ product, onEdit, onDelete }: ProductCardProps) => 
 
   return (
     <>
-      <div className='w-full max-w-2xl overflow-hidden rounded-xl bg-slate-800 text-white shadow-md'>
-        <div className='flex max-h-52'>
-          <div className=''>
-            {imgUri && (
-              <LazyImage
-                src={IMG_MAPPER[imgUri]}
-                alt={title}
-                height={225}
-                width={200}
-                className='bg-center bg-no-repeat'
-              />
+      <div className='relative flex h-[40rem] w-full max-w-sm flex-col overflow-hidden rounded-xl bg-slate-800 text-white'>
+        {imgUri && (
+          <div className='h-[35rem] w-full overflow-hidden'>
+            <LazyImage src={IMG_MAPPER[imgUri]} alt={title} />
+          </div>
+        )}
+        <div className='flex h-full w-full flex-col justify-between overflow-hidden py-4 px-2'>
+          <h3 className='text-2xl font-bold md:text-3xl'>{title.toUpperCase()}</h3>
+          <p className='text-base text-gray-400 md:text-lg'>{`${description.short.slice(
+            0,
+            80,
+          )}...`}</p>
+          <div className='mb-4 flex gap-2'>
+            {vegan && (
+              <a
+                className={iconStyle}
+                data-tooltip-id='product-card-tooltip'
+                data-tooltip-content='Vegan'
+              >
+                <img src={veganIcon} className={iconStyle} alt='Vegan icon' />
+              </a>
+            )}
+            {highProtein && (
+              <a
+                className={iconStyle}
+                data-tooltip-id='product-card-tooltip'
+                data-tooltip-content='High Protein'
+              >
+                <img src={proteinIcon} className={iconStyle} alt='High protein icon' />
+              </a>
+            )}
+            {glutenFree && (
+              <a
+                className={iconStyle}
+                data-tooltip-id='product-card-tooltip'
+                data-tooltip-content='Gluten Free'
+              >
+                <img src={gfIcon} className={iconStyle} alt='Gluten Free icon' />
+              </a>
+            )}
+            {keto && (
+              <a
+                className={iconStyle}
+                data-tooltip-id='product-card-tooltip'
+                data-tooltip-content='Keto'
+              >
+                <img src={ketoIcon} className={iconStyle} alt='Keto icon' />
+              </a>
             )}
           </div>
-          <div className='flex w-2/3 flex-col gap-4 py-2 pl-4'>
-            <div className='text-3xl font-bold'>{title}</div>
-            <div className='flex gap-2'>
-              {vegan && (
-                <a
-                  className={iconStyle}
-                  data-tooltip-id='product-card-tooltip'
-                  data-tooltip-content='Vegan'
-                >
-                  <img src={veganIcon} className={iconStyle} alt='Vegan icon' />
-                </a>
-              )}
-              {highProtein && (
-                <a data-tooltip-id='product-card-tooltip' data-tooltip-content='High Protein'>
-                  <img src={proteinIcon} className={iconStyle} alt='High protein icon' />
-                </a>
-              )}
-              {glutenFree && (
-                <a
-                  className={iconStyle}
-                  data-tooltip-id='product-card-tooltip'
-                  data-tooltip-content='Gluten Free'
-                >
-                  <img src={gfIcon} className={iconStyle} alt='Gluten Free icon' />
-                </a>
-              )}
-              {keto && (
-                <a
-                  className={iconStyle}
-                  data-tooltip-id='product-card-tooltip'
-                  data-tooltip-content='Keto'
-                >
-                  <img src={ketoIcon} className={iconStyle} alt='Keto icon' />
-                </a>
-              )}
+          <div className='flex justify-between gap-4 text-lg'>
+            <div className='flex flex-col items-center'>
+              <div className='text-sm text-gray-400'>Calories</div>
+              <div>{calories}</div>
             </div>
-            <p className='text-base text-gray-400'>{description.short}</p>
-            <div className='mt-auto flex gap-4 text-lg'>
-              <div className='flex flex-col items-center'>
-                <div className='text-sm text-gray-400'>Calories</div>
-                <div>{calories}</div>
-              </div>
-              <div className='flex flex-col items-center'>
-                <div className='text-sm text-gray-400'>Carbs</div>
-                <div>{carbs}g</div>
-              </div>
-              <div className='flex flex-col items-center'>
-                <div className='text-sm text-gray-400'>Protein</div>
-                <div>{protein}g</div>
-              </div>
-              <div className='flex flex-col items-center'>
-                <div className='text-sm text-gray-400'>Fat</div>
-                <div>{fat}g</div>
-              </div>
+            <div className='flex flex-col items-center'>
+              <div className='text-sm text-gray-400'>Carbs</div>
+              <div>{carbs}g</div>
+            </div>
+            <div className='flex flex-col items-center'>
+              <div className='text-sm text-gray-400'>Protein</div>
+              <div>{protein}g</div>
+            </div>
+            <div className='flex flex-col items-center'>
+              <div className='text-sm text-gray-400'>Fat</div>
+              <div>{fat}g</div>
             </div>
           </div>
-          <div className='m-2'>
-            <ActionsMenu actions={actions} />
-          </div>
+        </div>
+        <div className='absolute top-2 right-1 p-1'>
+          <ActionsMenu actions={actions} />
         </div>
       </div>
       <Tooltip id='product-card-tooltip' />

@@ -17,7 +17,7 @@ export const AdminSection = ({ children }: AdminSection) => {
   return (
     <main>
       <h1 className='py-8 text-center text-5xl'>{generateTitleFromPath()}</h1>
-      <section className='px-8'>{children}</section>
+      <section className='p-8'>{children}</section>
     </main>
   )
 }

@@ -1,4 +1,4 @@
-import { LazyImage } from '~components/LazyImage'
+import { LazyImage } from '@packages/lazy-image'
 
 type RoundImageProps = {
   imgUri: string

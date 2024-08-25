@@ -2,7 +2,7 @@ import { ProductType } from '@packages/types'
 
 const API_URL = 'http://localhost:3000/api/products'
 
-export const getProducts = async (): Promise<ProductType[]> => {
+export const fetchProducts = async (): Promise<ProductType[]> => {
   const response = await fetch(API_URL)
   if (!response.ok) {
     throw new Error('Failed to fetch products')
@@ -11,7 +11,7 @@ export const getProducts = async (): Promise<ProductType[]> => {
   return data.products
 }
 
-export const getProductById = async (id: string): Promise<ProductType> => {
+export const fetchProductById = async (id: string): Promise<ProductType> => {
   const response = await fetch(`${API_URL}/${id}`)
   if (!response.ok) {
     throw new Error('Failed to fetch product')
@@ -20,7 +20,7 @@ export const getProductById = async (id: string): Promise<ProductType> => {
   return data
 }
 
-export const createProduct = async (product: ProductType): Promise<ProductType> => {
+export const createNewProduct = async (product: ProductType): Promise<ProductType> => {
   const response = await fetch(API_URL, {
     method: 'POST',
     headers: {
@@ -35,7 +35,7 @@ export const createProduct = async (product: ProductType): Promise<ProductType> 
   return data
 }
 
-export const updateProduct = async (
+export const updateExistingProduct = async (
   id: string,
   product: Partial<ProductType>,
 ): Promise<ProductType> => {
@@ -53,7 +53,7 @@ export const updateProduct = async (
   return data
 }
 
-export const deleteProduct = async (id: string): Promise<void> => {
+export const deleteExistingProduct = async (id: string): Promise<void> => {
   const response = await fetch(`${API_URL}/${id}`, {
     method: 'DELETE',
   })

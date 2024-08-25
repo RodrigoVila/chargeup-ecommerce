@@ -3,15 +3,15 @@ import { LazyLoadImage } from 'react-lazy-load-image-component'
 import 'react-lazy-load-image-component/src/effects/blur.css'
 
 type LazyImageProps = {
-  alt: string
-  height: string | number
   src: string
-  width: string | number
+  alt: string
+  height?: string | number
+  width?: string | number
   caption?: string
   className?: string
 }
 
-export const LazyImage = ({ alt, height, src, width, caption, className }: LazyImageProps) => {
+export const LazyImage = ({ src, alt, height, width, caption, className }: LazyImageProps) => {
   return (
     <div>
       <LazyLoadImage

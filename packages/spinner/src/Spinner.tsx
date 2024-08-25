@@ -4,17 +4,16 @@ import { twMerge } from 'tailwind-merge'
 type SpinnerPropsType = {
   children?: ReactNode
   svgClassName?: string
-  labelClasName?: string
+  labelClassName?: string // Fixed typo
 }
 
-export const Spinner = ({ children, svgClassName, labelClasName }: SpinnerPropsType) => {
+export const Spinner = ({ children, svgClassName, labelClassName }: SpinnerPropsType) => {
   return (
     <div role='status' className='flex flex-wrap items-center justify-center'>
       <svg
         aria-hidden='true'
-        className={twMerge('mr-2 h-8 w-8 animate-spin fill-gray-400 text-gray-300', svgClassName)}
+        className={twMerge('mr-2 h-8 w-8 animate-spin fill-white text-gray-600', svgClassName)}
         viewBox='0 0 100 101'
-        fill='bg-pink-400'
         xmlns='http://www.w3.org/2000/svg'
       >
         <path
@@ -26,7 +25,7 @@ export const Spinner = ({ children, svgClassName, labelClasName }: SpinnerPropsT
           fill='currentFill'
         />
       </svg>
-      <p className={labelClasName}>{children ?? 'Loading...'}</p>
+      {children && <p className={labelClassName}>{children}</p>}
     </div>
   )
 }

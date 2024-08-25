@@ -1,15 +1,16 @@
 {
   "name": "@packages/spinner",
   "version": "1.0.0",
+  "private": true,
   "description": "",
   "keywords": [],
   "license": "ISC",
   "type": "module",
-  "private":true,
   "exports": {
     ".": {
       "import": "./dist/package.spinner.es.js",
-      "require": "./dist/package.spinner.cjs.js"
+      "require": "./dist/package.spinner.cjs.js",
+      "types": "./dist/index.d.ts"
     }
   },
   "types": "./dist/index.d.ts",

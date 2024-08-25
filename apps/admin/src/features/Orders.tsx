@@ -61,7 +61,7 @@ export const OrderList = () => {
     )
   }
 
-  const handleEdit = (orderId: string) => {
+  const handleEdit = () => {
     showInfoNotification('Edit item will be avaiable soon')
   }
 
@@ -73,7 +73,7 @@ export const OrderList = () => {
   const handleActions = (actionType: Action['type'], orderId: string) => {
     const ACTIONS: Record<Action['type'], () => void> = {
       complete: () => handleMarkCompleted(orderId),
-      edit: () => handleEdit(orderId),
+      edit: () => handleEdit(),
       delete: () => handleDelete(orderId),
     }
 

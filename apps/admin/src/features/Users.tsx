@@ -2,9 +2,9 @@ import { twMerge } from 'tailwind-merge'
 import { IoTrashOutline } from 'react-icons/io5'
 import { BsPencil } from 'react-icons/bs'
 
-import { OrderType } from '@packages/types'
+import { ActionWithOnClick, OrderType } from '@packages/types'
 import { AdminSection } from '~/components/AdminSection'
-import { Action, Table } from '~/components/Table'
+import { Table } from '~/components/Table'
 
 const columns = ['Name', 'Phone', 'Type', 'Address', 'Total']
 
@@ -73,7 +73,7 @@ const data = orders.map((order) => ({
   Total: `$${order.totalAmount}`,
 }))
 
-const actions: Action[] = [
+const actions: ActionWithOnClick[] = [
   {
     label: 'Edit User Details',
     icon: <BsPencil />,

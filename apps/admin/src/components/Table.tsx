@@ -1,6 +1,6 @@
 import { ReactNode } from 'react'
 import { twMerge } from 'tailwind-merge'
-import { ActionsMenu } from '../ActionsMenu'
+import { ActionsMenu } from './ActionsMenu'
 import { OrderData } from '~/features/Orders'
 import { ActionWithType } from '@packages/types'
 
