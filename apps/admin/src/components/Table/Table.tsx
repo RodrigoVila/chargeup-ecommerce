@@ -2,18 +2,13 @@ import { ReactNode } from 'react'
 import { twMerge } from 'tailwind-merge'
 import { ActionsMenu } from '../ActionsMenu'
 import { OrderData } from '~/features/Orders'
-
-export type Action = {
-  label: string
-  icon: ReactNode
-  type: 'complete' | 'edit' | 'delete'
-}
+import { ActionWithType } from '@packages/types'
 
 export type TableProps = {
   columns: string[]
   data: any[]
-  getActions?: (order: OrderData) => Action[]
-  handleActions: (actionType: Action['type'], orderId: string) => void
+  getActions?: (order: OrderData) => ActionWithType[]
+  handleActions: (actionType: ActionWithType['type'], orderId: string) => void
 }
 
 const headerStyles = 'px-6 py-3 text-left text-s font-medium uppercase tracking-wider'

@@ -1,4 +1,5 @@
 import { TokenResponse } from '@react-oauth/google'
+import { ReactNode } from 'react'
 //Auth TODO: Divide type in login/register (w pass and extra data) user and logged in (email,token)
 export type UserRegisterType = {
   email: string
@@ -261,4 +262,21 @@ export type ContactFormStateType = {
 
 export type ContactFormActionType = ContactFormStateType & {
   type: string
+}
+
+// Actions Menu
+
+type GenericAction = {
+  label: string
+  icon: ReactNode
+}
+
+export type ActionType = 'complete' | 'edit' | 'delete'
+
+export type ActionWithType = GenericAction & {
+  type: ActionType
+}
+
+export type ActionWithOnClick = GenericAction & {
+  onClick: () => void
 }

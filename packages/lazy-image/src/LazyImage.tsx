@@ -4,9 +4,9 @@ import 'react-lazy-load-image-component/src/effects/blur.css'
 
 type LazyImageProps = {
   alt: string
-  height: string
+  height: string | number
   src: string
-  width: string
+  width: string | number
   caption?: string
   className?: string
 }

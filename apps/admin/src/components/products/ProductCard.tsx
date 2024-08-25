@@ -2,7 +2,7 @@ import { Tooltip } from 'react-tooltip'
 import { BsPencil } from 'react-icons/bs'
 import { IoTrashOutline } from 'react-icons/io5'
 
-import { ProductType } from '@packages/types'
+import { ActionWithOnClick, ProductType } from '@packages/types'
 import { LazyImage } from '@packages/lazy-image'
 
 import veganIcon from '@packages/assets/icons/vegan-white.png'
@@ -23,7 +23,6 @@ import peanutBallsImg from '@packages/assets/images/peanut-balls.jpg'
 import strawberriesCookiesImg from '@packages/assets/images/strawberry-cookies-tea.jpg'
 
 import { ActionsMenu } from '../ActionsMenu'
-import { Action } from '../Table'
 
 type ProductCardProps = {
   product: ProductType
@@ -52,7 +51,7 @@ export const ProductCard = ({ product, onEdit, onDelete }: ProductCardProps) => 
 
   const iconStyle = 'h-10 w-10'
 
-  const actions: Action[] = [
+  const actions: ActionWithOnClick[] = [
     {
       label: 'Edit product',
       icon: <BsPencil />,
@@ -74,7 +73,9 @@ export const ProductCard = ({ product, onEdit, onDelete }: ProductCardProps) => 
               <LazyImage
                 src={IMG_MAPPER[imgUri]}
                 alt={title}
-                className='h-56 w-52 bg-center bg-no-repeat'
+                height={225}
+                width={200}
+                className='bg-center bg-no-repeat'
               />
             )}
           </div>

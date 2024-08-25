@@ -1,16 +1,26 @@
+import { useState } from 'react'
 import { BsThreeDotsVertical } from 'react-icons/bs'
 import { FloatingMenu, FloatingMenuContent, FloatingMenuTrigger } from '@packages/floating-menu'
-import { Action } from './Table'
-import { useState } from 'react'
+import { ActionType, ActionWithOnClick, ActionWithType } from '@packages/types'
+
+type Action = ActionWithType | ActionWithOnClick
 
 type ActionMenuProps = {
   actions: Action[]
-  rowId: string
-  handleActions: (actionType: Action['type'], orderId: string) => void
+  rowId?: string
+  handleActions?: (actionType: ActionType, orderId: string) => void
 }
 
 export const ActionsMenu = ({ actions, rowId, handleActions }: ActionMenuProps) => {
   const [isOpen, setOpen] = useState(false)
+
+  const handleClick = (action: Action) => {
+    if ('type' in action && rowId && handleActions) {
+      handleActions(action.type, rowId)
+    } else if ('onClick' in action) {
+      action.onClick()
+    }
+  }
   return (
     <FloatingMenu open={isOpen} onOpenChange={setOpen}>
       <FloatingMenuTrigger
@@ -26,7 +36,7 @@ export const ActionsMenu = ({ actions, rowId, handleActions }: ActionMenuProps) 
         {actions.map((action) => (
           <button
             key={action.label}
-            onClick={() => handleActions(action.type, rowId)}
+            onClick={() => handleClick(action)}
             className='flex items-center gap-4 py-2 px-4 duration-150 hover:bg-blue-100 hover:text-black'
           >
             <span className='mb-1'>{action.icon}</span>
