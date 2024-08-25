@@ -1,22 +1,20 @@
-import AdminClientInvite from '~/components/ClientInvite'
+import { Button } from '@packages/button'
 
 export const Home = () => {
   return (
     <main className='xl:mt-18 mx-auto mt-10 max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:w-max lg:px-8 xl:w-max'>
-      <div className=''>
+      <div className='flex flex-col items-center gap-4'>
         <h1 className='text-center text-4xl font-extrabold tracking-tight text-indigo-600 sm:text-5xl md:text-6xl'>
           <span className='block lg:inline'>ChargeUP</span>
-          <span className='block xl:inline'>Online Business</span>
+          <span className='ml-2 block xl:inline'>Online Business</span>
         </h1>
-        <div className='xl:align-center xl:object-center'>
-          <p className='xl:align-right 2xl:align-right mt-3 text-base text-gray-400 sm:mx-auto sm:mt-5 sm:max-w-xl sm:text-lg md:mt-5 md:text-xl lg:mx-0 xl:object-right '>
-            Bienvenido a tu Dashboard de ChargeUP E-commerce. Debajo encontraras algunos de los
-            elementos destacados, y puedes acceder en detalle a todas las opciones del menu
-            principal en la parte superior.
-          </p>
-        </div>
+        <p className='max-w-xl text-center text-sm text-gray-300 xl:text-2xl'>
+          Bienvenido a tu Dashboard de ChargeUP E-commerce. Debajo encontraras algunos de los
+          elementos destacados, y puedes acceder en detalle a todas las opciones del menu principal
+          en la parte superior.
+        </p>
       </div>
-      <AdminClientInvite />
+      <Button>Invite a new client</Button>
     </main>
   )
 }

@@ -1,14 +1,11 @@
-import { twMerge } from 'tailwind-merge'
-import { IoTrashOutline } from 'react-icons/io5'
-import { BsPencil } from 'react-icons/bs'
+import { useState } from 'react'
+import { ProductType } from '@packages/types'
+
+import { AdminSection } from '~/components/AdminSection'
+import { ProductCard } from '~/components/products/ProductCard'
+import { ProductModal } from '~/components/products/ProductModal'
 
 import productsMock from '../mocks/products.json'
-import { AdminSection } from '~/components/AdminSection'
-import { Action } from '~/components/Table'
-import ProductCard from '~/components/products/ProductCard'
-import { ProductType } from '@packages/types'
-import { useState } from 'react'
-import { ProductModal } from '~/components/products/ProductModal'
 
 export const ProductList = () => {
   const [isModalOpen, setModalOpen] = useState(false)
@@ -29,7 +26,6 @@ export const ProductList = () => {
       <div className='flex flex-wrap justify-center gap-6'>
         {products.map((product) => (
           <ProductCard product={product} onEdit={handleEdit} onDelete={handleDelete} />
-          // <Product product={product} />
         ))}
       </div>
       {selectedProduct && <ProductModal isOpen={isModalOpen} product={selectedProduct} />}

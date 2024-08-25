@@ -143,5 +143,3 @@ export const ProductCard = ({ product, onEdit, onDelete }: ProductCardProps) => 
     </>
   )
 }
-
-export default ProductCard
