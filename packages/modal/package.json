@@ -9,7 +9,8 @@
   "exports": {
     ".": {
       "import": "./dist/package.modal.es.js",
-      "require": "./dist/package.modal.cjs.js"
+      "require": "./dist/package.modal.cjs.js",
+      "types": "./dist/index.d.ts"
     }
   },
   "types": "./dist/index.d.ts",
@@ -26,6 +27,10 @@
     "test:ui": "vitest --ui",
     "ts:emit": "tsc --noEmit false --declaration --emitDeclarationOnly --declarationDir dist/",
     "typecheck": "tsc"
+  },
+  "dependencies": {
+    "@floating-ui/react": "^0.26.22",
+    "react-icons": "^4.2.0"
   },
   "devDependencies": {
     "@packages/config": "workspace:*",
@@ -52,9 +57,5 @@
   "peerDependencies": {
     "react": "^16.8.0 || 17.x || 18.x",
     "react-dom": "^16.8.0 || 17.x || 18.x"
-  },
-  "dependencies": {
-    "@floating-ui/react": "^0.26.22",
-    "react-icons": "^4.2.0"
   }
 }

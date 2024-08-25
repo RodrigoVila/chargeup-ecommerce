@@ -9,7 +9,8 @@
   "exports": {
     ".": {
       "import": "./dist/package.button.es.js",
-      "require": "./dist/package.button.cjs.js"
+      "require": "./dist/package.button.cjs.js",
+      "types": "./dist/index.d.ts"
     }
   },
   "types": "./dist/index.d.ts",

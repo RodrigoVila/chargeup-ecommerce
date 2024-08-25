@@ -1,15 +1,16 @@
 {
   "name": "@packages/input",
   "version": "1.0.0",
+  "private": true,
   "description": "",
   "keywords": [],
   "license": "ISC",
   "type": "module",
-  "private":true,
   "exports": {
     ".": {
       "import": "./dist/package.input.es.js",
-      "require": "./dist/package.input.cjs.js"
+      "require": "./dist/package.input.cjs.js",
+      "types": "./dist/index.d.ts"
     }
   },
   "types": "./dist/index.d.ts",

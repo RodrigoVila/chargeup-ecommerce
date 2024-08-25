@@ -9,7 +9,8 @@
   "exports": {
     ".": {
       "import": "./dist/package.lazy-image.es.js",
-      "require": "./dist/package.lazy-image.cjs.js"
+      "require": "./dist/package.lazy-image.cjs.js",
+      "types": "./dist/index.d.ts"
     }
   },
   "types": "./dist/index.d.ts",
