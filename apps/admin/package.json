@@ -21,6 +21,7 @@
     "@packages/modal": "workspace:*",
     "@packages/models": "workspace:*",
     "@packages/spinner": "workspace:*",
+    "@packages/toast-notifications": "workspace:*",
     "@packages/types": "workspace:*",
     "@tanstack/react-query": "^5.51.23",
     "autoprefixer": "^10.4.13",

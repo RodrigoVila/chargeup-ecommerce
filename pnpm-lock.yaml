@@ -76,6 +76,9 @@ importers:
       '@packages/spinner':
         specifier: workspace:*
         version: link:../../packages/spinner
+      '@packages/toast-notifications':
+        specifier: workspace:*
+        version: link:../../packages/toast-notifications
       '@packages/types':
         specifier: workspace:*
         version: link:../../packages/types
@@ -230,9 +233,6 @@ importers:
       react-dom:
         specifier: ^17.0.2
         version: 17.0.2(react@17.0.2)
-      react-hot-toast:
-        specifier: ^2.1.1
-        version: 2.1.1(csstype@3.1.2)(react-dom@17.0.2)(react@17.0.2)
       react-icons:
         specifier: ^4.2.0
         version: 4.2.0(react@17.0.2)
@@ -898,6 +898,82 @@ importers:
       postcss:
         specifier: ^8.4.26
         version: 8.4.26
+      tailwind-merge:
+        specifier: ^1.14.0
+        version: 1.14.0
+      tailwindcss:
+        specifier: ^3.3.3
+        version: 3.3.3
+      typescript:
+        specifier: ^4.9.5
+        version: 4.9.5
+      vite:
+        specifier: ^4.4.4
+        version: 4.4.4(@types/node@20.4.2)
+      vitest:
+        specifier: ^0.33.0
+        version: 0.33.0(@vitest/ui@0.33.0)(jsdom@22.1.0)
+
+  packages/toast-notifications:
+    dependencies:
+      react:
+        specifier: ^16.8.0 || 17.x || 18.x
+        version: 18.3.1
+      react-dom:
+        specifier: ^16.8.0 || 17.x || 18.x
+        version: 18.3.1(react@18.3.1)
+      react-toastify:
+        specifier: ^10.0.5
+        version: 10.0.5(react-dom@18.3.1)(react@18.3.1)
+    devDependencies:
+      '@packages/config':
+        specifier: workspace:*
+        version: link:../config
+      '@packages/eslint-config':
+        specifier: workspace:*
+        version: link:../config/eslint-config
+      '@packages/spinner':
+        specifier: workspace:*
+        version: link:../spinner
+      '@testing-library/jest-dom':
+        specifier: ^5.17.0
+        version: 5.17.0
+      '@testing-library/react':
+        specifier: ^14.0.0
+        version: 14.0.0(react-dom@18.3.1)(react@18.3.1)
+      '@testing-library/user-event':
+        specifier: ^14.4.3
+        version: 14.4.3(@testing-library/dom@9.3.1)
+      '@types/react':
+        specifier: 17.0.2
+        version: 17.0.2
+      '@types/react-dom':
+        specifier: 17.0.2
+        version: 17.0.2
+      '@types/testing-library__jest-dom':
+        specifier: ^5.14.8
+        version: 5.14.8
+      '@vitejs/plugin-react':
+        specifier: ^4.0.3
+        version: 4.3.1(vite@4.4.4)
+      '@vitest/coverage-c8':
+        specifier: ^0.33.0
+        version: 0.33.0(vitest@0.33.0)
+      '@vitest/ui':
+        specifier: ^0.33.0
+        version: 0.33.0(vitest@0.33.0)
+      autoprefixer:
+        specifier: ^10.4.14
+        version: 10.4.14(postcss@8.4.41)
+      eslint-config-custom:
+        specifier: ^0.0.0
+        version: 0.0.0(eslint@8.45.0)(typescript@4.9.5)
+      jsdom:
+        specifier: ^22.1.0
+        version: 22.1.0
+      postcss:
+        specifier: ^8.4.26
+        version: 8.4.41
       tailwind-merge:
         specifier: ^1.14.0
         version: 1.14.0
@@ -2269,7 +2345,7 @@ packages:
       fast-glob: 3.3.1
       is-glob: 4.0.3
       open: 9.1.0
-      picocolors: 1.0.0
+      picocolors: 1.0.1
       tslib: 2.6.1
 
   /@polka/url@1.0.0-next.21:
@@ -5170,14 +5246,6 @@ packages:
       merge2: 1.4.1
       slash: 4.0.0
 
-  /goober@2.1.13(csstype@3.1.2):
-    resolution: {integrity: sha512-jFj3BQeleOoy7t93E9rZ2de+ScC4lQICLwiAQmKMg9F6roKGaLSHoCDYKkWlSafg138jejvq/mTdvmnwDQgqoQ==}
-    peerDependencies:
-      csstype: ^3.0.10
-    dependencies:
-      csstype: 3.1.2
-    dev: false
-
   /gopd@1.0.1:
     resolution: {integrity: sha512-d65bNlIadxvpb/A2abVdlqKqV563juRnZ1Wtk6s1sIR8uNsXR70xqIzVqxVf1eTqDunwT2MkczEeaezCKTZhwA==}
     dependencies:
@@ -6529,20 +6597,6 @@ packages:
       react: 18.3.1
       scheduler: 0.23.2
 
-  /react-hot-toast@2.1.1(csstype@3.1.2)(react-dom@17.0.2)(react@17.0.2):
-    resolution: {integrity: sha512-Odrp4wue0fHh0pOfZt5H+9nWCMtqs3wdlFSzZPp7qsxfzmbE26QmGWIh6hG43CukiPeOjA8WQhBJU8JwtWvWbQ==}
-    engines: {node: '>=10'}
-    peerDependencies:
-      react: '>=16'
-      react-dom: '>=16'
-    dependencies:
-      goober: 2.1.13(csstype@3.1.2)
-      react: 17.0.2
-      react-dom: 17.0.2(react@17.0.2)
-    transitivePeerDependencies:
-      - csstype
-    dev: false
-
   /react-icons@4.2.0(react@17.0.2):
     resolution: {integrity: sha512-rmzEDFt+AVXRzD7zDE21gcxyBizD/3NqjbX6cmViAgdqfJ2UiLer8927/QhhrXQV7dEj/1EGuOTPp7JnLYVJKQ==}
     peerDependencies:
@@ -6669,6 +6723,17 @@ packages:
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
       react-transition-group: 4.4.5(react-dom@18.3.1)(react@18.3.1)
+    dev: false
+
+  /react-toastify@10.0.5(react-dom@18.3.1)(react@18.3.1):
+    resolution: {integrity: sha512-mNKt2jBXJg4O7pSdbNUfDdTsK9FIdikfsIE/yUCxbAEXl4HMyJaivrVFcn3Elvt5xvCQYhUZm+hqTIu1UXM3Pw==}
+    peerDependencies:
+      react: '>=18'
+      react-dom: '>=18'
+    dependencies:
+      clsx: 2.1.1
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
     dev: false
 
   /react-tooltip@5.28.0(react-dom@18.3.1)(react@18.3.1):
