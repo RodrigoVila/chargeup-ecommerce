@@ -27,7 +27,7 @@ export const NavItem = ({ label, icon, className, disabled, ...rest }: NavItemPr
         {icon ? <span className='mb-1'>{icon}</span> : null}
 
         <AnimatedBorderBottom disabled={disabled}>
-          <span className='hover:font-dinBold xl:font-dinMedium mb-1 block text-sm transition-all duration-300 ease-in-out md:inline-block md:pb-0 lg:text-base'>
+          <span className='hover:font-dinBold xl:font-dinMedium mb-1 block text-xl transition-all duration-300 ease-in-out md:inline-block md:pb-0 lg:text-base'>
             {label}
           </span>
         </AnimatedBorderBottom>

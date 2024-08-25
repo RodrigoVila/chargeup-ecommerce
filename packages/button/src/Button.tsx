@@ -8,7 +8,7 @@ type ButtonProps = Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'type' | 'class
   leftIconComponent?: ReactNode
   rightIconComponent?: ReactNode
   isSubmit?: boolean
-  type?: 'filled' | 'outlined'
+  variant?: 'filled' | 'outlined'
   loading?: boolean
   className?: string
   labelClassName?: string
@@ -18,20 +18,22 @@ export const Button = ({
   leftIconComponent,
   rightIconComponent,
   isSubmit,
-  type = 'filled',
+  variant = 'filled',
   loading = false,
   className = '',
   labelClassName = '',
   ...rest
 }: ButtonProps) => {
   const baseStyles =
-    'group z-20 flex w-full cursor-pointer items-center justify-center rounded-md py-2 py-2 px-4'
+    'group flex w-full cursor-pointer items-center justify-center rounded-md py-2 py-2 px-4'
 
-  const typeStyles =
-    type === 'outlined' ? 'border border-black hover:bg-black' : 'bg-purple-600 hover:bg-purple-500'
+  const variantStyles =
+    variant === 'outlined'
+      ? 'border border-black hover:bg-black'
+      : 'bg-purple-600 hover:bg-purple-500'
 
   const textStyles =
-    type === 'outlined' ? 'text-black group-hover:text-white text-sm' : 'text-white text-sm'
+    variant === 'outlined' ? 'text-black group-hover:text-white text-sm' : 'text-white text-sm'
 
   const iconStyle = 'h-full mx-1'
 
@@ -45,7 +47,7 @@ export const Button = ({
     </button>
   ) : (
     <button
-      className={twMerge(baseStyles, typeStyles, className, disabledStyles)}
+      className={twMerge(baseStyles, variantStyles, className, disabledStyles)}
       type={isSubmit ? 'submit' : 'button'}
       role={isSubmit ? 'link' : 'button'}
       {...rest}
