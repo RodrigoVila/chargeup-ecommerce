@@ -1,5 +1,3 @@
-//@ts-nocheck
-// Planning to move out of sagas so is not worth investing time typing them
 import { fetchProductsFromStoreError, fetchProductsFromStoreSuccess } from '~redux/actions/products'
 import { FETCH_PRODUCTS } from '~constants/ActionTypes'
 import { call, put, takeEvery } from 'redux-saga/effects'

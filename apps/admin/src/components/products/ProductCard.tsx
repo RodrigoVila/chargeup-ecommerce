@@ -1,4 +1,3 @@
-import React from 'react'
 import { Tooltip } from 'react-tooltip'
 import { BsPencil } from 'react-icons/bs'
 import { IoTrashOutline } from 'react-icons/io5'

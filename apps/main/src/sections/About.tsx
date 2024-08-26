@@ -4,7 +4,7 @@ import { Section } from './components'
 export const AboutSection = () => {
   const { formatMessage } = useIntl()
   return (
-    <Section id='about' title={formatMessage({ id: 'ABOUT_TITLE' })} bgImage='wooden.jpg' overlay>
+    <Section id='about' title={formatMessage({ id: 'ABOUT_TITLE' })} overlay>
       <p className='py-2'>{formatMessage({ id: 'ABOUT_PARAGRAPH_1' })}</p>
       <p className='py-2'>{formatMessage({ id: 'ABOUT_PARAGRAPH_2' })}</p>
       <p className='py-2'>{formatMessage({ id: 'ABOUT_PARAGRAPH_3' })}</p>

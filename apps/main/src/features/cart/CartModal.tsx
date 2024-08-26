@@ -5,7 +5,7 @@ import { useAppActions, useAppSelector } from '~hooks'
 import { Modal } from '@packages/modal'
 import { DeliveryType, OrderType, UserDetailsType } from '@packages/types'
 
-import { CartSummary, DeliveryOptions } from './components'
+import { DeliveryOptions } from './components'
 import { DeliveryDataForm } from './components/DeliveryDataForm'
 
 type StepsType = {
@@ -44,7 +44,8 @@ export const CartModal = () => {
   }
 
   const Steps: StepsType = {
-    1: <CartSummary products={cartItems} total={totalSum} next={nextStep} />,
+    1: <></>,
+    // 1: <CartSummary products={cartItems} total={totalSum} next={nextStep} />,
     2: (
       <DeliveryOptions
         deliveryType={deliveryType}

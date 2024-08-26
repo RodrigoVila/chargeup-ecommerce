@@ -4,7 +4,7 @@ import { useNavbarOpacity } from '~hooks'
 
 import {
   BurgerButton,
-  CartButton,
+  // CartButton,
   LanguageSelector,
   Logo,
   NavItems,
@@ -31,7 +31,7 @@ export const Navbar = () => {
       <NavItems type='navbar' className='flex-1' />
       <div className='z-10 flex flex-1 items-center justify-end md:mr-3 md:gap-2'>
         <UserButton />
-        <CartButton />
+        {/* <CartButton /> */}
       </div>
     </nav>
   )

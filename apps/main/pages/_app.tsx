@@ -1,3 +1,4 @@
+import { AppProps } from 'next/app'
 import Head from 'next/head'
 import { Provider } from 'react-redux'
 import { Elements } from '@stripe/react-stripe-js'
@@ -18,32 +19,24 @@ const messages = { en, es }
 // Make sure to call `loadStripe` outside of a component’s render to avoid
 // recreating the `Stripe` object on every render.
 
-const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY)
+const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!)
 
-function MyApp({ Component, pageProps: { session, ...pageProps } }) {
+function MyApp({ Component, pageProps }: AppProps) {
   const { locale } = useRouter()
   const options = {
     // passing the client secret obtained from the server
     clientSecret: process.env.STRIPE_SECRET_KEY,
   }
   return (
-    <>
-      <Head>
-        <link rel='preload' href='/fonts/DINPro-Medium.ttf' as='font' crossOrigin='' />
-        <link rel='stylesheet' href='https://rsms.me/inter/inter.css'></link>
-        <title>Charge UP Barcelona</title>
-        <script src='https://cdn.tailwindcss.com'></script>
-      </Head>
-      <Provider store={store}>
-        <GoogleOAuthProvider clientId={process.env.NEXT_PUBLIC_GOOGLE_OAUTH_ID_CLIENT!}>
-          <Elements stripe={stripePromise} options={options}>
-            <IntlProvider locale={locale} messages={messages[locale]}>
-              <Component {...pageProps} />
-            </IntlProvider>
-          </Elements>
-        </GoogleOAuthProvider>
-      </Provider>
-    </>
+    <Provider store={store}>
+      <GoogleOAuthProvider clientId={process.env.NEXT_PUBLIC_GOOGLE_OAUTH_ID_CLIENT!}>
+        <Elements stripe={stripePromise} options={options}>
+          <IntlProvider locale={locale} messages={messages[locale]}>
+            <Component {...pageProps} />
+          </IntlProvider>
+        </Elements>
+      </GoogleOAuthProvider>
+    </Provider>
   )
 }
 

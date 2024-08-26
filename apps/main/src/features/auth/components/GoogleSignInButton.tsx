@@ -1,7 +1,6 @@
 import { useGoogleLogin } from '@react-oauth/google'
-import Image from 'next/image'
-
-import { Button } from '@packages/button'
+import Image from 'next/legacy/image'
+import googleLogo from '@packages/assets/images/google_logo.svg'
 
 import { useAppActions } from '~hooks'
 import { GoogleSignInErrorResponse, GoogleSignInSuccessResponse } from '@packages/types'
@@ -27,7 +26,7 @@ export const GoogleSignInButton = () => {
       onClick={() => login()}
     >
       <Image
-        src='/images/google_logo.svg'
+        src={googleLogo}
         alt='Google logo'
         data-atf='true'
         data-iml='513'

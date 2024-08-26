@@ -1,5 +1,6 @@
-import Image from 'next/image'
+import Image from 'next/legacy/image'
 import { useMemo } from 'react'
+import cartImg from '@packages/assets/images/cart_white.svg'
 
 import { useAppActions, useAppSelector } from '~hooks'
 
@@ -20,10 +21,10 @@ export const CartButton = () => {
       >
         <Image
           className='text-white'
-          objectFit='contain'
-          layout='fill'
-          src='/images/cart_white.svg'
-          alt=''
+          src={cartImg}
+          alt='Cart Icon'
+          // fill
+          sizes='(max-width: 768px) 100vw, 50vw'
         />
       </button>
       {cartLength > 0 && (

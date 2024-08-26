@@ -48,7 +48,6 @@ export const ContactSection = () => {
     <Section
       id='contact'
       title={formatMessage({ id: 'CONTACT' })}
-      bgImage='peanut-butter.jpg'
       overlay
       bodyClassName='w-full !max-w-xl'
     >

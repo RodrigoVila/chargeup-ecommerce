@@ -1,4 +1,5 @@
-import Image from 'next/image'
+import Image from 'next/legacy/image'
+import ketoImg from '@packages/assets/images/keto-graphic2.png'
 
 import { Section } from './components'
 import { useIntl } from 'react-intl'
@@ -14,12 +15,7 @@ export const KetoSection = () => {
         <p className='py-2'>{formatMessage({ id: 'KETO_PARAGRAPH_4' })}</p>
         <p className='py-2'>{formatMessage({ id: 'KETO_PARAGRAPH_5' })}</p>
         <div className='h-screen/2 relative my-8 w-full bg-contain'>
-          <Image
-            src='/images/keto-graphic2.png'
-            alt='Keto Diet Graphic'
-            objectFit='contain'
-            layout='fill'
-          />
+          <Image src={ketoImg} alt='Keto Diet Graphic' objectFit='contain' layout='fill' />
         </div>
         <h4 className='font-dinBold w-full pb-4 pt-8 text-3xl lg:text-left'>
           {formatMessage({ id: 'KETO_TIPICAL_FOOD_TITLE' })}

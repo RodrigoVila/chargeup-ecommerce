@@ -1,4 +1,4 @@
-import Image from 'next/image'
+import Image from 'next/legacy/image'
 import { useRouter } from 'next/router'
 import { SelectHTMLAttributes } from 'react'
 import { twMerge } from 'tailwind-merge'
@@ -20,10 +20,10 @@ export const LanguageSelector = ({ className, ...rest }: LanguageDetectorProps) 
       {...rest}
       onChange={(e) => changeLocale(e.target.value)}
     >
-      <option key='es' value='es' selected={'es' === locale}>
+      <option key='es' value='es' defaultChecked={'es' === locale}>
         🇪🇸
       </option>
-      <option key='en' value='en' selected={'en' === locale}>
+      <option key='en' value='en' defaultChecked={'en' === locale}>
         🇬🇧
       </option>
     </select>

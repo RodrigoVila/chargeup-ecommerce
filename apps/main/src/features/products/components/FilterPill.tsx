@@ -1,4 +1,4 @@
-import Image from 'next/image'
+import Image from 'next/legacy/image'
 import { MouseEvent, useEffect, useState } from 'react'
 
 import { colors } from '~constants/colors'

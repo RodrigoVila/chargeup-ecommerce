@@ -1,5 +1,5 @@
 export { BurgerButton } from './BurgerButton'
-export { CartButton } from './CartButton'
+// export { CartButton } from './CartButton'
 export { DrawerModal } from './DrawerModal'
 export { LanguageSelector } from './LanguageSelector'
 export { LoginButton } from './LoginButton'

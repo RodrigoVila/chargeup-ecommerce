@@ -1,23 +1,37 @@
-import Image from 'next/image'
+import Image, { StaticImageData } from 'next/legacy/image'
 import { ReactNode } from 'react'
 import { twMerge } from 'tailwind-merge'
+
+import aboutImg from '@packages/assets/images/wooden.jpg'
+import cakesImg from '@packages/assets/images/cake.jpg'
+import contactImg from '@packages/assets/images/peanut-butter.jpg'
+import productsImg from '@packages/assets/images/purpleTexture.jpeg'
+import welcomeImg from '@packages/assets/images/welcome.jpg'
+import whyUsImg from '@packages/assets/images/keto-scones-cheese.jpg'
 
 import { BackgroundOverlay } from '~components/BackgroundOverlay'
 
 type SectionProps = {
   id: string
   title?: string
-  bgImage?: string | null
   overlay?: boolean
   disabled?: boolean
   className?: string
   children: ReactNode
   bodyClassName?: string
 }
+
+const IMG_MAPPER: Record<string, StaticImageData> = {
+  about: aboutImg,
+  cakes: cakesImg,
+  contact: contactImg,
+  products: productsImg,
+  welcome: welcomeImg,
+  whyus: whyUsImg,
+}
 export const Section = ({
   id,
   title,
-  bgImage = null,
   overlay,
   disabled = false,
   className,
@@ -34,9 +48,9 @@ export const Section = ({
         className ?? defaultStyles
       }`}
     >
-      {bgImage && (
+      {IMG_MAPPER[id] && (
         <Image
-          src={`/images/${bgImage}`}
+          src={IMG_MAPPER[id]}
           alt='Section background image'
           className='z-0 h-screen'
           layout='fill'
