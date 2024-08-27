@@ -1,13 +1,5 @@
 import { useEffect } from 'react'
-import { Provider } from 'react-redux'
-import { useRouter } from 'next/router'
-import { Toaster } from 'react-hot-toast'
-import { IntlProvider } from 'react-intl'
-import { Elements } from '@stripe/react-stripe-js'
-import { loadStripe } from '@stripe/stripe-js'
-import { GoogleOAuthProvider } from '@react-oauth/google'
 
-import store from '~redux/store'
 import { useAppActions, useAppSelector } from '~hooks'
 
 import { CartModal } from '~features/cart/CartModal'
@@ -34,28 +26,14 @@ import {
 } from '~sections'
 
 import { LOCAL_STORAGE_DATA_KEY } from '~constants/keys'
-
-import es from '../../lang/es.json'
-import en from '../../lang/en.json'
-
-const messages = { en, es }
-
-// Make sure to call `loadStripe` outside of a component’s render to avoid
-// recreating the `Stripe` object on every render.
-
-const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!)
+import { useRouter } from 'next/router'
+import { Toaster } from 'react-hot-toast'
 
 const MainScreen = () => {
   const router = useRouter()
   const { checkUserToken } = useAppActions()
   const { checkoutSession } = useAppSelector()
 
-  const typedLocale = router.locale as 'en' | 'es'
-
-  const options = {
-    // passing the client secret obtained from the server
-    clientSecret: process.env.STRIPE_SECRET_KEY,
-  }
   useEffect(() => {
     const getDataFromStorage = () => {
       const storedUser = getValueFromLocalStorage(LOCAL_STORAGE_DATA_KEY)
@@ -71,40 +49,32 @@ const MainScreen = () => {
   }, [checkoutSession, router])
 
   return (
-    <Provider store={store}>
-      <GoogleOAuthProvider clientId={process.env.NEXT_PUBLIC_GOOGLE_OAUTH_ID_CLIENT!}>
-        <Elements stripe={stripePromise} options={options}>
-          <IntlProvider locale={typedLocale ?? ''} messages={messages[typedLocale] || messages.en}>
-            <div className='relative'>
-              {/* Toast messages component  */}
-              <Toaster />
-              {/* Navigation  */}
-              <Navbar />
+    <div className='relative'>
+      {/* Toast messages component  */}
+      <Toaster />
+      {/* Navigation  */}
+      <Navbar />
 
-              {/* Sections  */}
-              <WelcomeSection />
-              <AboutSection />
-              <ProductsSection />
-              <CakesSection />
-              <KetoSection />
-              <WhyUsSection />
-              <ContactSection />
-              <FooterSection />
+      {/* Sections  */}
+      <WelcomeSection />
+      <AboutSection />
+      <ProductsSection />
+      <CakesSection />
+      <KetoSection />
+      <WhyUsSection />
+      <ContactSection />
+      <FooterSection />
 
-              {/* Modals  */}
-              <CartModal />
-              <CheckoutModal />
-              <DrawerModal />
-              <FiltersModal />
-              <LoginModal />
-              <UserModal />
-              <ProductDescModal />
-              <ProductExtrasModal />
-            </div>
-          </IntlProvider>
-        </Elements>
-      </GoogleOAuthProvider>
-    </Provider>
+      {/* Modals  */}
+      <CartModal />
+      <CheckoutModal />
+      <DrawerModal />
+      <FiltersModal />
+      <LoginModal />
+      <UserModal />
+      <ProductDescModal />
+      <ProductExtrasModal />
+    </div>
   )
 }
 
