@@ -14,8 +14,6 @@ import {
 export const Navbar = () => {
   const { backgroundOpacity } = useNavbarOpacity()
 
-  console.log({ backgroundOpacity })
-
   return (
     <nav
       className={twMerge(

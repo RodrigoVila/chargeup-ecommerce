@@ -56,11 +56,6 @@ const MainScreen = () => {
     // passing the client secret obtained from the server
     clientSecret: process.env.STRIPE_SECRET_KEY,
   }
-  console.log({
-    var1: process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY,
-    var2: process.env.STRIPE_SECRET_KEY,
-  })
-
   useEffect(() => {
     const getDataFromStorage = () => {
       const storedUser = getValueFromLocalStorage(LOCAL_STORAGE_DATA_KEY)

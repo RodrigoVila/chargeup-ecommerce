@@ -27,8 +27,6 @@ export const CartModal = () => {
 
   const onSubmit = async (userData?: UserDetailsType) => {
     setLoading(true)
-    console.log('userData', userData)
-    console.log('userLogin', userLogin)
     const newOrder: OrderType = {
       id: uuidv4(),
       name: userData?.name || userLogin?.name,
