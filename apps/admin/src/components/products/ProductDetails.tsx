@@ -49,7 +49,7 @@ const AdminProductDetails = ({ product }: AdminProductDetailsProps) => {
       <CloseModalButton
         color='black'
         onClose={closeDrawerModal}
-        className='absolute right-2 top-2 z-30'
+        className='absolute right-2 top-2'
       /> */}
       <div className='mx-auto max-w-2xl rounded-xl px-4 py-2 shadow-lg sm:px-6 sm:py-8 lg:max-w-xl lg:px-8'>
         {isEdit ? (

@@ -16,7 +16,7 @@ export const ModalContent = React.forwardRef<HTMLDivElement, React.HTMLProps<HTM
 
     return (
       <FloatingPortal>
-        <FloatingOverlay className='bg-black bg-opacity-60' lockScroll>
+        <FloatingOverlay className='bg-black/80' lockScroll>
           <FloatingFocusManager context={floatingContext}>
             <div
               ref={ref}

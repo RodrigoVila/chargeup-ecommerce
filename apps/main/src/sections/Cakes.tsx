@@ -4,7 +4,7 @@ import { Section } from './components'
 export const CakesSection = () => {
   const { formatMessage } = useIntl()
   return (
-    <Section id='cakes' title='Cakes' overlay>
+    <Section id='cakes' title='Cakes'>
       <p className='py-2'>{formatMessage({ id: 'CAKES_PARAGRAPH_1' })} </p>
       <p className='py-2'>{formatMessage({ id: 'CAKES_PARAGRAPH_2' })} </p>
       <p className='py-2'>{formatMessage({ id: 'CAKES_PARAGRAPH_3' })} </p>

@@ -1,18 +1,6 @@
 import { useEffect } from 'react'
-
-import { useAppActions, useAppSelector } from '~hooks'
-
-import { CartModal } from '~features/cart/CartModal'
-import { CheckoutModal } from '~features/checkout/CheckoutModal'
-import { DrawerModal } from '~features/navbar/components/DrawerModal'
-import { ProductExtrasModal } from '~features/products/components/ProductExtrasModal'
-import { FiltersModal } from '~features/products/components/FiltersModal'
-import { LoginModal } from '~features/auth/LoginModal'
-import { ProductDescModal } from '~features/products/components/ProductDescModal'
-import { UserModal } from '~features/navbar/components/UserModal'
-import { Navbar } from '~features/navbar/Navbar'
-
-import { getValueFromLocalStorage } from '~utils/localStorage'
+import { useRouter } from 'next/router'
+import { Toaster } from 'react-hot-toast'
 
 import {
   AboutSection,
@@ -20,14 +8,15 @@ import {
   ContactSection,
   FooterSection,
   KetoSection,
-  ProductsSection,
+  Products,
   WelcomeSection,
   WhyUsSection,
 } from '~sections'
 
+import { useAppActions, useAppSelector } from '~hooks'
+import { Navbar } from '~components/navbar/Navbar'
 import { LOCAL_STORAGE_DATA_KEY } from '~constants/keys'
-import { useRouter } from 'next/router'
-import { Toaster } from 'react-hot-toast'
+import { getValueFromLocalStorage } from '~utils/localStorage'
 
 const MainScreen = () => {
   const router = useRouter()
@@ -58,22 +47,12 @@ const MainScreen = () => {
       {/* Sections  */}
       <WelcomeSection />
       <AboutSection />
-      <ProductsSection />
+      <Products />
       <CakesSection />
       <KetoSection />
       <WhyUsSection />
       <ContactSection />
       <FooterSection />
-
-      {/* Modals  */}
-      <CartModal />
-      <CheckoutModal />
-      <DrawerModal />
-      <FiltersModal />
-      <LoginModal />
-      <UserModal />
-      <ProductDescModal />
-      <ProductExtrasModal />
     </div>
   )
 }

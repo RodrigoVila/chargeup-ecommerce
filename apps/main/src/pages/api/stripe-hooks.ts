@@ -58,7 +58,7 @@ const sendEmailToAdmin = async (
   orderId: string,
   email: string,
   emailOrder: any,
-  userRegistered,
+  userRegistered: boolean,
 ) => {
   try {
     const adminMail = {
@@ -70,8 +70,10 @@ const sendEmailToAdmin = async (
 
     await sendEmail(adminMail)
   } catch (e) {
-    // TODO: If mail to admin fails, then send mail to admin xD. Fix this.
-    sendErrorEmailToAdmin(orderId, email, e.message)
+    if (e instanceof Error) {
+      // TODO: If mail to admin fails, then send mail to admin??. Fix this.
+      sendErrorEmailToAdmin(orderId, email, e.message)
+    }
   }
 }
 

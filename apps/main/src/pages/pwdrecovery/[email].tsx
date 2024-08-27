@@ -5,9 +5,9 @@ import { Toaster } from 'react-hot-toast'
 import { Spinner } from '@packages/spinner'
 
 import { useAppActions, useAppSelector, useCountdown } from '~hooks'
-import { Logo } from '~features/navbar/components/Logo'
-import { UpdatePasswordForm } from '~components/forms'
 import { ErrorSuccess } from '~components/ErrorSuccess'
+import { UpdatePasswordForm } from '~components/forms'
+import { Logo } from '~components/navbar'
 
 const PasswordRecovery = () => {
   const { validateTokenForPasswordChange } = useAppActions()
@@ -36,7 +36,7 @@ const PasswordRecovery = () => {
       >
         {isTokenForPasswordValidated ? (
           <div className='flex h-full w-full flex-col items-center justify-center gap-3'>
-            <Logo logo='white.png' size='lg' />
+            <Logo size='lg' />
             <UpdatePasswordForm requestFromMail={email as string} />
           </div>
         ) : (

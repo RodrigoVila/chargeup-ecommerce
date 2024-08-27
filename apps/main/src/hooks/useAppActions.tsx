@@ -23,30 +23,6 @@ import {
 } from '~redux/actions/cart'
 import { createNewCheckoutSession } from '~redux/actions/checkout'
 import {
-  adminProductModalClose,
-  adminProductModalOpen,
-  cartModalClose,
-  cartModalOpen,
-  checkoutErrorModalClose,
-  checkoutErrorModalOpen,
-  checkoutModalClose,
-  checkoutModalOpen,
-  checkoutSuccessModalClose,
-  checkoutSuccessModalOpen,
-  drawerModalClose,
-  drawerModalOpen,
-  extrasModalClose,
-  extrasModalOpen,
-  filtersModalClose,
-  filtersModalOpen,
-  loginModalClose,
-  loginModalOpen,
-  productModalClose,
-  productModalOpen,
-  userModalClose,
-  userModalOpen,
-} from '~redux/actions/modal'
-import {
   addProductToStore,
   fetchProductsFromStore,
   fetchProductsFromStoreSuccess,
@@ -57,8 +33,6 @@ import {
   displayMessageInfo,
   displayMessageSuccess,
 } from '~redux/actions/toastNotifications'
-
-import { setFilters } from '~redux/actions/filters'
 
 import { addNewOrder } from '~redux/actions/order'
 import { changeUserDetails, fetchUserDetails, userDetailsClear } from '~redux/actions/user'
@@ -124,9 +98,6 @@ export const useAppActions = () => {
   const createCheckoutSession = (newOrder: OrderType) =>
     dispatch(createNewCheckoutSession(newOrder))
 
-  // Filters
-  const setProductFilters = (filter: string) => dispatch(setFilters(filter))
-
   const changeCartProductQuantity = (id: string, newAmount: number) =>
     dispatch(changeProductQuantityState(id, newAmount))
 
@@ -139,53 +110,6 @@ export const useAppActions = () => {
 
   const displayInfoMessage = (msg: string, duration?: number) =>
     dispatch(displayMessageInfo(msg, duration))
-
-  // Modals: ADMIN
-  const openAdminProductModal = (selectedProduct: ProductType) =>
-    dispatch(adminProductModalOpen(selectedProduct))
-  const closeAdminProductModal = () => dispatch(adminProductModalClose())
-
-  // Modals: USER
-  const openCartModal = () => dispatch(cartModalOpen())
-
-  const closeCartModal = () => dispatch(cartModalClose())
-
-  const openCheckoutModal = () => dispatch(checkoutModalOpen())
-
-  const closeCheckoutModal = () => dispatch(checkoutModalClose())
-
-  const openCheckoutSuccessModal = () => dispatch(checkoutSuccessModalOpen())
-
-  const closeCheckoutSuccessModal = () => dispatch(checkoutSuccessModalClose())
-
-  const openCheckoutErrorModal = () => dispatch(checkoutErrorModalOpen())
-
-  const closeCheckoutErrorModal = () => dispatch(checkoutErrorModalClose())
-
-  const openDrawerModal = () => dispatch(drawerModalOpen())
-
-  const closeDrawerModal = () => dispatch(drawerModalClose())
-
-  const openFiltersModal = () => dispatch(filtersModalOpen())
-
-  const closeFiltersModal = () => dispatch(filtersModalClose())
-
-  const openLoginModal = () => dispatch(loginModalOpen())
-
-  const closeLoginModal = () => dispatch(loginModalClose())
-
-  const openProductModal = (selectedProduct: ProductType) =>
-    dispatch(productModalOpen(selectedProduct))
-
-  const closeProductModal = () => dispatch(productModalClose())
-
-  const openExtrasModal = (sizesAndExtras: any) => dispatch(extrasModalOpen(sizesAndExtras))
-
-  const closeExtrasModal = () => dispatch(extrasModalClose())
-
-  const openUserModal = () => dispatch(userModalOpen())
-
-  const closeUserModal = () => dispatch(userModalClose())
 
   // Orders
 
@@ -236,30 +160,7 @@ export const useAppActions = () => {
     displayErrorMessage,
     displayInfoMessage,
     createCheckoutSession,
-    openAdminProductModal,
-    closeAdminProductModal,
-    openCartModal,
-    closeCartModal,
-    openCheckoutModal,
-    closeCheckoutModal,
-    openCheckoutSuccessModal,
-    closeCheckoutSuccessModal,
-    openCheckoutErrorModal,
-    closeCheckoutErrorModal,
-    openDrawerModal,
-    closeDrawerModal,
-    openFiltersModal,
-    closeFiltersModal,
-    openLoginModal,
-    closeLoginModal,
     addOrder,
-    openProductModal,
-    closeProductModal,
-    openExtrasModal,
-    closeExtrasModal,
-    openUserModal,
-    closeUserModal,
-    setProductFilters,
     getUserDetails,
     editUserDetails,
     editUserPassword,

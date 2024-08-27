@@ -13,5 +13,5 @@ export const BackgroundOverlay = ({ darker, lighter }: BackgroundOverlayProps) =
     [darker, lighter],
   )
 
-  return <div className={twMerge('absolute inset-0 z-10 h-full', opacity)} />
+  return <div className={twMerge('absolute inset-0 h-full', opacity)} />
 }

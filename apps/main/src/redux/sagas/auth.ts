@@ -16,7 +16,6 @@ import {
   validateTokenForPassChangeError,
   validateTokenForPassChangeSucccess,
 } from '~redux/actions/auth'
-import { loginModalClose } from '~redux/actions/modal'
 import { displayMessageError, displayMessageSuccess } from '~redux/actions/toastNotifications'
 import {
   CHECK_USER_TOKEN,
@@ -44,7 +43,6 @@ function* userRegister(payload: any) {
     if (success) {
       yield put(successRegisterUser())
       yield put(displayMessageSuccess(formatMessage({ id: 'USER_REGISTER_SUCCESS' }), 7000))
-      yield put(loginModalClose())
     } else {
       yield put(errorRegisterUser())
       yield put(displayMessageError(message))
@@ -69,7 +67,6 @@ function* userLogin(payload: any) {
     if (success) {
       yield put(successLoginUser(user))
       yield put(displayMessageSuccess(formatMessage({ id: 'USER_LOGIN_SUCCESS' })))
-      yield put(loginModalClose())
     } else {
       message === 'Email registered with google' &&
         (yield put(displayMessageError(formatMessage({ id: 'USER_CREATED_WITH_GOOGLE' }))))
@@ -122,7 +119,6 @@ function* googleLogin(payload: any) {
         if (success) {
           yield put(successLoginUser(user))
           yield put(displayMessageSuccess(formatMessage({ id: 'USER_LOGIN_SUCCESS' })))
-          yield put(loginModalClose())
         } else {
           yield put(errorLoginUser())
         }
@@ -193,11 +189,9 @@ function* requestPasswordRecovery(payload: any) {
     if (success) {
       yield put(displayMessageSuccess(formatMessage({ id: 'REQUEST_PASSWORD' }), 7000))
       yield put(requestPasswordRecoverySuccess())
-      yield put(loginModalClose())
     } else {
       yield put(displayMessageSuccess(formatMessage({ id: 'REQUEST_PASSWORD' }), 7000))
       yield put(requestPasswordRecoveryError())
-      yield put(loginModalClose())
     }
   } catch (e) {
     yield put(requestPasswordRecoveryError())

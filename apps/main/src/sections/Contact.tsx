@@ -45,13 +45,8 @@ export const ContactSection = () => {
   const inputStyle =
     'mb-2 w-full rounded-md text-sm border-2 border-transparent bg-[rgba(255,255,255,0.2)] py-2 pl-2 placeholder:text-slate-300 placeholder:tracking-wider focus:border-white focus:outline-none'
   return (
-    <Section
-      id='contact'
-      title={formatMessage({ id: 'CONTACT' })}
-      overlay
-      bodyClassName='w-full !max-w-xl'
-    >
-      <div className='z-10 flex w-full flex-col items-center justify-center overflow-hidden px-4 text-white'>
+    <Section id='contact' title={formatMessage({ id: 'CONTACT' })} bodyClassName='w-full !max-w-xl'>
+      <div className='flex w-full flex-col items-center justify-center overflow-hidden px-4 text-white'>
         <Input
           name='name'
           placeholder={formatMessage({ id: 'NAME' })}

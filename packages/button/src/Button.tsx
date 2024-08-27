@@ -25,7 +25,7 @@ export const Button = ({
   ...rest
 }: ButtonProps) => {
   const baseStyles =
-    'group flex w-full cursor-pointer items-center justify-center rounded-md py-2 px-4'
+    'group flex w-full cursor-pointer items-center justify-center rounded-md py-2 px-4 duration-300'
 
   const variantStyles =
     variant === 'outlined'

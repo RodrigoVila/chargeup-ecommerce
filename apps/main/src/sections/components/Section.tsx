@@ -14,7 +14,6 @@ import { BackgroundOverlay } from '~components/BackgroundOverlay'
 type SectionProps = {
   id: string
   title?: string
-  overlay?: boolean
   disabled?: boolean
   className?: string
   children: ReactNode
@@ -32,37 +31,36 @@ const IMG_MAPPER: Record<string, StaticImageData> = {
 export const Section = ({
   id,
   title,
-  overlay,
   disabled = false,
   className,
   children,
   bodyClassName,
 }: SectionProps) => {
   const textColor = id === 'keto' ? 'text-black' : 'text-white'
-  const defaultStyles = 'px-2 pb-16 pt-32'
-
   return disabled ? null : (
     <section
       id={id}
-      className={`relative flex h-full min-h-screen w-full flex-col items-center text-center text-white  ${
-        className ?? defaultStyles
-      }`}
+      className={twMerge(
+        'relative flex h-full min-h-screen w-full flex-col items-center px-2 pb-16 pt-32 text-center text-white',
+        className,
+      )}
     >
       {IMG_MAPPER[id] && (
         <Image
           src={IMG_MAPPER[id]}
           alt='Section background image'
-          className='z-0 h-screen'
+          className='h-screen'
           layout='fill'
           objectFit='cover'
           objectPosition='center'
         />
       )}
-      {overlay && <BackgroundOverlay />}
+      {id !== 'products' && <BackgroundOverlay />}
+
       {title && (
         <h1
           className={twMerge(
-            'font-dinBold z-20 w-full px-2 pb-8 text-center text-3xl uppercase md:text-5xl',
+            'font-dinBold w-full px-2 pb-8 text-center text-3xl uppercase md:text-5xl',
             textColor,
           )}
         >
@@ -71,7 +69,7 @@ export const Section = ({
       )}
       <div
         className={twMerge(
-          '2xs:px-4 z-20 h-full max-w-4xl text-xl leading-snug md:text-2xl xl:max-w-5xl xl:leading-normal',
+          '2xs:px-4 z-0 h-full max-w-4xl text-xl leading-snug md:text-2xl xl:max-w-5xl xl:leading-normal',
           bodyClassName,
         )}
       >
