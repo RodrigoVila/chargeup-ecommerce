@@ -1,5 +1,5 @@
-import Image from 'next/legacy/image'
 import { useMemo } from 'react'
+import Image from 'next/legacy/image'
 import cartImg from '@packages/assets/images/cart_white.svg'
 
 import { useAppActions, useAppSelector } from '~hooks'
