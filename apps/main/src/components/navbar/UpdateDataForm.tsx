@@ -27,7 +27,7 @@ export const UpdateDataForm = () => {
   return (
     <>
       <UserDataForm userData={userData} setUserData={setUserData} />
-      <Button onClick={handleSave} disabled={isUserDataLoading}>
+      <Button onClick={handleSave} disabled={isUserDataLoading} className='px-4'>
         {formatMessage({ id: 'CHANGE_USER_DATA' })}
       </Button>
     </>

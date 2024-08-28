@@ -7,7 +7,7 @@ import { useIntl } from 'react-intl'
 export const KetoSection = () => {
   const { formatMessage } = useIntl()
   return (
-    <Section id='keto' title={formatMessage({ id: 'KETO_TITLE' })}>
+    <Section id='keto' title={formatMessage({ id: 'KETO_TITLE' })} withOverlay={false}>
       <div className='text-black'>
         <p className='py-2'>{formatMessage({ id: 'KETO_PARAGRAPH_1' })}</p>
         <p className='py-2'>{formatMessage({ id: 'KETO_PARAGRAPH_2' })}</p>

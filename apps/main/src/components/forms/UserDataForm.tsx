@@ -32,7 +32,7 @@ export const UserDataForm = ({ isCheckoutForm, userData, setUserData }: UserData
   }
 
   return userData ? (
-    <div className='w-full overflow-scroll p-6'>
+    <div className='w-full overflow-scroll text-black'>
       <Input
         label={formatMessage({ id: 'NAME' })}
         type='text'

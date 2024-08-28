@@ -43,7 +43,7 @@ export const UpdatePasswordForm = ({ requestFromMail }: UpdatePasswordFormProps)
     }
   }
   return (
-    <div className='rounded-xl bg-white p-6 pt-4'>
+    <div className='rounded-xl bg-white'>
       <Input
         label={formatMessage({ id: 'NEW_PASSWORD' })}
         type='password'
@@ -56,7 +56,7 @@ export const UpdatePasswordForm = ({ requestFromMail }: UpdatePasswordFormProps)
         name='repeatPassword'
         onChange={handleChange}
       />
-      <Button onClick={handleSubmit} loading={isAuthLoading}>
+      <Button onClick={handleSubmit} loading={isAuthLoading} className='px-4'>
         {formatMessage({ id: 'CHANGE_PASSWORD' })}
       </Button>
     </div>

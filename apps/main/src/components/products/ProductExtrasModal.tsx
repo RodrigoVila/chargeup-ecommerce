@@ -3,7 +3,7 @@ import { useIntl } from 'react-intl'
 
 import { Button } from '@packages/button'
 import { Checkbox } from '@packages/checkbox'
-import { Modal, ModalClose, ModalContent, ModalTrigger } from '@packages/modal'
+import { Modal, AbsoluteModalClose, ModalContent, ModalTrigger } from '@packages/modal'
 import { CartProductType, LabelAndPriceType } from '@packages/types'
 
 import { useAppActions } from '~hooks'
@@ -98,9 +98,8 @@ export const ProductExtrasModal = ({ product }: ProductProps) => {
         </Button>
       </ModalTrigger>
       <ModalContent className='relative flex w-full flex-col gap-2 text-black'>
-        <ModalClose className='absolute top-2 right-2 bg-transparent text-black'>
-          <IoClose size={36} color='black' />
-        </ModalClose>
+        <AbsoluteModalClose />
+
         <h3 className='text-center text-xl font-semibold'>{product?.title}</h3>
         <div className='flex w-full flex-col flex-wrap'>
           {/* sizes dropdown */}

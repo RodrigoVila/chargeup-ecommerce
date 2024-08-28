@@ -1,4 +1,5 @@
 export * from './hooks/useModal'
+export * from './components/AbsoluteModalClose'
 export * from './components/Modal'
 export * from './components/ModalClose'
 export * from './components/ModalContent'

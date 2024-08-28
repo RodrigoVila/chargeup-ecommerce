@@ -7,6 +7,7 @@ import { Button } from '@packages/button'
 import { useAppActions } from '~hooks'
 import { UpdatePasswordForm } from '~components/forms'
 import { UpdateDataForm } from './UpdateDataForm'
+import { twMerge } from 'tailwind-merge'
 
 type EditingType = 'password' | 'userData' | null
 
@@ -27,10 +28,12 @@ export const UserDetails = () => {
 
   return (
     <div
-      className={`${
-        !editing && 'rounded-md bg-white p-2'
-      } relative my-4 h-full w-full overflow-scroll`}
+      className={twMerge(
+        'relative h-full w-full overflow-scroll p-2 pt-0',
+        !editing && 'overflow-auto rounded-md bg-white',
+      )}
     >
+      <h3 className='mb-4 text-center text-xl font-bold uppercase text-black'>Edit user detail</h3>
       {editing === 'userData' && <UpdateDataForm />}
       {editing === 'password' && <UpdatePasswordForm />}
 

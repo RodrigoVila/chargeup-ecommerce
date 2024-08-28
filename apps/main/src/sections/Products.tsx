@@ -51,7 +51,12 @@ export const Products = () => {
   }
 
   return (
-    <Section id='products' title={formatMessage({ id: 'PRODUCTS' })} className='min-h-screen'>
+    <Section
+      id='products'
+      title={formatMessage({ id: 'PRODUCTS' })}
+      className='min-h-screen'
+      withOverlay={false}
+    >
       <div className='mt-6 flex h-full flex-wrap items-center justify-center pb-2'>
         <ProductSearchBar setSearchValue={setSearchValue} />
       </div>
