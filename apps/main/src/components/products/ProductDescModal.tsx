@@ -2,6 +2,7 @@ import { useIntl } from 'react-intl'
 
 import { Modal, ModalClose, ModalContent, ModalTrigger } from '@packages/modal'
 import { ProductType } from '@packages/types'
+import { Button } from '@packages/button'
 
 type ProductDescModal = {
   product: ProductType
@@ -18,10 +19,10 @@ export const ProductDescModal = ({ product }: ProductDescModal) => {
         </div>
       </ModalTrigger>
       {/* TODO We should remove ModalContent styles and create a default style at the package */}
-      <ModalContent className='m-auto flex w-max max-w-sm items-center justify-center bg-white'>
+      <ModalContent>
         <div className='flex w-full flex-col gap-3'>
           {/*header*/}
-          <h3 className='text-center text-2xl font-semibold'>{product?.title}</h3>
+          <h3 className='text-center text-2xl font-semibold text-black'>{product?.title}</h3>
           {/*body*/}
           <div className='text-center'>
             <div className='px-1 text-sm leading-relaxed text-slate-500'>
@@ -30,7 +31,9 @@ export const ProductDescModal = ({ product }: ProductDescModal) => {
               ))}
             </div>
           </div>
-          <ModalClose>Cerrar</ModalClose>
+          <ModalClose>
+            <Button className='bg-purple-600'>Cerrar</Button>
+          </ModalClose>
         </div>
       </ModalContent>
     </Modal>

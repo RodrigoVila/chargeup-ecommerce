@@ -3,7 +3,7 @@ import { useIntl } from 'react-intl'
 
 import { Button } from '@packages/button'
 import { Checkbox } from '@packages/checkbox'
-import { Modal, ModalContent, ModalTrigger } from '@packages/modal'
+import { Modal, ModalClose, ModalContent, ModalTrigger } from '@packages/modal'
 import { CartProductType, LabelAndPriceType } from '@packages/types'
 
 import { useAppActions } from '~hooks'
@@ -12,6 +12,7 @@ import { Dropdown } from '~components/Dropdown'
 import { getProductSubtotal } from '~utils/products'
 
 import { type ProductProps } from './Product'
+import { IoClose } from 'react-icons/io5'
 
 export const ProductExtrasModal = ({ product }: ProductProps) => {
   const [isOpen, setOpen] = useState(false)
@@ -90,15 +91,18 @@ export const ProductExtrasModal = ({ product }: ProductProps) => {
   const labelStyle = 'text-md font-bold'
 
   return (
-    <Modal open={isOpen} onOpenChange={setOpen}>
+    <Modal>
       <ModalTrigger>
         <Button className='bg-purple-800 uppercase hover:bg-purple-700'>
           {formatMessage({ id: 'PRODUCTS_SELECT_PRODUCT' })}
         </Button>
       </ModalTrigger>
-      <ModalContent className='flex w-full flex-col gap-2'>
+      <ModalContent className='relative flex w-full flex-col gap-2 text-black'>
+        <ModalClose className='absolute top-2 right-2 bg-transparent text-black'>
+          <IoClose size={36} color='black' />
+        </ModalClose>
         <h3 className='text-center text-xl font-semibold'>{product?.title}</h3>
-        <div className='flex flex-col flex-wrap items-start'>
+        <div className='flex w-full flex-col flex-wrap'>
           {/* sizes dropdown */}
           {product?.sizes ? (
             <div className='flex flex-col justify-center'>
@@ -139,9 +143,7 @@ export const ProductExtrasModal = ({ product }: ProductProps) => {
           </div>
         </div>
 
-        <div className='flex items-center justify-center'>
-          <Button onClick={addItemToCart}>Agregar</Button>
-        </div>
+        <Button onClick={addItemToCart}>Agregar</Button>
       </ModalContent>
     </Modal>
   )

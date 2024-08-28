@@ -5,10 +5,11 @@ import {
   FloatingOverlay,
   useMergeRefs,
 } from '@floating-ui/react'
+import { twMerge } from 'tailwind-merge'
 import { useModalContext } from './Modal'
 
 export const ModalContent = React.forwardRef<HTMLDivElement, React.HTMLProps<HTMLDivElement>>(
-  function ModalContent(props, propRef) {
+  function ModalContent({ className, ...rest }, propRef) {
     const { context: floatingContext, ...context } = useModalContext()
     const ref = useMergeRefs([context.refs.setFloating, propRef])
 
@@ -16,15 +17,19 @@ export const ModalContent = React.forwardRef<HTMLDivElement, React.HTMLProps<HTM
 
     return (
       <FloatingPortal>
-        <FloatingOverlay className='bg-black/80' lockScroll>
+        <FloatingOverlay lockScroll className='z-50 flex items-center justify-center bg-black/50'>
           <FloatingFocusManager context={floatingContext}>
             <div
               ref={ref}
               aria-labelledby={context.labelId}
               aria-describedby={context.descriptionId}
-              {...context.getFloatingProps(props)}
+              className={twMerge(
+                'm-auto mx-2 flex w-max max-w-sm items-center justify-center rounded-lg bg-white p-4',
+                className,
+              )}
+              {...context.getFloatingProps(rest)}
             >
-              {props.children}
+              {rest.children}
             </div>
           </FloatingFocusManager>
         </FloatingOverlay>

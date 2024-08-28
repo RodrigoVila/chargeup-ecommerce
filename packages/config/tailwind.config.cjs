@@ -95,9 +95,6 @@ module.exports = {
         21: '5.25rem',
         22: '5.5rem',
       },
-      zIndex: {
-        full: '9999px',
-      },
     },
   },
 };

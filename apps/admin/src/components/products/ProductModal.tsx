@@ -64,7 +64,7 @@ export const ProductModal = ({ isOpen, setOpen, product }: ProductModalProps) =>
   }
 
   return (
-    <Modal open={isOpen} onOpenChange={setOpen} className='bg-black'>
+    <Modal open={isOpen} onOpenChange={setOpen}>
       <ModalContent className='relative m-4 mx-auto flex max-w-lg flex-col gap-2 rounded-xl bg-slate-800 p-8'>
         <ModalClose
           onClick={() => setOpen(false)}

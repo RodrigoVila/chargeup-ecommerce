@@ -11,7 +11,7 @@ export const Navbar = () => {
   return (
     <nav
       className={twMerge(
-        'fixed top-0 z-[1] flex w-full justify-between px-4 xl:px-2',
+        'fixed top-0 z-10 flex h-max w-full justify-between bg-black/50 px-4 xl:px-2',
         backgroundOpacity,
       )}
     >
