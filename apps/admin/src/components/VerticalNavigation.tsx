@@ -7,14 +7,15 @@ import { Logo } from '~/components/Logo'
 import { twMerge } from 'tailwind-merge'
 
 type VerticalNavigationProps = {
+  isSidebar?: boolean
   className?: string
 }
 
-export const VerticalNavigation = ({ className }: VerticalNavigationProps) => {
+export const VerticalNavigation = ({ isSidebar = false, className }: VerticalNavigationProps) => {
   return (
     <nav className={twMerge('text-white', className)}>
-      <Logo />
-      <ul className='flex flex-col text-center'>
+      {isSidebar && <Logo />}
+      <ul className={twMerge('flex flex-col text-center', !isSidebar && 'py-6')}>
         <NavItem label='Dashboard' icon={<IoHomeOutline size={20} />} to='dashboard' />
         <NavItem label='Products' icon={<BsInboxes size={20} />} to='products' />
         <NavItem label='Orders' icon={<MdFormatListNumbered size={20} />} to='orders' />
