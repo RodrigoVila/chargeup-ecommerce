@@ -1,79 +1,42 @@
-import { twMerge } from 'tailwind-merge'
 import { IoTrashOutline } from 'react-icons/io5'
 import { BsPencil } from 'react-icons/bs'
 
-import { ActionWithOnClick, OrderType } from '@packages/types'
+import { Action } from '@packages/types'
 import { AdminSection } from '~/components/AdminSection'
 import { Table } from '~/components/Table'
+import { useToastNotifications } from '@packages/toast-notifications'
 
-const columns = ['Name', 'Phone', 'Type', 'Address', 'Total']
+type UserData = {
+  id: string
+  name: string
+  email: string
+  phone?: string
+  address: string
+  created: string
+}
 
-const orders: OrderType[] = [
+const columns = ['id', 'name', 'email', 'phone', 'address', 'created']
+
+const data: UserData[] = [
   {
     id: '1',
     name: 'John Doe',
     email: 'jdoe@gmail.com',
     phone: '665 443 434',
-    deliveryType: 'Delivery',
-    address: {
-      street: 'C. Joan Miro',
-      streetNumber: '12',
-      extras: '2-4',
-      postCode: '08831',
-      city: 'Viladecans',
-    },
-    created: new Date(),
-    totalAmount: '100',
-    items: [
-      {
-        id: '1',
-        quantity: 2,
-        title: 'Pepe item',
-        total: 2,
-        selectedSize: { label: 'Pepe 1', price: 12 },
-      },
-    ],
+    address: 'C. Joan Miro 12, 2-2, 08830',
+    created: '11/08/2021',
   },
   {
     id: '2',
     name: 'Jane Doe',
     email: 'jndoe@gmail.com',
     phone: '665 443 432',
-    deliveryType: 'Pick UP',
-    created: new Date(),
-    totalAmount: '100',
-    items: [
-      {
-        id: '1',
-        quantity: 2,
-        title: 'Pepe item',
-        total: 2,
-        selectedSize: { label: 'Pepe 1', price: 12 },
-      },
-    ],
+    address: 'C. Joan Miro 12, 2-2, 08830',
+    created: '11/08/2001',
   },
 ]
 
-const data = orders.map((order) => ({
-  Name: order.name,
-  Phone: order.phone,
-  Type: (
-    <span
-      className={twMerge(
-        'rounded-full px-[6px] py-[2px] text-black',
-        order.deliveryType === 'Delivery' ? 'bg-green-400' : 'bg-indigo-400',
-      )}
-    >
-      {order.deliveryType}
-    </span>
-  ),
-  Address: order.address
-    ? `${order.address.street} ${order.address.streetNumber}, ${order.address.city}`
-    : 'N/A',
-  Total: `$${order.totalAmount}`,
-}))
-
-const actions: ActionWithOnClick[] = [
+const actions: Action[] = [
   {
     label: 'Edit User Details',
     icon: <BsPencil />,
@@ -86,9 +49,24 @@ const actions: ActionWithOnClick[] = [
   },
 ]
 export const UserList = () => {
+  const { showInfoNotification } = useToastNotifications()
+
+  const handleActions = (actionType: string, rowId: string) => {
+    if (actionType === 'edit') {
+      showInfoNotification('Edit item will be avaiable soon')
+    } else if (actionType === 'delete') {
+      showInfoNotification('Delete item will be avaiable soon')
+    }
+  }
+
   return (
     <AdminSection>
-      <Table columns={columns} data={data} actions={actions} />
+      <Table<UserData>
+        columns={columns}
+        data={data}
+        actions={actions}
+        handleActions={handleActions}
+      />
     </AdminSection>
   )
 }

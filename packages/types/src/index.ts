@@ -129,14 +129,14 @@ export type DeliveryType = 'Pick UP' | 'Delivery'
 
 //Order
 export type OrderType = {
-  id: string
+  _id: string
   email?: string | null
   name?: string | null
   phone?: string | null
   items: CartProductType[]
   deliveryType: DeliveryType
   address?: AddressType
-  totalAmount: string
+  totalAmount: number
   status?: string
   created: Date
 }
@@ -266,17 +266,11 @@ export type ContactFormActionType = ContactFormStateType & {
 
 // Actions Menu
 
-type GenericAction = {
-  label: string
-  icon: ReactNode
-}
-
 export type ActionType = 'complete' | 'edit' | 'delete'
 
-export type ActionWithType = GenericAction & {
-  type: ActionType
-}
-
-export type ActionWithOnClick = GenericAction & {
-  onClick: () => void
+export type Action = {
+  label: string
+  icon: ReactNode
+  type?: ActionType
+  onClick?: () => void
 }

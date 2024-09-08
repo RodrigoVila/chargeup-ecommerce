@@ -2,9 +2,9 @@ import { twMerge } from 'tailwind-merge'
 import { IoTrashOutline, IoCheckmarkSharp, IoBanOutline } from 'react-icons/io5'
 import { BsPencil } from 'react-icons/bs'
 
-import { OrderType } from '@packages/types'
+import { ActionType, Action, OrderType } from '@packages/types'
 import { AdminSection } from '~/components/AdminSection'
-import { Action, Table } from '~/components/Table'
+import { Table } from '~/components/Table'
 import ordersMock from '../mocks/orders.json'
 import { ReactNode, useState } from 'react'
 import { useToastNotifications } from '@packages/toast-notifications'
@@ -70,8 +70,8 @@ export const OrderList = () => {
     setOrders((prevOrders) => prevOrders.filter((order) => order.id !== orderId))
   }
 
-  const handleActions = (actionType: Action['type'], orderId: string) => {
-    const ACTIONS: Record<Action['type'], () => void> = {
+  const handleActions = (actionType: ActionType, orderId: string) => {
+    const ACTIONS: Record<ActionType, () => void> = {
       complete: () => handleMarkCompleted(orderId),
       edit: () => handleEdit(),
       delete: () => handleDelete(orderId),
@@ -106,7 +106,12 @@ export const OrderList = () => {
   }
   return (
     <AdminSection>
-      <Table columns={columns} data={data} getActions={getActions} handleActions={handleActions} />
+      <Table<OrderData>
+        columns={columns}
+        data={data}
+        actions={getActions}
+        handleActions={handleActions}
+      />
     </AdminSection>
   )
 }

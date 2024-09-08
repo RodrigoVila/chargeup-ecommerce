@@ -14,7 +14,11 @@ export const Home = () => {
         elementos destacados, y puedes acceder en detalle a todas las opciones del menu principal en
         la parte superior.
       </p>
-      <Button variant='filled' className='w-max bg-purple-800 duration-300 hover:bg-purple-700'>
+      <Button
+        variant='filled'
+        className='w-max bg-indigo-800 duration-300 hover:bg-purple-700'
+        labelClassName='text-lg'
+      >
         Invite a new client
       </Button>
     </main>

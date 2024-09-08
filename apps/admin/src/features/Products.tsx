@@ -1,35 +1,65 @@
-import { useEffect, useState } from 'react'
+import { ReactNode } from 'react'
 import { Spinner } from '@packages/spinner'
-import { ProductType } from '@packages/types'
-
+import { Action } from '@packages/types'
 import { AdminSection } from '~/components/AdminSection'
-import { ProductCard } from '~/components/products/ProductCard'
-import { ProductModal } from '~/components/products/ProductModal'
 import { useProducts } from '~/hooks/useProducts'
 import { ErrorComponent } from '~/components/ErrorComponent'
+import { IoTrashOutline } from 'react-icons/io5'
+import { BsPencil } from 'react-icons/bs'
+import { Table } from '~/components/Table'
+import { IMG_MAPPER } from '~/utils/products'
+
+type ProductData = {
+  id: string
+  Image: ReactNode
+  Title: string
+  Calories: number
+  'Carbs (g)': number
+  'Protein (g)': number
+  'Fat (g)': number
+}
+
+const columns = ['Image', 'Title', 'Calories', 'Carbs (g)', 'Protein (g)', 'Fat (g)']
 
 export const ProductList = () => {
-  const [isModalOpen, setModalOpen] = useState(false)
-  const [selectedProduct, setSelectedProduct] = useState<ProductType | null>(null)
-
   const { data: products, isLoading, error } = useProducts()
-  const [localProducts, setLocalProducts] = useState<ProductType[]>([])
 
-  const handleEdit = (product: ProductType) => {
-    setSelectedProduct(product)
-    setModalOpen(true)
-  }
-  const handleDelete = (product: ProductType) => {
-    if (window.confirm(`Are you sure you want to delete product: ${product.title}?`)) {
-      setLocalProducts((currentProducts) =>
-        currentProducts.filter((prod) => prod._id !== product._id),
-      )
+  const handleActions = (actionType: string, productId: string) => {
+    if (actionType === 'edit') {
+      alert('Action edit')
+    } else if (actionType === 'delete') {
+      alert('Action delete')
     }
   }
 
-  useEffect(() => {
-    if (products) setLocalProducts(products)
-  }, [products])
+  const getActions: Action[] = [
+    {
+      label: 'Edit product',
+      icon: <BsPencil size={20} className='text-blue-500' />,
+      type: 'edit',
+    },
+    {
+      label: 'Delete product',
+      icon: <IoTrashOutline size={20} className='text-red-500' />,
+      type: 'delete',
+    },
+  ]
+
+  const data: ProductData[] = products?.map((product) => ({
+    id: product._id,
+    Image: (
+      <img
+        src={IMG_MAPPER[product.imgUri] || ''}
+        alt={product.title}
+        className='h-16 w-16 rounded-lg object-cover'
+      />
+    ),
+    Title: product.title,
+    Calories: product.nutritionalInfo.calories,
+    'Carbs (g)': product.nutritionalInfo.carbs,
+    'Protein (g)': product.nutritionalInfo.protein,
+    'Fat (g)': product.nutritionalInfo.fat,
+  }))
 
   if (isLoading) return <Spinner />
 
@@ -37,19 +67,12 @@ export const ProductList = () => {
 
   return (
     <AdminSection>
-      <div className='flex flex-wrap justify-center gap-6'>
-        {localProducts.map((product) => (
-          <ProductCard
-            key={product._id}
-            product={product}
-            onEdit={handleEdit}
-            onDelete={handleDelete}
-          />
-        ))}
-      </div>
-      {selectedProduct && (
-        <ProductModal isOpen={isModalOpen} setOpen={setModalOpen} product={selectedProduct} />
-      )}
+      <Table<ProductData>
+        columns={columns}
+        data={data}
+        actions={getActions}
+        handleActions={handleActions}
+      />
     </AdminSection>
   )
 }

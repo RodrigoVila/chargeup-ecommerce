@@ -1,19 +1,25 @@
-import { ReactNode } from 'react'
 import { twMerge } from 'tailwind-merge'
 import { ActionsMenu } from './ActionsMenu'
-import { OrderData } from '~/features/Orders'
-import { ActionWithType } from '@packages/types'
+import { Action, ActionType } from '@packages/types'
+import { ReactNode } from 'react'
 
-export type TableProps = {
+type TableActions<T> = Action[] | ((row: T) => Action[])
+
+export type TableProps<T extends { id: string }> = {
   columns: string[]
-  data: any[]
-  getActions?: (order: OrderData) => ActionWithType[]
-  handleActions: (actionType: ActionWithType['type'], orderId: string) => void
+  data: T[] // The data will now be of type T (e.g., ProductType, OrderType)
+  actions?: TableActions<T>
+  handleActions: (actionType: ActionType, rowId: string) => void
 }
 
 const headerStyles = 'px-6 py-3 text-left text-s font-medium uppercase tracking-wider'
 
-export const Table = ({ columns, data, getActions, handleActions }: TableProps) => {
+export const Table = <T extends { id: string }>({
+  columns,
+  data,
+  actions,
+  handleActions,
+}: TableProps<T>) => {
   return (
     <div className='overflow-x-auto rounded-xl'>
       <table className='min-w-full border-collapse bg-slate-900'>
@@ -24,7 +30,7 @@ export const Table = ({ columns, data, getActions, handleActions }: TableProps) 
                 {column}
               </th>
             ))}
-            {getActions && (
+            {actions && (
               <th scope='col' className={headerStyles}>
                 Actions
               </th>
@@ -32,29 +38,20 @@ export const Table = ({ columns, data, getActions, handleActions }: TableProps) 
           </tr>
         </thead>
         <tbody>
-          {data.map((row, index) => (
+          {data.map((row) => (
             <tr
-              key={index}
-              className={twMerge(
-                'hover:cursor-pointer hover:bg-slate-700',
-                index % 2 === 0 ? 'bg-slate-800' : 'bg-slate-900',
-              )}
+              key={row.id}
+              className={twMerge('hover:cursor-pointer hover:bg-slate-700', 'bg-slate-800')}
             >
               {columns.map((column) => (
-                <td
-                  key={column}
-                  className={twMerge(
-                    'px-6 py-4',
-                    column === 'completed' && 'flex items-center justify-center',
-                  )}
-                >
-                  <div className='text-sm'>{row[column]}</div>
+                <td key={column} className='px-6 py-4'>
+                  <div className='text-sm'>{row[column as keyof T] as ReactNode}</div>
                 </td>
               ))}
-              {getActions && (
+              {actions && (
                 <td className='px-4 text-center align-middle'>
                   <ActionsMenu
-                    actions={getActions(row)}
+                    actions={typeof actions === 'function' ? actions(row) : actions}
                     rowId={row.id}
                     handleActions={handleActions}
                   />
