@@ -1,11 +1,11 @@
 import { ReactNode } from 'react'
 import { useLocation } from 'react-router-dom'
 
-type AdminSection = {
+type AdminSectionProps = {
   children: ReactNode
 }
 
-export const AdminSection = ({ children }: AdminSection) => {
+export const AdminSection = ({ children }: AdminSectionProps) => {
   const { pathname } = useLocation()
 
   const generateTitleFromPath = (): string => {
@@ -15,9 +15,11 @@ export const AdminSection = ({ children }: AdminSection) => {
   }
 
   return (
-    <main>
+    <main className='flex w-full flex-col items-center'>
       <h1 className='py-8 text-center text-5xl'>{generateTitleFromPath()}</h1>
-      <section className='p-8'>{children}</section>
+      <section className='flex w-full max-w-6xl items-center justify-center overflow-x-auto px-8'>
+        {children}
+      </section>
     </main>
   )
 }

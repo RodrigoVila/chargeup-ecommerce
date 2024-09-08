@@ -8,6 +8,7 @@ import { IoTrashOutline } from 'react-icons/io5'
 import { BsPencil } from 'react-icons/bs'
 import { Table } from '~/components/Table'
 import { IMG_MAPPER } from '~/utils/products'
+import { useToastNotifications } from '@packages/toast-notifications'
 
 type ProductData = {
   id: string
@@ -24,11 +25,13 @@ const columns = ['Image', 'Title', 'Calories', 'Carbs (g)', 'Protein (g)', 'Fat 
 export const ProductList = () => {
   const { data: products, isLoading, error } = useProducts()
 
+  const { showInfoNotification } = useToastNotifications()
+
   const handleActions = (actionType: string, productId: string) => {
     if (actionType === 'edit') {
-      alert('Action edit')
+      showInfoNotification('Edit item will be avaiable soon')
     } else if (actionType === 'delete') {
-      alert('Action delete')
+      showInfoNotification('Delete item will be avaiable soon')
     }
   }
 

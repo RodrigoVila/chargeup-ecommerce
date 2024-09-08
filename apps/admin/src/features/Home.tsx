@@ -1,7 +1,9 @@
 import { Button } from '@packages/button'
+import { useNavigate } from 'react-router-dom'
 import { Logo } from '~/components/Logo'
 
 export const Home = () => {
+  const navigate = useNavigate()
   return (
     <main className='mx-8 flex h-[calc(100vh-6rem)] flex-col items-center justify-center gap-4 xl:gap-8'>
       <Logo size={150} />
@@ -10,16 +12,17 @@ export const Home = () => {
         <span className='ml-2 block xl:inline'>Online Business</span>
       </h1>
       <p className='max-w-xl text-center text-lg text-gray-300 xl:text-2xl'>
-        Bienvenido a tu Dashboard de ChargeUP E-commerce. Debajo encontraras algunos de los
-        elementos destacados, y puedes acceder en detalle a todas las opciones del menu principal en
-        la parte superior.
+        Welcome to the ChargeUP E-commerce dashboard, where you can manage everything related to
+        your online store. Access detailed information about users, products, orders, and real-time
+        performance insights to keep your business running at its best.
       </p>
       <Button
         variant='filled'
         className='w-max bg-indigo-800 duration-300 hover:bg-purple-700'
         labelClassName='text-lg'
+        onClick={() => navigate('dashboard')}
       >
-        Invite a new client
+        Go to Dashboard
       </Button>
     </main>
   )

@@ -40,12 +40,12 @@ const actions: Action[] = [
   {
     label: 'Edit User Details',
     icon: <BsPencil />,
-    onClick: () => {},
+    type: 'edit',
   },
   {
     label: 'Delete User',
     icon: <IoTrashOutline className='text-red-500' />,
-    onClick: () => {},
+    type: 'delete',
   },
 ]
 export const UserList = () => {

@@ -21,7 +21,7 @@ export const Table = <T extends { id: string }>({
   handleActions,
 }: TableProps<T>) => {
   return (
-    <div className='overflow-x-auto rounded-xl'>
+    <div className='w-max overflow-x-auto rounded-xl'>
       <table className='min-w-full border-collapse bg-slate-900'>
         <thead>
           <tr>
