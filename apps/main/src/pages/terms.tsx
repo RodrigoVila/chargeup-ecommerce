@@ -49,8 +49,8 @@ const TermsPage = () => {
             <strong>Terms and Conditions</strong> (also referred as &quot;Terms&quot;) mean these
             Terms and Conditions that form the entire agreement between You and the Company
             regarding the use of the Service. This Terms and Conditions agreement has been created
-            with the help of the{' '}
-            <a href='Terms & Conditions Generator' target='_blank'>
+            with the help of the&nbsp;
+            <a href='Terms &amp; Conditions Generator' target='_blank'>
               TermsFeed Terms and Conditions Generator
             </a>
             .
@@ -65,10 +65,11 @@ const TermsPage = () => {
         </li>
         <li>
           <p>
-            <strong>Website</strong> refers to Charge Up BCN, accessible from{' '}
+            <strong>Website</strong> refers to Charge Up BCN, accessible from&nbsp;
             <a href='www.chargeupbcn.com' rel='external nofollow noopener' target='_blank'>
               www.chargeupbcn.com
             </a>
+            .
           </p>
         </li>
         <li>
@@ -135,7 +136,7 @@ const TermsPage = () => {
         Notwithstanding any damages that You might incur, the entire liability of the Company and
         any of its suppliers under any provision of this Terms and Your exclusive remedy for all of
         the foregoing shall be limited to the amount actually paid by You through the Service or 100
-        USD if You haven't purchased anything through the Service.
+        USD if You haven&apos;t purchased anything through the Service.
       </p>
       <p>
         To the maximum extent permitted by applicable law, in no event shall the Company or its
@@ -150,7 +151,7 @@ const TermsPage = () => {
       <p>
         Some states do not allow the exclusion of implied warranties or limitation of liability for
         incidental or consequential damages, which means that some of the above limitations may not
-        apply. In these states, each party's liability will be limited to the greatest extent
+        apply. In these states, each party&apos;s liability will be limited to the greatest extent
         permitted by law.
       </p>
       <h1>&quot;AS IS&quot; and &quot;AS AVAILABLE&quot; Disclaimer</h1>
@@ -170,12 +171,12 @@ const TermsPage = () => {
         can or will be corrected.
       </p>
       <p>
-        Without limiting the foregoing, neither the Company nor any of the company's provider makes
-        any representation or warranty of any kind, express or implied: (i) as to the operation or
-        availability of the Service, or the information, content, and materials or products included
-        thereon; (ii) that the Service will be uninterrupted or error-free; (iii) as to the
-        accuracy, reliability, or currency of any information or content provided through the
-        Service; or (iv) that the Service, its servers, the content, or e-mails sent from or on
+        Without limiting the foregoing, neither the Company nor any of the company&apos;s provider
+        makes any representation or warranty of any kind, express or implied: (i) as to the
+        operation or availability of the Service, or the information, content, and materials or
+        products included thereon; (ii) that the Service will be uninterrupted or error-free; (iii)
+        as to the accuracy, reliability, or currency of any information or content provided through
+        the Service; or (iv) that the Service, its servers, the content, or e-mails sent from or on
         behalf of the Company are free of viruses, scripts, trojan horses, worms, malware, timebombs
         or other harmful components.
       </p>
@@ -220,9 +221,9 @@ const TermsPage = () => {
       <h2>Waiver</h2>
       <p>
         Except as provided herein, the failure to exercise a right or to require performance of an
-        obligation under these Terms shall not effect a party's ability to exercise such right or
-        require such performance at any time thereafter nor shall the waiver of a breach constitute
-        a waiver of any subsequent breach.
+        obligation under these Terms shall not affect a party&apos;s ability to exercise such right
+        or require such performance at any time thereafter nor shall the waiver of a breach
+        constitute a waiver of any subsequent breach.
       </p>
       <h1>Translation Interpretation</h1>
       <p>
@@ -233,7 +234,7 @@ const TermsPage = () => {
       <h1>Changes to These Terms and Conditions</h1>
       <p>
         We reserve the right, at Our sole discretion, to modify or replace these Terms at any time.
-        If a revision is material We will make reasonable efforts to provide at least 30 days'
+        If a revision is material We will make reasonable efforts to provide at least 30 days&apos;
         notice prior to any new terms taking effect. What constitutes a material change will be
         determined at Our sole discretion.
       </p>
@@ -250,7 +251,7 @@ const TermsPage = () => {
         </li>
         <li>
           <p>
-            By visiting this page on our website:{' '}
+            By visiting this page on our website:&nbsp;
             <a href='www.chargeupbcn.com' rel='external nofollow noopener' target='_blank'>
               www.chargeupbcn.com
             </a>

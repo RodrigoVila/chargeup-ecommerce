@@ -102,8 +102,8 @@ const CookiesPage = () => {
         Website and some features may not function properly.
       </p>
       <p>
-        If You'd like to delete Cookies or instruct your web browser to delete or refuse Cookies,
-        please visit the help pages of your web browser.
+        If You&apos;d like to delete Cookies or instruct your web browser to delete or refuse
+        Cookies, please visit the help pages of your web browser.
       </p>
       <ul>
         <li>
@@ -155,7 +155,7 @@ const CookiesPage = () => {
           </p>
         </li>
       </ul>
-      <p>For any other web browser, please visit your web browser's official web pages.</p>
+      <p>For any other web browser, please visit your web browser&apos;s official web pages.</p>
       <h2>More Information about Cookies</h2>
       <p>
         You can learn more about cookies here:{' '}
