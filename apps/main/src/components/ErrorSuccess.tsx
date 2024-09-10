@@ -35,7 +35,7 @@ export const ErrorSuccess = ({
 
   useEffect(() => {
     autoGoBackToHome && startCountdown(5000)
-  }, [autoGoBackToHome])
+  }, [autoGoBackToHome, startCountdown])
 
   return (
     <div className='flex h-screen w-full items-center justify-center'>
