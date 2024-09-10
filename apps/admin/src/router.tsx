@@ -1,4 +1,4 @@
-import { createBrowserRouter, Navigate } from 'react-router-dom'
+import { createBrowserRouter } from 'react-router-dom'
 
 import { Layout } from '~/components/Layout'
 import { Dashboard } from '~/features/Dashboard'
@@ -8,10 +8,6 @@ import { UserList } from '~/features/Users'
 import { Home } from './features/Home'
 
 export const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <Navigate to='/admin' replace />,
-  },
   {
     path: '/admin',
     element: <Layout />,
