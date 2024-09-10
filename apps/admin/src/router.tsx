@@ -9,7 +9,7 @@ import { Home } from './features/Home'
 
 export const router = createBrowserRouter([
   {
-    path: '/admin',
+    path: '/',
     element: <Layout />,
     // loader: rootLoader,
     children: [
