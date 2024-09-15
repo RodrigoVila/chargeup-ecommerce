@@ -1,7 +1,7 @@
 import { ReactNode } from 'react'
 import { twMerge } from 'tailwind-merge'
 
-type SpinnerPropsType = {
+export type SpinnerPropsType = {
   children?: ReactNode
   svgClassName?: string
   labelClassName?: string // Fixed typo
