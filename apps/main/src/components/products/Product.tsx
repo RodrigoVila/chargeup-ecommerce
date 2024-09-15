@@ -34,7 +34,7 @@ export const Product = ({ product }: ProductProps) => {
     <>
       <Tooltip />
       <div className='2xs:rounded-xl xs:mx-2 lg:max-w-360 mb-4 mt-32 flex w-full max-w-sm flex-col items-center justify-end bg-black text-white lg:mx-8'>
-        <div className='relative flex h-full flex-col justify-end px-6 pb-6'>
+        <div className='relative flex h-full flex-col justify-start px-6 pb-6'>
           <div className='mb-8 flex h-32 w-full items-center justify-center bg-black'>
             {imgUri && <RoundImage imgUri={imgUri} />}
           </div>
@@ -105,7 +105,10 @@ export const Product = ({ product }: ProductProps) => {
               </div>
             </div>
           </div>
-          <ProductExtrasModal product={product} />
+          {/* "Select" button */}
+          <div className='mt-auto'>
+            <ProductExtrasModal product={product} />
+          </div>
         </div>
       </div>
     </>

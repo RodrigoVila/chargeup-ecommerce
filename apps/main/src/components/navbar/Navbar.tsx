@@ -1,11 +1,13 @@
 import { twMerge } from 'tailwind-merge'
 
-import { useNavbarOpacity } from '~hooks'
+import { useAppSelector, useNavbarOpacity } from '~hooks'
 
 import { DrawerModal, LanguageSelector, Logo, NavItems, UserModal } from '~components/navbar'
 import { CartModal } from '~components/cart'
+import { LoginModal } from '~components/auth'
 
 export const Navbar = () => {
+  const { userLogin } = useAppSelector()
   const { backgroundOpacity } = useNavbarOpacity()
 
   return (
@@ -21,13 +23,13 @@ export const Navbar = () => {
         <LanguageSelector className='text-white' />
       </div>
       <div className='flex flex-1 items-center justify-center gap-2 xl:justify-start'>
-        <Logo scrollOnClick size='sm' />
+        <Logo size='sm' />
         <LanguageSelector className='hidden text-white xl:block' />
       </div>
       <NavItems type='navbar' className='flex-1' />
       <div className='flex flex-1 items-center justify-end md:mr-3 md:gap-2'>
-        <UserModal />
         <CartModal />
+        {userLogin?.token ? <UserModal /> : <LoginModal />}
       </div>
     </nav>
   )

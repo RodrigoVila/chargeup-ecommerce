@@ -136,7 +136,7 @@ export type OrderType = {
   items: CartProductType[]
   deliveryType: DeliveryType
   address?: AddressType
-  totalAmount: number
+  totalAmount: string
   status?: string
   created: Date
 }

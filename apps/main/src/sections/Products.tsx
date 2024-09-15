@@ -15,7 +15,7 @@ export const Products = () => {
   const [isOpenProductExtras, setOpenProductExtras] = useState(false)
   const [searchValue, setSearchValue] = useState('')
 
-  const { products } = useAppSelector()
+  const { products, areProductsLoading } = useAppSelector()
 
   const { fetchProducts } = useAppActions()
 
@@ -42,10 +42,10 @@ export const Products = () => {
     setFilteredProducts(filter)
   }, [searchValue, products])
 
-  if (products.length === 0) {
+  if (areProductsLoading) {
     return (
-      <div className='mt-20 flex h-full w-full items-center justify-center'>
-        <Spinner>{formatMessage({ id: 'PRODUCTS_LOADING' })}</Spinner>
+      <div className='mt-32 flex h-full min-h-screen w-full items-start justify-center'>
+        <Spinner svgClassName='animate-spin'>{formatMessage({ id: 'PRODUCTS_LOADING' })}</Spinner>
       </div>
     )
   }
@@ -54,13 +54,14 @@ export const Products = () => {
     <Section
       id='products'
       title={formatMessage({ id: 'PRODUCTS' })}
-      className='min-h-screen'
+      className='min-h-screen justify-start'
       withOverlay={false}
     >
       <div className='mt-6 flex h-full flex-wrap items-center justify-center pb-2'>
         <ProductSearchBar setSearchValue={setSearchValue} />
       </div>
       <div className='relative mx-auto flex w-full flex-wrap justify-center text-left'>
+        {searchValue && filteredProducts.length === 0 && <p className='mt-12'>No products...</p>}
         {filteredProducts.map((product) => (
           <Product key={product._id} product={product} />
         ))}

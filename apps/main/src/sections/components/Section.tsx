@@ -46,7 +46,7 @@ export const Section = ({
     <section
       id={id}
       className={twMerge(
-        'relative z-[0] flex h-full min-h-screen w-full flex-col items-center bg-white px-2 pb-16 pt-32 text-center text-white',
+        'relative z-[0] flex h-full min-h-screen w-full flex-col items-center justify-center bg-white px-2 pb-16 pt-32 text-center text-white',
         className,
       )}
     >
@@ -66,7 +66,7 @@ export const Section = ({
       {title && (
         <h1
           className={twMerge(
-            'font-dinBold w-full px-2 pb-8 text-center text-3xl uppercase text-white md:text-5xl',
+            'font-dinBold z-0 w-full px-2 pb-8 text-center text-3xl uppercase text-white md:text-5xl',
             titleClassName,
           )}
         >

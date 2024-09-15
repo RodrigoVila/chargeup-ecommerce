@@ -1,12 +1,16 @@
 import { ReactNode, useEffect, useMemo, useState } from 'react'
+import dynamic from 'next/dynamic'
 import { v4 as uuidv4 } from 'uuid'
 
 import { useAppActions, useAppSelector } from '~hooks'
-import { Modal, ModalContent, ModalTrigger } from '@packages/modal'
+import { AbsoluteModalClose, Modal, ModalContent, ModalTrigger } from '@packages/modal'
 import { DeliveryType, OrderType, UserDetailsType } from '@packages/types'
 
-import { DeliveryOptions, DeliveryDataForm } from '~components/cart'
-import { CartButton } from '~components/navbar'
+import { DeliveryOptions, DeliveryDataForm, CartSummary } from '~components/cart'
+
+const CartButton = dynamic(() => import('~components/navbar').then((mod) => mod.CartButton), {
+  ssr: false,
+})
 
 type StepsType = {
   [currentStep: number]: ReactNode
@@ -43,8 +47,7 @@ export const CartModal = () => {
   }
 
   const Steps: StepsType = {
-    1: <></>,
-    // 1: <CartSummary products={cartItems} total={totalSum} next={nextStep} />,
+    1: <CartSummary products={cartItems} total={totalSum} next={nextStep} />,
     2: (
       <DeliveryOptions
         deliveryType={deliveryType}
@@ -73,10 +76,10 @@ export const CartModal = () => {
 
   return (
     <Modal open={isOpen} onOpenChange={setOpen}>
-      <ModalTrigger asChild>
+      <ModalTrigger>
         <CartButton onOpen={() => setOpen(true)} />
       </ModalTrigger>
-      <ModalContent>{Steps[currentStep]}</ModalContent>
+      <ModalContent className='flex flex-col p-4 text-black'>{Steps[currentStep]}</ModalContent>
     </Modal>
   )
 }

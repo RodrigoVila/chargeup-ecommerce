@@ -11,22 +11,18 @@ import { twMerge } from 'tailwind-merge'
 export const DrawerModal = () => {
   const [isOpen, setOpen] = useState(false)
 
-  useEffect(() => {
-    console.log({ isOpen })
-  }, [isOpen])
-
-  const iconStyles = 'h-6 w-6 font-bold text-white md:h-8 md:w-8 lg:h-12 lg:w-12'
-
   return (
     <Modal open={isOpen} onOpenChange={setOpen}>
       <ModalTrigger onClick={() => setOpen(!isOpen)}>
         {isOpen ? (
-          <IoCloseSharp className={iconStyles} />
+          <IoCloseSharp className='h-7 w-7 font-bold text-white xl:h-12 xl:w-12' />
         ) : (
-          <FaBars className={twMerge(iconStyles, 'xl:hidden')} />
+          <FaBars
+            className={twMerge('h-7 w-7 font-bold text-white xl:h-12 xl:w-12', 'xl:hidden')}
+          />
         )}
       </ModalTrigger>
-      <ModalContent className='z-[2] flex h-screen w-full items-center justify-center bg-black'>
+      <ModalContent className='bg-black' isFullScreen>
         <NavItems type='drawer' />
       </ModalContent>
     </Modal>

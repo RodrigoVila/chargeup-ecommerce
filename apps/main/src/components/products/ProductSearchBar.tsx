@@ -7,7 +7,7 @@ type ProductSearchBarProps = {
 export const ProductSearchBar = ({ setSearchValue }: ProductSearchBarProps) => {
   const { formatMessage } = useIntl()
   return (
-    <div className='flex w-full max-w-2xl flex-1 px-2 text-black lg:px-0'>
+    <div className='flex w-full max-w-2xl flex-1 px-2 text-black lg:min-w-[500px] lg:px-0'>
       <input
         type='search'
         placeholder={formatMessage({ id: 'PRODUCTS_SEARCH_BAR' })}

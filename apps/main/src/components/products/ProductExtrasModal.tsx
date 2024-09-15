@@ -92,14 +92,12 @@ export const ProductExtrasModal = ({ product }: ProductProps) => {
 
   return (
     <Modal>
-      <ModalTrigger>
-        <Button className='bg-purple-800 uppercase hover:bg-purple-700'>
+      <ModalTrigger className='w-full'>
+        <Button className=' bg-purple-800 uppercase hover:bg-purple-700'>
           {formatMessage({ id: 'PRODUCTS_SELECT_PRODUCT' })}
         </Button>
       </ModalTrigger>
       <ModalContent className='relative flex w-full flex-col gap-2 text-black'>
-        <AbsoluteModalClose />
-
         <h3 className='text-center text-xl font-semibold'>{product?.title}</h3>
         <div className='flex w-full flex-col flex-wrap'>
           {/* sizes dropdown */}

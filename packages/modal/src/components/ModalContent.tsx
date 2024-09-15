@@ -7,9 +7,18 @@ import {
 } from '@floating-ui/react'
 import { twMerge } from 'tailwind-merge'
 import { useModalContext } from './Modal'
+import { AbsoluteModalClose } from './AbsoluteModalClose'
 
-export const ModalContent = React.forwardRef<HTMLDivElement, React.HTMLProps<HTMLDivElement>>(
-  function ModalContent({ className, ...rest }, propRef) {
+type ModalContentProps = React.HTMLProps<HTMLDivElement> & {
+  isFullScreen?: boolean
+  hasCloseButton?: boolean
+}
+
+export const ModalContent = React.forwardRef<HTMLDivElement, ModalContentProps>(
+  function ModalContent(
+    { className, isFullScreen = false, hasCloseButton = true, ...rest },
+    propRef,
+  ) {
     const { context: floatingContext, ...context } = useModalContext()
     const ref = useMergeRefs([context.refs.setFloating, propRef])
 
@@ -17,7 +26,7 @@ export const ModalContent = React.forwardRef<HTMLDivElement, React.HTMLProps<HTM
 
     return (
       <FloatingPortal>
-        <FloatingOverlay lockScroll className='z-50 flex items-center justify-center bg-black/50'>
+        <FloatingOverlay lockScroll className='flex items-center justify-center bg-black/50'>
           <FloatingFocusManager context={floatingContext}>
             <div
               ref={ref}
@@ -25,10 +34,12 @@ export const ModalContent = React.forwardRef<HTMLDivElement, React.HTMLProps<HTM
               aria-describedby={context.descriptionId}
               className={twMerge(
                 'm-auto mx-2 flex w-max max-w-sm items-center justify-center rounded-lg bg-white p-4',
+                isFullScreen && 'mx-0 h-screen w-full max-w-none',
                 className,
               )}
               {...context.getFloatingProps(rest)}
             >
+              {hasCloseButton && <AbsoluteModalClose />}
               {rest.children}
             </div>
           </FloatingFocusManager>
