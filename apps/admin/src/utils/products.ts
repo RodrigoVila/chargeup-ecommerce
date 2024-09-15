@@ -5,6 +5,7 @@ import cinnamonRollsImg from '@packages/assets/images/cinnamon-rolls.jpg'
 import energyBallsImg from '@packages/assets/images/energy-balls.jpg'
 import energyBarsImg from '@packages/assets/images/energy-bars.jpg'
 import brownieAvellanasImg from '@packages/assets/images/keto-brownie-avellanas.jpg'
+import ketoSconesCheese from '@packages/assets/images/keto-scones-cheese.jpg'
 import proteinBreadImg from '@packages/assets/images/keto-protein-bread.jpg'
 import matchaBreadImg from '@packages/assets/images/matcha-bread.jpg'
 import peanutBallsImg from '@packages/assets/images/peanut-balls.jpg'
@@ -20,6 +21,7 @@ export const IMG_MAPPER: Record<string, string> = {
   'energy-balls': energyBallsImg,
   'energy-bars': energyBarsImg,
   'keto-brownie-avellanas': brownieAvellanasImg,
+  'keto-scones-cheese': ketoSconesCheese,
   'keto-protein-bread': proteinBreadImg,
   'matcha-bread': matchaBreadImg,
   'peanut-balls': peanutBallsImg,

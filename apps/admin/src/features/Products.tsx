@@ -1,5 +1,5 @@
 import { ReactNode } from 'react'
-import { Spinner } from '@packages/spinner'
+import { SpinnerPage } from '@packages/spinner'
 import { Action } from '@packages/types'
 import { AdminSection } from '~/components/AdminSection'
 import { useProducts } from '~/hooks/useProducts'
@@ -64,7 +64,7 @@ export const ProductList = () => {
     'Fat (g)': product.nutritionalInfo.fat,
   }))
 
-  if (isLoading) return <Spinner />
+  if (isLoading) return <SpinnerPage />
 
   if (error) return <ErrorComponent description='Error getting products. Please try again later' />
 

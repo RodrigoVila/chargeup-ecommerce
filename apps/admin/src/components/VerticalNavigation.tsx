@@ -15,7 +15,7 @@ export const VerticalNavigation = ({ isSidebar = false, className }: VerticalNav
   return (
     <nav className={twMerge('text-white', className)}>
       {isSidebar && <Logo />}
-      <ul className={twMerge('flex flex-col text-center', !isSidebar && 'py-6')}>
+      <ul className={twMerge('flex flex-col pb-2 text-center')}>
         <NavItem label='Dashboard' icon={<IoHomeOutline size={20} />} to='dashboard' />
         <NavItem label='Products' icon={<BsInboxes size={20} />} to='products' />
         <NavItem label='Orders' icon={<MdFormatListNumbered size={20} />} to='orders' />

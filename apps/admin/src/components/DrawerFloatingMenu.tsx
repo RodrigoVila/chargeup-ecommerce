@@ -3,6 +3,7 @@ import { FloatingMenu, FloatingMenuTrigger, FloatingMenuContent } from '@package
 import { VerticalNavigation } from './VerticalNavigation'
 import { FaBars } from 'react-icons/fa'
 import { useState } from 'react'
+import { Logo } from './Logo'
 
 export const DrawerFloatingMenu = () => {
   const [isOpen, setOpen] = useState(false)
@@ -12,6 +13,7 @@ export const DrawerFloatingMenu = () => {
         <FaBars size={24} color='white' />
       </FloatingMenuTrigger>
       <FloatingMenuContent className='rounded-lg bg-gray-800 px-4' onClick={() => setOpen(false)}>
+        <Logo />
         <VerticalNavigation />
       </FloatingMenuContent>
     </FloatingMenu>
